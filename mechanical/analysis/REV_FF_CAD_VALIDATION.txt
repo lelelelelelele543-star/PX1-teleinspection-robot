@@ -1,0 +1,66 @@
+PX-1 Rev.FF CAD VALIDATION
+Date: 2026-08-27
+Engine: CadQuery 2.8.0
+Status: EXECUTED SUCCESSFULLY; prototype candidate only
+
+Generated solids:
+- PX1_SideCover_RevFF.step
+- PX1_AxleFlange_RevFF.step
+- PX1_WheelShaft_RevFF.step
+- PX1_SideDrive_RevFF.step
+
+Side cover:
+- bounding box: 286 x 86 x 5 mm
+- modeled volume: 118068.79 mm^3
+- 3 axle openings
+- 12 perimeter M3 clearance holes
+- 190x1.5 O-ring-derived racetrack groove candidate
+
+Main static seal study:
+- nominal O-ring: ID190 x CS1.5
+- nominal circumference: 596.9026 mm
+- groove candidate: 1.90 mm wide x 1.20 mm deep
+- face squeeze: 20.0 %
+- groove fill: 77.51 %
+- equal-length racetrack centerline: 261.920 x 64.000 mm overall
+- cover edge margin to groove centerline: X 12.040 mm, vertical 11.000 mm
+
+Axle flange:
+- outer disk Ø50
+- total modeled axial envelope: 12 mm
+- external protrusion: 3 mm
+- inboard bearing spigot: 9 mm
+- 4 x M3 clearance pattern on PCD40
+- 61903 pocket: Ø30 x 7 candidate
+- dynamic X-ring gland represented as supplier-gate geometry
+
+Wheel shaft:
+- total modeled length: 54.0 mm
+- inner gear/support nominal Ø12
+- 61903 journal nominal Ø17
+- X-ring seal land nominal Ø19
+- labyrinth collar max OD21
+- wheel seat nominal Ø17
+- M6 axial retainer drill envelope
+- 4x4x12 wheel keyway envelope positioned outboard of seal land
+
+Dynamic X-ring study:
+- source ring nominal: 18.72 x 2.62
+- candidate shaft land: Ø19.0
+- nominal ID stretch: 1.496 %
+- nominal radial squeeze target: 12 %
+- calculated candidate gland bottom diameter: 23.611 mm
+
+DN150 packaging consequence of cover change:
+- side cover changed from 276x81 to 286x86 mm to create usable seal/screw margins
+- cover outer Y remains unchanged from current crawler baseline
+- lower ideal DN150 cover-corner clearance remains about 5.6 mm
+- upper ideal DN150 cover-corner clearance is about 10.8 mm
+- therefore lower screw heads must remain flush with the cover envelope
+
+Important limitations:
+- exact X-ring and O-ring groove dimensions are NOT released until supplier standards/samples are selected
+- static 32x1.5 flange O-ring groove is not yet cut in the solid because the final pilot/register geometry is still being optimized
+- actual bearings/gears are represented by design dimensions, not imported vendor STEP models
+- no physical pipe ovality/deposit allowance included in the numeric clearance above
+- no machining release until physical rotating pressure test passes
