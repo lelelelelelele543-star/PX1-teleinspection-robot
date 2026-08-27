@@ -1,0 +1,59 @@
+PX-1 Rev.FS INTEGRATED CAD VALIDATION
+Date: 2026-08-27
+Engine: CadQuery 2.8.0
+Status: EXECUTED SUCCESSFULLY; prototype engineering only
+
+Integrated master generated:
+- PX1_FullCrawler_RevFS.step
+- P0_MainBody_RevFS.step
+- P0_TopCover_RevFS.step
+- CameraFrontRetainer_RevFS.step
+- RearConnectorAdapter_RevFS.step
+- RearTetherAnchor_RevFS.step
+
+Integrated geometry:
+- nominal body length: 307 mm
+- central body nominal width: 92 mm, local X200 reinforcement bosses extend the body solid locally to ~100 mm
+- body height class: 82 mm over Z8..90
+- six profiled Ø90-class wheels, centers X50/X150/X250
+- wheel pitch: 100 mm
+- overall wheel outer width target: 134 mm
+- side covers: 286 x 86 x 5 mm
+- camera LOW axis: X83.557 / Z75.000 mm
+- lift LOW angle: -13.985 deg
+- two JGB37 envelopes aft of the folded camera region
+- rear structural tether anchor, replaceable connector plate and pressure-fill boss included
+
+DN150 solid containment check:
+- P0 body outside ideal DN150 air volume: 0 mm^3
+- top cover outside: 0 mm^3
+- all four lift arms outside: 0 mm^3
+- both yoke cheeks and bridge outside: 0 mm^3
+- both side covers outside: 0 mm^3
+- all six local axle flanges outside: 0 mm^3
+- camera shell through sampled TILT -105..+105 deg outside: 0 mm^3
+
+Wheel/pipe contact check:
+- each modeled traction wheel extends outside the mathematical pipe-air cylinder by only about 1.89 mm^3.
+- this is effectively the intended nominal crown contact in the idealized model, not useful operating clearance.
+- real tire/PU compliance, pipe ovality, dirt and machining tolerance still require a physical DN150 tube test.
+
+Critical ideal clearances:
+- lower outside corner of new 286x86 side-cover envelope: ~3.55 mm
+- outer low point of Ø50 axle-flange envelope: ~12.21 mm
+- upper lift hardware envelope at Y31/Z112: ~7.51 mm
+
+Important consequence:
+The side-cover lower corner is now the dominant nominal DN150 hard point. Lower screw heads must remain flush/recessed and no external boss may be added in this region without rerunning the full solid test.
+
+Known exclusions from this validation:
+- actual screw-head solids;
+- exact connector geometry;
+- actual camera PCB/lens/rotary-transfer protrusions;
+- flexible camera cable/service loop;
+- real wheel tread deformation;
+- pipe ovality, deposits, roots and joint steps;
+- actual gas-spring end fittings;
+- exact purchased motor/gear models.
+
+No machining/serial release until the physical gates are closed.
