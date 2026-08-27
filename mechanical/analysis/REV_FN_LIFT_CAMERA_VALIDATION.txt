@@ -1,0 +1,53 @@
+PX-1 Rev.FN LIFT/CAMERA CAD VALIDATION
+Date: 2026-08-27
+Engine: CadQuery 2.8.0
+Status: EXECUTED SUCCESSFULLY; prototype geometry only
+
+True parallelogram geometry:
+- body pivots: X200, Z92 / Z112
+- camera-side pivots preserve 20 mm vertical spacing
+- link length: 120 mm
+- arm side offset: Y +/-26 mm
+- plate thickness candidate: 5 mm
+- pivot pin candidate: Ø8 mm
+
+Positions:
+LOW / DN150
+- camera axis: X83.557, Z75.000 mm
+- arm angle: -13.985 deg
+- camera-side lower pivot: X83.557, Z63.000
+- camera-side upper pivot: X83.557, Z83.000
+- gas spring center distance: 104.643 mm
+- ideal 150 N assisting torque: 6.897 N*m
+
+MID
+- camera axis: X82.851, Z130.000 mm
+- arm angle: +12.513 deg
+- gas spring center distance: 123.081 mm
+- ideal assisting torque: 5.003 N*m
+
+HIGH
+- camera axis: X135.200, Z205.000 mm
+- arm angle: +57.317 deg
+- gas spring center distance: 139.474 mm
+- ideal assisting torque: 1.200 N*m
+
+Gas spring:
+- force baseline: 150 N
+- fixed pin: X220 / Z35
+- moving pin: 80 mm from lower pivot along arm
+- required geometric stroke: 34.831 mm
+- exact gas spring article remains HOLD until end fitting and compressed-length sample are checked
+
+DN150 numeric check:
+- ideal pipe R75, axis Z52.0481
+- camera envelope Ø52 x 72
+- TILT sweep -105..+105 deg
+- minimum ideal camera-only clearance: 7.641 mm
+- worst sampled tilt: about -54 deg
+- nominal upper lift pivot/hardware envelope clearance using Y31: 7.508 mm
+
+Important:
+- these clearances exclude real screw heads, pipe ovality, deposits, camera connector protrusions and flexible cable loop;
+- LOW remains the only permitted DN150 lift position;
+- production DN150 stop position is frozen only after physical tube sweep.
