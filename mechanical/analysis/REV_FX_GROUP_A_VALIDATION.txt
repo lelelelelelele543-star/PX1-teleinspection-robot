@@ -1,0 +1,71 @@
+PX-1 Rev.FX GROUP A CAD VALIDATION
+Date: 2026-08-27
+Engine: CadQuery 2.8.0
+Status: EXECUTED SUCCESSFULLY; prototype drawing candidate only
+
+Validated solids:
+- DRW-PX1-431 Wheel Shaft: valid, 21 x 21 x 54 mm bounding envelope
+- DRW-PX1-432 Axle Flange: valid, 50 x 50 x 12 mm
+- DRW-PX1-433 Side Cover: valid, 286 x 86 x 5 mm
+- DRW-PX1-434 X200 Output Shaft: valid, 18 x 18 x 42 mm
+- DRW-PX1-435 X200 Bearing/Seal Boss: valid, 38 x 38 x 15 mm
+- DRW-PX1-436 Bevel Pinion Shaft: valid, 12 x 12 x 39 mm
+
+Wheel shaft:
+- total length 54.0 mm
+- Ø12 inner gear/bearing region, 23 mm
+- Ø17 61903 journal, 7 mm
+- Ø19 X-ring running land, 4 mm
+- Ø21 labyrinth collar, 2 mm
+- Ø17 wheel seat, 18 mm
+- M6 axial retainer drill envelope
+- 4x4x12 keyway begins 3 mm inside wheel-seat region and is fully outside the dynamic seal land
+
+Axle flange:
+- Ø50 external flange disk
+- 3 mm external projection
+- 9 mm inboard register/spigot
+- Ø30 x 7 pocket for 61903 candidate
+- 4x M3 clearance on PCD40
+- dynamic X-ring gland intentionally NOT frozen in the solid until the exact seal standard/article is selected
+
+Side cover:
+- 286 x 86 x 5 mm
+- 3x Ø36 axle-flange pilot openings
+- 12x Ø3.4 M3 clearance holes
+- main face-seal source item 190x1.5 used only as nominal O-ring size
+- equal-length racetrack centerline about 261.920 x 64.000 mm
+- candidate groove 1.90 wide x 1.20 deep
+- calculated face squeeze 20.0%
+- calculated groove fill 77.51%
+
+X200 output shaft:
+- total length 42.0 mm
+- Ø10 bevel seat 16 mm
+- Ø10 61800 journal 5 mm
+- Ø14 spacer shoulder 2 mm
+- Ø18 dynamic seal land 7 mm
+- Ø12 service coupling 12 mm
+- D-flat only on service-coupling region; no flat/keyway/thread under seal lip
+
+X200 bearing/seal boss:
+- Ø38 x 15 mm
+- Ø19 x 5 61800 pocket candidate from inboard side
+- Ø30 x 7 18x30x7 seal pocket candidate from outboard side
+- Ø18.4 through clearance
+
+Bevel pinion shaft:
+- total length 39.0 mm
+- Ø6 motor-adapter seat 12 mm
+- Ø8 bevel-pinion seat 14 mm
+- Ø12 shoulder 2 mm
+- Ø12 61801 bearing seat 5 mm
+- Ø5 retaining end 6 mm
+
+HOLD / not released:
+- exact X-ring groove dimensions;
+- exact static wheel-flange O-ring groove;
+- final KHK bevel mounting distance and shim stack;
+- exact press fits until purchased bearings/seals are physically verified;
+- material heat treatment finalization;
+- machining release before pressure/rotation tests.
