@@ -11,8 +11,8 @@ Generated solids:
 
 Side cover:
 - bounding box: 286 x 86 x 5 mm
-- modeled volume: 118068.79 mm^3
-- 3 axle openings
+- modeled volume after current cuts: 118383.44 mm^3
+- 3 x Ø34.1 axle-flange pilot openings
 - 12 perimeter M3 clearance holes
 - 190x1.5 O-ring-derived racetrack groove candidate
 
@@ -29,9 +29,10 @@ Axle flange:
 - outer disk Ø50
 - total modeled axial envelope: 12 mm
 - external protrusion: 3 mm
-- inboard bearing spigot: 9 mm
+- inboard Ø34 pilot/bearing spigot: 9 mm
 - 4 x M3 clearance pattern on PCD40
 - 61903 pocket: Ø30 x 7 candidate
+- source-aligned 32x1.5 static O-ring radial-groove reservation modeled on pilot near cover face
 - dynamic X-ring gland represented as supplier-gate geometry
 
 Wheel shaft:
@@ -59,8 +60,8 @@ DN150 packaging consequence of cover change:
 - therefore lower screw heads must remain flush with the cover envelope
 
 Important limitations:
-- exact X-ring and O-ring groove dimensions are NOT released until supplier standards/samples are selected
-- static 32x1.5 flange O-ring groove is not yet cut in the solid because the final pilot/register geometry is still being optimized
+- exact X-ring and O-ring gland dimensions are NOT released until supplier standards/samples are selected
+- current 32x1.5 radial groove is a geometry reservation, not a supplier-approved gland
 - actual bearings/gears are represented by design dimensions, not imported vendor STEP models
 - no physical pipe ovality/deposit allowance included in the numeric clearance above
 - no machining release until physical rotating pressure test passes
