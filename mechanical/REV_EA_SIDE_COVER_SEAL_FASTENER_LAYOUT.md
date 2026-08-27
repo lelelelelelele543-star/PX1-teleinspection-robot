@@ -8,27 +8,28 @@ Each side drive P1/P2 is closed by one rigid rectangular aluminum cover, visuall
 Nominal current envelope:
 - cover visible size: 276 x 81 mm;
 - thickness: 5 mm Al 6082-T6;
-- three removable Ø48 axle flanges installed through/onto the cover/body interface;
+- three removable axle flanges installed through/onto the cover/body interface;
 - five internal Z50 gears remain behind the cover;
 - no drain holes because P1/P2 are dry pressurized cavities.
 
 ## Main cover static seal
 Preferred geometry is a machined closed-loop O-ring groove around the gear cavity, completely inside the perimeter screw line.
 
-Current candidate O-ring family:
-- FKM cord/ring cross-section 2.5 mm;
-- effective developed loop length approximately 190 mm class from the source-inspired side-drive envelope;
-- actual one-piece molded ring or cord-jointed ring to be selected only from a real supplier catalog.
+Important source correction: the MiniCam part-list notation `O-Ring 190 x 1.5` means approximately 190 mm nominal inside diameter with 1.5 mm cross-section, NOT a 190 mm developed groove length. Its free circumference is roughly 597 mm before stretch.
 
-Initial groove target for prototype coupon:
-- width ~3.2–3.4 mm;
-- depth ~1.9–2.0 mm;
-- static face squeeze approximately 20–24%;
+PX-1 candidate family:
+- FKM molded O-ring approximately 190 mm ID class;
+- cross-section 1.5–2.5 mm to be selected from the actual groove/cover stiffness calculation;
+- one-piece molded ring preferred over field-joined cord.
+
+Do not freeze the groove from a guessed cross-section. Build the actual racetrack/rounded-rectangle path first, calculate installed stretch and compression, then select a standard molded ring.
+
+Initial static-seal design targets:
+- radial/planar installed stretch kept within the selected O-ring manufacturer's static-face guidance;
+- static face squeeze around 20–25% as a starting target only;
 - groove fill preferably <85%;
 - surface finish on sealing lands Ra <=1.6 um target;
 - no tool marks crossing the seal line.
-
-These are machining-start values only; final groove follows the actual selected O-ring standard.
 
 ## Cover location
 The cover must not be positioned by screw clearance holes alone.
@@ -41,14 +42,21 @@ Use:
 
 ## Fasteners
 Baseline:
-- M4 A4-80 stainless socket-head or Torx fasteners;
-- screw spacing approximately 35–45 mm around the perimeter;
-- target 14–16 screws per cover, finalized after actual cavity contour;
-- minimum edge distance and O-ring land checked individually;
+- M4 A4-80 stainless where wall thickness permits;
+- target 14–16 perimeter screws, finalized from the real cavity contour;
 - anti-galling assembly paste compatible with aluminum/stainless and FKM;
-- threaded inserts or helicoils preferred for repeated service if direct aluminum threads fail cycle testing.
+- threaded inserts or helicoils preferred if repeated service damages direct aluminum threads.
 
-No cover screw is allowed inside the O-ring wet-pressure boundary unless specifically sealed.
+No cover screw is allowed inside the pressure-seal boundary unless specifically sealed.
+
+### DN150 screw-head correction
+The lower outside corner of the current side cover is one of the tightest DN150 locations. A protruding screw head near the bottom edge can consume several millimetres of clearance.
+
+Therefore:
+- lower perimeter screws must be flush/countersunk or positioned higher on the safe screw line;
+- do not use tall socket-head screws at the lowest cover edge;
+- all screw-head solids are included in the final DN150 sweep;
+- aim for >=4 mm nominal clearance at every non-traction solid after tolerance allowance.
 
 ## Flatness and stiffness
 Prototype machining targets:
@@ -78,7 +86,8 @@ P1 and P2 remain separately sensed. After any side-cover service:
 5. perform submerged static test before powered rotation.
 
 ## Release gates
-- exact molded O-ring or cord specification selected;
+- build the actual cover-groove path length in CAD;
+- select a real standard molded FKM O-ring with acceptable installed stretch;
 - groove coupon passes repeated assembly test;
 - 20 cover open/close cycles without thread or sealing-land damage;
 - 1 bar differential structural qualification on empty side bay;
