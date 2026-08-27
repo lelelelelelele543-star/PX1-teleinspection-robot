@@ -1,0 +1,48 @@
+PX-1 Rev.FI X200 BEVEL-STAGE CAD VALIDATION
+Date: 2026-08-27
+Engine: CadQuery 2.8.0
+Status: EXECUTED SUCCESSFULLY; prototype candidate only
+
+Generated solids:
+- PX1_PinionShaft_RevFI.step
+- PX1_OutputShaft_RevFI.step
+- PX1_X200_Boss_RevFI.step
+
+Pinion shaft candidate:
+- total length: 39 mm
+- motor coupling seat: Ø6 class
+- KHK small bevel gear seat: Ø8 class
+- supported bearing journal: Ø12 for 61801
+- end retention pilot included
+
+Output shaft candidate:
+- total length: 42 mm
+- large bevel gear / 61800 nominal shaft: Ø10
+- seal land: Ø18
+- side-drive coupling journal: Ø12
+- service D-flat represented on coupling end
+
+P0/P1-P2 boundary boss:
+- outer envelope: Ø38 x 15 mm
+- bearing pocket: Ø19 x 5 for 61800 class
+- dynamic seal pocket: Ø30 x 7 for 18x30x7 class seal
+- common shaft axis carried through both pockets
+
+Torsional sanity check using project temporary torque limit:
+- pinion input torque: 1.50 N*m
+- post-bevel side torque assumption: 1.50 x 2.5 x 0.90 = 3.375 N*m
+- Ø8 pinion shaft torsional shear: 14.92 MPa
+- Ø10 output shaft torsional shear: 17.19 MPa
+- Ø12 service coupling journal torsional shear: 9.95 MPa
+
+Conclusion:
+The current shaft diameters are not strength-limited under the temporary 1.5 N*m input cap. The controlling design issues remain bevel contact pattern, bearing/seal alignment, key/retention details, corrosion and measured motor stall/current.
+
+Release blockers:
+- exact KHK SB1.5-1845H / 4518H dimensional drawing and physical pair
+- actual JGB37 shaft geometry
+- actual 61801/61800 bearing brand tolerances
+- actual FKM 18x30x7 seal article
+- contact-pattern and backlash setup with shim pack
+- hot/cold no-load current comparison
+- loaded forward/reverse endurance test
