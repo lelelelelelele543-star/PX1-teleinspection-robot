@@ -20,11 +20,8 @@ FLANGE_M3_CLR=3.4
 # Side cover main O-ring: 190 x 1.5 source item.
 ORING_ID=190.0
 ORING_CS=1.5
-# Groove candidate derived from static 20% squeeze and <85% fill.
 GROOVE_D=1.20
 GROOVE_W=1.90
-# Fit a racetrack with same centerline length as nominal O-ring circumference.
-# Choose overall centerline height 64 mm to leave useful edge margin.
 RT_H=64.0
 RT_R=RT_H/2.0
 RT_CIRC=math.pi*ORING_ID
@@ -50,9 +47,9 @@ XRING_GROOVE_W=3.4
 # Cover body, origin x=0..286, y=0..86, z=0..5
 cover = cq.Workplane('XY').box(COVER_L,COVER_H,COVER_T, centered=(False,False,False))
 
-# Three flange pilot holes in side cover: pilot for flange register. Candidate Ø36.
+# Three source-like axle-flange pilot openings. Candidate Ø34.1 H7-class geometry.
 for x in WX:
-    cover = cover.faces('>Z').workplane().center(x-COVER_L/2, WZ-COVER_H/2).hole(36.0)
+    cover = cover.faces('>Z').workplane().center(x-COVER_L/2, WZ-COVER_H/2).hole(34.1)
 
 # 12 perimeter M3 cover holes; compact source-like pattern, outside seal path.
 cover_holes=[
@@ -62,7 +59,7 @@ cover_holes=[
 for x,y in cover_holes:
     cover=cover.faces('>Z').workplane().center(x-COVER_L/2,y-COVER_H/2).hole(COVER_M3_CLR)
 
-# Candidate main seal groove as racetrack, centered in plate.
+# Candidate 190x1.5 main face seal groove as equal-circumference racetrack.
 center_x=COVER_L/2
 center_y=COVER_H/2
 outer_slot=(cq.Workplane('XY').workplane(offset=COVER_T-GROOVE_D)
@@ -74,20 +71,33 @@ inner_slot=(cq.Workplane('XY').workplane(offset=COVER_T-GROOVE_D)
 groove=outer_slot.cut(inner_slot)
 cover=cover.cut(groove)
 
-# Flange candidate at local origin; z>0 is external/wheel side.
-# Only 3 mm projects beyond the cover face; 9 mm bearing spigot enters the dry side bay.
+# Removable axle flange. z>0 is external/wheel side.
+# Only 3 mm projects outboard; 9 mm Ø34 pilot/bearing spigot enters the dry side bay.
 FLANGE_EXT=3.0
 FLANGE_IN=9.0
 flange=(cq.Workplane('XY').circle(FLANGE_OD/2).extrude(FLANGE_EXT)
-        .union(cq.Workplane('XY').workplane(offset=0).circle(18.0).extrude(-FLANGE_IN)))
+        .union(cq.Workplane('XY').workplane(offset=0).circle(17.0).extrude(-FLANGE_IN)))
+
+# Source-aligned 32x1.5 static O-ring represented as a radial groove reservation on the Ø34 pilot.
+# Candidate only: exact supplier gland dimensions override these values.
+STATIC_ORING_GROOVE_W=1.9
+STATIC_ORING_GROOVE_D=0.9
+groove_z0=-2.75
+outer_cyl=cq.Workplane('XY').workplane(offset=groove_z0).circle(17.0).extrude(STATIC_ORING_GROOVE_W)
+inner_cyl=cq.Workplane('XY').workplane(offset=groove_z0).circle(17.0-STATIC_ORING_GROOVE_D).extrude(STATIC_ORING_GROOVE_W)
+static_groove=outer_cyl.cut(inner_cyl)
+flange=flange.cut(static_groove)
+
+# Shaft bore and source-like 4 x M3 flange screws.
 flange=flange.faces('>Z').workplane().hole(20.0, depth=FLANGE_EXT+FLANGE_IN)
 for a in range(0,360,90):
     r=FLANGE_PCD/2
     px=r*math.cos(math.radians(a)); py=r*math.sin(math.radians(a))
     flange=flange.faces('>Z').workplane().center(px,py).hole(FLANGE_M3_CLR, depth=FLANGE_EXT)
+
 # 61903 pocket from inboard end, Ø30 x 7.
 flange=flange.faces('<Z').workplane().hole(30.0, depth=L_B61903)
-# Dynamic X-ring gland candidate. Exact gland must follow selected supplier standard.
+# Dynamic X-ring gland candidate from outboard face; exact supplier gland remains release gate.
 flange=flange.faces('>Z').workplane().hole(XRING_GLAND_D, depth=XRING_GROOVE_W)
 
 # Wheel shaft candidate, axis Z for standalone part export.
@@ -96,7 +106,6 @@ shaft=(cq.Workplane('XY').circle(D_INNER/2).extrude(L_INNER_TOTAL)
        .faces('>Z').workplane().circle(D_XRING_LAND/2).extrude(L_XRING)
        .faces('>Z').workplane().circle(D_XRING_LAND/2+1.0).extrude(L_LAB)
        .faces('>Z').workplane().circle(D_WHEEL_SEAT/2).extrude(L_WHEEL))
-# M6 retaining-thread drill envelope.
 shaft=shaft.faces('>Z').workplane().hole(5.0, depth=12.0)
 # 4x4x12 keyway envelope on wheel seat, completely outboard of seal land.
 total_len=L_INNER_TOTAL+L_B61903+L_XRING+L_LAB+L_WHEEL
@@ -105,7 +114,6 @@ keybox=(cq.Workplane('XY').box(4.0,4.0,12.0,centered=(True,False,False))
         .translate((0,D_WHEEL_SEAT/2-2.0,key_z+6.0)))
 shaft=shaft.cut(keybox)
 
-# Assembly.
 assy=cq.Assembly(name='PX1_SideDrive_RevFF')
 assy.add(cover,name='SideCover')
 for i,x in enumerate(WX):
