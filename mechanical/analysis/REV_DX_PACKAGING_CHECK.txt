@@ -1,0 +1,25 @@
+PX-1 Rev.DX packaging check
+PIPE_R=75.000 mm, PIPE_Z=48.744 mm, intentional wheel contact Y=57.000
+
+body_corner: 13.210 mm
+belly_corner: 18.550 mm
+cover_plate: 13.847 mm
+wheel_boss: 16.420 mm
+outer_shoulder_near_contact: 0.047 mm
+outer_shoulder_Y60: 2.405 mm
+outer_shoulder_Y64: 4.163 mm
+outer_face_Y68_5: 4.034 mm
+camera_safe_Z75_full_tilt: 4.337 mm
+camera_Z76_full_tilt: 3.337 mm
+
+Intersection volumes (should be 0 for listed non-mesh pairs):
+motor_front_vs_rear: 0.000000 mm^3
+motor_front_vs_left_sidegear: 0.000000 mm^3
+motor_rear_vs_right_sidegear: 0.000000 mm^3
+big_bevel_L_vs_sidegear_L_gap: 0.000000 mm^3
+big_bevel_R_vs_sidegear_R_gap: 0.000000 mm^3
+
+Decision:
+DN150_SAFE camera axis = Z75 mm candidate (~4.3 mm nominal full-tilt margin). Z76 still clears ~3.3 mm ideally but is not preferred because tolerance/real protrusions would consume the margin.
+Side drive corrected to five equal Z50 gears.
+One motor front / one motor rear packaging prevents Ø37 motor-body collision.
