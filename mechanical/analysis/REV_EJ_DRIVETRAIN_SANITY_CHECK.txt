@@ -1,0 +1,61 @@
+PX-1 Rev.EJ drivetrain / pressure sanity check
+
+Inputs used for prototype sizing:
+- motor-side pinion torque limit: 1.50 N*m
+- bevel ratio: 2.5:1
+- assumed bevel efficiency for sanity check: 0.90
+- resulting side-transfer torque: 3.375 N*m
+- wheel gear: m1 Z50, pitch radius 25 mm
+- wheel OD: 90 mm
+- motor candidate speed: 107 rpm
+- side cover: 276 x 81 mm
+- top service cover: 275 x 74 mm
+
+TORSION, SOLID ROUND SHAFT NOMINAL:
+- Ø8 pinion shaft @1.50 N*m: 14.92 MPa
+- Ø10 transfer shaft @3.375 N*m: 17.19 MPa
+- Ø12 wheel/gear shaft @3.375 N*m: 9.95 MPa
+- Ø17 outer wheel journal @3.375 N*m: 3.50 MPa
+
+GEAR FORCE SANITY:
+- Z50 pitch-line tangential force @3.375 N*m: 135 N
+- Z18 m1.5 pinion pitch-line tangential force @1.50 N*m: ~111 N
+
+DOG COUPLING SANITY CANDIDATE:
+Assume mean torque radius 8.5 mm, two opposed dogs, each face 4 x 6 mm.
+- total tangential force: ~397 N
+- load per dog: ~199 N
+- average face pressure: ~8.27 MPa
+Conclusion: mechanically comfortable for steel coupling candidate; wear/fretting/endurance remain test gates.
+
+SPEED:
+- motor 107 rpm / 2.5 = 42.8 wheel rpm ideal
+- Ø90 circumference = 0.282743 m
+- ideal no-load crawler speed = ~12.10 m/min
+Real loaded/inspection speed will be lower and controlled electronically.
+
+PRESSURE COVER LOADS:
+At +0.30 bar gauge:
+- one 276x81 side-cover projected load: ~671 N
+- 275x74 top-cover projected load: ~611 N
+At 1.0 bar differential qualification target:
+- side cover: ~2236 N total
+- top cover: ~2035 N total
+These totals are low relative to clamp capacity of perimeter M4 hardware; cover plate stiffness/flatness and seal land behavior remain the governing checks.
+
+GEOMETRIC FIXED RELATIONSHIPS:
+- equal m1 Z50 gears -> nominal center distance = 50.00 mm
+- five-gear side train positions X=50/100/150/200/250 -> wheel pitch = 100.00 mm
+- middle station X=150 aligns side-drive input with central bevel transfer.
+
+DESIGN CONCLUSION:
+Current prototype drivetrain is not limited by nominal shaft torsional stress. Priority risks remain:
+1. actual JGB37 stall/current/gearbox behavior;
+2. KHK bevel contact and hub connection;
+3. transfer dog-coupling wear/repeatability;
+4. side-drive bearing alignment after cover service;
+5. dynamic-seal friction and leakage;
+6. DN150 collision with real screws/flanges/lift/tether;
+7. thermal behavior of motors/drivers/DC-DC.
+
+No machining release from this calculation alone.
