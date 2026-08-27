@@ -1,25 +1,34 @@
-PX-1 Rev.DX packaging check
-PIPE_R=75.000 mm, PIPE_Z=48.744 mm, intentional wheel contact Y=57.000
+PX-1 Rev.DX packaging check — corrected current geometry
 
-body_corner: 13.210 mm
-belly_corner: 18.550 mm
-cover_plate: 13.847 mm
-wheel_boss: 16.420 mm
-outer_shoulder_near_contact: 0.047 mm
-outer_shoulder_Y60: 2.405 mm
-outer_shoulder_Y64: 4.163 mm
-outer_face_Y68_5: 4.034 mm
-camera_safe_Z75_full_tilt: 4.337 mm
-camera_Z76_full_tilt: 3.337 mm
+PIPE_R=75.000 mm
+PIPE_AXIS_Z=52.048 mm
+BODY=307 x 92 mm, Z=8..90
+SIDE COVER outer Y=+-51 mm, Z=5..86
+MOTORS=Ø37, axes Y=+-19 mm
+KHK LARGE BEVEL OD=68.18 mm, center X150/Z45
+CAMERA ENVELOPE=Ø52 x 72 mm, axis Z75, TILT -105..+105 deg
 
-Intersection volumes (should be 0 for listed non-mesh pairs):
-motor_front_vs_rear: 0.000000 mm^3
-motor_front_vs_left_sidegear: 0.000000 mm^3
-motor_rear_vs_right_sidegear: 0.000000 mm^3
-big_bevel_L_vs_sidegear_L_gap: 0.000000 mm^3
-big_bevel_R_vs_sidegear_R_gap: 0.000000 mm^3
+body_corner_clearance_mm=11.311
+cover_corner_clearance_mm=5.613
+motor_to_motor_gap_mm=1.000
+motor_to_body_wall_gap_mm=8.500
+large_bevel_lower_body_margin_mm=2.910
+large_bevel_upper_body_margin_mm=10.910
+large_bevel_longitudinal_margin_mm=115.910
+wheel_outer_taper_clearance_mm=6.563 at Y67/r21
+camera_full_tilt_sampled_clearance_mm=7.641 at approximately -54 deg
+PACKAGING_BASELINE=PASS
 
-Decision:
-DN150_SAFE camera axis = Z75 mm candidate (~4.3 mm nominal full-tilt margin). Z76 still clears ~3.3 mm ideally but is not preferred because tolerance/real protrusions would consume the margin.
-Side drive corrected to five equal Z50 gears.
-One motor front / one motor rear packaging prevents Ø37 motor-body collision.
+Corrections versus the older contents of this file:
+- pipe-axis datum is now solved from the current tapered-wheel contact model;
+- both JGB37 motors are packaged longitudinally at Y=+-19 rather than front/rear longitudinal positions;
+- exact KHK SB1.5-4518H OD envelope is used for the large bevel stage;
+- visible side cover is rectangular with three axle flanges;
+- side drive is five equal m1 Z50 gears;
+- camera sweep uses a sampled cylindrical solid rather than the older simplified clearance expression.
+
+Limitations:
+- ideal ID150 cylinder only;
+- wheel traction crown is intentional contact and is not treated as clearance;
+- no pipe ovality, deposits, screw-head tolerance, tire compression, cable loop or full lift-arm solids yet;
+- FreeCAD master remains packaging-level, not machining RELEASE.
