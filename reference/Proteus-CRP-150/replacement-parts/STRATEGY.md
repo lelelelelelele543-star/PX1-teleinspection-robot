@@ -11,7 +11,7 @@ Keep a Proteus part when it is a standard available component or can be manufact
 | Function | Original architecture | Replacement direction | Status |
 |---|---|---|---|
 | Traction gearmotor | FAULHABER 26/1S 66:1 plus unidentified motor | Available 24 V metal gearmotor, nominal 60-120 rpm at bevel input, adapted to the original supported Z16 shaft | Candidate selection required |
-| Z16/Z40 bevel pair | Proprietary part codes GEA-002-531 / GEA-002-530 | Manufacture from verified geometry or source a matched standard pair only if center distance and packaging remain compatible | Geometry incomplete |
+| Z16/Z40 bevel pair | Proprietary part codes GEA-002-531 / GEA-002-530; module 1.0 reconstructed from source scale | Manufacture from verified geometry or source a matched m1 Z16/Z40 90-degree pair only if face width, mounting distance and packaging remain compatible | Tooth count/module fixed; detailed geometry incomplete |
 | Motor-unit pinion bearing | 61801-2RS 12x21x5 | Keep standard bearing | Available standard |
 | Body bearing | 61800-2RS 10x19x5 | Keep standard bearing | Available standard |
 | Body shaft seal | 18x30x7 | Keep standard seal; select lip material after lubricant and pressure validation | Available standard |
@@ -36,6 +36,8 @@ The previously selected accessible prototype family is JGB37-520, 24 V, purchase
 
 No seller listing alone is sufficient for approval. Record voltage, no-load speed, no-load current, loaded speed, loaded current, stall current and gearbox backlash for the exact received unit.
 
+The replacement motor adapter must preserve the supported-pinion load path shown in DRW-002-386. The motor output must transmit torque through a coupling into the 61801-supported Z16 assembly; the bevel gear must not be placed as an unsupported overhung gear directly on the replacement motor shaft.
+
 ## Sourcing constraints
 
 - electronics and ordinary modules: ChipDip where practical;
@@ -44,4 +46,3 @@ No seller listing alone is sufficient for approval. Record voltage, no-load spee
 - avoid custom PCBs in the prototype;
 - retain service access with ordinary workshop tools;
 - record manufacturer, exact part number, seller URL, purchase date, measured data and replacement alternates.
-

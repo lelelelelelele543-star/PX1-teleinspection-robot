@@ -31,6 +31,7 @@ Original Mini-Cam drawings are not stored here. The available drawings contain r
 - [`SOURCE_REGISTER.md`](SOURCE_REGISTER.md) - source identifiers and evidence limits;
 - [`VERIFICATION_REGISTER.md`](VERIFICATION_REGISTER.md) - open measurements and proof status;
 - [`crawler/DRIVE_ARCHITECTURE.md`](crawler/DRIVE_ARCHITECTURE.md) - confirmed CRP-150/X200 drive reconstruction;
+- [`crawler/GEAR_AND_SHAFT_AUDIT.md`](crawler/GEAR_AND_SHAFT_AUDIT.md) - calibrated gear geometry and CAD conflict audit;
 - [`replacement-parts/STRATEGY.md`](replacement-parts/STRATEGY.md) - rules and first replacement matrix;
 - `cad/reconstruction/` - only original reconstruction CAD, never copied factory drawings;
 - `camera/`, `lift/`, `reel/`, `control-unit/` - subsystem work areas.
@@ -53,4 +54,3 @@ Original Mini-Cam drawings are not stored here. The available drawings contain r
 3. Validate the five-Z50 side drive and wheel speed.
 4. Reconstruct the manual lift.
 5. Continue with CAM026, RMP300 and the control unit.
-

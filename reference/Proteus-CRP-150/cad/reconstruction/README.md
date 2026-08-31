@@ -16,10 +16,10 @@ Current generated STEP models remain provisional until the shaft, bevel-gear and
 
 | File | Purpose | Release state |
 |---|---|---|
-| `PX1_X200_RevGK_PROVISIONAL.step.gz` | Gzip-compressed whole-crawler STEP checkpoint | PROVISIONAL - not for machining |
-| `PX1_SIDE_DRIVE_RevGN_PROVISIONAL.step.gz` | Gzip-compressed left side-drive STEP checkpoint | PROVISIONAL - not for machining |
+| `PX1_X200_RevGK_PROVISIONAL.step.gz` | Gzip-compressed whole-crawler STEP checkpoint | REJECTED-ARCHITECTURE - historical only |
+| `PX1_SIDE_DRIVE_RevGN_PROVISIONAL.step.gz` | Gzip-compressed left side-drive STEP checkpoint | REJECTED-ARCHITECTURE - historical only |
 
-These checkpoints preserve the current engineering work. Their presence does not promote reconstructed dimensions to factory-confirmed dimensions.
+These checkpoints preserve historical engineering work. They must not be used for machining or as a base for a released revision. Audit against DRW-002-374/375/386 found four source conflicts: module-1.25 gears instead of module 1.0, center-wheel input instead of the rear long axle, and a 170x1.5 side-cover O-ring instead of SEA-002-102 190x1.5. See [`../../crawler/GEAR_AND_SHAFT_AUDIT.md`](../../crawler/GEAR_AND_SHAFT_AUDIT.md).
 
 Decompress with `gzip -dk FILE.step.gz` before opening in FreeCAD.
 

@@ -19,7 +19,7 @@ Per crawler:
 | Body bearing | 2 | 61800-2RS, 10x19x5 mm |
 | Dynamic body shaft seal | 2 | 18x30x7 mm |
 
-The motor gearhead does not directly carry a wheel. The small bevel gear is carried by a separate supported shaft in the motor unit. The large bevel gear transfers torque into the side-drive input path.
+The motor gearhead does not directly carry a wheel. The Z16/FSS-002-083 assembly is supported in the motor holder by the 61801 bearing. FSS-002-083 lies concentrically between the supported bevel assembly and the FAULHABER output shaft. The exact coupling fit is unresolved, but the bevel radial load is reacted through the 61801 into the motor holder rather than only through the gearhead output bearing. The large bevel gear transfers torque into the side-drive input path.
 
 ## Ratios
 
@@ -36,6 +36,16 @@ i_to_side_input = 66 x 2.5 = 165:1
 ```
 
 The five side gears are all Z50. Therefore they distribute motion to the three wheel stations without changing speed ratio. Two idlers make all three wheels on one side rotate in the same direction.
+
+Calibrated DRW-002-374 geometry gives:
+
+- spur and bevel module: 1.0 mm;
+- adjacent Z50 center distance: 50 mm;
+- wheel-axle spacing: 100 mm;
+- front-to-rear wheelbase: 200 mm;
+- Z50 face width: 4 mm (`B4`).
+
+See [`GEAR_AND_SHAFT_AUDIT.md`](GEAR_AND_SHAFT_AUDIT.md) for the derivation and evidence limits.
 
 Nominal wheel speed before losses:
 
@@ -94,9 +104,9 @@ The available motor must preserve the functional interface, even if its flange i
 
 - exact motor can dimensions and flange pattern behind the 26/1S gearhead;
 - coupling between the FAULHABER output and FSS-002-083;
-- Z16 and Z40 module, pressure angle, face width and cone angles;
+- Z16 and Z40 pressure angle, face width, tooth system and mounting-distance tolerances;
 - exact location of the bevel pitch-cone intersection;
 - preload/end-float adjustment method for both bevel shafts;
 - material and heat treatment of the bevel gears;
-- complete long-axle shoulder and seal journal dimensions.
-
+- complete long-axle shoulder and seal journal dimensions;
+- exact FSS-002-083 coupling bore, fit and axial retention.
