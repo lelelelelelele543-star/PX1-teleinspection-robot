@@ -7,13 +7,14 @@ Open engineering project for a pipe-inspection crawler based on the proven Mini-
 Start here:
 
 - [`PROJECT_STATUS_RevPO.md`](PROJECT_STATUS_RevPO.md) — active complete system architecture;
+- [`PROJECT_STATUS_RevPR.md`](PROJECT_STATUS_RevPR.md) — active corrected crawler mechanical master, rear-wheel X250 drive input;
 - [`PROJECT_SUPERSESSION_RevPP.md`](PROJECT_SUPERSESSION_RevPP.md) — which historical experiments are no longer active;
 - [`electrical/PX1_SystemWiring_RevPP.md`](electrical/PX1_SystemWiring_RevPP.md) — active end-to-end wiring and safety architecture;
 - [`tether/PX1_Tether_RevPP.md`](tether/PX1_Tether_RevPP.md) — active six-core tether allocation;
 - [`MASTER_DESIGN_BASIS_PROTEUS.md`](MASTER_DESIGN_BASIS_PROTEUS.md) — Proteus-derived mechanical design basis;
 - [`reference/Proteus-CRP-150/`](reference/Proteus-CRP-150/README.md) — controlled source/evidence reconstruction.
 
-If an older experimental revision conflicts with Rev.PO/Rev.PP, the active documents above take precedence.
+If an older experimental revision conflicts with Rev.PO/Rev.PP/Rev.PR, the active documents above take precedence.
 
 ## Current project direction
 
@@ -21,12 +22,26 @@ The project preserves the useful Proteus mechanical and operator logic instead o
 
 - six-wheel CRP-150-style crawler;
 - five module-1 Z50 side gears per side;
-- rear long-axle side-drive input;
+- rear long-axle side-drive input at the rear wheel station;
 - two traction motors with Z16 to Z40 bevel inputs;
 - manual 150 N camera lift integrated into the crawler body;
 - separately sealed CAM026-like PAN/ROTATE camera;
 - lightweight manual reel with brake, mechanical level-wind, meter wheel and slip ring;
 - portable CCU with hardware E-STOP and high-voltage tether supply.
+
+## Current mechanical master
+
+Active CAD source:
+`mechanical/cadquery/PX1_CRP150_Master_RevPR.py`
+
+Rev.PR corrects the old X200 side-input placeholder to the verified Proteus topology:
+- X50 front wheel;
+- X100 idler;
+- X150 centre wheel;
+- X200 idler;
+- X250 rear wheel + driven long axle.
+
+Executed Rev.PR validation passes the current ideal-DN150 body screen, five-Z50 pitch-spacing check, Ø35 x 100 motor-envelope screen and current dry-volume packaging reserves. It remains prototype engineering, not machining release.
 
 ## Current electrical baseline
 
