@@ -16,7 +16,7 @@ No cassette or cartridge is used anywhere in the crawler, camera, reel or tether
 | Traction | Ø32 mm, 24 V, about 50–60 rpm industrial planetary gearmotor; documented reference PGM-32P-24-100-60-02 / MOT-IG32PGM-100 | 2 | industrial distributor / marketplace equivalent | SAMPLE + MEASURE |
 | Motor alternative | JGB37-520/555 24 V marketplace gearmotor, selected by measured speed/current/shaft | 2 | Ozon/marketplaces | ADAPTER PATH, not bulk order |
 | Side train | spur gear m1, Z50, 20° PA, steel, machinable hub | 10 | standard gear supplier / marketplace | SAMPLE + bore machining |
-| Bevel input | matched straight-bevel set Z16/Z40, 2.5:1; module and face width frozen only after paired sample | 2 pairs | gear supplier / marketplace | HOLD exact article |
+| Bevel input | KHK SB1.5-1845H + SB1.5-4518H, m1.5 Z18/Z45, 2.5:1; generic marketplace equivalent only after full interface/load verification | 2 pairs | gear supplier / marketplace | SELECTED CANDIDATE; SAMPLE |
 | Pinion support | 61801-2RS, 12x21x5 | 2 | bearing distributor | BUY SAMPLE |
 | Wheel station | 61903-2RS, 17x30x7 | 6 | bearing distributor | BUY SAMPLE |
 | Auxiliary shaft | 61800-2RS, 10x19x5 | 2 | bearing distributor | BUY SAMPLE |
@@ -26,11 +26,11 @@ No cassette or cartridge is used anywhere in the crawler, camera, reel or tether
 | Lift lock | M8 adjustable clamping lever, female thread; DIN 2093 20x10.2x1.1 Belleville stack | 1 set | marketplace / industrial fasteners | SAMPLE |
 | Lift assist | 150 N gas spring, nominal useful stroke about 80 mm, M6/M8 ball ends | 1 | marketplace | HOLD exact geometry |
 | Lift pivots | shoulder bolts/pins + DIN 471/472 circlips + polymer thrust washers | set | fastener/bearing distributor | PROVISIONAL |
-| Tether connector | WEIPU SP21 12-contact sealed pair; current per contact and creepage to be verified against tether HV | 1 pair | ChipDip | ELECTRICAL HOLD |
+| Tether connector | WEIPU SP2110/S7II-1N cable female + SP2112/P7-1N panel male, 7 contact, 15 A/500 V/IP68 family | 1 pair | ChipDip/TME/marketplace | SELECTED CANDIDATE; PRESSURE/HV HOLD |
 | Reel bearings | 61804/6203/16006/61904 classes, sealed where appropriate | set | bearing distributor | SAMPLE |
 | Reel rotary transfer | 12-circuit slip ring, voltage/current derated and hipot-tested | 1 | marketplace / industrial slip-ring supplier | HOLD exact article |
 
-ChipDip listings are availability leads, not automatic design approval. In particular, an IP68 label does not by itself prove submerged pressure capability, tether high-voltage creepage, mating-cycle life or strain-relief strength.
+The seventh connector contact is assigned to the overall cable screen/drain; the six insulated tether conductors do not change. Female contacts remain on the potentially energised cable end. ChipDip/TME/marketplace listings are availability leads, not automatic design approval. In particular, an IP68 label does not by itself prove submerged pressure capability, tether high-voltage creepage, mating-cycle life or strain-relief strength.
 
 ## Custom mechanical parts retained
 
@@ -70,10 +70,9 @@ Before release, prove the tapped shaft section against bending/fatigue. If margi
 ## Explicit non-release items
 
 - exact marketplace motor seller/article;
-- exact Z16/Z40 bevel set;
+- physical H-suffix KHK bevel samples and their current drawing/STEP;
 - exact 150 N gas-spring article;
 - wheel tread compound and mould;
 - connector voltage/submersion qualification;
 - slip-ring article;
 - all pressure-rated fits, O-ring grooves and proof pressure.
-
