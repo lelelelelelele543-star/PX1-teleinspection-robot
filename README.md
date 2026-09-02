@@ -8,13 +8,15 @@ Start here:
 
 - [`PROJECT_STATUS_RevPO.md`](PROJECT_STATUS_RevPO.md) — active complete system architecture;
 - [`PROJECT_STATUS_RevPR.md`](PROJECT_STATUS_RevPR.md) — active corrected crawler mechanical master, rear-wheel X250 drive input;
+- [`PROJECT_STATUS_RevPS.md`](PROJECT_STATUS_RevPS.md) — active marketplace-parts redesign and prototype procurement gates;
+- [`PROJECT_STATUS_RevPT.md`](PROJECT_STATUS_RevPT.md) — active strength-screened stock-bevel packaging at X250;
 - [`PROJECT_SUPERSESSION_RevPP.md`](PROJECT_SUPERSESSION_RevPP.md) — which historical experiments are no longer active;
 - [`electrical/PX1_SystemWiring_RevPP.md`](electrical/PX1_SystemWiring_RevPP.md) — active end-to-end wiring and safety architecture;
 - [`tether/PX1_Tether_RevPP.md`](tether/PX1_Tether_RevPP.md) — active six-core tether allocation;
 - [`MASTER_DESIGN_BASIS_PROTEUS.md`](MASTER_DESIGN_BASIS_PROTEUS.md) — Proteus-derived mechanical design basis;
 - [`reference/Proteus-CRP-150/`](reference/Proteus-CRP-150/README.md) — controlled source/evidence reconstruction.
 
-If an older experimental revision conflicts with Rev.PO/Rev.PP/Rev.PR, the active documents above take precedence.
+If an older experimental revision conflicts with Rev.PO/Rev.PP/Rev.PR/Rev.PS/Rev.PT, the active documents above take precedence.
 
 ## Current project direction
 
@@ -23,7 +25,7 @@ The project preserves the useful Proteus mechanical and operator logic instead o
 - six-wheel CRP-150-style crawler;
 - five module-1 Z50 side gears per side;
 - rear long-axle side-drive input at the rear wheel station;
-- two traction motors with Z16 to Z40 bevel inputs;
+- two traction motors with a supported 2.5:1 bevel input; Rev.PT uses a catalog Z18/Z45 H pair in place of the source-only Z16/Z40 definition;
 - manual 150 N camera lift integrated into the crawler body;
 - separately sealed CAM026-like PAN/ROTATE camera;
 - lightweight manual reel with brake, mechanical level-wind, meter wheel and slip ring;
@@ -42,6 +44,8 @@ Rev.PR corrects the old X200 side-input placeholder to the verified Proteus topo
 - X250 rear wheel + driven long axle.
 
 Executed Rev.PR validation passes the current ideal-DN150 body screen, five-Z50 pitch-spacing check, Ø35 x 100 motor-envelope screen and current dry-volume packaging reserves. It remains prototype engineering, not machining release.
+
+Rev.PS adds the flash-drive evidence record, one-tool keyed wheel interface and a controlled catalog/marketplace replacement matrix. Exact motor, bevel pair, gas spring, connector and slip ring remain sample-and-measure gates.
 
 ## Current electrical baseline
 

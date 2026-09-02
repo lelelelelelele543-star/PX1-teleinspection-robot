@@ -1,0 +1,73 @@
+{
+  "body_valid": true,
+  "body_outside_ideal_DN150_mm3": 0.0,
+  "rear_input_station_x_mm": 250.0,
+  "wheel_stations_x_mm": [
+    50.0,
+    150.0,
+    250.0
+  ],
+  "five_spur_positions_x_mm": [
+    50.0,
+    100.0,
+    150.0,
+    200.0,
+    250.0
+  ],
+  "spur_pitch_center_spacing_mm": [
+    50.0,
+    50.0,
+    50.0,
+    50.0
+  ],
+  "spur_module": 1.0,
+  "spur_teeth_each": 50,
+  "bevel_ratio": 2.5,
+  "bevel_tooth_counts": [
+    16,
+    40
+  ],
+  "bevel_module_status": "SCREENING_ONLY_NOT_RELEASED",
+  "motor_envelope_max_mm": {
+    "diameter": 35.0,
+    "length": 100.0
+  },
+  "wheel_service_interface": {
+    "wheel_od_mm": 90.0,
+    "bearing": "61903-2RS 17x30x7",
+    "key_candidate_mm": [
+      5.0,
+      5.0
+    ],
+    "central_retention": "M8 candidate; fatigue proof required",
+    "retaining_disk_od_mm": 24.0,
+    "protective_cap_od_mm": 27.0,
+    "dynamic_seal": "QRAR04116 18.72x2.62 FKM or verified equivalent"
+  },
+  "component_outside_dry_volume_mm3": {
+    "HV_TO_24V_CONVERTER_RESERVE": 0.0,
+    "DATA_VIDEO_INTERFACE_RESERVE": 0.0,
+    "TRACTION_DRIVER_L_RESERVE": 0.0,
+    "TRACTION_DRIVER_R_RESERVE": 0.0,
+    "INPUT_PROTECTION_RESERVE": 0.0,
+    "NUCLEO_F446RE_LOWPROFILE": 0.0,
+    "PRESSURE_SENSOR_RESERVE": 0.0
+  },
+  "component_intersections_mm3": {},
+  "motor_body_intersections_mm3": {
+    "-1": 0.0,
+    "1": 0.0
+  },
+  "gear_train_center_spacing_error_mm": 0.0,
+  "release_holds": [
+    "exact traction motor article and shaft/mount drawing",
+    "released Z16/Z40 bevel module/pressure angle/face width",
+    "actual HV-to-24V converter article and thermal mounting",
+    "exact side-cover/shaft-flange detail at X250 driven station",
+    "full wet-traction wheel profile integration and physical DN150 sweep",
+    "M8 internal-thread versus external-thread shaft fatigue decision",
+    "full lift LOW/MID/HIGH sweep after X250 drive relocation",
+    "pressure FEA/proof including rear extension and lift bosses"
+  ],
+  "status": "PASS"
+}
