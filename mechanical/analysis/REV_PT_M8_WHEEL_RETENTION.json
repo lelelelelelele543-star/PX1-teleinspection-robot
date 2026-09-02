@@ -1,0 +1,47 @@
+{
+  "inputs": {
+    "shaft_od_mm": 17.0,
+    "internal_M8_minor_diameter_mm": 6.647,
+    "radial_load_N": 200.0,
+    "load_overhang_mm": 25.0,
+    "bending_moment_Nmm": 5000.0,
+    "side_torque_Nm": 3.375,
+    "stress_concentration_screen": 2.5,
+    "impact_factor_screen": 5.0
+  },
+  "solid_D17_reference": {
+    "I_mm4": 4099.827500319892,
+    "J_mm4": 8199.655000639785,
+    "bending_MPa": 10.366289800408408,
+    "torsion_MPa": 3.4986228076378376,
+    "von_mises_MPa": 12.007541333529623
+  },
+  "D17_with_internal_M8": {
+    "I_mm4": 4004.0038714258435,
+    "J_mm4": 8008.007742851687,
+    "bending_MPa": 10.614375351456781,
+    "torsion_MPa": 3.5823516811166636,
+    "von_mises_MPa": 12.294905237667
+  },
+  "external_M8_root_pessimistic_comparison": {
+    "I_mm4": 85.80502058019678,
+    "J_mm4": 171.61004116039356,
+    "bending_MPa": 188.3922396462984,
+    "torsion_MPa": 63.58238088062571,
+    "von_mises_MPa": 218.21959910671453
+  },
+  "internal_hole_section_modulus_loss_percent": 2.3372600160999957,
+  "internal_M8_local_screen_MPa": 30.737263094167503,
+  "internal_M8_5x_impact_local_screen_MPa": 153.6863154708375,
+  "M8_A4_80_nominal_proof_load_N": 21960.0,
+  "minimum_full_thread_engagement_mm": 10.0,
+  "decision": "INTERNAL_M8_PROTOTYPE_BASELINE",
+  "rules": [
+    "shaft shoulder and key carry wheel load and torque; screw retains axially only",
+    "blind thread must stop before dynamic-seal land and wheel-bearing journal",
+    "use retaining disk and wedge-lock pair under protective cap",
+    "use anti-galling compound and controlled tightening torque",
+    "first article requires 5x radial proof, reversal, removal-cycle and crack inspection"
+  ],
+  "status": "PASS_SCREEN"
+}
