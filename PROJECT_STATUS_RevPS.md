@@ -13,7 +13,7 @@ Rev.PS translates the verified Proteus service architecture and the extracted MS
 - five m1 Z50 side gears at X50/X100/X150/X200/X250;
 - rear-wheel long axle at X250 is the driven input;
 - two 24 V gearmotors total, one per side;
-- supported Z16/Z40 bevel handoff, 2.5:1;
+- supported 2.5:1 bevel handoff; Rev.PT selects the purchasable m1.5 Z18/Z45 H pair while the source Z16/Z40 remains reference evidence;
 - identical serviceable bearing/seal carrier at all six wheel stations;
 - one-tool keyed quick-change wheel retained by a central M8 interface and protected cap;
 - external manual parallelogram lift with standard clamping lever, Belleville stack and 150 N gas spring;
@@ -51,4 +51,3 @@ Marketplace presence is not equivalent to engineering release. Seller changes, s
 3. Replace envelope wheels with the verified DN150 tread profile and quick-change hub.
 4. Insert a measured gas spring and run lift/camera/tether sweep.
 5. Generate manufacturing drawings only after left-side bench, pressure and endurance gates pass.
-
