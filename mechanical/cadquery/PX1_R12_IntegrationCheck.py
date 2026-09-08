@@ -46,7 +46,7 @@ def main():
               'arm_vs_body_mm3':{n:intersect(p,body) for n,p in arms.items()}}
         if name=='LOW':
             pipe=cyl(150,1000,(150,0,75),'x')
-            item['camera_outside_DN150_mm3']=outside(cam.translate((0,0,-SEAT)),pipe)
+            item['camera_outside_DN150_mm3']=sum(outside(p.translate((0,0,-SEAT)),pipe) for p in camera_solids)
             item['arms_outside_DN150_mm3']={n:outside(p.translate((0,0,-SEAT)),pipe) for n,p in arms.items()}
             ass=cq.Assembly(name='R12_BASELINE_LIFT_INTERFERENCE_REVIEW')
             ass.add(body,name='Pressure_body',color=cq.Color(.55,.58,.6,.35))
