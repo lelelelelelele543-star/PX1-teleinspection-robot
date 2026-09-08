@@ -1,0 +1,24 @@
+{
+  "revision": "R12",
+  "date": "2026-09-08",
+  "cadquery": "2.8.0",
+  "manufacturing_release": false,
+  "source_sha256": {
+    "mechanical/cadquery/PX1_R12_SelectedParts.py": "3845aaeef5c04b4749f9256ac257bc50e7e6a1b3e518c79600b90edea4f3c330",
+    "mechanical/cadquery/PX1_R12_Camera.py": "ec6a83c081f879e783d9a366a5436a81843b84100ddb905792e81ea74c733341",
+    "mechanical/cadquery/PX1_R12_IntegrationCheck.py": "d2bf62f40f81b37ddfce9764ee87c4b2f6398cb376ea8843367f175a7c0b787d",
+    "firmware/crawler/r12/drive_r12.c": "6c464557fcff0b705c046c383405541c46377b37aff02bf90f552e39c87e3b67",
+    "firmware/crawler/r12/hardware_profile.json": "a5a543aadce7d7813502ef14195f3439ecd80bb8c4fdb10ce0a59d5d5a3de75f",
+    "tests/test_r12_drive.c": "35a966567026be8c1a5e3896ce6cc1c9687a13c0651d88710b45e9e1f7e1ddc8",
+    "tests/check_r12_engineering.py": "1fd0dfa019bac3a943e9804456365f5dc2f5301928f329c0e6f99a43f5240010"
+  },
+  "host_C_test": "PASS: gcc c11 Wall Wextra Werror; init,arm,range,slew,reversal,timeout,interlock,uint32wrap",
+  "physical_test": false,
+  "result_statuses": {
+    "validation.json": "PASS_SCOPED_COMPONENT_PACKING",
+    "camera_validation.json": "PASS_SCOPED_CAMERA_PACKING_AND_AXIS_SWEEP",
+    "integration_validation.json": "FAIL_BASELINE_LIFT_INTEGRATION",
+    "engineering_validation.json": "PASS_SCENARIO_ARITHMETIC_NOT_HARDWARE"
+  },
+  "compound_check": "Integration compared individual solids; LOW camera containment separately recomputed after switching to individual-solid cuts."
+}
