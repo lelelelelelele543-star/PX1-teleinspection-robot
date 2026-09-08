@@ -20,7 +20,12 @@ def ann(di,do,l,p,axis='z'):return cyl(do,l,p,axis).cut(cyl(di,l+1,p,axis))
 def rr(a,b,r,h,p):return box(a,b,h,*p).edges('|Z').fillet(r)
 def ring(a,b,r,w,h,p):return rr(a+w,b+w,r+w/2,h,p).cut(rr(a-w,b-w,r-w/2,h+1,p))
 def volume(p):return sum(x.Volume() for x in p.solids().vals())
-def intersect(a,b):return max(0.,volume(a.intersect(b)))
+def intersect(a,b):
+    # Broad phase avoids expensive booleans for separated components.
+    aa,bb=a.val().BoundingBox(),b.val().BoundingBox()
+    if any(getattr(aa,k+'max')<=getattr(bb,k+'min') or getattr(bb,k+'max')<=getattr(aa,k+'min') for k in 'xyz'):return 0.
+    v=max(0.,volume(a.intersect(b)))
+    return v if v>1e-3 else 0. # 0.001 mm3 numerical reporting threshold
 def outside(a,b):return max(0.,volume(a.cut(b)))
 def bounds(p):
     b=p.val().BoundingBox()
@@ -34,7 +39,7 @@ def body():
         sh=sh.union(box(258,6.5,64,150,s*42.75,75))
         sh=sh.cut(box(250,17,58,150,s*37.5,75))
         for x in WHEELS:
-            sh=sh.union(cyl(40,10.35,(x,s*40.475,75),'y'))
+            sh=sh.union(cyl(40,10,(x,s*40.65,75),'y'))
             # Actual connecting webs; a floating bearing ring is not a housing.
             sh=sh.union(box(16,7.75,17,x,s*39.525,51.5))
             for d,t,y in ((18.25,25,39),(30.05,7.2,39.15),(40.15,2.7,44.75)):
@@ -94,7 +99,8 @@ def bevel(z,mate,bore):
     lo,hi=(R-f)*math.cos(d),R*math.cos(d)
     r1,r2=(m*z/2+m)*(R-f)/R,m*z/2+m
     sh=cq.Workplane('XY').workplane(offset=lo).circle(r1).workplane(offset=hi-lo).circle(r2).loft()
-    sh=sh.union(cyl(max(bore+5,m*z*.42),lo,(0,0,lo/2)))
+    # Pitch-cone blank only. A fictitious hub extending to the apex
+    # falsely occupies the crossing shaft and its inner bearing support.
     return sh.cut(cyl(bore,hi+2,(0,0,hi/2)))
 
 def motor(path,s):
@@ -159,16 +165,17 @@ def build(out,path=None):
     tray=box(290,60,2,154,0,99)
     for x in (75,125,175,225,275):
         for y in (-27,27):tray=tray.cut(cyl(3.4,4,(x,y,99)))
+    for s in (-1,1):tray=tray.cut(cyl(54,12,(250,s*26,75),'y'))
     add('Front_tray',tray,'mount')
     tray=box(85,74,2,346,0,107)
     for x in (340,380):
         for y in (-34,34):tray=tray.cut(cyl(3.4,4,(x,y,107)))
     add('Rear_tray',tray,'mount')
-    add('HV_route_RESERVE',box(375,5,7,210,-36,37),'route')
-    add('LV_route_RESERVE',box(260,5,7,159,36,37),'route')
+    add('HV_route_RESERVE',box(375,5,7,210,-36,38),'route')
+    add('LV_route_RESERVE',box(260,5,7,159,36,38),'route')
     add('signal_front_RESERVE',box(181,4,4,104.5,21.5,95),'route')
     add('signal_rear_RESERVE',box(110,8,4,262,0,104),'route')
-    add('signal_tail_RESERVE',box(84,8,4,360,25,45),'route')
+    add('signal_tail_RESERVE',box(62,8,4,371,25,45),'route')
     for s in (-1,1):
         a='L' if s==1 else 'R'; sy=s*19.5
         add('Pololu4695_'+a,motor(path,s),'component')
@@ -219,7 +226,7 @@ def build(out,path=None):
     add('Aramid_anchor_INSTALLATION_RESERVE',ann(8,28,30,(459,0,45),'x'),'external_reserve')
     pipe=cyl(150,800,(150,0,75),'x'); boundary=main.union(lid)
     components={n:p for n,p in parts.items() if groups[n]=='component'}
-    checks={'revision':'R12-recovered','manufacturing_release':False,
+    checks={'revision':'R12','manufacturing_release':False,'collision_volume_threshold_mm3':0.001,
       'body_envelope_mm':[412,100,111],'motor_model':'vendor_STEP' if path else 'documented_dimension_abstraction',
       'housing_solid_count':len(main.solids().vals()),'seated_drop_mm':SEAT,
       'body_and_lid_outside_DN150_mm3':outside(boundary.translate((0,0,-SEAT)),pipe),
