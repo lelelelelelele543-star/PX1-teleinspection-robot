@@ -1,3 +1,6 @@
 build_r12/
 __pycache__/
 *.pyc
+
+build_r13/
+build_r13_run.log
