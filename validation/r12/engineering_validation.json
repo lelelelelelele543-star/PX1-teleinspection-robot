@@ -1,0 +1,74 @@
+{
+  "status": "PASS_SCENARIO_ARITHMETIC_NOT_HARDWARE",
+  "assumptions": {
+    "rolling_radius_m": 0.044,
+    "robot_mass_kg": 6,
+    "wet_friction": 0.35,
+    "cable_mass_kg_m": 0.055,
+    "cable_drag_friction": 0.4,
+    "copper_area_mm2": 0.5,
+    "power_W": 56
+  },
+  "traction_current_A": [
+    0.5841584158415841,
+    0.64,
+    0.696969696969697
+  ],
+  "camera_current_typ_A": 0.1641025641025641,
+  "traction_torque_typ_Nm": 0.7121656862068966,
+  "electromagnetic_force_typ_N": 64.74233510971787,
+  "speed_no_load_m_min": 11.058406140636071,
+  "assumed_wet_grip_N": 20.593964999999997,
+  "assumed_cable_drag_N": {
+    "40": 8.629852,
+    "150": 32.361945
+  },
+  "motor_copper_heat_partial_W": 6.5536,
+  "cable_cases": [
+    {
+      "length_m": 40,
+      "temperature_C": 20,
+      "source_V": 110,
+      "R_loop_ohm": 2.8000000000000003,
+      "load_V": 108.55557860764833,
+      "loss_W": 0.745126128101115
+    },
+    {
+      "length_m": 150,
+      "temperature_C": 20,
+      "source_V": 110,
+      "R_loop_ohm": 10.500000000000002,
+      "load_V": 104.36598018878993,
+      "loss_W": 3.023064688867385
+    },
+    {
+      "length_m": 150,
+      "temperature_C": 70,
+      "source_V": 110,
+      "R_loop_ohm": 12.56325,
+      "load_V": 103.18151097672218,
+      "loss_W": 3.7006182763663946
+    },
+    {
+      "length_m": 40,
+      "temperature_C": 20,
+      "source_V": 24,
+      "status": "NO_CONSTANT_POWER_DC_SOLUTION",
+      "R_loop_ohm": 2.8000000000000003
+    },
+    {
+      "length_m": 150,
+      "temperature_C": 20,
+      "source_V": 24,
+      "status": "NO_CONSTANT_POWER_DC_SOLUTION",
+      "R_loop_ohm": 10.500000000000002
+    }
+  ],
+  "limitations": [
+    "TI limit spread was characterized near1A; 0.64/0.164A settings need actual calibration.",
+    "Linear torque-current interpolation is an estimate, not a validated load curve.",
+    "No measured traction, gear efficiency, winding resistance, thermal resistance or actual cable parameters.",
+    "6kg mass is assumed. Rolling radius44mm is an ideal CAD reference; loaded contact is unmeasured.",
+    "A pass in an ideal straight DN150 cylinder does not demonstrate bends or towing150m."
+  ]
+}
