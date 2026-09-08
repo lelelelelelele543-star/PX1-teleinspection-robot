@@ -52,6 +52,21 @@ def body():
     sh=sh.cut(cyl(14.5,10,(408,0,45),'x'))
     sh=sh.cut(cyl(8.8,10,(4,0,65),'x'))
     sh=sh.cut(cyl(8.8,9,(408,23,104),'x'))
+    # Integral pads and blind taps: no fastener opens the pressure floor.
+    for s in (-1,1):
+        sy=s*19.5
+        for x,a,b,y in ((287,37,31,sy),(335,20,38.8,sy),(250,26,15,s*12)):
+            sh=sh.union(box(a,b,7,x,y,27.5))
+            for xx in (x-a/2+4,x+a/2-4):
+                for yy in (y-b/2+4,y+b/2-4):
+                    sh=sh.cut(cyl(2.5,5,(xx,yy,28.5)))
+        for x in (75,125,175,225,275):
+            sh=sh.union(box(12,18,5,x,s*33,95.5))
+            sh=sh.union(box(12,2.5,17.5,x,s*40.25,101.25))
+            sh=sh.cut(cyl(2.5,3,(x,s*27,96.5)))
+        for x in (340,380):
+            sh=sh.union(box(12,10,6,x,s*35,103))
+            sh=sh.cut(cyl(2.5,4,(x,s*34,104)))
     return sh.clean(),lid
 
 def side_cover(s):
@@ -111,11 +126,11 @@ COMPONENTS={
  'SEBOKS_SU1P':(50,42,18,203,0,116),
  'Waveshare_RS485_C':(42.8,15.2,4.75,264,17,113.375),
  'DRV8871_left':(24.4,20.4,9.7,256,-19,111.85),
- 'DRV8871_right':(24.4,20.4,9.7,294,-19,111.85),
- 'DRV8871_rotate':(24.4,20.4,9.7,334,-19,113.85),
+ 'DRV8871_right':(24.4,20.4,9.7,294,-19,115.85),
+ 'DRV8871_rotate':(24.4,20.4,9.7,334,-19,115.85),
  'INA260_left_TERMINAL_ALLOWANCE':(22.9,22.8,14,314,19,118),
  'INA260_right_TERMINAL_ALLOWANCE':(22.9,22.8,14,364,19,118),
- '24V_distribution_RESERVE':(46,30,20,345,0,40)
+ '24V_distribution_RESERVE':(46,30,20,369,0,40)
 }
 SERVICE={
  'NUCLEO_F446RE':(92.5,76,26,86.25,0,113),
@@ -123,8 +138,8 @@ SERVICE={
  'SEBOKS_SU1P':(60,50,20,203,0,116),
  'Waveshare_RS485_C':(52,22,14,264,17,114),
  'DRV8871_left':(30,27,17,256,-19,113),
- 'DRV8871_right':(30,27,17,294,-19,113),
- 'DRV8871_rotate':(30,27,17,334,-19,115),
+ 'DRV8871_right':(30,27,17,294,-19,116),
+ 'DRV8871_rotate':(30,27,17,334,-19,116),
  'INA260_left_TERMINAL_ALLOWANCE':(29,30,20,314,19,116),
  'INA260_right_TERMINAL_ALLOWANCE':(29,30,20,364,19,116)
 }
@@ -142,19 +157,26 @@ def build(out,path=None):
     add('RSD_thermal_angle',heat,'mount')
     for n,d in COMPONENTS.items():add(n,box(*d),'component')
     tray=box(290,60,2,154,0,99)
-    for x in (20,136,176,270):
+    for x in (75,125,175,225,275):
         for y in (-27,27):tray=tray.cut(cyl(3.4,4,(x,y,99)))
     add('Front_tray',tray,'mount')
-    add('Rear_tray',box(85,74,2,346,0,107),'mount')
-    add('HV_route_RESERVE',box(375,7,7,210,-29,34),'route')
-    add('LV_route_RESERVE',box(260,7,7,159,27,34),'route')
-    add('signal_front_RESERVE',box(181,8,4,104.5,25,95),'route')
+    tray=box(85,74,2,346,0,107)
+    for x in (340,380):
+        for y in (-34,34):tray=tray.cut(cyl(3.4,4,(x,y,107)))
+    add('Rear_tray',tray,'mount')
+    add('HV_route_RESERVE',box(375,5,7,210,-36,37),'route')
+    add('LV_route_RESERVE',box(260,5,7,159,36,37),'route')
+    add('signal_front_RESERVE',box(181,4,4,104.5,21.5,95),'route')
     add('signal_rear_RESERVE',box(110,8,4,262,0,104),'route')
     add('signal_tail_RESERVE',box(84,8,4,360,25,45),'route')
     for s in (-1,1):
         a='L' if s==1 else 'R'; sy=s*19.5
         add('Pololu4695_'+a,motor(path,s),'component')
-        br=box(4,38.8,42,328,sy,82).cut(cyl(12.2,6,(328,sy,75),'x'))
+        br=box(4,38.8,72,328,sy,67).cut(cyl(12.2,6,(328,sy,75),'x'))
+        br=br.union(box(18,38.8,3,335,sy,32.5))
+        br=br.cut(box(6,8,10,328,s*36,37))
+        for x in (329,341):
+            for y in (sy-15.4,sy+15.4):br=br.cut(cyl(3.4,5,(x,y,32.5)))
         for d in range(0,360,60):
             y,z=sy+15.5*math.cos(math.radians(d)),82+15.5*math.sin(math.radians(d))
             br=br.cut(cyl(3.2,6,(328,y,z),'x'))
@@ -162,14 +184,21 @@ def build(out,path=None):
         add('Coupler_6_6_'+a,ann(6,18,18,(308,sy,75),'x'),'drive')
         sh=cyl(12,31,(283.5,sy,75),'x').union(cyl(6,9,(303.5,sy,75),'x'))
         add('Pinion_shaft_'+a,sh,'drive')
+        base=box(37,31,3,287,sy,32.5)
+        for x in (272.5,301.5):
+            for y in (sy-11.5,sy+11.5):base=base.cut(cyl(3.4,5,(x,y,32.5)))
         for x in (278.5,295.5):
             add('61801_'+a+str(x),ann(12,21,5,(x,sy,75),'x'),'bearing')
-            b=box(5,27,42,x,sy,62.5).cut(cyl(21.02,7,(x,sy,75),'x'))
-            add('Pinion_support_'+a+str(x),b,'mount')
+            b=box(5,27,53,x,sy,60.5).cut(cyl(21.02,7,(x,sy,75),'x'))
+            base=base.union(b)
+        add('Pinion_support_'+a,base,'mount')
         add('Z16_ENVELOPE_'+a,bevel(16,40,12.05).rotate((0,0,0),(0,1,0),90).translate((250,sy,75)),'gear_envelope')
         add('Z40_ENVELOPE_'+a,bevel(40,16,10.05).rotate((0,0,0),(1,0,0),-s*90).translate((250,sy,75)),'gear_envelope')
         add('61800_'+a,ann(10,19,5,(250,s*12,75),'y'),'bearing')
-        b=box(24,5,41,250,s*12,64.5).cut(cyl(19.02,7,(250,s*12,75),'y'))
+        b=box(24,5,54,250,s*12,58).cut(cyl(19.02,7,(250,s*12,75),'y'))
+        b=b.union(box(26,15,3,250,s*12,32.5))
+        for x in (241,259):
+            for y in (s*12-3.5,s*12+3.5):b=b.cut(cyl(3.4,5,(x,y,32.5)))
         add('Rear_inner_support_'+a,b,'mount')
         add('Side_cover_'+a,side_cover(s),'housing')
         for x in GEARS:
@@ -198,10 +227,11 @@ def build(out,path=None):
       'valid':{n:p.val().isValid() for n,p in parts.items()},
       'body_lid_aluminum_mass_kg':(volume(main)+volume(lid))*2.7e-6,
       'component_vs_housing':{},'component_pairs':{},'component_vs_mounts':{},'component_vs_drive':{},
-      'service_vs_housing':{},'routing_collisions':{},'bounds_mm':{n:bounds(p) for n,p in parts.items()},
+      'service_vs_housing':{},'routing_collisions':{},'mount_vs_drive':{},'drive_vs_housing':{},
+      'mount_distance_to_body_mm':{},'bounds_mm':{n:bounds(p) for n,p in parts.items()},
       'limitations':['No full-assembly collision certificate.','Camera is a separate unfinished assembly.',
-       'Gear envelopes overlap intentionally; tooth conjugacy and gear/mount contacts not validated.',
-       'Some mount attachment details and axial retention remain unresolved.',
+       'Gear envelopes overlap intentionally; tooth conjugacy and axial retention not validated.',
+       'Board clips, stand-offs and connector details remain unresolved.',
        'Connector clearances are allowances, not measurements.',
        'No pressure, thermal, electrical or field test performed.']}
     for n,p in components.items():
@@ -218,15 +248,25 @@ def build(out,path=None):
     for n,p in parts.items():
         if groups[n]=='route':
             for m,q in parts.items():
-                if groups[m] in ('component','housing','drive','bearing','gear_envelope'):
+                if groups[m] in ('component','housing','drive','bearing','gear_envelope','mount'):
                     v=intersect(p,q)
                     if v>1e-4:checks['routing_collisions'][n+'__'+m]=v
+        if groups[n]=='mount':
+            checks['mount_distance_to_body_mm'][n]=p.val().distance(main.val())
+            for m,q in parts.items():
+                if groups[m] in ('drive','bearing','gear_envelope'):
+                    v=intersect(p,q)
+                    if v>1e-4:checks['mount_vs_drive'][n+'__'+m]=v
+        if groups[n] in ('drive','bearing','gear_envelope'):
+            v=intersect(p,boundary)
+            if v>1e-4:checks['drive_vs_housing'][n]=v
     fail=(checks['housing_solid_count']!=1 or not all(checks['valid'].values()) or
       checks['body_and_lid_outside_DN150_mm3']>1e-4 or
       max(checks['wheel_outside_DN150_mm3'].values(),default=0)>1e-4 or
       max(checks['component_vs_housing'].values(),default=0)>1e-4 or
       max(checks['service_vs_housing'].values(),default=0)>1e-4 or
-      any(checks[k] for k in ('component_pairs','component_vs_mounts','component_vs_drive','routing_collisions')))
+      max(checks['mount_distance_to_body_mm'].values(),default=0)>1e-4 or
+      any(checks[k] for k in ('component_pairs','component_vs_mounts','component_vs_drive','routing_collisions','mount_vs_drive','drive_vs_housing')))
     checks['status']='FAIL' if fail else 'PASS_SCOPED_COMPONENT_PACKING'
     (out/'validation.json').write_text(json.dumps(checks,indent=2))
     ass=cq.Assembly(name='PX1_R12_COMPONENT_PACKING')
