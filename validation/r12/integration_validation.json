@@ -1,0 +1,160 @@
+{
+  "status": "FAIL_BASELINE_LIFT_INTEGRATION",
+  "manufacturing_release": false,
+  "source_lift": "PX1_LiftCamera_RevFN.py pose120mm; pivot pitch corrected to120mm in capsule geometry",
+  "datum_transfer": {
+    "source_wheel_Z": 45,
+    "R12_wheel_Z": 75,
+    "delta_Z": 30
+  },
+  "camera_mount_mapping": "Comparison only: fixed rear housing centre localX125 maps to legacy cradle point; adapter is not released.",
+  "positions": {
+    "LOW": {
+      "camera_axis_Z_mm": 105.0,
+      "front_pivot_X_mm": 83.55688083875458,
+      "camera_vs_body_mm3": 46554.923292298154,
+      "camera_vs_occupied_sum_mm3": 131575.57635151313,
+      "camera_occupied_hits": [
+        {
+          "camera_solid": 22,
+          "crawler_solid": 2,
+          "mm3": 20628.312849715614
+        },
+        {
+          "camera_solid": 22,
+          "crawler_solid": 0,
+          "mm3": 16901.4936957295
+        },
+        {
+          "camera_solid": 6,
+          "crawler_solid": 0,
+          "mm3": 8806.64445034091
+        },
+        {
+          "camera_solid": 6,
+          "crawler_solid": 2,
+          "mm3": 7293.091239159713
+        },
+        {
+          "camera_solid": 22,
+          "crawler_solid": 1,
+          "mm3": 6873.809489234613
+        },
+        {
+          "camera_solid": 23,
+          "crawler_solid": 2,
+          "mm3": 5150.795503478037
+        },
+        {
+          "camera_solid": 6,
+          "crawler_solid": 1,
+          "mm3": 3944.720764809199
+        },
+        {
+          "camera_solid": 25,
+          "crawler_solid": 2,
+          "mm3": 3412.7464010308677
+        },
+        {
+          "camera_solid": 26,
+          "crawler_solid": 2,
+          "mm3": 3412.7464010308668
+        },
+        {
+          "camera_solid": 24,
+          "crawler_solid": 2,
+          "mm3": 2650.578729003948
+        }
+      ],
+      "arm_vs_body_mm3": {
+        "lower_-1": 734.4517925865373,
+        "upper_-1": 1862.0689655172455,
+        "lower_1": 734.4517875766533,
+        "upper_1": 1862.0689655172455
+      },
+      "camera_outside_DN150_mm3": 0.0,
+      "arms_outside_DN150_mm3": {
+        "lower_-1": 0.0,
+        "upper_-1": 190.9624098139463,
+        "lower_1": 0.0,
+        "upper_1": 190.96240896674243
+      }
+    },
+    "MID": {
+      "camera_axis_Z_mm": 160.0,
+      "front_pivot_X_mm": 82.85052283514023,
+      "camera_vs_body_mm3": 20029.20850407939,
+      "camera_vs_occupied_sum_mm3": 32166.098995830474,
+      "camera_occupied_hits": [
+        {
+          "camera_solid": 22,
+          "crawler_solid": 6,
+          "mm3": 12136.890491751086
+        },
+        {
+          "camera_solid": 22,
+          "crawler_solid": 1,
+          "mm3": 9422.271890638978
+        },
+        {
+          "camera_solid": 6,
+          "crawler_solid": 1,
+          "mm3": 3144.7031242585053
+        },
+        {
+          "camera_solid": 25,
+          "crawler_solid": 1,
+          "mm3": 2183.4133560312926
+        },
+        {
+          "camera_solid": 26,
+          "crawler_solid": 1,
+          "mm3": 2183.4133560312926
+        },
+        {
+          "camera_solid": 24,
+          "crawler_solid": 1,
+          "mm3": 1645.8473437750656
+        },
+        {
+          "camera_solid": 23,
+          "crawler_solid": 1,
+          "mm3": 1282.9012852494188
+        },
+        {
+          "camera_solid": 27,
+          "crawler_solid": 1,
+          "mm3": 166.65814809483578
+        }
+      ],
+      "arm_vs_body_mm3": {
+        "lower_-1": 1915.0238986404058,
+        "upper_-1": 0.0,
+        "lower_1": 1915.0238986404058,
+        "upper_1": 0.0
+      }
+    },
+    "HIGH": {
+      "camera_axis_Z_mm": 235.0,
+      "front_pivot_X_mm": 135.20030864271035,
+      "camera_vs_body_mm3": 0.0,
+      "camera_vs_occupied_sum_mm3": 0,
+      "camera_occupied_hits": [],
+      "arm_vs_body_mm3": {
+        "lower_-1": 534.5595691584673,
+        "upper_-1": 0.0,
+        "lower_1": 534.5595691584673,
+        "upper_1": 0.0
+      }
+    }
+  },
+  "tail": {
+    "straight_gland_anchor_extent_X_mm": [
+      412,
+      474
+    ],
+    "outside_DN150_mm3": 0.0,
+    "status": "STRAIGHT_RESERVED_ENVELOPE_ONLY; actual aramid termination and dynamic bend radius remain open"
+  },
+  "decision": "Do not freeze412x100x111 as the complete robot or machine the pressure body. Repack the dry volume and recreate the integrated wet deck/lift clearances; do not remove pressure walls just to erase collisions."
+}
