@@ -17,6 +17,8 @@ def link(p,q,y):
 def main():
     body=cq.importers.importStep(str(OUT/'PX1_R12_BODY.step')).union(cq.importers.importStep(str(OUT/'PX1_R12_LID.step')))
     camera=cq.importers.importStep(str(OUT/'PX1_R12_CAMERA_CANDIDATE.step'))
+    packed=cq.importers.importStep(str(OUT/'PX1_R12_COMPONENT_PACKING.step'))
+    occupied=[cq.Workplane('XY').newObject([s]) for s in packed.solids().vals()]
     # Source Rev.FN: wheel45, lower92, upper112, camera75/130/205.
     # Transfer using wheel-axis datum: R12 wheel75, deltaZ+30.
     px,lo,hi,L=200.,122.,142.,120.
@@ -31,8 +33,16 @@ def main():
         q1,q2=(px+dx,lo+dz),(px+dx,hi+dz)
         cam=camera.translate((q1[0]-125,0,z))
         arms={f'{a}_{s}':link((px,p),q,s*26) for s in (-1,1) for a,p,q in [('lower',lo,q1),('upper',hi,q2)]}
+        camera_solids=[cq.Workplane('XY').newObject([s]) for s in cam.solids().vals()]
+        occupied_hits=[]
+        for i,p in enumerate(camera_solids):
+            for j,q in enumerate(occupied):
+                v=intersect(p,q)
+                if v>1e-3:occupied_hits.append({'camera_solid':i,'crawler_solid':j,'mm3':v})
         item={'camera_axis_Z_mm':z,'front_pivot_X_mm':q1[0],
-              'camera_vs_body_mm3':intersect(cam,body),
+              'camera_vs_body_mm3':sum(intersect(p,body) for p in camera_solids),
+              'camera_vs_occupied_sum_mm3':sum(p['mm3'] for p in occupied_hits),
+              'camera_occupied_hits':sorted(occupied_hits,key=lambda x:-x['mm3'])[:10],
               'arm_vs_body_mm3':{n:intersect(p,body) for n,p in arms.items()}}
         if name=='LOW':
             pipe=cyl(150,1000,(150,0,75),'x')
@@ -49,7 +59,7 @@ def main():
     report['tail']={'straight_gland_anchor_extent_X_mm':[412,474],
       'outside_DN150_mm3':outside(tail.translate((0,0,-SEAT)),pipe),
       'status':'STRAIGHT_RESERVED_ENVELOPE_ONLY; actual aramid termination and dynamic bend radius remain open'}
-    bad=any(p['camera_vs_body_mm3']>1e-3 or any(v>1e-3 for v in p['arm_vs_body_mm3'].values()) for p in report['positions'].values())
+    bad=any(p['camera_vs_occupied_sum_mm3']>1e-3 or p['camera_vs_body_mm3']>1e-3 or any(v>1e-3 for v in p['arm_vs_body_mm3'].values()) for p in report['positions'].values())
     low=report['positions']['LOW']
     bad=bad or low['camera_outside_DN150_mm3']>1e-3 or any(v>1e-3 for v in low['arms_outside_DN150_mm3'].values())
     report['status']='FAIL_BASELINE_LIFT_INTEGRATION' if bad else 'PASS_SCOPED_INTEGRATION'
