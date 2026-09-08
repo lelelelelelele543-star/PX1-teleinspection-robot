@@ -5,7 +5,7 @@ No tooth geometry, bearing retainers, pressure rating or complete harness releas
 from pathlib import Path
 import argparse,itertools,json,math
 import cadquery as cq
-from PX1_R12_SelectedParts import box,cyl,ann,volume,intersect,outside,bounds
+from PX1_R12_SelectedParts import box,cyl,ann,ring,volume,intersect,outside,bounds
 
 ROOT=Path(__file__).resolve().parents[2]
 def sphere(r,p):return cq.Workplane('XY').sphere(r).translate(p)
@@ -17,7 +17,7 @@ def bevel_reference(axis,sign):
     sh=cq.Workplane('XY').workplane(offset=lo).circle(5.5*(math.sqrt(50)-2.5)/math.sqrt(50)).workplane(offset=5-lo).circle(5.5).loft()
     sh=sh.cut(cyl(3.05 if axis=='x' else 6.05,9,(0,0,4.5)))
     sh=sh.rotate((0,0,0),(0,1,0),90) if axis=='x' else sh.rotate((0,0,0),(1,0,0),90)
-    return sh.translate((30,-34.5,0))
+    return sh.translate((30,-38,0))
 def micro(face,y):
     return box(29.5,10,12,face+14.75,y,0).union(cyl(3,9,(face-4.5,y,0),'x'))
 
@@ -40,27 +40,41 @@ def build(out):
     add('Glass_32x3_RESERVE',cyl(32,3,(14,0,0),'x'),'pan_window')
     add('RunCam_Phoenix2SEV2',box(22,19,19,27,0,0),'pan_component')
     # Tapered rear housing keeps the +/-135-degree optical AXIS clear.
-    fore=cone(31,45,14,(64,0,0)).union(cyl(60,40,(98,0,0),'x'))
-    fore=fore.cut(cyl(56,52,(93,0,0),'x')) # internal X67..119
+    fore=cone(31,45,13.7,(64,0,0)).union(cyl(60,42.3,(98.85,0,0),'x'))
+    fore=fore.cut(cyl(56,54,(94,0,0),'x')) # internal X67..121
     for s in (-1,1):
-        pod=box(56,16,24,50,s*35,0)
+        pod=box(55.7,17.5,26,49.85,s*35.75,0)
         # Blind dry cheeks; hardware fixing/cover details remain open.
-        pod=pod.cut(box(10,13,14,34,s*35.5,0))
-        pod=pod.cut(cyl(6.2,19,(30,s*35,0),'y'))
+        pod=pod.cut(box(10,14,14,34,s*36,0))
+        pod=pod.cut(cyl(6.2,17.5,(30,s*34.25,0),'y'))
         pod=pod.cut(cyl(12,4,(30,s*29,0),'y'))
         pod=pod.cut(cyl(13.02,3.5,(30,s*32.75,0),'y'))
         if s==-1:
-            pod=pod.cut(box(33,10.4,12.4,55.5,-34.5,0))
-            pod=pod.cut(cyl(3.2,4,(39,-34.5,0),'x'))
-            pod=pod.cut(cyl(4,12,(69,-28,0),'y'))
+            pod=pod.cut(box(32,10.4,12.4,58.5,-38,0))
+            pod=pod.cut(cyl(3.2,5,(41,-38,0),'x'))
+            pod=pod.cut(cyl(4,16,(69,-30,0),'y'))
         fore=fore.union(pod)
+    fore=fore.cut(box(32,10.4,12.4,58.5,-38,0))
+    fore=fore.cut(cyl(3.2,5,(41,-38,0),'x')).cut(cyl(4,16,(69,-30,0),'y'))
+    for s in (-1,1):
+        # Removable side access; one closed40x1 ring,25% nominal squeeze.
+        fore=fore.cut(box(55.7,3,26,49.85,s*44,0))
+        fore=fore.cut(box(50,4,15,49.85,s*42,0))
+        groove=ring(52,18,5,1.4,.75,(0,0,0)).rotate((0,0,0),(1,0,0),90).translate((49.85,s*42.125,0))
+        fore=fore.cut(groove)
+        cover=box(55.7,2,26,49.85,s*43.5,0)
+        for x in (27,42,57,72):
+            for z in (-11.5,11.5):
+                fore=fore.cut(cyl(1.25,4,(x,s*40.5,z),'y'))
+                cover=cover.cut(cyl(1.8,3,(x,s*43.5,z),'y'))
+        add('PAN_side_cover_'+str(s),cover,'rotating_housing')
     add('Rotating_fore_housing',fore.clean(),'rotating_housing')
     for s in (-1,1):
         add('PAN_686_'+str(s),ann(6,13,3.5,(30,s*32.75,0),'y'),'bearing')
         add('PAN_TC6x12x4_'+str(s),ann(6,12,4,(30,s*29,0),'y'),'seal')
         # Axles deliberately join the head shell; attachment not released.
-        add('PAN_hollow_axle_'+str(s),ann(3,6,16,(30,s*32,0),'y'),'pan_drive')
-    add('Pololu3046_PAN',micro(40,-34.5),'rotating_component')
+        add('PAN_hollow_axle_'+str(s),ann(3,6,18.3,(30,s*33.15,0),'y'),'pan_drive')
+    add('Pololu3046_PAN',micro(43,-38),'rotating_component')
     add('PAN_Z20_driver_REFERENCE',bevel_reference('x',-1),'gear_reference')
     add('PAN_Z20_driven_REFERENCE',bevel_reference('y',-1),'gear_reference')
     pack={
@@ -73,38 +87,39 @@ def build(out):
     for n,d in pack.items():add(n,box(*d),'rotating_component')
     # RECOM lead/service space is kept separate from actual body dimensions.
     add('RECOM_LEADS_ALLOWANCE',box(12,9,4.1,80,-14,-20.25),'service')
-    rear=cyl(90,88,(122,0,0),'x').cut(cyl(60.2,38,(97,0,0),'x'))
+    rear=cyl(90,94,(125,0,0),'x').cut(cyl(60.2,38,(97,0,0),'x'))
     rear=rear.cut(cyl(80,7,(81.5,0,0),'x'))
     for x in (91,109):rear=rear.cut(cyl(78.02,10,(x,0,0),'x'))
-    rear=rear.cut(cyl(84,40,(136,0,0),'x')).cut(cyl(70,12,(162,0,0),'x'))
-    rear=rear.cut(ann(73.2,78.8,1.5,(165.25,0,0),'x'))
-    cap=cyl(90,4,(168,0,0),'x')
+    rear=rear.cut(cyl(84,46,(139,0,0),'x')).cut(cyl(70,12,(168,0,0),'x'))
+    rear=rear.cut(ann(73.2,78.8,1.5,(171.25,0,0),'x'))
+    cap=cyl(90,4,(174,0,0),'x')
     for a in range(0,360,60):
         y,z=42*math.cos(math.radians(a)),42*math.sin(math.radians(a))
-        rear=rear.cut(cyl(2.5,8,(162,y,z),'x'))
-        cap=cap.cut(cyl(3.4,5,(168,y,z),'x'))
-    cap=cap.cut(cyl(8.8,6,(168,0,0),'x')) # M10 ending pilot, not a sealed ending
+        rear=rear.cut(cyl(2.5,8,(168,y,z),'x'))
+        cap=cap.cut(cyl(3.4,5,(174,y,z),'x'))
+    cap=cap.cut(cyl(8.8,6,(174,0,0),'x')) # M10 ending pilot, not a sealed ending
     add('Fixed_rear_housing',rear,'fixed_housing')
     add('Rear_cap',cap,'fixed_housing')
     add('ROTATE_TC60x80x7',ann(60,80,7,(81.5,0,0),'x'),'seal')
     for x in (91,109):add('ROTATE_61812_'+str(x),ann(60,78,10,(x,0,0),'x'),'bearing')
-    add('ROTATE_Z160_m04_REFERENCE',ann(60.05,64.8,3,(116.5,0,0),'x'),'gear_reference')
-    add('ROTATE_Z20_m04_REFERENCE',ann(3.05,8.8,3,(116.5,36,0),'x'),'gear_reference')
-    add('Pololu3046_ROTATE',micro(120,36),'fixed_component')
+    add('ROTATE_Z160_m04_REFERENCE',ann(60.05,64.8,3,(118.5,0,0),'x'),'gear_reference')
+    add('ROTATE_Z20_m04_REFERENCE',ann(3.05,8.8,3,(118.5,36,0),'x'),'gear_reference')
+    add('Pololu3046_ROTATE',micro(126,36),'fixed_component')
     add('Senring_M125_06',cyl(12.5,13.5,(126.75,0,0),'x'),'fixed_component')
     comps={n:p for n,p in parts.items() if groups[n].endswith('component')}
     housings={n:p for n,p in parts.items() if groups[n].endswith('housing')}
-    checks={'revision':'R12','manufacturing_release':False,'camera_axial_extent_max_mm':[4,170],
-      'outer_diameter_candidate_mm':90,'body_length_zero_pan_mm':159,
-      'component_pairs':{},'component_vs_housing':{},'solid_validity':{n:p.val().isValid() for n,p in parts.items()},
+    checks={'revision':'R12','manufacturing_release':False,'camera_axial_extent_max_mm':[4,176],
+      'rear_body_diameter_mm':90,'rotational_envelope_candidate_mm':93,'body_length_zero_pan_mm':165,
+      'component_pairs':{},'component_vs_housing':{},'component_vs_mechanisms':{},'solid_validity':{n:p.val().isValid() for n,p in parts.items()},
       'housing_solid_counts':{n:len(p.solids().vals()) for n,p in housings.items()},
-      'pan_sweep_collisions':{},'pan_optical_axis_collisions':{},
+      'pan_sweep_collisions':{},'pan_optical_axis_collisions':{},'rotate_sweep_collisions':{},
+      'rotate_envelope_93mm_outside_mm3':{},
       'module_bounds_mm':{n:bounds(p) for n,p in comps.items()},
       'limitations':['Candidate is larger than CAM026 and is not a drop-in replacement.',
        'No pressure-depth certification, completed bearing retention, fit tolerances or tooth geometry.',
        'Only optical axis is checked; full RunCam field of view and refraction NOT validated.',
        'LED boards/windows and PAN/ROTATE angle feedback remain unresolved.',
-       'Internal module holders, opening/service sequence and flexible harness remain unresolved.',
+       'Internal module holders and flexible harness remain unresolved; side access lids are modeled.',
        'PAN axle-to-head static seals and external cable ending are unfinished.',
        'Full body/lift assembly and pipe bends are not certified by this check.',
        'Main tether has six cores. Short body-camera harness also needs fixed ROTATE and feedback circuits.']}
@@ -115,6 +130,10 @@ def build(out):
         for m,q in housings.items():
             v=intersect(p,q)
             if v>1e-3:checks['component_vs_housing'][n+'__'+m]=v
+        for m,q in parts.items():
+            if groups[m] in ('bearing','seal','gear_reference','pan_drive'):
+                v=intersect(p,q)
+                if v>1e-3:checks['component_vs_mechanisms'][n+'__'+m]=v
     rotating_targets={n:p for n,p in parts.items() if groups[n] in ('rotating_housing','fixed_housing','rotating_component','fixed_component')}
     moving={n:p for n,p in parts.items() if groups[n] in ('pan_housing','pan_window','pan_component')}
     for a in range(-135,136,5):
@@ -128,7 +147,18 @@ def build(out):
         for n,p in rotating_targets.items():
             iv=intersect(ray,p)
             if iv>1e-3:checks['pan_optical_axis_collisions'][str(a)+'__'+n]=iv
-    fail=any(checks[k] for k in ('component_pairs','component_vs_housing','pan_sweep_collisions','pan_optical_axis_collisions')) or not all(checks['solid_validity'].values())
+    fixed={n:p for n,p in parts.items() if groups[n] in ('fixed_housing','fixed_component')}
+    rot={n:p for n,p in parts.items() if groups[n] in ('rotating_housing','rotating_component','pan_housing','pan_window','pan_component','pan_drive')}
+    envelope=cyl(93,200,(90,0,0),'x')
+    for a in range(0,360,15):
+        for n,p in rot.items():
+            p=p.rotate((0,0,0),(1,0,0),a)
+            ov=outside(p,envelope)
+            if ov>1e-3:checks['rotate_envelope_93mm_outside_mm3'][str(a)+'__'+n]=ov
+            for m,q in fixed.items():
+                v=intersect(p,q)
+                if v>1e-3:checks['rotate_sweep_collisions'][str(a)+'__'+n+'__'+m]=v
+    fail=any(checks[k] for k in ('component_pairs','component_vs_housing','component_vs_mechanisms','pan_sweep_collisions','pan_optical_axis_collisions','rotate_sweep_collisions','rotate_envelope_93mm_outside_mm3')) or not all(checks['solid_validity'].values())
     checks['status']='FAIL' if fail else 'PASS_SCOPED_CAMERA_PACKING_AND_AXIS_SWEEP'
     (out/'camera_validation.json').write_text(json.dumps(checks,indent=2))
     ass=cq.Assembly(name='PX1_R12_CAMERA_CANDIDATE')
