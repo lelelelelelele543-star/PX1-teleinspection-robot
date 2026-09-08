@@ -1,0 +1,86 @@
+{
+  "revision": "R12",
+  "status": "PIN_ALLOCATION_AND_HOST_CONTROL_ONLY_NOT_FLASHABLE",
+  "board": "NUCLEO-F446RE MB1136, full board with ST-LINK",
+  "logic_V": 3.3,
+  "pins": {
+    "traction_left": [
+      "PA6/TIM3_CH1",
+      "PA7/TIM3_CH2"
+    ],
+    "traction_right": [
+      "PB0/TIM3_CH3",
+      "PB1/TIM3_CH4"
+    ],
+    "encoder_left": [
+      "PA0/TIM2_CH1",
+      "PA1/TIM2_CH2"
+    ],
+    "encoder_right": [
+      "PB6/TIM4_CH1",
+      "PB7/TIM4_CH2"
+    ],
+    "main_RS485": [
+      "PC10/USART3_TX",
+      "PC11/USART3_RX"
+    ],
+    "body_I2C": [
+      "PB8/I2C1_SCL",
+      "PB9/I2C1_SDA"
+    ],
+    "camera_UART": [
+      "PA9/USART1_TX",
+      "PA10/USART1_RX"
+    ],
+    "camera_ROTATE": [
+      "PA8/TIM1_CH1",
+      "PA11/TIM1_CH4"
+    ],
+    "conditioned_leak": [
+      "PC4"
+    ],
+    "conditioned_service_fault": [
+      "PC5"
+    ]
+  },
+  "reserved": [
+    "PA13/SWDIO",
+    "PA14/SWCLK",
+    "PA2/STLINK_VCP_TX",
+    "PA3/STLINK_VCP_RX"
+  ],
+  "i2c_addresses": {
+    "MPRLS": "0x18",
+    "INA260_left": "0x40",
+    "INA260_right": "0x41",
+    "TMP117": "0x48"
+  },
+  "driver": {
+    "part": "Adafruit3190_DRV8871",
+    "traction_R1_ohm": 100000,
+    "tolerance_pct": 1,
+    "nominal_limit_A": 0.64,
+    "limits_are_bench_targets": true,
+    "camera_R1_candidate_ohm": 390000,
+    "camera_limit_typ_A": 0.1641025641025641,
+    "stop_IN1": 0,
+    "stop_IN2": 0
+  },
+  "timing": {
+    "pwm_hz_target": 20000,
+    "control_period_ms": 10,
+    "command_timeout_ms": 250,
+    "reverse_dwell_ms": 50,
+    "IWDG_ms_target": 100,
+    "explicit_rearm": true
+  },
+  "notes": [
+    "Supersedes the legacy BTS7960 pin allocation only for R12; do not mix profiles.",
+    "Command timeout changed explicitly to 250ms; old portable core 300ms is not silently reused.",
+    "Encoder outputs need verified 3.3V levels; no 5V directly assumed safe.",
+    "Hardware timer setup, ADC conditioning, HAL, IWDG and flashable BIN remain absent.",
+    "PC4/PC5 represent conditioned logic, not probes connected directly to the MCU.",
+    "Pressure control uses absolute readings and recorded ambient baseline, not a fabricated gauge reading."
+  ]
+}
+
