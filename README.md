@@ -1,3 +1,5 @@
+> Current design study: **R13**. Nominal packing and19 lift poses pass; complete robot is **not a manufacturing release**. See `PROJECT_STATUS_R13.md`. R12 below is retained history.
+
 # PX-1 Teleinspection Robot
 
 Open engineering project for a pipe-inspection crawler based on the proven Mini-Cam Proteus CRP-150 / CAM026 / RMP architecture, rebuilt around available, replaceable and serviceable components.
