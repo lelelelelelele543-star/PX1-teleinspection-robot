@@ -1,0 +1,307 @@
+{
+  "revision": "R12",
+  "date": "2026-09-08",
+  "scope": "Prototype design selections, no purchase or manufacturing release. Seller listings are not checkout-confirmed.",
+  "parts": [
+    {
+      "id": "M01",
+      "qty": 2,
+      "part": "Pololu 4695",
+      "role": "traction",
+      "status": "SELECTED",
+      "source": "https://www.pololu.com/product/4695",
+      "purchase": "https://www.chipdip.ru/product/4695-dvigatel-dc-s-reduktorom-24vdc-3a-os-d-profil-pololu-8002968680",
+      "note": "36.8 diameter x 72.6 body; 22 shaft projection incl. pilot; 24V, 100 rpm no-load; do not use stall torque as continuous"
+    },
+    {
+      "id": "D01",
+      "qty": 4,
+      "part": "Adafruit 3190 DRV8871",
+      "role": "two traction + PAN + ROTATE",
+      "status": "SELECTED_RESISTOR_CHANGE",
+      "source": "https://www.adafruit.com/product/3190",
+      "purchase": "https://www.chipdip.ru/product/3190-adafruit-drv8871-brushed-dc-motor-driver-8034725439",
+      "note": "24.4x20.4x9.7; replace traction R1 with 100k 1%, nominal 0.64A. Camera candidate 390k; measure low-current behavior. 3.6A is peak"
+    },
+    {
+      "id": "P01",
+      "qty": 1,
+      "part": "MEAN WELL RSD-100D-24",
+      "role": "HV to 24V",
+      "status": "SELECTED",
+      "source": "https://www.meanwell.com/Upload/PDF/RSD-100/RSD-100-SPEC.PDF",
+      "purchase": "https://www.chipdip.ru/product/rsd-100d-24-dc-dc-preobrazovatel-100.8vt-vhod-mean-well-9000244312",
+      "note": "161x68x36 case plus 12mm terminals each end; 67.2..143V continuous input; 24V 4.2A output; thermal test required"
+    },
+    {
+      "id": "P02",
+      "qty": 1,
+      "part": "Pololu 2855 D24V22F12",
+      "role": "12V rail",
+      "status": "SELECTED",
+      "source": "https://www.pololu.com/product/2855",
+      "purchase": "https://www.chipdip.ru/product/12v-2.2a-step-down-d24v22f12-pololu-8063367458",
+      "note": "17.8x17.8x8; 36V maximum input; EN pulled to VIN"
+    },
+    {
+      "id": "P03",
+      "qty": 2,
+      "part": "RECOM R-78C5.0-1.0",
+      "role": "body and camera 5V",
+      "status": "SELECTED_CARRIER_DETAIL_OPEN",
+      "source": "https://static.chipdip.ru/lib/456/DOC057456078.pdf",
+      "purchase": "https://www.chipdip.ru/product/r-78c5.0-1.0-recom-8007297656",
+      "note": "1A; body carrier allowance 22x20x20 is not vendor package dimension"
+    },
+    {
+      "id": "C01",
+      "qty": 1,
+      "part": "NUCLEO-F446RE MB1136",
+      "role": "body MCU",
+      "status": "SELECTED",
+      "source": "https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf",
+      "purchase": "https://www.chipdip.ru/product/nucleo-f446re-otladochnaya-plata-st-microelectronics-9000403514",
+      "note": "full board 82.5x70; 18mm populated height is allowance, ST-LINK retained"
+    },
+    {
+      "id": "C02",
+      "qty": 1,
+      "part": "Waveshare RP2040-Zero",
+      "role": "camera MCU",
+      "status": "SELECTED",
+      "source": "https://www.waveshare.com/rp2040-zero.htm",
+      "purchase": "https://www.chipdip.ru/product/rp2040-zero-otladochnaya-plata-na-baze-waveshare-9001319668",
+      "note": "PCB 23.5x18; locking harness not Dupont jumpers"
+    },
+    {
+      "id": "I01",
+      "qty": 1,
+      "part": "Waveshare TTL TO RS485(C) 27479",
+      "role": "isolated commands",
+      "status": "SELECTED_LINE_REFERENCE_OPEN",
+      "source": "https://www.waveshare.com/ttl-to-rs485-c.htm",
+      "purchase": "https://www.chipdip.ru/product/ttl-to-rs485-c-preobrazovatel-v-s-galvanicheskoy-waveshare-9001946119",
+      "note": "42.8x15.2x4.75; automatic direction; verify isolated-side common-mode reference without inventing a seventh wire"
+    },
+    {
+      "id": "S01",
+      "qty": 2,
+      "part": "Adafruit 3965 MPRLS",
+      "role": "body/camera pressure",
+      "status": "SELECTED",
+      "source": "https://www.adafruit.com/product/3965",
+      "purchase": "https://www.chipdip.ru/product/3965-pressure-sensor-development-tools-adafruit-8062105332",
+      "note": "17.8x16.7x7.5; 0..25psi ABSOLUTE, not gauge; unsuitable for +1bar gauge fill"
+    },
+    {
+      "id": "S02",
+      "qty": 2,
+      "part": "Adafruit 4226 INA260",
+      "role": "driver supply power",
+      "status": "SELECTED",
+      "source": "https://www.adafruit.com/product/4226",
+      "purchase": "https://www.chipdip.ru/product/4226-power-management-ic-development-tools-adafruit-8062112053",
+      "note": "bare board 22.9x22.8x2.7; terminal allowance 14mm; input current is not winding recirculation current; 36V limit"
+    },
+    {
+      "id": "S03",
+      "qty": 1,
+      "part": "Adafruit 4821 TMP117",
+      "role": "body thermal",
+      "status": "SELECTED",
+      "source": "https://www.adafruit.com/product/4821",
+      "purchase": "https://www.chipdip.ru/product/4821-temperature-sensor-development-tools-adafruit-8062113586",
+      "note": "25.5x17.7x4.6; thermally coupled to RSD angle; not a winding sensor"
+    },
+    {
+      "id": "V01",
+      "qty": 1,
+      "part": "RunCam Phoenix 2 SE V2",
+      "role": "CVBS imager",
+      "status": "SELECTED_OPTICS_TEST_OPEN",
+      "source": "https://shop.runcam.com/runcam-phoenix-2-special-edition/",
+      "purchase": "https://www.ozon.ru/product/runcam-phoenix-2-se-v2-spetsialnaya-kamera-phoenix2-se-v2-1828857680/",
+      "note": "19x19x22; optics differ from CAM026; PAL/NTSC"
+    },
+    {
+      "id": "M02",
+      "qty": 2,
+      "part": "Pololu 3046 HPCB 12V 1000:1",
+      "role": "camera motors",
+      "status": "SELECTED",
+      "source": "https://www.pololu.com/product/3046",
+      "purchase": "https://www.chipdip.am/product/3046-dvigatel-dc-s-reduktorom-hpcb-12v-12vdc-750ma-pololu-8002520964",
+      "note": "29.5x10x12 body, 9mm D3 shaft; 35 rpm no load, .75A stall; regional ChipDip listing, RU delivery not confirmed"
+    },
+    {
+      "id": "V02",
+      "qty": 1,
+      "part": "Себокс СУ-1П",
+      "role": "balanced video transmitter in BODY",
+      "status": "SELECTED_LINE_TEST_OPEN",
+      "source": "https://seboks.ru/peredatchiki/19--1.html",
+      "purchase": "https://am.ozon.com/product/su-1p-aktivnyy-peredatchik-videosignala-po-vitoy-pare-4226123970/",
+      "note": "50x42x18; 12..15V. Short camera lead is CVBS + dedicated video return; main tether remains balanced. Vendor twisted-pair distance not transferred to Proteus cable"
+    },
+    {
+      "id": "L01",
+      "qty": 1,
+      "part": "MEAN WELL LDD-300L",
+      "role": "camera LED current",
+      "status": "SELECTED",
+      "source": "https://www.meanwell.com/Upload/PDF/LDD-L/LDD-L-SPEC.PDF",
+      "purchase": "https://www.chipdip.ru/product/ldd-300l-mean-well-8059772893",
+      "note": "22.6x9.9x8.9; 300mA, 9..36V input; requires voltage headroom; LED MCPCB and window layout still open"
+    },
+    {
+      "id": "J01",
+      "qty": 1,
+      "part": "HUMMEL 1.691.1600.50",
+      "role": "jacket gland",
+      "status": "SELECTED_ENDING_DETAIL_OPEN",
+      "source": "https://www.hummel.com/en/cable-glands/products/emc-cable-glands/hsk-m-emc/",
+      "purchase": "https://www.chipdip.ru/catalog/ext/hummel?page=16&sort=priceup",
+      "note": "M16x1.5, 6mm thread, cable 5..10mm, AF20. Separate aramid anchor required; gland IP is not robot IP"
+    },
+    {
+      "id": "T01",
+      "qty": 1,
+      "part": "Owner's original six-core Proteus cable",
+      "role": "first 40m demonstrator",
+      "status": "SELECT_EXISTING_STOCK",
+      "source": "",
+      "purchase": "",
+      "note": "Use existing cable rather than an unqualified replacement. Cable voltage, continuity and ending must be qualified for PX1; do not infer pin colors"
+    },
+    {
+      "id": "T02",
+      "qty": 1,
+      "part": "Senring M125-06",
+      "role": "camera slip ring",
+      "status": "SELECTED_PROCUREMENT_AND_SIGNAL_TEST_OPEN",
+      "source": "https://www.senring.com/pdf/Senring-M-Series-SlipRing-Catalog.pdf",
+      "purchase": "",
+      "note": "12.5 diameter x13.5; 6x1.5A. Camera only, not HV reel. Check CVBS through contacts during motion"
+    },
+    {
+      "id": "B01",
+      "qty": 6,
+      "part": "SKF W61903-2RS1",
+      "role": "wheel bearings",
+      "status": "SIZE_SELECTED_SELLER_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "17x30x7"
+    },
+    {
+      "id": "B02",
+      "qty": 2,
+      "part": "SKF W61800-2RS1",
+      "role": "rear axle inner",
+      "status": "SIZE_SELECTED_SELLER_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "10x19x5"
+    },
+    {
+      "id": "B03",
+      "qty": 4,
+      "part": "SKF W61801-2RS1",
+      "role": "pinion bearings",
+      "status": "SIZE_SELECTED_SELLER_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "12x21x5; axial retainer stack unresolved"
+    },
+    {
+      "id": "B04",
+      "qty": 4,
+      "part": "6701-2RS",
+      "role": "idler bearings",
+      "status": "SIZE_SELECTED_SELLER_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "12x18x4; idler gear seats bearing OD18, pin journal12"
+    },
+    {
+      "id": "Q01",
+      "qty": 6,
+      "part": "Trelleborg QRAR04116 V7002",
+      "role": "rotary wheel seals",
+      "status": "GEOMETRY_SELECTED_SELLER_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "18.72x2.62, shaft18, gland22.8 width2.8; refer controlled Rev.GT rotary gland"
+    },
+    {
+      "id": "Q02",
+      "qty": 6,
+      "part": "NBR70 O-ring 32x1.5",
+      "role": "wheel flanges",
+      "status": "GEOMETRY_SELECTED_SELLER_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "closed rings; do not replace with glued cord"
+    },
+    {
+      "id": "Q03",
+      "qty": 2,
+      "part": "NBR70 O-ring 170x1.5",
+      "role": "side lids",
+      "status": "GEOMETRY_SELECTED_SELLER_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "groove2.1x1.1"
+    },
+    {
+      "id": "Q04",
+      "qty": 1,
+      "part": "NBR70 O-ring 290x2",
+      "role": "top lid",
+      "status": "GEOMETRY_SELECTED_SELLER_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "groove2.8x1.5, centerline390x84R8, nominal25% squeeze and1.84% stretch"
+    },
+    {
+      "id": "G01",
+      "qty": 10,
+      "part": "Z50 m1 face3.75",
+      "role": "side gears",
+      "status": "MANUFACTURING_DETAIL_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "six wheel gears plus four idlers; CAD envelopes are not production teeth"
+    },
+    {
+      "id": "G02",
+      "qty": 2,
+      "part": "Z16/Z40 m1.25 bevel set",
+      "role": "rear input",
+      "status": "CUSTOM_GEAR_DETAIL_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "no qualified exact marketplace set; do not substitute KHK20/40 as drop-in"
+    },
+    {
+      "id": "P04",
+      "qty": 1,
+      "part": "24V regenerative clamp",
+      "role": "bus protection",
+      "status": "NOT_SELECTED",
+      "source": "",
+      "purchase": "",
+      "note": "Pololu3775 is short-pulse only, not continuous braking resistor. Electrical release blocked until energy/thermal protection solved"
+    },
+    {
+      "id": "T03",
+      "qty": 1,
+      "part": "HV source, DC contactor, discharge, reel slip ring",
+      "role": "surface power",
+      "status": "NOT_SELECTED",
+      "source": "",
+      "purchase": "",
+      "note": "100..120V class from Rev.PP is architecture, not completed safe supply"
+    }
+  ]
+}
