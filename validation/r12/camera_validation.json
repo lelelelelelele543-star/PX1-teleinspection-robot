@@ -1,0 +1,182 @@
+{
+  "revision": "R12",
+  "manufacturing_release": false,
+  "camera_axial_extent_max_mm": [
+    4,
+    176
+  ],
+  "rear_body_diameter_mm": 90,
+  "rotational_envelope_candidate_mm": 95,
+  "body_length_zero_pan_mm": 165,
+  "component_pairs": {},
+  "component_vs_housing": {},
+  "component_vs_mechanisms": {},
+  "solid_validity": {
+    "PAN_head_6061": true,
+    "Window_bezel": true,
+    "Glass_32x3_RESERVE": true,
+    "RunCam_Phoenix2SEV2": true,
+    "PAN_side_cover_-1": true,
+    "PAN_side_cover_1": true,
+    "Rotating_fore_housing": true,
+    "PAN_Koyo686_OPEN_-1": true,
+    "PAN_TC6x12x4_-1": true,
+    "PAN_hollow_axle_-1": true,
+    "PAN_Koyo686_OPEN_1": true,
+    "PAN_TC6x12x4_1": true,
+    "PAN_hollow_axle_1": true,
+    "Pololu3046_PAN": true,
+    "PAN_Z20_driver_REFERENCE": true,
+    "PAN_Z20_driven_REFERENCE": true,
+    "RP2040_Zero": true,
+    "DRV8871_PAN": true,
+    "RECOM_R78C5V": true,
+    "MPRLS_3965": true,
+    "LDD300L": true,
+    "RECOM_LEADS_ALLOWANCE": true,
+    "Fixed_rear_housing": true,
+    "Rear_cap": true,
+    "ROTATE_TC60x80x7": true,
+    "ROTATE_61812_91": true,
+    "ROTATE_61812_109": true,
+    "ROTATE_Z160_m04_REFERENCE": true,
+    "ROTATE_Z20_m04_REFERENCE": true,
+    "Pololu3046_ROTATE": true,
+    "Senring_M125_06": true
+  },
+  "housing_solid_counts": {
+    "PAN_head_6061": 1,
+    "Window_bezel": 1,
+    "PAN_side_cover_-1": 1,
+    "PAN_side_cover_1": 1,
+    "Rotating_fore_housing": 1,
+    "Fixed_rear_housing": 1,
+    "Rear_cap": 1
+  },
+  "pan_sweep_collisions": {},
+  "pan_optical_axis_collisions": {},
+  "rotate_sweep_collisions": {},
+  "rotate_envelope_95mm_outside_mm3": {},
+  "gear_vs_housing_or_bearing": {},
+  "module_bounds_mm": {
+    "RunCam_Phoenix2SEV2": [
+      [
+        16.0,
+        -9.5,
+        -9.5
+      ],
+      [
+        38.0,
+        9.5,
+        9.5
+      ]
+    ],
+    "Pololu3046_PAN": [
+      [
+        34.0,
+        -44.0,
+        -6.0
+      ],
+      [
+        72.5,
+        -34.0,
+        6.0
+      ]
+    ],
+    "RP2040_Zero": [
+      [
+        68.25,
+        1.0,
+        -18.0
+      ],
+      [
+        91.75,
+        19.0,
+        -14.0
+      ]
+    ],
+    "DRV8871_PAN": [
+      [
+        67.8,
+        -0.1999999999999993,
+        -1.8499999999999996
+      ],
+      [
+        92.2,
+        20.2,
+        7.85
+      ]
+    ],
+    "RECOM_R78C5V": [
+      [
+        74.2,
+        -18.25,
+        -18.2
+      ],
+      [
+        85.8,
+        -9.75,
+        -7.799999999999999
+      ]
+    ],
+    "MPRLS_3965": [
+      [
+        73.1,
+        -4.35,
+        16.25
+      ],
+      [
+        90.9,
+        12.35,
+        23.75
+      ]
+    ],
+    "LDD300L": [
+      [
+        68.7,
+        -17.95,
+        9.55
+      ],
+      [
+        91.30000000000001,
+        -8.049999999999999,
+        18.450000000000003
+      ]
+    ],
+    "Pololu3046_ROTATE": [
+      [
+        117.0,
+        31.0,
+        -6.0
+      ],
+      [
+        155.5,
+        41.0,
+        6.0
+      ]
+    ],
+    "Senring_M125_06": [
+      [
+        120.0,
+        -6.25,
+        -6.25
+      ],
+      [
+        133.5,
+        6.25,
+        6.25
+      ]
+    ]
+  },
+  "limitations": [
+    "Candidate is larger than CAM026 and is not a drop-in replacement.",
+    "No pressure-depth certification, completed bearing retention, fit tolerances or tooth geometry.",
+    "Only optical axis is checked; full RunCam field of view and refraction NOT validated.",
+    "LED boards/windows and PAN/ROTATE angle feedback remain unresolved.",
+    "Internal module holders and flexible harness remain unresolved; side access lids are modeled.",
+    "PAN axle-to-head static seals and external cable ending are unfinished.",
+    "Full body/lift assembly and pipe bends are not certified by this check.",
+    "Main tether has six cores. Short body-camera harness also needs fixed ROTATE and feedback circuits."
+  ],
+  "status": "PASS_SCOPED_CAMERA_PACKING_AND_AXIS_SWEEP"
+}
