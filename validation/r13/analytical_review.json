@@ -1,0 +1,63 @@
+{
+  "status": "ANALYTICAL_SCREENING_ONLY",
+  "physical_test": false,
+  "arm_material_candidate": "316L2.5mm, material certificate/finish/bushings pending",
+  "load_cases": [
+    {
+      "z_mm": 100,
+      "assumed_camera_cradle_mass_kg": 1.5,
+      "assumed_CG_ahead_of_pivots_m": 0.065,
+      "camera_gravity_moment_Nm": 0.956148375,
+      "link_force_for_moment_N": 49.16451624693986,
+      "screening_per_plate_N": 106.93724562346992,
+      "net_section_stress_MPa": 4.320696792867471,
+      "pin_bearing_stress_MPa": 5.346862281173496
+    },
+    {
+      "z_mm": 160,
+      "assumed_camera_cradle_mass_kg": 1.5,
+      "assumed_CG_ahead_of_pivots_m": 0.065,
+      "camera_gravity_moment_Nm": 0.956148375,
+      "link_force_for_moment_N": 49.60362454421576,
+      "screening_per_plate_N": 107.15679977210789,
+      "net_section_stress_MPa": 4.329567667559915,
+      "pin_bearing_stress_MPa": 5.357839988605394
+    },
+    {
+      "z_mm": 235,
+      "assumed_camera_cradle_mass_kg": 1.5,
+      "assumed_CG_ahead_of_pivots_m": 0.065,
+      "camera_gravity_moment_Nm": 0.956148375,
+      "link_force_for_moment_N": 105.60681305317419,
+      "screening_per_plate_N": 135.1583940265871,
+      "net_section_stress_MPa": 5.460945213195439,
+      "pin_bearing_stress_MPa": 6.757919701329355
+    }
+  ],
+  "excluded": [
+    "Impact and retrieval overload",
+    "Link out-of-plane bending and deflection",
+    "Pin end retention and fatigue",
+    "M8 lock friction and slip",
+    "Temperature, corrosion and tolerances"
+  ],
+  "wet_outer_wall_strip": {
+    "thickness_mm": 2,
+    "span_mm": 65,
+    "gauge_pressure_bar": 0.25,
+    "elastic_stress_MPa": 19.8046875,
+    "elastic_deflection_mm": 0.1263206592504529,
+    "assumptions": "Simply supported1mm-wide strip; final corners/fillets/FEA and pressure proof required."
+  },
+  "critical_clearances_mm": {
+    "lift_lower_to_inner_wet_wall": 0.5,
+    "lift_upper_to_outer_wet_wall": 0.5,
+    "upper_to_lower_arm_planes": 0.5,
+    "outer_wet_wall_to_Z50_blank": 0.625,
+    "shortened_front_middle_axle_end_to_wet_wall": 0.5,
+    "converter_case_to_other_inner_wall_nominal": 2,
+    "RSD_vendor_case_dimension_tolerance": 1,
+    "motor_bracket_to_bottom_opening_each_side": 0.5
+  },
+  "decision": "Only nominal packing is accepted.0.5mm gaps require tolerance+debris review; do not print these as pressure-qualified moving clearances."
+}
