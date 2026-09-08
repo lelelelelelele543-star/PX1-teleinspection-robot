@@ -2,6 +2,10 @@
 
 Open engineering project for a pipe-inspection crawler based on the proven Mini-Cam Proteus CRP-150 / CAM026 / RMP architecture, rebuilt around available, replaceable and serviceable components.
 
+## R12 component-fit study
+
+R12 selects purchasable electronics and adds reproducible body/camera CAD checks. **Local packing passes; the retained lift conflicts with the packed body. R12 is not a complete assembly or manufacturing release.** Start with [PROJECT_STATUS_R12.md](PROJECT_STATUS_R12.md) and [the assembly review](mechanical/R12_ASSEMBLY_REVIEW.md). The source-derived Proteus architecture below remains the reference; do not mix the R12 DRV8871 pin profile with legacy BTS7960 code.
+
 ## Active controlled baseline
 
 Start here:
