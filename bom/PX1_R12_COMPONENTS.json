@@ -1,7 +1,7 @@
 {
   "revision": "R12",
   "date": "2026-09-08",
-  "scope": "Prototype design selections, no purchase or manufacturing release. Seller listings are not checkout-confirmed.",
+  "scope": "Design selections for R12 packing study. Full robot NOT released: retained lift conflicts with body. Listings are not checkout-confirmed.",
   "parts": [
     {
       "id": "M01",
@@ -49,9 +49,9 @@
       "part": "RECOM R-78C5.0-1.0",
       "role": "body and camera 5V",
       "status": "SELECTED_CARRIER_DETAIL_OPEN",
-      "source": "https://static.chipdip.ru/lib/456/DOC057456078.pdf",
+      "source": "https://recom-power.com/pdf/Innoline/R-78C-1.0.pdf",
       "purchase": "https://www.chipdip.ru/product/r-78c5.0-1.0-recom-8007297656",
-      "note": "1A; body carrier allowance 22x20x20 is not vendor package dimension"
+      "note": "Body11.6x8.5x10.4mm plus4.1mm leads; carrier22x20x20 is a mounting allowance, not vendor body."
     },
     {
       "id": "C01",
@@ -131,7 +131,7 @@
       "status": "SELECTED",
       "source": "https://www.pololu.com/product/3046",
       "purchase": "https://www.chipdip.am/product/3046-dvigatel-dc-s-reduktorom-hpcb-12v-12vdc-750ma-pololu-8002520964",
-      "note": "29.5x10x12 body, 9mm D3 shaft; 35 rpm no load, .75A stall; regional ChipDip listing, RU delivery not confirmed"
+      "note": "Body29.5x10x12,9mm D3 shaft. Koyo686 OPEN6x13x3.5 used at PAN. PAN bevel20/20 m0.4 reference; ROTATE160/20 m0.4=8. Regional seller delivery unconfirmed."
     },
     {
       "id": "V02",
@@ -281,7 +281,7 @@
       "status": "CUSTOM_GEAR_DETAIL_OPEN",
       "source": "",
       "purchase": "",
-      "note": "no qualified exact marketplace set; do not substitute KHK20/40 as drop-in"
+      "note": "No qualified exact marketplace set. R12 uses conical tooth blanks without invented apex-length hubs; tooth contact and retention not released."
     },
     {
       "id": "P04",
@@ -302,6 +302,96 @@
       "source": "",
       "purchase": "",
       "note": "100..120V class from Rev.PP is architecture, not completed safe supply"
+    },
+    {
+      "id": "CB01",
+      "qty": 2,
+      "part": "JTEKT Koyo686 OPEN",
+      "role": "PAN bearing",
+      "status": "SIZE_VERIFIED_PURCHASE_OPEN",
+      "source": "https://koyo.jtekt.co.jp/en/products/detail/?pno=686",
+      "purchase": "",
+      "note": "6x13x3.5mm OPEN. Do not substitute5mm sealed/shielded686 without redesign."
+    },
+    {
+      "id": "CB02",
+      "qty": 2,
+      "part": "61812 60x78x10",
+      "role": "ROTATE bearing",
+      "status": "SIZE_CANDIDATE_SELLER_OPEN",
+      "source": "",
+      "purchase": "",
+      "note": "Exact supplier, fit and axial retaining stack unfinished."
+    },
+    {
+      "id": "CS01",
+      "qty": 2,
+      "part": "Radial seal6x12x4",
+      "role": "PAN sealing",
+      "status": "GEOMETRY_ONLY_NOT_QUALIFIED",
+      "source": "",
+      "purchase": "",
+      "note": "Pressure, water compatibility, friction and exact manufacturer are not approved."
+    },
+    {
+      "id": "CS02",
+      "qty": 1,
+      "part": "Radial seal60x80x7",
+      "role": "ROTATE sealing",
+      "status": "GEOMETRY_ONLY_NOT_QUALIFIED",
+      "source": "",
+      "purchase": "",
+      "note": "Pressure/water duty and retainer unfinished; generic TC geometry does not establish depth."
+    },
+    {
+      "id": "CS03",
+      "qty": 2,
+      "part": "Closed O-ring41x1",
+      "role": "camera service covers",
+      "status": "GEOMETRY_CANDIDATE",
+      "source": "",
+      "purchase": "",
+      "note": "Gland1.4x.75,centerline54x18R5; material and tolerances need qualification."
+    },
+    {
+      "id": "CS04",
+      "qty": 1,
+      "part": "Closed O-ring74x2",
+      "role": "camera rear cap",
+      "status": "GEOMETRY_CANDIDATE",
+      "source": "",
+      "purchase": "",
+      "note": "Centerline76mm,gland2.8x1.5."
+    },
+    {
+      "id": "CS05",
+      "qty": 1,
+      "part": "Closed O-ring29x1",
+      "role": "camera optical window",
+      "status": "GEOMETRY_CANDIDATE",
+      "source": "",
+      "purchase": "",
+      "note": "Gland1.4x.75 under32x3 window. Window material/proof not released."
+    },
+    {
+      "id": "L02",
+      "qty": 0,
+      "part": "White LED modules, angle feedback and camera harness",
+      "role": "camera completion",
+      "status": "NOT_SELECTED",
+      "source": "",
+      "purchase": "",
+      "note": "LDD300L selection alone does not complete six-LED12V circuit. Do not connect six white LEDs in series to12V."
+    },
+    {
+      "id": "ML01",
+      "qty": 1,
+      "part": "Integrated manual parallelogram lift,150N spring,M8 clamp",
+      "role": "camera elevation",
+      "status": "REQUIRES_REPACKING",
+      "source": "mechanical/cadquery/PX1_LiftCamera_RevFN.py",
+      "purchase": "",
+      "note": "Preserved function; original arrangement collides with packed R12 body. No replacement spring or mounting release."
     }
   ]
 }
