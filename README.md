@@ -1,7 +1,9 @@
-> Current design study: **R14**. Wheel retention, removable side plates and
-> nominal seal-land checks pass; 19 lift poses pass with vendor Pololu4695 STEP.
-> The assembly is **not a manufacturing release**. Start with
-> `PROJECT_STATUS_R14.md`; R12/R13 remain history.
+> Current design study: **R15**. R14's assembly PASS was revoked after an
+> independent audit found collisions hidden by broad exclusions. R15 corrects
+> the geometry, adds wheel-hub keys and checks fasteners and housing routes.
+> The full scoped nominal check passes 19 lift poses and six withdrawal positions
+> per side; gear teeth/retention, tolerances and physical testing remain open.
+> Start with `PROJECT_STATUS_R15.md`. This is **not a manufacturing release**.
 
 # PX-1 Teleinspection Robot
 
@@ -16,7 +18,8 @@ R12 selects purchasable electronics and adds reproducible body/camera CAD checks
 Start here:
 
 - [`PROJECT_STATUS_RevPO.md`](PROJECT_STATUS_RevPO.md) — active complete system architecture;
-- [`PROJECT_STATUS_R14.md`](PROJECT_STATUS_R14.md) — latest selected-part service/retention study;
+- [`PROJECT_STATUS_R15.md`](PROJECT_STATUS_R15.md) — corrected selected-part assembly and validation scope;
+- [`PROJECT_STATUS_R14.md`](PROJECT_STATUS_R14.md) — historical study, assembly PASS revoked;
 - [`PROJECT_STATUS_RevPR.md`](PROJECT_STATUS_RevPR.md) — retained source-derived rear-wheel X250 topology;
 - [`PROJECT_SUPERSESSION_RevPP.md`](PROJECT_SUPERSESSION_RevPP.md) — which historical experiments are no longer active;
 - [`electrical/PX1_SystemWiring_RevPP.md`](electrical/PX1_SystemWiring_RevPP.md) — active end-to-end wiring and safety architecture;
@@ -24,9 +27,9 @@ Start here:
 - [`MASTER_DESIGN_BASIS_PROTEUS.md`](MASTER_DESIGN_BASIS_PROTEUS.md) — Proteus-derived mechanical design basis;
 - [`reference/Proteus-CRP-150/`](reference/Proteus-CRP-150/README.md) — controlled source/evidence reconstruction.
 
-If an older experimental revision conflicts with R14 or Rev.PO/Rev.PP/Rev.PR,
-the latest scoped R14 result takes precedence for dimensions; Rev.PR remains the
-topology reference.
+If an older experimental revision conflicts with R15 or Rev.PO/Rev.PP/Rev.PR,
+R15 takes precedence for the scoped nominal geometry; Rev.PR remains the
+topology reference. R14's historical PASS must not be used as acceptance evidence.
 
 ## Current project direction
 
@@ -44,11 +47,12 @@ The project preserves the useful Proteus mechanical and operator logic instead o
 ## Current mechanical master
 
 Latest selected-part packaging study:
-`mechanical/cadquery/PX1_R14_ServiceAndRetention.py`
+`mechanical/cadquery/PX1_R15_CheckedAssembly.py`
 
-Review: `mechanical/R14_SERVICE_AND_SEALING_REVIEW.md`.
-R14 adds serviceable side plates, wheel axial retention, a flat bottom lid and
-explicit seal-land probes. It is still a nominal study, not a machining release.
+Review: `mechanical/R15_ASSEMBLY_AND_VALIDATION_REVIEW.md`.
+R15 corrects the side-flange geometry, bearing supports and countersunk screws,
+models wheel keys and mates, and removes the broad R14 validation exemptions.
+Gear teeth/retention, tolerances and physical qualification remain unfinished.
 
 Active CAD source:
 `mechanical/cadquery/PX1_CRP150_Master_RevPR.py`
