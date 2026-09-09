@@ -19,6 +19,9 @@ packaging baseline; the result is still nominal CAD only.
 - owner’s existing six-core Proteus cable remains the tether baseline.
 - onboard HV converter candidate is now Mean Well RSD-60H-24 (128 × 60 × 25 mm);
   the previous RSD-100D-24 was rejected for internal interference.
+- nominal NUCLEO/DRV8871 map is recorded in
+  `firmware/crawler/r16/hardware_profile.json`; it is a harness contract only,
+  not a flashable or hardware-tested profile.
 
 ## Verification summary
 
@@ -42,4 +45,3 @@ finished camera seal.
 4. Sweep the lift continuously with real pins, spring, yoke and cable loop.
 5. Pressure-test body, side covers and rear interface before a full ID150 tube
    trial.
-
