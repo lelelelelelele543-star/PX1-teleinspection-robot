@@ -1,0 +1,80 @@
+{
+  "revision": "R16",
+  "date": "2026-09-09",
+  "scope": "Mechanical rebuild after R15 user review; nominal packaging only.",
+  "inherits": "bom/PX1_R15_MECHANICAL_DELTA.json",
+  "procurement_status": "No orders placed; availability, exact supplier dimensions and material certificates remain open.",
+  "user_review_corrections": [
+    "Rear rigid tail reduced to a short high-mounted connector exit; no low snagging tail body.",
+    "Six wheels are tied to the side pressure covers and all wheel axes are Z=45 mm, giving a 90 mm wheel bottom at Z=0.",
+    "Wheel service uses a recessed captive cross-pin and cap; no ordinary wrench or loose nut is required.",
+    "Old camera envelope replaced by a rounded armoured pod with recessed window, front guard and internal elastomer isolation.",
+    "Lift moved to the front-central body axis; two 80 mm links fold over the roof saddle and remain X=150 mm at LOW/HIGH centres."
+  ],
+  "mechanical_parts": [
+    {
+      "id": "M16_BODY",
+      "qty": 1,
+      "part": "Machined pressure body, rounded lower pipe-facing corners",
+      "nominal_mm": [307, 92, 82],
+      "status": "NOMINAL_CAD_ONLY",
+      "note": "Outer body X=0..307, Y=-46..46, Z=8..90; 3 mm side pressure membrane remains behind the gear bay."
+    },
+    {
+      "id": "M16_WHEELS",
+      "qty": 6,
+      "part": "90 mm tapered crawler wheels",
+      "nominal_mm": {"diameter": 90, "inner_y": 51.25, "outer_y": 66.5, "axis_z": 45},
+      "status": "NOMINAL_CAD_ONLY",
+      "note": "Wheel stations X=50/150/250; tire and metal hub are separate service solids so the wheel slides over the flange."
+    },
+    {
+      "id": "M16_QR",
+      "qty": 6,
+      "part": "Recessed captive ball-lock cross-pin + retaining cap",
+      "status": "CONCEPT_TO_BE_BENCH_TESTED",
+      "nominal_mm": {"pin_diameter": 4.4, "cap_od": 27, "cap_outer_y": 65},
+      "note": "Torque is carried by the keyed hub; pin carries axial retention only. Add a stainless lanyard and verify mud/ice release."
+    },
+    {
+      "id": "M16_LIFT",
+      "qty": 1,
+      "part": "Manual two-link lift with positive lock and 150 N gas-spring candidate",
+      "nominal_mm": {"link": 80, "low_camera_center_z": 119, "high_camera_center_z": 250, "pivot_x": 150},
+      "status": "NOMINAL_CAD_ONLY",
+      "note": "Low and high link lengths are both 80 mm; spring SKU/end fittings and hand load remain open."
+    },
+    {
+      "id": "M16_CAMERA",
+      "qty": 1,
+      "part": "Separate armoured camera pod for RunCam Phoenix 2 SE V2 envelope",
+      "nominal_mm": {"pod_l": 88, "pod_w": 54, "pod_h": 48, "window_clear": 27},
+      "status": "PROTECTED_PACKAGING_CANDIDATE",
+      "note": "Rounded shell, recessed 27 mm optical opening, front guard ring, replaceable shock isolator and two hand-release yoke pins. Exact lens/window stack is still a purchase gate."
+    },
+    {
+      "id": "M16_REAR",
+      "qty": 1,
+      "part": "Flush rear cover with high axial tether connector and integrated lowering eye",
+      "nominal_mm": {"body_end_x": 307, "connector_end_x": 320, "connector_axis_z": 58, "eye_top_z": 110},
+      "status": "NOMINAL_CAD_ONLY",
+      "note": "Connector shell is not the towing load path; aramid strain relief remains separate and flexible cable is not modeled as a rigid tail."
+    }
+  ],
+  "retained_electronics": {
+    "traction_motors": "2x Pololu 4695 24 V gearmotor with encoder envelope",
+    "traction_drivers": "2x Adafruit 3190 DRV8871",
+    "body_mcu": "NUCLEO-F446RE",
+    "camera": "RunCam Phoenix 2 SE V2 board envelope",
+    "tether": "Owner's existing six-core Proteus cable",
+    "custom_pcb": false
+  },
+  "release_gates": [
+    "Measure purchased wheel, flange, bearing, X-ring and cross-pin parts before machining.",
+    "Machine one wheel station mock-up and run axial pull, radial load, mud/ice release and submerged rotation tests.",
+    "Verify the selected camera board/lens and optical window actually fit the pod before sealing.",
+    "Perform continuous lift sweep with real yoke pins, cable loop and spring; CAD only checks LOW/HIGH poses.",
+    "Pressure-proof body/side/rear covers and run a full ideal/real ID150 tube sweep with tread, fasteners and deposits."
+  ]
+}
+
