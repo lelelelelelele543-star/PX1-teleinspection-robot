@@ -73,7 +73,7 @@
   ],
   "retained_electronics": {
     "traction_motors": "2x Pololu 4695 24 V gearmotor with encoder envelope",
-    "traction_drivers": "2x Adafruit 3190 DRV8871",
+    "traction_drivers": "4x Adafruit 3190 DRV8871 (2 traction + 2 camera)",
     "hv_dc_dc": "1x Mean Well RSD-60H-24 128x60x25 mm candidate",
     "body_mcu": "NUCLEO-F446RE",
     "camera": "RunCam Phoenix 2 SE V2 board envelope",
