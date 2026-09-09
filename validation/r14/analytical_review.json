@@ -1,0 +1,482 @@
+{
+  "revision": "R14",
+  "status": "CALCULATED_SCENARIOS_ONLY",
+  "physical_measurements": false,
+  "converter": "MEAN WELL RSD-100D-24",
+  "continuous_input_V": [
+    67.2,
+    143.0
+  ],
+  "output_V": 24,
+  "output_A": 4.2,
+  "assumed_efficiency": 0.9,
+  "cases": [
+    {
+      "source_V": 100,
+      "loop_ohm": 5,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 96.785562825394,
+      "A_line": 0.6428874349212003,
+      "W_loop_loss": 2.0665212698978026,
+      "W_source": 64.28874349212002,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 5,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 95.33823502911815,
+      "A_line": 0.932352994176371,
+      "W_loop_loss": 4.34641052874822,
+      "W_source": 93.2352994176371,
+      "RSD_input_window": true,
+      "power_residual_W": -1.4210854715202004e-14
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 5,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 94.04543109109048,
+      "A_line": 1.1909137817819038,
+      "W_loop_loss": 7.0913781781903795,
+      "W_source": 119.09137817819038,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 10,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 93.33333333333334,
+      "A_line": 0.6666666666666666,
+      "W_loop_loss": 4.444444444444445,
+      "W_source": 66.66666666666666,
+      "RSD_input_window": true,
+      "power_residual_W": -1.4210854715202004e-14
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 10,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 90.13864859597432,
+      "A_line": 0.9861351404025681,
+      "W_loop_loss": 9.724625151367928,
+      "W_source": 98.61351404025682,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 10,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 87.14835124201342,
+      "A_line": 1.285164875798658,
+      "W_loop_loss": 16.516487579865803,
+      "W_source": 128.5164875798658,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 20,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 85.43381937578216,
+      "A_line": 0.7283090312108917,
+      "W_loop_loss": 10.608680898866954,
+      "W_source": 72.83090312108918,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 20,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 76.8741924943285,
+      "A_line": 1.1562903752835751,
+      "W_loop_loss": 26.74014863946862,
+      "W_source": 115.62903752835751,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 20,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 66.1245154965971,
+      "A_line": 1.693774225170145,
+      "W_loop_loss": 57.37742251701451,
+      "W_source": 169.3774225170145,
+      "RSD_input_window": false,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 30,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 75.16611478423583,
+      "A_line": 0.8277961738588056,
+      "W_loop_loss": 20.557395163658335,
+      "W_source": 82.77961738588056,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 30,
+      "load_W": 80,
+      "equilibrium": false,
+      "reason": "no DC constant-power equilibrium"
+    },
+    {
+      "source_V": 100,
+      "loop_ohm": 30,
+      "load_W": 100.8,
+      "equilibrium": false,
+      "reason": "no DC constant-power equilibrium"
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 5,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 107.09499869362594,
+      "A_line": 0.5810002612748111,
+      "W_loop_loss": 1.6878065180069937,
+      "W_source": 63.91002874022922,
+      "RSD_input_window": true,
+      "power_residual_W": 7.105427357601002e-15
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 5,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 105.79916884709391,
+      "A_line": 0.8401662305812196,
+      "W_loop_loss": 3.5293964750452753,
+      "W_source": 92.41828536393416,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 5,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 104.64876634922564,
+      "A_line": 1.0702467301548726,
+      "W_loop_loss": 5.727140317035984,
+      "W_source": 117.72714031703599,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 10,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 104.01813723284248,
+      "A_line": 0.5981862767157524,
+      "W_loop_loss": 3.5782682165105473,
+      "W_source": 65.80049043873277,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 10,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 101.21808207954015,
+      "A_line": 0.8781917920459842,
+      "W_loop_loss": 7.712208236169371,
+      "W_source": 96.60109712505826,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 10,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 98.64630568559039,
+      "A_line": 1.135369431440961,
+      "W_loop_loss": 12.890637458505712,
+      "W_source": 124.89063745850571,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 20,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 97.19662967057388,
+      "A_line": 0.6401685164713061,
+      "W_loop_loss": 8.196314589621458,
+      "W_source": 70.41853681184368,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 20,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 90.31603350069514,
+      "A_line": 0.9841983249652425,
+      "W_loop_loss": 19.372926857287784,
+      "W_source": 108.26181574617668,
+      "RSD_input_window": true,
+      "power_residual_W": 1.4210854715202004e-14
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 20,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 83.0178514522438,
+      "A_line": 1.3491074273878099,
+      "W_loop_loss": 36.401817012659095,
+      "W_source": 148.40181701265908,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 30,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 89.03429642777023,
+      "A_line": 0.6988567857409924,
+      "W_loop_loss": 14.652024209286942,
+      "W_source": 76.87424643150916,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 30,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 73.92969448600091,
+      "A_line": 1.2023435171333028,
+      "W_loop_loss": 43.36889799577442,
+      "W_source": 132.25778688466332,
+      "RSD_input_window": true,
+      "power_residual_W": 2.842170943040401e-14
+    },
+    {
+      "source_V": 110,
+      "loop_ohm": 30,
+      "load_W": 100.8,
+      "equilibrium": false,
+      "reason": "no DC constant-power equilibrium"
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 5,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 117.34883511361751,
+      "A_line": 0.5302329772764977,
+      "W_loop_loss": 1.4057350509574946,
+      "W_source": 63.62795727317972,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 5,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 116.17433182117573,
+      "A_line": 0.7651336357648552,
+      "W_loop_loss": 2.92714740289373,
+      "W_source": 91.81603629178262,
+      "RSD_input_window": true,
+      "power_residual_W": 1.4210854715202004e-14
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 5,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 115.13619500836089,
+      "A_line": 0.9727609983278226,
+      "W_loop_loss": 4.73131979933871,
+      "W_source": 116.7313197993387,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 10,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 114.56901847914966,
+      "A_line": 0.5430981520850333,
+      "W_loop_loss": 2.9495560279817794,
+      "W_source": 65.171778250204,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 10,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 112.06833117271103,
+      "A_line": 0.793166882728897,
+      "W_loop_loss": 6.291137038578759,
+      "W_source": 95.18002592746764,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 10,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 109.79959839195493,
+      "A_line": 1.020040160804507,
+      "W_loop_loss": 10.404819296540849,
+      "W_source": 122.40481929654085,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 20,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 108.53406592853679,
+      "A_line": 0.5732967035731605,
+      "W_loop_loss": 6.573382206557046,
+      "W_source": 68.79560442877927,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 20,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 102.68749491621898,
+      "A_line": 0.8656252541890505,
+      "W_loop_loss": 14.986141613797164,
+      "W_source": 103.87503050268606,
+      "RSD_input_window": true,
+      "power_residual_W": 1.4210854715202004e-14
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 20,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 96.87817782917155,
+      "A_line": 1.1560911085414225,
+      "W_loop_loss": 26.730933024970703,
+      "W_source": 138.7309330249707,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 30,
+      "load_W": 56,
+      "equilibrium": true,
+      "V_robot": 101.63331998932264,
+      "A_line": 0.6122226670225782,
+      "W_loop_loss": 11.24449782048716,
+      "W_source": 73.46672004270938,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 30,
+      "load_W": 80,
+      "equilibrium": true,
+      "V_robot": 90.55050463303894,
+      "A_line": 0.9816498455653688,
+      "W_loop_loss": 28.909092578955374,
+      "W_source": 117.79798146784427,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    },
+    {
+      "source_V": 120,
+      "loop_ohm": 30,
+      "load_W": 100.8,
+      "equilibrium": true,
+      "V_robot": 75.49193338482966,
+      "A_line": 1.4836022205056778,
+      "W_loop_loss": 66.03226646068134,
+      "W_source": 178.03226646068134,
+      "RSD_input_window": true,
+      "power_residual_W": 0.0
+    }
+  ],
+  "boundary_Rloop_ohm_at_100p8W": {
+    "100": 19.68,
+    "110": 25.68,
+    "120": 31.68
+  },
+  "wheel_stack_mm": {
+    "bearing_abs_Y": [
+      36.65,
+      43.65
+    ],
+    "clip_groove_abs_Y": [
+      35.55,
+      36.65
+    ],
+    "inner_spacer_abs_Y": [
+      43.65,
+      44.5
+    ],
+    "outer_spacer_abs_Y": [
+      43.65,
+      44.4
+    ],
+    "seal_land_abs_Y": [
+      44.5,
+      50.5
+    ],
+    "wheel_seat_abs_Y": [
+      50.5,
+      61.0
+    ],
+    "washer_abs_Y": [
+      61.0,
+      63.0
+    ],
+    "nut_abs_Y": [
+      63.0,
+      71.0
+    ],
+    "thread_tip_abs_Y": 73.6,
+    "thread_protrusion_mm": 2.6,
+    "M8_pitch_mm": 1.25,
+    "protruding_pitches": 2.08,
+    "overall_width_at_thread_tips_mm": 147.2
+  },
+  "limitations": [
+    "Rloop is not measured; it must include both HV conductors, connectors and slip ring.",
+    "Boundary values have zero voltage margin and are not design limits.",
+    "No inrush, transients, current limit, isolation, thermal or discharge test.",
+    "Wheel dimensions omit tolerances, chamfers, fits, tightening and fatigue."
+  ]
+}
