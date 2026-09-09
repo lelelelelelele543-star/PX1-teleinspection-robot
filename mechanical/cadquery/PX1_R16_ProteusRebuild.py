@@ -487,10 +487,14 @@ def make_electronics_reserves() -> Dict[str, cq.Workplane]:
     # traction.  The power/thermal budget remains a release gate.
     parts["RSD_60H_24_reserve"] = box(128.0, 60.0, 25.0, 10.0, -30.0, 16.0)
     parts["Motor_Pololu4695_L_reserve"] = cyl_axis(
-        18.4, 72.6, (40.0, 17.0, 60.0), (1, 0, 0))
+        18.4, 72.6, (25.0, 17.0, 60.0), (1, 0, 0))
     parts["Motor_Pololu4695_R_reserve"] = cyl_axis(
         18.4, 72.6, (210.0, -17.0, 60.0), (1, 0, 0))
-    parts["DRV8871_pair_reserve"] = box(50.0, 24.0, 10.0, 150.0, -12.0, 71.0)
+    # Four driver carriers (two traction, two camera) fit on one high service
+    # rail.  The camera pair is low-current-limited, but keeping them on the
+    # body rail makes the sealed pod lighter and leaves only the imager/lens
+    # and rotary wiring in the moving head.
+    parts["DRV8871_all_four_reserve"] = box(100.0, 24.0, 10.0, 105.0, -12.0, 71.0)
     parts["SU1P_video_transmitter_reserve"] = box(50.0, 42.0, 18.0, 140.0, -21.0, 41.0)
     parts["RS485_isolator_reserve"] = box(42.8, 15.2, 4.75, 140.0, -7.6, 59.5)
     parts["D24V22F12_12V_reserve"] = box(17.8, 17.8, 8.0, 115.0, -8.9, 43.0)
