@@ -1,0 +1,35 @@
+{
+  "revision": "R14",
+  "physical_test": false,
+  "source_sha256": "34609fe6d704797f0f454ae72f3bd6de458edf7e0f2352b31dc17a02d2223990",
+  "bottom_gland_probe_volume_mm3": 261.59433508808627,
+  "bottom_gland_unsupported_mm3": 0.0,
+  "side_static_ring_support": {
+    "R": {
+      "probe_volume_mm3": 22.08539635473676,
+      "unsupported_mm3": 0.0
+    },
+    "L": {
+      "probe_volume_mm3": 22.08539635473676,
+      "unsupported_mm3": 0.0
+    }
+  },
+  "hub_washer_contact_mm": {
+    "R50.0": 0.0,
+    "R150.0": 0.0,
+    "R250.0": 0.0,
+    "L50.0": 0.0,
+    "L150.0": 0.0,
+    "L250.0": 0.0
+  },
+  "bearing_cover_contact_mm": {
+    "R50.0": 0.0,
+    "R150.0": 0.0,
+    "R250.0": 0.0,
+    "L50.0": 0.0,
+    "L150.0": 0.0,
+    "L250.0": 0.0
+  },
+  "scope": "Face/backing contact only; no pressure or tolerance qualification",
+  "status": "PASS_SCOPED_CONTACT_PROBES"
+}
