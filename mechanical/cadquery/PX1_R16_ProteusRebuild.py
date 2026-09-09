@@ -779,7 +779,8 @@ def main() -> int:
         export(parts, groups, args.out)
     print(json.dumps({k: report[k] for k in ("revision", "status", "invalid_parts",
                                              "pipe_outside_mm3", "wheel_ground_contact",
-                                             "rear_snag", "camera_fit", "lift_kinematics",
+                                             "rear_snag", "envelopes", "camera_fit", "lift_kinematics",
+                                             "internal_packaging",
                                              "quick_release", "selected_collision_checks")},
                      indent=2, ensure_ascii=False))
     return 1 if str(report["status"]).startswith("FAIL") else 0
