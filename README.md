@@ -56,6 +56,9 @@ wheel-ground contact, integrated wheel stations, captive wheel pins, a central
 folded lift and an armoured camera pod. Gear teeth/retention, tolerances and
 physical qualification remain unfinished.
 
+Internal reserve coordinates are listed in
+`mechanical/R16_COMPONENT_PLACEMENT.md`.
+
 Active CAD source:
 `mechanical/cadquery/PX1_CRP150_Master_RevPR.py`
 
