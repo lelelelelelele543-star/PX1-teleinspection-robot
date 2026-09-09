@@ -1,6 +1,6 @@
 {
   "revision": "R16",
-  "source_sha256": "24b25412e3a8bbb06c071c517288d66ce1ffc87ec4e420e4976b5f5432920102",
+  "source_sha256": "05cec0290d193e7ff1ac4104d165bd58e146b03e8586519a66a6b858bcb3ef7e",
   "cadquery": "2.7.0",
   "named_part_count": 157,
   "nominal_only": true,
