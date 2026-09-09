@@ -1,0 +1,256 @@
+{
+  "revision": "R15",
+  "physical_test": false,
+  "geometry_source_sha256": "f57f60b541856774e241aa7609ae53c081d31cdad4d8bc013d04c9100a2cf554",
+  "test_source_sha256": "01d500eedb6aeb16a50ffef8217cc3a8092a2e98e4ff3b9e2746c753332dc16d",
+  "regression_overlap_mm3": {
+    "Side_cover_R__BODY_R15": 0.0,
+    "Side_cover_L__BODY_R15": 0.0,
+    "Hanging_bearing_bridge__BODY_R15": 0.0,
+    "HV_route_RESERVE__BODY_R15": 0.0,
+    "LV_route_RESERVE__BODY_R15": 0.0
+  },
+  "thermal_angle_gap_mm": 0.0,
+  "screws": {
+    "Side_M3x8_R_00": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_01": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_02": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_03": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_04": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_05": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_06": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_07": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_08": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_09": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_10": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_11": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_12": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_R_13": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_00": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_01": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_02": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_03": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_04": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_05": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_06": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_07": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_08": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_09": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_10": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_11": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_12": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Side_M3x8_L_13": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_00": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_01": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_02": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_03": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_04": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_05": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_06": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_07": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_08": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_09": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_10": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_11": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_12": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_13": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_14": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_15": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_16": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_17": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_18": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_19": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_20": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    },
+    "Bottom_M3x8_21": {
+      "solid_count": 1,
+      "cover_intersection_mm3": 0.0
+    }
+  },
+  "wheel_keys": {
+    "L50.0": {
+      "key_axle_mm3": 0.0,
+      "key_hub_mm3": 0.0,
+      "shaft_seat_contact_mm": 0.0,
+      "hub_interference_after_1deg_relative_rotation_mm3": 1.9560369465689178
+    },
+    "L150.0": {
+      "key_axle_mm3": 0.0,
+      "key_hub_mm3": 0.0,
+      "shaft_seat_contact_mm": 0.0,
+      "hub_interference_after_1deg_relative_rotation_mm3": 1.956036946568916
+    },
+    "L250.0": {
+      "key_axle_mm3": 0.0,
+      "key_hub_mm3": 0.0,
+      "shaft_seat_contact_mm": 0.0,
+      "hub_interference_after_1deg_relative_rotation_mm3": 1.9560369465689382
+    },
+    "R50.0": {
+      "key_axle_mm3": 0.0,
+      "key_hub_mm3": 0.0,
+      "shaft_seat_contact_mm": 0.0,
+      "hub_interference_after_1deg_relative_rotation_mm3": 1.9560369465689178
+    },
+    "R150.0": {
+      "key_axle_mm3": 0.0,
+      "key_hub_mm3": 0.0,
+      "shaft_seat_contact_mm": 0.0,
+      "hub_interference_after_1deg_relative_rotation_mm3": 1.956036946568916
+    },
+    "R250.0": {
+      "key_axle_mm3": 0.0,
+      "key_hub_mm3": 0.0,
+      "shaft_seat_contact_mm": 0.0,
+      "hub_interference_after_1deg_relative_rotation_mm3": 1.956036946568911
+    }
+  },
+  "nut_corner_diameter_mm": 15.01110699893027,
+  "status": "PASS_R15_LOCAL_MECHANICAL_REGRESSIONS"
+}
