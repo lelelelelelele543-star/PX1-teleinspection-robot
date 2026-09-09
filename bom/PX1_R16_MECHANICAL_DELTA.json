@@ -63,6 +63,15 @@
       "note": "Rounded shell, recessed 27 mm optical opening, front guard ring, replaceable four-sided bumper cage, shock isolator and two hand-release yoke pins. Exact lens/window stack is still a purchase gate."
     },
     {
+      "id": "M16_CAMERA_ACTUATORS",
+      "qty": 2,
+      "part": "Pololu 3046 HPCB 12 V 1000:1 camera gearmotor class",
+      "role": "PAN / ROTATE actuator envelopes on protected yoke cheeks",
+      "nominal_mm": [29.5, 10.0, 12.9],
+      "status": "PACKAGING_CANDIDATE_MOTOR_AND_GEAR_TRAIN_OPEN",
+      "note": "Motors stay outside the sealed optical pod; each is replaceable from the yoke. Verify shaft, gear mesh, limit sensing and 12 V transient current on the exact received units."
+    },
+    {
       "id": "M16_REAR",
       "qty": 1,
       "part": "Flush rear cover with high axial tether connector and integrated lowering eye",
