@@ -30,6 +30,8 @@ def main() -> int:
     assert report["camera_fit"]["low_pod_pipe_outside_mm3"] == 0.0
     assert report["camera_fit"]["camera_window_recessed"]
     assert report["camera_fit"]["front_guard_present"]
+    assert not report["internal_packaging"]["outside_dry_envelope_mm3"]
+    assert not report["internal_packaging"]["reserve_collisions_mm3"]
     assert report["rear_snag"]["parts_below_wheel_contact_plane"] == []
     assert abs(report["lift_kinematics"]["low_lengths_mm"][0] - 80.0) < 0.02
     assert abs(report["lift_kinematics"]["low_lengths_mm"][1] - 80.0) < 0.02
@@ -38,6 +40,7 @@ def main() -> int:
     print(json.dumps({"status": report["status"],
                       "body_plus_six_wheels_mm": env["body_plus_six_wheels_mm"],
                       "quick_release_count": len(report["quick_release"]),
+                      "body_reserve_count": report["internal_packaging"]["body_reserve_count"],
                       "camera_low_pipe_outside_mm3": report["camera_fit"]["low_pod_pipe_outside_mm3"]},
                      indent=2, ensure_ascii=False))
     return 0
