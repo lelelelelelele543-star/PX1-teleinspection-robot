@@ -1,0 +1,2583 @@
+{
+  "revision": "R14",
+  "date": "2026-09-09",
+  "manufacturing_release": false,
+  "physical_test": false,
+  "status": "PASS_SCOPED_R14_RETENTION_LANDING_ASSEMBLY",
+  "motor_model": "vendor_STEP",
+  "motor_step_sha256": "a2450812d02c82cf362dfab5a6d0c4fbe801a90bee45602c5e8390ccb8cb8aef",
+  "source_sha256": "34609fe6d704797f0f454ae72f3bd6de458edf7e0f2352b31dc17a02d2223990",
+  "cadquery_version": "2.7.0",
+  "collision_threshold_mm3": 0.001,
+  "static_collisions": {},
+  "routing_collisions": {},
+  "low_pipe_outside": {},
+  "seal_landing": {
+    "R": {
+      "body_probe_volume_mm3": 124.9035363497928,
+      "unsupported_mm3": 0.0,
+      "candidate_ring_ID_mm": 185,
+      "candidate_cross_section_mm": 1.5,
+      "nominal_compression_pct": 26.667,
+      "nominal_stretch_pct": 1.514,
+      "inboard_land_mm": 2.95
+    },
+    "L": {
+      "body_probe_volume_mm3": 124.90353634979274,
+      "unsupported_mm3": 0.0,
+      "candidate_ring_ID_mm": 185,
+      "candidate_cross_section_mm": 1.5,
+      "nominal_compression_pct": 26.667,
+      "nominal_stretch_pct": 1.514,
+      "inboard_land_mm": 2.95
+    }
+  },
+  "side_installation": {
+    "R": {
+      "offsets_outward_mm": [
+        0,
+        10,
+        35
+      ],
+      "collisions_by_offset": {
+        "0": {},
+        "10": {},
+        "35": {}
+      }
+    },
+    "L": {
+      "offsets_outward_mm": [
+        0,
+        10,
+        35
+      ],
+      "collisions_by_offset": {
+        "0": {},
+        "10": {},
+        "35": {}
+      }
+    }
+  },
+  "wheel_socket_access": {
+    "R50.0": {},
+    "R150.0": {},
+    "R250.0": {},
+    "L50.0": {},
+    "L150.0": {},
+    "L250.0": {}
+  },
+  "lift_positions": {
+    "100.000000": {
+      "camera_axis_Z_mm": 100.0,
+      "front_pivot_X_mm": -11.687617166518564,
+      "angle_deg": -13.49339882155169,
+      "gas_pin_distance_mm": 116.69190203266034,
+      "gas_assist_Nm_for_150N": 4.3498402702553305,
+      "camera_full_bounds_mm": [
+        [
+          -205.68761716651858,
+          -45.5,
+          55.0
+        ],
+        [
+          -33.68761716651858,
+          45.5,
+          145.0
+        ]
+      ],
+      "collisions": {}
+    },
+    "160.000000": {
+      "camera_axis_Z_mm": 160.0,
+      "front_pivot_X_mm": -10.654658358407687,
+      "angle_deg": 15.466009953420551,
+      "gas_pin_distance_mm": 130.75549701637786,
+      "gas_assist_Nm_for_150N": 3.8476222823431856,
+      "camera_full_bounds_mm": [
+        [
+          -204.6546583584077,
+          -45.5,
+          115.0
+        ],
+        [
+          -32.65465835840769,
+          45.5,
+          205.0
+        ]
+      ],
+      "collisions": {}
+    },
+    "235.000000": {
+      "camera_axis_Z_mm": 235.0,
+      "front_pivot_X_mm": 50.67689257783574,
+      "angle_deg": 63.0834323983818,
+      "gas_pin_distance_mm": 146.44794296950707,
+      "gas_assist_Nm_for_150N": 1.6135803104835504,
+      "camera_full_bounds_mm": [
+        [
+          -143.32310742216427,
+          -45.5,
+          190.0
+        ],
+        [
+          28.67689257783573,
+          45.5,
+          280.0
+        ]
+      ],
+      "collisions": {}
+    }
+  },
+  "explicit_pair_exclusions": {
+    "BODY_R14__Side_M3x8_R_00": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_01": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_02": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_03": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_04": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_05": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_06": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_07": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_08": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_09": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_10": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_11": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_12": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_R_13": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_00": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_01": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_02": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_03": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_04": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_05": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_06": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_07": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_08": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_09": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_10": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_11": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_12": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_M3x8_L_13": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_00": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_01": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_02": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_03": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_04": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_05": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_06": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_07": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_08": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_09": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_10": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_11": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_12": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_13": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_14": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_15": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_16": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_17": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_18": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_19": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_20": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Bottom_M3x8_21": "M3 thread/tap engagement is intentional",
+    "BODY_R14__Side_cover_R": "side-plate face contact is the intentional sealed assembly joint",
+    "Flange_R50.0__Side_cover_R": "M35x1 holder thread is a machining reference",
+    "Flange_R150.0__Side_cover_R": "M35x1 holder thread is a machining reference",
+    "Flange_R250.0__Side_cover_R": "M35x1 holder thread is a machining reference",
+    "Z16_ENVELOPE_R__Z40_ENVELOPE_R": "intentional bevel tooth blank overlap",
+    "Z50_ENVELOPE_R100.0__Z50_ENVELOPE_R50.0": "intentional adjacent tooth blank envelopes",
+    "Z50_ENVELOPE_R100.0__Z50_ENVELOPE_R150.0": "intentional adjacent tooth blank envelopes",
+    "Z50_ENVELOPE_R150.0__Z50_ENVELOPE_R200.0": "intentional adjacent tooth blank envelopes",
+    "Z50_ENVELOPE_R200.0__Z50_ENVELOPE_R250.0": "intentional adjacent tooth blank envelopes",
+    "BODY_R14__Side_cover_L": "side-plate face contact is the intentional sealed assembly joint",
+    "Flange_L50.0__Side_cover_L": "M35x1 holder thread is a machining reference",
+    "Flange_L150.0__Side_cover_L": "M35x1 holder thread is a machining reference",
+    "Flange_L250.0__Side_cover_L": "M35x1 holder thread is a machining reference",
+    "Z16_ENVELOPE_L__Z40_ENVELOPE_L": "intentional bevel tooth blank overlap",
+    "Z50_ENVELOPE_L100.0__Z50_ENVELOPE_L50.0": "intentional adjacent tooth blank envelopes",
+    "Z50_ENVELOPE_L100.0__Z50_ENVELOPE_L150.0": "intentional adjacent tooth blank envelopes",
+    "Z50_ENVELOPE_L150.0__Z50_ENVELOPE_L200.0": "intentional adjacent tooth blank envelopes",
+    "Z50_ENVELOPE_L200.0__Z50_ENVELOPE_L250.0": "intentional adjacent tooth blank envelopes",
+    "BODY_R14__Hanging_bearing_bridge": "bridge-to-body contact is the intentional structural joint"
+  },
+  "limitations": [
+    "Nominal CAD only: no pressure, tolerance, load, fatigue or heat test.",
+    "DIN471 and DIN985 entries are envelopes/references, not exact CAD parts.",
+    "Gears remain blank envelopes; teeth, hubs, keys and torque retention are open.",
+    "Board standoffs, connector strain relief and camera harness are open.",
+    "M35x1 holder has a reference thread region; flanks, fit and locking are open.",
+    "The cable tail cylinders remain installation reserves; aramid termination and dry barrier are open.",
+    "Ideal straight ID150 only; pipe ovality, debris, bends and traction are not certified."
+  ],
+  "bottom_seal_landing": {
+    "probe_volume_mm3": 261.59433508808627,
+    "unsupported_mm3": 0.0,
+    "opening_X_mm": [
+      16,
+      396
+    ],
+    "lip_Z_mm": [
+      25.5,
+      32
+    ]
+  },
+  "part_bounds_mm": {
+    "RSD100D24": [
+      [
+        28.0,
+        -17.5,
+        29.0
+      ],
+      [
+        189.0,
+        18.5,
+        97.0
+      ]
+    ],
+    "RSD_terminals_22": [
+      [
+        16.0,
+        -11.5,
+        41.0
+      ],
+      [
+        28.0,
+        12.5,
+        85.0
+      ]
+    ],
+    "RSD_terminals_195": [
+      [
+        189.0,
+        -11.5,
+        41.0
+      ],
+      [
+        201.0,
+        12.5,
+        85.0
+      ]
+    ],
+    "NUCLEO_F446RE": [
+      [
+        205.0,
+        -35.0,
+        29.0
+      ],
+      [
+        287.5,
+        35.0,
+        47.0
+      ]
+    ],
+    "Pololu_2855_12V": [
+      [
+        302.1,
+        11.1,
+        35.0
+      ],
+      [
+        319.90000000000003,
+        28.9,
+        43.0
+      ]
+    ],
+    "RECOM_5V_carrier_ALLOWANCE": [
+      [
+        295.0,
+        -20.0,
+        32.0
+      ],
+      [
+        317.0,
+        0.0,
+        52.0
+      ]
+    ],
+    "MPRLS_3965": [
+      [
+        203.1,
+        11.65,
+        50.0
+      ],
+      [
+        220.9,
+        28.35,
+        57.5
+      ]
+    ],
+    "TMP117_4821": [
+      [
+        147.25,
+        -27.3,
+        27.5
+      ],
+      [
+        172.75,
+        -22.7,
+        45.2
+      ]
+    ],
+    "SEBOKS_SU1P": [
+      [
+        347.0,
+        -21.0,
+        36.0
+      ],
+      [
+        397.0,
+        21.0,
+        54.0
+      ]
+    ],
+    "Waveshare_RS485_C": [
+      [
+        229.6,
+        -2.375,
+        49.0
+      ],
+      [
+        272.4,
+        2.375,
+        64.2
+      ]
+    ],
+    "DRV8871_left": [
+      [
+        243.8,
+        -29.2,
+        111.0
+      ],
+      [
+        268.2,
+        -8.8,
+        120.7
+      ]
+    ],
+    "DRV8871_right": [
+      [
+        281.8,
+        -29.2,
+        111.0
+      ],
+      [
+        306.2,
+        -8.8,
+        120.7
+      ]
+    ],
+    "DRV8871_rotate": [
+      [
+        321.8,
+        -29.2,
+        111.0
+      ],
+      [
+        346.2,
+        -8.8,
+        120.7
+      ]
+    ],
+    "INA260_left_TERMINAL_ALLOWANCE": [
+      [
+        302.55,
+        7.6,
+        111.0
+      ],
+      [
+        325.45,
+        30.4,
+        125.0
+      ]
+    ],
+    "INA260_right_TERMINAL_ALLOWANCE": [
+      [
+        352.55,
+        7.6,
+        111.0
+      ],
+      [
+        375.45,
+        30.4,
+        125.0
+      ]
+    ],
+    "24V_distribution_RESERVE": [
+      [
+        350.0,
+        -33.0,
+        107.0
+      ],
+      [
+        396.0,
+        -3.0,
+        127.0
+      ]
+    ],
+    "Rear_tray": [
+      [
+        303.5,
+        -37.0,
+        106.0
+      ],
+      [
+        388.5,
+        37.0,
+        108.0
+      ]
+    ],
+    "Pololu4695_R": [
+      [
+        308.0,
+        -37.97893173924244,
+        59.16993491066126
+      ],
+      [
+        402.6000000000001,
+        -1.0999999000000689,
+        100.4000001
+      ]
+    ],
+    "Motor_mount_R": [
+      [
+        326.0,
+        -38.5,
+        31.0
+      ],
+      [
+        344.0,
+        -0.5,
+        103.0
+      ]
+    ],
+    "Coupler_6_6_R": [
+      [
+        299.0,
+        -28.5,
+        66.0
+      ],
+      [
+        317.0,
+        -10.5,
+        84.0
+      ]
+    ],
+    "Pinion_shaft_R": [
+      [
+        268.0,
+        -25.5,
+        69.0
+      ],
+      [
+        308.0,
+        -13.5,
+        81.0
+      ]
+    ],
+    "61801_R295.5": [
+      [
+        293.0,
+        -30.0,
+        64.5
+      ],
+      [
+        298.0,
+        -9.0,
+        85.5
+      ]
+    ],
+    "Z16_ENVELOPE_R": [
+      [
+        269.42913975468844,
+        -30.7500001,
+        63.7499999
+      ],
+      [
+        275.0000001,
+        -8.2499999,
+        86.2500001
+      ]
+    ],
+    "Z40_ENVELOPE_R": [
+      [
+        223.7499999,
+        -29.500000100000005,
+        48.7499999
+      ],
+      [
+        276.2500001,
+        -27.271655841875376,
+        101.2500001
+      ]
+    ],
+    "61800_R": [
+      [
+        240.5,
+        -14.5,
+        65.5
+      ],
+      [
+        259.5,
+        -9.5,
+        84.5
+      ]
+    ],
+    "Side_cover_R": [
+      [
+        14.0,
+        -50.0,
+        37.0
+      ],
+      [
+        286.0,
+        -35.55,
+        113.0
+      ]
+    ],
+    "Z50_ENVELOPE_R50.0": [
+      [
+        24.0,
+        -35.375,
+        49.0
+      ],
+      [
+        76.0,
+        -31.625,
+        101.0
+      ]
+    ],
+    "Z50_ENVELOPE_R100.0": [
+      [
+        74.0,
+        -35.375,
+        49.0
+      ],
+      [
+        126.0,
+        -31.625,
+        101.0
+      ]
+    ],
+    "Z50_ENVELOPE_R150.0": [
+      [
+        124.0,
+        -35.375,
+        49.0
+      ],
+      [
+        176.0,
+        -31.625,
+        101.0
+      ]
+    ],
+    "Z50_ENVELOPE_R200.0": [
+      [
+        174.0,
+        -35.375,
+        49.0
+      ],
+      [
+        226.0,
+        -31.625,
+        101.0
+      ]
+    ],
+    "Z50_ENVELOPE_R250.0": [
+      [
+        224.0,
+        -35.375,
+        49.0
+      ],
+      [
+        276.0,
+        -31.625,
+        101.0
+      ]
+    ],
+    "Idler_pin_R100": [
+      [
+        94.0,
+        -47.5,
+        69.0
+      ],
+      [
+        106.0,
+        -31.5,
+        81.0
+      ]
+    ],
+    "6701_R100": [
+      [
+        91.0,
+        -35.5,
+        66.0
+      ],
+      [
+        109.0,
+        -31.5,
+        84.0
+      ]
+    ],
+    "Idler_pin_R200": [
+      [
+        194.0,
+        -47.5,
+        69.0
+      ],
+      [
+        206.0,
+        -31.5,
+        81.0
+      ]
+    ],
+    "6701_R200": [
+      [
+        191.0,
+        -35.5,
+        66.0
+      ],
+      [
+        209.0,
+        -31.5,
+        84.0
+      ]
+    ],
+    "Flange_R50.0": [
+      [
+        32.55,
+        -50.2,
+        57.55
+      ],
+      [
+        67.45,
+        -44.5,
+        92.45
+      ]
+    ],
+    "Axle_R50.0": [
+      [
+        41.0,
+        -73.6,
+        66.0
+      ],
+      [
+        59.0,
+        -31.5,
+        84.0
+      ]
+    ],
+    "61903_R50.0": [
+      [
+        35.0,
+        -43.65,
+        60.0
+      ],
+      [
+        65.0,
+        -36.65,
+        90.0
+      ]
+    ],
+    "Crown_R50.0": [
+      [
+        6.0,
+        -65.0,
+        31.0
+      ],
+      [
+        94.0,
+        -51.0,
+        119.0
+      ]
+    ],
+    "Flange_R150.0": [
+      [
+        132.55,
+        -50.2,
+        57.55
+      ],
+      [
+        167.45,
+        -44.5,
+        92.45
+      ]
+    ],
+    "Axle_R150.0": [
+      [
+        141.0,
+        -73.6,
+        66.0
+      ],
+      [
+        159.0,
+        -31.5,
+        84.0
+      ]
+    ],
+    "61903_R150.0": [
+      [
+        135.0,
+        -43.65,
+        60.0
+      ],
+      [
+        165.0,
+        -36.65,
+        90.0
+      ]
+    ],
+    "Crown_R150.0": [
+      [
+        106.0,
+        -65.0,
+        31.0
+      ],
+      [
+        194.0,
+        -51.0,
+        119.0
+      ]
+    ],
+    "Flange_R250.0": [
+      [
+        232.55,
+        -50.2,
+        57.55
+      ],
+      [
+        267.45,
+        -44.5,
+        92.45
+      ]
+    ],
+    "Axle_R250.0": [
+      [
+        241.0,
+        -73.6,
+        66.0
+      ],
+      [
+        259.0,
+        -7.0000000000000036,
+        84.0
+      ]
+    ],
+    "61903_R250.0": [
+      [
+        235.0,
+        -43.65,
+        60.0
+      ],
+      [
+        265.0,
+        -36.65,
+        90.0
+      ]
+    ],
+    "Crown_R250.0": [
+      [
+        206.0,
+        -65.0,
+        30.999999999999996
+      ],
+      [
+        294.0,
+        -51.0,
+        119.0
+      ]
+    ],
+    "Pololu4695_L": [
+      [
+        308.0,
+        1.021068260757565,
+        59.16993491066126
+      ],
+      [
+        402.6000000000001,
+        37.900000099999936,
+        100.4000001
+      ]
+    ],
+    "Motor_mount_L": [
+      [
+        326.0,
+        0.5,
+        31.0
+      ],
+      [
+        344.0,
+        38.5,
+        103.0
+      ]
+    ],
+    "Coupler_6_6_L": [
+      [
+        299.0,
+        10.5,
+        66.0
+      ],
+      [
+        317.0,
+        28.5,
+        84.0
+      ]
+    ],
+    "Pinion_shaft_L": [
+      [
+        268.0,
+        13.5,
+        69.0
+      ],
+      [
+        308.0,
+        25.5,
+        81.0
+      ]
+    ],
+    "61801_L295.5": [
+      [
+        293.0,
+        9.0,
+        64.5
+      ],
+      [
+        298.0,
+        30.0,
+        85.5
+      ]
+    ],
+    "Z16_ENVELOPE_L": [
+      [
+        269.42913975468844,
+        8.2499999,
+        63.7499999
+      ],
+      [
+        275.0000001,
+        30.7500001,
+        86.2500001
+      ]
+    ],
+    "Z40_ENVELOPE_L": [
+      [
+        223.7499999,
+        27.271655841875376,
+        48.7499999
+      ],
+      [
+        276.2500001,
+        29.500000100000005,
+        101.2500001
+      ]
+    ],
+    "61800_L": [
+      [
+        240.5,
+        9.5,
+        65.5
+      ],
+      [
+        259.5,
+        14.5,
+        84.5
+      ]
+    ],
+    "Side_cover_L": [
+      [
+        14.0,
+        35.55,
+        37.0
+      ],
+      [
+        286.0,
+        50.0,
+        113.0
+      ]
+    ],
+    "Z50_ENVELOPE_L50.0": [
+      [
+        24.0,
+        31.625,
+        49.0
+      ],
+      [
+        76.0,
+        35.375,
+        101.0
+      ]
+    ],
+    "Z50_ENVELOPE_L100.0": [
+      [
+        74.0,
+        31.625,
+        49.0
+      ],
+      [
+        126.0,
+        35.375,
+        101.0
+      ]
+    ],
+    "Z50_ENVELOPE_L150.0": [
+      [
+        124.0,
+        31.625,
+        49.0
+      ],
+      [
+        176.0,
+        35.375,
+        101.0
+      ]
+    ],
+    "Z50_ENVELOPE_L200.0": [
+      [
+        174.0,
+        31.625,
+        49.0
+      ],
+      [
+        226.0,
+        35.375,
+        101.0
+      ]
+    ],
+    "Z50_ENVELOPE_L250.0": [
+      [
+        224.0,
+        31.625,
+        49.0
+      ],
+      [
+        276.0,
+        35.375,
+        101.0
+      ]
+    ],
+    "Idler_pin_L100": [
+      [
+        94.0,
+        31.5,
+        69.0
+      ],
+      [
+        106.0,
+        47.5,
+        81.0
+      ]
+    ],
+    "6701_L100": [
+      [
+        91.0,
+        31.5,
+        66.0
+      ],
+      [
+        109.0,
+        35.5,
+        84.0
+      ]
+    ],
+    "Idler_pin_L200": [
+      [
+        194.0,
+        31.5,
+        69.0
+      ],
+      [
+        206.0,
+        47.5,
+        81.0
+      ]
+    ],
+    "6701_L200": [
+      [
+        191.0,
+        31.5,
+        66.0
+      ],
+      [
+        209.0,
+        35.5,
+        84.0
+      ]
+    ],
+    "Flange_L50.0": [
+      [
+        32.55,
+        44.5,
+        57.55
+      ],
+      [
+        67.45,
+        50.2,
+        92.45
+      ]
+    ],
+    "Axle_L50.0": [
+      [
+        41.0,
+        31.5,
+        66.0
+      ],
+      [
+        59.0,
+        73.6,
+        84.0
+      ]
+    ],
+    "61903_L50.0": [
+      [
+        35.0,
+        36.65,
+        60.0
+      ],
+      [
+        65.0,
+        43.65,
+        90.0
+      ]
+    ],
+    "Crown_L50.0": [
+      [
+        6.0,
+        51.0,
+        31.0
+      ],
+      [
+        94.0,
+        65.0,
+        119.0
+      ]
+    ],
+    "Flange_L150.0": [
+      [
+        132.55,
+        44.5,
+        57.55
+      ],
+      [
+        167.45,
+        50.2,
+        92.45
+      ]
+    ],
+    "Axle_L150.0": [
+      [
+        141.0,
+        31.5,
+        66.0
+      ],
+      [
+        159.0,
+        73.6,
+        84.0
+      ]
+    ],
+    "61903_L150.0": [
+      [
+        135.0,
+        36.65,
+        60.0
+      ],
+      [
+        165.0,
+        43.65,
+        90.0
+      ]
+    ],
+    "Crown_L150.0": [
+      [
+        106.0,
+        51.0,
+        31.0
+      ],
+      [
+        194.0,
+        65.0,
+        119.0
+      ]
+    ],
+    "Flange_L250.0": [
+      [
+        232.55,
+        44.5,
+        57.55
+      ],
+      [
+        267.45,
+        50.2,
+        92.45
+      ]
+    ],
+    "Axle_L250.0": [
+      [
+        241.0,
+        7.000000000000002,
+        66.0
+      ],
+      [
+        259.0,
+        73.6,
+        84.0
+      ]
+    ],
+    "61903_L250.0": [
+      [
+        235.0,
+        36.65,
+        60.0
+      ],
+      [
+        265.0,
+        43.65,
+        90.0
+      ]
+    ],
+    "Crown_L250.0": [
+      [
+        206.0,
+        51.0,
+        31.0
+      ],
+      [
+        294.0,
+        65.0,
+        119.0
+      ]
+    ],
+    "M16_gland_INSTALLATION_RESERVE": [
+      [
+        412.0,
+        -12.0,
+        33.0
+      ],
+      [
+        444.0,
+        12.0,
+        57.0
+      ]
+    ],
+    "Aramid_anchor_INSTALLATION_RESERVE": [
+      [
+        444.0,
+        -14.0,
+        31.0
+      ],
+      [
+        474.0,
+        14.0,
+        59.0
+      ]
+    ],
+    "RSD_thermal_angle": [
+      [
+        25.0,
+        -20.5,
+        26.0
+      ],
+      [
+        192.0,
+        -6.5,
+        98.0
+      ]
+    ],
+    "Hanging_bearing_bridge": [
+      [
+        232.0,
+        -38.0000000000001,
+        108.0
+      ],
+      [
+        308.0,
+        38.0000000000001,
+        110.0
+      ]
+    ],
+    "Pinion_hanging_support_R": [
+      [
+        275.5,
+        -33.0,
+        61.5
+      ],
+      [
+        300.5,
+        -6.0,
+        108.0
+      ]
+    ],
+    "Rear_inner_hanging_support_R": [
+      [
+        238.0,
+        -14.5,
+        65.5
+      ],
+      [
+        262.0,
+        -9.5,
+        108.0
+      ]
+    ],
+    "Lift_bracket_R": [
+      [
+        80.0,
+        -22.5,
+        109.0
+      ],
+      [
+        130.0,
+        -10.5,
+        146.0
+      ]
+    ],
+    "Pinion_hanging_support_L": [
+      [
+        275.5,
+        6.0,
+        61.5
+      ],
+      [
+        300.5,
+        33.0,
+        108.0
+      ]
+    ],
+    "Rear_inner_hanging_support_L": [
+      [
+        238.0,
+        9.5,
+        65.5
+      ],
+      [
+        262.0,
+        14.5,
+        108.0
+      ]
+    ],
+    "Lift_bracket_L": [
+      [
+        80.0,
+        10.5,
+        109.0
+      ],
+      [
+        130.0,
+        22.5,
+        146.0
+      ]
+    ],
+    "NUCLEO_insulation_tray_RESERVE": [
+      [
+        201.25,
+        -37.0,
+        25.5
+      ],
+      [
+        291.25,
+        37.0,
+        26.5
+      ]
+    ],
+    "HV_route_RESERVE": [
+      [
+        22.5,
+        -38.5,
+        112.5
+      ],
+      [
+        397.5,
+        -33.5,
+        119.5
+      ]
+    ],
+    "LV_route_RESERVE": [
+      [
+        29.0,
+        33.5,
+        112.5
+      ],
+      [
+        289.0,
+        38.5,
+        119.5
+      ]
+    ],
+    "BODY_R14": [
+      [
+        0.0,
+        -49.25,
+        25.5
+      ],
+      [
+        412.0,
+        49.25,
+        133.0
+      ]
+    ],
+    "BOTTOM_LID_R14": [
+      [
+        0.0,
+        -49.0,
+        21.5
+      ],
+      [
+        412.0,
+        49.0,
+        31.0
+      ]
+    ],
+    "61801_R279.5": [
+      [
+        277.0,
+        -30.0,
+        64.5
+      ],
+      [
+        282.0,
+        -9.0,
+        85.5
+      ]
+    ],
+    "Wheel_hub_R50.0": [
+      [
+        35.0,
+        -65.0,
+        60.0
+      ],
+      [
+        65.0,
+        -50.5,
+        90.0
+      ]
+    ],
+    "DIN471_17_ENVELOPE_R50.0": [
+      [
+        37.5,
+        -36.6,
+        62.5
+      ],
+      [
+        62.5,
+        -35.6,
+        87.5
+      ]
+    ],
+    "Inner_spacer_17p1_20_R50.0": [
+      [
+        40.0,
+        -44.5,
+        65.0
+      ],
+      [
+        60.0,
+        -43.65,
+        85.0
+      ]
+    ],
+    "Outer_spacer_25_30_R50.0": [
+      [
+        35.0,
+        -44.4,
+        60.0
+      ],
+      [
+        65.0,
+        -43.65,
+        90.0
+      ]
+    ],
+    "M8_washer_R50.0": [
+      [
+        38.0,
+        -63.0,
+        63.0
+      ],
+      [
+        62.0,
+        -61.0,
+        87.0
+      ]
+    ],
+    "DIN985_M8_REFERENCE_R50.0": [
+      [
+        43.5,
+        -71.0,
+        68.5
+      ],
+      [
+        56.5,
+        -63.0,
+        81.5
+      ]
+    ],
+    "Wheel_hub_R150.0": [
+      [
+        135.0,
+        -65.0,
+        60.0
+      ],
+      [
+        165.0,
+        -50.5,
+        90.0
+      ]
+    ],
+    "DIN471_17_ENVELOPE_R150.0": [
+      [
+        137.5,
+        -36.6,
+        62.5
+      ],
+      [
+        162.5,
+        -35.6,
+        87.5
+      ]
+    ],
+    "Inner_spacer_17p1_20_R150.0": [
+      [
+        140.0,
+        -44.5,
+        65.0
+      ],
+      [
+        160.0,
+        -43.65,
+        85.0
+      ]
+    ],
+    "Outer_spacer_25_30_R150.0": [
+      [
+        135.0,
+        -44.4,
+        60.0
+      ],
+      [
+        165.0,
+        -43.65,
+        90.0
+      ]
+    ],
+    "M8_washer_R150.0": [
+      [
+        138.0,
+        -63.0,
+        63.0
+      ],
+      [
+        162.0,
+        -61.0,
+        87.0
+      ]
+    ],
+    "DIN985_M8_REFERENCE_R150.0": [
+      [
+        143.5,
+        -71.0,
+        68.5
+      ],
+      [
+        156.5,
+        -63.0,
+        81.5
+      ]
+    ],
+    "Wheel_hub_R250.0": [
+      [
+        235.0,
+        -65.0,
+        60.0
+      ],
+      [
+        265.0,
+        -50.5,
+        90.0
+      ]
+    ],
+    "DIN471_17_ENVELOPE_R250.0": [
+      [
+        237.5,
+        -36.6,
+        62.5
+      ],
+      [
+        262.5,
+        -35.6,
+        87.5
+      ]
+    ],
+    "Inner_spacer_17p1_20_R250.0": [
+      [
+        240.0,
+        -44.5,
+        65.0
+      ],
+      [
+        260.0,
+        -43.65,
+        85.0
+      ]
+    ],
+    "Outer_spacer_25_30_R250.0": [
+      [
+        235.0,
+        -44.4,
+        60.0
+      ],
+      [
+        265.0,
+        -43.65,
+        90.0
+      ]
+    ],
+    "M8_washer_R250.0": [
+      [
+        238.0,
+        -63.0,
+        63.0
+      ],
+      [
+        262.0,
+        -61.0,
+        87.0
+      ]
+    ],
+    "DIN985_M8_REFERENCE_R250.0": [
+      [
+        243.5,
+        -71.0,
+        68.5
+      ],
+      [
+        256.5,
+        -63.0,
+        81.5
+      ]
+    ],
+    "Side_M3x8_R_00": [
+      [
+        32.0,
+        -50.0,
+        38.0
+      ],
+      [
+        38.0,
+        -42.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_R_01": [
+      [
+        32.0,
+        -50.0,
+        106.0
+      ],
+      [
+        38.0,
+        -42.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_R_02": [
+      [
+        72.0,
+        -50.0,
+        38.0
+      ],
+      [
+        78.0,
+        -42.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_R_03": [
+      [
+        72.0,
+        -50.0,
+        106.0
+      ],
+      [
+        78.0,
+        -42.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_R_04": [
+      [
+        109.0,
+        -50.0,
+        38.0
+      ],
+      [
+        115.0,
+        -42.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_R_05": [
+      [
+        109.0,
+        -50.0,
+        106.0
+      ],
+      [
+        115.0,
+        -42.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_R_06": [
+      [
+        147.0,
+        -50.0,
+        38.0
+      ],
+      [
+        153.0,
+        -42.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_R_07": [
+      [
+        147.0,
+        -50.0,
+        106.0
+      ],
+      [
+        153.0,
+        -42.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_R_08": [
+      [
+        185.0,
+        -50.0,
+        38.0
+      ],
+      [
+        191.0,
+        -42.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_R_09": [
+      [
+        185.0,
+        -50.0,
+        106.0
+      ],
+      [
+        191.0,
+        -42.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_R_10": [
+      [
+        222.0,
+        -50.0,
+        38.0
+      ],
+      [
+        228.0,
+        -42.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_R_11": [
+      [
+        222.0,
+        -50.0,
+        106.0
+      ],
+      [
+        228.0,
+        -42.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_R_12": [
+      [
+        262.0,
+        -50.0,
+        38.0
+      ],
+      [
+        268.0,
+        -42.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_R_13": [
+      [
+        262.0,
+        -50.0,
+        106.0
+      ],
+      [
+        268.0,
+        -42.0,
+        112.0
+      ]
+    ],
+    "61801_L279.5": [
+      [
+        277.0,
+        9.0,
+        64.5
+      ],
+      [
+        282.0,
+        30.0,
+        85.5
+      ]
+    ],
+    "Wheel_hub_L50.0": [
+      [
+        35.0,
+        50.5,
+        60.0
+      ],
+      [
+        65.0,
+        65.0,
+        90.0
+      ]
+    ],
+    "DIN471_17_ENVELOPE_L50.0": [
+      [
+        37.5,
+        35.6,
+        62.5
+      ],
+      [
+        62.5,
+        36.6,
+        87.5
+      ]
+    ],
+    "Inner_spacer_17p1_20_L50.0": [
+      [
+        40.0,
+        43.650000000000006,
+        65.0
+      ],
+      [
+        60.0,
+        44.50000000000001,
+        85.0
+      ]
+    ],
+    "Outer_spacer_25_30_L50.0": [
+      [
+        35.0,
+        43.65,
+        60.0
+      ],
+      [
+        65.0,
+        44.4,
+        90.0
+      ]
+    ],
+    "M8_washer_L50.0": [
+      [
+        38.0,
+        61.0,
+        63.0
+      ],
+      [
+        62.0,
+        63.0,
+        87.0
+      ]
+    ],
+    "DIN985_M8_REFERENCE_L50.0": [
+      [
+        43.5,
+        63.0,
+        68.5
+      ],
+      [
+        56.5,
+        71.0,
+        81.5
+      ]
+    ],
+    "Wheel_hub_L150.0": [
+      [
+        135.0,
+        50.5,
+        60.0
+      ],
+      [
+        165.0,
+        65.0,
+        90.0
+      ]
+    ],
+    "DIN471_17_ENVELOPE_L150.0": [
+      [
+        137.5,
+        35.6,
+        62.5
+      ],
+      [
+        162.5,
+        36.6,
+        87.5
+      ]
+    ],
+    "Inner_spacer_17p1_20_L150.0": [
+      [
+        140.0,
+        43.650000000000006,
+        65.0
+      ],
+      [
+        160.0,
+        44.50000000000001,
+        85.0
+      ]
+    ],
+    "Outer_spacer_25_30_L150.0": [
+      [
+        135.0,
+        43.65,
+        60.0
+      ],
+      [
+        165.0,
+        44.4,
+        90.0
+      ]
+    ],
+    "M8_washer_L150.0": [
+      [
+        138.0,
+        61.0,
+        63.0
+      ],
+      [
+        162.0,
+        63.0,
+        87.0
+      ]
+    ],
+    "DIN985_M8_REFERENCE_L150.0": [
+      [
+        143.5,
+        63.0,
+        68.5
+      ],
+      [
+        156.5,
+        71.0,
+        81.5
+      ]
+    ],
+    "Wheel_hub_L250.0": [
+      [
+        235.0,
+        50.5,
+        60.0
+      ],
+      [
+        265.0,
+        65.0,
+        90.0
+      ]
+    ],
+    "DIN471_17_ENVELOPE_L250.0": [
+      [
+        237.5,
+        35.6,
+        62.5
+      ],
+      [
+        262.5,
+        36.6,
+        87.5
+      ]
+    ],
+    "Inner_spacer_17p1_20_L250.0": [
+      [
+        240.0,
+        43.650000000000006,
+        65.0
+      ],
+      [
+        260.0,
+        44.50000000000001,
+        85.0
+      ]
+    ],
+    "Outer_spacer_25_30_L250.0": [
+      [
+        235.0,
+        43.65,
+        60.0
+      ],
+      [
+        265.0,
+        44.4,
+        90.0
+      ]
+    ],
+    "M8_washer_L250.0": [
+      [
+        238.0,
+        61.0,
+        63.0
+      ],
+      [
+        262.0,
+        63.0,
+        87.0
+      ]
+    ],
+    "DIN985_M8_REFERENCE_L250.0": [
+      [
+        243.5,
+        63.0,
+        68.5
+      ],
+      [
+        256.5,
+        71.0,
+        81.5
+      ]
+    ],
+    "Side_M3x8_L_00": [
+      [
+        32.0,
+        42.0,
+        38.0
+      ],
+      [
+        38.0,
+        50.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_L_01": [
+      [
+        32.0,
+        42.0,
+        106.0
+      ],
+      [
+        38.0,
+        50.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_L_02": [
+      [
+        72.0,
+        42.0,
+        38.0
+      ],
+      [
+        78.0,
+        50.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_L_03": [
+      [
+        72.0,
+        42.0,
+        106.0
+      ],
+      [
+        78.0,
+        50.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_L_04": [
+      [
+        109.0,
+        42.0,
+        38.0
+      ],
+      [
+        115.0,
+        50.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_L_05": [
+      [
+        109.0,
+        42.0,
+        106.0
+      ],
+      [
+        115.0,
+        50.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_L_06": [
+      [
+        147.0,
+        42.0,
+        38.0
+      ],
+      [
+        153.0,
+        50.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_L_07": [
+      [
+        147.0,
+        42.0,
+        106.0
+      ],
+      [
+        153.0,
+        50.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_L_08": [
+      [
+        185.0,
+        42.0,
+        38.0
+      ],
+      [
+        191.0,
+        50.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_L_09": [
+      [
+        185.0,
+        42.0,
+        106.0
+      ],
+      [
+        191.0,
+        50.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_L_10": [
+      [
+        222.0,
+        42.0,
+        38.0
+      ],
+      [
+        228.0,
+        50.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_L_11": [
+      [
+        222.0,
+        42.0,
+        106.0
+      ],
+      [
+        228.0,
+        50.0,
+        112.0
+      ]
+    ],
+    "Side_M3x8_L_12": [
+      [
+        262.0,
+        42.0,
+        38.0
+      ],
+      [
+        268.0,
+        50.0,
+        44.0
+      ]
+    ],
+    "Side_M3x8_L_13": [
+      [
+        262.0,
+        42.0,
+        106.0
+      ],
+      [
+        268.0,
+        50.0,
+        112.0
+      ]
+    ],
+    "Bottom_M3x8_00": [
+      [
+        25.0,
+        -49.0,
+        21.5
+      ],
+      [
+        31.0,
+        -43.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_01": [
+      [
+        25.0,
+        43.0,
+        21.5
+      ],
+      [
+        31.0,
+        49.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_02": [
+      [
+        75.0,
+        -49.0,
+        21.5
+      ],
+      [
+        81.0,
+        -43.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_03": [
+      [
+        75.0,
+        43.0,
+        21.5
+      ],
+      [
+        81.0,
+        49.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_04": [
+      [
+        125.0,
+        -49.0,
+        21.5
+      ],
+      [
+        131.0,
+        -43.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_05": [
+      [
+        125.0,
+        43.0,
+        21.5
+      ],
+      [
+        131.0,
+        49.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_06": [
+      [
+        175.0,
+        -49.0,
+        21.5
+      ],
+      [
+        181.0,
+        -43.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_07": [
+      [
+        175.0,
+        43.0,
+        21.5
+      ],
+      [
+        181.0,
+        49.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_08": [
+      [
+        225.0,
+        -49.0,
+        21.5
+      ],
+      [
+        231.0,
+        -43.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_09": [
+      [
+        225.0,
+        43.0,
+        21.5
+      ],
+      [
+        231.0,
+        49.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_10": [
+      [
+        275.0,
+        -49.0,
+        21.5
+      ],
+      [
+        281.0,
+        -43.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_11": [
+      [
+        275.0,
+        43.0,
+        21.5
+      ],
+      [
+        281.0,
+        49.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_12": [
+      [
+        325.0,
+        -49.0,
+        21.5
+      ],
+      [
+        331.0,
+        -43.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_13": [
+      [
+        325.0,
+        43.0,
+        21.5
+      ],
+      [
+        331.0,
+        49.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_14": [
+      [
+        375.0,
+        -49.0,
+        21.5
+      ],
+      [
+        381.0,
+        -43.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_15": [
+      [
+        375.0,
+        43.0,
+        21.5
+      ],
+      [
+        381.0,
+        49.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_16": [
+      [
+        3.0,
+        -31.0,
+        21.5
+      ],
+      [
+        9.0,
+        -25.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_17": [
+      [
+        3.0,
+        -3.0,
+        21.5
+      ],
+      [
+        9.0,
+        3.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_18": [
+      [
+        3.0,
+        25.0,
+        21.5
+      ],
+      [
+        9.0,
+        31.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_19": [
+      [
+        403.0,
+        -31.0,
+        21.5
+      ],
+      [
+        409.0,
+        -25.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_20": [
+      [
+        403.0,
+        -3.0,
+        21.5
+      ],
+      [
+        409.0,
+        3.0,
+        29.500000000000004
+      ]
+    ],
+    "Bottom_M3x8_21": [
+      [
+        403.0,
+        25.0,
+        21.5
+      ],
+      [
+        409.0,
+        31.0,
+        29.500000000000004
+      ]
+    ]
+  },
+  "LOW_assembly_bounds_mm": [
+    [
+      -205.68761716651858,
+      -73.6,
+      21.5
+    ],
+    [
+      474.0,
+      73.6,
+      150.0
+    ]
+  ],
+  "body_plus_bottom_lid_aluminum_mass_kg": 2.686879312533352,
+  "nominal_bottom_corner_radial_clearance_mm": 0.546,
+  "nominal_thread_tip_radial_clearance_mm": 1.108,
+  "solid_validity": {
+    "RSD100D24": true,
+    "RSD_terminals_22": true,
+    "RSD_terminals_195": true,
+    "NUCLEO_F446RE": true,
+    "Pololu_2855_12V": true,
+    "RECOM_5V_carrier_ALLOWANCE": true,
+    "MPRLS_3965": true,
+    "TMP117_4821": true,
+    "SEBOKS_SU1P": true,
+    "Waveshare_RS485_C": true,
+    "DRV8871_left": true,
+    "DRV8871_right": true,
+    "DRV8871_rotate": true,
+    "INA260_left_TERMINAL_ALLOWANCE": true,
+    "INA260_right_TERMINAL_ALLOWANCE": true,
+    "24V_distribution_RESERVE": true,
+    "Rear_tray": true,
+    "Pololu4695_R": true,
+    "Motor_mount_R": true,
+    "Coupler_6_6_R": true,
+    "Pinion_shaft_R": true,
+    "61801_R295.5": true,
+    "Z16_ENVELOPE_R": true,
+    "Z40_ENVELOPE_R": true,
+    "61800_R": true,
+    "Side_cover_R": true,
+    "Z50_ENVELOPE_R50.0": true,
+    "Z50_ENVELOPE_R100.0": true,
+    "Z50_ENVELOPE_R150.0": true,
+    "Z50_ENVELOPE_R200.0": true,
+    "Z50_ENVELOPE_R250.0": true,
+    "Idler_pin_R100": true,
+    "6701_R100": true,
+    "Idler_pin_R200": true,
+    "6701_R200": true,
+    "Flange_R50.0": true,
+    "Axle_R50.0": true,
+    "61903_R50.0": true,
+    "Crown_R50.0": true,
+    "Flange_R150.0": true,
+    "Axle_R150.0": true,
+    "61903_R150.0": true,
+    "Crown_R150.0": true,
+    "Flange_R250.0": true,
+    "Axle_R250.0": true,
+    "61903_R250.0": true,
+    "Crown_R250.0": true,
+    "Pololu4695_L": true,
+    "Motor_mount_L": true,
+    "Coupler_6_6_L": true,
+    "Pinion_shaft_L": true,
+    "61801_L295.5": true,
+    "Z16_ENVELOPE_L": true,
+    "Z40_ENVELOPE_L": true,
+    "61800_L": true,
+    "Side_cover_L": true,
+    "Z50_ENVELOPE_L50.0": true,
+    "Z50_ENVELOPE_L100.0": true,
+    "Z50_ENVELOPE_L150.0": true,
+    "Z50_ENVELOPE_L200.0": true,
+    "Z50_ENVELOPE_L250.0": true,
+    "Idler_pin_L100": true,
+    "6701_L100": true,
+    "Idler_pin_L200": true,
+    "6701_L200": true,
+    "Flange_L50.0": true,
+    "Axle_L50.0": true,
+    "61903_L50.0": true,
+    "Crown_L50.0": true,
+    "Flange_L150.0": true,
+    "Axle_L150.0": true,
+    "61903_L150.0": true,
+    "Crown_L150.0": true,
+    "Flange_L250.0": true,
+    "Axle_L250.0": true,
+    "61903_L250.0": true,
+    "Crown_L250.0": true,
+    "M16_gland_INSTALLATION_RESERVE": true,
+    "Aramid_anchor_INSTALLATION_RESERVE": true,
+    "RSD_thermal_angle": true,
+    "Hanging_bearing_bridge": true,
+    "Pinion_hanging_support_R": true,
+    "Rear_inner_hanging_support_R": true,
+    "Lift_bracket_R": true,
+    "Pinion_hanging_support_L": true,
+    "Rear_inner_hanging_support_L": true,
+    "Lift_bracket_L": true,
+    "NUCLEO_insulation_tray_RESERVE": true,
+    "HV_route_RESERVE": true,
+    "LV_route_RESERVE": true,
+    "BODY_R14": true,
+    "BOTTOM_LID_R14": true,
+    "61801_R279.5": true,
+    "Wheel_hub_R50.0": true,
+    "DIN471_17_ENVELOPE_R50.0": true,
+    "Inner_spacer_17p1_20_R50.0": true,
+    "Outer_spacer_25_30_R50.0": true,
+    "M8_washer_R50.0": true,
+    "DIN985_M8_REFERENCE_R50.0": true,
+    "Wheel_hub_R150.0": true,
+    "DIN471_17_ENVELOPE_R150.0": true,
+    "Inner_spacer_17p1_20_R150.0": true,
+    "Outer_spacer_25_30_R150.0": true,
+    "M8_washer_R150.0": true,
+    "DIN985_M8_REFERENCE_R150.0": true,
+    "Wheel_hub_R250.0": true,
+    "DIN471_17_ENVELOPE_R250.0": true,
+    "Inner_spacer_17p1_20_R250.0": true,
+    "Outer_spacer_25_30_R250.0": true,
+    "M8_washer_R250.0": true,
+    "DIN985_M8_REFERENCE_R250.0": true,
+    "Side_M3x8_R_00": true,
+    "Side_M3x8_R_01": true,
+    "Side_M3x8_R_02": true,
+    "Side_M3x8_R_03": true,
+    "Side_M3x8_R_04": true,
+    "Side_M3x8_R_05": true,
+    "Side_M3x8_R_06": true,
+    "Side_M3x8_R_07": true,
+    "Side_M3x8_R_08": true,
+    "Side_M3x8_R_09": true,
+    "Side_M3x8_R_10": true,
+    "Side_M3x8_R_11": true,
+    "Side_M3x8_R_12": true,
+    "Side_M3x8_R_13": true,
+    "61801_L279.5": true,
+    "Wheel_hub_L50.0": true,
+    "DIN471_17_ENVELOPE_L50.0": true,
+    "Inner_spacer_17p1_20_L50.0": true,
+    "Outer_spacer_25_30_L50.0": true,
+    "M8_washer_L50.0": true,
+    "DIN985_M8_REFERENCE_L50.0": true,
+    "Wheel_hub_L150.0": true,
+    "DIN471_17_ENVELOPE_L150.0": true,
+    "Inner_spacer_17p1_20_L150.0": true,
+    "Outer_spacer_25_30_L150.0": true,
+    "M8_washer_L150.0": true,
+    "DIN985_M8_REFERENCE_L150.0": true,
+    "Wheel_hub_L250.0": true,
+    "DIN471_17_ENVELOPE_L250.0": true,
+    "Inner_spacer_17p1_20_L250.0": true,
+    "Outer_spacer_25_30_L250.0": true,
+    "M8_washer_L250.0": true,
+    "DIN985_M8_REFERENCE_L250.0": true,
+    "Side_M3x8_L_00": true,
+    "Side_M3x8_L_01": true,
+    "Side_M3x8_L_02": true,
+    "Side_M3x8_L_03": true,
+    "Side_M3x8_L_04": true,
+    "Side_M3x8_L_05": true,
+    "Side_M3x8_L_06": true,
+    "Side_M3x8_L_07": true,
+    "Side_M3x8_L_08": true,
+    "Side_M3x8_L_09": true,
+    "Side_M3x8_L_10": true,
+    "Side_M3x8_L_11": true,
+    "Side_M3x8_L_12": true,
+    "Side_M3x8_L_13": true,
+    "Bottom_M3x8_00": true,
+    "Bottom_M3x8_01": true,
+    "Bottom_M3x8_02": true,
+    "Bottom_M3x8_03": true,
+    "Bottom_M3x8_04": true,
+    "Bottom_M3x8_05": true,
+    "Bottom_M3x8_06": true,
+    "Bottom_M3x8_07": true,
+    "Bottom_M3x8_08": true,
+    "Bottom_M3x8_09": true,
+    "Bottom_M3x8_10": true,
+    "Bottom_M3x8_11": true,
+    "Bottom_M3x8_12": true,
+    "Bottom_M3x8_13": true,
+    "Bottom_M3x8_14": true,
+    "Bottom_M3x8_15": true,
+    "Bottom_M3x8_16": true,
+    "Bottom_M3x8_17": true,
+    "Bottom_M3x8_18": true,
+    "Bottom_M3x8_19": true,
+    "Bottom_M3x8_20": true,
+    "Bottom_M3x8_21": true
+  },
+  "quick": true
+}
