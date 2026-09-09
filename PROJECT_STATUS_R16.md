@@ -16,6 +16,8 @@ packaging baseline; the result is still nominal CAD only.
 - central two-link manual lift, 80 mm links, positive lock, 150 N spring candidate;
 - separate 88 × 54 × 48 mm armoured camera pod with recessed window, front ring
   and replaceable four-sided bumper cage;
+- two Pololu 3046-class PAN/ROTATE motor envelopes are mounted on the outside
+  of the protected yoke cheeks, leaving the optical cavity serviceable;
 - RunCam Phoenix 2 SE V2 remains the board-envelope candidate;
 - owner’s existing six-core Proteus cable remains the tether baseline.
 - onboard HV converter candidate is now Mean Well RSD-60H-24 (128 × 60 × 25 mm);
