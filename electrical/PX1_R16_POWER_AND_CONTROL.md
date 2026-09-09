@@ -13,6 +13,7 @@ fusing, creepage or thermal drawings.
 | Traction/camera bridges | 4× Adafruit 3190 DRV8871 | Four carriers on the high service rail; two traction and two camera channels |
 | Body controller | NUCLEO-F446RE | 82.5×70 mm reserve on the rear tray |
 | Camera | RunCam Phoenix 2 SE V2 | Board stays in the separate armoured pod |
+| Camera actuators | 2× Pololu 3046 HPCB 12 V 1000:1 class | Motor envelopes sit on the two protected yoke cheeks; exact gear/limit stack remains open |
 | Command link | Isolated TTL→RS485 module | Body reserve beside the video transmitter |
 
 ## Power budget for the first 40 m demonstrator
@@ -21,7 +22,7 @@ The R16 mechanical reserve is based on the traction drivers being configured
 for a **0.64 A/channel bench current limit** and the two camera channels being
 limited to the lower candidate in the inherited BOM.  At 24 V, the two traction
 channels consume at most about 30.7 W under that *electronic* limit.  The camera
-12 V rail, imager, LEDs, MCU, RS485 and video transmitter have to be measured;
+12 V rail, two 3046 actuators, imager, LEDs, MCU, RS485 and video transmitter have to be measured;
 they are not granted the motor stall current.  The RSD-60H-24 60 W rating is
 therefore a bounded prototype target with thermal logging, not an unlimited
 stall-power allowance.
