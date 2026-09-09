@@ -53,10 +53,11 @@ sector and pin are modeled; the 150 N spring is only an installation envelope.
 
 The old camera envelope is replaced by a separate **88 × 54 × 48 mm** rounded
 armoured pod.  It has a recessed 27 mm optical opening, a mechanically retained
-front guard ring, an internal elastomer-isolator envelope for the RunCam Phoenix
-2 SE V2 board, and a keyed service interface with hand-release yoke pins.  The
-pod nests in a 92 × 60 mm open roof pocket at LOW and has zero nominal volume
-outside the ideal ID150 pipe in that pose.
+front guard ring, a shallow four-sided replaceable bumper cage, an internal
+elastomer-isolator envelope for the RunCam Phoenix 2 SE V2 board, and a keyed
+service interface with hand-release yoke pins.  The pod nests in a 92 × 60 mm
+open roof pocket at LOW and has zero nominal volume outside the ideal ID150
+pipe in that pose.
 
 ### Силовая электроника внутри корпуса
 
