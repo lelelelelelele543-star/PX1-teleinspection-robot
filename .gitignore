@@ -11,3 +11,6 @@ build_r14_*.log
 build_r15/
 build_r15_*.log
 build_r15_baseline/
+build_r16/
+build_r16_*/
+
