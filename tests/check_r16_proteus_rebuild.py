@@ -40,6 +40,8 @@ def main() -> int:
     assert report["camera_fit"]["front_guard_present"]
     assert report["camera_fit"]["camera_actuator_count"] == 2
     assert len([n for n in parts if n.startswith("Camera") and "Motor" in n]) == 2
+    assert report["selected_collision_checks"]["camera_pan_motor_vs_pod"] == 0.0
+    assert report["selected_collision_checks"]["camera_rotate_motor_vs_pod"] == 0.0
     assert not report["internal_packaging"]["outside_dry_envelope_mm3"]
     assert not report["internal_packaging"]["reserve_collisions_mm3"]
     assert report["rear_snag"]["parts_below_wheel_contact_plane"] == []
