@@ -1,0 +1,94 @@
+{
+  "revision": "R15",
+  "date": "2026-09-09",
+  "inherits": "bom/PX1_R14_COMPONENTS.json",
+  "scope": "Mechanical geometry corrections and wheel-hub keys; not a complete procurement/manufacturing release.",
+  "procurement_status": "No orders placed. Russian seller stock, grade certificates and delivery are not confirmed by this revision.",
+  "correction": "R14 assembly PASS was rejected by an independent audit. Retained component selections do not imply that R14 geometry passed.",
+  "updates": [
+    {
+      "id": "F14_05",
+      "qty": 6,
+      "part": "Ganter DIN 6885-5-5-10-A-NI",
+      "material_candidate": "AISI 316Ti",
+      "status": "CATALOG_SIZE_SELECTED_LOCAL_SUPPLIER_AND_STRENGTH_OPEN",
+      "source": "https://www.ganternorm.com/en/products/3.2-Mounting-Positioning-Leveling-with-Retaining-Cables-Screws-Clamping-and-Supporting-Elements/Positioning-elements-Clamping-pads/DIN-6885-Parallel-Keys-Stainless-Steel",
+      "keyway_source": "https://live-katalog.ganternorm.com/pdf/ganter/en/6885-1.pdf?dispositiontype=attachment",
+      "nominal_key_mm": [5, 5, 10],
+      "modeled_end_radius_mm": 2.5,
+      "shaft_keyway_depth_mm": 3.0,
+      "hub_keyway_radial_depth_from_bore_mm": 2.3,
+      "cad_hub_slot_width_mm": 5.05,
+      "note": "Six keys and both mating keyways are now actual named/cut solids. CAD clearances are not released manufacturing tolerances. Ganter catalog lists the exact size in packs of10."
+    },
+    {
+      "id": "F14_01",
+      "qty": 50,
+      "part": "DIN7991 M3x8",
+      "status": "CONNECTED_CAD_ENVELOPE_COUNTERSINKS_MODELED_GRADE_AND_TORQUE_OPEN",
+      "source": "https://www.aspenfasteners.com/content/pdf/Metric_DIN_7991_spec.pdf",
+      "breakdown": {"side_covers": 28, "bottom_lid": 22},
+      "head_diameter_mm": 6,
+      "head_height_mm": 1.7,
+      "nominal_tap_engagement_mm": 4,
+      "note": "R14's two disconnected cylinders replaced by a connected shank,90deg cone and rim; matching clearance bores and countersinks cut. Threads are bounded masks, not modeled flanks."
+    },
+    {
+      "id": "F14_02",
+      "qty": 6,
+      "part": "DIN985 M8",
+      "status": "HEX_ENVELOPE_MODELED_GRADE_AND_THREAD_DETAIL_OPEN",
+      "across_flats_mm": 13,
+      "height_mm": 8,
+      "conservative_across_corners_mm": 15.01110699893027,
+      "note": "R14 diameter13 cylinder understated corner envelope. R15 uses the full hexagon."
+    },
+    {
+      "id": "B03",
+      "qty": 4,
+      "part": "61801 size12x21x5",
+      "status": "NOMINAL_SEATS_ALIGNED_VARIANT_FITS_AND_AXIAL_LOCKS_OPEN",
+      "bearing_centres_X_mm": [279.5, 295.5],
+      "note": "Both support bores rebuilt at their own bearing coordinates; entire bracket is no longer translated."
+    },
+    {
+      "id": "M15_BODY",
+      "qty": 1,
+      "part": "Machined body with side sealing flanges",
+      "status": "NOMINAL_GEOMETRY_ONLY",
+      "side_flange_abs_Y_mm": [39.5, 46],
+      "side_flange_outer_XZ_mm": [272, 78],
+      "corner_radius_mm": 6,
+      "note": "The6.5mm flange replaces R14's incorrect13mm addition. Full4mm bridge support lands restored."
+    },
+    {
+      "id": "M15_SIDE",
+      "qty": 2,
+      "part": "Machined removable side plates",
+      "status": "NOMINAL_GEOMETRY_ONLY",
+      "outer_XZ_mm": [272, 76],
+      "plate_thickness_mm": 4,
+      "corner_radius_mm": 6,
+      "note": "Rounded rectangle retains all corner bolt lands; internal bearing bosses and nominal seal grooves included."
+    },
+    {
+      "id": "M15_THERMAL",
+      "qty": 1,
+      "part": "RSD thermal angle",
+      "status": "NOMINAL_CONTACT_RESTORED_THERMAL_AND_FASTENER_QUALIFICATION_OPEN",
+      "foot_bottom_Z_mm": 25.5,
+      "foot_top_Z_mm": 28,
+      "note": "The previous0.5mm unsupported gap is removed; face contact does not certify heat flow or clamping."
+    }
+  ],
+  "unchanged_architecture": {
+    "wheel_stations_X_mm": [50, 150, 250],
+    "idler_stations_X_mm": [100, 200],
+    "traction_motors": "2x Pololu4695",
+    "side_gears": "5x Z50 m1 per side, tooth/retention design still open",
+    "rear_input_X_mm": 250,
+    "lift": "manual120mm parallelogram,150N spring candidate",
+    "main_tether": "existing reinforced six-core copper Proteus tether;40m first demo",
+    "custom_electronic_PCB": false
+  }
+}
