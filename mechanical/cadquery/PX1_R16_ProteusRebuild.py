@@ -763,6 +763,8 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
         "camera_pod_vs_saddle": overlap(parts["CameraPod_ArmouredShell_R16"], parts["CameraRecessSaddle_R16"]),
         "lift_link_L_vs_camera_pod": overlap(parts["LiftUpperLink_L"], parts["CameraPod_ArmouredShell_R16"]),
         "lift_link_R_vs_camera_pod": overlap(parts["LiftUpperLink_R"], parts["CameraPod_ArmouredShell_R16"]),
+        "camera_pan_motor_vs_pod": overlap(parts["CameraPanMotor_Pololu3046_reserve"], parts["CameraPod_ArmouredShell_R16"]),
+        "camera_rotate_motor_vs_pod": overlap(parts["CameraRotateMotor_Pololu3046_reserve"], parts["CameraPod_ArmouredShell_R16"]),
     }
     report["selected_collision_checks"] = checks
     bad = bool(report["invalid_parts"] or report["pipe_outside_mm3"])
@@ -771,6 +773,7 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
     bad |= any(abs(x - LIFT_LINK_L) > 0.05 for x in (low_l1, low_l2, high_l1, high_l2))
     bad |= checks["camera_pod_vs_saddle"] > 0.1
     bad |= checks["lift_link_L_vs_camera_pod"] > 0.1 or checks["lift_link_R_vs_camera_pod"] > 0.1
+    bad |= checks["camera_pan_motor_vs_pod"] > 0.1 or checks["camera_rotate_motor_vs_pod"] > 0.1
     bad |= bool(dry_outside or reserve_collisions)
     report["status"] = "FAIL_R16_NOMINAL_PACKAGING" if bad else "PASS_R16_NOMINAL_PACKAGING_STUDY"
     out.mkdir(parents=True, exist_ok=True)
