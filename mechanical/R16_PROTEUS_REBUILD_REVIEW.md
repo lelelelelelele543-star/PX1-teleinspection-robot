@@ -56,6 +56,17 @@ front guard ring, an internal elastomer-isolator envelope for the RunCam Phoenix
 pod nests in a 92 × 60 mm open roof pocket at LOW and has zero nominal volume
 outside the ideal ID150 pipe in that pose.
 
+### Силовая электроника внутри корпуса
+
+The previous RSD-100D-24 reserve was not accepted: its 161 × 68 × 36 mm body
+collided with the motor/driver reserve once the body was made CRP-150-like.
+R16 uses a **Mean Well RSD-60H-24** candidate (128 × 60 × 25 mm, 60 W,
+40…160 VDC input, 24 V/2.5 A nominal output) in the front dry bay.  The two
+Pololu 4695 motor envelopes are staggered in X and the NUCLEO/DRV8871/SU-1P
+envelopes are checked as separate, non-overlapping reserves.  This is a
+packaging and power-budget candidate, not a thermal or electrical safety
+release.
+
 ## CAD checks recorded
 
 The generated `validation.json` records:
@@ -68,6 +79,8 @@ The generated `validation.json` records:
 - zero nominal camera-pod/saddle and lift-link/camera collisions;
 - six hand-accessible wheel retainers;
 - body-plus-wheel width exactly 133 mm.
+- body electronics reserve boxes stay inside the 287 × 72 × 66 mm dry envelope
+  without nominal overlaps.
 
 Wheel/shaft/retainer intersection volumes are intentionally kept as an
 **advisory** in the report because the wheel tread is the compliant pipe
