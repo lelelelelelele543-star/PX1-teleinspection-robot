@@ -1,0 +1,40 @@
+{
+  "audited_revision": "R14",
+  "audit_date": "2026-09-09",
+  "status": "R14_PASS_REJECTED_BY_INDEPENDENT_AUDIT",
+  "cadquery": "2.7.0",
+  "physical_test": false,
+  "r14_source_sha256": "34609fe6d704797f0f454ae72f3bd6de458edf7e0f2352b31dc17a02d2223990",
+  "audited_brep_sha256": {
+    "BODY_R14": "817fe8d0d0c74aca6d8e8a59b0a4109a5c6422ffc2a3192a896380617673a440",
+    "BOTTOM_LID_R14": "bef768a0aafa334a56d660e69a78a6e528268bf35792834cc9fd9fa29d018eb0",
+    "Bottom_M3x8_00": "0b62dc136b99aa08fb7f11280f0ba0e53ab93dde099cf533c8e440561f078d3e",
+    "HV_route_RESERVE": "66b05118e46340dc10590ad9452917b093920891ed69500aa84818acaf2475c3",
+    "Hanging_bearing_bridge": "4b6ebf1eefcb8f503a820fda7e5e795db32bf119cb3335d92ec9f58175085be7",
+    "LV_route_RESERVE": "0b3a7bb5ce7c14f36554c7f8c49fe4d3884d401171f04f14102a6bec3abae3d2",
+    "RSD_thermal_angle": "eba06858b2f6977f54fc321dac1c09d1c2dfd6590666edccb235209d653f37c5",
+    "Side_M3x8_R_00": "37d5ea8c87c518888d412bf30e62cf4edf53dbba045477e946984d1cd55ea300",
+    "Side_cover_L": "12a8c53cef9c33ea160679d43897f95d94e6a869d3ebff1ff3b4cab60a48fb5b",
+    "Side_cover_R": "70e6166ac4ad67448a74a6ac5bc41715b2ff86f8c586a716c6635c70ab5bb7ad"
+  },
+  "unexempted_overlap_mm3": {
+    "Side_cover_R__BODY_R14": 18885.389680094067,
+    "Side_cover_L__BODY_R14": 18885.389680094064,
+    "Hanging_bearing_bridge__BODY_R14": 355.37240080011645,
+    "HV_route_RESERVE__BODY_R14": 889.3125,
+    "LV_route_RESERVE__BODY_R14": 867.375
+  },
+  "thermal_angle_to_lid_gap_mm": 0.5,
+  "sample_fastener_solid_counts": {
+    "Side_M3x8_R_00": 2,
+    "Bottom_M3x8_00": 2
+  },
+  "findings": [
+    "The cover/body and bridge/body overlaps are volumes, not face contacts.",
+    "R14 omits housing from route collision checks.",
+    "R14 omits all fasteners/references from static checks.",
+    "R14 does not check moving lift parts against one another.",
+    "R14's side withdrawal group omits gears, idlers and the rear bevel.",
+    "This audit samples named BREP geometry, not the entire R14 export."
+  ]
+}
