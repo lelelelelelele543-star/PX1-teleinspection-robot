@@ -1,0 +1,107 @@
+{
+  "revision": "R16",
+  "status": "PIN_ALLOCATION_ONLY_NOT_FLASHABLE",
+  "board": "NUCLEO-F446RE MB1136, full board with ST-LINK",
+  "logic_V": 3.3,
+  "pins": {
+    "traction_left": [
+      "PA6/TIM3_CH1/DRV_L_IN1",
+      "PA7/TIM3_CH2/DRV_L_IN2"
+    ],
+    "traction_right": [
+      "PB0/TIM3_CH3/DRV_R_IN1",
+      "PB1/TIM3_CH4/DRV_R_IN2"
+    ],
+    "camera_pan": [
+      "PA8/TIM1_CH1/DRV_PAN_IN1",
+      "PA9/TIM1_CH2/DRV_PAN_IN2"
+    ],
+    "camera_tilt": [
+      "PA10/TIM1_CH3/DRV_TILT_IN1",
+      "PA11/TIM1_CH4/DRV_TILT_IN2"
+    ],
+    "encoder_left": [
+      "PA0/TIM2_CH1",
+      "PA1/TIM2_CH2"
+    ],
+    "encoder_right": [
+      "PB6/TIM4_CH1",
+      "PB7/TIM4_CH2"
+    ],
+    "main_RS485": [
+      "PC10/USART3_TX",
+      "PC11/USART3_RX"
+    ],
+    "camera_UART": [
+      "PC6/USART6_TX",
+      "PC7/USART6_RX"
+    ],
+    "body_I2C": [
+      "PB8/I2C1_SCL",
+      "PB9/I2C1_SDA"
+    ],
+    "pressure_ADC": "PC0/ADC1_IN10",
+    "bus_ADC": "PC1/ADC1_IN11",
+    "temperature_ADC": "PC2/ADC1_IN12",
+    "conditioned_leak": "PC4",
+    "conditioned_service_fault": "PC5",
+    "estop": "PB13"
+  },
+  "reserved": [
+    "PA2/STLINK_VCP_TX",
+    "PA3/STLINK_VCP_RX",
+    "PA13/SWDIO",
+    "PA14/SWCLK"
+  ],
+  "driver": {
+    "part": "Adafruit3190_DRV8871",
+    "interface": "IN1/IN2; both inputs are PWM-capable; firmware owns slew, timeout and re-arm",
+    "channels": {
+      "traction_left": {
+        "R1_ohm": 100000,
+        "tolerance_pct": 1,
+        "bench_current_limit_A": 0.64
+      },
+      "traction_right": {
+        "R1_ohm": 100000,
+        "tolerance_pct": 1,
+        "bench_current_limit_A": 0.64
+      },
+      "camera_pan": {
+        "R1_ohm": 390000,
+        "tolerance_pct": 1,
+        "bench_current_limit_A": 0.164
+      },
+      "camera_tilt": {
+        "R1_ohm": 390000,
+        "tolerance_pct": 1,
+        "bench_current_limit_A": 0.164
+      }
+    },
+    "stop_IN1": 0,
+    "stop_IN2": 0
+  },
+  "power": {
+    "tether_input_class": "40..160 VDC candidate; surface fuse, precharge and E-stop required",
+    "onboard_converter": "Mean Well RSD-60H-24",
+    "bus_nominal_V": 24,
+    "converter_nominal_W": 60,
+    "camera_rail": "D24V22F12 12 V reserve; measure real camera/video load"
+  },
+  "timing": {
+    "pwm_hz_target": 20000,
+    "control_period_ms": 10,
+    "command_timeout_ms": 250,
+    "reverse_dwell_ms": 50,
+    "IWDG_ms_target": 100,
+    "explicit_rearm": true
+  },
+  "notes": [
+    "This profile is a nominal R16 pin allocation for packaging and harness work; no BIN has been flashed or hardware-tested.",
+    "R16 keeps the R12 traction and encoder map. TIM1 pins PA8..PA11 are reserved as four independent camera-driver inputs.",
+    "PC6/PC7 are assigned to the optional RunCam UART; remove this harness if the selected camera has no control UART.",
+    "Encoder outputs need verified 3.3 V levels; no 5 V directly to the MCU is assumed safe.",
+    "DRV8871 R1 values and current limits are bench targets until the actual carrier revision is measured.",
+    "A surface hardware contactor/precharge/discharge path and tether interlock are mandatory; firmware is not the HV isolator."
+  ]
+}
