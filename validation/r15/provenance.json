@@ -1,0 +1,1038 @@
+{
+  "r13_source_sha256": "513c93cf8c6fce870b60b8a763b43557358fb538a902e99b55fa3d2b8d4294ba",
+  "motor_step_sha256": "a2450812d02c82cf362dfab5a6d0c4fbe801a90bee45602c5e8390ccb8cb8aef",
+  "cadquery": "2.7.0",
+  "r12_source_sha256": "3845aaeef5c04b4749f9256ac257bc50e7e6a1b3e518c79600b90edea4f3c330",
+  "r13_cache_brep_sha256": {
+    "RSD100D24": "fabe66bf9a35332e560d0b5412a14a63548e52061ab6693ac5b63f6877b73f49",
+    "RSD_terminals_22": "017a5e6b0449f48e0076cf0551f130b622dcefb33a483bb4a43984f2417b7fd1",
+    "RSD_terminals_195": "db8b8ac265415764ba1118f33a32a71e316b5a673f80d99efef35cc8bd2eb914",
+    "NUCLEO_F446RE": "d38fdeeab134d09faea267bb26e336ff36717c7bfc4d75f473f3c39ee8a2affd",
+    "Pololu_2855_12V": "e9ecb9fb981fa2e0db055cd24cf2fa7d3352c366c7a4e1a3edbb0b6283d120d1",
+    "RECOM_5V_carrier_ALLOWANCE": "7e76ed7b3bfe74036026e56a823ee2b2b883ae1d5f6a4b2e2db4d81678d1229e",
+    "MPRLS_3965": "1eee996e66e98bb24c9eb50c4dd8568e4c731087cbcff055ef493c3c7e38c35d",
+    "TMP117_4821": "ad7737cdc081b96cf6a92feb2b8ce3359980bca98ef0c4bc50b52ba715bb6a8d",
+    "SEBOKS_SU1P": "c0f987e72d2e4e74fbfacd6f7865e09c7f2d86ca6e192343bbb0900752d48b01",
+    "Waveshare_RS485_C": "305c09a72e6d7244028a09ff2c927e9acf773ffae2c5f8fd9ec279c1fd6abd0b",
+    "DRV8871_left": "dc2465535e7f0bdca66955af181c6eac90c24ceadc5e1cb3f45017f6323efc15",
+    "DRV8871_right": "e314f1487233016132987b3eabc302b85c1632d522fdcc9dcafda9b27e6de32f",
+    "DRV8871_rotate": "3817f067ccac5fbf4bbfe48fbd429dfabf8dc4596fb461fe5fea574f134a5ff8",
+    "INA260_left_TERMINAL_ALLOWANCE": "8dfcff938d62c24a4d14bbe511bcae0bb17cb02742f15c0741535448ac915e90",
+    "INA260_right_TERMINAL_ALLOWANCE": "0364e4718a85767da8ed2039ff596910e26b1c35866bdded822c875b2c09f729",
+    "24V_distribution_RESERVE": "01d3720254a2084b454f913305ac57e63d0667f2128d876ce0ddc85139dddc05",
+    "Rear_tray": "a96c0e452fe1a206856359a8d99f346713655653bb5edad9b1bba800dc9fcbb2",
+    "Pololu4695_R": "97e20cb15b68245f12bd0a1d11d583bed2f91a01d4f43d1cf8ae027a358f32f5",
+    "Motor_mount_R": "d0b77b339326549613ae4e0dd31597919d6fae6f9e1ae8c4d7fd6b0fd2e154df",
+    "Coupler_6_6_R": "5ecc0367883a3d483883d04f3de8899286e5c9680bd20198de4ce42360aa8163",
+    "Pinion_shaft_R": "be3d9a37e904480d33595edb095dd94ed3552593e444cca97bd45e695b1bdd51",
+    "61801_R278.5": "6bed7c382b848513efe3ec456319d2f70eee9b4be0449b7d019d700f0d014baf",
+    "61801_R295.5": "1bb70fc7898a67b99a13837a493180b5a2f2cf7a2d8ade66c1596fdf722b1c7a",
+    "Z16_ENVELOPE_R": "26fd3d32aa8aabc081e03e99a572523cbe5673010cf103151aeb013f87ff8b88",
+    "Z40_ENVELOPE_R": "cb8909b9b0799b5c9053e5f0f751206075b4d8f51b10bdeddc43bc83d8756c8e",
+    "61800_R": "98f762be53201777dbd08103bf5e44dce433ac1df566b93201e76b891ed7b399",
+    "Side_cover_R": "fd53013c9964b9a4561282607c65f785ea9822fe4f81b93fee6790f21c1ed30d",
+    "Z50_ENVELOPE_R50.0": "5af5d4ece443ab542956197366d624680782db83589bf3cd15913dd5f586e8ce",
+    "Z50_ENVELOPE_R100.0": "a93d7bc64072195a0c245ec3c522b77cae9c0bd947ba9903bf279102293db7d0",
+    "Z50_ENVELOPE_R150.0": "51eab75c7c14006d1d4807139c44e1ee81b90899a22f45535ab7368ad503ec98",
+    "Z50_ENVELOPE_R200.0": "b6d8b488788505efb4d8612c280778fbc42345fd1d258f2a3397d648990236a2",
+    "Z50_ENVELOPE_R250.0": "2f8d4e8134c7576696511006a7a2e3be9fc1f3fc7ac7d903b167b4935811ca51",
+    "Idler_pin_R100": "f6a0efbbef27ba9afabc78ddda813bc2859f4e6eda298c576b959840802a4fec",
+    "6701_R100": "9f3704113ce682b1ddabf0dbbc1b998815c7fdc9263ea3685379529ff18574b7",
+    "Idler_pin_R200": "74ca9cdc7e6faf0e35812973a6c424dd07472986a58bf976af81b082e1d6038f",
+    "6701_R200": "4f199489d71298c02bee1396ebcd29b91e83f70ccc9182150fb816fb6bc10130",
+    "Flange_R50.0": "0e25d71db69b16afed8ae5163786c3193dced44da08a2e27aeeb46df70a44df4",
+    "Axle_R50.0": "3212591424636031c46a13cee7db7d497ecba1f723185659c05ef8bf1e60a0af",
+    "61903_R50.0": "bbcdbdcc62ba7a4ebf9a75069a44cb75c409fff41897b0ba67dd61091ad5f559",
+    "Crown_R50.0": "ac071b2313db09ac1fd69ec272b92e78aa91b5dc036217fff7c6fa211012144c",
+    "Flange_R150.0": "659b3178fc5474e88af9e22d47f991bc64e5250ca567a642b2d88ce0ff4f7bb5",
+    "Axle_R150.0": "6e6b63cf9295ec698ac27e4158997e7f8f610ede992a70e40192db4997e3d891",
+    "61903_R150.0": "4ebc952bc4c6c0603c77dadcf6d131f11c757890c7055c0fc58bc3f0c7cce596",
+    "Crown_R150.0": "ea27a5ba11ee91c27b186de92c66fe682c8232d5c18c724e5dad71de2ac918ca",
+    "Flange_R250.0": "6926a26a770aa4f5c2e9749d3fe17b3bbb97a09229ed2322b1a06d037e893855",
+    "Axle_R250.0": "60138bbf9668f8cf218b4af2802a626e0c5ed7a81f0c628264f4b8466aa38bbe",
+    "61903_R250.0": "59f26e152e22c801bf6fe38f8dc0ad51eddecbf409864e1f9108bedf8870245a",
+    "Crown_R250.0": "8342fb99eb508707aa2947ac2a799aba3a0a8330c3bbe59f203c15c5ec6017c3",
+    "Pololu4695_L": "a1e1b05624b8ed0b5ebd664142616706aba4a174248af479df8ab32c357d8462",
+    "Motor_mount_L": "116f23840a4c0c585fba0836534062ffae4393db6efe44308da445d9fdcf6b12",
+    "Coupler_6_6_L": "371acaef4f8f35fcdd5142a8806d88d0e52776dbad315a06fdc275859fef0b69",
+    "Pinion_shaft_L": "f68bd90a1548629784d3273f5e0513766041a1a9bde132ed984d7dffccd5ea6e",
+    "61801_L278.5": "c22f0821f4d30f4b1474c11c9654fe9e130ff9ad2896e2cab2b7746e864f630d",
+    "61801_L295.5": "aebe7a27497aa62fcdb63df3293b493af532f17fbc2333b7ffbe1936891f9384",
+    "Z16_ENVELOPE_L": "a23221e000a5a9f88d3f02ce1feb3de92c308d7f84904868862249e829eba35e",
+    "Z40_ENVELOPE_L": "4693b94f2ba5e3bc2709ba111edafc6e8640036c795334ea42279b8610503bc2",
+    "61800_L": "320857a660b2f37455c804864da3a730ffda991b219b05c8d56f7cd1d0394e04",
+    "Side_cover_L": "dfda6c6f3bf87343ca76dfdfcb87f1a9b75745d8cb3733d1db9d1fc99a9523ef",
+    "Z50_ENVELOPE_L50.0": "5038950b1a7cca8728b737f40467b1f5236aec36f51364d9bdaf12a4603cdb26",
+    "Z50_ENVELOPE_L100.0": "78ba82432fac4c3c4bf7aec8418712795311729bcac2d4c691accc800ba69e16",
+    "Z50_ENVELOPE_L150.0": "3b68afac67b258613f82ee830de2e3ca182218f422b7abe78cdff9cf8794327c",
+    "Z50_ENVELOPE_L200.0": "23654548c92e94570811dcd2dce53f21a267cb04dcddecfaf39c638dc6ac0998",
+    "Z50_ENVELOPE_L250.0": "ad0e2ac7ffbb6e0b9c1b8a3ddfc37d555e1f0d9c6794734320187378ae60fbf8",
+    "Idler_pin_L100": "c3e985a6b0898583f0e1690174371c8603946152a168d9aa637706b9976c0d2e",
+    "6701_L100": "ce9cef5a038f657f14ef3145d0cd5275984d73d4baa858ec124931b1a1f012ab",
+    "Idler_pin_L200": "542dc99ef92d8cad72214f1510df7dc1dd36ca39b96165473e954b165deb928a",
+    "6701_L200": "fdbe3c26cfd4017a42de5dbf9473fd15188a9ea824e7799f74b96e54c1ee5ab2",
+    "Flange_L50.0": "5a2d433aec83ba4b86f70fa90a0831e2f7821217dcb143549f8c5c83bc81fcad",
+    "Axle_L50.0": "0346ebf14a88d6b0d4ea49358e89e960d01541c8d3e923d03e140f28a6a52aa8",
+    "61903_L50.0": "9493c931198755d89c5fee198a5eb6cdfea54ddc5afdc42ab0802a337bfac6f1",
+    "Crown_L50.0": "f16a450b630b85da8d6af0e2f9fdb95b9974c631d6aeafa9de1e7f7ce9b1ec9b",
+    "Flange_L150.0": "d4dddd68fe1532662391e372d771c94cfffa4c3c00647d9ab14acf45a73174ff",
+    "Axle_L150.0": "398bdda7346af51f76c2375e1cc45aced653a584c107061b2bab6161be5770f8",
+    "61903_L150.0": "02f1e7dfe1038cfc7a032c0a2722df9237ac55b7a3ae7c914f70f69d5a1eff93",
+    "Crown_L150.0": "361de1a788f9111db9ccc0f35c92ed46805464c25e26a956a72dbce167209599",
+    "Flange_L250.0": "3d828079a23777ad56479d58b1eb2ba65e35fed7db5becb86b5bedb5451ad9ef",
+    "Axle_L250.0": "dc5db34f7dd67e9e285522e92c1e4e40ccce78dbac36c6093143bba0bbcdeb7c",
+    "61903_L250.0": "614add45568648da9ec8e7d7468a875f2625c266a647be6bdc06a602fa8d52db",
+    "Crown_L250.0": "16aa7721484437779a824c57e8b1df910b81b45a0570a799351df81a4bc19342",
+    "M16_gland_INSTALLATION_RESERVE": "6547e619e1231868f46d05a5d42b4f15755009ce23b830dd8a348486e97ba832",
+    "Aramid_anchor_INSTALLATION_RESERVE": "0b5b8b03bc2805c05ad6d84a8804f35d148c798cdaaff546e265d7ff4da7aa28",
+    "BODY_R13": "be48aa71bd56af1a664028143e94b4153226a9f7af522827738ea4cb2c559f13",
+    "BOTTOM_LID_R13": "15f2d288dd82d9a0fb9bd5dd119b4ecdca380148c963bc4afad4e4f013c86b6a",
+    "RSD_thermal_angle": "261d5ef1fddddf8f4eeeec12c00326f6dd4a1d57cce90ea233f5952d1e505fca",
+    "Hanging_bearing_bridge": "11386e89d3bf90fedf4ecc5e82b607cc9756a7189e3b7d14c380aad887eb56a1",
+    "Pinion_hanging_support_R": "41efa148ebdc3d9ebab00ba7ebaf6e2cdcea2eccff40682983b520b655f3b4ab",
+    "Rear_inner_hanging_support_R": "9441cfc60a676aa40909e7145372c1b338f46dc18d20b5d0ba78461cba4c6307",
+    "Lift_bracket_R": "f5c3a9110b91939a6260085d4fda570a23244c0a7b0b637fe548d262d95ce75c",
+    "Pinion_hanging_support_L": "49908bfd2e473868f95bfbf38488df4f891c70ce15d5a2d53053e317e078ad84",
+    "Rear_inner_hanging_support_L": "67684dd5045139c71164cb15f639123320cdf819f715190d2ab88ad392ca7fd0",
+    "Lift_bracket_L": "e7e22de7b31fe7bce93a625f4b2ac75b2c5bfccc2cbdaf7298623b3f7328a261",
+    "NUCLEO_insulation_tray_RESERVE": "8a1197fc66b98a5dbc4a6bd6ae7070528cf3cc15241d81b1e29c966a21c59768",
+    "HV_route_RESERVE": "720f5056365bdb5878f91bfbb0e95a88ca4007d330e55fb6e434af6bd3e9d353",
+    "LV_route_RESERVE": "2e440c85b62ed71f3533ec80bf01b424ab3dd70c3d3cc3022fea3669661a7e66"
+  },
+  "r13_cache_index_sha256": "681da9d3d22e584f75fd03393a02be2e62adf43302320a7c755aca433139c4df",
+  "baseline_note": "R13 cache checked against its R13 source, motor and runtime metadata; individual BREP hashes recorded. Historical cache lacks an R12 hash.",
+  "r15_source_sha256": "f57f60b541856774e241aa7609ae53c081d31cdad4d8bc013d04c9100a2cf554",
+  "camera_step_sha256": "c809c329d734c244949dae14c39c246c0457fd092e43056a51e443f6ca504547",
+  "brep_export_roundtrip": {
+    "RSD100D24": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "RSD_terminals_22": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "RSD_terminals_195": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "NUCLEO_F446RE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Pololu_2855_12V": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "RECOM_5V_carrier_ALLOWANCE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "MPRLS_3965": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "TMP117_4821": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "SEBOKS_SU1P": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Waveshare_RS485_C": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "DRV8871_left": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "DRV8871_right": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "DRV8871_rotate": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "INA260_left_TERMINAL_ALLOWANCE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "INA260_right_TERMINAL_ALLOWANCE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "24V_distribution_RESERVE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Rear_tray": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Pololu4695_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Motor_mount_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Coupler_6_6_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Pinion_shaft_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "61801_R295.5": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z16_ENVELOPE_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z40_ENVELOPE_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "61800_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Side_cover_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.275957614183426e-11
+    },
+    "Z50_ENVELOPE_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z50_ENVELOPE_R100.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z50_ENVELOPE_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z50_ENVELOPE_R200.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z50_ENVELOPE_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Idler_pin_R100": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "6701_R100": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Idler_pin_R200": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "6701_R200": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Flange_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.092726157978177e-12
+    },
+    "Axle_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.7284841053187847e-12
+    },
+    "61903_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.7284841053187847e-12
+    },
+    "Crown_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Flange_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.4569682106375694e-12
+    },
+    "Axle_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.7284841053187847e-12
+    },
+    "61903_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.7284841053187847e-12
+    },
+    "Crown_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Flange_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.002220859751105e-12
+    },
+    "Axle_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.0913936421275139e-11
+    },
+    "61903_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.7284841053187847e-12
+    },
+    "Crown_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Pololu4695_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Motor_mount_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Coupler_6_6_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Pinion_shaft_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "61801_L295.5": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z16_ENVELOPE_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z40_ENVELOPE_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "61800_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Side_cover_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.9103830456733704e-11
+    },
+    "Z50_ENVELOPE_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z50_ENVELOPE_L100.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z50_ENVELOPE_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z50_ENVELOPE_L200.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Z50_ENVELOPE_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Idler_pin_L100": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "6701_L100": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Idler_pin_L200": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "6701_L200": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Flange_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 3.183231456205249e-12
+    },
+    "Axle_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.7284841053187847e-12
+    },
+    "61903_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.8189894035458565e-12
+    },
+    "Crown_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Flange_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 3.637978807091713e-12
+    },
+    "Axle_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 6.366462912410498e-12
+    },
+    "61903_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.8189894035458565e-12
+    },
+    "Crown_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.4551915228366852e-11
+    },
+    "Flange_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 3.637978807091713e-12
+    },
+    "Axle_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.4569682106375694e-12
+    },
+    "61903_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.8189894035458565e-12
+    },
+    "Crown_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.275957614183426e-12
+    },
+    "M16_gland_INSTALLATION_RESERVE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Aramid_anchor_INSTALLATION_RESERVE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "RSD_thermal_angle": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Hanging_bearing_bridge": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Pinion_hanging_support_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 3.637978807091713e-12
+    },
+    "Rear_inner_hanging_support_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Lift_bracket_R": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Pinion_hanging_support_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 3.637978807091713e-12
+    },
+    "Rear_inner_hanging_support_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Lift_bracket_L": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "NUCLEO_insulation_tray_RESERVE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "HV_route_RESERVE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "LV_route_RESERVE": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "BODY_R15": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 6.984919309616089e-10
+    },
+    "BOTTOM_LID_R15": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.9103830456733704e-11
+    },
+    "61801_R279.5": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Wheel_hub_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.4569682106375694e-12
+    },
+    "Wheel_key_5x5x10_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "DIN471_17_ENVELOPE_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.1368683772161603e-13
+    },
+    "Inner_spacer_17p1_20_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.2737367544323206e-13
+    },
+    "Outer_spacer_25_30_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "M8_washer_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080801e-13
+    },
+    "DIN985_M8_ENVELOPE_R50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.547473508864641e-13
+    },
+    "Wheel_hub_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.4569682106375694e-12
+    },
+    "Wheel_key_5x5x10_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "DIN471_17_ENVELOPE_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.1368683772161603e-13
+    },
+    "Inner_spacer_17p1_20_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.2737367544323206e-13
+    },
+    "Outer_spacer_25_30_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "M8_washer_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080801e-13
+    },
+    "DIN985_M8_ENVELOPE_R150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Wheel_hub_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.547473508864641e-12
+    },
+    "Wheel_key_5x5x10_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "DIN471_17_ENVELOPE_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.7053025658242404e-13
+    },
+    "Inner_spacer_17p1_20_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.2737367544323206e-13
+    },
+    "Outer_spacer_25_30_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "M8_washer_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080801e-13
+    },
+    "DIN985_M8_ENVELOPE_R250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Side_M3x8_R_00": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.263256414560601e-14
+    },
+    "Side_M3x8_R_01": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.263256414560601e-14
+    },
+    "Side_M3x8_R_02": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.263256414560601e-14
+    },
+    "Side_M3x8_R_03": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Side_M3x8_R_04": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.263256414560601e-14
+    },
+    "Side_M3x8_R_05": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Side_M3x8_R_06": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_R_07": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.263256414560601e-14
+    },
+    "Side_M3x8_R_08": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_R_09": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.263256414560601e-14
+    },
+    "Side_M3x8_R_10": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_R_11": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.263256414560601e-14
+    },
+    "Side_M3x8_R_12": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.263256414560601e-14
+    },
+    "Side_M3x8_R_13": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "61801_L279.5": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Wheel_hub_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.547473508864641e-12
+    },
+    "Wheel_key_5x5x10_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "DIN471_17_ENVELOPE_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.2737367544323206e-13
+    },
+    "Inner_spacer_17p1_20_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.2737367544323206e-13
+    },
+    "Outer_spacer_25_30_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "M8_washer_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080801e-13
+    },
+    "DIN985_M8_ENVELOPE_L50.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.547473508864641e-13
+    },
+    "Wheel_hub_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.547473508864641e-12
+    },
+    "Wheel_key_5x5x10_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "DIN471_17_ENVELOPE_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.1368683772161603e-13
+    },
+    "Inner_spacer_17p1_20_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.5579538487363607e-13
+    },
+    "Outer_spacer_25_30_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "M8_washer_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080801e-13
+    },
+    "DIN985_M8_ENVELOPE_L150.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Wheel_hub_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 4.547473508864641e-12
+    },
+    "Wheel_key_5x5x10_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "DIN471_17_ENVELOPE_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 1.1368683772161603e-13
+    },
+    "Inner_spacer_17p1_20_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 2.5579538487363607e-13
+    },
+    "Outer_spacer_25_30_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "M8_washer_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080801e-13
+    },
+    "DIN985_M8_ENVELOPE_L250.0": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 0.0
+    },
+    "Side_M3x8_L_00": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_01": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_02": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_03": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Side_M3x8_L_04": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_05": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Side_M3x8_L_06": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_07": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_08": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_09": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_10": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_11": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Side_M3x8_L_12": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Side_M3x8_L_13": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 8.526512829121202e-14
+    },
+    "Bottom_M3x8_00": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Bottom_M3x8_01": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Bottom_M3x8_02": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_03": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_04": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_05": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_06": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_07": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_08": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_09": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_10": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_11": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_12": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_13": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_14": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_15": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_16": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_17": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 5.684341886080802e-14
+    },
+    "Bottom_M3x8_18": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_19": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    },
+    "Bottom_M3x8_20": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 8.526512829121202e-14
+    },
+    "Bottom_M3x8_21": {
+      "solid_count": 1,
+      "valid": true,
+      "volume_difference_mm3": 7.105427357601002e-14
+    }
+  }
+}
