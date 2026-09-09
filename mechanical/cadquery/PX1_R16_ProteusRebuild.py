@@ -478,14 +478,24 @@ def make_electronics_reserves() -> Dict[str, cq.Workplane]:
     """Packaging-only envelopes for the already selected ready-made modules."""
     parts: Dict[str, cq.Workplane] = {}
     # The NUCLEO-F446RE 82.5x70 PCB fits the 72 mm dry bay with a 1 mm side
-    # margin; the tray is low so the camera saddle remains unobstructed.
-    parts["NUCLEO_F446RE_reserve"] = box(82.5, 70.0, 18.0, 30.0, -35.0, 20.0)
+    # margin; it is moved to the rear half so the power converter and the two
+    # traction-motor envelopes have independent service zones.
+    parts["NUCLEO_F446RE_reserve"] = box(82.5, 70.0, 18.0, 150.0, -35.0, 20.0)
+    # The old RSD-100D-24 (161x68x36 plus terminals) did not fit this body.
+    # RSD-60H-24 is the smaller 60 W railway converter, 128x60x25 mm, and is
+    # now the onboard candidate for a 40 m demonstrator with current-limited
+    # traction.  The power/thermal budget remains a release gate.
+    parts["RSD_60H_24_reserve"] = box(128.0, 60.0, 25.0, 10.0, -30.0, 16.0)
     parts["Motor_Pololu4695_L_reserve"] = cyl_axis(
-        18.4, 72.6, (210.0, 17.0, 30.0), (1, 0, 0))
+        18.4, 72.6, (40.0, 17.0, 60.0), (1, 0, 0))
     parts["Motor_Pololu4695_R_reserve"] = cyl_axis(
         18.4, 72.6, (210.0, -17.0, 60.0), (1, 0, 0))
-    parts["DRV8871_pair_reserve"] = box(50.0, 24.0, 10.0, 118.0, -12.0, 67.0)
-    parts["RSD_100D_24_reserve"] = box(161.0, 36.0, 68.0, 120.0, -18.0, 14.0)
+    parts["DRV8871_pair_reserve"] = box(50.0, 24.0, 10.0, 150.0, -12.0, 71.0)
+    parts["SU1P_video_transmitter_reserve"] = box(50.0, 42.0, 18.0, 140.0, -21.0, 41.0)
+    parts["RS485_isolator_reserve"] = box(42.8, 15.2, 4.75, 140.0, -7.6, 59.5)
+    parts["D24V22F12_12V_reserve"] = box(17.8, 17.8, 8.0, 115.0, -8.9, 43.0)
+    parts["INA260_pair_reserve"] = box(46.0, 23.0, 5.0, 115.0, -35.0, 65.0)
+    parts["TMP117_pressure_reserve"] = box(26.0, 18.0, 5.0, 110.0, -35.5, 47.0)
     return parts
 
 
@@ -573,6 +583,7 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
         "camera_fit": {},
         "lift_kinematics": {},
         "quick_release": {},
+        "internal_packaging": {},
         "pipe_outside_mm3": {},
         "wheel_service_pipe_intersection_advisory_mm3": {},
         "selected_collision_checks": {},
@@ -660,6 +671,31 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
         "manual_lock_modeled": True,
         "gas_spring_force_candidate_N": 150,
     }
+    # Body electronics are checked as non-overlapping packaging envelopes.
+    # The RunCam board is inside the separate camera pod and is therefore not
+    # compared with the body reserve boxes.
+    body_reserves = [n for n in parts if groups[n] == "internal_reserve" and
+                     not n.startswith("RunCam")]
+    dry_box = box(BODY_L - 20.0, 72.0, 66.0, 10.0, -36.0, 16.0)
+    dry_outside = {}
+    for n in body_reserves:
+        v = sum(max(0.0, s.cut(dry_box.val()).Volume()) for s in solids(parts[n]))
+        if v > EPS:
+            dry_outside[n] = v
+    reserve_collisions = {}
+    for i, a in enumerate(body_reserves):
+        for b in body_reserves[i + 1:]:
+            v = overlap(parts[a], parts[b])
+            if v > EPS:
+                reserve_collisions[f"{a}__{b}"] = v
+    report["internal_packaging"] = {
+        "dry_envelope_mm": [BODY_L - 20.0, 72.0, 66.0],
+        "body_reserve_count": len(body_reserves),
+        "outside_dry_envelope_mm3": dry_outside,
+        "reserve_collisions_mm3": reserve_collisions,
+        "camera_board_checked_in_separate_pod": True,
+        "power_candidate": "Mean Well RSD-60H-24 128x60x25 mm, 60 W",
+    }
     # Retainer geometry is checked at every station, including the hand tab
     # and the tool-free outward removal corridor.
     for side, label in ((1, "L"), (-1, "R")):
@@ -706,6 +742,7 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
     bad |= any(abs(x - LIFT_LINK_L) > 0.05 for x in (low_l1, low_l2, high_l1, high_l2))
     bad |= checks["camera_pod_vs_saddle"] > 0.1
     bad |= checks["lift_link_L_vs_camera_pod"] > 0.1 or checks["lift_link_R_vs_camera_pod"] > 0.1
+    bad |= bool(dry_outside or reserve_collisions)
     report["status"] = "FAIL_R16_NOMINAL_PACKAGING" if bad else "PASS_R16_NOMINAL_PACKAGING_STUDY"
     out.mkdir(parents=True, exist_ok=True)
     (out / "validation.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
