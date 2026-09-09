@@ -14,7 +14,8 @@ packaging baseline; the result is still nominal CAD only.
 - flush rear cover, high axial connector, short X=307..320 connector stack;
 - recessed captive cross-pin wheel retainers, no wrench-only M8 wheel nut;
 - central two-link manual lift, 80 mm links, positive lock, 150 N spring candidate;
-- separate 88 × 54 × 48 mm armoured camera pod with recessed window and guard;
+- separate 88 × 54 × 48 mm armoured camera pod with recessed window, front ring
+  and replaceable four-sided bumper cage;
 - RunCam Phoenix 2 SE V2 remains the board-envelope candidate;
 - owner’s existing six-core Proteus cable remains the tether baseline.
 - onboard HV converter candidate is now Mean Well RSD-60H-24 (128 × 60 × 25 mm);
