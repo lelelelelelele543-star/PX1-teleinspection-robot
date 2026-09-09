@@ -555,6 +555,9 @@ def aggregate_bbox(named: Iterable[str], parts: Dict[str, cq.Workplane]) -> Dict
 def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) -> Dict[str, object]:
     report: Dict[str, object] = {
         "revision": "R16",
+        "source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "cadquery": cq.__version__,
+        "named_part_count": len(parts),
         "nominal_only": True,
         "physical_test": False,
         "manufacturing_release": False,
