@@ -44,6 +44,13 @@ point.  R16 must carry a new hardware-profile revision before flashing:
 - timeout, explicit re-arm, reverse dwell and emergency stop remain mandatory;
 - no code is flashed or claimed tested on hardware in this CAD-only gate.
 
+The nominal pin allocation is recorded in
+`firmware/crawler/r16/hardware_profile.json`.  It keeps the tested R12 traction
+and encoder map, reserves TIM1 PA8..PA11 for four independent camera-driver
+inputs, and moves the optional camera UART to PC6/PC7.  This file is a harness
+and packaging contract only; verify alternate functions, connector breakout,
+encoder voltage and the purchased carrier revision before producing a BIN.
+
 ## Required electrical gates
 
 1. Prove the RSD-60H-24 input/output isolation and surge protection with the
@@ -59,4 +66,3 @@ point.  R16 must carry a new hardware-profile revision before flashing:
 
 References: [Mean Well RSD-60 datasheet](https://www.meanwell.com/Upload/PDF/RSD-60/RSD-60-SPEC.PDF),
 [Pololu 4695](https://www.pololu.com/product/4695).
-
