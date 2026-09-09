@@ -1,0 +1,18 @@
+{
+  "revision": "R14",
+  "date": "2026-09-09",
+  "branch": "codex/r12-component-fit-sealing",
+  "base_remote_commit": "8d15818d6edd2beae8e729613edb3c71d671fbd8",
+  "cadquery": "2.7.0",
+  "geometry_status": "PASS_SCOPED_R14_RETENTION_LANDING_ASSEMBLY",
+  "contact_status": "PASS_SCOPED_CONTACT_PROBES",
+  "source_sha256": {
+    "mechanical/cadquery/PX1_R14_ServiceAndRetention.py": "34609fe6d704797f0f454ae72f3bd6de458edf7e0f2352b31dc17a02d2223990",
+    "mechanical/cadquery/PX1_R13_WetChannels.py": "513c93cf8c6fce870b60b8a763b43557358fb538a902e99b55fa3d2b8d4294ba",
+    "build_r12/PX1_R12_CAMERA_CANDIDATE.step": "c809c329d734c244949dae14c39c246c0457fd092e43056a51e443f6ca504547",
+    "tests/check_r14_seal_support.py": "22b162e5cd0dd1a9672765b590956a5688588227f0780ec837206563c0572f50",
+    "tests/check_r14_tether_and_stack.py": "ce310c18c5ce54125a357fc26347311ca88eb18c66aec10d93065012517dd36f"
+  },
+  "vendor_motor_step_sha256": "a2450812d02c82cf362dfab5a6d0c4fbe801a90bee45602c5e8390ccb8cb8aef",
+  "artifact_policy": "Vendor STEP is not redistributed; generated STEP/BREP and renders remain local/ignored."
+}
