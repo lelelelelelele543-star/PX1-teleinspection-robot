@@ -710,7 +710,11 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
                 "cap_outer_y_mm": bbox(cap)["ymax"] if side > 0 else bbox(cap)["ymin"],
                 "pin_is_hand_accessible": True,
                 "cross_pin_diameter_mm": 4.4,
-                "removal_direction": "+Y" if side > 0 else "-Y",
+                # The retainer is a transverse cross-pin through the keyed
+                # axle.  It is pulled along X from the wheel's front/rear
+                # edge; the wheel itself then slides outward along Y.
+                "pin_removal_direction": "+X/-X",
+                "wheel_removal_direction": "+Y" if side > 0 else "-Y",
                 "wrench_required": False,
                 "pin_to_cap_overlap_mm3": overlap(pin, cap),
             }
@@ -792,4 +796,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
