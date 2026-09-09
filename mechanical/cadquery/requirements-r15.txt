@@ -1,0 +1,3 @@
+# Runtime used for the saved R15 protocol. Do not silently reuse caches from
+# another CadQuery/OCCT version; rebuild them with prepare_r15_baseline.py.
+cadquery==2.7.0
