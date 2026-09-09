@@ -44,7 +44,7 @@
       "part": "Recessed captive ball-lock cross-pin + retaining cap",
       "status": "CONCEPT_TO_BE_BENCH_TESTED",
       "nominal_mm": {"pin_diameter": 4.4, "cap_od": 27, "cap_outer_y": 65},
-      "note": "Torque is carried by the keyed hub; pin carries axial retention only. Add a stainless lanyard and verify mud/ice release."
+    "note": "Torque is carried by the keyed hub; pin carries axial retention only. Pull the transverse pin along X, then slide the wheel outward along Y. Add a stainless lanyard and verify mud/ice release."
     },
     {
       "id": "M16_LIFT",
@@ -88,4 +88,3 @@
     "Pressure-proof body/side/rear covers and run a full ideal/real ID150 tube sweep with tread, fasteners and deposits."
   ]
 }
-
