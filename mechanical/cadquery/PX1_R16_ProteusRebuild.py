@@ -364,6 +364,7 @@ def make_gears_and_axles() -> Dict[str, cq.Workplane]:
 
 def make_lift_and_camera() -> Dict[str, cq.Workplane]:
     parts: Dict[str, cq.Workplane] = {}
+    cx, cy, cz = CAM_CENTER_LOW
     # Folded LOW pose is the physical assembly state in the exported STEP.
     for side, label in ((1, "L"), (-1, "R")):
         y = side * LIFT_Y
@@ -397,6 +398,15 @@ def make_lift_and_camera() -> Dict[str, cq.Workplane]:
         # Captive camera removal pin is transverse and tool-free.
         parts[f"CameraYoke_BallPin_{label}"] = cyl_axis(
             2.5, 12.0, (CAM_CENTER_LOW[0], y - side * 6.0, CAM_CENTER_LOW[2]), (0, side, 0))
+
+    # The two small camera actuators remain outside the sealed optical pod,
+    # mounted on the protected yoke cheeks.  This preserves the pod's clear
+    # board/lens cavity and makes each motor replaceable without opening the
+    # optical seal.  The envelopes match the selected Pololu 3046 class.
+    parts["CameraPanMotor_Pololu3046_reserve"] = box(
+        29.5, 10.0, 12.9, cx - 14.75, 30.0, cz - 18.0)
+    parts["CameraRotateMotor_Pololu3046_reserve"] = box(
+        29.5, 10.0, 12.9, cx - 14.75, -40.0, cz - 18.0)
 
     # The saddle is a shallow, replaceable protective recess above the sealed
     # roof.  The pod bottom sits 1 mm above the pocket floor at LOW.
@@ -530,7 +540,8 @@ def build_parts() -> Tuple[Dict[str, cq.Workplane], Dict[str, str]]:
             groups[n] = "fastener"
         if "O_ring" in n or "O-ring" in n or "Oring" in n or "XRing" in n:
             groups[n] = "seal_interface"
-        if "RunCam" in n or "NUCLEO" in n or "Motor_" in n or "DRV" in n or "RSD_" in n:
+        if ("RunCam" in n or "NUCLEO" in n or n.startswith("Motor_") or
+                "DRV" in n or "RSD_" in n):
             groups[n] = "internal_reserve"
     return parts, groups
 
@@ -665,6 +676,8 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
         "front_guard_present": True,
         "guard_cage_present": True,
         "internal_camera_board_envelope_mm": [22.0, 19.0, 19.0],
+        "camera_actuator_count": 2,
+        "camera_actuator_envelope_mm": [29.5, 10.0, 12.9],
         "tool_free_camera_release": True,
     }
     # Link-length and centre-offset checks are explicit for both folded and
