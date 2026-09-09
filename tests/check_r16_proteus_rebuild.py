@@ -12,6 +12,14 @@ import PX1_R16_ProteusRebuild as r16  # noqa: E402
 
 
 def main() -> int:
+    profile = json.loads((ROOT / "firmware" / "crawler" / "r16" /
+                          "hardware_profile.json").read_text())
+    assert profile["revision"] == "R16"
+    assert profile["status"] == "PIN_ALLOCATION_ONLY_NOT_FLASHABLE"
+    driver_names = {"traction_left", "traction_right", "camera_pan", "camera_tilt"}
+    assert set(profile["driver"]["channels"]) == driver_names
+    driver_pins = [pin for name in driver_names for pin in profile["pins"][name]]
+    assert len(driver_pins) == 8 and len(set(driver_pins)) == 8
     parts, groups = r16.build_parts()
     out = ROOT / "build_r16_regression"
     report = r16.validate(parts, groups, out)
@@ -48,4 +56,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
