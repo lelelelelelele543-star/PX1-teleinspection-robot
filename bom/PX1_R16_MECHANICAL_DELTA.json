@@ -89,6 +89,43 @@
     "tether": "Owner's existing six-core Proteus cable",
     "custom_pcb": false
   },
+  "procurement_links": [
+    {
+      "part": "Pololu 4695",
+      "qty": 2,
+      "source": "https://www.pololu.com/product/4695",
+      "marketplace_reference": "https://www.chipdip.ru/product/4695-dvigatel-dc-s-reduktorom-24vdc-3a-os-d-profil-pololu-8002968680",
+      "status": "LISTING_REFERENCE_NOT_CHECKOUT_CONFIRMED"
+    },
+    {
+      "part": "Adafruit 3190 DRV8871",
+      "qty": 4,
+      "source": "https://www.adafruit.com/product/3190",
+      "marketplace_reference": "https://www.chipdip.ru/product/3190-adafruit-drv8871-brushed-dc-motor-driver-8034725439",
+      "status": "LISTING_REFERENCE_NOT_CHECKOUT_CONFIRMED"
+    },
+    {
+      "part": "NUCLEO-F446RE",
+      "qty": 1,
+      "source": "https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf",
+      "marketplace_reference": "https://www.chipdip.ru/product/nucleo-f446re-otladochnaya-plata-st-microelectronics-9000403514",
+      "status": "LISTING_REFERENCE_NOT_CHECKOUT_CONFIRMED"
+    },
+    {
+      "part": "Pololu 3046 HPCB 12 V 1000:1 class",
+      "qty": 2,
+      "source": "https://www.pololu.com/product/3046",
+      "marketplace_reference": "https://www.chipdip.am/product/3046-dvigatel-dc-s-reduktorom-hpcb-12v-12vdc-750ma-pololu-8002520964",
+      "status": "LISTING_REFERENCE_NOT_CHECKOUT_CONFIRMED"
+    },
+    {
+      "part": "RunCam Phoenix 2 SE V2",
+      "qty": 1,
+      "source": "https://shop.runcam.com/runcam-phoenix-2-special-edition/",
+      "marketplace_reference": "https://www.ozon.ru/product/runcam-phoenix-2-se-v2-spetsialnaya-kamera-phoenix2-se-v2-1828857680/",
+      "status": "OPTICS_AND_SEAL_STACK_MUST_BE_MEASURED"
+    }
+  ],
   "release_gates": [
     "Measure purchased wheel, flange, bearing, X-ring and cross-pin parts before machining.",
     "Machine one wheel station mock-up and run axial pull, radial load, mud/ice release and submerged rotation tests.",
