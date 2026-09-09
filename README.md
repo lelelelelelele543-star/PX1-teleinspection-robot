@@ -1,4 +1,7 @@
-> Current design study: **R13**. Nominal packing and19 lift poses pass; complete robot is **not a manufacturing release**. See `PROJECT_STATUS_R13.md`. R12 below is retained history.
+> Current design study: **R14**. Wheel retention, removable side plates and
+> nominal seal-land checks pass; 19 lift poses pass with vendor Pololu4695 STEP.
+> The assembly is **not a manufacturing release**. Start with
+> `PROJECT_STATUS_R14.md`; R12/R13 remain history.
 
 # PX-1 Teleinspection Robot
 
@@ -13,14 +16,17 @@ R12 selects purchasable electronics and adds reproducible body/camera CAD checks
 Start here:
 
 - [`PROJECT_STATUS_RevPO.md`](PROJECT_STATUS_RevPO.md) — active complete system architecture;
-- [`PROJECT_STATUS_RevPR.md`](PROJECT_STATUS_RevPR.md) — active corrected crawler mechanical master, rear-wheel X250 drive input;
+- [`PROJECT_STATUS_R14.md`](PROJECT_STATUS_R14.md) — latest selected-part service/retention study;
+- [`PROJECT_STATUS_RevPR.md`](PROJECT_STATUS_RevPR.md) — retained source-derived rear-wheel X250 topology;
 - [`PROJECT_SUPERSESSION_RevPP.md`](PROJECT_SUPERSESSION_RevPP.md) — which historical experiments are no longer active;
 - [`electrical/PX1_SystemWiring_RevPP.md`](electrical/PX1_SystemWiring_RevPP.md) — active end-to-end wiring and safety architecture;
 - [`tether/PX1_Tether_RevPP.md`](tether/PX1_Tether_RevPP.md) — active six-core tether allocation;
 - [`MASTER_DESIGN_BASIS_PROTEUS.md`](MASTER_DESIGN_BASIS_PROTEUS.md) — Proteus-derived mechanical design basis;
 - [`reference/Proteus-CRP-150/`](reference/Proteus-CRP-150/README.md) — controlled source/evidence reconstruction.
 
-If an older experimental revision conflicts with Rev.PO/Rev.PP/Rev.PR, the active documents above take precedence.
+If an older experimental revision conflicts with R14 or Rev.PO/Rev.PP/Rev.PR,
+the latest scoped R14 result takes precedence for dimensions; Rev.PR remains the
+topology reference.
 
 ## Current project direction
 
@@ -36,6 +42,13 @@ The project preserves the useful Proteus mechanical and operator logic instead o
 - portable CCU with hardware E-STOP and high-voltage tether supply.
 
 ## Current mechanical master
+
+Latest selected-part packaging study:
+`mechanical/cadquery/PX1_R14_ServiceAndRetention.py`
+
+Review: `mechanical/R14_SERVICE_AND_SEALING_REVIEW.md`.
+R14 adds serviceable side plates, wheel axial retention, a flat bottom lid and
+explicit seal-land probes. It is still a nominal study, not a machining release.
 
 Active CAD source:
 `mechanical/cadquery/PX1_CRP150_Master_RevPR.py`
