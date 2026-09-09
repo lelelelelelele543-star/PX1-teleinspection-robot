@@ -58,6 +58,8 @@ physical qualification remain unfinished.
 
 Internal reserve coordinates are listed in
 `mechanical/R16_COMPONENT_PLACEMENT.md`.
+The matched power/driver baseline is in
+`electrical/PX1_R16_POWER_AND_CONTROL.md`.
 
 Active CAD source:
 `mechanical/cadquery/PX1_CRP150_Master_RevPR.py`
