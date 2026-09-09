@@ -60,6 +60,8 @@ Internal reserve coordinates are listed in
 `mechanical/R16_COMPONENT_PLACEMENT.md`.
 The matched power/driver baseline is in
 `electrical/PX1_R16_POWER_AND_CONTROL.md`.
+The nominal NUCLEO/DRV8871 pin contract is in
+`firmware/crawler/r16/hardware_profile.json`; it is not a flashable profile.
 
 Active CAD source:
 `mechanical/cadquery/PX1_CRP150_Master_RevPR.py`
@@ -113,4 +115,3 @@ Executed Rev.PR validation passes the current ideal-DN150 body screen, five-Z50 
 ## Release rule
 
 Files in `release/` are the only files intended for manufacturing. Reference, historical, reconstructed and experimental material must not be treated as released production data.
-
