@@ -10,7 +10,7 @@ for purchased modules, not machining pockets or final standoff drawings.
 | Pololu 4695, front-side reserve | Ø36.8 × 72.6 | X=40…112.6, centre Y=17, Z=60 | Staggered away from second motor and RSD |
 | Pololu 4695, rear-side reserve | Ø36.8 × 72.6 | X=210…282.6, centre Y=-17, Z=60 | Rear drive zone, encoder plug serviceable |
 | NUCLEO-F446RE | 82.5 × 70 × 18 | X=150…232.5, Y=-35…35, Z=20…38 | One millimetre side clearance in dry bay |
-| 2× DRV8871 reserve | 50 × 24 × 10 | X=150…200, Y=-12…12, Z=71…81 | Driver pair high and away from the power converter |
+| 4× DRV8871 reserve (2 traction + 2 camera) | 100 × 24 × 10 | X=105…205, Y=-12…12, Z=71…81 | One high service rail; camera drivers stay out of the moving pod |
 | СУ-1П video transmitter | 50 × 42 × 18 | X=140…190, Y=-21…21, Z=41…59 | Short CVBS run to tether interface |
 | TTL→RS485 isolator | 42.8 × 15.2 × 4.75 | X=140…182.8, Y=-7.6…7.6, Z=59.5…64.25 | Isolated command interface |
 | D24V22F12 12 V converter | 17.8 × 17.8 × 8 | X=115…132.8, Y=-8.9…8.9, Z=43…51 | Camera/miscellaneous 12 V rail |
