@@ -60,7 +60,7 @@
       "part": "Separate armoured camera pod for RunCam Phoenix 2 SE V2 envelope",
       "nominal_mm": {"pod_l": 88, "pod_w": 54, "pod_h": 48, "window_clear": 27},
       "status": "PROTECTED_PACKAGING_CANDIDATE",
-      "note": "Rounded shell, recessed 27 mm optical opening, front guard ring, replaceable shock isolator and two hand-release yoke pins. Exact lens/window stack is still a purchase gate."
+      "note": "Rounded shell, recessed 27 mm optical opening, front guard ring, replaceable four-sided bumper cage, shock isolator and two hand-release yoke pins. Exact lens/window stack is still a purchase gate."
     },
     {
       "id": "M16_REAR",
