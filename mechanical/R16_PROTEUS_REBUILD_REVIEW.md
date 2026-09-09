@@ -37,7 +37,9 @@ The R15 M8/nut service path is removed.  Each station now has:
 4. a small lanyard eye so the pin/cap can remain captive.
 
 The pin is axial-retention hardware only; it must not be used to transmit drive
-torque.  The CAD check records six tool-free service locations.  Mud, ice,
+torque.  The pin is pulled along the wheel's transverse X direction; after it
+is released, the wheel slides outward along the side Y axis.  The CAD check
+records six tool-free service locations.  Mud, ice,
 corrosion and repeated pull testing remain mandatory before approving a
 specific catalogue pin.
 
@@ -100,4 +102,3 @@ that the real wheel will clear every oval, deposit or bend.
 Before machining, measure the purchased bearings, X-rings, wheel, flange and
 pin; make one wheel-station coupon; prove the pod with the real lens/window;
 then pressure-test and run the complete robot in an actual ID150 tube.
-
