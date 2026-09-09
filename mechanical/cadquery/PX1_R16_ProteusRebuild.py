@@ -438,6 +438,13 @@ def make_lift_and_camera() -> Dict[str, cq.Workplane]:
     # Top and lower guard rails absorb a first bump before the shell/window.
     parts["CameraGuardTop_R16"] = box(72.0, 5.0, 5.0, cx + 4.0, -2.5, cz + 23.0)
     parts["CameraGuardBottom_R16"] = box(72.0, 5.0, 5.0, cx + 4.0, -2.5, cz - 23.0)
+    # Side rails close the guard into a shallow four-sided bumper cage.  They
+    # sit on the pod's outer side planes, so a first side strike is taken by
+    # the replaceable rail rather than by the shell/window corner.
+    parts["CameraGuardSide_Pos_R16"] = box(
+        72.0, 5.0, 36.0, cx + 4.0, 22.0, cz - 18.0)
+    parts["CameraGuardSide_Neg_R16"] = box(
+        72.0, 5.0, 36.0, cx + 4.0, -27.0, cz - 18.0)
     # Actual selected camera board envelope from the retained BOM; it is held
     # away from the shell by a replaceable elastomer cradle.
     parts["RunCam_Phoenix2SEV2_19x19x22"] = box(
@@ -656,6 +663,7 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
         "saddle_pocket_envelope_mm": [92.0, 60.0, 10.0],
         "camera_window_recessed": True,
         "front_guard_present": True,
+        "guard_cage_present": True,
         "internal_camera_board_envelope_mm": [22.0, 19.0, 19.0],
         "tool_free_camera_release": True,
     }
