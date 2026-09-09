@@ -21,6 +21,16 @@
       "note": "Outer body X=0..307, Y=-46..46, Z=8..90; 3 mm side pressure membrane remains behind the gear bay."
     },
     {
+      "id": "P16_HV24",
+      "qty": 1,
+      "part": "Mean Well RSD-60H-24",
+      "role": "isolated 40..160 VDC tether input to 24 V crawler bus",
+      "nominal_mm": [128, 60, 25],
+      "status": "COMPACT_ONBOARD_CANDIDATE_POWER_BUDGET_OPEN",
+      "source": "https://www.meanwell.com/Upload/PDF/RSD-60/RSD-60-SPEC.PDF",
+      "note": "60 W, 24 V/2.5 A nominal output. It replaces the RSD-100D-24 because the old 161x68x36 mm body conflicted with the two motor reserves. With DRV8871 traction current limited to 0.64 A/channel, the first 40 m demonstration has a nominal power margin; thermal and bus-fault tests are still required."
+    },
+    {
       "id": "M16_WHEELS",
       "qty": 6,
       "part": "90 mm tapered crawler wheels",
@@ -64,6 +74,7 @@
   "retained_electronics": {
     "traction_motors": "2x Pololu 4695 24 V gearmotor with encoder envelope",
     "traction_drivers": "2x Adafruit 3190 DRV8871",
+    "hv_dc_dc": "1x Mean Well RSD-60H-24 128x60x25 mm candidate",
     "body_mcu": "NUCLEO-F446RE",
     "camera": "RunCam Phoenix 2 SE V2 board envelope",
     "tether": "Owner's existing six-core Proteus cable",
