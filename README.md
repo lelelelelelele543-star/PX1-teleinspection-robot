@@ -73,6 +73,7 @@ Executed Rev.PR validation passes the current ideal-DN150 body screen, five-Z50 
 - CCU-side high-voltage generation, Proteus principle;
 - main tether power: 100-120 VDC design class, exact commercial modules still open;
 - crawler local traction/electronics bus: 24 V class;
+- R16 onboard conversion candidate: Mean Well RSD-60H-24, 128×60×25 mm, 60 W;
 - crawler/controller baseline: STM32 NUCLEO-F446RE or serviceable equivalent;
 - command/telemetry: RS-485;
 - video: balanced analog CVBS;
