@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fast nominal regression checks for the R16 CRP-150-style rebuild."""
+"""R16 diagnostics: a known pipe collision must never produce a release PASS."""
 from __future__ import annotations
 
 import json
@@ -23,9 +23,14 @@ def main() -> int:
     parts, groups = r16.build_parts()
     out = ROOT / "build_r16_regression"
     report = r16.validate(parts, groups, out)
-    assert report["status"] == "PASS_R16_NOMINAL_PACKAGING_STUDY", report["status"]
+    # R16 is retained for review; its current geometry does not fit ID150.
+    # This diagnostic passing means the defect was detected, not that the CAD
+    # is approved.  Change the design before changing this known-failure gate.
+    assert report["status"] == "FAIL_R16_NOMINAL_PACKAGING", report["status"]
     assert not report["invalid_parts"], report["invalid_parts"]
-    assert not report["pipe_outside_mm3"], report["pipe_outside_mm3"]
+    assert report["dn150_fit_verified"] is False
+    assert report["pipe_outside_mm3"]["Wheel_L_50"] > 50000
+    assert report["pipe_outside_mm3"]["Axle_L_50"] > 1
     assert len(report["wheel_ground_contact"]) == 6
     assert all(x["touches_ground"] for x in report["wheel_ground_contact"].values())
     env = report["envelopes"]

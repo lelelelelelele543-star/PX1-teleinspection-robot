@@ -1,3 +1,9 @@
+> **2026-09-10: R16 pipe-fit PASS withdrawn.** The current wheel/shaft/hub
+> geometry intersects the ID150 pipe. The corrected gate returns
+> `FAIL_R16_NOMINAL_PACKAGING`. The model is retained for visual review only;
+> wheel contact with a flat plane does not establish cylindrical-pipe fit.
+> See `validation/r16/delivery_audit.json` and `PROJECT_STATUS_R16.md`.
+
 > Current design study: **R16**. R15's external packaging was rejected in
 > review because the rear tail, wheel contact and camera/lift arrangement were
 > not serviceable. R16 rebuilds the CRP-150-class envelope, ties the six wheels

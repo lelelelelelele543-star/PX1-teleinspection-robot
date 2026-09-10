@@ -1,7 +1,10 @@
 # PX-1 Rev.R16 — CRP-150-style rebuild after user review
 
-Status: **PASS_R16_NOMINAL_PACKAGING_STUDY**.  This is a nominal CAD gate,
-not a machining, pressure, traction or IP-rating release.
+Status, corrected 2026-09-10: **FAIL_R16_NOMINAL_PACKAGING**. The former PASS
+is withdrawn because wheel stations were excluded from the cylindrical-pipe
+acceptance criterion. See `../validation/r16/delivery_audit.json` and
+`../PROJECT_STATUS_R16.md`. The sections below document modelling intent and
+scoped historical checks; they do not establish a functional crawler.
 
 ## Что изменено по замечаниям
 
@@ -86,10 +89,10 @@ The generated `validation.json` records:
 - body electronics reserve boxes stay inside the 287 × 72 × 66 mm dry envelope
   without nominal overlaps.
 
-Wheel/shaft/retainer intersection volumes are intentionally kept as an
-**advisory** in the report because the wheel tread is the compliant pipe
-contact and the hub/shaft are internal service geometry.  This is not a claim
-that the real wheel will clear every oval, deposit or bend.
+The earlier advisory-only treatment of wheel/shaft/retainer intersections was
+incorrect. The current validator includes them as failures. The tyre profile
+has no validated deformation allowance, and rigid hubs/shafts cannot be
+excluded from the pipe envelope merely because they belong to a wheel station.
 
 ## Что ещё нельзя утверждать по одному CAD
 

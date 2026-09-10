@@ -1,12 +1,12 @@
 {
   "revision": "R16",
-  "source_sha256": "05cec0290d193e7ff1ac4104d165bd58e146b03e8586519a66a6b858bcb3ef7e",
+  "source_sha256": "82391d382a73af7156a0bc22cf2e4732cfb29e8e0af0eafdc169316cc85df938",
   "cadquery": "2.7.0",
   "named_part_count": 157,
   "nominal_only": true,
   "physical_test": false,
   "manufacturing_release": false,
-  "status": "PASS_R16_NOMINAL_PACKAGING_STUDY",
+  "status": "FAIL_R16_NOMINAL_PACKAGING",
   "groups": {
     "drive": 18,
     "fastener": 24,
@@ -1598,3 +1598,475 @@
       "ymin": -13.0,
       "ymax": 13.0,
       "zmin": 45.0,
+      "zmax": 71.0,
+      "xlen": 5.0,
+      "ylen": 26.0,
+      "zlen": 26.0
+    },
+    "TetherConnector_ShortPlug": {
+      "xmin": 307.0,
+      "xmax": 313.0,
+      "ymin": -10.0,
+      "ymax": 10.0,
+      "zmin": 48.0,
+      "zmax": 68.0,
+      "xlen": 6.0,
+      "ylen": 20.0,
+      "zlen": 20.0
+    },
+    "Tether_StrainRelief": {
+      "xmin": 313.0,
+      "xmax": 320.0,
+      "ymin": -9.0,
+      "ymax": 9.0,
+      "zmin": 49.0,
+      "zmax": 67.0,
+      "xlen": 7.0,
+      "ylen": 18.0,
+      "zlen": 18.0
+    },
+    "RearLoweringEye_Integrated": {
+      "xmin": 272.0,
+      "xmax": 292.0,
+      "ymin": -4.0,
+      "ymax": 4.0,
+      "zmin": 89.0,
+      "zmax": 110.0,
+      "xlen": 20.0,
+      "ylen": 8.0,
+      "zlen": 21.0
+    },
+    "NUCLEO_F446RE_reserve": {
+      "xmin": 150.0,
+      "xmax": 232.5,
+      "ymin": -35.0,
+      "ymax": 35.0,
+      "zmin": 20.0,
+      "zmax": 38.0,
+      "xlen": 82.5,
+      "ylen": 70.0,
+      "zlen": 18.0
+    },
+    "RSD_60H_24_reserve": {
+      "xmin": 10.0,
+      "xmax": 138.0,
+      "ymin": -30.0,
+      "ymax": 30.0,
+      "zmin": 16.0,
+      "zmax": 41.0,
+      "xlen": 128.0,
+      "ylen": 60.0,
+      "zlen": 25.0
+    },
+    "Motor_Pololu4695_L_reserve": {
+      "xmin": 25.0,
+      "xmax": 97.6,
+      "ymin": -1.3999999999999986,
+      "ymax": 35.4,
+      "zmin": 41.6,
+      "zmax": 78.4,
+      "xlen": 72.6,
+      "ylen": 36.8,
+      "zlen": 36.800000000000004
+    },
+    "Motor_Pololu4695_R_reserve": {
+      "xmin": 210.0,
+      "xmax": 282.6,
+      "ymin": -35.4,
+      "ymax": 1.3999999999999986,
+      "zmin": 41.6,
+      "zmax": 78.4,
+      "xlen": 72.60000000000002,
+      "ylen": 36.8,
+      "zlen": 36.800000000000004
+    },
+    "DRV8871_all_four_reserve": {
+      "xmin": 105.0,
+      "xmax": 205.0,
+      "ymin": -12.0,
+      "ymax": 12.0,
+      "zmin": 71.0,
+      "zmax": 81.0,
+      "xlen": 100.0,
+      "ylen": 24.0,
+      "zlen": 10.0
+    },
+    "SU1P_video_transmitter_reserve": {
+      "xmin": 140.0,
+      "xmax": 190.0,
+      "ymin": -21.0,
+      "ymax": 21.0,
+      "zmin": 41.0,
+      "zmax": 59.0,
+      "xlen": 50.0,
+      "ylen": 42.0,
+      "zlen": 18.0
+    },
+    "RS485_isolator_reserve": {
+      "xmin": 140.0,
+      "xmax": 182.8,
+      "ymin": -7.6,
+      "ymax": 7.6,
+      "zmin": 59.5,
+      "zmax": 64.25,
+      "xlen": 42.80000000000001,
+      "ylen": 15.2,
+      "zlen": 4.75
+    },
+    "D24V22F12_12V_reserve": {
+      "xmin": 115.0,
+      "xmax": 132.8,
+      "ymin": -8.9,
+      "ymax": 8.9,
+      "zmin": 43.0,
+      "zmax": 51.0,
+      "xlen": 17.80000000000001,
+      "ylen": 17.8,
+      "zlen": 8.0
+    },
+    "INA260_pair_reserve": {
+      "xmin": 115.0,
+      "xmax": 161.0,
+      "ymin": -35.0,
+      "ymax": -12.0,
+      "zmin": 65.0,
+      "zmax": 70.0,
+      "xlen": 46.0,
+      "ylen": 23.0,
+      "zlen": 5.0
+    },
+    "TMP117_pressure_reserve": {
+      "xmin": 110.0,
+      "xmax": 136.0,
+      "ymin": -35.5,
+      "ymax": -17.5,
+      "zmin": 47.0,
+      "zmax": 52.0,
+      "xlen": 26.0,
+      "ylen": 18.0,
+      "zlen": 5.0
+    }
+  },
+  "wheel_ground_contact": {
+    "Wheel_L_50": {
+      "axis_z_mm": 45.0,
+      "radius_mm": 45.0,
+      "bottom_z_mm": 0.0,
+      "contact_plane_error_mm": 0.0,
+      "touches_ground": true
+    },
+    "Wheel_L_150": {
+      "axis_z_mm": 45.0,
+      "radius_mm": 45.0,
+      "bottom_z_mm": 0.0,
+      "contact_plane_error_mm": 0.0,
+      "touches_ground": true
+    },
+    "Wheel_L_250": {
+      "axis_z_mm": 45.0,
+      "radius_mm": 45.0,
+      "bottom_z_mm": 0.0,
+      "contact_plane_error_mm": 0.0,
+      "touches_ground": true
+    },
+    "Wheel_R_50": {
+      "axis_z_mm": 45.0,
+      "radius_mm": 45.0,
+      "bottom_z_mm": 0.0,
+      "contact_plane_error_mm": 0.0,
+      "touches_ground": true
+    },
+    "Wheel_R_150": {
+      "axis_z_mm": 45.0,
+      "radius_mm": 45.0,
+      "bottom_z_mm": 0.0,
+      "contact_plane_error_mm": 0.0,
+      "touches_ground": true
+    },
+    "Wheel_R_250": {
+      "axis_z_mm": 45.0,
+      "radius_mm": 45.0,
+      "bottom_z_mm": 0.0,
+      "contact_plane_error_mm": 0.0,
+      "touches_ground": true
+    }
+  },
+  "wheel_station_attachment": {
+    "Wheel_L_50": {
+      "wheel_to_flange_distance_mm": 1.5,
+      "shaft_present": true,
+      "integrated_side_cover": true
+    },
+    "Wheel_L_150": {
+      "wheel_to_flange_distance_mm": 1.4999999999999936,
+      "shaft_present": true,
+      "integrated_side_cover": true
+    },
+    "Wheel_L_250": {
+      "wheel_to_flange_distance_mm": 1.4999999999999896,
+      "shaft_present": true,
+      "integrated_side_cover": true
+    },
+    "Wheel_R_50": {
+      "wheel_to_flange_distance_mm": 1.4999999999999918,
+      "shaft_present": true,
+      "integrated_side_cover": true
+    },
+    "Wheel_R_150": {
+      "wheel_to_flange_distance_mm": 1.5,
+      "shaft_present": true,
+      "integrated_side_cover": true
+    },
+    "Wheel_R_250": {
+      "wheel_to_flange_distance_mm": 1.499999999999993,
+      "shaft_present": true,
+      "integrated_side_cover": true
+    }
+  },
+  "rear_snag": {
+    "hard_rear_end_x_mm": 307.0,
+    "max_rigid_tail_x_mm": 320.0,
+    "lowest_tail_z_mm": 7.9999999999999964,
+    "parts_below_wheel_contact_plane": [],
+    "flush_connector_axis_z_mm": 58.0,
+    "flexible_cable_modeled_as_rigid_body": false
+  },
+  "envelopes": {
+    "pressure_body_mm": {
+      "xmin": 0.0,
+      "xmax": 307.0000001,
+      "ymin": -46.0,
+      "ymax": 46.0,
+      "zmin": 7.999999899999996,
+      "zmax": 90.0000001,
+      "xlen": 307.0000001,
+      "ylen": 92.0,
+      "zlen": 82.0000002
+    },
+    "body_plus_six_wheels_mm": {
+      "xmin": 0.0,
+      "xmax": 307.0000001,
+      "ymin": -66.5,
+      "ymax": 66.5,
+      "zmin": 0.0,
+      "zmax": 90.0000001,
+      "xlen": 307.0000001,
+      "ylen": 133.0,
+      "zlen": 90.0000001
+    },
+    "crawler_hard_envelope_with_rear_interface_mm": {
+      "xmin": 0.0,
+      "xmax": 320.0,
+      "ymin": -66.5000001,
+      "ymax": 66.5000001,
+      "zmin": 0.0,
+      "zmax": 110.0,
+      "xlen": 320.0,
+      "ylen": 133.0000002,
+      "zlen": 110.0
+    },
+    "low_assembly_with_camera_mm": {
+      "xmin": 0.0,
+      "xmax": 320.0,
+      "ymin": -66.5000001,
+      "ymax": 66.5000001,
+      "zmin": 0.0,
+      "zmax": 147.0,
+      "xlen": 320.0,
+      "ylen": 133.0000002,
+      "zlen": 147.0
+    },
+    "reference_targets_mm": {
+      "CRP150_body_class": [
+        307.0,
+        133.0,
+        110.0
+      ],
+      "wheel_diameter": 90.0,
+      "wheel_stations_x": [
+        50.0,
+        150.0,
+        250.0
+      ]
+    }
+  },
+  "camera_fit": {
+    "pod_envelope_mm": [
+      88.0,
+      54.0,
+      48.0
+    ],
+    "low_center_mm": [
+      150.0,
+      0.0,
+      119.0
+    ],
+    "low_pod_pipe_outside_mm3": 0.0,
+    "saddle_pocket_envelope_mm": [
+      92.0,
+      60.0,
+      10.0
+    ],
+    "camera_window_recessed": true,
+    "front_guard_present": true,
+    "guard_cage_present": true,
+    "internal_camera_board_envelope_mm": [
+      22.0,
+      19.0,
+      19.0
+    ],
+    "camera_actuator_count": 2,
+    "camera_actuator_envelope_mm": [
+      29.5,
+      10.0,
+      12.9
+    ],
+    "tool_free_camera_release": true
+  },
+  "lift_kinematics": {
+    "link_nominal_mm": 80.0,
+    "low_lengths_mm": [
+      80.0,
+      80.0
+    ],
+    "high_lengths_mm": [
+      80.0,
+      80.0
+    ],
+    "low_camera_center_x_mm": 150.0,
+    "high_camera_center_x_mm": 150.0,
+    "low_camera_bottom_z_mm": 95.0,
+    "manual_lock_modeled": true,
+    "gas_spring_force_candidate_N": 150
+  },
+  "quick_release": {
+    "L50": {
+      "cap_outer_y_mm": 65.00000010000002,
+      "pin_is_hand_accessible": true,
+      "cross_pin_diameter_mm": 4.4,
+      "pin_removal_direction": "+X/-X",
+      "wheel_removal_direction": "+Y",
+      "wrench_required": false,
+      "pin_to_cap_overlap_mm3": 0.0
+    },
+    "L150": {
+      "cap_outer_y_mm": 65.00000010000001,
+      "pin_is_hand_accessible": true,
+      "cross_pin_diameter_mm": 4.4,
+      "pin_removal_direction": "+X/-X",
+      "wheel_removal_direction": "+Y",
+      "wrench_required": false,
+      "pin_to_cap_overlap_mm3": 0.0
+    },
+    "L250": {
+      "cap_outer_y_mm": 65.00000010000001,
+      "pin_is_hand_accessible": true,
+      "cross_pin_diameter_mm": 4.4,
+      "pin_removal_direction": "+X/-X",
+      "wheel_removal_direction": "+Y",
+      "wrench_required": false,
+      "pin_to_cap_overlap_mm3": 0.0
+    },
+    "R50": {
+      "cap_outer_y_mm": -65.0000001,
+      "pin_is_hand_accessible": true,
+      "cross_pin_diameter_mm": 4.4,
+      "pin_removal_direction": "+X/-X",
+      "wheel_removal_direction": "-Y",
+      "wrench_required": false,
+      "pin_to_cap_overlap_mm3": 0.0
+    },
+    "R150": {
+      "cap_outer_y_mm": -65.0000001,
+      "pin_is_hand_accessible": true,
+      "cross_pin_diameter_mm": 4.4,
+      "pin_removal_direction": "+X/-X",
+      "wheel_removal_direction": "-Y",
+      "wrench_required": false,
+      "pin_to_cap_overlap_mm3": 0.0
+    },
+    "R250": {
+      "cap_outer_y_mm": -65.00000010000001,
+      "pin_is_hand_accessible": true,
+      "cross_pin_diameter_mm": 4.4,
+      "pin_removal_direction": "+X/-X",
+      "wheel_removal_direction": "-Y",
+      "wrench_required": false,
+      "pin_to_cap_overlap_mm3": 0.0
+    }
+  },
+  "internal_packaging": {
+    "dry_envelope_mm": [
+      287.0,
+      72.0,
+      66.0
+    ],
+    "body_reserve_count": 10,
+    "outside_dry_envelope_mm3": {},
+    "reserve_collisions_mm3": {},
+    "camera_board_checked_in_separate_pod": true,
+    "power_candidate": "Mean Well RSD-60H-24 128x60x25 mm, 60 W"
+  },
+  "pipe_outside_mm3": {
+    "Axle_L_50": 7.854622677435518,
+    "Wheel_L_50": 55151.11465089143,
+    "WheelHub_L_50": 648.9645430147243,
+    "QuickRelease_CaptiveCap_L_50": 139.61677695816908,
+    "Axle_L_150": 7.854622679307595,
+    "Wheel_L_150": 55151.11464953619,
+    "WheelHub_L_150": 648.9645430104363,
+    "QuickRelease_CaptiveCap_L_150": 139.61677695817076,
+    "Axle_L_250": 7.854622679017869,
+    "Wheel_L_250": 55151.1146489291,
+    "WheelHub_L_250": 648.9645430073823,
+    "QuickRelease_CaptiveCap_L_250": 139.6167769581692,
+    "Axle_R_50": 7.854630521485573,
+    "Wheel_R_50": 55151.114649014155,
+    "WheelHub_R_50": 275.1286764079661,
+    "QuickRelease_CaptiveCap_R_50": 139.61677657322014,
+    "Axle_R_150": 7.854630521485469,
+    "Wheel_R_150": 55151.11465018664,
+    "WheelHub_R_150": 275.1286764086357,
+    "QuickRelease_CaptiveCap_R_150": 139.61677657321698,
+    "Axle_R_250": 7.854630521048452,
+    "Wheel_R_250": 55151.11464901805,
+    "WheelHub_R_250": 275.12867640429613,
+    "QuickRelease_CaptiveCap_R_250": 139.61677657321587
+  },
+  "wheel_service_pipe_intersection_advisory_mm3": {
+    "Axle_L_50": 7.854622677435518,
+    "Wheel_L_50": 55151.11465089143,
+    "WheelHub_L_50": 648.9645430147243,
+    "QuickRelease_CaptiveCap_L_50": 139.61677695816908,
+    "Axle_L_150": 7.854622679307595,
+    "Wheel_L_150": 55151.11464953619,
+    "WheelHub_L_150": 648.9645430104363,
+    "QuickRelease_CaptiveCap_L_150": 139.61677695817076,
+    "Axle_L_250": 7.854622679017869,
+    "Wheel_L_250": 55151.1146489291,
+    "WheelHub_L_250": 648.9645430073823,
+    "QuickRelease_CaptiveCap_L_250": 139.6167769581692,
+    "Axle_R_50": 7.854630521485573,
+    "Wheel_R_50": 55151.114649014155,
+    "WheelHub_R_50": 275.1286764079661,
+    "QuickRelease_CaptiveCap_R_50": 139.61677657322014,
+    "Axle_R_150": 7.854630521485469,
+    "Wheel_R_150": 55151.11465018664,
+    "WheelHub_R_150": 275.1286764086357,
+    "QuickRelease_CaptiveCap_R_150": 139.61677657321698,
+    "Axle_R_250": 7.854630521048452,
+    "Wheel_R_250": 55151.11464901805,
+    "WheelHub_R_250": 275.12867640429613,
+    "QuickRelease_CaptiveCap_R_250": 139.61677657321587
+  },
+  "selected_collision_checks": {
+    "camera_pod_vs_saddle": 0.0,
+    "lift_link_L_vs_camera_pod": 0.0,
+    "lift_link_R_vs_camera_pod": 0.0,
+    "camera_pan_motor_vs_pod": 0.0,
+    "camera_rotate_motor_vs_pod": 0.0
+  },
+  "dn150_fit_verified": false,
+  "wheel_contact_basis": "FLAT_PLANE_ONLY_NOT_CYLINDRICAL_PIPE",
+  "supersedes_gate": "PASS_R16_NOMINAL_PACKAGING_STUDY withdrawn: wheel stations were excluded"
+}

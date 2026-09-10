@@ -1,0 +1,52 @@
+{
+  "engineering_status": "FAIL_R16_NOMINAL_PACKAGING",
+  "manufacturing_release": false,
+  "dn150_fit_verified": false,
+  "source_sha256": "82391d382a73af7156a0bc22cf2e4732cfb29e8e0af0eafdc169316cc85df938",
+  "step_sha256": "e7a1252c8568a725348f1b43a6e1f49a2f3af334b4c1a2c341bafccf5db1811d",
+  "step_import_solids": 187,
+  "step_solids_valid": true,
+  "step_volume_error_mm3": 3.7597492337226868e-06,
+  "source_negative_solid_orientations_normalized_by_STEP": [
+    "WheelHub_R_50",
+    "WheelHub_R_150",
+    "WheelHub_R_250"
+  ],
+  "counterexample": {
+    "wheel_point_yz_mm": [
+      60.25,
+      5.5
+    ],
+    "pipe_floor_at_same_y_mm": 30.33527678357337,
+    "minimum_upward_shift_to_clear_this_point_mm": 24.83527678357337,
+    "camera_guard_top_after_that_shift_mm": 171.83527678357336,
+    "pipe_top_mm": 150.0,
+    "meaning": "A vertical lift of the whole current assembly cannot fix this fit."
+  },
+  "wheel_station_outside_mm3": {
+    "Axle_L_50": 7.854622677435518,
+    "Wheel_L_50": 55151.11465089143,
+    "WheelHub_L_50": 648.9645430147243,
+    "QuickRelease_CaptiveCap_L_50": 139.61677695816908,
+    "Axle_L_150": 7.854622679307595,
+    "Wheel_L_150": 55151.11464953619,
+    "WheelHub_L_150": 648.9645430104363,
+    "QuickRelease_CaptiveCap_L_150": 139.61677695817076,
+    "Axle_L_250": 7.854622679017869,
+    "Wheel_L_250": 55151.1146489291,
+    "WheelHub_L_250": 648.9645430073823,
+    "QuickRelease_CaptiveCap_L_250": 139.6167769581692,
+    "Axle_R_50": 7.854630521485573,
+    "Wheel_R_50": 55151.114649014155,
+    "WheelHub_R_50": 275.1286764079661,
+    "QuickRelease_CaptiveCap_R_50": 139.61677657322014,
+    "Axle_R_150": 7.854630521485469,
+    "Wheel_R_150": 55151.11465018664,
+    "WheelHub_R_150": 275.1286764086357,
+    "QuickRelease_CaptiveCap_R_150": 139.61677657321698,
+    "Axle_R_250": 7.854630521048452,
+    "Wheel_R_250": 55151.11464901805,
+    "WheelHub_R_250": 275.12867640429613,
+    "QuickRelease_CaptiveCap_R_250": 139.61677657321587
+  }
+}

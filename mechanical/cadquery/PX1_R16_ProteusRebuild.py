@@ -739,10 +739,9 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
                 "wrench_required": False,
                 "pin_to_cap_overlap_mm3": overlap(pin, cap),
             }
-    # Record external volume for all hard parts except intentionally compliant
-    # wheel contact and internal reserves.  Any fixed housing outside the
-    # ideal circle is a hard failure; wheel values are evidence for physical
-    # tread/pipe testing rather than a false PASS.
+    # Pipe clearance includes the whole wheel station.  A tyre may deform,
+    # but no deformation model or allowed compression has been validated.
+    # Therefore tyre penetration is a failed fit, not an advisory exception.
     for n, p in parts.items():
         if groups[n] in ("internal_reserve", "fastener", "seal_interface"):
             continue
@@ -750,6 +749,7 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
             outv = pipe_outside(p)
             if outv > EPS:
                 report["wheel_service_pipe_intersection_advisory_mm3"][n] = outv
+                report["pipe_outside_mm3"][n] = outv
             continue
         if n.startswith("Wheel_") or n.startswith("WheelKey") or n.startswith("QuickRelease"):
             continue
@@ -767,6 +767,9 @@ def validate(parts: Dict[str, cq.Workplane], groups: Dict[str, str], out: Path) 
         "camera_rotate_motor_vs_pod": overlap(parts["CameraRotateMotor_Pololu3046_reserve"], parts["CameraPod_ArmouredShell_R16"]),
     }
     report["selected_collision_checks"] = checks
+    report["dn150_fit_verified"] = not bool(report["pipe_outside_mm3"])
+    report["wheel_contact_basis"] = "FLAT_PLANE_ONLY_NOT_CYLINDRICAL_PIPE"
+    report["supersedes_gate"] = "PASS_R16_NOMINAL_PACKAGING_STUDY withdrawn: wheel stations were excluded"
     bad = bool(report["invalid_parts"] or report["pipe_outside_mm3"])
     bad |= any(abs(row["bottom_z_mm"]) > 0.02 for row in report["wheel_ground_contact"].values())
     bad |= bool(report["rear_snag"]["parts_below_wheel_contact_plane"])
