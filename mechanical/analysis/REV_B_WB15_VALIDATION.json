@@ -1,0 +1,68 @@
+{
+  "project": "PX-1",
+  "revision": "Rev.B",
+  "work_block": "WB15",
+  "date": "2026-09-11",
+  "status": "PASS_SCREEN_WITH_RELEASE_HOLDS",
+  "selected_pair": {
+    "head_panel": "WEIPU SP1312/P6-C",
+    "crawler_cable": "WEIPU SP1310/S6I-N",
+    "contacts": 6,
+    "rated_current_A_per_contact": 5,
+    "rated_voltage_VAC": 125,
+    "family_ingress": "IP68 when correctly assembled/mated"
+  },
+  "geometry_mm": {
+    "camera_head_OD": 52.0,
+    "rear_register_OD": 36.0,
+    "bulkhead_local_thickness": 3.0,
+    "manufacturer_panel_max": 3.5,
+    "SP1312_front_OD": 19.5,
+    "SP1312_panel_cutout_D": 13.0,
+    "SP1312_flat_dimension": 11.8,
+    "SP1312_front_projection": 9.5,
+    "SP1312_total_depth_drawing": 19.2,
+    "SP1310_OD": 18.8,
+    "SP1310_length": 49.0,
+    "cable_OD_range_min": 4.0,
+    "cable_OD_range_max": 6.5,
+    "required_solid_keepout": 55.0,
+    "required_practical_extraction": 60.0
+  },
+  "derived_geometry_mm": {
+    "radial_guard_register_to_connector": 8.25,
+    "radial_ligament_register_to_cutout": 11.5,
+    "panel_thickness_margin": 0.5
+  },
+  "pressure_force_screen_N": {
+    "annular_area_mm2_approx": 885.14,
+    "at_0_30_bar": 26.55,
+    "at_0_50_bar": 44.26,
+    "at_1_00_bar": 88.51
+  },
+  "logical_functions": [
+    "+12V_HEAD",
+    "GND_HEAD",
+    "HEAD_UART_TX",
+    "HEAD_UART_RX",
+    "CVBS_SIGNAL",
+    "CVBS_RETURN"
+  ],
+  "errors_corrected": [
+    "LEMO 0K.304 placeholder has only four LV contacts and cannot support current six-function head interface",
+    "IP68 label is not treated as pressure-feedthrough proof",
+    "connector is not permitted to carry head structural load",
+    "numeric pin numbers are not frozen before physical sample/front-rear numbering check"
+  ],
+  "release_holds": [
+    "buy exact connector pair and verify molded pin numbering",
+    "verify actual measured dimensions and seal compression",
+    "0.25 bar dry pressure-decay test",
+    "submerged mated leak test",
+    "50-cycle mate/unmate prototype test and leak retest",
+    "raw-CVBS test through connector",
+    "full yoke/lift solid packaging with 55/60 mm service envelope",
+    "DN150 LOW and DN150_SAFE sweep with plug and cable",
+    "freeze exact six-core local head cable"
+  ]
+}
