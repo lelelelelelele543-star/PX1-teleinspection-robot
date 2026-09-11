@@ -1,0 +1,85 @@
+{
+  "project": "PX1",
+  "revision": "Rev.B",
+  "work_block": "WB09",
+  "date": "2026-09-11",
+  "status": {
+    "low_voltage_power": "PASS_SCREEN",
+    "mcu_pin_allocation": "PASS_SCREEN",
+    "rs485_distance_only": "PASS_SCREEN",
+    "rs485_common_mode_without_reference_core": "HOLD_PHYSICAL_TEST",
+    "current_sensor_accuracy": "HOLD_CALIBRATION"
+  },
+  "inputs": {
+    "crawler_bus_nominal_v": 24.0,
+    "wb08_tvs_part": "Littelfuse 1.5KE30A",
+    "wb08_tvs_max_clamp_v_at_rated_pulse": 41.4,
+    "camera_axis_motor_count": 2,
+    "camera_axis_motor_stall_current_a_each": 1.1,
+    "camera_axis_combined_stall_screen_a": 2.2,
+    "tether_target_lengths_m": [40, 100, 150]
+  },
+  "selected_modules": {
+    "rail_12v": {
+      "part": "Pololu D42V55F12",
+      "item": 5577,
+      "vin_max_v": 60.0,
+      "vout_v": 12.0,
+      "typical_continuous_current_a": 4.5,
+      "board_mm": [25.4, 25.4, 9.0],
+      "result": "PASS_SCREEN"
+    },
+    "rail_5v": {
+      "part": "Pololu D42V55F5",
+      "item": 5571,
+      "vin_max_v": 60.0,
+      "vout_v": 5.0,
+      "typical_continuous_current_a": 6.0,
+      "board_mm": [25.4, 25.4, 9.0],
+      "result": "PASS_SCREEN"
+    },
+    "rs485": {
+      "part": "Waveshare TTL TO RS485 (C)",
+      "sku": 27479,
+      "board_mm": [42.8, 15.2, 4.75],
+      "isolated_power": true,
+      "isolated_signals": true,
+      "external_de_required": false,
+      "result": "PASS_MODULE_SCREEN_HOLD_FULL_LINK_COMMON_MODE"
+    },
+    "current_sensor": {
+      "silicon": "TI INA226",
+      "module_class": "R010 ready module",
+      "bus_measurement_max_v": 36.0,
+      "count": 2,
+      "result": "HOLD_EACH_MODULE_CALIBRATION"
+    }
+  },
+  "checks": {
+    "12v_converter_input_headroom_over_wb08_clamp_v": 18.6,
+    "5v_converter_input_headroom_over_wb08_clamp_v": 18.6,
+    "12v_converter_current_margin_over_two_axis_stall_screen_a": 2.3,
+    "nucleo_supply_route": "5V_LOGIC_TO_E5V_PER_ST_UM1724",
+    "rs485_uart": "USART3_PC10_PC11",
+    "debug_uart": "USART2_PA2_PA3_STLINK_VCP",
+    "camera_local_uart": "UART5_PC12_PD2",
+    "current_sensor_i2c": "I2C1_PB8_PB9"
+  },
+  "prohibited": [
+    "24V directly to NUCLEO E5V",
+    "RS485 line-side PE/reference bonded to tether HV-",
+    "claiming 150m RS485 production release from vendor distance rating alone",
+    "hardcoding generic INA226 module current calibration without bench reference",
+    "reverting to 36V-max auxiliary bucks on the unqualified common 24V bus"
+  ],
+  "required_physical_tests": [
+    "12V rail dummy-load thermal test",
+    "5V rail dummy-load and NUCLEO E5V/USB sequencing test",
+    "two camera-axis simultaneous start test",
+    "two INA226 module calibration and address test",
+    "RS485 40m test under traction and LED PWM noise",
+    "RS485 100m equivalent common-mode test",
+    "RS485 150m equivalent common-mode test",
+    "scope A/B differential and common-mode behavior at both isolated endpoints"
+  ]
+}
