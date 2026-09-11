@@ -1,7 +1,7 @@
 # PX-1 Rev.B — CAM026-inspired camera electrical baseline
 
 Date: 2026-09-11
-Status: ACTIVE CAMERA ELECTRICAL BASELINE / WB13A+WB14+WB15 SYNCHRONIZED
+Status: ACTIVE CAMERA ELECTRICAL BASELINE / WB13A+WB14+WB15+WB16 SYNCHRONIZED
 Supersedes `PX1_CAM026_Electrical_RevPM.md` where video-balun location, rotating electronics or camera rotary pinout differs.
 
 ## 1. Source-derived architecture retained
@@ -18,7 +18,7 @@ PX-1 keeps the serviceable rotary-interface principle but uses ready modern elec
 ## 2. Two electrical interfaces are deliberately different
 
 ### External removable-head connector — six functions
-Between crawler/lift cradle and complete removable camera head:
+Between crawler/lift cradle and complete removable camera-head assembly:
 1. `+12V_HEAD`
 2. `GND_HEAD`
 3. `HEAD_UART_TX`
@@ -26,7 +26,7 @@ Between crawler/lift cradle and complete removable camera head:
 5. `CVBS_SIGNAL`
 6. `CVBS_RETURN`
 
-Controlled by WB15.
+Controlled by WB15/WB16.
 
 ### Internal continuous ROLL transfer — four used functions
 Between fixed head electronics and continuously rotating RunCam carrier:
@@ -41,16 +41,23 @@ Controlled by WB13A in `REVB_WB13_ROTARY_INTERFACES.md`.
 
 This split is mandatory. The six-pin external head connector must not be confused with the four-function internal ROLL transfer.
 
-## 3. Mechanical/electrical interpretation corrected in WB14
+## 3. Mechanical/electrical interpretation corrected in WB14/WB16
 
 Active head mechanics are:
 - static sealed outer shell relative to internal continuous ROLL;
-- whole head TILT handled outside the internal ROLL interface;
-- LED annulus fixed to static outer shell;
+- whole optical shell TILT handled outside the internal ROLL interface;
+- LED annulus fixed to that shell;
 - TILT/ROLL motors, drivers, sensors and lighting control fixed-side relative to ROLL slip ring;
-- only camera sensor/module rotates continuously.
+- only camera sensor/module rotates continuously in ROLL.
 
 Therefore camera lighting, axis motor current and local UART do **not** cross the internal ROLL slip ring.
+
+WB16 further separates the removable-head connector from the optical TILT sweep:
+- SP1312 belongs on the non-TILT rear support/yoke-base portion of the removable head assembly;
+- the external lift harness moves with the manual parallelogram;
+- the internal wiring/feedthrough that accommodates ±105 deg TILT is a separate detailed work block.
+
+This prevents the ~49 mm straight SP1310 body from being falsely added to the tilting Ø52 optical-shell sweep.
 
 ## 4. Camera module baseline
 
@@ -96,36 +103,57 @@ Crawler MCU local camera UART remains:
 - PC12 / UART5_TX;
 - PD2 / UART5_RX.
 
-This UART crosses the external head connector but terminates on fixed head electronics; it does not cross continuous ROLL.
+This UART crosses the external removable-head interface but terminates on fixed-side head electronics; it does not cross continuous ROLL.
 
-## 7. External removable-head connector — WB15
+## 7. External removable-head connector and lift harness — WB15/WB16
 
-Selected prototype pair:
-- camera-head panel side: WEIPU `SP1312/P6-C`, male pins;
-- crawler/lift harness side: WEIPU `SP1310/S6I-N`, female sockets.
-
-Controlled data:
-- 6 contacts;
+Panel half retained:
+- camera-head rear support/yoke-base: WEIPU `SP1312/P6-C`;
+- male pins;
+- six contacts;
 - 5 A/contact;
 - 125 V class;
-- SP13 family IP68 when correctly assembled/mated;
-- head panel cutout Ø13 with 11.8 mm anti-rotation flat dimension;
-- panel connector OD about 19.5 mm;
-- cable plug OD about 18.8 mm, length about 49 mm;
-- plug version I cable range 4.0...6.5 mm OD.
+- rear-nut panel mount;
+- cutout Ø13 with 11.8 mm anti-rotation flat dimension.
 
-Mechanical rules:
-- connector does not carry head structural loads;
-- rear Ø36 register/latch carries loads;
-- local connector panel thickness target 3.0 mm;
-- >=60 mm axial service/extraction envelope reserved;
-- numeric contact numbering waits for physical sample/front-rear orientation verification.
+Cable half corrected by WB16:
+- crawler/lift harness: WEIPU `SP1310/S6II-N`;
+- female sockets;
+- six contacts;
+- 5 A/contact;
+- 125 V class;
+- cable range 5...8 mm.
 
-Pressure rule:
-- IP68 is not accepted as pressure-feedthrough proof by itself;
-- connector installed in the real rear bulkhead must pass the camera-head +0.25 bar dry/submerged tests.
+Reason for changing `S6I-N` -> `S6II-N`:
+- selected LAPP harness is nominal Ø6.7 mm;
+- I version ends at 6.5 mm;
+- II version covers 5...8 mm.
 
-The old LEMO `0K.304` placeholder is retired because its controlled insert has only four LV contacts and cannot carry the current six-function external interface.
+Selected external flexible lift cable:
+- LAPP `UNITRONIC FD CY 0027429`;
+- 7 x 0.25 mm²;
+- nominal OD 6.7 mm;
+- tinned-copper overall braid;
+- continuous-flex product;
+- maximum conductor resistance 79 ohm/km;
+- manufacturer dynamic minimum bend radius 50.3 mm;
+- PX-1 design route minimum R55 mm;
+- maximum prototype one-way harness length 0.50 m until final route is frozen.
+
+Only six cores are used. Seventh blue core is insulated `NC_SPARE_HEAD`.
+
+Intended colour/function map:
+- WH +12V_HEAD;
+- BN GND_HEAD;
+- GN HEAD_UART_TX;
+- YE HEAD_UART_RX;
+- GY CVBS_SIGNAL;
+- PK CVBS_RETURN;
+- BU NC_SPARE_HEAD.
+
+Numeric SP13 contact numbers remain HOLD until the purchased male/female pair is continuity-mapped from an explicitly defined view.
+
+Shield never carries load current and never substitutes for CVBS_RETURN/GND_HEAD. Final shield bonding is an EMC-test item.
 
 ## 8. Lighting
 
@@ -143,11 +171,14 @@ Controlled by WB14:
 Rotating side:
 `RunCam CVBS -> M125-06 -> raw CVBS`.
 
-Removable-head interface:
-`raw CVBS -> SP13 pins -> short local 75-ohm-class pigtail`.
+Inside/removable head:
+`raw CVBS -> internal TILT-compatible wiring -> SP1312/P6-C`.
 
-Crawler/lift fixed side:
-`raw CVBS -> Delta-Opti TR-1D*P2 -> balanced VIDEO+/VIDEO-`.
+Manual-lift service harness:
+`SP1312/P6-C -> SP1310/S6II-N -> LAPP 0027429 (GY/PK)`.
+
+Crawler fixed side:
+`raw CVBS -> short service pigtail -> Delta-Opti TR-1D*P2 -> balanced VIDEO+/VIDEO-`.
 
 Main tether:
 `VIDEO+/VIDEO- balanced pair`.
@@ -163,14 +194,16 @@ Required sequence:
 - RunCam direct into 75 ohm;
 - M125 static;
 - M125 rotating;
+- internal TILT wiring;
 - WEIPU SP13 removable-head connector;
+- <=0.50 m LAPP 0027429 lift harness;
 - Delta balun pair;
 - 40 m tether;
 - reel slip ring;
 - 100/150 m equivalent;
 - TILT/ROLL, traction PWM and LED PWM active.
 
-Neither M125 nor SP13 is assumed to be a controlled 75-ohm component from DC specifications alone.
+Neither M125, SP13 nor LAPP 0027429 is assumed to be a controlled 75-ohm video component from DC specifications alone.
 
 ## 11. Failure behavior
 
@@ -183,9 +216,10 @@ Neither M125 nor SP13 is assumed to be a controlled 75-ohm component from DC spe
 ## 12. Service rule
 
 - camera head remains separately sealed;
-- head removable without opening crawler P0/P1/P2;
+- complete head assembly removable without opening crawler P0/P1/P2;
 - external SP13 unplugged before mechanical latch release;
 - connector carries no bending/impact load;
+- external harness follows the manual lift and remains externally inspectable;
 - internal M125 is non-structural and is not a pressure seal;
 - inner ROLL carrier is an ordinary integrated spindle/bearing assembly, not a cartridge/cassette.
 
@@ -194,10 +228,11 @@ Neither M125 nor SP13 is assumed to be a controlled 75-ohm component from DC spe
 - `REVB_WB12_BALANCED_CVBS_VIDEO.md`
 - `REVB_WB13_ROTARY_INTERFACES.md`
 - `REVB_WB14_CAMERA_AND_LIGHTING.md`
+- `REVB_WB16_CAMERA_HEAD_HARNESS.md`
 - `../mechanical/REVB_WB15_CAMERA_QUICK_CONNECT.md`
 - `../mechanical/REV_BH_CAMERA_HEAD_INTERNAL_LAYOUT.md`
 - `../mechanical/REV_BE_CAMERA_LIFT_INTERFACE.md`
-- `../bom/REVB_CAMERA_HEAD_BOM_WB14.md`
+- `../bom/REVB_CAMERA_HEAD_BOM_WB15.md`
 
 ## Change log
 
@@ -214,6 +249,13 @@ Neither M125 nor SP13 is assumed to be a controlled 75-ohm component from DC spe
 
 ### 2026-09-11 — WB15
 - separated external six-function head disconnect from internal four-function ROLL transfer;
-- selected exact WEIPU SP13 six-pin pair for prototype;
+- selected WEIPU SP13 six-pin pair;
 - retired four-contact LEMO 0K.304 placeholder;
-- added connector pressure/video qualification gates and 60 mm service envelope.
+- added connector pressure/video qualification gates.
+
+### 2026-09-11 — WB16
+- selected LAPP 0027429 for external manual-lift harness;
+- corrected cable plug to SP1310/S6II-N for Ø6.7 mm cable;
+- separated external lift harness from internal TILT wiring;
+- placed external SP13 on non-TILT rear support/yoke-base portion of removable camera assembly;
+- added R55 routing, <=0.50 m length and shield rules.
