@@ -1,0 +1,78 @@
+{
+  "status": "PASS_SCREEN",
+  "drive_axis": {
+    "x_intersection_nominal": 250.0,
+    "y_centers": [-18.0, 18.0],
+    "z": 45.0
+  },
+  "rear_extension_candidate": {
+    "x": [242.0, 384.0],
+    "width_mm": 92.0,
+    "z": [19.0, 71.0],
+    "cavity_x": [246.0, 378.0],
+    "cavity_width_mm": 80.0,
+    "cavity_z": [24.0, 66.0]
+  },
+  "motor": {
+    "part": "ISL PGM-32P-24-100-60-02",
+    "OD_mm": 32.0,
+    "total_tip_to_rear_mm": 92.0,
+    "shaft_d_mm": 6.0,
+    "shaft_len_screen_mm": 12.0,
+    "mount_face_x": 293.0,
+    "rear_x": 373.0
+  },
+  "coupling": {
+    "part": "NBK MLR-20C-6-6",
+    "OD_mm": 20.0,
+    "overall_length_mm": 24.0,
+    "rated_torque_Nm": 2.5,
+    "x": [264.0, 288.0],
+    "motor_shaft_insertion_mm": 7.0
+  },
+  "pinion_bearing": {
+    "family": "61801-2RS",
+    "id_mm": 12.0,
+    "od_mm": 21.0,
+    "width_mm": 5.0,
+    "x": [257.5, 262.5]
+  },
+  "pinion_screen_x": [249.5, 257.0],
+  "hard_clearances_mm": {
+    "between_motor_bodies": 4.0,
+    "motor_to_side_cavity": 6.0,
+    "motor_vertical_to_cavity": 5.0,
+    "motor_rear_service": 5.0,
+    "rear_outer_to_ideal_DN150_min": 18.35925565942665
+  },
+  "shaft_6mm_nominal_torsional_shear_MPa": {
+    "0.6": 14.14710605261292,
+    "0.8": 18.86280807015056,
+    "1.0": 23.5785100876882,
+    "2.0": 47.1570201753764,
+    "3.923": 92.49849507400081
+  },
+  "61801_bearing_screen": {
+    "0.6": {"screen_equiv_radial_N": 139.4596715900335, "L10_million_rev": 1942.2352428998706, "L10_hours_at_60rpm": 539509.7896944085, "axial_N": 12},
+    "0.8": {"screen_equiv_radial_N": 186.89301752607025, "L10_million_rev": 806.9906754094277, "L10_hours_at_60rpm": 224164.0765026188, "axial_N": 16},
+    "1.0": {"screen_equiv_radial_N": 232.9060969575507, "L10_million_rev": 416.9703481336124, "L10_hours_at_60rpm": 115825.09670378122, "axial_N": 20},
+    "2.0": {"screen_equiv_radial_N": 465.33133356781383, "L10_million_rev": 52.28304259663346, "L10_hours_at_60rpm": 14523.067387953737, "axial_N": 40}
+  },
+  "outside_cavity_mm3": {
+    "-1:motor": 0.0, "-1:motor_shaft": 0.0, "-1:coupling": 0.0, "-1:bearing": 0.0, "-1:pinion_screen": 0.0, "-1:holder_face_boss": 0.0,
+    "1:motor": 0.0, "1:motor_shaft": 0.0, "1:coupling": 0.0, "1:bearing": 0.0, "1:pinion_screen": 0.0, "1:holder_face_boss": 0.0
+  },
+  "outside_pipe_mm3": {
+    "-1:motor": 0.0, "-1:motor_shaft": 0.0, "-1:coupling": 0.0, "-1:bearing": 0.0, "-1:pinion_screen": 0.0, "-1:holder_face_boss": 0.0,
+    "1:motor": 0.0, "1:motor_shaft": 0.0, "1:coupling": 0.0, "1:bearing": 0.0, "1:pinion_screen": 0.0, "1:holder_face_boss": 0.0
+  },
+  "unintended_collisions": [],
+  "release_holds": [
+    "exact purchased ISL motor front register and shaft geometry",
+    "final matched Z16/Z40 mounting distance and pinion hub/bore interface",
+    "actual NBK coupling procurement and D-shaft clamp/slip test",
+    "final holder structural ribs and bearing outer-ring retainer",
+    "holder/motor thermal conduction test in sealed P0",
+    "rear pressure-extension FEA/proof and tail connector integration"
+  ]
+}
