@@ -1,0 +1,96 @@
+{
+  "status": "PASS_SCREEN / MANUFACTURING_HOLD",
+  "architecture": {
+    "wheel_stations_x_mm": [50.0, 150.0, 250.0],
+    "wheels_total": 6,
+    "z50_positions_x_mm": [50.0, 100.0, 150.0, 200.0, 250.0],
+    "z50_total": 10,
+    "rear_drive_x_mm": 250.0,
+    "rule": "3 AXLES / 6 WHEELS HARD LOCK"
+  },
+  "correction_reason": {
+    "WB19_gap": "WB18/WB19 validated camera/yoke internally and against DN150 but not complete fixed-yoke vs Rev.PR body/side-gear integration.",
+    "WB20_action": "lower front wet deck and narrow/recess TILT stack before any further harness freeze."
+  },
+  "body": {
+    "wet_deck_floor_points_xz_mm": [[0.0,22.0],[140.0,26.0],[200.0,77.0],[220.0,90.0]],
+    "wet_deck_half_width_mm": 38.0,
+    "pressure_roof_nominal_mm": 5.0,
+    "body_valid": true,
+    "body_min_ideal_DN150_clearance_mm": 7.810507041247945
+  },
+  "tilt_stack": {
+    "bearing": "618/8 8x16x4 recessed into P3, y22..26 each side",
+    "seal": "8x16x7 FKM, y26..33 each side",
+    "boss_outer_abs_y_mm": 34.0,
+    "yoke_inner_abs_y_mm": 34.5,
+    "yoke_outer_abs_y_mm": 37.5,
+    "gear_inner_face_abs_y_mm": 40.125,
+    "yoke_to_Z50_lateral_gap_mm": 2.625,
+    "yoke_to_wetdeck_side_gap_mm": 0.5
+  },
+  "tilt_sweep": {
+    "range_deg": [-105,105],
+    "step_deg": 1,
+    "moving_min_ideal_DN150_clearance_mm": 3.0404968656612965,
+    "moving_worst_pipe_deg": -61,
+    "moving_worst_pipe_xyz_mm": [83.76359662295702,-21.819880522572596,120.61964433682815],
+    "moving_min_floor_clearance_mm": 3.72138340283686,
+    "moving_worst_floor_deg": -58,
+    "moving_worst_floor_xyz_mm": [84.93939919497208,8.918647397102991e-14,28.14822337983606],
+    "fixed_min_ideal_DN150_clearance_mm": 10.92773907177778,
+    "fixed_min_floor_clearance_mm": 21.607405550818093,
+    "moving_lateral_gap_to_Z50_mm": 6.125,
+    "fixed_lateral_gap_to_Z50_mm": 2.625
+  },
+  "electronics_pack": {
+    "component_outside_dry_volume_mm3": {
+      "TRACTION_DRIVER_L_RESERVE": 0.0,
+      "TRACTION_DRIVER_R_RESERVE": 0.0,
+      "DELTA_TR1D_P2": 0.0,
+      "NICHICON_UCS2D221MHD1TN": 0.0,
+      "INPUT_PROTECTION_RESERVE": 0.0,
+      "CINCON_CQB150W110S24_CARRIER_RESERVE": 0.0,
+      "PRESSURE_SENSOR_RESERVE": 0.0,
+      "NUCLEO_F446RE_LOWPROFILE": 0.0
+    },
+    "component_intersections_mm3": {},
+    "placements": {
+      "Cincon CQB150W-110S24 + carrier reserve": "65x45x16 @ X260 Y0 Z70",
+      "Delta TR-1D*P2": "43x16x15 @ X205 Y-22 Z42",
+      "Nichicon UCS2D221MHD1TN": "OD18x25 horizontal @ X205 Y+24 Z30",
+      "NUCLEO F446RE": "82.5x70x12 @ X262.25 Y0 Z98"
+    }
+  },
+  "gas_spring": {
+    "selected_prototype_family": "ACE GS-12-20-V4A",
+    "force_N": 150.0,
+    "manufacturer_geometry": {"body_OD_mm":12.0,"rod_OD_mm":4.0,"stroke_mm":20.0,"extended_L_mm":72.0},
+    "source_url": "https://www.ace-ace.com/com/products/motion-control/industrial-gas-springs-push-type/gs-8-v4a-to-gs-40-va/gs-12-v4a/gs-12-20-v4a.html",
+    "fixed_pin_xz_mm": [194.0,82.9],
+    "moving_pin_distance_from_lower_body_pivot_mm": 63.0,
+    "spring_center_y_screen_mm": 16.0,
+    "positions": {
+      "LOW": {"length_mm":55.471824823816235,"assist_torque_Nm_at_150N":1.2572788165963467,"moving_pin_xz_mm":[138.86736244034614,76.775],"floor_clearance_for_OD12_mm":5.0,"ideal_DN150_clearance_for_OD12_mm":34.245971042277816},
+      "MID": {"length_mm":59.98498390315183,"assist_torque_Nm_at_150N":1.6043555872023996,"moving_pin_xz_mm":[138.4965244884486,105.65],"floor_clearance_for_OD12_mm":5.0,"ideal_DN150_clearance_for_OD12_mm":13.06102843326316},
+      "HIGH": {"length_mm":68.15149994276777,"assist_torque_Nm_at_150N":1.3816215182056295,"moving_pin_xz_mm":[165.98016203742293,145.025],"floor_clearance_for_OD12_mm":5.0,"ideal_DN150_clearance_for_OD12_mm":-25.343586731262207}
+    },
+    "used_length_span_mm": 12.679675118951536,
+    "nominal_retracted_L_mm": 52.0,
+    "compression_end_margin_mm": 3.4718248238162346,
+    "extension_end_margin_mm": 3.848500057232229,
+    "note": "150 N starting force preserves CRP-class intent; final force and end fittings require physical balance/cycle test."
+  },
+  "release_holds": [
+    "physical DN150 tube test with ovality/debris allowance; 3.04 mm camera hard clearance is only ideal geometry",
+    "pressure FEA/proof of lowered front roof and transition ramp",
+    "exact machined yoke/retainer fastener detail and stiffness",
+    "actual 618/8 and 8x16x7 sample tolerances/fits",
+    "ROLL N20 output-shaft useful length after recessed bearing integration",
+    "ACE gas spring exact 150 N configuration and chosen end-fitting pin-to-pin length checked on purchased sample",
+    "gas-spring body/moving brackets detailed and fatigue/corrosion tested",
+    "constant camera-harness length/routing re-solved after WB20 geometry; WB19 harness coordinates are superseded for manufacturing",
+    "all existing WB18 camera electrical/CVBS/pressure physical-sample gates remain active"
+  ],
+  "execution": {"engine":"CadQuery 2.8.0","model":"WB20","method":"solid body/packaging + single-mesh analytical 1deg TILT sweep"}
+}
