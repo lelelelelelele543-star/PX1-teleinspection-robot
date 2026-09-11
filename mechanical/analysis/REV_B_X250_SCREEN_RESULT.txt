@@ -1,0 +1,62 @@
+PX1 X250 Rev.B first-order screen
+Date: 2026-09-11
+Status: PACKAGING SCREEN PASS / RELEASE HOLD
+
+Inputs
+------
+Side bay depth: 12.00 mm
+Coupling hub: OD 20.0 mm x L 7.5 mm
+Coupling bore: 10.0 mm
+Coupling key: 3 x 3 x 7 mm
+Bearing candidate: 6704-2RS, 20 x 27 x 4 mm
+Gear: m1, Z50, 20 deg, B4 tooth face
+Design torque screen: 4.0 N.m
+Wheel diameter screen: 90 mm
+Bevel ratio: 2.5:1
+
+Local Y packaging
+-----------------
+6704 zone: Y=3.50..7.50 mm
+Bearing-to-gear clearance: 0.15 mm
+Z50 B4 face: Y=7.65..11.65 mm
+Nominal remaining clearance to side-cover inner plane Y=12.00: 0.35 mm
+Packaging target: >=0.30 mm
+Result: PASS FOR FIRST-ORDER ENVELOPE ONLY
+
+Torque/stress screen
+--------------------
+3x3x7 key shear at 4.0 N.m: 38.1 MPa
+3x3x7 key bearing stress at 4.0 N.m: 76.2 MPa
+Ø12 solid shaft torsional shear at 4.0 N.m: 11.8 MPa
+Z50 pitch-radius tangential force at 4.0 N.m: 160.0 N
+20-deg pressure-angle radial component: 58.2 N
+Resultant gear-mesh force: 170.3 N
+
+Speed screen
+------------
+45 rpm geared motor output -> 18.0 rpm wheel -> 0.085 m/s theoretical
+65 rpm geared motor output -> 26.0 rpm wheel -> 0.123 m/s theoretical
+
+Ideal traction screen before losses
+-----------------------------------
+1.0 N.m motor -> 2.50 N.m side input -> 55.6 N ideal per side
+1.3 N.m motor -> 3.25 N.m side input -> 72.2 N ideal per side
+Two-side ideal total at 1.3 N.m: 144.4 N
+Illustrative 80% drivetrain/traction factor: about 115.6 N total
+
+Interpretation
+--------------
+The overlapped coupling-hub / 6704 support concept is geometrically plausible inside the current 12 mm rear side-bay envelope and its first-order key/shaft loads are modest at the existing 4 N.m design screen.
+
+This does NOT release the design. The 0.35 mm axial packaging remainder is small and must absorb real bearing width tolerance, shoulder/chamfer requirements, gear axial retention and assembly clearance. A full solid model is mandatory.
+
+Release holds
+-------------
+- exact purchased 6704 brand, bearing tolerance and fit;
+- detailed blind-bore/keyway geometry and fatigue/stress concentration;
+- actual Z50 gear hub/retention solid;
+- complete 61801 + 61903 + X-ring removable flange solid;
+- P0 18x30x7 seal carrier and Z40 output shaft solid;
+- assembly/disassembly path;
+- complete DN150 sweep with tapered wheel and hardware;
+- first-article torque, pressure-decay, seal-drag and submerged rotation tests.
