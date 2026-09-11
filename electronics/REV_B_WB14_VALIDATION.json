@@ -1,0 +1,52 @@
+{
+  "status_geometry": "PASS_SCREEN",
+  "status_led_driver": "HOLD_MEASURED_VF_AND_12V_MIN",
+  "geometry": {
+    "head_od_mm": 52.0,
+    "window_od_mm": 28.0,
+    "led_count": 6,
+    "led_board_worst_case_box_mm": 8.0,
+    "led_pcd_mm": 40.0,
+    "outer_corner_radius_mm": 24.3310501212,
+    "outer_radial_margin_to_head_od_mm": 1.6689498788,
+    "inner_corner_radius_mm": 16.4924225025,
+    "inner_radial_margin_to_window_mm": 2.4924225025,
+    "adjacent_centre_spacing_mm": 20.0,
+    "board_diagonal_mm": 11.3137084990,
+    "minimum_simple_interboard_gap_mm": 8.6862915010
+  },
+  "camera_slip_ring": {
+    "bearing_id_mm": 17.0,
+    "slip_ring_od_mm": 12.5,
+    "slip_ring_length_mm": 13.5,
+    "diametral_clearance_mm": 4.5,
+    "radial_clearance_mm": 2.25
+  },
+  "camera_power_reservation": {
+    "camera_12V_design_A": 0.12,
+    "camera_12V_design_W": 1.44,
+    "M125_per_circuit_rating_A": 1.5,
+    "simple_current_margin_ratio": 12.5
+  },
+  "lighting": {
+    "topology": "2 independent strings x 3 LEDs, 1 P4115adj per string",
+    "initial_string_current_A": 0.3,
+    "p4115_min_headroom_screen_V": 2.0,
+    "dropout_examples": {
+      "Vf_2.8V": {"string_V": 8.4, "headroom_at_12V_V": 3.6, "six_LED_power_W": 5.04},
+      "Vf_3.0V": {"string_V": 9.0, "headroom_at_12V_V": 3.0, "six_LED_power_W": 5.40},
+      "Vf_3.2V": {"string_V": 9.6, "headroom_at_12V_V": 2.4, "six_LED_power_W": 5.76},
+      "Vf_3.3V": {"string_V": 9.9, "headroom_at_12V_V": 2.1, "six_LED_power_W": 5.94},
+      "Vf_3.4V": {"string_V": 10.2, "headroom_at_12V_V": 1.8, "six_LED_power_W": 6.12}
+    }
+  },
+  "release_holds": [
+    "actual 8mm MCPCB thickness/shape and exact emitter order code",
+    "front window O-ring groove and bezel/retainer fastener solids",
+    "actual 12V minimum rail at camera head under simultaneous axis load",
+    "three-LED cold/hot forward-voltage at 300mA",
+    "physical placement of two P4115adj boards on fixed-side carrier",
+    "full-light thermal test and CVBS PWM-noise test",
+    "exact M125-06 sample/drawing and raw-CVBS rotation test"
+  ]
+}
