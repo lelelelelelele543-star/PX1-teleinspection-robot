@@ -1,0 +1,58 @@
+{
+  "status": "PASS_SCREEN",
+  "bus_V_nominal": 24.0,
+  "bts7960": {
+    "absolute_supply_max_V": 45.0,
+    "overvoltage_lockout_V_range": [27.6, 30.0],
+    "prototype_only_due_to_obsolete_device": "YES"
+  },
+  "tvs": {
+    "part": "Littelfuse 1.5KE30A",
+    "vrwm_V": 25.6,
+    "vbr_min_V": 28.5,
+    "vbr_max_V": 31.5,
+    "vc_max_V": 41.4,
+    "ipp_A": 36.7,
+    "peak_pulse_W": 1500
+  },
+  "bulk_capacitors": {
+    "part": "Nichicon UHE1H102MHD6",
+    "each_uF": 1000,
+    "count": 2,
+    "total_uF": 2000,
+    "rating_V": 50.0,
+    "extra_energy_above_24V_J": {
+      "27.5V": 0.18025,
+      "28.5V": 0.23625,
+      "30.0V": 0.324,
+      "41.4V": 1.13796,
+      "45.0V": 1.449
+    }
+  },
+  "translational_KE_reference_J": 0.05427,
+  "translational_KE_warning": "Reference only; motor/gear inertia, gravity/backdrive and tether work are not included.",
+  "bus_adc": {
+    "Rtop_ohm": 100000,
+    "Rbottom_ohm": 6800,
+    "filter_nF": 100,
+    "Vadc_at_24V": 1.5281,
+    "Vadc_at_27V": 1.7191,
+    "Vadc_at_41.4V": 2.6360,
+    "Vadc_at_45V": 2.8652,
+    "safe_for_3V3_ADC_through_45V": true
+  },
+  "firmware_starting_thresholds_V": {
+    "warning_ramp_down": 26.5,
+    "traction_inhibit_latch": 27.0,
+    "reenable_below": 25.5
+  },
+  "stop_policy": "PWM ramp down -> both bridge enables/INH low -> coast; no hard reverse or routine dynamic braking",
+  "release_holds": [
+    "actual motor current-to-torque map",
+    "external per-side current-sensor calibration",
+    "bus oscilloscope logs under stop/reversal/jam/downhill",
+    "branch fuse values",
+    "actual IBT-2 board decoupling inspection",
+    "Rev.C production H-bridge decision"
+  ]
+}
