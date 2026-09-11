@@ -1,0 +1,75 @@
+{
+  "project": "PX1",
+  "revision": "Rev.B",
+  "work_block": "WB10",
+  "date": "2026-09-11",
+  "status": {
+    "pressure_sensor_family": "PASS_SCREEN",
+    "pressure_range": "PASS_SCREEN",
+    "three_identical_sensor_addressing": "PASS_SCREEN_WITH_TCA9548A",
+    "gauge_accuracy": "PASS_SCREEN",
+    "pneumatic_side_zone_sense_lines": "HOLD_PHYSICAL_SAMPLE_AND_LEAK_TEST",
+    "p0_conductivity_probe": "HOLD_BENCH_CALIBRATION"
+  },
+  "pressure": {
+    "sensor_module": "Adafruit 6067",
+    "sensor_ic": "ST LPS28DFW",
+    "crawler_sensor_count": 3,
+    "ccu_ambient_sensor_count": 1,
+    "selected_full_scale_hpa": 4060,
+    "lower_full_scale_hpa_rejected": 1260,
+    "nominal_ambient_hpa_screen": 1013.25,
+    "nominal_fill_gauge_hpa": 250.0,
+    "nominal_filled_absolute_hpa": 1263.25,
+    "absolute_accuracy_hpa_each": 0.5,
+    "simple_subtraction_worst_case_hpa": 1.0,
+    "simple_subtraction_worst_case_bar": 0.001
+  },
+  "i2c": {
+    "mcu_bus": "I2C1 PB8/PB9",
+    "mux_module": "Adafruit 2717 TCA9548A",
+    "mux_address": "0x70",
+    "p0_channel": 0,
+    "p1_channel": 1,
+    "p2_channel": 2,
+    "lps28_address_all_channels": "0x5C",
+    "ina226_sensors_remain_direct_on_main_bus": true
+  },
+  "firmware_starting_points": {
+    "pressure_sensor_rate_hz_each": 10,
+    "operator_telemetry_rate_hz": "5-10",
+    "display_average_s": 1.0,
+    "fill_target_bar_gauge": 0.25,
+    "warning_bar_gauge": 0.17,
+    "stop_inspect_bar_gauge": 0.10,
+    "temperature_aware_trend": "P_abs/T_kelvin"
+  },
+  "leak_probe": {
+    "sense_pin": "PC0/ADC1_IN10",
+    "excite_pin": "PB15",
+    "series_resistor_ohm": 100000,
+    "pulldown_resistor_ohm": 1000000,
+    "sample_pulse_ms": "5-10",
+    "sample_rate_hz": 1,
+    "electrode_material": "A4/316 stainless",
+    "threshold": "HOLD_WET_DRY_CALIBRATION"
+  },
+  "prohibited": [
+    "1260 hPa LPS28 mode for normal +0.25 bar fill",
+    "permanent pneumatic tee connecting P0/P1/P2",
+    "using P0 as atmospheric reference",
+    "using a low-range gauge sensor with both ports exposed to one sealed zone",
+    "assuming 1013 hPa instead of measuring surface ambient pressure when displaying gauge pressure",
+    "using exposed copper hobby water-sensor PCB as the primary leak detector"
+  ],
+  "required_tests": [
+    "compare four LPS28 modules at common ambient pressure",
+    "three-sensor TCA9548A address/channel test",
+    "+0.25 bar reference-gauge comparison",
+    "30 min sealed pressure/temperature trend test",
+    "P1/P2 pneumatic sense-line isolation and failure simulation",
+    "submerged static pressure-decay test",
+    "submerged wheel-rotation pressure-decay test",
+    "conductivity probe dry/condensation/dirty-water calibration"
+  ]
+}
