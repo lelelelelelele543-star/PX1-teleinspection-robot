@@ -83,7 +83,11 @@ static void apply_left(int16_t cmd)
         return;
     }
 
-    board_left_enable(false); /* Direction changes only while bridge is inhibited. */
+    /*
+     * The state machine guarantees that an opposite direction is reached only
+     * after at least one disabled COAST interval. Do not chatter INH every
+     * control cycle just to rewrite the same direction bit.
+     */
     board_left_dir(cmd > 0);
     board_pwm_left(abs_i16_u16(cmd));
     board_left_enable(true);
@@ -97,7 +101,6 @@ static void apply_right(int16_t cmd)
         return;
     }
 
-    board_right_enable(false);
     board_right_dir(cmd > 0);
     board_pwm_right(abs_i16_u16(cmd));
     board_right_enable(true);
@@ -155,11 +158,12 @@ void traction_configure_jam_limits(uint16_t left_jam_ma,
 }
 
 static bool update_jam_detector(traction_side_t *s,
+                                bool drive_active,
                                 uint16_t abs_current_ma,
                                 uint16_t limit_ma,
                                 uint32_t now_ms)
 {
-    if (limit_ma == 0u || g_jam_delay_ms == 0u) {
+    if (!drive_active || limit_ma == 0u || g_jam_delay_ms == 0u) {
         s->jam_timer_active = false;
         return false;
     }
@@ -288,10 +292,18 @@ void traction_update(uint16_t bus_mv,
     }
 
     if (current_valid) {
-        if (update_jam_detector(&g_left, abs_i16_u16(left_ma), g_left_jam_ma, now_ms)) {
+        if (update_jam_detector(&g_left,
+                                command_sign(g_left.output) != 0,
+                                abs_i16_u16(left_ma),
+                                g_left_jam_ma,
+                                now_ms)) {
             g_fault_bits |= PX1_FAULT_LEFT_OVERCURRENT;
         }
-        if (update_jam_detector(&g_right, abs_i16_u16(right_ma), g_right_jam_ma, now_ms)) {
+        if (update_jam_detector(&g_right,
+                                command_sign(g_right.output) != 0,
+                                abs_i16_u16(right_ma),
+                                g_right_jam_ma,
+                                now_ms)) {
             g_fault_bits |= PX1_FAULT_RIGHT_OVERCURRENT;
         }
     }
@@ -346,11 +358,13 @@ void traction_hard_disable(void)
 
 bool traction_clear_faults(bool deliberate_reset,
                            uint16_t bus_mv,
-                           bool current_valid)
+                           bool current_valid,
+                           bool estop_released)
 {
     if (!deliberate_reset) return false;
     if (bus_mv >= PX1_TRACTION_BUS_REENABLE_MV) return false;
     if (!current_valid) return false;
+    if (!estop_released) return false;
 
     g_fault_bits = 0u;
     g_left.jam_timer_active = false;
