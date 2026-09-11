@@ -1,0 +1,83 @@
+{
+  "project": "PX-1",
+  "revision": "Rev.B",
+  "work_block": "WB16",
+  "date": "2026-09-11",
+  "status": "ELECTRICAL_PASS_SCREEN_MECHANICAL_HOLD",
+  "cable": {
+    "manufacturer": "LAPP",
+    "family": "UNITRONIC FD CY",
+    "article": "0027429",
+    "description": "7X0.25",
+    "cores": 7,
+    "core_section_mm2": 0.25,
+    "nominal_OD_mm": 6.7,
+    "shield": "tinned-copper overall braid",
+    "max_core_resistance_ohm_per_km": 79.0,
+    "dynamic_min_bend_radius_mm": 50.3,
+    "design_min_bend_radius_mm": 55.0,
+    "continuous_flex": true,
+    "torsion_approved": false,
+    "procurement_check": "current product; TME Czech displayed 200 m stock on 2026-09-11"
+  },
+  "connector_correction": {
+    "old_cable_half": "WEIPU SP1310/S6I-N, 4.0...6.5 mm cable",
+    "new_cable_half": "WEIPU SP1310/S6II-N, 5.0...8.0 mm cable",
+    "panel_half_unchanged": "WEIPU SP1312/P6-C",
+    "reason": "LAPP 0027429 nominal OD 6.7 mm exceeds I-version maximum 6.5 mm"
+  },
+  "core_map": {
+    "WH": "+12V_HEAD",
+    "BN": "GND_HEAD",
+    "GN": "HEAD_UART_TX",
+    "YE": "HEAD_UART_RX",
+    "GY": "CVBS_SIGNAL",
+    "PK": "CVBS_RETURN",
+    "BU": "NC_SPARE_HEAD"
+  },
+  "prototype_length_limit_m": 0.5,
+  "power_loop_at_length_limit": {
+    "one_core_resistance_ohm_max": 0.0395,
+    "loop_resistance_ohm_max": 0.079,
+    "drop_V_at_0_5A": 0.0395,
+    "drop_V_at_1A": 0.079,
+    "drop_V_at_1_2A": 0.0948,
+    "drop_V_at_2A": 0.158,
+    "drop_V_at_3A_transient": 0.237,
+    "pair_loss_W_at_1_2A": 0.11376,
+    "pair_loss_W_at_3A_transient": 0.711
+  },
+  "lift_kinematic_screen": {
+    "body_anchor_XZ_mm": [200.0, 102.0],
+    "LOW_head_XZ_mm": [83.557, 75.0],
+    "MID_head_XZ_mm": [82.851, 130.0],
+    "HIGH_head_XZ_mm": [135.2, 205.0],
+    "LOW_distance_mm": 119.5323,
+    "MID_distance_mm": 120.4487,
+    "HIGH_distance_mm": 121.6883,
+    "distance_span_mm": 2.1560,
+    "interpretation": "route alongside one parallelogram arm; do not use a large hanging travel loop"
+  },
+  "shield_rule": {
+    "head_end": "trim, insulate, no connection through plastic SP13",
+    "crawler_end": "provide controlled EMC test termination point",
+    "forbidden": [
+      "use as CVBS_RETURN",
+      "use as normal GND_HEAD load return",
+      "use as extra system conductor"
+    ]
+  },
+  "release_holds": [
+    "physical SP13 contact numbering",
+    "actual cable OD and loop resistance",
+    "1.2 A continuous thermal test",
+    "protected 3 A transient test",
+    "UART noise test with motor and LED PWM",
+    "CVBS test through cable and connector",
+    "R55 cable route solid in LOW/MID/HIGH",
+    "DN150 LOW and DN150_SAFE clearance",
+    "500 manual-lift cycles",
+    "final shield-bond configuration",
+    "final cut length and clamp coordinates"
+  ]
+}
