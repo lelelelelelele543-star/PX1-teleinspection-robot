@@ -1,0 +1,108 @@
+{
+  "body_valid": true,
+  "body_outside_ideal_DN150_mm3": 0.0,
+  "rear_input_station_x_mm": 250.0,
+  "wheel_stations_x_mm": [
+    50.0,
+    150.0,
+    250.0
+  ],
+  "five_spur_positions_x_mm": [
+    50.0,
+    100.0,
+    150.0,
+    200.0,
+    250.0
+  ],
+  "spur_pitch_center_spacing_mm": [
+    50.0,
+    50.0,
+    50.0,
+    50.0
+  ],
+  "spur_module": 1.0,
+  "spur_teeth_each": 50,
+  "bevel_ratio": 2.5,
+  "bevel_tooth_counts": [
+    18,
+    45
+  ],
+  "bevel_candidate": {
+    "pinion": "KHK SB1.5-1845H",
+    "large_gear": "KHK SB1.5-4518H",
+    "module": 1.5,
+    "teeth": [
+      18,
+      45
+    ],
+    "ratio": 2.5,
+    "outside_diameters_mm": [
+      30.86,
+      68.18
+    ],
+    "bores_mm": [
+      8.0,
+      10.0
+    ],
+    "status": "CATALOG_GEOMETRY; SAMPLE_AND_CONTACT_PATTERN_REQUIRED"
+  },
+  "bevel_catalog_torque_screen": {
+    "pinion_input_limit_Nm": 1.5,
+    "side_output_at_90pct_efficiency_Nm": 3.375,
+    "pinion_surface_allowable_Nm": 2.16,
+    "large_gear_surface_allowable_Nm": 5.39,
+    "pinion_margin": 1.44,
+    "large_gear_margin": 1.597,
+    "stall_protection": "MANDATORY current limit and jam shutdown"
+  },
+  "bevel_outside_dry_volume_mm3": {
+    "Z45_S-1": 0.0,
+    "Z18_S-1": 0.0,
+    "Z45_S+1": 0.0,
+    "Z18_S+1": 0.0
+  },
+  "belly_floor_nominal_under_local_pocket_mm": 5.5,
+  "motor_envelope_max_mm": {
+    "diameter": 35.0,
+    "length": 100.0
+  },
+  "wheel_service_interface": {
+    "wheel_od_mm": 90.0,
+    "bearing": "61903-2RS 17x30x7",
+    "key_candidate_mm": [
+      5.0,
+      5.0
+    ],
+    "central_retention": "M8 candidate; fatigue proof required",
+    "retaining_disk_od_mm": 24.0,
+    "protective_cap_od_mm": 27.0,
+    "dynamic_seal": "QRAR04116 18.72x2.62 FKM or verified equivalent"
+  },
+  "component_outside_dry_volume_mm3": {
+    "HV_TO_24V_CONVERTER_RESERVE": 0.0,
+    "DATA_VIDEO_INTERFACE_RESERVE": 0.0,
+    "TRACTION_DRIVER_L_RESERVE": 0.0,
+    "TRACTION_DRIVER_R_RESERVE": 0.0,
+    "INPUT_PROTECTION_RESERVE": 0.0,
+    "NUCLEO_F446RE_LOWPROFILE": 0.0,
+    "PRESSURE_SENSOR_RESERVE": 0.0
+  },
+  "component_intersections_mm3": {},
+  "motor_body_intersections_mm3": {
+    "-1": 0.0,
+    "1": 0.0
+  },
+  "gear_train_center_spacing_error_mm": 0.0,
+  "release_holds": [
+    "exact traction motor article and shaft/mount drawing",
+    "physical SB1.5-1845H/SB1.5-4518H samples and supplier availability",
+    "bevel tooth contact, backlash, lubrication and current-limit endurance",
+    "actual HV-to-24V converter article and thermal mounting",
+    "exact side-cover/shaft-flange detail at X250 driven station",
+    "full wet-traction wheel profile integration and physical DN150 sweep",
+    "M8 internal-thread versus external-thread shaft fatigue decision",
+    "full lift LOW/MID/HIGH sweep after X250 drive relocation",
+    "pressure FEA/proof including rear extension and lift bosses"
+  ],
+  "status": "PASS"
+}
