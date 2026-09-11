@@ -1,0 +1,43 @@
+{
+  "status": "PASS_SCREEN",
+  "topology": "2x22AWG power + 2x2x24AWG differential signal pairs = exactly 6 functional copper cores",
+  "source_VDC": 120.0,
+  "remote_input_power_W": 111.1,
+  "power_loop_results": {
+    "20C": {
+      "40m": {"loop_resistance_ohm": 4.28, "crawler_HV_input_V": 115.897, "line_current_A": 0.959, "drop_V": 4.103, "line_loss_W": 3.933},
+      "100m": {"loop_resistance_ohm": 10.70, "crawler_HV_input_V": 109.104, "line_current_A": 1.018, "drop_V": 10.896, "line_loss_W": 11.095},
+      "150m": {"loop_resistance_ohm": 16.05, "crawler_HV_input_V": 102.624, "line_current_A": 1.083, "drop_V": 17.376, "line_loss_W": 18.811}
+    },
+    "60C": {
+      "40m": {"loop_resistance_ohm": 4.953, "crawler_HV_input_V": 115.224, "line_current_A": 0.964, "drop_V": 4.776, "line_loss_W": 4.605},
+      "100m": {"loop_resistance_ohm": 12.382, "crawler_HV_input_V": 107.163, "line_current_A": 1.037, "drop_V": 12.837, "line_loss_W": 13.309},
+      "150m": {"loop_resistance_ohm": 18.573, "crawler_HV_input_V": 99.199, "line_current_A": 1.120, "drop_V": 20.801, "line_loss_W": 23.297}
+    }
+  },
+  "signal_pair_loop_resistance_ohm": {
+    "20C": {"40m": 6.736, "100m": 16.84, "150m": 25.26},
+    "60C": {"40m": 7.795, "100m": 19.487, "150m": 29.231}
+  },
+  "equal_26AWG_150m_power_rejection_screen": {
+    "loop_resistance_20C_ohm": 40.17,
+    "maximum_constant_power_transfer_at_120V_W": 89.62,
+    "requested_remote_input_W": 111.1,
+    "stable_solution": false,
+    "decision": "REJECT as the two-conductor HV power path for the 150m / 100W-class mission"
+  },
+  "contact_freeze": {
+    "male": "LAPP 13162500 H-D SCEM AU 0.14-0.37",
+    "female": "LAPP 13163500 H-D BCEM AU 0.14-0.37",
+    "stripping_length_mm": 8.0,
+    "reason": "both AWG22 ~0.33mm2 and AWG24 ~0.205mm2 fit the same crimp barrel range"
+  },
+  "release_holds": [
+    "measure actual 40m Proteus cable",
+    "supplier-controlled custom tether drawing and guaranteed resistance/OD/mass",
+    "pair impedance/capacitance and CVBS test",
+    "tensile-member breaking load and tail clamp proof",
+    "slip-ring/contact resistance in full 100/150m power budget",
+    "HV converter input range and protected startup/inrush qualification"
+  ]
+}
