@@ -46,10 +46,10 @@ void traction_update(uint16_t bus_mv,
 void traction_stop(void);
 
 /* Immediate hardware-style disable and latched E-STOP software state. */
-void traction_estop(void);
+void traction_estop(uint32_t now_ms);
 
 /* Immediate disable without adding a new fault bit (watchdog/supervisor use). */
-void traction_hard_disable(void);
+void traction_hard_disable(uint32_t now_ms);
 
 /*
  * Clear traction-local latched faults only after deliberate operator action
@@ -59,7 +59,8 @@ void traction_hard_disable(void);
 bool traction_clear_faults(bool deliberate_reset,
                            uint16_t bus_mv,
                            bool current_valid,
-                           bool estop_released);
+                           bool estop_released,
+                           uint32_t now_ms);
 
 uint32_t traction_fault_bits(void);
 bool traction_outputs_enabled(void);
