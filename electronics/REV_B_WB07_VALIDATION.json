@@ -1,0 +1,52 @@
+{
+  "status": "PASS_SCREEN",
+  "converter": {
+    "part": "Cincon CQB150W-110S24",
+    "input_VDC": [43, 160],
+    "output_V": 24.0,
+    "output_A": 6.3,
+    "output_W": 151.2,
+    "efficiency_full_load_nominal": 0.89,
+    "body_mm": [57.9, 36.8, 12.7],
+    "isolation_VDC": 3000
+  },
+  "input_capacitor": {
+    "part": "Nichicon UCS2D221MHD1TN",
+    "capacitance_uF": 220,
+    "rating_VDC": 200,
+    "body_mm": [18, 25],
+    "stored_energy_J_at_120V": 1.584
+  },
+  "local_fuse": {
+    "part": "Eaton Bussmann S505H-3.15-R / BK1-S505H-3-15-R",
+    "current_A": 3.15,
+    "rating_VDC": 400,
+    "characteristic": "time-delay",
+    "size_mm": [5, 20]
+  },
+  "hot_150m_awg22_screen": {
+    "source_V": 120.0,
+    "loop_R_ohm": 18.573,
+    "load_cases_by_output_W": {
+      "60": {"converter_input_power_W": 67.416, "converter_dissipation_W": 7.416, "crawler_input_V": 108.455, "line_current_A": 0.622, "cable_loss_W": 7.176},
+      "90": {"converter_input_power_W": 101.124, "converter_dissipation_W": 11.124, "crawler_input_V": 101.495, "line_current_A": 0.996, "cable_loss_W": 18.437},
+      "100": {"converter_input_power_W": 112.360, "converter_dissipation_W": 12.360, "crawler_input_V": 98.899, "line_current_A": 1.136, "cable_loss_W": 23.973},
+      "120": {"converter_input_power_W": 134.831, "converter_dissipation_W": 14.831, "crawler_input_V": 93.102, "line_current_A": 1.448, "cable_loss_W": 38.953},
+      "145": {"converter_input_power_W": 162.921, "converter_dissipation_W": 17.921, "crawler_input_V": 83.960, "line_current_A": 1.940, "cable_loss_W": 69.935},
+      "150": {"converter_input_power_W": 168.539, "converter_dissipation_W": 18.539, "crawler_input_V": 81.673, "line_current_A": 2.064, "cable_loss_W": 79.091}
+    }
+  },
+  "power_policy": {
+    "normal_total_output_target_W": "<=100",
+    "short_controlled_peak_W": "120-145",
+    "continuous_150W_at_hot_150m": "NOT_DESIRED_due_to_tether_loss_and_thermal_load"
+  },
+  "release_holds": [
+    "physical CQB150W-110S24 sample and carrier fit",
+    "converter thermal soak in sealed body",
+    "actual 40/100/150m cable resistance tests",
+    "cold and rapid-restart inrush qualification",
+    "CCU 120V source current-limited ramp",
+    "24V regenerative energy / bus clamp WB08"
+  ]
+}
