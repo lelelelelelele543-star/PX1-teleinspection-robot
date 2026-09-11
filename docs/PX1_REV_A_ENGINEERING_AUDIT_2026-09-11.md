@@ -49,22 +49,29 @@ Decision:
 
 This corrects an earlier project tendency to treat some CRP300 assembly sheets as direct CRP150 dimensional evidence.
 
-## 4. DN150 clearance status — important correction
+## 4. DN150 clearance status — corrected interpretation
 
-`PX1_CRP150_Master_RevPR.py` validates the **pressure body** against the ideal DN150 cylinder, but it intentionally does not use the simple Ø90 cylindrical wheel placeholders as the final wheel-clearance proof.
+`PX1_CRP150_Master_RevPR.py` validates the pressure body against the ideal DN150 cylinder, but it intentionally does not use the simple Ø90 cylindrical wheel placeholders as final wheel proof.
 
-Therefore the repository statement `body outside ideal DN150 = 0` must not be interpreted as a complete crawler DN150 PASS.
+The later Rev.GF tapered/dished wheel profile has an analytical outer-tread margin of only about **0.12 mm** at the closest ideal-pipe station. Rev.B WB02 corrected the interpretation of this value: the outer tread is an **elastic rolling/contact surface**, so near-zero clearance is expected and is not itself a hard-part failure.
 
-The Rev.GF tapered/dished Ø90-class wheel profile is the current clearance candidate. Its documented minimum analytical ideal-DN150 margin is only about **0.12 mm**. This is near-contact geometry and provides no real allowance for pipe ovality, welds, scale, debris, tread manufacturing tolerance or elastic growth.
+The proper DN150 acceptance split is now:
+- elastic tire/tread: controlled contact/deformation geometry;
+- metal wheel core, axle flanges, side covers, screw heads and other rigid hardware: hard-clearance geometry.
 
-Rev.A disposition: **HOLD — full crawler DN150 fit is not manufacturing-released.**
+With the current 4 mm radial elastomer layer and WB02 wheel-end package:
+- minimum analytical metal-core margin is about **4.12 mm**;
+- M6 button-head hard margin at its most outboard modeled point is about **3.11 mm**;
+- all modeled rigid wheel-end solids have zero volume outside the ideal DN150 cylinder.
+
+Rev.A/Rev.B disposition remains **HOLD for manufacturing release**, but for the correct reasons: the full body + both sides + lift/camera + tether-tail hardware still require one integrated solid sweep, and real pipe ovality/deposits plus real elastomer deformation require a physical DN150 test.
 
 Rev.B gate:
-1. integrate the real tapered wheel solid into the active X250 master;
-2. include all screw heads, axle flanges, cover edges and folded camera/lift solids;
-3. run full static and swept ideal-DN150 CAD check;
-4. define a practical clearance allowance rather than relying on 0.12 mm nominal analytical margin;
-5. perform a physical DN150 tube sweep with the real tread compound.
+1. integrate the detailed wheel/flange/retention solids into the active X250 master;
+2. include all screw heads, axle flanges, cover edges, folded camera/lift and tether-tail solids;
+3. run complete static and swept ideal-DN150 CAD check on rigid parts;
+4. treat tread as contact geometry and record elastic interference/contact separately from hard clearance;
+5. perform a physical DN150 tube sweep with the selected real tread compound.
 
 ## 5. Side-drive / wheel-station sealing
 
@@ -88,7 +95,9 @@ Current PX-1 candidate values remain prototype data, not production dimensions:
 Positive pressure is only an additional barrier and never substitutes for the dynamic/static seals.
 
 ### Bearing-stack HOLD
-Historical PX-1 notes contain different interpretations of the exact 61801 distribution around the wheel stations. Do not release the shaft/flange machining chain solely from a historical note. Before Rev.B, reconcile the active X250 long-axle stack directly against the CRP-150 source drawing and selected physical bearings, then freeze fits and shoulders from actual manufacturer tolerances.
+Historical PX-1 notes contained different interpretations of the exact 61801 distribution around the wheel stations. Direct recheck of DRW-002-374 now confirms **six 61801-2RS bearings per one side-drive assembly**, together with three 61903-2RS bearings. Exact axial shoulders/fits remain a drawing/physical-parts release gate.
+
+Rev.B WB01 uses this corrected source quantity and develops an overlapped rear coupling/support package rather than the old one-bearing interpretation.
 
 ## 6. Bevel gear correction
 
@@ -138,16 +147,18 @@ The old geometry where an upper `nose` subtraction opened the pressure cavity is
 ## 9. Rev.A errors formally recorded
 
 1. Some CRP300 assembly drawings were previously at risk of being interpreted as direct CRP150 dimensional evidence. Corrected: secondary-reference only.
-2. `Rev.PR PASS` can be misread as complete DN150 crawler clearance. Corrected: it proves the body screen and packaging checks, not the final wheels/lift/camera in a real DN150 tube.
-3. Module-1.25 bevel geometry exists in historical/current screening CAD. Corrected: packaging-only; source-correct design direction is module-1-class until exact gear geometry is frozen.
-4. A motor envelope is not a motor selection. Corrected: exact traction motor remains a procurement/test gate.
-5. Historical bearing-stack notes are not sufficient to release the X250 axle. Corrected: direct source reconciliation + purchased-bearing tolerances are mandatory.
+2. `Rev.PR PASS` can be misread as complete DN150 crawler clearance. Corrected: it proves the body screen and packaging checks, not the complete physical crawler.
+3. The first Rev.A audit incorrectly treated the ~0.12 mm Rev.GF **elastic tread** margin as if it were rigid-part clearance. Corrected in WB02: tread is intended pipe-contact geometry; hard parts currently retain ~3.1 mm or more in the modeled wheel-end package.
+4. Module-1.25 bevel geometry exists in historical/current screening CAD. Corrected: packaging-only; source-correct design direction is module-1-class until exact gear geometry is frozen.
+5. A motor envelope is not a motor selection. Corrected: exact traction motor remains a procurement/test gate.
+6. Historical bearing-stack notes were insufficient to release the X250 axle. Corrected: DRW-002-374 confirms six 61801 bearings per side-drive assembly; exact axial placement/fits remain release work.
+7. Historical wheel retention mixed external M8, internal M8 and source M6 concepts. Rev.B WB02 selects a compact source-like internal M6x14 candidate for further release work.
 
 ## 10. Rev.B work order
 
 Priority order:
-1. rebuild/freeze the complete X250 driven rear-wheel station including shaft, bearing stack, dynamic seal, static flange seal, Z50 gear and Z40 handoff;
-2. integrate the detailed tapered wheel profile into the active master and rerun full DN150 checks;
+1. rebuild/freeze the complete X250 driven rear-wheel station including shaft, bearing stack, dynamic seal, static flange seal, Z50 gear and Z40 handoff — **WB01 active**;
+2. integrate the detailed tapered wheel profile, revised axle flange and M6 wheel-retention package — **WB02 CAD screen complete, release HOLD**;
 3. select and source the exact traction motor;
 4. select/freeze the exact Z16/Z40 bevel solution;
 5. reconcile all seal glands against exact selected FKM supplier data;
@@ -174,7 +185,13 @@ Rev.C is prohibited until all of the following are closed:
 - no active architecture changed;
 - established Rev.A -> Rev.B -> Rev.C top-level release control;
 - corrected CRP300/CRP150 evidence classification;
-- downgraded full-crawler DN150 status from implied PASS to HOLD pending complete solid/physical sweep;
 - protected module-1.25 bevel screening geometry from accidental manufacturing use;
 - retained traction motor as procurement gate;
 - placed X250 detailed bearing/seal stack under direct-source verification before machining release.
+
+### 2026-09-11 — WB01/WB02 corrections
+- source recheck corrected the side-drive 61801 quantity to six per side assembly;
+- WB01 introduced a compact overlapped X250 coupling/support candidate;
+- WB02 replaced inconsistent wheel-end M8 retention with a source-like internal M6x14 candidate;
+- corrected DN150 interpretation: elastic tread is contact geometry; rigid-part clearance is the release metric;
+- full physical DN150 validation remains mandatory.
