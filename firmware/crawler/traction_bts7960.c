@@ -83,11 +83,7 @@ static void apply_left(int16_t cmd)
         return;
     }
 
-    /*
-     * The state machine guarantees that an opposite direction is reached only
-     * after at least one disabled COAST interval. Do not chatter INH every
-     * control cycle just to rewrite the same direction bit.
-     */
+    /* Opposite polarity is reached only after a disabled COAST state. */
     board_left_dir(cmd > 0);
     board_pwm_left(abs_i16_u16(cmd));
     board_left_enable(true);
@@ -124,6 +120,16 @@ static void reset_side_state(traction_side_t *s, uint32_t now_ms)
     s->state = SIDE_DRIVE;
     s->coast_since_ms = now_ms;
     s->jam_since_ms = now_ms;
+    s->jam_timer_active = false;
+}
+
+static void force_side_coast(traction_side_t *s, uint32_t now_ms)
+{
+    s->requested = 0;
+    s->output = 0;
+    s->pending_sign = 0;
+    s->state = SIDE_COAST_FOR_REVERSE;
+    s->coast_since_ms = now_ms;
     s->jam_timer_active = false;
 }
 
@@ -242,13 +248,12 @@ static int16_t side_update(traction_side_t *s,
     default:
         s->output = 0;
 
-        /* A cancelled reverse command leaves the side safely coasting/stopped. */
         if (req_sign == 0) {
             s->pending_sign = 0;
             return 0;
         }
 
-        /* Returning to the previous direction is not a polarity reversal. */
+        /* Same-direction restart is not a polarity reversal. */
         if (req_sign == s->last_motion_sign) {
             s->pending_sign = 0;
             s->state = SIDE_DRIVE;
@@ -265,7 +270,7 @@ static int16_t side_update(traction_side_t *s,
             return 0;
         }
 
-        /* Only now is the opposite bridge direction allowed on a later apply. */
+        /* Only now is the opposite direction allowed on a later apply. */
         s->last_motion_sign = req_sign;
         s->pending_sign = 0;
         s->state = SIDE_DRIVE;
@@ -337,29 +342,26 @@ void traction_stop(void)
     g_right.requested = 0;
 }
 
-void traction_estop(void)
+void traction_estop(uint32_t now_ms)
 {
     g_fault_bits |= PX1_FAULT_ESTOP;
-    g_left.requested = 0;
-    g_right.requested = 0;
-    g_left.output = 0;
-    g_right.output = 0;
+    force_side_coast(&g_left, now_ms);
+    force_side_coast(&g_right, now_ms);
     disable_outputs_now();
 }
 
-void traction_hard_disable(void)
+void traction_hard_disable(uint32_t now_ms)
 {
-    g_left.requested = 0;
-    g_right.requested = 0;
-    g_left.output = 0;
-    g_right.output = 0;
+    force_side_coast(&g_left, now_ms);
+    force_side_coast(&g_right, now_ms);
     disable_outputs_now();
 }
 
 bool traction_clear_faults(bool deliberate_reset,
                            uint16_t bus_mv,
                            bool current_valid,
-                           bool estop_released)
+                           bool estop_released,
+                           uint32_t now_ms)
 {
     if (!deliberate_reset) return false;
     if (bus_mv >= PX1_TRACTION_BUS_REENABLE_MV) return false;
@@ -367,8 +369,8 @@ bool traction_clear_faults(bool deliberate_reset,
     if (!estop_released) return false;
 
     g_fault_bits = 0u;
-    g_left.jam_timer_active = false;
-    g_right.jam_timer_active = false;
+    force_side_coast(&g_left, now_ms);
+    force_side_coast(&g_right, now_ms);
     return true;
 }
 
