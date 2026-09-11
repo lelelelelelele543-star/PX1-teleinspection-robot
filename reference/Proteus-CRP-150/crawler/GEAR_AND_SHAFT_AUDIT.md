@@ -1,10 +1,10 @@
 # CRP-150 gear and shaft audit
 
-Revision 0.2, 2026-08-31.
+Revision 0.3, 2026-09-11.
 
 ## Purpose
 
-This audit checks the current PX1/X200 reconstruction against DRW-002-374, DRW-002-375 and DRW-002-386. The assembly sheets do not print every gear dimension, so scale-derived values are kept as `RECONSTRUCTED` until an individual part drawing or physical measurement confirms them.
+This audit checks the current PX1 reconstruction against DRW-002-374, DRW-002-375 and DRW-002-386. The assembly sheets do not print every gear dimension, so scale-derived values are kept as `RECONSTRUCTED` until an individual part drawing or physical measurement confirms them.
 
 ## Calibrated drawing method
 
@@ -84,22 +84,34 @@ DRW-002-386 shows the Z16/FSS-002-083 assembly supported in the motor holder by 
 
 The important functional rule is confirmed: bevel-mesh radial load is reacted through the 61801 bearing into FAL-002-082, rather than relying only on the small gearhead output bearing.
 
-### Rear long axle
+### Side-drive wheel stations — quantity correction
 
-The rear input station uses:
+DRW-002-374 is a single-side assembly and explicitly lists:
 
-- one 61903-2RS bearing on the wheel/outer shaft path;
-- the one-per-side 61801-2RS bearing on the inboard long-axle path;
-- one 4x4x12 key for the Z50 axle gear;
-- one additional 4x4x7 key on the long input path;
-- one X-ring 18.72x2.62 in the axle flange;
-- one static O-ring 32x1.5 under the axle flange.
+- 1 long axle FSS-002-064;
+- 2 short axles FSS-002-063;
+- 6 x 61801-2RS bearings (12x21x5);
+- 3 x 61903-2RS bearings (17x30x7);
+- 3 axle flanges;
+- 3 X-rings 18.72x2.62;
+- 3 static O-rings 32x1.5;
+- 3 x 4x4x12 keys plus 1 x 4x4x7 key.
 
-The front and middle wheel stations use short axles and do not receive the extra long-axle 61801 support.
+The previous Rev.0.2 wording that described only one 61801 on the rear long-axle side-drive path was incomplete and is superseded. The source-confirmed quantity is **six 61801 bearings per side-drive assembly**. That quantity is compatible with a two-compact-bearing support concept at each of the three wheel stations, but the exact shoulder-by-shoulder order is kept as a verification item until the section geometry/individual part drawings or a physical side drive are measured.
+
+The rear station differs from the front/middle because it uses the long axle FSS-002-064 and the additional short 4x4x7 key on the input path. The front and middle use short axles.
 
 ### Transverse Z40 path
 
-DRW-002-375 shows each Z40 on FSS-002-066. The inner end is supported by a 61800-2RS bearing (10x19x5); the outer path passes through an 18x30x7 dynamic shaft seal and connects to the side-drive long axle. The side-drive bearing completes the support system when the side cover is installed.
+DRW-002-375 shows each Z40 on FSS-002-066. The inner end is supported by a 61800-2RS bearing (10x19x5); the outer path passes through an 18x30x7 dynamic shaft seal and connects to the side-drive long axle. The side-drive support completes the system when the side cover is installed.
+
+This is a separate sealing/support path from the three external wheel-shaft X-rings in DRW-002-374.
+
+## PX-1 design consequence
+
+The PX-1 compact wheel-station adaptation may replace one source-size 61801 location with a thinner bearing only if the load path, stiffness, serviceability and sealing land remain equivalent and the substitution is clearly labeled as PX-1 geometry rather than MiniCam geometry.
+
+Any wheel-shaft manufacturing drawing must therefore show the complete bearing/seal stack explicitly. A historical note that says only `one 61801` is not a valid release basis.
 
 ## Current CAD conflicts
 
@@ -114,3 +126,6 @@ The published RevGK/RevGN checkpoints are not valid architecture masters. Their 
 
 The files are retained only as historical reconstruction checkpoints. A corrected CAD revision must rebuild the drive skeleton before any manufacturing drawing is produced.
 
+## Revision note — 2026-09-11
+
+Rev.0.3 corrects the side-drive bearing quantity from the explicit DRW-002-374 parts list and separates source-confirmed quantities from still-unresolved axial placement. No gear topology or rear-input conclusion changed.
