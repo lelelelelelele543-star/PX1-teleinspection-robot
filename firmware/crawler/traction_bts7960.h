@@ -13,9 +13,7 @@
 #define PX1_TRACTION_ZERO_CURRENT_MA    150u
 #define PX1_TRACTION_SLEW_PER_SECOND    1750u
 
-/*
- * Initialize software state. Hardware outputs are forced disabled.
- */
+/* Initialize software state. Hardware outputs are forced disabled. */
 void traction_init(uint32_t now_ms);
 
 /*
@@ -56,10 +54,12 @@ void traction_hard_disable(void);
 /*
  * Clear traction-local latched faults only after deliberate operator action
  * and after the measured conditions are healthy. This never arms traction.
+ * estop_released must represent the real hardware E-STOP chain state.
  */
 bool traction_clear_faults(bool deliberate_reset,
                            uint16_t bus_mv,
-                           bool current_valid);
+                           bool current_valid,
+                           bool estop_released);
 
 uint32_t traction_fault_bits(void);
 bool traction_outputs_enabled(void);
