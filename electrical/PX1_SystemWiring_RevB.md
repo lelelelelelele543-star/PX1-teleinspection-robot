@@ -12,7 +12,7 @@ AC / external CCU supply
         v
 PX1 CCU
   low-voltage controls / display / OSD
-  RS-485 master
+  isolated RS-485 master interface
   balanced-video receiver
   120 VDC-class crawler supply
   current-limited soft start
@@ -46,11 +46,13 @@ CRAWLER HV INPUT
   commercial isolated HV->24V converter
         |
         v
-24 V MAIN BUS
+24 V MAIN BUS / STAR
   bus-voltage ADC
   LEFT traction branch
   RIGHT traction branch
-  auxiliary 12/5V branches
+  24->12 V camera/axis branch
+  24->5 V logic/communications branch
+  lighting constant-current branch
 ```
 
 ## 2. Main tether — active Rev.B construction
@@ -162,6 +164,11 @@ Short controlled transient:
 
 Continuous 150 W through a hot 150 m lightweight tether is explicitly not the normal design condition.
 
+Distribution rule:
+- use one explicit 24 V star point immediately downstream of the main DC/DC;
+- traction, 12 V converter, 5 V converter and lighting branch leave this star separately;
+- aluminum structure is not a normal current return conductor.
+
 ## 9. Traction branches
 
 Two branches only:
@@ -229,27 +236,124 @@ Layer 1:
 
 Layer 2:
 - one external ready-made bidirectional current/power sensor per drive side;
-- INA226 R010 / XA-292 class is current prototype candidate;
-- separate I2C addresses;
-- calibrate against bench reference.
+- INA226 R010-class module is the Rev.B prototype candidate;
+- sensor silicon measures 0...36 V bus class and supports programmable I2C addressing;
+- two modules use I2C1 on PB8/PB9;
+- calibrate every purchased module against a bench reference because generic module shunts/traces vary.
 
 Final current/torque thresholds remain motor-test data, not catalog guesses.
 
-## 14. Auxiliary branches
+## 14. Auxiliary low-voltage branches — WB09 freeze
 
-From 24 V:
-- 24->12 V for camera/lighting as finally required;
-- 24->5 V for NUCLEO/sensors/interface electronics.
+### 12 V camera / camera-axis rail
+
+Selected service module:
+- Pololu `D42V55F12`;
+- item `5577`;
+- input 12...60 V;
+- output fixed 12 V;
+- typical continuous current class 4.5 A;
+- 25.4 x 25.4 x 9 mm;
+- soft-start, reverse-input, over-current and thermal protection;
+- EN and PG available.
+
+Loads:
+- camera electronics;
+- TILT/ROLL 12 V motor-driver branches;
+- balanced-video transmitter if its final article uses 12 V.
+
+The two current camera-axis motors have a combined stall-current screen of about 2.2 A. This is below the converter's current envelope, but motor stall is still fault-only operation.
+
+Preliminary branch protection:
+- 24 V converter-input fuse: 3.15 A time-delay;
+- 12 V camera-harness fuse: 3.15 A time-delay;
+- both values remain physical-test driven.
+
+### 5 V logic rail
+
+Selected service module:
+- Pololu `D42V55F5`;
+- item `5571`;
+- input 5...60 V;
+- output fixed 5 V;
+- typical continuous current class 6 A;
+- 25.4 x 25.4 x 9 mm;
+- same mechanical family as the 12 V converter;
+- soft-start, reverse-input, over-current and thermal protection;
+- EN and PG available.
+
+Loads:
+- NUCLEO-F446RE through E5V;
+- crawler-side isolated RS-485 TTL side;
+- current sensors;
+- low-voltage sensors/interfaces.
+
+This converter is intentionally oversized; 60 V input rating was selected to keep margin above WB08's common 24 V bus transient envelope rather than relying on old 35/36 V hobby buck modules.
+
+Preliminary branch protection:
+- 24 V converter-input fuse: 1.0 A time-delay;
+- NUCLEO E5V harness protection starting class: <=0.75 A after real-load measurement.
+
+### NUCLEO power rule
+
+- `5V_LOGIC -> NUCLEO E5V`;
+- follow ST UM1724 external-supply jumper and USB power-sequence requirements;
+- do not connect the crawler 24 V bus directly to E5V;
+- other 5 V loads connect in parallel to the 5 V rail, not through the NUCLEO board.
+
+## 15. Main RS-485 physical layer — WB09
+
+Selected module family:
+- Waveshare `TTL TO RS485 (C)`;
+- SKU `27479`;
+- same module at crawler and CCU ends;
+- half duplex;
+- isolated power and signals on-board;
+- TVS/protection on-board;
+- optional 120 ohm termination;
+- approximately 42.8 x 15.2 x 4.75 mm;
+- automatic ready-module direction handling; no external MCU DE GPIO is required.
+
+Crawler MCU allocation:
+- PC10 / USART3_TX;
+- PC11 / USART3_RX;
+- PA2/PA3 kept for NUCLEO ST-LINK VCP debug.
+
+Local camera UART reservation:
+- PC12 / UART5_TX;
+- PD2 / UART5_RX.
+
+### RS-485 common-mode HOLD
+
+The tether intentionally has only A/B for RS-485 and no seventh reference conductor.
+
+Therefore galvanic isolation is required but is not by itself proof of unlimited common-mode margin.
 
 Rules:
-- each branch fused appropriately;
-- motor returns use a high-current star path and must not flow through camera/video/logic ground traces/wires;
-- balanced video and RS-485 physical routing kept away from traction switching loops;
-- converter/driver heat goes to the aluminum body, not stagnant air only.
+- never bond isolated RS-485 line-side reference/PE to tether HV-;
+- never consume VIDEO+/VIDEO- as a temporary reference in the released harness;
+- do not claim 150 m production release from the Waveshare distance rating alone;
+- scope/test differential and common-mode behavior at 40 m, then 100/150 m equivalent, while traction/camera motors and lighting are switching.
 
-Exact low-voltage converter articles are a later BOM freeze block.
+If common-mode margin is inadequate, revise the physical layer deliberately. Do not silently alter the six-core pinout.
 
-## 15. Hardware safety
+Termination:
+- only at the two physical tether endpoints;
+- match the measured characteristic impedance of the final signal pair;
+- use onboard 120 ohm only if the pair measurement justifies it;
+- no termination in the reel middle.
+
+## 16. Ground/return routing
+
+Rules:
+- motor returns use short high-current paths back to the 24 V star;
+- LEFT motor return does not flow through RIGHT current sensor;
+- camera/video/logic return does not carry traction motor current;
+- balanced-video and RS-485 pair routing remains physically separated from BTS7960 switching loops;
+- auxiliary buck heat and traction-driver heat are coupled to the aluminum body/carrier where practical, not stagnant air only;
+- RS-485 TTL-side ground belongs to logic ground while line side remains galvanically isolated.
+
+## 17. Hardware safety
 
 CCU hardware E-STOP must disable tether HV independently of the crawler MCU.
 
@@ -261,30 +365,38 @@ Crawler firmware cannot override:
 On lost command/heartbeat:
 - traction INH low;
 - motor coast;
+- camera-axis commands stop;
 - CCU subsequently removes HV according to fault policy.
 
 No disconnected tether connector may remain energized.
 
-## 16. Bring-up sequence
+## 18. Bring-up sequence
 
 1. 24 V bench crawler only.
-2. One motor side at a time: motor -> supported bevel -> side drive.
-3. Calibrate current versus torque.
-4. Add second side and bus transient logging.
-5. Prove RS-485 and balanced CVBS at low voltage through 40 m.
-6. Build HV converter carrier/harness on dummy load.
-7. Qualify inrush, fuse and E-STOP without crawler attached.
-8. Integrate crawler at 40 m.
-9. Emulate 100/150 m loop resistance.
-10. Only then order/operate long tether.
+2. Verify 12 V and 5 V rails on dummy loads.
+3. Power NUCLEO through E5V and verify USB/ST-LINK power sequencing.
+4. One motor side at a time: motor -> supported bevel -> side drive.
+5. Calibrate current versus torque and calibrate both INA226-class modules.
+6. Add second traction side and bus transient logging.
+7. Prove isolated RS-485 and balanced CVBS at low voltage through 40 m.
+8. Exercise RS-485 common-mode/noise with traction, camera axes and LED PWM active.
+9. Build HV converter carrier/harness on dummy load.
+10. Qualify inrush, fuse and E-STOP without crawler attached.
+11. Integrate crawler at 40 m.
+12. Emulate 100/150 m loop resistance and repeat RS-485 common-mode tests.
+13. Only then order/operate long tether.
 
-## 17. Controlled document references
+## 19. Controlled document references
 
 - `tether/REVB_WB06_TETHER_POWER_SIGNAL_FREEZE.md`
 - `mechanical/REVB_WB05_TAIL_CONNECTOR_AND_STRAIN_RELIEF.md`
 - `electronics/REVB_WB07_HV_TO_24V_POWER_STAGE.md`
 - `electronics/REVB_WB08_24V_BUS_REGEN_PROTECTION.md`
+- `electrical/REVB_WB09_LOW_VOLTAGE_COMMS.md`
+- `electrical/PX1_CommonServiceModules_RevB.md`
+- `electrical/REV_B_WB09_VALIDATION.json`
 - `mechanical/REVB_WB03_BEVEL_MOTOR_TORQUE_GATE.md`
+- `firmware/crawler/board_map_f446.h`
 
 ## Change log
 
@@ -296,3 +408,12 @@ No disconnected tether connector may remain energized.
 - added 24 V regenerative/transient protection and coast-stop policy;
 - recorded BTS7960 lifecycle/current-sense limitations;
 - explicitly restored the approved-source procurement gate for the HV DC/DC rather than treating DigiKey/Mouser availability alone as final procurement approval.
+
+### 2026-09-11 — WB09 integration
+- froze Pololu 5577 as the 12 V camera/axis converter and Pololu 5571 as the 5 V logic converter for Rev.B;
+- replaced old 35/36 V-class auxiliary-buck assumptions with 60 V-input modules;
+- fixed NUCLEO power at regulated E5V;
+- froze Waveshare 27479 as the Rev.B isolated ready-made RS-485 module family;
+- moved main tether UART to USART3 PC10/PC11 and removed the external DE requirement;
+- reserved UART5 PC12/PD2 for the local camera node and I2C1 PB8/PB9 for current sensors;
+- recorded two-wire/no-reference RS-485 common-mode behavior as a physical qualification HOLD.
