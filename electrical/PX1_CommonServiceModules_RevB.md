@@ -2,7 +2,7 @@
 
 Date: 2026-09-11
 Status: ACTIVE REV.B SERVICEABILITY BASELINE
-Supersedes `PX1_CommonServiceModules_RevPL.md` where low-voltage converter or RS-485 implementation differs.
+Supersedes `PX1_CommonServiceModules_RevPL.md` where low-voltage converter, RS-485 or pressure-sensing implementation differs.
 
 ## 1. Service philosophy
 
@@ -102,7 +102,7 @@ Primary crawler use:
 - NUCLEO E5V;
 - isolated RS-485 TTL side;
 - current sensors;
-- low-voltage pressure/temperature/interface electronics.
+- pressure/temperature/interface electronics.
 
 Quantity:
 - crawler: 1;
@@ -130,7 +130,54 @@ Incoming-inspection rule:
 
 The sensor module is therefore a Rev.B prototype service part, not a production metrology freeze.
 
-## 7. Camera local communications
+## 7. Common pressure sensor module — WB10
+
+Selected system-wide pressure module:
+- Adafruit `LPS28 (LPS28DFW) Pressure Sensor - STEMMA QT / Qwiic`;
+- product ID `6067`;
+- sensor IC: ST LPS28DFW;
+- absolute pressure;
+- 260...4060 hPa mode selected for PX-1;
+- 24-bit digital pressure;
+- integrated temperature output/compensation;
+- I2C;
+- breakout 3.3/5 V compatible;
+- default address 0x5C;
+- dimensions 25.4 x 17.8 x 4.8 mm;
+- metal pressure port.
+
+Quantity:
+- crawler P0/P1/P2: 3;
+- CCU ambient reference: 1;
+- recommended spare: 1.
+
+The same module is used in all locations so replacement/calibration is common.
+
+The lower 1260 hPa mode is prohibited for normal PX-1 fill because standard atmosphere plus +0.25 bar is already approximately 1263 hPa.
+
+## 8. Pressure-sensor I2C multiplexer
+
+Selected ready module:
+- Adafruit `TCA9548A I2C Multiplexer`;
+- product ID `2717`;
+- 8 downstream channels;
+- address 0x70...0x77, use 0x70 in PX-1;
+- 3...5 V logic/supply class;
+- dimensions 30.6 x 17.6 x 2.7 mm.
+
+Quantity:
+- crawler: 1;
+- optional field spare: 1.
+
+Crawler assignment:
+- channel 0 = P0 pressure;
+- channel 1 = P1 pressure;
+- channel 2 = P2 pressure;
+- all pressure sensors remain at default address 0x5C.
+
+INA226 current sensors remain on the direct PB8/PB9 I2C bus outside the mux.
+
+## 9. Camera local communications
 
 Reserved local UART:
 - PC12 / UART5_TX;
@@ -140,7 +187,7 @@ This connects crawler electronics to the local camera-node controller and does n
 
 The rotating camera node may still use the previously documented RP2040-Zero / ready H-bridge approach after camera-head mechanical validation.
 
-## 8. Driver modules
+## 10. Driver modules
 
 Traction:
 - two BTS7960/IBT-2 modules remain Rev.B prototype-only;
@@ -150,43 +197,56 @@ Camera axes:
 - ready DRV8871-class modules remain the present camera-node prototype family;
 - exact purchased board must be matched to the selected 12 V N20 motors and physically measured before camera-head production release.
 
-## 9. Common-spare target
+## 11. Common-spare target
 
 Minimum Rev.B field electronics spare kit should converge toward:
 - 1 x NUCLEO-F446RE;
 - 1 x Waveshare 27479 isolated RS-485 module;
 - 1 x Pololu 5577 12 V buck;
 - 1 x Pololu 5571 5 V buck;
+- 1 x Adafruit 6067 LPS28 pressure module;
+- 1 x Adafruit 2717 TCA9548A pressure-bus mux where field stocking permits;
 - 1 x traction-driver module from the qualified batch;
 - 1 x camera-axis driver module;
 - 1 x calibrated INA226-class current-sensor module;
 - standard branch fuses;
 - commonly used crawler seals/bearings outside this electrical document.
 
-## 10. Sourcing rule
+## 12. Sourcing rule
 
 The selected Rev.B auxiliary modules were chosen only after checking controlled manufacturer information and an allowed marketplace route.
 
-Current examples:
+Current marketplace examples:
 - Waveshare 27479 is listed on Allegro;
 - Pololu 5577 is represented by an Allegro product listing;
-- Pololu 5571 is represented by an Allegro product listing.
+- Pololu 5571 is represented by an Allegro product listing;
+- Adafruit 6067 LPS28 is represented by an Allegro product listing;
+- Adafruit 2717 TCA9548A is represented by current Allegro listings.
 
 Availability and price must be rechecked at purchase time. A marketplace listing is evidence of a real purchasing route, not a permanent inventory guarantee.
 
-## 11. Controlled references
+## 13. Controlled references
 
 - `electrical/REVB_WB09_LOW_VOLTAGE_COMMS.md`
+- `electrical/REVB_WB10_PRESSURE_LEAK_TELEMETRY.md`
+- `electrical/REV_B_WB09_VALIDATION.json`
+- `electrical/REV_B_WB10_VALIDATION.json`
 - `electrical/PX1_SystemWiring_RevB.md`
 - `electronics/REVB_WB08_24V_BUS_REGEN_PROTECTION.md`
 - `firmware/crawler/board_map_f446.h`
 
 ## Change log
 
-### 2026-09-11 — Rev.B
+### 2026-09-11 — Rev.B / WB09
 - replaced the old unspecified 24->5 V common buck with a 60 V-input service family;
 - selected separate Pololu 5577 and 5571 rails;
 - retained one Waveshare 27479 module family at crawler and CCU ends;
 - removed external RS-485 DE from the crawler wiring baseline;
 - added current-sensor I2C and local camera UART allocations;
 - preserved ready-module/no-custom-PCB service philosophy.
+
+### 2026-09-11 — WB10
+- standardized pressure sensing on Adafruit 6067 / ST LPS28DFW at all four system pressure locations;
+- selected 4060 hPa full-scale mode;
+- added Adafruit 2717 TCA9548A so three default-address crawler pressure sensors coexist without custom PCB;
+- preserved the common-spare philosophy for pressure telemetry.
