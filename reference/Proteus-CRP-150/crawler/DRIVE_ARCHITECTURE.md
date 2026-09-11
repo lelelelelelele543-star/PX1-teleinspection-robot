@@ -1,6 +1,6 @@
-# CRP-150 / X200 crawler drive architecture
+# CRP-150 crawler drive architecture
 
-Revision 0.1, 2026-08-31.
+Revision 0.2, 2026-09-11.
 
 ## Confirmed topology
 
@@ -77,16 +77,17 @@ The rear station is the driven input. There is no separate fourth input shaft. T
 
 ## Confirmed side sealing and support family
 
-Per side, the established source architecture includes:
+DRW-002-374 is a **one-side side-drive assembly**: it contains one side cover, one long axle, two short axles and three outer 61903 bearings. Its parts list explicitly specifies:
 
-- one 61801-class bearing on the long-axle/input path;
-- three 61903-class wheel bearings;
-- three X-rings 18.72x2.62 mm on wheel shaft paths;
+- **six 61801-2RS bearings (12x21x5) per side-drive assembly**;
+- three 61903-2RS wheel-load bearings (17x30x7);
+- three axle flanges;
+- three X-rings 18.72x2.62 mm;
 - three static axle-flange O-rings 32x1.5 mm;
 - one side-cover O-ring 190x1.5 mm;
 - two idler bushings 10x12x4 mm.
 
-The detailed axial stack, shoulder positions and retaining hardware remain subject to drawing-by-drawing verification before manufacturing release.
+This corrects the previous Rev.0.1 text that incorrectly reduced the side-drive 61801 evidence to one bearing on the long-axle path. The **quantity six is source-confirmed**. The exact shoulder-by-shoulder axial placement must still be reconciled from the assembly section/individual part drawings or a physical unit before manufacturing release. PX-1 must not infer a final bearing stack from the old one-bearing statement.
 
 ## Motor-interface requirements for the replacement
 
@@ -109,4 +110,9 @@ The available motor must preserve the functional interface, even if its flange i
 - preload/end-float adjustment method for both bevel shafts;
 - material and heat treatment of the bevel gears;
 - complete long-axle shoulder and seal journal dimensions;
+- exact distribution/axial order of the six 61801 bearings in the source side-drive assembly until the relevant section/part drawings or physical measurement are checked;
 - exact FSS-002-083 coupling bore, fit and axial retention.
+
+## Revision note — 2026-09-11
+
+Rev.0.2 corrects the side-drive 61801 bearing quantity using the explicit DRW-002-374 parts list. No drivetrain topology, gear ratio or rear-input decision changed.
