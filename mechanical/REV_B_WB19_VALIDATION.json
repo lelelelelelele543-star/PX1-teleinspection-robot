@@ -1,0 +1,93 @@
+{
+  "status": "PASS_SCREEN / MANUFACTURING_HOLD",
+  "architecture": {
+    "axles": 3,
+    "wheels_total": 6,
+    "wheel_x_mm": [50.0, 150.0, 250.0],
+    "drive_station_x_mm": 250.0,
+    "rule": "3 AXLES / 6 WHEELS HARD LOCK"
+  },
+  "wb16_correction": {
+    "reason": "WB16 used camera-axis/head-pivot motion as proxy for actual SP13 cable-exit motion; WB19 uses actual connector offset",
+    "current_WB18_SP13_cable_exit_offset_from_camera_axis_xz_mm": [120.5, 20.0],
+    "actual_current_outlets_xz_mm": {
+      "LOW": [204.05700000000002, 95.0],
+      "MID": [203.351, 150.0],
+      "HIGH": [255.7, 225.0]
+    },
+    "candidate_outlet_displacement_from_LOW_mm": {
+      "LOW": {"dx_from_LOW_mm": 0.0, "dz_from_LOW_mm": 0.0, "distance_from_LOW_mm": 0.0},
+      "MID": {"dx_from_LOW_mm": -0.7059999999999889, "dz_from_LOW_mm": 55.0, "distance_from_LOW_mm": 55.00453104972353},
+      "HIGH": {"dx_from_LOW_mm": 51.643, "dz_from_LOW_mm": 130.0, "distance_from_LOW_mm": 139.8820912375848}
+    }
+  },
+  "current_WB18_routing_failure": {
+    "LOW_current_outlet_xz_mm": [204.05700000000002, 95.0],
+    "controller_saddle_front_x_mm": 218.0,
+    "available_forward_run_before_saddle_mm": 13.942999999999984,
+    "max_R55_vertical_or_lateral_deflection_in_available_run_mm": 1.7966847743488756,
+    "required_center_z_for_design_body_clearance_mm": 116.35,
+    "required_vertical_rise_mm": 21.349999999999994,
+    "minimum_forward_run_for_that_R55_rise_mm": 43.504913515601885,
+    "minimum_side_offset_for_design_saddle_clearance_mm": 45.35,
+    "minimum_forward_run_for_side_R55_offset_mm": 54.14681431072377,
+    "conclusion": "CURRENT WB18 SP13 POSITION CANNOT REACH THE DESIGN-CLEAR ROUTE AROUND/OVER Rev.PR SADDLE WITH R55 BEFORE X218"
+  },
+  "candidate_SP13": {
+    "structural_bridge": "retained at WB18 DX +58 / DZ +20",
+    "panel_offset_from_camera_axis_xz_mm": [45.3, 37.25],
+    "LOW_panel_x_mm": 128.857,
+    "LOW_axis_z_mm": 112.25,
+    "LOW_cable_outlet_xz_mm": [187.357, 112.25],
+    "fixed_package_min_ideal_DN150_clearance_mm": 5.0480546999999945,
+    "moving_camera_min_ideal_DN150_clearance_mm": 3.0404968656612965,
+    "moving_camera_worst_tilt_deg": -61,
+    "max_moving_vs_candidate_fixed_collision_mm3": 0.0,
+    "interpretation": "SP13 remains fixed to non-TILT yoke support and keeps +X cable axis; only support position changes"
+  },
+  "R55_harness_screen": {
+    "cable": "LAPP 0027429 UNITRONIC FD CY 7X0.25",
+    "OD_mm": 6.7,
+    "design_min_bend_radius_mm": 55.0,
+    "LOW_route_target_z_mm": 116.35,
+    "LOW_S_curve_horizontal_run_mm": 29.75214277997468,
+    "LOW_S_curve_arc_length_mm": 30.12739124584037,
+    "fixed_strain_relief_screen_xz_mm": [280.0, 116.35],
+    "position_routes": {
+      "LOW": {
+        "outlet_xz_mm": [187.357, 112.25],
+        "screen_path_length_mm": 93.01824846586568,
+        "min_ideal_DN150_cable_clearance_mm": 7.3480547000000005,
+        "min_central_body_clearance_mm": 2.9999999999999942,
+        "turn_screen": "S +/- 15.692"
+      },
+      "MID": {
+        "outlet_xz_mm": [186.651, 167.25],
+        "screen_path_length_mm": 107.73717992402797,
+        "min_ideal_DN150_cable_clearance_mm": null,
+        "min_central_body_clearance_mm": 2.9999999999999942,
+        "turn_screen": 33.544210737747854
+      },
+      "HIGH": {
+        "outlet_xz_mm": [239.0, 242.25],
+        "screen_path_length_mm": 158.73945426985017,
+        "min_ideal_DN150_cable_clearance_mm": null,
+        "min_central_body_clearance_mm": 2.9999999999999942,
+        "turn_screen": 102.14618066100488
+      }
+    },
+    "note": "LOW uses an R55 S-route to become horizontal before the Rev.PR saddle; MID/HIGH are free R55 tangent-route screens. Final constant cut length and clamp/guide details remain physical-jig HOLD."
+  },
+  "release_holds": [
+    "Rev.PF physical/detail dimensions still block machining release of exact CRP150 lift arm geometry",
+    "candidate SP13 support bracket must be detailed with real fasteners and stiffness check",
+    "body-side harness strain-relief/feedthrough article and sealed mounting boss are not frozen",
+    "LOW cable guide/saddle material and wear geometry must be selected and wet-cycle tested",
+    "constant final cable cut length must be solved on physical LOW/MID/HIGH lift jig; do not freeze from shortest-path screens",
+    "actual LAPP 0027429 OD and bend behavior must be measured",
+    "real SP13 dimensions and moulded strain relief must be measured",
+    "physical DN150 tube sweep with wheel profile, pipe ovality/debris allowance and fastener heads",
+    "WB18 camera component physical-sample holds remain active"
+  ],
+  "execution": {"engine": "CadQuery 2.8.0", "model": "WB19", "type": "hard-part solid + analytic R55 centerline integration screen"}
+}
