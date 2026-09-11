@@ -1,0 +1,81 @@
+{
+  "status": "PASS_SCREEN",
+  "architecture": {
+    "axles_wheel_stations": 3,
+    "wheels_total": 6,
+    "wheel_x_mm": [50.0, 150.0, 250.0],
+    "drive_station_x_mm": 250.0,
+    "rule": "3 AXLES / 6 WHEELS HARD LOCK"
+  },
+  "camera": {
+    "pivot_xyz_mm": [83.557, 0, 75.0],
+    "optical_shell_od_mm": 52.0,
+    "optical_shell_length_mm": 78.0,
+    "tilt_range_deg": [-105.0, 105.0],
+    "moving_tilt_drive_pod": "cylindrical OD18.0 x 56.0 mm",
+    "min_ideal_DN150_moving_hard_clearance_mm": 3.0404968656612965,
+    "worst_sampled_tilt_deg": -61.0,
+    "sample_increment_deg": 1.0,
+    "fixed_yoke_SP13_min_ideal_DN150_clearance_mm": 5.345847358149626,
+    "max_unintended_moving_fixed_collision_mm3": 0.0,
+    "collision_worst_angle_deg": null,
+    "DN150_safe_ranges_clearance_ge_5mm_deg": [[-105.0, -81.0, 5.086144772100084], [-43.0, 105.0, 5.101842975791101]],
+    "DN150_ranges_clearance_ge_3mm_deg": [[-105.0, 105.0, 3.0404968656612965]]
+  },
+  "tilt_stack": {
+    "pivot": "fixed yoke pivot, shell/boss rotates around it",
+    "shaft_od_mm": 8.0,
+    "cable_bore_mm": 4.0,
+    "seal": "8x16x7 FKM target",
+    "bearing": "618/8 8x16x4 open target",
+    "boss_outer_y_mm": 40.0,
+    "yoke_inner_face_abs_y_mm": 40.75,
+    "yoke_center_abs_y_mm": 43.5,
+    "stack_required_mm": 13.5,
+    "stack_available_mm": 14.0,
+    "stack_margin_mm": 0.5,
+    "boss_to_yoke_gap_mm": 0.75,
+    "worm_wheel": {"module": 0.5, "teeth": 40, "bore_mm": 8.0, "OD_screen_mm": 21.5, "fixed_to_pivot": true},
+    "worm_center_distance_screen_mm": 14.5,
+    "drive_interpretation": "moving worm/N20 on P3 shell walks around fixed Z40 wheel"
+  },
+  "roll_package": {
+    "camera": "RunCam Phoenix 2 envelope 19x19x20",
+    "bearings": "2x 6803 17x26x5",
+    "gear": "m0.5 z51 OD26.5 screen",
+    "slip_ring": "SenRing M125-06 OD12.5 x 13.5",
+    "m125_radial_margin_inside_17mm_bearing_ID_mm": 2.25,
+    "roll_motor": "N20 34x10x10 screen",
+    "component_outside_main_cavity_mm3": {"RunCam": 0.0, "RollBearing1": 0.0, "RollBearing2": 0.0, "RollGear": 0.0, "M125": 0.0, "RollMotor": 0.0, "RollPinion": 0.0},
+    "unintended_internal_collisions": [],
+    "tilt_wheel_internal_collisions": []
+  },
+  "tilt_drive_pod": {
+    "component_outside_pod_cavity_mm3": {"Worm": 0.0, "TiltMotor": 0.0},
+    "note": "integrated shell bulge, not a cartridge/cassette"
+  },
+  "quick_connector": {
+    "panel": "WEIPU SP1312/P6-C fixed on non-TILT rear bridge",
+    "plug": "WEIPU SP1310/S6II-N operational envelope",
+    "plug_axis": "rearward +X; fixed relative to yoke, not part of TILT sweep",
+    "bridge_center_x_mm": 141.55700000000002,
+    "service_plug_end_x_mm": 204.05700000000002
+  },
+  "front": {
+    "window_mm": [28.0, 3.0],
+    "led_boards": "6 x 8mm class on PCD40",
+    "lighting_rule": "fixed to tilting optical shell but fixed relative to internal ROLL"
+  },
+  "release_holds": [
+    "replace all component envelopes with measured purchased samples before machining release",
+    "exact 618/8 brand/tolerance and exact 8x16x7 FKM article",
+    "exact matched m0.5 Z40/8mm worm wheel + worm drawing and backlash test",
+    "exact N20 output shaft, body and connector dimensions",
+    "physical M125 CVBS rotating qualification",
+    "SP13 installed +0.25 bar pressure and submerged test",
+    "WB16 external LAPP harness R55 routing with real lift-arm clamps",
+    "physical DN150 tube sweep with real parts and pipe ovality/debris allowance",
+    "real fastener heads/stops/home sensor and thermal paths"
+  ],
+  "execution": {"engine": "CadQuery 2.8.0", "model": "WB18", "note": "envelope-level part integration, no machining release"}
+}
