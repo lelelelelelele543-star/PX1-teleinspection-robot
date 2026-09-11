@@ -1,124 +1,197 @@
 # PX-1 Rev.B — CAM026-inspired camera electrical baseline
 
 Date: 2026-09-11
-Status: ACTIVE CAMERA ELECTRICAL BASELINE / SLIP-RING QUALIFICATION HOLD
-Supersedes `PX1_CAM026_Electrical_RevPM.md` where the video-balun location or camera rotary pinout differs.
+Status: ACTIVE CAMERA ELECTRICAL BASELINE / SLIP-RING+VIDEO QUALIFICATION HOLD
+Supersedes `PX1_CAM026_Electrical_RevPM.md` where video-balun location, rotating electronics or camera rotary pinout differs.
 
 ## 1. Source-derived architecture retained
 
 MiniCam CAM026 source evidence shows:
-- `COM-000-003 PAL DSP CAMERA MODULE` in the rotating camera housing;
+- `COM-000-003 PAL DSP CAMERA MODULE` in the camera housing;
 - `COM-001-800 SLIP RING 6 WAY` in the rotate connector assembly;
-- camera-side connection PCB after/around the rotary interface;
-- separate PAN and ROTATE motor/control mechanisms;
+- camera-side connection PCB around the rotary interface;
+- separate camera-axis mechanisms;
 - six-way rotary electrical architecture.
 
-PX-1 retains a six-function camera rotary interface but uses replaceable modern modules.
+PX-1 keeps the proven idea of a compact six-circuit rotary interface, but does not copy proprietary MiniCam electronics.
 
-## 2. Rev.B six rotary functions
+## 2. Mechanical/electrical interpretation corrected in WB14
 
-1. +12V_ROT
-2. GND_ROT — motor/control power return
-3. CAM_UART_TX
-4. CAM_UART_RX
-5. CVBS_SIGNAL
-6. CVBS_RETURN — dedicated video return
+Active PX-1 head mechanics are:
+- static sealed outer shell relative to the internal continuous ROLL joint;
+- whole head TILT handled outside the ROLL interface;
+- LED annulus fixed to the static outer shell;
+- TILT/ROLL motors, drivers, sensors and lighting control fixed-side relative to the ROLL slip ring;
+- only the camera sensor/module itself requires continuous electrical transfer.
+
+Therefore camera lighting and motor current must **not** be routed through the ROLL slip ring.
+
+This correction removes an unnecessary high-current requirement and reduces rotating mass/wiring.
+
+## 3. Rev.B ROLL slip-ring functions
+
+Preferred physical device remains six circuits for source-like service/spares, but only four are used:
+
+1. `+12V_CAM`
+2. `GND_CAM`
+3. `CVBS_SIGNAL`
+4. `CVBS_RETURN`
+5. SPARE — insulated
+6. SPARE — insulated
 
 Important:
-- `CVBS_RETURN` does not carry PAN-motor or LED current;
-- main tether is still balanced `VIDEO+ / VIDEO-`;
-- the 75/100-ohm conversion happens on the **fixed crawler side immediately after the camera slip ring**;
-- no coax is introduced into the main tether.
+- `CVBS_RETURN` carries only camera video return/current;
+- it never carries motor or LED current;
+- no UART is required through the ROLL interface for the fixed-focus Rev.B camera;
+- camera setup/menu is performed before deployment;
+- main tether remains balanced `VIDEO+ / VIDEO-` after the fixed-side balun.
 
-## 3. Why the balun moved to the fixed side
+## 4. Camera module baseline
 
-Rev.PM assumed a balanced-video transmitter inside the rotating camera volume but did not freeze a real compact purchasable part.
+Selected family:
+- RunCam Phoenix 2 analog CVBS camera;
+- 1/2 in CMOS;
+- PAL/NTSC switchable;
+- 5...36 V input;
+- conservative 12 V design-current reservation 120 mA until purchased sample is measured;
+- 19 x 19 x approximately 19...20 mm standard-camera envelope;
+- stock M12 2.1 mm wide-angle lens retained only for first optical test.
 
-WB12 selected the real commercial Delta-Opti `TR-1D*P2`, approximately 43 x 16 x 15 mm plus a 90 mm BNC lead. Although the transformer body can geometrically fit a Ø60-class cavity when tilted, the complete BNC/service package competes with the MCU, PAN driver, LED electronics and wiring.
+Exact current product/listing and final lens are controlled in `REVB_WB14_CAMERA_AND_LIGHTING.md`.
 
-Moving the balun to the fixed side:
-- reduces rotating mass and clutter;
-- gives normal access to BNC and balanced terminals;
-- leaves the camera head easier to seal and service;
-- preserves the six rotary functions;
-- does not alter the six-core main tether.
+## 5. Camera slip-ring candidate
 
-This is therefore an approved Rev.B serviceability correction, not a main-system architecture change.
+Leading engineering candidate after WB13A correction:
+- SenRing `M125-06`;
+- Ø12.5 x 13.5 mm;
+- 6 circuits;
+- 1.5 A per circuit;
+- AWG30 silver-plated PTFE leads;
+- gold-gold contacts;
+- IP51, therefore kept entirely inside the sealed camera head.
 
-## 4. Rotating camera electronics
+Why M125 instead of the earlier M220 camera proposal:
+- current rotating load is only camera power, not lighting/motors;
+- M125 fits through the current 6803 bearing ID17 central passage with 2.25 mm nominal radial clearance;
+- M220 OD22 cannot pass the active ID17 central passage and is therefore rejected for the camera.
 
-Retained ready-module concept:
-- fixed-focus CVBS camera module — exact purchase article remains HOLD;
-- RP2040-Zero-class local controller — prototype candidate;
-- DRV8871-class PAN motor driver — exact ready board HOLD;
-- absolute/position sensor as selected by mechanical camera work block;
-- compact 12->5 V buck for rotating logic;
-- current-controlled/PWM LED driver;
-- no focus motor for first prototype.
+M220 mixed power/signal remains a reel candidate; this correction applies only to the camera.
 
-PAN/light/HOME commands travel over local UART through the rotary interface.
+## 6. Fixed-side local head electronics
 
-## 5. Fixed crawler camera electronics
+Camera-head control architecture may still use a small local controller on the **fixed side** of the ROLL joint to reduce quick-connector pin count and centralize camera-axis control.
 
-Immediately after camera slip ring:
-- dedicated 75-ohm CVBS pigtail from `CVBS_SIGNAL/CVBS_RETURN`;
-- Delta-Opti `TR-1D*P2` passive balun;
-- balanced output becomes the crawler/tether `VIDEO+ / VIDEO-` pair.
+Fixed-side functions:
+- receive local camera commands from crawler MCU over the reserved UART;
+- drive TILT and ROLL H-bridges as mechanically assigned;
+- read fixed-side/home/angle sensors;
+- generate LED PWM;
+- supervise local camera-head faults.
 
-Crawler MCU:
-- main tether RS-485 remains on USART3;
-- local camera UART remains on UART5 PC12/PD2;
-- ROTATE/other fixed-side functions remain outside the continuously rotating camera node as mechanically applicable.
+Current prototype controller family:
+- RP2040-Zero class remains acceptable as a ready-module candidate;
+- it is no longer placed on the continuously rotating camera carrier.
 
-## 6. Video qualification
+The main crawler MCU reserved UART remains:
+- PC12 / UART5_TX;
+- PD2 / UART5_RX.
 
-The selected camera slip ring is not allowed to be released from a resistance/noise catalog number alone.
+Exact local head controller and its 12->5 V supply remain packaging/procurement HOLD until the head fixed-side electronics carrier is finalized.
 
-Required with physical video:
-- camera direct baseline;
-- camera slip ring rotating continuously;
-- Delta balun pair;
-- 40 m tether;
-- reel slip ring;
-- 100/150 m extension/equivalent;
-- traction PWM, PAN/ROLL motors and LED PWM active.
+## 7. Lighting
 
-See `REVB_WB12_BALANCED_CVBS_VIDEO.md`.
+Illumination is fixed to the static outer shell and is governed by WB14.
 
-## 7. Rotary-current gate
+Current architecture:
+- six XP-family white emitters;
+- six 8 mm-class commercial MCPCBs around PCD40;
+- two independent 3-LED strings;
+- two ready P4115adj constant-current modules;
+- starting current ~300 mA/string;
+- common PWM command;
+- LEDs thermally clamped to the aluminium front carrier;
+- no light power/control crosses the ROLL slip ring.
 
-The current candidate PAN motor can approach ~1.1 A stall at 12 V. The same rotating +12/GND conductors also supply camera, local MCU and LEDs.
+## 8. Video path
 
-Therefore a miniature 1.5 A/circuit slip ring must **not** be frozen merely because it has six circuits.
+Rotating side:
+`RunCam CVBS -> M125-06 CVBS_SIGNAL/CVBS_RETURN`.
 
-Camera rotary device must meet one of:
-- each +12/GND circuit has verified transient current margin above the measured combined rotating load; or
-- a manufacturer-supported higher-current six-function configuration is used; or
-- multiple physical contacts are paralleled only if the slip-ring manufacturer explicitly permits it and the pin count/package is requalified.
+Fixed camera-head/crawler side:
+`M125 raw CVBS -> short 75-ohm pigtail -> Delta-Opti TR-1D*P2 -> balanced VIDEO+/VIDEO-`.
 
-WB13 closes this gate.
+Main tether:
+`VIDEO+/VIDEO- balanced pair`.
 
-## 8. Failure behavior
+CCU:
+`VIDEO+/VIDEO- -> second TR-1D*P2 -> 75-ohm CVBS -> OSD -> GF-AM071`.
 
-- camera UART timeout -> PAN command zero;
-- invalid position sensor -> PAN stop;
-- crawler command timeout -> traction and camera-axis commands stop;
-- video failure does not disable the hardware E-STOP path;
-- hardware CCU E-STOP removes crawler/tether power independently of camera MCU.
+No coaxial conductor exists in the main tether. Short local 75-ohm interconnect inside sealed/serviceable assemblies is allowed.
 
-## 9. Service rule
+## 9. Video qualification
 
-The sealed camera can be removed/replaced without opening side-drive pressure zones.
+A generic gold-contact slip ring is not a guaranteed 75-ohm rotary joint.
 
-The fixed-side video balun is accessible without opening the sealed rotating camera head.
+Required physical sequence:
+- RunCam direct into 75 ohm;
+- through M125 stationary;
+- through M125 rotating continuously;
+- add Delta balun pair;
+- add 40 m tether;
+- add reel slip ring;
+- repeat at 100/150 m equivalent;
+- run TILT/ROLL motor switching, traction PWM and LED PWM during test.
 
-No balun, slip ring or camera-service bracket is a pressure-boundary shortcut; camera O-rings and crawler body seals remain ordinary separately serviced sealing features.
+M125 is rejected for production video if rotation produces unacceptable amplitude modulation, sync loss, chroma errors or visible bands/dropouts.
+
+## 10. Fixed-side motor/axis rule
+
+Current Rev.B mechanical camera architecture uses TILT and continuous ROLL.
+
+The ROLL motor is not on the rotating camera carrier; it drives that carrier mechanically from the fixed head side. Therefore motor power does not cross the roll slip ring.
+
+Likewise the LED ring is fixed and does not rotate with the image sensor.
+
+Any later proposal that adds a motor or controller to the continuously rotating carrier is an architecture change and must reopen the rotary-current, thermal and slip-ring gates.
+
+## 11. Failure behavior
+
+- crawler-to-head local UART timeout -> TILT/ROLL commands zero and light to configured safe state;
+- invalid axis sensor -> affected camera axis stops;
+- crawler main-command timeout -> traction and camera-axis commands stop;
+- video failure does not disable hardware E-STOP;
+- hardware CCU E-STOP removes crawler/tether power independently of camera-head software.
+
+## 12. Service rule
+
+The camera head remains separately sealed and field removable without opening P1/P2 side-drive pressure zones.
+
+The fixed-side video balun remains accessible without opening the inner rotating camera carrier.
+
+The ROLL slip ring is an internal service component, not a pressure seal or structural bearing.
+
+The inner ROLL carrier is an ordinary integrated spindle/bearing assembly. It is not a cartridge/cassette module.
+
+## 13. Controlled references
+
+- `REVB_WB12_BALANCED_CVBS_VIDEO.md`
+- `REVB_WB13A_CAMERA_SLIP_RING_CORRECTION.md`
+- `REVB_WB14_CAMERA_AND_LIGHTING.md`
+- `../mechanical/REV_BH_CAMERA_HEAD_INTERNAL_LAYOUT.md`
+- `../mechanical/REV_BK_CAMERA_MOTOR_SELECTION.md`
+- `../bom/REV_BI_CAMERA_HEAD_COMPONENT_SELECTION.md`
 
 ## Change log
 
 ### 2026-09-11 — Rev.B / WB12
-- retained six-way CAM026-inspired rotary architecture;
-- changed rotary video circuits from `balanced VIDEO+/VIDEO-` to dedicated `CVBS_SIGNAL/CVBS_RETURN`;
-- moved 75/100-ohm balun to fixed crawler side for serviceability and packaging;
-- preserved balanced main tether video;
-- added explicit combined rotating-current gate before selecting the camera slip ring.
+- moved 75/100-ohm balun to fixed crawler side;
+- retained balanced main tether video.
+
+### 2026-09-11 — Rev.B / WB14 correction
+- recognized that active LED ring and camera-axis motors are fixed-side relative to ROLL;
+- removed LED/motor current and UART from the ROLL slip ring;
+- reduced used ROLL circuits to camera 12 V/GND + raw CVBS signal/return;
+- corrected camera slip-ring candidate from geometrically incompatible Ø22 M220 to Ø12.5 M125-06;
+- moved optional local controller to fixed side;
+- preserved six physical rings with two insulated spares;
+- explicitly rejected old cartridge/cassette interpretation.
