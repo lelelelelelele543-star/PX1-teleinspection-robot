@@ -1,0 +1,127 @@
+{
+  "status": "PASS_SCREEN / MANUFACTURING_HOLD / PROCUREMENT_HOLD",
+  "architecture": {
+    "wheels_total": 6,
+    "wheel_stations_x_mm": [50.0, 150.0, 250.0],
+    "z50_total": 10,
+    "rear_drive_x_mm": 250.0,
+    "lift": "manual four-bar, 120 mm equal links",
+    "rule": "WB20 architecture retained; no drivetrain/camera architecture change"
+  },
+  "source_principle": {
+    "proteus_evidence": [
+      "DRW-002-752 LIFT HOUSING: separate Camera Connector + CAB-002-461 M12 cable fitting",
+      "ASS-002-890 Top Housing Assy: separate M12 gland + Camera Connector",
+      "ASS-003-121 Lift Arm Assy: dedicated lift arm cover"
+    ],
+    "px1_interpretation": "service connector at head; separate sealed body ingress; controlled local flex section at lift pivot"
+  },
+  "cable_candidate": {
+    "article": "igus chainflex CF99.PLUS.01.08",
+    "construction": "(8x0.14 mm2)C, shielded TPE",
+    "outer_diameter_mm": 8.0,
+    "conductor_resistance_max_ohm_per_km": 140.0,
+    "current_rating_per_core_A_at_30C": 2.5,
+    "bend_factors_at_-25_to_80C": {
+      "5_million_double_strokes_x_d": 3.0,
+      "40_million_double_strokes_x_d": 5.0,
+      "100_million_double_strokes_x_d": 6.0
+    },
+    "wb21_design_min_dynamic_radius_mm": 40.0,
+    "pin_allocation": {
+      "+12V": "2 x 0.14 mm2 in parallel",
+      "GND": "2 x 0.14 mm2 in parallel",
+      "UART_TX": "1 x 0.14 mm2",
+      "UART_RX": "1 x 0.14 mm2",
+      "CVBS_SIGNAL": "1 x 0.14 mm2",
+      "CVBS_RETURN": "1 x 0.14 mm2",
+      "shield": "overall braid; not a DC return"
+    },
+    "procurement": "manufacturer-controlled technical baseline; marketplace/ChipDip-compliant source not yet frozen"
+  },
+  "electrical_screen": {
+    "head_transient_design_current_A": 2.92,
+    "current_per_parallel_power_core_A": 1.46,
+    "screen_harness_length_m": 0.4,
+    "power_pair_each_leg_effective_resistance_ohm_per_km": 70.0,
+    "loop_resistance_at_0p4m_ohm": 0.056,
+    "voltage_drop_at_2p92A_V": 0.16352,
+    "voltage_drop_percent_of_12V": 1.3626666666666667
+  },
+  "body_ingress": {
+    "gland": "LAPP SKINTOP MS-M M16x1.5 53112010",
+    "clamping_range_mm": [4.5, 10.0],
+    "gland_outer_envelope_diameter_mm": 22.0,
+    "conservative_external_envelope_length_mm": 26.0,
+    "mount_point_xyz_mm": [180.0, 0.0, 60.0],
+    "guide_xyz_mm": [190.5097408066, -13.0, 95.7383125126],
+    "gland_end_xyz_mm": [186.9257283458408, -8.5667639338346, 83.55089897608089],
+    "guide_support_outer_diameter_screen_mm": 12.0,
+    "gland_min_ideal_DN150_clearance_mm": 38.82358147637237,
+    "boss_min_ideal_DN150_clearance_mm": 55.99616530074762,
+    "static_cable_min_ideal_DN150_clearance_mm": 28.316777105527116
+  },
+  "moving_flex": {
+    "moving_clamp_distance_from_lower_body_pivot_mm": 60.0,
+    "moving_clamp_y_mm": -13.0,
+    "free_centerline_length_nominal_mm": 52.8,
+    "free_length_tolerance_mm": 0.5,
+    "required_min_radius_mm": 40.0,
+    "states": {
+      "LOW": {
+        "clamp_xyz_mm": [141.7784404193773, -13.0, 77.5],
+        "chord_mm": 52.03244834463389,
+        "radius_nominal_mm": 89.19493668883952,
+        "radius_at_plus_0p5_length_mm": 70.29779376592487,
+        "floor_clearance_nominal_mm": 22.805032826989986,
+        "ideal_DN150_clearance_nominal_mm": 25.41668476589866,
+        "arm_collision_mm3": 0.0,
+        "camera_fixed_collision_mm3": 0.0,
+        "camera_moving_max_collision_mm3_1deg": 0.0
+      },
+      "MID": {
+        "clamp_xyz_mm": [141.4252614175701, -13.0, 105.0],
+        "chord_mm": 49.95062534149459,
+        "radius_nominal_mm": 46.01455211288094,
+        "radius_at_plus_0p5_length_mm": 42.98612550822343,
+        "floor_clearance_nominal_mm": 22.805032826989986,
+        "ideal_DN150_clearance_nominal_mm": 13.165682808109203,
+        "arm_collision_mm3": 0.0,
+        "camera_fixed_collision_mm3": 0.0,
+        "camera_moving_max_collision_mm3_1deg": 0.0
+      },
+      "HIGH": {
+        "clamp_xyz_mm": [167.60015432135518, -13.0, 142.5],
+        "chord_mm": 52.072109325378534,
+        "radius_nominal_mm": 91.60312578378536,
+        "radius_at_plus_0p5_length_mm": 71.43217286022917,
+        "floor_clearance_nominal_mm": 22.805032826990015,
+        "ideal_DN150_clearance_nominal_mm": -20.38136795077095,
+        "arm_collision_mm3": 0.0,
+        "camera_fixed_collision_mm3": 0.0,
+        "camera_moving_max_collision_mm3_1deg": 0.0
+      }
+    }
+  },
+  "solid_collision_screen": {
+    "LOW": {"gland_vs_arms_mm3": 0.0, "boss_vs_arms_mm3": 0.0, "support_vs_arms_mm3": 0.0, "dynamic_cable_vs_gas_mm3": 0.0, "gland_vs_gas_mm3": 0.0, "support_vs_gas_mm3": 0.0, "dynamic_cable_vs_gears_mm3": 0.0, "gland_vs_gears_mm3": 0.0},
+    "MID": {"gland_vs_arms_mm3": 0.0, "boss_vs_arms_mm3": 0.0, "support_vs_arms_mm3": 0.0, "dynamic_cable_vs_gas_mm3": 0.0, "gland_vs_gas_mm3": 0.0, "support_vs_gas_mm3": 0.0, "dynamic_cable_vs_gears_mm3": 0.0, "gland_vs_gears_mm3": 0.0},
+    "HIGH": {"gland_vs_arms_mm3": 0.0, "boss_vs_arms_mm3": 0.0, "support_vs_arms_mm3": 0.0, "dynamic_cable_vs_gas_mm3": 0.0, "gland_vs_gas_mm3": 0.0, "support_vs_gas_mm3": 0.0, "dynamic_cable_vs_gears_mm3": 0.0, "gland_vs_gears_mm3": 0.0}
+  },
+  "release_holds": [
+    "CF99.PLUS.01.08 must be obtained from a source compliant with the project procurement rule or explicitly approved as a cable-source exception",
+    "purchased cable OD and bend behavior must be measured; do not machine clamps from nominal 8.0 mm only",
+    "free flex length 52.8 +/-0.5 mm must be set on a LOW/MID/HIGH jig and wet-cycle tested",
+    "fairlead/support detail needs final material, fasteners and dirt-shedding geometry; current screen uses a 12 mm support envelope and 14 mm guide envelope",
+    "M16 boss changes the pressure boundary; perform pressure FEA/proof and leak test before machining release",
+    "verify two 0.14 mm2 conductors fit and can be terminated reliably at each SP13 +12/GND contact",
+    "shield termination and CVBS noise must be proven with TILT/ROLL motors and LED PWM active",
+    "WB22 must solve the static arm-side run from moving clamp to final head connector without reopening this pivot flex geometry",
+    "physical DN150 dirty/oval pipe test remains mandatory"
+  ],
+  "execution": {
+    "engine": "CadQuery 2.8.0",
+    "method": "solid gland/boss/support/arms/gears/gas-spring + circular free-flex arc + 1-degree moving-camera collision sweep",
+    "status_note": "HIGH is not a DN150 operating position; its negative ideal pipe clearance is expected and does not fail WB21"
+  }
+}
