@@ -1,0 +1,78 @@
+{
+  "status": "PASS_SEAL_LAND_AND_FULL_INTEGRATION_SCREEN / SEAL_TEST_HOLD / FLEX_TEST_HOLD / PROCUREMENT_HOLD",
+  "architecture": {
+    "wheels": 6,
+    "z50_gears": 10,
+    "wheel_x_mm": [50.0, 150.0, 250.0],
+    "body_pivot_x_mm": 200.0
+  },
+  "service_cover": {
+    "outer_LxW_mm": [86.0, 44.0],
+    "x_range_mm": [218.0, 304.0],
+    "supported_by_pressure_pod": true,
+    "opening_LxW_mm": [48.0, 22.0],
+    "opening_x_range_mm": [237.0, 285.0],
+    "opening_y_range_mm": [-11.0, 11.0],
+    "opening_inside_pressure_pod": true,
+    "body_valid_after_cut": true,
+    "screw_x_mm": [226.0, 296.0],
+    "provisional_groove_offset_from_opening_mm": 4.0,
+    "provisional_groove_width_mm": 2.5,
+    "minimum_screw_hole_to_groove_web_mm": 3.5,
+    "minimum_screw_head_to_cover_edge_mm": 4.0,
+    "minimum_groove_to_cover_y_edge_mm": 5.75,
+    "dry_connector_screen_LxW_mm": [31.62, 10.5],
+    "dry_connector_fits_opening": true
+  },
+  "gland": {
+    "crosses_pressure_pod_front_wall": true,
+    "axis_yz_mm": [12.0, 103.0]
+  },
+  "fixed_dn150_clearance_mm": {
+    "cover": 7.369745618885986,
+    "pressure_port": 4.69890330994788,
+    "gland": 13.855253251615224,
+    "M4_head_1": 7.928746583771499,
+    "M4_head_2": 7.928746583771499
+  },
+  "states": {
+    "LOW": {
+      "camera_axis_xz_mm": [83.55688083875458, 75.0],
+      "guard_dn150_clearance_mm": 29.233692886552888,
+      "fixed_vs_arms_mm3": 0.0,
+      "fixed_vs_camera_mm3": 0.0,
+      "guard_vs_fixed_mm3": 0.0,
+      "guard_vs_Z50_mm3": 0.0
+    },
+    "MID": {
+      "camera_axis_xz_mm": [83.55688083875458, 130.0],
+      "guard_dn150_clearance_mm": 4.647977878912144,
+      "fixed_vs_arms_mm3": 0.0,
+      "fixed_vs_camera_mm3": 0.0,
+      "guard_vs_fixed_mm3": 0.0,
+      "guard_vs_Z50_mm3": 0.0
+    },
+    "HIGH": {
+      "camera_axis_xz_mm": [133.28382691892222, 185.0],
+      "guard_dn150_clearance_mm": -35.574944265060964,
+      "fixed_vs_arms_mm3": 0.0,
+      "fixed_vs_camera_mm3": 0.0,
+      "guard_vs_fixed_mm3": 0.0,
+      "guard_vs_Z50_mm3": 0.0
+    }
+  },
+  "worst_unintended_collision_mm3": {
+    "fixed_vs_Z50_mm3": 0.0,
+    "fixed_vs_wheels_mm3": 0.0,
+    "fixed_vs_lift_arms_mm3": 0.0,
+    "fixed_vs_camera_outer_mm3": 0.0,
+    "guard_vs_fixed_mm3": 0.0,
+    "guard_vs_Z50_mm3": 0.0
+  },
+  "pressure_load_screen": {
+    "0.25bar_N": 26.400000000000002,
+    "1bar_N": 105.60000000000001,
+    "1bar_each_M4_N": 52.800000000000004
+  },
+  "release_note": "PASS is packaging/integration only. Final service-cover seal, bosses, fasteners, gland, fill valve and local harness require real-part qualification."
+}
