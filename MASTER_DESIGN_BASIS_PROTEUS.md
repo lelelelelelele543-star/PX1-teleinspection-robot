@@ -16,6 +16,7 @@ Preserve where possible:
 - rear wheel long-axle input architecture;
 - Z16 -> Z40 bevel input with two motors total;
 - manual camera lift with 150 N gas spring and M8 clamp;
+- compact removable pressure/lift service interface with local cable gland and protected camera harness;
 - CAM026-like 360-degree ROTATE and +/-135-degree PAN envelope/function;
 - lightweight manual RMP300-style reel with level-wind, brake, measuring wheel and slip-ring path;
 - simple portable control console workflow.
@@ -79,6 +80,26 @@ Retain:
 
 Do not invent new powered lift mechanisms unless the manual source architecture proves impossible to reproduce.
 
+## Pressure/lift service interface baseline
+Sources: DRW-002-745, DRW-002-752, ASS-002-890, DRW-003-121 / ASS-003-121 and CRP150 repair photographs.
+
+Retain the functional logic:
+
+`dry pressure body -> removable sealed service cover/lift housing -> compact pressure/fill valve -> local M12-class cable gland -> short protected camera harness -> removable camera connector`.
+
+PX-1 Rev.B implementation is controlled by WB23C:
+
+- WB22A hard lift geometry remains unchanged;
+- no X207.5 pivot shift;
+- no mandatory dual flex chambers or energy-chain style loops;
+- local harness target <=5 mm OD, protected on one lower lift arm;
+- free slack at pivots is physically qualified rather than represented by invented constant-radius CAD loops;
+- gland seals cable through pressure boundary but is not the electrical disconnect;
+- a dry internal connector lets the external cover/gland/harness assembly be replaced without dismantling the main electronics;
+- external removable camera uses the controlled six-function SP13 interface.
+
+The exact original Proteus small pressure-cover screw count is not source-confirmed. PX-1's two-M4 compact service cover is an independent prototype decision and must pass pressure/seal/alignment tests.
+
 ## Camera baseline
 Source family: CAM026 assembly drawings.
 
@@ -95,7 +116,7 @@ Simplification:
 - delete proprietary focus motor/gear/PCB;
 - use a fixed-focus modern camera module/lens where practical;
 - use standard replaceable motor driver modules;
-- use an off-the-shelf slip ring sized for the required circuits;
+- use an off-the-shelf slip ring sized for required circuits;
 - retain mechanical sealing/axis logic where practical.
 
 ## RMP300 reel baseline
