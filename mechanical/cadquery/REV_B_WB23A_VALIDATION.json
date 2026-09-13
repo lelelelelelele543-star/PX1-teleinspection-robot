@@ -1,1 +1,51 @@
-{}
+{
+  "status": "PASS_STATIC_PACKAGING / FLEX_TEST_HOLD / MANUFACTURING_HOLD / PROCUREMENT_HOLD",
+  "architecture": {
+    "wheel_stations_x_mm": [50.0, 150.0, 250.0],
+    "z50_total": 10,
+    "rear_drive_x_mm": 250.0
+  },
+  "lift": {
+    "body_pivot_x_mm": 200.0,
+    "pivot_z_mm": [92.0, 109.0],
+    "link_length_mm": 90.0,
+    "arm_y_mm": 31.0,
+    "arm_section_mm": [4.0, 14.0]
+  },
+  "local_harness": {
+    "max_target_od_mm": 5.0,
+    "centre_y_mm": 25.5,
+    "static_setback_each_end_mm": 25.0,
+    "protected_static_length_mm": 40.0,
+    "cover_outer_y_mm": 7.0,
+    "cover_outer_xz_mm": 7.0
+  },
+  "full_lift_screen": {
+    "solid_samples": 43,
+    "theta_range_deg": [-17.791590573007635, 66.44353569089876],
+    "cable_vs_body_mm3": 0.0,
+    "cable_vs_z50_mm3": 0.0,
+    "cable_vs_arms_mm3": 0.0,
+    "cable_vs_carrier_mm3": 0.0,
+    "cover_vs_body_mm3": 0.0,
+    "cover_vs_z50_mm3": 0.0,
+    "cover_vs_arms_mm3": 0.0,
+    "cover_vs_carrier_mm3": 0.0,
+    "min_floor_cable_mm": 24.565072744099936,
+    "min_floor_cover_mm": 24.764602720338452,
+    "min_full_tilt_margin_cable_mm": 3.318625332735593,
+    "min_full_tilt_margin_cover_mm": 2.318625332735593
+  },
+  "critical_camera_clearance": {
+    "theta_deg": 66.44353569089876,
+    "camera_axis_xz_mm": [133.28382691892222, 185.0],
+    "nearest_static_station_mm": 65.0,
+    "centreline_to_camera_axis_xz_mm": 52.690791913767455
+  },
+  "low_dn150": {
+    "static_start_xyz_mm": [176.1956437486075, 25.5, 84.36111111111111],
+    "static_end_xyz_mm": [138.10867374637945, 25.5, 72.13888888888889],
+    "cable_clearance_mm": 31.409937102094766,
+    "cover_clearance_mm": 29.744028203177237
+  }
+}
