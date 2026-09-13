@@ -25,9 +25,10 @@ Any four-wheel/two-axle interpretation is non-controlling unless an explicit arc
 6. `50_TAIL` — tether tail, strain relief and lowering eye.
 7. `90_ASSEMBLY` — full crawler assembly and interference checks.
 
-## Current mechanical baseline
+## Current hard lift/camera baseline — WB22A
 
-**Rev.B WB22A** remains the controlled hard lift/camera geometry:
+**Rev.B WB22A** remains the controlled lift/camera geometry:
+
 - body main screen length: `307 mm` plus rear extension features;
 - body width: `92 mm`;
 - wet-bay half width: `38 mm`;
@@ -45,37 +46,64 @@ WB22A corrected the wet-bay extrusion sign and separated the four-bar from the T
 
 Status: **PASS_SCREEN / MANUFACTURING HOLD / PROCUREMENT HOLD**.
 
-## Current local camera-harness block
+## Current pressure/service and local harness baseline — WB23C
 
-**Rev.B WB23A** is now the controlled static local-harness packaging screen.
+**Rev.B WB23C** is the controlling camera-lift service topology.
 
-WB21 electrical allocation remains useful, but its Ø8 local cable geometry, clamp coordinates and 52.8 mm free-flex length are superseded mechanically.
+It replaces the abandoned WB23B dual-flex-chamber / R16 flex-fan direction and supersedes WB23A absolute routing coordinates. WB23A remains historical evidence that a thin protected harness fits the lower arm, but it had a one-sided XZ-workplane Y-sign ambiguity and is not manufacturing control.
 
-WB23A controls:
-- local harness target `<=Ø5 mm`;
-- cable centre plane `Y=+25.5 mm` on the inner side of the +Y lower arm;
-- `25 mm` flex reserve at each end;
-- `40 mm` protected static middle run;
-- protective cover screen `7 x 7 mm`;
-- body pivot remains `X200`.
+Controlling WB23C topology:
 
-Executed WB23A result:
-- zero static-run/cover collision with body, ten Z50, lift arms and carrier in the checked states;
-- minimum wet-floor clearance ≈ `24.57 mm` cable / `24.76 mm` cover;
-- conservative full-TILT swept-envelope margin ≈ `3.32 mm` cable / `2.32 mm` cover;
-- LOW ideal-DN150 clearance ≈ `31.41 mm` cable / `29.74 mm` cover.
+`dry pressure body -> removable PRESSURE/CAMERA SERVICE cover -> fill valve + horizontal M12 gland -> <=5 mm local harness -> removable arm guard -> fixed SP13 connector -> sealed removable camera`.
 
-Status: **PASS_STATIC_PACKAGING / FLEX TEST HOLD / MANUFACTURING HOLD / PROCUREMENT HOLD**.
+WB23C retains WB22A body pivot `X200`; there is no X207.5 shift.
 
-Controlled files:
-- `REVB_WB23A_LOCAL_HEAD_HARNESS_ENVELOPE.md`;
-- `cadquery/PX1_WB23A_LocalHarnessEnvelope_RevB.py`;
-- `cadquery/REV_B_WB23A_VALIDATION.json`.
+Current screen values:
 
-Next block: **WB23B — body-side and carrier-side pivot flex zones plus final fixed-head-connector transition**.
+- service cover: `78 x 42 x 6 mm`;
+- service opening: `58 x 24 mm`;
+- prototype retention: `2 x M4` as a PX-1 choice, not asserted as exact Proteus screw count;
+- provisional seal target: `2.0 mm` cord, groove study `2.5 x 1.5 mm` — not machining release;
+- fill-valve hard envelope: `<=Ø14 x 6 mm`;
+- gland candidate: LAPP `SKINTOP MS-M 53112000`, M12x1.5, 3.5–7 mm cable;
+- gland orientation: horizontal / forward-facing;
+- local harness target: `<=Ø5 mm`, 8 insulated cores + shield preferred;
+- protected lower-arm run: approximately `s=20...72 mm`;
+- service slack target: about `35 mm` at body side and `35 mm` at head side;
+- dry connector candidate: JST `B8P-VH-B` + `VHR-8N`;
+- camera quick disconnect remains WB15 WEIPU `SP1312/P6-C` + `SP1310/S6I-N` if final cable OD fits.
+
+Executed WB23C ideal-DN150 fixed-part screen:
+
+- cover ≈ `7.69 mm` clearance;
+- pressure-port hard envelope ≈ `4.70 mm` — current limiting fixed item;
+- horizontal M12 gland ≈ `13.86 mm`;
+- M4 screw heads ≈ `7.93 mm`;
+- LOW protected local harness/guard ≈ `30.20 / 29.23 mm`.
+
+Only LOW must fit DN150. MID/HIGH are larger-pipe lift positions and may leave the DN150 envelope.
+
+Status: **PASS_PACKAGING_SCREEN / SEAL TEST HOLD / FLEX TEST HOLD / PROCUREMENT HOLD**.
+
+Controlled WB23C files:
+
+- `REVB_WB23C_PRESSURE_LIFT_INTERFACE.md`;
+- `PX1_PRESSURE_SERVICE_COVER_BOM_RevB.md`;
+- `PX1_PRESSURE_SERVICE_COVER_DRAWING_SPEC_RevB.md`;
+- `cadquery/PX1_WB23C_PressureLiftInterface_RevB.py`;
+- `cadquery/REV_B_WB23C_VALIDATION.json`;
+- `../electrical/PX1_CAMERA_LIFT_INTERFACE_RevB.md`;
+- `../docs/PX1_SERVICE_CAMERA_HARNESS_RevB.md`;
+- `../docs/PX1_WB23C_QUALIFICATION_PLAN_RevB.md`.
+
+Source evidence supplement:
+
+- `../reference/Proteus-CRP-150/PRESSURE_LIFT_INTERFACE_EVIDENCE.md`.
 
 ## Release rule
 
-`PASS_SCREEN` or `PASS_STATIC_PACKAGING` means only that the stated engineering check passed. It is not a machining, pressure-boundary, cable-life or procurement release. Physical flex cycling, wet/grit testing, pressure leak testing and purchased-part measurement remain mandatory where stated.
+`PASS_SCREEN` or `PASS_PACKAGING_SCREEN` means only that the stated engineering packaging check passed. It is not a machining, pressure-boundary, cable-life or procurement release.
+
+Current mandatory physical gates include purchased-part measurement, pressure decay, submerged leak test, lift flex cycling, wet/grit cycling, video/UART/power checks and physical DN150 validation.
 
 Legacy README values `250 mm body length`, `94 mm body width` and `160 mm wheelbase` are superseded by the active Rev.B controlled baseline above.
