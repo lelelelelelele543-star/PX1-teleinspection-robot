@@ -1,6 +1,6 @@
 # Source register
 
-Revision 0.1, 2026-08-31.
+Revision 0.2, 2026-09-13.
 
 This register identifies evidence without publishing restricted source documents.
 
@@ -15,6 +15,7 @@ This register identifies evidence without publishing restricted source documents
 | ASS-001-801 family | CAM026 camera | Sealed camera-head source architecture | SOURCE-IDENTIFIED |
 | ASS-002-004 | CAM026 rotate sealing | Rotate-axis sealing source architecture | SOURCE-IDENTIFIED |
 | ASS-004-097 family | RMP300 cable reel | Manual drum, level wind, brake, measuring unit and slip-ring path | SOURCE-IDENTIFIED |
+| Repair photographs, 2025-03-14 | CRP-150 crawler/camera/lift service sequence | Integrated monolithic body with large dry service cavity and open forward wet bay; distinct fixed head-support structure between lift linkage and camera; separately serviceable camera; wet-zone circular electrical interface. See `PHOTO_EVIDENCE_2025-03-14.md`. No dimensions are taken from uncalibrated photographs. | CONFIRMED-PHOTO |
 | Repair photographs, 2026-08-31 | Open X200 motor compartment | Two longitudinal motor-gear units on one removable holder, separate Z16 bevel inputs and two transverse Z40 paths | CONFIRMED-PHOTO |
 | Gearbox marking | FAULHABER 26/1S 66:1, 7060569, Swiss made, 4718 | Gearhead family and nominal ratio; electrical motor type remains unknown | CONFIRMED-PHOTO |
 
