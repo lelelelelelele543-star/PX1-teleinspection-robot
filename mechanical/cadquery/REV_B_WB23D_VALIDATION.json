@@ -1,0 +1,66 @@
+{
+  "status": "PASS_FULL_INTEGRATION_SCREEN / SEAL_TEST_HOLD / FLEX_TEST_HOLD / PROCUREMENT_HOLD",
+  "architecture": {
+    "wheels": 6,
+    "z50_gears": 10,
+    "wheel_x_mm": [50.0, 150.0, 250.0],
+    "body_pivot_x_mm": 200.0
+  },
+  "service_opening": {
+    "inside_pressure_pod": true,
+    "x_range_mm": [228.0, 286.0],
+    "y_range_mm": [-12.0, 12.0],
+    "body_valid_after_cut": true
+  },
+  "gland": {
+    "crosses_pressure_pod_front_wall": true,
+    "axis_yz_mm": [12.0, 103.0]
+  },
+  "fixed_dn150_clearance_mm": {
+    "cover": 7.68840138836255,
+    "pressure_port": 4.69890330994788,
+    "gland": 13.855253251615224,
+    "M4_head_1": 7.928746583771499,
+    "M4_head_2": 7.928746583771499
+  },
+  "states": {
+    "LOW": {
+      "camera_axis_xz_mm": [83.55688083875458, 75.0],
+      "guard_dn150_clearance_mm": 29.233692886552888,
+      "fixed_vs_arms_mm3": 0.0,
+      "fixed_vs_camera_mm3": 0.0,
+      "guard_vs_fixed_mm3": 0.0,
+      "guard_vs_Z50_mm3": 0.0
+    },
+    "MID": {
+      "camera_axis_xz_mm": [83.55688083875458, 130.0],
+      "guard_dn150_clearance_mm": 4.647977878912144,
+      "fixed_vs_arms_mm3": 0.0,
+      "fixed_vs_camera_mm3": 0.0,
+      "guard_vs_fixed_mm3": 0.0,
+      "guard_vs_Z50_mm3": 0.0
+    },
+    "HIGH": {
+      "camera_axis_xz_mm": [133.28382691892222, 185.0],
+      "guard_dn150_clearance_mm": -35.574944265060964,
+      "fixed_vs_arms_mm3": 0.0,
+      "fixed_vs_camera_mm3": 0.0,
+      "guard_vs_fixed_mm3": 0.0,
+      "guard_vs_Z50_mm3": 0.0
+    }
+  },
+  "worst_unintended_collision_mm3": {
+    "fixed_vs_Z50_mm3": 0.0,
+    "fixed_vs_wheels_mm3": 0.0,
+    "fixed_vs_lift_arms_mm3": 0.0,
+    "fixed_vs_camera_outer_mm3": 0.0,
+    "guard_vs_fixed_mm3": 0.0,
+    "guard_vs_Z50_mm3": 0.0
+  },
+  "pressure_load_screen": {
+    "0.25bar_N": 34.800000000000004,
+    "1bar_N": 139.20000000000002,
+    "1bar_each_M4_N": 69.60000000000001
+  },
+  "release_note": "PASS is packaging/integration only. Final service-cover seal, bosses, fasteners, gland, fill valve and local harness require real-part qualification."
+}
