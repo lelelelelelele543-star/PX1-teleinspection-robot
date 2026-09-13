@@ -25,12 +25,9 @@ Any four-wheel/two-axle interpretation is non-controlling unless an explicit arc
 6. `50_TAIL` — tether tail, strain relief and lowering eye.
 7. `90_ASSEMBLY` — full crawler assembly and interference checks.
 
-## Current integration baseline
+## Current mechanical baseline
 
-**Rev.B WB22A — lift/camera integration correction** is the current controlled mechanical integration screen.
-
-Current body/lift screen values include:
-
+**Rev.B WB22A** remains the controlled hard lift/camera geometry:
 - body main screen length: `307 mm` plus rear extension features;
 - body width: `92 mm`;
 - wet-bay half width: `38 mm`;
@@ -42,16 +39,43 @@ Current body/lift screen values include:
 - sealed camera shell: `Ø52 x 78 mm`;
 - LOW camera axis: `X83.5569 / Z75.0 mm`.
 
-WB22A corrects a wet-bay extrusion-sign error found in an earlier audit model and replaces the WB20/WB21 direct lift-to-TILT-axis simplification with:
+WB22A corrected the wet-bay extrusion sign and separated the four-bar from the TILT axis using:
 
 `pressure body -> four-bar lift -> fixed head carrier -> sealed TILT camera`.
 
-WB21 cable electrical selections remain useful, but WB21 moving-clamp coordinates/free-flex length are superseded by WB22A mechanics and must be recalculated in WB23.
+Status: **PASS_SCREEN / MANUFACTURING HOLD / PROCUREMENT HOLD**.
+
+## Current local camera-harness block
+
+**Rev.B WB23A** is now the controlled static local-harness packaging screen.
+
+WB21 electrical allocation remains useful, but its Ø8 local cable geometry, clamp coordinates and 52.8 mm free-flex length are superseded mechanically.
+
+WB23A controls:
+- local harness target `<=Ø5 mm`;
+- cable centre plane `Y=+25.5 mm` on the inner side of the +Y lower arm;
+- `25 mm` flex reserve at each end;
+- `40 mm` protected static middle run;
+- protective cover screen `7 x 7 mm`;
+- body pivot remains `X200`.
+
+Executed WB23A result:
+- zero static-run/cover collision with body, ten Z50, lift arms and carrier in the checked states;
+- minimum wet-floor clearance ≈ `24.57 mm` cable / `24.76 mm` cover;
+- conservative full-TILT swept-envelope margin ≈ `3.32 mm` cable / `2.32 mm` cover;
+- LOW ideal-DN150 clearance ≈ `31.41 mm` cable / `29.74 mm` cover.
+
+Status: **PASS_STATIC_PACKAGING / FLEX TEST HOLD / MANUFACTURING HOLD / PROCUREMENT HOLD**.
+
+Controlled files:
+- `REVB_WB23A_LOCAL_HEAD_HARNESS_ENVELOPE.md`;
+- `cadquery/PX1_WB23A_LocalHarnessEnvelope_RevB.py`;
+- `cadquery/REV_B_WB23A_VALIDATION.json`.
+
+Next block: **WB23B — body-side and carrier-side pivot flex zones plus final fixed-head-connector transition**.
 
 ## Release rule
 
-`PASS_SCREEN` means the checked CAD geometry passes the stated engineering screen. It is **not** a machining or procurement release. Current WB22A status remains:
+`PASS_SCREEN` or `PASS_STATIC_PACKAGING` means only that the stated engineering check passed. It is not a machining, pressure-boundary, cable-life or procurement release. Physical flex cycling, wet/grit testing, pressure leak testing and purchased-part measurement remain mandatory where stated.
 
-**PASS_SCREEN / MANUFACTURING HOLD / PROCUREMENT HOLD**.
-
-The previous README values `250 mm body length`, `94 mm body width` and `160 mm wheelbase` were legacy studies and are explicitly superseded by the active Rev.B controlled baseline above.
+Legacy README values `250 mm body length`, `94 mm body width` and `160 mm wheelbase` are superseded by the active Rev.B controlled baseline above.
