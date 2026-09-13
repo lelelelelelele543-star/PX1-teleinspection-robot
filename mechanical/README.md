@@ -85,7 +85,32 @@ Only LOW must fit DN150. MID/HIGH are larger-pipe lift positions and may leave t
 
 Status: **PASS_PACKAGING_SCREEN / SEAL TEST HOLD / FLEX TEST HOLD / PROCUREMENT HOLD**.
 
-Controlled WB23C files:
+## Full body/lift integration — WB23D
+
+WB23D places the WB23C package back into the exact corrected WB22A pressure-body model instead of only a local roof reference.
+
+Executed result: **PASS_FULL_INTEGRATION_SCREEN / SEAL TEST HOLD / FLEX TEST HOLD / PROCUREMENT HOLD**.
+
+Verified:
+
+- service opening X228...286 / Y-12...+12 lies inside pressure pod;
+- body remains a valid solid after service opening cut;
+- horizontal gland crosses the pressure-pod front wall as intended;
+- 6 wheel / 10 Z50 hard architecture retained;
+- fixed service package vs all Z50: `0 mm³`;
+- fixed package vs all wheel envelopes: `0 mm³`;
+- fixed package vs lift arms in LOW/MID/HIGH: `0 mm³`;
+- fixed package vs camera outer envelope: `0 mm³`;
+- local guard vs fixed package and Z50: `0 mm³`;
+- LOW guard ideal-DN150 clearance remains ≈`29.23 mm`.
+
+Controlled WB23D files:
+
+- `REVB_WB23D_FULL_SERVICE_INTEGRATION.md`;
+- `cadquery/PX1_WB23D_FullServiceIntegration_RevB.py`;
+- `cadquery/REV_B_WB23D_VALIDATION.json`.
+
+## Controlled service-interface files
 
 - `REVB_WB23C_PRESSURE_LIFT_INTERFACE.md`;
 - `PX1_PRESSURE_SERVICE_COVER_BOM_RevB.md`;
@@ -94,16 +119,14 @@ Controlled WB23C files:
 - `cadquery/REV_B_WB23C_VALIDATION.json`;
 - `../electrical/PX1_CAMERA_LIFT_INTERFACE_RevB.md`;
 - `../docs/PX1_SERVICE_CAMERA_HARNESS_RevB.md`;
-- `../docs/PX1_WB23C_QUALIFICATION_PLAN_RevB.md`.
-
-Source evidence supplement:
-
+- `../docs/PX1_WB23C_QUALIFICATION_PLAN_RevB.md`;
+- `../docs/PX1_DECISION_LOG_RevB.md`;
 - `../reference/Proteus-CRP-150/PRESSURE_LIFT_INTERFACE_EVIDENCE.md`.
 
 ## Release rule
 
-`PASS_SCREEN` or `PASS_PACKAGING_SCREEN` means only that the stated engineering packaging check passed. It is not a machining, pressure-boundary, cable-life or procurement release.
+`PASS_SCREEN`, `PASS_PACKAGING_SCREEN` and `PASS_FULL_INTEGRATION_SCREEN` mean only that the stated engineering geometry check passed. They are not machining, pressure-boundary, cable-life or procurement releases.
 
-Current mandatory physical gates include purchased-part measurement, pressure decay, submerged leak test, lift flex cycling, wet/grit cycling, video/UART/power checks and physical DN150 validation.
+Mandatory physical gates remain purchased-part measurement, pressure decay, submerged leak test, lift flex cycling, wet/grit cycling, video/UART/power checks and physical DN150 validation.
 
 Legacy README values `250 mm body length`, `94 mm body width` and `160 mm wheelbase` are superseded by the active Rev.B controlled baseline above.
