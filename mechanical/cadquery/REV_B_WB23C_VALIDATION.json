@@ -1,0 +1,98 @@
+{
+  "status": "PASS_PACKAGING_SCREEN / SEAL_TEST_HOLD / FLEX_TEST_HOLD / PROCUREMENT_HOLD",
+  "architecture_rule": "WB22A mechanics retained; no X207.5 pivot shift; no R16 flex-fan; no two-flex-chamber requirement.",
+  "source_logic": {
+    "Proteus_topology": "removable sealed cover/lift housing + M12 3.5-5 mm cable gland + camera connector + lift cover",
+    "PX1_interpretation": "small independent pressure/service cover feeding a short field-replaceable harness along the lift",
+    "screw_count_note": "2x M4 is a PX1 service-cover choice; exact Proteus screw count is not asserted from current evidence."
+  },
+  "pressure_service_cover": {
+    "outer_LxWxT_mm": [78.0, 42.0, 6.0],
+    "centre_xyz_mm": [257.0, 0.0, 113.0],
+    "service_opening_LxW_mm": [58.0, 24.0],
+    "seal_land_xy_mm": [10.0, 9.0],
+    "o_ring_cord_mm": 2.0,
+    "provisional_face_groove_WxD_mm": [2.5, 1.5],
+    "fasteners": "2x M4 A4 stainless, blind threads in body boss; exact length after sample/build",
+    "screw_x_mm": [224.0, 290.0],
+    "minimum_screw_edge_clear_from_opening_mm": 4.0,
+    "pressure_load_screen": {
+      "at_plus_0_25_bar_N": 34.800000000000004,
+      "at_1_bar_N": 139.20000000000002,
+      "per_screw_at_1_bar_N": 69.60000000000001
+    },
+    "label": "PRESSURE / CAMERA SERVICE"
+  },
+  "fill_port": {
+    "thread_candidate": "M10x1 or G1/8 service-valve candidate; final after sample purchase",
+    "hard_envelope_ODxH_mm": [14.0, 6.0],
+    "position_xy_mm": [268.0, 0.0],
+    "note": "must accept compressor-gun/Schrader style service without leaving a tall fitting in DN150 envelope"
+  },
+  "gland": {
+    "article": "LAPP SKINTOP MS-M M12x1.5 53112000",
+    "thread": "M12x1.5",
+    "clamping_range_mm": [3.5, 7.0],
+    "OD_mm": 17.6,
+    "overall_length_mm": 26.5,
+    "thread_length_mm": 6.5,
+    "axis": "horizontal, forward-facing",
+    "axis_xyz_mm": [218.25, 12.0, 103.0],
+    "top_z_mm": 111.8
+  },
+  "local_harness": {
+    "target_max_OD_mm": 5.0,
+    "protected_run_on_lower_arm_s_mm": [20.0, 72.0],
+    "body_service_slack_target_mm": 35.0,
+    "head_service_slack_target_mm": 35.0,
+    "internal_dry_connector_candidates": ["JST B8P-VH-B", "JST VHR-8N"],
+    "head_connectors": ["WEIPU SP1312/P6-C", "WEIPU SP1310/S6I-N for <=5 mm local harness; exact purchased sample controls"],
+    "rule": "free slack at pivots is verified physically, not represented by invented constant-radius CAD loops."
+  },
+  "DN150_clearance": {
+    "fixed_parts_mm": {
+      "cover_plate": 7.68840138836255,
+      "pressure_port_cap": 4.69890330994788,
+      "horizontal_M12_gland": 13.855253251615224,
+      "M4_head_1": 7.928746583771499,
+      "M4_head_2": 7.928746583771499
+    },
+    "minimum_fixed_mm": 4.69890330994788,
+    "states": {
+      "LOW": {
+        "camera_z_mm": 75.0,
+        "lift_angle_deg": -17.791590573007635,
+        "protected_run_start_xyz_mm": [180.95651499888598, 25.5, 85.88888888888889],
+        "protected_run_end_xyz_mm": [131.44345399598956, 25.5, 70.0],
+        "cable_ideal_DN150_clearance_mm": 30.20330555586969,
+        "protective_cover_ideal_DN150_clearance_mm": 29.233692886552888
+      },
+      "MID": {
+        "camera_z_mm": 130.0,
+        "lift_angle_deg": 17.791590573007635,
+        "protected_run_start_xyz_mm": [180.95651499888598, 25.5, 98.11111111111111],
+        "protected_run_end_xyz_mm": [131.44345399598956, 25.5, 114.0],
+        "cable_ideal_DN150_clearance_mm": 5.607215805790659,
+        "protective_cover_ideal_DN150_clearance_mm": 4.647977878912144
+      },
+      "HIGH": {
+        "camera_z_mm": 185.0,
+        "lift_angle_deg": 66.44353569089876,
+        "protected_run_start_xyz_mm": [192.00694746114547, 25.5, 110.33333333333333],
+        "protected_run_end_xyz_mm": [171.22501086012366, 25.5, 158.0],
+        "cable_ideal_DN150_clearance_mm": -35.11644979588493,
+        "protective_cover_ideal_DN150_clearance_mm": -35.574944265060964
+      }
+    },
+    "minimum_lift_protective_cover_all_states_mm": -35.574944265060964,
+    "DN150_release_rule": "Only LOW is required to fit DN150. MID/HIGH are larger-pipe positions and may leave the DN150 envelope."
+  },
+  "holds": [
+    "Buy and measure real M12 gland and chosen <=5 mm harness before machining gland boss.",
+    "Choose real low-profile fill valve / Schrader service port and confirm compressor-gun interface.",
+    "Leak test service cover and gland at +0.25 bar minimum; later submerged test and 1 bar proof target if body design is released for that rating.",
+    "Cycle local harness through full lift travel at least 500 cycles, target 1000, then wet/grit repeat.",
+    "Final O-ring groove dimensions to be frozen from purchased elastomer and machining standard, not this screen value.",
+    "Exact cover position must be rechecked in the full master with final fastener heads and real wheel solids."
+  ]
+}
