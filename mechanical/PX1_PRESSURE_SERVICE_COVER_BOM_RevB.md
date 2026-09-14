@@ -1,9 +1,9 @@
-# PX-1 WB23E pressure/camera service cover — prototype BOM
+# PX-1 WB23E/WB23G pressure/camera service assembly — prototype BOM
 
 Date: 2026-09-14
 Status: **BOM CANDIDATE / PROCUREMENT HOLD**
 
-This BOM is limited to the service-cover/lift-harness assembly, not the full crawler. WB23E dimensions supersede the earlier WB23C/D 78 x 42 cover study.
+This BOM is limited to the pressure-service cover and local camera/lift harness assembly.
 
 | Qty | Item | Candidate article / material | Requirement | Installation | State |
 |---:|---|---|---|---|---|
@@ -11,16 +11,29 @@ This BOM is limited to the service-cover/lift-harness assembly, not the full cra
 | 2 | Cover screws | A4 stainless M4, retained preferred | centres X226 / X296; length TBD from final boss engagement | blind threaded bosses | sample HOLD |
 | 1 | Cover seal | 2.0 mm FKM cord or molded equivalent | provisional groove width 2.5 mm; final groove from real elastomer | continuous closed perimeter | groove HOLD |
 | 1 | Cable gland | LAPP SKINTOP MS-M `53112000` | M12x1.5, 3.5–7 mm cable | horizontal forward-facing boss | candidate controlled |
-| 1 | Pressure/fill valve | low-profile Schrader/service valve | <=14 mm OD, <=6 mm exposed height; thread article TBD | service cover around X273/Y0 | article HOLD |
-| 1 | Valve protection cap | metal / tethered or recessed | stay inside valve envelope as far as practical | fill valve | HOLD |
-| 1 | Dry header | JST `B8P-VH-B` | 8 positions | internal service bracket/PCB | candidate |
-| 1 | Dry housing | JST `VHR-8N` | 8 positions; family max length screen 31.62 mm | removable harness end | candidate |
-| 8 | VH crimp contacts | JST VH series | match measured conductor section | crimp | exact article HOLD |
-| 1 | Local camera cable | 8 insulated cores + shield | OD <=5.0 mm; resistance measured | gland -> lift -> SP13 | article HOLD |
-| 1 | Camera cable plug | WEIPU `SP1310/S6I-N` | 6 sockets; 4.0–6.5 mm cable class | lift-harness end | WB15 candidate |
+| 1 | Pressure/fill valve | very low-profile service valve | preferred exposed envelope <=Ø12 x 5 mm; prototype hard screen <=Ø14 x 6 mm | service cover around X273/Y0 | article HOLD |
+| 1 | Valve protection cap | compact/recessed preferred | cap included in pressure-port hard envelope | fill valve | HOLD |
+| 1 | Dry receptacle housing | Molex Micro-Fit 3.0 `43025-0600` | 6 circuits | internal dry harness side | WB23G candidate |
+| 1 | Dry plug housing | Molex Micro-Fit 3.0 `43020-0601` | 6 circuits, no panel ears | internal dry mating side | WB23G candidate |
+| 6 | Female crimp contacts | Molex `43030-0007` candidate | 20/22/24 AWG class | `43025-0600` | sample HOLD |
+| 6 | Male crimp contacts | Molex `43031` family | exact article after real conductor/insulation measurement | `43020-0601` | article HOLD |
+| 1 | Local camera cable | **6 insulated cores + overall shield** | target 6 x 0.25 mm²; preferred OD 5.5–6.0 mm; hard max 6.5 mm | gland -> lift -> SP13 | article/flex HOLD |
+| 1 | Size benchmark cable | LAPP UNITRONIC LiYCY `0034406` | 6 x 0.25 mm², shielded, nominal OD 6.0 mm | prototype/sample benchmark only | FLEX-LIFE HOLD |
+| 1 | Camera cable plug | WEIPU `SP1310/S6I-N` | 6 sockets; cable range 4.0–6.5 mm | lift-harness end | WB15 candidate |
 | 1 | Camera panel connector | WEIPU `SP1312/P6-C` | 6 male contacts | sealed camera rear panel | WB15 candidate |
-| 1 | Lift-arm harness guard | 1 mm stainless/Al or printed prototype | protects s≈20...72 mm straight run | removable, drain-open | prototype design |
-| 1 | Internal strain-relief clamp | P-clamp / machined clamp | fits cable without crushing | before dry JST connector | HOLD |
+| 1 | Lift-arm harness guard | 1 mm stainless/Al or printed fit prototype | conservative outside envelope ~10 mm; drain-open/removable | protects lower-arm straight run | WB23G screen PASS |
+| 1 | Internal strain-relief clamp | P-clamp / machined clamp | fits real cable without jacket damage | before dry Micro-Fit connector | HOLD |
+
+## Six-core allocation
+
+1. +12V_HEAD
+2. GND_HEAD
+3. UART_TX
+4. UART_RX
+5. CVBS_SIGNAL
+6. CVBS_RETURN
+
+Overall braid/shield is EMC only and is not a DC return conductor.
 
 ## WB23E cover/opening control values
 
@@ -35,22 +48,18 @@ This BOM is limited to the service-cover/lift-harness assembly, not the full cra
 - minimum M4 head edge to cover outer edge 4.0 mm;
 - minimum provisional groove outer edge to cover Y edge 5.75 mm.
 
-The groove is still not machining release because depth/compression depends on the purchased seal.
+The groove depth/compression is not machining release until the real seal is selected.
+
+## WB23G packaging correction
+
+The previous ≤5 mm / 8-core local cable study is superseded. WB23G validates a six-core cable hard envelope up to Ø6.5 mm with a 10 mm conservative arm-guard envelope. LOW guard ideal-DN150 clearance remains about 27.78 mm with no collision against Z50 or the camera envelope.
 
 ## Material notes
 
-### Cover
-
-6082-T6 is preferred for the first machined cover because it is common, machinable and compatible with the proposed aluminium crawler structure. Final anodizing/coating follows machining and corrosion trials.
-
-### Seal
-
-FKM is preferred as the first wastewater/chemical-resistance candidate, but elastomer choice must be checked against actual cleaning chemicals, temperature and compression set. NBR is acceptable for early dry bench prototypes if not misrepresented as the final wastewater seal.
-
-### Fasteners
-
-A4 stainless is preferred in the wet external area. Use anti-galling practice appropriate for stainless/aluminium interfaces. Exact torque is not frozen before thread engagement, lubrication state and gasket compression are measured.
+- Cover: 6082-T6 first-machined prototype target; final surface treatment after corrosion/fit trials.
+- Seal: FKM preferred initial wastewater/chemical candidate; NBR acceptable only for early dry bench work unless subsequently qualified.
+- Fasteners: A4 stainless preferred externally; final torque depends on thread engagement, lubrication and gasket compression.
 
 ## Do not bulk-order yet
 
-Do not bulk-order custom covers, cable, molded seals, fill valves or large quantities of SP13 connectors until the first pressure and flex qualification article passes.
+Do not bulk-order custom covers, cable, molded seals, fill valves or SP13/Micro-Fit quantities until first pressure/flex/electrical qualification passes. Buy only enough for prototype samples and destructive/backup tests.
