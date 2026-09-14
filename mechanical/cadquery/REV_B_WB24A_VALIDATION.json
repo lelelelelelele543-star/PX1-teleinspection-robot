@@ -1,0 +1,47 @@
+{
+  "status": "PASS_FLUSH_VALVE_PACKAGING_SCREEN / VALVE_DETAIL_HOLD / LEAK_TEST_HOLD / MACHINING_HOLD",
+  "pressure_port": {
+    "xy_mm": [273.0, 0.0],
+    "service_thread_candidate": "M8x1 candidate",
+    "protection_cap_OD_mm": 12.0,
+    "protection_cap_exposed_height_mm": 1.5,
+    "internal_cartridge_OD_mm": 10.0,
+    "internal_cartridge_depth_mm": 18.0,
+    "source_inspiration": "MiniCam guided valve/check topology; PX1 dimensions independent"
+  },
+  "internal_packaging": {
+    "cartridge_inside_service_opening_xy": true,
+    "dry_connector_inside_service_opening_xy": true,
+    "cartridge_to_connector_x_gap_mm": 14.0,
+    "cartridge_depth_below_cover_top_mm": 18.0
+  },
+  "unintended_intersections_mm3": {
+    "cartridge_vs_dry_connector_mm3": 0.0,
+    "cartridge_vs_gland_mm3": 0.0,
+    "retainer_vs_dry_connector_mm3": 0.0
+  },
+  "ideal_DN150_fixed_clearance_mm": {
+    "WB23E_cover_mm": 7.369745618885986,
+    "WB24A_flush_cap_mm": 9.273789336854861,
+    "M4_head_1_mm": 7.928746583771499,
+    "M4_head_2_mm": 7.928746583771499,
+    "horizontal_M12_gland_mm": 13.855253251615224
+  },
+  "cap_height_sensitivity_OD12_mm": {
+    "1.0mm": 9.771686953929787,
+    "1.5mm": 9.273789336854861,
+    "2.0mm": 8.775860040041792,
+    "2.5mm": 8.27789977274297,
+    "3.0mm": 7.779909223237922,
+    "4.0mm": 6.783839930437793,
+    "5.0mm": 5.787657276782397
+  },
+  "result_note": "With a <=OD12 x 1.5 mm driving cap, the pressure port is no longer the limiting top feature; the WB23E cover itself is lower-clearance. Fill adaptor is a service tool and is excluded from driving envelope.",
+  "holds": [
+    "valve seat/poppet/shaft detail dimensions not released",
+    "M8x1 thread is prototype candidate only",
+    "spring preload/rate not released",
+    "real FKM seat and O-ring gland dimensions not released",
+    "+0.25 bar decay/submersion and contamination test mandatory"
+  ]
+}
