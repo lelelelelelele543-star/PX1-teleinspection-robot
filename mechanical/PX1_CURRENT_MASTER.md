@@ -3,11 +3,11 @@
 Date: 2026-09-14
 Status: **INTEGRATED MASTER BUILT / WHEEL PROFILE + PHYSICAL TEST HOLDS**
 
-This is the single current crawler assembly. It intentionally stops creating new mechanical concepts where a recovered Proteus solution already exists.
+This is the single current crawler assembly. Use the recovered Proteus solution whenever it is practical; do not create a new crawler architecture for details already solved by the source design.
 
 ## Assembly chain
 
-`front crawler body -> 3 wheel stations/side -> 5 Z50/side -> rear X250 drive input -> 2 supported motor inputs -> manual lift -> fixed camera carrier -> sealed removable camera`
+`front crawler body -> 3 wheel stations/side -> 5 Z50/side -> rear X250 drive input -> 2 supported motor inputs -> dry internal electronics -> manual lift -> fixed camera carrier -> sealed removable camera`
 
 Service chain:
 
@@ -30,7 +30,7 @@ Rear tether chain follows the recovered Proteus functional stack:
 | Crawler connector | ASS-002-090 | six electrical contacts/function interface reference |
 | Tether connector / strain relief | ASS-002-364 | connector spring/housing/nut/seals/gland/PU sleeve/crimp/heatshrink/cable-cup functional stack |
 | Wheel lock | ASS-002-103 | quick wheel mounting interface retained as source reference |
-| 90 mm wheel for DN150 | MiniCam Proteus catalogue `QRW90SR/150` | official 150 mm compatibility accepted; exact outer profile still needs purchased/measured solid |
+| 90 mm wheel for DN150 | MiniCam Proteus QRW90SR/150 family | 150 mm source compatibility retained; exact outer profile still needs purchased/measured solid |
 
 ## Current hard geometry
 
@@ -48,6 +48,26 @@ Rear tether chain follows the recovered Proteus functional stack:
 - compact pressure cap Ø12 x 1.5 mm envelope;
 - local camera harness: exactly 6 insulated conductors, hard OD max 6.5 mm;
 - lower-arm harness guard envelope 10 mm.
+
+## Dry internal electronics already inside the same master
+
+The master now contains the packaged envelopes already proven in the corrected Proteus-like body:
+
+- 2 x traction-driver reserves;
+- STM32 `NUCLEO-F446RE` low-profile reserve `82.5 x 70 x 12 mm`;
+- Cincon `CQB150W-110S24` converter/carrier reserve `65 x 45 x 16 mm`;
+- Nichicon `UCS2D221MHD1TN` 220 uF / 200 V capacitor envelope;
+- Delta-Opti `TR-1D*P2` video balun envelope;
+- input-protection reserve;
+- pressure-sensor reserve.
+
+Executed check:
+
+- outside dry volume for every electronics envelope: **0.0 mm³**;
+- pairwise electronics intersections: **none**;
+- no body enlargement was made to fit the electronics.
+
+Exact brackets/fastener holes are still drawing work; the component pack itself fits the existing dry volume.
 
 ## Electrical local camera branch
 
@@ -68,13 +88,15 @@ Wet camera disconnect: WEIPU `SP1310/S6I-N` powered harness sockets -> `SP1312/P
 
 ## Executed integrated check
 
-The current master contains body, six wheel placeholders, ten Z50, wheel axles, both motor packages, four lift arms, fixed carrier, camera envelope, 150 N gas-spring envelope, service cover, M12 gland, flush pressure valve, dry six-way connector, six-core local harness/guard, SP13 and rear tether/strain-relief envelope.
+The current master contains body, six wheel placeholders, ten Z50, wheel axles, both motor packages, internal electronics, four lift arms, fixed carrier, camera envelope, 150 N gas-spring envelope, service cover, M12 gland, flush pressure valve, dry six-way connector, six-core local harness/guard, SP13 and rear tether/strain-relief envelope.
 
 No unintended collision was found between:
 
 - pressure/service top package and wheel/gear/lift/camera groups;
 - lift-harness guard and Z50/camera;
-- traction motor bodies and camera envelope.
+- traction motor bodies and camera envelope;
+- packaged electronics and the outside of the dry cavity;
+- packaged electronics with each other.
 
 Current LOW ideal-DN150 clearances for released non-wheel envelopes:
 
@@ -91,10 +113,7 @@ The full camera TILT sweep remains governed by the already executed camera/lift 
 
 The master currently displays each wheel as a plain Ø90 x 16 cylinder only so the assembly is readable. That cylinder is **not** the real MiniCam wheel profile and therefore is not used for DN150 geometric release.
 
-MiniCam's current wheel compatibility table explicitly specifies `QRW90SR/150` 90 mm soft-rubber wheels for a 150 mm pipe. The recovered drawing pack contains the wheel-lock assembly `ASS-002-103` but not a dimensioned production outer wheel/tire profile. Final DN150 release therefore requires either:
-
-- a purchased QRW90SR/150 measured/modelled directly; or
-- the exact missing wheel solid/drawing if recovered later.
+The recovered drawing pack contains the wheel-lock assembly `ASS-002-103` but not a dimensioned production outer wheel/tire profile. Final DN150 release therefore requires either a purchased/measured QRW90SR/150 or the exact missing wheel solid/drawing.
 
 Until then the wheel profile is a physical-geometry HOLD, not an architecture-change trigger.
 
@@ -104,15 +123,16 @@ Until then the wheel profile is a physical-geometry HOLD, not an architecture-ch
 - executed result: `mechanical/cadquery/PX1_CURRENT_MASTER_VALIDATION.json`;
 - running the master exports `PX1_RevB_Current_Master.step`.
 
-## Only remaining hard gates before machining release
+## Remaining hard gates before machining release
 
 1. exact 90 mm wheel solid/profile and physical DN150 jig;
-2. purchased matched Z16/Z40 geometry/mounting distance;
-3. actual pressure-cover seal groove from real elastomer;
+2. purchased/matched Z16/Z40 geometry and mounting distance;
+3. exact pressure-cover seal groove from real elastomer;
 4. pressure valve +0.25 bar decay/submersion test;
 5. six-core cable flex/EMC test;
 6. physical SP13/Micro-Fit orientation and pin-number drawing;
 7. exact rear connector/tether-tail dimensions from purchased/source hardware;
-8. final pressure and wet/grit crawler test.
+8. final electronics brackets/fastener pattern;
+9. final pressure and wet/grit crawler test.
 
 No new crawler architecture is to be introduced to solve these gates unless source hardware or a physical test proves the current Proteus-derived arrangement impossible.
