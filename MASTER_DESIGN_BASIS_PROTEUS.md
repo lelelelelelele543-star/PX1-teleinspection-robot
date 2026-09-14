@@ -87,16 +87,23 @@ Retain the functional logic:
 
 `dry pressure body -> removable sealed service cover/lift housing -> compact pressure/fill valve -> local M12-class cable gland -> short protected camera harness -> removable camera connector`.
 
-PX-1 Rev.B implementation is controlled by WB23C:
+Current PX-1 Rev.B implementation is controlled by WB23E/F/G:
 
 - WB22A hard lift geometry remains unchanged;
-- no X207.5 pivot shift;
+- body lift pivot remains X200;
 - no mandatory dual flex chambers or energy-chain style loops;
-- local harness target <=5 mm OD, protected on one lower lift arm;
-- free slack at pivots is physically qualified rather than represented by invented constant-radius CAD loops;
-- gland seals cable through pressure boundary but is not the electrical disconnect;
-- a dry internal connector lets the external cover/gland/harness assembly be replaced without dismantling the main electronics;
+- service cover is WB23E 86 x 44 x 6 mm with 48 x 22 mm opening and two-M4 prototype retention;
+- pressure-port procurement follows WB23F: preferred exposed valve+cap envelope <=Ø12 x 5 mm, current hard screen <=Ø14 x 6 mm;
+- local wet camera/lift harness is exactly **six insulated conductors**: +12V, GND, UART TX, UART RX, CVBS signal, CVBS return;
+- overall cable shield is EMC only and never DC power return;
+- local cable target is 6 x 0.25 mm² class, preferred OD 5.5...6.0 mm, hard packaging maximum 6.5 mm;
+- lower-arm cable is protected by a simple removable drain-open guard; WB23G conservative guard envelope is 10 mm;
+- free slack at the two moving ends is physically qualified rather than represented by invented constant-radius CAD loops;
+- gland seals the cable jacket through the pressure boundary but is not the electrical disconnect;
+- dry internal connector is six-way so the complete external cover/gland/harness assembly can be replaced without dismantling main electronics;
 - external removable camera uses the controlled six-function SP13 interface.
+
+Historical WB21/WB23A local cable studies, including Ø8/8-core concepts, are archived only and do not control current wiring, procurement or mechanical packaging.
 
 The exact original Proteus small pressure-cover screw count is not source-confirmed. PX-1's two-M4 compact service cover is an independent prototype decision and must pass pressure/seal/alignment tests.
 
@@ -147,6 +154,8 @@ Use one professional reinforced six-core copper inspection cable, Proteus-like i
 - field-repairable/reterminable.
 
 Initial length: 40 m. Longer 100-150 m versions are accepted only after real conductor-resistance and cable-loss measurement.
+
+The six-core main tether and the six-core local camera/lift harness are different physical cables/interfaces but deliberately retain a simple six-circuit philosophy where practical.
 
 ## Electronics philosophy
 No custom main PCB for the prototype.
