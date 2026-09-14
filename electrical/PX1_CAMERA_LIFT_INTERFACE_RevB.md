@@ -1,7 +1,7 @@
-# PX-1 camera/lift electrical interface — Rev.B WB23C
+# PX-1 camera/lift electrical interface — Rev.B WB23G
 
 Date: 2026-09-14
-Status: **ELECTRICAL TOPOLOGY FROZEN / EXACT CONTACT NUMBERS + CABLE SAMPLE HOLD**
+Status: **SIX-CORE TOPOLOGY FROZEN / EXACT CONTACT NUMBERS + CABLE SAMPLE HOLD**
 
 ## 1. Controlled architecture
 
@@ -9,118 +9,118 @@ The pressure/service cover is a mechanical pressure boundary. The external local
 
 Electrical chain:
 
-`crawler camera power/control board -> J_CAM_LIFT dry connector -> <=5 mm local harness -> SP13 lift plug -> SP13 camera panel connector -> sealed camera electronics`.
+`crawler camera power/control board -> J_CAM_LIFT dry 6-way connector -> 6-core shielded local harness -> SP13 lift plug -> SP13 camera panel connector -> sealed camera electronics`.
 
-## 2. Eight-conductor local harness allocation
+## 2. Six-core local harness allocation
+
+There are exactly six insulated conductors:
 
 | Local core | Function | Camera SP13 destination |
-|---|---|---|
-| 1 | +12V_HEAD_A | +12V_HEAD |
-| 2 | +12V_HEAD_B | +12V_HEAD |
-| 3 | GND_HEAD_A | GND_HEAD |
-| 4 | GND_HEAD_B | GND_HEAD |
-| 5 | HEAD_UART_TX | HEAD_UART_TX |
-| 6 | HEAD_UART_RX | HEAD_UART_RX |
-| 7 | CVBS_SIGNAL | CVBS_SIGNAL |
-| 8 | CVBS_RETURN | CVBS_RETURN |
-| braid/shield | EMC screen only | chassis/EMC strategy; never power return |
+|---:|---|---|
+| 1 | +12V_HEAD | +12V_HEAD |
+| 2 | GND_HEAD | GND_HEAD |
+| 3 | HEAD_UART_TX | HEAD_UART_TX |
+| 4 | HEAD_UART_RX | HEAD_UART_RX |
+| 5 | CVBS_SIGNAL | CVBS_SIGNAL |
+| 6 | CVBS_RETURN | CVBS_RETURN |
+| overall braid/shield | EMC screen only | controlled shield strategy; never DC return |
 
-The two +12 V cores and two GND cores are joined only at controlled termination points so one small conductor or solder joint does not carry the complete head load.
+The previous 8-core study with parallel power conductors is superseded. The local lift harness is short enough that a correctly sized single +12 V conductor and single GND conductor are preferable to extra splices and a larger cable.
 
-## 3. Internal dry connector candidate
+## 3. Conductor and cable target
 
-Prototype family:
+- conductor target: `0.25 mm²` class for all six insulated cores;
+- preferred finished cable OD: `5.5...6.0 mm`;
+- hard packaging maximum: `6.5 mm`;
+- overall copper braid/shield preferred;
+- no loose individual wires across the wet lift.
 
-- header: JST `B8P-VH-B`;
-- housing: JST `VHR-8N`;
-- crimp contacts selected only after the real conductor cross-section is measured.
+Size/electrical benchmark: LAPP `UNITRONIC LiYCY 0034406`, 6 x 0.25 mm², shielded, nominal OD 6.0 mm. This is a prototype/sample benchmark only, not final flex-life release, because the selected cable must pass the PX-1 lift-cycle and wet/grit qualification.
 
-Draft logical order before physical sample numbering is frozen:
+## 4. Internal dry connector candidate
 
-1. +12V_HEAD_A
-2. +12V_HEAD_B
-3. GND_HEAD_A
-4. GND_HEAD_B
-5. UART_TX
-6. UART_RX
-7. CVBS_SIGNAL
-8. CVBS_RETURN
+The previous JST VH 8-way candidate is superseded for this interface because the current conductor target is 0.25 mm² while the normal VH published range starts at 0.33 mm².
 
-Before fabrication, inspect the real connector front/rear numbering and freeze the drawing with keyed orientation.
+Prototype dry wire-to-wire candidate:
 
-## 4. Camera-side six-pin interface
+- receptacle housing: Molex Micro-Fit 3.0 `43025-0600`, 6 circuits;
+- plug housing: Molex Micro-Fit 3.0 `43020-0601`, 6 circuits, no panel ears;
+- female contact candidate: Molex `43030-0007`, 20/22/24 AWG class;
+- mating male contact: `43031` family; exact bag/reel article remains HOLD until purchased cable strand and insulation diameters are measured.
+
+The service opening 48 x 22 mm easily accepts the conservative Micro-Fit connector envelope used in WB23G.
+
+Draft logical order before physical connector orientation is frozen:
+
+1. +12V_HEAD
+2. GND_HEAD
+3. UART_TX
+4. UART_RX
+5. CVBS_SIGNAL
+6. CVBS_RETURN
+
+Numeric cavity/contact numbering is not released until physical samples are inspected from the correct mating and wire-side views.
+
+## 5. Camera-side six-pin interface
 
 WB15 remains controlling:
 
 - head panel: WEIPU `SP1312/P6-C`, male pins;
-- powered crawler/lift harness: WEIPU `SP1310/S6I-N`, female sockets, 4.0–6.5 mm cable class.
+- powered crawler/lift harness: WEIPU `SP1310/S6I-N`, female sockets, 4.0...6.5 mm cable class.
 
-Six camera functions:
-
-- PWR_HEAD_12V
-- PWR_HEAD_GND
-- UART_HEAD_TX
-- UART_HEAD_RX
-- CVBS_SIGNAL
-- CVBS_RETURN
+The six functions map 1:1 from the dry connector through the six-core cable to SP13. No power-core combining/splitting occurs in the wet harness.
 
 The powered harness intentionally uses female sockets so live protruding pins are not exposed when the camera is removed.
 
-Numeric SP13 contact numbers remain HOLD until a physical pair is checked against moulded numbering and front/rear-view convention.
-
-## 5. Shield treatment
+## 6. Shield treatment
 
 - shield is never a DC current return;
 - CVBS return has its own insulated conductor;
 - prototype starts with controlled body-side shield termination to chassis/EMC reference;
-- camera-side shield bond remains configurable during EMC/video tests to detect ground-loop or PWM-noise sensitivity;
+- camera-side shield bond remains configurable during EMC/video tests;
 - final one-end versus both-end shield bonding is released only after complete crawler/reel/tether video testing.
 
-Do not solder the braid to a random signal ground for convenience.
+## 7. Electrical screen
 
-## 6. Harness construction rules
+Using 0.25 mm² copper and the current 2.92 A peak head-load screen:
 
-- target finished OD <= 5.0 mm;
-- eight insulated cores plus shield preferred;
-- no loose individual wires across the wet lift;
-- jacket captured by gland and connector strain relief;
-- SP13 solder joints individually heat-shrunk plus overall strain relief;
-- dry connector gets a separate mechanical cable clamp within the service cavity;
-- about 35 mm service slack at both moving ends as an assembly target;
-- straight lower-arm run gets a removable anti-snag guard.
+- 0.4 m local harness: about 0.164 V copper-only round-trip drop at room-temperature resistivity; about 0.196 V with +20% resistance screen;
+- 0.6 m local harness: about 0.245 V room-temperature screen; about 0.294 V with +20% resistance screen.
 
-## 7. Cable qualification
+Therefore parallel power conductors are not required by the present local-run screen. Final release depends on measured resistance of the purchased cable and measured head voltage under worst simultaneous camera/LED/motion load.
 
-A cable is not released from OD/conductor count alone.
+## 8. Harness construction rules
 
-Prototype acceptance:
+- jacket captured by the M12 gland and SP13 strain relief, not solder joints;
+- dry Micro-Fit connector receives separate mechanical strain relief inside the service cavity;
+- about 35 mm service slack at body side and head side is an assembly target, adjusted after the real lift is built;
+- straight lower-arm section is protected by a removable drain-open anti-snag guard;
+- WB23G conservative guard envelope is 10 mm to accommodate cable up to Ø6.5 mm.
 
-1. measure OD at several points;
-2. measure resistance of every core per metre;
-3. verify insulation and braid construction;
-4. carry maximum camera/LED/motor load on paired power cores;
-5. record voltage at camera during pan/tilt/roll + maximum LED state;
+## 9. Cable qualification
+
+1. measure actual finished OD;
+2. measure every core resistance per metre;
+3. measure conductor and insulation diameter before selecting final crimp contacts;
+4. verify cable seals correctly in LAPP M12 gland and SP13 S6I backshell;
+5. verify +12 V/GND temperature rise and camera voltage at maximum head load;
 6. run raw CVBS and UART simultaneously;
 7. LOW-HIGH-LOW cycle >=500 times, target 1000;
 8. repeat after wet/grit exposure;
 9. inspect jacket, conductor continuity and shield;
-10. repeat video-interference test.
+10. repeat video/PWM interference test.
 
-Autonics `CID9S-2` remains only a possible prototype donor. No continuous-flex lifetime is assumed from its catalog description.
+## 10. Service isolation
 
-## 8. Service isolation
+The camera branch must be de-energized before SP13 disconnection. The final electronics should provide `HEAD_12V_ENABLE` plus a replaceable fuse/PTC on the 12 V head branch so a damaged wet harness cannot disable traction/control power.
 
-The camera branch must be de-energized before SP13 disconnection. The final electronics should provide a controllable `HEAD_12V_ENABLE` so the camera can be serviced without cycling traction power.
+## 11. Open release items
 
-A replaceable fuse/PTC on the 12 V head branch is recommended in the dry body so a crushed wet harness cannot take down traction/control power.
-
-## 9. Open release items
-
-- exact local cable article;
-- exact JST VH crimp contact for measured conductor size;
-- numeric JST pin orientation;
+- exact six-core cable article;
+- exact Micro-Fit male contact article after conductor measurement;
+- numeric Micro-Fit cavity orientation;
 - numeric SP13 pin table from real pair;
 - final shield-bond strategy;
 - head-branch fuse/PTC value after measured peak current;
-- measured voltage drop under worst head load;
+- measured voltage drop and temperature rise;
 - CVBS immunity to lift, traction and LED PWM noise.
