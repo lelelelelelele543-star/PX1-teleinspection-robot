@@ -1,139 +1,85 @@
 {
-  "master": "PX1_Current_Master",
-  "date": "2026-09-14",
-  "overall_status": "INTEGRATED_GEOMETRY_COMPLETE_WITH_HOLDS / NOT_FINAL_MACHINING_RELEASE",
-  "policy": "No HOLD proxy is counted as PASS. PASS means only the specific geometry/topology check stated.",
-  "source_counts": {
-    "wheels": 6,
-    "Z50": 10,
-    "side_drive_61801": 12,
-    "61903": 6,
-    "Xrings": 6,
-    "Z40": 2,
-    "61800": 2,
-    "shaft_seal_18x30x7": 2,
-    "Z16": 2,
-    "Z16_61801": 2,
-    "traction_motors": 2,
-    "wheel_keys_4x4x12": 6,
-    "rear_input_keys_4x4x7": 2,
-    "lift_arms": 4,
-    "local_camera_conductors": 6
+  "master": "PX1_Current_Master.step",
+  "release_state": "HOLD — integrated source-based master complete, but NOT machining/full-DN150 release because measured/source dimensions above are missing.",
+  "counts": {
+    "wheels_total": 6,
+    "Z50_total": 10,
+    "side_61801_total": 12,
+    "outer_61903_total": 6,
+    "xrings_total": 6,
+    "Z40_total": 2,
+    "Z16_total": 2,
+    "Z16_support_61801_total": 2,
+    "motors_total": 2,
+    "camera_harness_cores": 6
   },
   "expected_counts": {
-    "wheels": 6,
-    "Z50": 10,
-    "side_drive_61801": 12,
-    "61903": 6,
-    "Xrings": 6,
-    "Z40": 2,
-    "61800": 2,
-    "shaft_seal_18x30x7": 2,
-    "Z16": 2,
-    "Z16_61801": 2,
-    "traction_motors": 2,
-    "wheel_keys_4x4x12": 6,
-    "rear_input_keys_4x4x7": 2,
-    "lift_arms": 4,
-    "local_camera_conductors": 6
+    "wheels_total": 6,
+    "Z50_total": 10,
+    "side_61801_total": 12,
+    "outer_61903_total": 6,
+    "xrings_total": 6,
+    "Z40_total": 2,
+    "Z16_total": 2,
+    "Z16_support_61801_total": 2,
+    "motors_total": 2,
+    "camera_harness_cores": 6
   },
-  "counts_match": true,
-  "source_correction": "side-drive 61801 corrected to 6 per side / 12 total; plus 2 Z16 support bearings.",
-  "dimension_truth": {
-    "source_confirmed": [
-      "wheel stations X50/X150/X250",
-      "Z50 centers X50/X100/X150/X200/X250",
-      "Z50 m1 Z50 face B4",
-      "61903 17x30x7",
-      "61801 12x21x5",
-      "61800 10x19x5",
-      "X-ring 18.72x2.62",
-      "shaft seal 18x30x7",
-      "Z16/Z40 tooth counts and m1 topology"
+  "counts_ok": true,
+  "invalid_shapes": [],
+  "collision_checks_mm3": {
+    "service_vs_Z50_max_mm3": 0.0,
+    "service_vs_lift_max_mm3": 0.0,
+    "service_vs_camera_max_mm3": 0.0,
+    "motor_vs_camera_max_mm3": 0.0,
+    "intentional_LAPP_to_harness_guard_interface_mm3": 8.471393313082245
+  },
+  "electronics_pairwise_intersections_mm3": {},
+  "internal_components_vs_pressure_body_mm3": {},
+  "dn150_nonwheel_screen_clearance_mm": {
+    "pressure_body_screen_mm": 1.010622626932502,
+    "service_cover_mm": 6.423362591519606,
+    "pressure_valve_cap_mm": 8.27789977274297,
+    "lapp_gland_mm": 13.750376003832208,
+    "camera_LOW_mm": 20.7980547,
+    "rear_connector_panel_mm": 44.51224073740099
+  },
+  "dn150_full_vehicle": "HOLD_QRW90_PROFILE_REQUIRED",
+  "camera_reference": {
+    "source": "user CAM026 disassembly photos/video, 2026-09-14",
+    "base_outer_diameter_mm_approx": 62.5,
+    "architecture_confirmed": [
+      "hollow central wiring path",
+      "internal ring gear output",
+      "multi-stage reduction",
+      "thrust bearing axial support"
     ],
-    "purchased_verified": [
-      "NBK MLR-20C-6-6 OD20 L24 bores6/6",
-      "LAPP 53112000 M12x1.5 clamp 3.5-7, total L26.5, thread L6.5, SW16",
-      "Cincon CQB150W quarter-brick 57.9x36.8x12.7",
-      "Nichicon UCS2D221MHD1TN D18x25",
-      "Delta TR-1D*P2 43x16x15",
-      "NUCLEO-F446RE footprint 82.5x70"
-    ],
-    "hold_proxies": [
-      "wheel profile",
-      "side-cover contour",
-      "axle shoulders/flange",
-      "motor length/flange/shaft",
-      "BTS7960 exact variant",
-      "gas spring end fittings",
-      "SP13 exact variant",
-      "rear tether connector/strain relief",
-      "pressure sensor keepout"
-    ]
+    "unresolved": "internal fits/tooth geometry/wall thickness remain HOLD; no further user measurement requested"
   },
-  "collision_check": {
-    "service_hard_vs_Z50": 0.0,
-    "service_hard_vs_arms": 0.0,
-    "service_hard_vs_camera": 0.0,
-    "guard_vs_Z50": 0.0,
-    "guard_vs_camera": 0.0,
-    "motor_vs_camera": 0.0
-  },
-  "collision_checked_geometry_pass": true,
-  "electronics_outside_dry_volume_mm3": {
-    "HOLD_BTS7960_IBT2_A_50x50x43": 0.0,
-    "HOLD_BTS7960_IBT2_B_50x50x43": 0.0,
-    "DELTA_TR1D_P2_43x16x15": 0.0,
-    "NICHICON_UCS2D221MHD1TN_D18x25": 0.0,
-    "CINCON_CQB150W110S24_57p9x36p8x12p7": 0.0,
-    "NUCLEO_F446RE_82p5x70_HOLDheight": 0.0,
-    "HOLD_LM2596_module_variant": 0.0,
-    "HOLD_MP1584_module_variant": 0.0,
-    "HOLD_MAX485_module_variant": 0.0,
-    "HOLD_pressure_sensor_keepout_NOT_PART": 0.0
-  },
-  "electronics_pair_collisions_mm3": {},
-  "electronics_vs_motor_mm3": {},
-  "electronics_packaging_geometry_pass": true,
-  "dn150_clearance_mm": {
-    "body": 3.4545235653979773,
-    "service_cover": 7.369745618885986,
-    "LAPP_gland": 13.625885897248104,
-    "pressure_cap": 9.273789336854861,
-    "lift_guard_LOW": 27.779304972411005,
-    "camera_LOW": 26.0480547,
-    "rear_strain_relief": 55.95746558463655,
-    "wheel_PROXY_min_NOT_RELEASE": -9.841027799374231
-  },
-  "dn150_nonwheel_low_geometry_pass_3mm_min": true,
-  "dn150_wheel_release": false,
   "serviceability": {
-    "wheel_retention_external_access": "PASS_GEOMETRY_ONLY",
-    "camera_connector_separate_from_main_body": "PASS_ARCHITECTURE",
-    "service_cover_removable_without_body_split": "PASS_ARCHITECTURE",
-    "motor_replaceable_from_rear_dry_extension": "PASS_PACKAGING / HOLD_FASTENER_DETAIL",
-    "camera_harness_replaceable": "PASS_ARCHITECTURE / HOLD_REAL_CABLE_BEND_TEST",
-    "tool_access_M4_cover": "PASS_SCREEN / HOLD_REAL_TOOL_TRIAL",
-    "wheel_change": "HOLD_EXACT_WHEEL_AND_RETAINER_GEOMETRY"
+    "service_M4_vertical_access_screen": "PASS_GEOMETRY_SCREEN",
+    "wheel_change_hex_access": "HOLD_QRW90_HUB_AND_LOCK_GEOMETRY_REQUIRED",
+    "motor_rear_extraction": "PASS_GEOMETRY_SCREEN_WITH_REAR_COVER_REMOVED",
+    "camera_removal": "PASS_GEOMETRY_SCREEN_CONNECTOR_AND_CARRIER_ACCESS",
+    "camera_harness_replacement": "PASS_GEOMETRY_SCREEN_VIA_PRESSURE_CAMERA_SERVICE_COVER"
   },
-  "manufacturing_release": {
-    "final_pressure_body": "HOLD",
-    "final_axles_flange_sidecovers": "HOLD",
-    "final_bevel_gears": "HOLD",
-    "final_wheels": "HOLD",
-    "prototype_printed_fit_parts": "RELEASED_FOR_FIT_CHECK_ONLY",
-    "standard_bearings_seals": "PURCHASABLE_BY_SIZE",
-    "verified_electronics": "PURCHASABLE_BY_ARTICLE"
+  "sealing_architecture": {
+    "body": "dry common pressure volume",
+    "wheel_shafts": "X-ring family at 6 wheel stations",
+    "Z40_body_paths": "2x 18x30x7 shaft seals",
+    "side_covers": "190x1.5 O-ring source family; final groove HOLD",
+    "service_cover": "face seal prototype; groove HOLD",
+    "camera": "separate sealed body",
+    "rear_connector": "panel seal + strain relief; tether sample HOLD"
   },
   "holds": [
-    "ТРЕБУЕТСЯ ЗАМЕР: exact QRW90SR/150 wheel width, tread/profile and hub/recess dimensions; current wheel is a HOLD proxy and DN150 wheel clearance is NOT released.",
-    "ТРЕБУЕТСЯ ЗАМЕР/чертеж: axial order and Y shoulder dimensions of the six 61801 bearings per side-drive; quantity 6/side is source-confirmed.",
-    "ТРЕБУЕТСЯ чертеж поставщика: Z16/Z40 pressure angle, face width, tooth system, mounting distances, backlash and heat treatment; only m1/Z16/Z40 topology is frozen.",
-    "ТРЕБУЕТСЯ ЗАМЕР: ISL PGM-32P purchased sample overall length, shaft length/diameter and flange hole pattern before motor holder release.",
-    "ТРЕБУЕТСЯ ЗАМЕР: exact purchased BTS7960/IBT-2 PCB dimensions, terminal projection and heatsink height; 50x50x43 is only a conservative module keep-out.",
-    "ТРЕБУЕТСЯ ВЫБОР/ПОКУПКА: real pressure sensor article; CAD contains only a keep-out marked NOT_PART and makes no fit claim.",
-    "ТРЕБУЕТСЯ ЗАМЕР: exact WEIPU SP13 chosen variant body/panel/thread dimensions and rear six-contact tether connector/strain-relief geometry.",
-    "ТРЕБУЕТСЯ ИСПЫТАНИЕ: pressure-cover seal groove/valve stack, +0.25 bar decay/submersion test, and camera housing pressure test.",
-    "ТРЕБУЕТСЯ ИСПЫТАНИЕ: 6-core camera cable flex + CVBS/UART EMC and 40 m tether voltage/video test before 100-150 m release."
+    "ТРЕБУЕТСЯ ЗАМЕР: QRW90SR/150 actual width, tread contour, hub and quick-lock geometry; full DN150 release remains HOLD.",
+    "ТРЕБУЕТСЯ ЗАМЕР: exact axial shoulder-by-shoulder order and Y locations of the two 61801 bearings at each wheel station, plus FSS-002-063/FSS-002-064 dimensions.",
+    "ТРЕБУЕТСЯ ЧЕРТЕЖ/ПОСТАВЩИК: Z16/Z40 pressure angle, face width, tooth system, mounting distance, backlash and heat treatment.",
+    "ТРЕБУЕТСЯ ЗАМЕР: actual purchased BTS7960/IBT-2 board dimensions including terminals/heatsink; current envelope is screening only.",
+    "ТРЕБУЕТСЯ ПОКУПКА/ЗАМЕР: exact rear reinforced six-core tether OD and aramid termination; SP17 connector is selected but structural strain-relief is prototype geometry.",
+    "ТРЕБУЕТСЯ ФИЗИЧЕСКИЙ ТЕСТ: pressure-cover groove, valve and all pressure seals at +0.25 bar decay + submerged bubble test.",
+    "CAM026 camera reference: outer base OD ~62.5 mm is confirmed from the user caliper photo; wall thickness, rotor/bearing fits and internal gear geometry remain HOLD and must be resolved by prototype/supplier sample rather than assumption.",
+    "ТРЕБУЕТСЯ EMC/FLEX TEST: exact six-core local camera cable article through motion, CVBS and TX/RX simultaneously."
   ]
 }
