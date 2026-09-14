@@ -72,6 +72,7 @@ C16;Полый вал ротации;1;FSS-001-895;HOLD;CAM026ASS001919;SOURCE_P
 C17;Упорная шайба подшипника;1;BEA-001-815;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
 C18;Втулка ротации;1;MSC-001-899;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
 C19;Шестерня ротации;1;GEA-001-896;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
+C20;Кольца интерфейса камеры;TBD;source metric ring family;38×1.5 /6×1 /21×1.5 /28×1.5;DRW752;BUY;NOT_MODELLED;H03 H08 количество по конкретному исполнению
 H01;Локальный жгут;1;LAPP0028679 UNITRONIC FD P plus A;ровно6×0.25 OD5.4 Rmin≈27;LAPP catalog;BUY;ROUTE_APPROX;H07 финальная длинаHOLD купить3м для образцов
 H02;КабельнаяSP13;1;WEIPUSP1310/S6I-N;6female cable4–6.5;WEIPU catalog;BUY;ENVELOPE;H07
 H03;ПанельнаяSP13;1;WEIPUSP1312/P6-C;6male M13×1family;WEIPU catalog;BUY;NOT_MODELLED;H07
@@ -100,6 +101,7 @@ E15;Измерение тока;2;INA226 ready module шунт/артикулHOL
 E16;ИсточникCCU;1;isolated100–120VDC модельHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H10
 E17;Датчик влаги;1;электроды+ready module артикулHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H09 H10
 E18;Крепёж плат/изоляция/теплоотвод;TBD;стойки/термопрокладкиHOLD;HOLD;PX1;BUY;NOT_MODELLED;H09
+E19;Подтяжки SLP/FLT;4;Резистор4.7kΩ выводной артикулHOLD;4.7kΩ номинал проектный;ELECTRICAL_Current;BUY;NOT_MODELLED;H09
 F01;M3×8 button;24;FIX-000-359;M3×8;DRW374 12per side;BUY;NOT_MODELLED;H02
 F02;M3×6 button;24;FIX-002-738;M3×6;DRW374 12per side;BUY;NOT_MODELLED;H02
 F03;Circlip12×1;8;FIX-002-549family;12×1;DRW3746+DRW3752;BUY;NOT_MODELLED;H02

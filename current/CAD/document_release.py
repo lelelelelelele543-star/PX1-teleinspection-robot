@@ -14,6 +14,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4,landscape,A3
 import fitz
+from svglib.svglib import svg2rlg
 R=Path(__file__).resolve().parents[1];I=R/'images';I.mkdir(exist_ok=True)
 for n,f in [('DV','DejaVuSans.ttf'),('DVB','DejaVuSans-Bold.ttf')]:pdfmetrics.registerFont(TTFont(n,'/usr/share/fonts/truetype/dejavu/'+f))
 styles=getSampleStyleSheet()
@@ -83,8 +84,12 @@ story=[p('PX1 · текущий комплект','Heading1'),p('Механич�
 rigid=[x for x in val['interferences'] if x['classification']=='RIGID_INTERFERENCE']
 story.append(table([['Проверка','Результат'],['Объекты сборки',val['component_count']],['Ключевые количества',str(val['counts_match'])+'; '+str(val['counts'])],['Невалидные формы',str(val['invalid_shapes'])],['Все пары / Boolean',str(val['collision_method']['all_pairs'])+' / '+str(val['collision_method']['boolean_pairs_after_AABB'])],['Жёсткие пересечения',len(rigid)],['DN150','HOLD'],['Сервис моторов',val['service']['motor_vertical_extraction']['status']],['Съём камеры',val['service']['camera_forward_removal']['status']+'; дискретный screen'],['Металл','К изготовлению не выпущен'],['STL','4 примерочных файла']],[180,330]));story.append(PageBreak())
 for fn in ('ELECTRICAL_Current.md','ASSEMBLY_AND_TESTS_Current.md','SOURCE_REGISTER.md'):
+    sv='PX1_Electrical_Current.svg' if fn=='ELECTRICAL_Current.md' else 'PX1_Pressure_Sealing_Current.svg' if fn=='ASSEMBLY_AND_TESTS_Current.md' else None
+    if sv:
+        drawing=svg2rlg(str(R/sv));drawing.scale(510/drawing.width,510/drawing.width);drawing.height=357;drawing.width=510
+        story.append(drawing);story.append(Spacer(1,14))
     story.extend(markdown((R/fn).read_text()));story.append(PageBreak())
-story.append(p('Единственная текущая BOM','Heading1'));story.append(p('127 строк: известный состав, незавершённые позиции и отдельные примерочные макеты. UNKNOWN/HOLD не является заказным артикулом. Цены и наличие в разрешённых магазинах не подтверждены.'))
+story.append(p('Единственная текущая BOM','Heading1'));story.append(p(str(len(bom))+' строк: известный состав, незавершённые позиции и отдельные примерочные макеты. UNKNOWN/HOLD не является заказным артикулом. Цены и наличие в разрешённых магазинах не подтверждены.'))
 for label,rows in [('Покупные и стандартные',[b for b in bom if b['route'] in ('BUY','SOURCE_PART')]),('Токарь / фрезеровщик / зубонарезание',[b for b in bom if b['route'] not in ('BUY','SOURCE_PART','PRINT')]),('Печатные макеты',[b for b in bom if b['route']=='PRINT'])]:
     story.append(p(label,'Heading2'));tb=[['ID / шт','Деталь / артикул','Размер / источник','Статус']]
     tb += [[b['item']+' / '+b['qty'],b['name_ru']+' · '+b['article'],b['dimensions']+' · '+b['source'],b['cad_state']+'; '+b['release']] for b in rows]

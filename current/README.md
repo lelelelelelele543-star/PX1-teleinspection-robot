@@ -4,7 +4,7 @@
 
 - CAD/PX1_Current_Master.py — единственный исходник сборки.
 - CAD/PX1_Current_Master.step — экспорт после успешной сборки.
-- PX1_Current_BOM.csv — единая BOM,127 строк, разделитель «;».
+- PX1_Current_BOM.csv — единая BOM,129 строк, разделитель «;».
 - PX1_Current_Validation.json — действительная проверка данного экспорта; не переносить старые результаты.
 - PX1_Change_Log.md — единый журнал.
 - SOURCE_REGISTER.md — источники размеров и границы достоверности.
