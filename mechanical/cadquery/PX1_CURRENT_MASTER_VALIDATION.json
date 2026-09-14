@@ -1,60 +1,60 @@
 {
-  "status": "PASS_INTEGRATED_MASTER / WHEEL_GEOMETRY_DN150_HOLD / PRESSURE_TEST_HOLD / PROCUREMENT_HOLD",
-  "source_architecture": {
-    "crawler": "Proteus CRP150 six-wheel / three stations per side / five Z50 per side / rear X250 input",
-    "drive": "two motors, supported Z16 input into source-like Z40/rear axle architecture",
-    "lift": "manual four-arm lift with 150 N gas spring principle",
-    "pressure_service": "removable top service cover, compact pressure valve, M12 cable gland",
-    "camera": "separately sealed removable head, six electrical functions"
-  },
-  "counts": {
+  "status": "PASS_INTEGRATED_MASTER / EXACT_WHEEL_PROFILE_HOLD / Z16_Z40_FINAL_PAIR_HOLD / PRESSURE_TEST_HOLD / PROCUREMENT_HOLD",
+  "single_master_rule": "This file is the current crawler integration master; old WB files are evidence/history only.",
+  "source_counts": {
     "wheels": 6,
-    "Z50_gears": 10,
+    "Z50": 10,
+    "61903": 6,
+    "Xrings": 6,
+    "axle_flange_envelopes": 6,
+    "rear_61801_side_drive": 2,
+    "Z40": 2,
+    "61800": 2,
+    "18x30x7_seals": 2,
+    "Z16": 2,
+    "Z16_61801": 2,
     "traction_motors": 2,
     "lift_arms": 4,
     "local_camera_conductors": 6
   },
-  "internal_electronics": {
-    "envelopes": [
-      "TRACTION_DRIVER_L_RESERVE",
-      "TRACTION_DRIVER_R_RESERVE",
-      "DELTA_TR1D_P2",
-      "NICHICON_UCS2D221MHD1TN",
-      "INPUT_PROTECTION_RESERVE",
-      "CINCON_CQB150W110S24_CARRIER_RESERVE",
-      "PRESSURE_SENSOR_RESERVE",
-      "NUCLEO_F446RE_LOWPROFILE"
-    ],
+  "source_dimensioned_components": {
+    "DRW-002-374": ["6x 61903 17x30x7", "6x X-ring 18.72x2.62", "2x rear 61801 12x21x5", "10x Z50 total"],
+    "DRW-002-375": ["2x Z40", "2x 61800 10x19x5", "2x shaft seal 18x30x7"],
+    "DRW-002-386": ["2x motor", "2x Z16", "2x separate Z16 axle", "2x 61801 12x21x5"]
+  },
+  "electronics": {
+    "BTS7960_screen_each_mm": [50.0, 50.0, 43.0],
+    "BTS7960_centers_xyz_mm": [[330.0, 0.0, 91.5], [382.0, 0.0, 91.5]],
     "outside_dry_volume_mm3": {
-      "TRACTION_DRIVER_L_RESERVE": 0.0,
-      "TRACTION_DRIVER_R_RESERVE": 0.0,
+      "BTS7960_IBT2_A_50x50x43": 0.0,
+      "BTS7960_IBT2_B_50x50x43": 0.0,
       "DELTA_TR1D_P2": 0.0,
       "NICHICON_UCS2D221MHD1TN": 0.0,
       "INPUT_PROTECTION_RESERVE": 0.0,
       "CINCON_CQB150W110S24_CARRIER_RESERVE": 0.0,
-      "PRESSURE_SENSOR_RESERVE": 0.0,
       "NUCLEO_F446RE_LOWPROFILE": 0.0
     },
     "pairwise_intersections_mm3": {},
+    "intersections_with_motor_input_mm3": {},
     "packaging_ok": true
   },
   "hard_dimensions_mm": {
-    "wheel_station_X": [50.0,150.0,250.0],
-    "Z50_X": [50.0,100.0,150.0,200.0,250.0],
-    "wheel_OD": 90.0,
+    "wheel_station_X": [50.0, 150.0, 250.0],
+    "Z50_X": [50.0, 100.0, 150.0, 200.0, 250.0],
+    "wheel_OD_visual": 90.0,
     "body_main_L": 307.0,
     "body_W": 92.0,
-    "rear_motor_housing_end_X": 384.0,
+    "rear_body_end_X": 410.0,
+    "electronics_roof": [300.0, 410.0, 60.0, 65.0, 117.0],
     "lift_body_pivot_X": 200.0,
     "lift_link_L": 90.0,
     "camera_shell_OD": 52.0,
     "camera_shell_L": 78.0,
-    "service_cover_LxWxt": [86.0,44.0,6.0],
-    "service_opening_LxW": [48.0,22.0],
+    "service_cover_LxWxt": [86.0, 44.0, 6.0],
     "local_harness_OD_hard_max": 6.5
   },
   "pipe_clearance_low_mm": {
-    "body": 7.810507041247945,
+    "body": 3.4545235653979773,
     "wheel_visualization_cylinder_min_NOT_RELEASE": -9.841027799374231,
     "service_cover": 7.369745618885986,
     "pressure_cap": 9.273789336854861,
@@ -62,15 +62,8 @@
     "lift_guard_LOW": 27.778914964792115,
     "camera_outer_LOW_static_envelope": 24.974774582107038,
     "rear_motor_outer": 18.35925565942665,
+    "electronics_roof_outer": 3.4545235653979773,
     "tail_strain_relief": 57.9519453
-  },
-  "wheel_release": {
-    "visualization_proxy": "Ø90 x 16 straight cylinder only; not a production wheel solid",
-    "official_compatible_product": "QRW90SR/150",
-    "official_recommended_pipe_mm": 150,
-    "source_compatibility_accepted_for_master": true,
-    "exact_geometry_release": false,
-    "gate": "replace visualization cylinders with measured/purchased QRW90SR/150 or recovered exact wheel solid before physical DN150 release"
   },
   "unintended_collision_mm3": {
     "top_vs_wheels": 0.0,
@@ -81,15 +74,20 @@
     "guard_vs_camera": 0.0,
     "motor_vs_camera": 0.0
   },
+  "wheel_release": {
+    "visualization_proxy": "Ø90x16 cylinder only",
+    "official_compatible_product": "MiniCam QRW90SR/150 90 mm wheel for 150 mm pipe",
+    "exact_geometry_release": false
+  },
+  "master_step": "/mnt/data/PX1_master_build/PX1_RevB_Current_Master.step",
   "release_holds": [
-    "Z16/Z40 exact matched bevel geometry and mounting distance remains sample/drawing gate",
-    "rear tail currently represents the ASS-002-090 / ASS-002-364 connector-housing / spring / gland / PU-sleeve / crimp / heatshrink / cable-cup functional stack; exact dimensions remain to freeze",
-    "exact QRW90SR/150 wheel solid/profile remains required for final geometric DN150 release; official catalogue compatibility is 150 mm",
-    "SP13 exact mounting bracket and numeric pin orientation require physical pair",
-    "pressure valve seat/shaft detail requires pressure test",
-    "service-cover O-ring groove depth requires real seal sample",
-    "six-core cable requires flex/EMC test",
-    "WB22A full TILT sweep validation remains controlling for camera clearance; this master shows LOW static envelope",
-    "no machining release until physical pressure and DN150 jig tests pass"
+    "Exact QRW90SR/150 wheel outer profile or measured equivalent before final DN150 release",
+    "Final hardened matched Z16/Z40 geometry and supplier mounting distance",
+    "Axle shoulder/flange exact Y dimensions require detail/source drawing or physical measurement; source bearing/seal sizes are already fixed",
+    "Pressure cover groove and compact valve require real seal/pressure test",
+    "Pressure sensor exact article/mounting remains HOLD; the old generic 24.4 mm cylinder was removed rather than pretending it fits",
+    "Six-core camera cable requires flex + CVBS/UART EMC test",
+    "Rear tether tail exact purchased/source hardware dimensions",
+    "WB22A full TILT sweep remains controlling for camera motion; this master contains LOW pose"
   ]
 }
