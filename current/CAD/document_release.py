@@ -1,20 +1,20 @@
 """Build both current PDFs from the master mesh and authoritative tables."""
 from pathlib import Path
-import csv,json,gzip,hashlib,re,html
+import csv,json,gzip,hashlib,re,html,os,xml.etree.ElementTree as ET
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.collections import PolyCollection
 from reportlab.pdfgen import canvas
-from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Table,TableStyle,PageBreak,Image
+from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Table,TableStyle,PageBreak,Image,KeepTogether
+from reportlab.graphics.shapes import Drawing,Rect,String,Path as GraphicsPath
 from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4,landscape,A3
 import fitz
-from svglib.svglib import svg2rlg
 R=Path(__file__).resolve().parents[1];I=R/'images';I.mkdir(exist_ok=True)
 for n,f in [('DV','DejaVuSans.ttf'),('DVB','DejaVuSans-Bold.ttf')]:pdfmetrics.registerFont(TTFont(n,'/usr/share/fonts/truetype/dejavu/'+f))
 styles=getSampleStyleSheet()
@@ -23,7 +23,11 @@ styles['BodyText'].fontSize=9;styles['BodyText'].leading=13
 for h,sz in [('Heading1',17),('Heading2',12)]:styles[h].fontName='DVB';styles[h].fontSize=sz;styles[h].leading=sz+5
 styles.add(ParagraphStyle('Small',fontName='DV',fontSize=7,leading=10,wordWrap='CJK'))
 val=json.loads((R/'PX1_Current_Validation.json').read_text());registry=json.loads((R/'component_registry.json').read_text())
-with gzip.open(I/'assembly_mesh.json.gz','rt') as f:meshes=json.load(f)
+reuse_images=os.environ.get('PX1_DOCS_EXISTING_IMAGES')=='1'
+original_drawings=(R/'PX1_Drawings_Current.pdf').read_bytes() if reuse_images else None
+if reuse_images: meshes=[]
+else:
+    with gzip.open(I/'assembly_mesh.json.gz','rt') as f:meshes=json.load(f)
 with (R/'PX1_Current_BOM.csv').open(encoding='utf-8-sig') as f:bom=list(csv.DictReader(f,delimiter=';'))
 def p(t,style='BodyText'):
     t=html.escape(str(t)).replace(chr(96),'')
@@ -53,6 +57,10 @@ def markdown(text):
         result.append(p(re.sub(r'^#+\s*','',line),style))
     return result
 def view(selected,name,basis=((1,0,0),(0,0,1)),pipe=False):
+    if reuse_images:
+        fn=I/(name+'.png')
+        if not fn.is_file():raise FileNotFoundError(fn)
+        return fn
     u=np.array(basis[0],float);u/=np.linalg.norm(u)
     v=np.array(basis[1],float);v-=u*np.dot(v,u);v/=np.linalg.norm(v)
     depth=np.cross(u,v);faces=[];cols=[];zs=[];points=[]
@@ -83,10 +91,45 @@ pipeview=view(meshes,'PX1_DN150',((0,1,0),(0,0,1)),True)
 story=[p('PX1 · текущий комплект','Heading1'),p('Механический эталон — Proteus CRP-150. Собственная электроника на готовых модулях.','Heading2'),Image(str(allview),width=510,height=222),p('СТАТУС: HOLD. Это реконструкция по доступным источникам с явно обозначенными неразрешёнными сопряжениями. Полная сборка к изготовлению и эксплуатации не выпущена.'),p('Успешный экспорт не означает PASS конструкции.'),p('Геометрическая проверка','Heading2')]
 rigid=[x for x in val['interferences'] if x['classification']=='RIGID_INTERFERENCE']
 story.append(table([['Проверка','Результат'],['Объекты сборки',val['component_count']],['Ключевые количества',str(val['counts_match'])+'; '+str(val['counts'])],['Невалидные формы',str(val['invalid_shapes'])],['Все пары / Boolean',str(val['collision_method']['all_pairs'])+' / '+str(val['collision_method']['boolean_pairs_after_AABB'])],['Жёсткие пересечения',len(rigid)],['DN150','HOLD'],['Сервис моторов',val['service']['motor_vertical_extraction']['status']],['Съём камеры',val['service']['camera_forward_removal']['status']+'; дискретный screen'],['Металл','К изготовлению не выпущен'],['STL','4 примерочных файла']],[180,330]));story.append(PageBreak())
+def schematic(path):
+    # These two repository-owned SVGs use only rect/path/text. Explicitly embed
+    # DejaVu in every text object: a CSS fallback silently lost Cyrillic in svglib.
+    root=ET.parse(path).getroot();w=float(root.get('width'));h=float(root.get('height'))
+    drawing=Drawing(w,h);rects=[]
+    for el in root:
+        tag=el.tag.split('}')[-1]
+        if tag=='rect' and el.get('class')=='box':rects.append(el)
+    for el in root:
+        tag=el.tag.split('}')[-1];cl=el.get('class','')
+        if tag=='rect':
+            x=float(el.get('x',0));y=float(el.get('y',0));ww=float(el.get('width'));hh=float(el.get('height'))
+            drawing.add(Rect(x,h-y-hh,ww,hh,rx=float(el.get('rx',0)),ry=float(el.get('rx',0)),fillColor=colors.HexColor('#eff4f6') if cl=='box' else colors.white,strokeColor=colors.HexColor('#617784') if cl=='box' else None,strokeWidth=1.5))
+        elif tag=='path':
+            tokens=re.findall(r'[A-Za-z]|[-+]?(?:\d*\.\d+|\d+)',el.get('d'));k=0;cmd=None;x=y=0;gp=GraphicsPath(strokeColor=colors.HexColor(el.get('stroke','#347b94')),fillColor=None,strokeWidth=2.5)
+            while k<len(tokens):
+                if tokens[k].isalpha():cmd=tokens[k];k+=1
+                if cmd=='M':x=float(tokens[k]);y=float(tokens[k+1]);k+=2;gp.moveTo(x,h-y);cmd='L'
+                elif cmd=='L':x=float(tokens[k]);y=float(tokens[k+1]);k+=2;gp.lineTo(x,h-y)
+                elif cmd=='H':x=float(tokens[k]);k+=1;gp.lineTo(x,h-y)
+                elif cmd=='V':y=float(tokens[k]);k+=1;gp.lineTo(x,h-y)
+                else:raise ValueError('Unsupported schematic path command: '+str(cmd))
+            drawing.add(gp)
+        elif tag=='text':
+            x=float(el.get('x'));y=float(el.get('y'));s=''.join(el.itertext())
+            font='DVB' if cl=='title' else 'DV';size=25 if cl=='title' else 17
+            available=w-x-25
+            for rr in rects:
+                rx=float(rr.get('x'));ry=float(rr.get('y'));rw=float(rr.get('width'));rh=float(rr.get('height'))
+                if rx<=x<rx+rw and ry<=y<=ry+rh:available=rx+rw-x-8;break
+            measured=pdfmetrics.stringWidth(s,font,size)
+            if measured>available:size*=available/measured
+            drawing.add(String(x,h-y,s,fontName=font,fontSize=size,fillColor=colors.HexColor('#182d39')))
+    factor=510/w;drawing.scale(factor,factor);drawing.width=510;drawing.height=h*factor
+    return drawing
 for fn in ('ELECTRICAL_Current.md','ASSEMBLY_AND_TESTS_Current.md','SOURCE_REGISTER.md'):
     sv='PX1_Electrical_Current.svg' if fn=='ELECTRICAL_Current.md' else 'PX1_Pressure_Sealing_Current.svg' if fn=='ASSEMBLY_AND_TESTS_Current.md' else None
     if sv:
-        drawing=svg2rlg(str(R/sv));drawing.scale(510/drawing.width,510/drawing.width);drawing.height=357;drawing.width=510
+        drawing=schematic(R/sv)
         story.append(drawing);story.append(Spacer(1,14))
     story.extend(markdown((R/fn).read_text()));story.append(PageBreak())
 story.append(p('Единственная текущая BOM','Heading1'));story.append(p(str(len(bom))+' строк: известный состав, незавершённые позиции и отдельные примерочные макеты. UNKNOWN/HOLD не является заказным артикулом. Цены и наличие в разрешённых магазинах не подтверждены.'))
@@ -95,11 +138,10 @@ for label,rows in [('Покупные и стандартные',[b for b in bom
     tb += [[b['item']+' / '+b['qty'],b['name_ru']+' · '+b['article'],b['dimensions']+' · '+b['source'],b['cad_state']+'; '+b['release']] for b in rows]
     story.append(table(tb,[47,176,167,120]));story.append(Spacer(1,12))
 story.append(PageBreak());story.append(p('Оставшиеся конкретные неизвестные','Heading1'))
-for h in val['holds']:
-    story.append(p(h['id']+' · '+h['title'],'Heading2'));story.append(p(h['required']));story.append(p('Блокирует: '+h['blocks']))
+story.append(table([['ID','Узел','Что неизвестно / что блокирует']]+[[h['id'],h['title'],h['required']+' Блокирует: '+h['blocks']] for h in val['holds']],[30,130,350]))
 story.append(PageBreak());story.append(p('Все жёсткие пересечения','Heading1'))
+story.append(p('Контакты уплотнений, зацепления и резьбы не скрыты. Полный перечень, ошибки Boolean и доступ инструмента - в единственном PX1_Current_Validation.json.'))
 story.append(table([['A','B','Объём mm³']]+[[r['a'],r['b'],r['volume_mm3']] for r in rigid],[222,222,66]))
-story.append(p('Контакты уплотнений, зацепления и резьбы не скрыты. Полный перечень, ошибки Boolean и доступ инструмента — в единственном PX1_Current_Validation.json.'))
 SimpleDocTemplate(str(R/'PX1_Documentation_Current.pdf'),pagesize=A4,rightMargin=42,leftMargin=42,topMargin=40,bottomMargin=42).build(story,onFirstPage=footer,onLaterPages=footer)
 W,H=landscape(A3);c=canvas.Canvas(str(R/'PX1_Drawings_Current.pdf'),pagesize=(W,H));page=0
 def sheet(title,notes):
@@ -114,12 +156,14 @@ for title,im,notes in [('Общий вид PX1',allview,['Все размеры 
     sheet(title,notes);c.drawImage(str(im),50,120,width=W-100,height=H-215,preserveAspectRatio=True,anchor='c');c.showPage()
 byid={m['id']:m for m in meshes};reg={r['id']:r for r in registry}
 for idx,(name,path) in enumerate(val['part_exports'].items(),1):
-    rr=reg[name];im=view([byid[name]],'part_%03d'%idx,((1,-.8,0),(.32,.4,1)))
+    rr=reg[name];im=view([] if reuse_images else [byid[name]],'part_%03d'%idx,((1,-.8,0),(.32,.4,1)))
     dims=' × '.join('%.3f'%x for x in rr['dimensions_mm'])
     sheet('Деталь '+str(idx)+' · '+name,['Габарит XYZ модели: '+dims+' мм. STEP в координатах сборки.','Посадки, шероховатость, материал и термообработка не выпущены.','Файл: '+path])
     c.drawImage(str(im),50,120,width=W-100,height=H-215,preserveAspectRatio=True,anchor='c');c.showPage()
 c.save()
+if original_drawings is not None:(R/'PX1_Drawings_Current.pdf').write_bytes(original_drawings)
 qa=[]
+for old in I.glob('PX1_*_Current_QA_*.png'):old.unlink()
 for fn in ('PX1_Documentation_Current.pdf','PX1_Drawings_Current.pdf'):
     d=fitz.open(R/fn);blank=[]
     for i,pg in enumerate(d):
@@ -132,7 +176,7 @@ val['documentation_QA']=qa
 (R/'PX1_Current_Validation.json').write_text(json.dumps(val,ensure_ascii=False,indent=2))
 manifest=['PX1 CURRENT / Rev.C / 2026-09-14','MANUFACTURING RELEASE: HOLD','One master, one BOM, one validation, one changelog.','Part sheets show CAD bounding dimensions, not complete machining drawings.']
 for fn in sorted(R.rglob('*')):
-    if fn.is_file() and fn.suffix in ('.step','.stl','.pdf','.csv','.json','.py','.md') and '__pycache__' not in str(fn):
+    if fn.is_file() and fn.suffix in ('.step','.stl','.pdf','.csv','.json','.py','.md','.svg') and '__pycache__' not in str(fn):
         manifest.append(hashlib.sha256(fn.read_bytes()).hexdigest()+'  '+str(fn.relative_to(R)))
 (R/'PX1_RELEASE_MANIFEST.txt').write_text('\n'.join(manifest)+'\n')
 print('Documentation emitted',qa,flush=True)

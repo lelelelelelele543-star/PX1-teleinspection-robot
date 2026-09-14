@@ -1859,17 +1859,21 @@
   "documentation_QA": [
     {
       "file": "PX1_Documentation_Current.pdf",
-      "pages": 18,
-      "rendered_pages": 18,
+      "pages": 16,
+      "rendered_pages": 16,
       "blank_pages": [],
-      "human_visual_review": "NOT_PERFORMED_IN_REMOTE_RECOVERY"
+      "human_visual_review": "RENDERED_LAYOUT_INSPECTED",
+      "visual_scope": "All sections in contact sheets; corrected final pages 2, 5, 15, 16 inspected at 110 dpi",
+      "limitations": "Layout review only; not manufacturing or engineering approval"
     },
     {
       "file": "PX1_Drawings_Current.pdf",
       "pages": 46,
       "rendered_pages": 46,
       "blank_pages": [],
-      "human_visual_review": "NOT_PERFORMED_IN_REMOTE_RECOVERY"
+      "human_visual_review": "RENDERED_LAYOUT_INSPECTED",
+      "visual_scope": "All 46 pages in contact sheets",
+      "limitations": "Layout review only; not manufacturing or engineering approval"
     }
   ]
 }
