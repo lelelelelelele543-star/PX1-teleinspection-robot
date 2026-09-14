@@ -23,16 +23,23 @@ This file records controlling decisions so exploratory studies do not silently b
 | D-015 | Cable pressure seal and electrical service disconnect are separate functions | gland seals jacket; dry connector provides replaceability | CONTROLLED |
 | D-016 | PX-1 compact pressure/service cover uses 2 x M4 as prototype choice | practical small cover; direct pressure load is low; exact Proteus screw count not proven | PROTOTYPE HOLD |
 | D-017 | M12 gland is horizontal / forward-facing | avoids wasting DN150 roof clearance | CONTROLLED packaging |
-| D-018 | Fill valve preferred exposed envelope <=Ø12 x 5 mm; current prototype hard screen <=Ø14 x 6 mm | WB23F sensitivity: taller valves rapidly consume DN150 clearance; Ø14 x 8 fails 3 mm screen | PROCUREMENT HOLD |
+| D-018 | Exposed fill-valve procurement was limited to <=Ø14 x 6 mm by WB23F; WB24A now replaces the tall-valve baseline with a flush capped service port | source MiniCam uses cap + screw-on adaptor and current CAD gives better DN150 margin with flush port | SUPERSEDED by D-030 |
 | D-019 | Only LOW lift position is required to remain inside DN150 | MID/HIGH are larger-pipe operating positions | FROZEN validation rule |
 | D-020 | WB23A absolute one-sided Y coordinates are not manufacturing data | helper Y-sign ambiguity; newer service topology supersedes routing | SUPERSEDED |
 | D-021 | No final O-ring groove, cover torque or fill-valve thread is frozen before real samples | sealing depends on actual elastomer, flatness, boss and purchased part | HOLD |
 | D-022 | Pressure/service interface must pass +0.25 bar decay + submersion before field release | IP ratings and CAD packaging do not prove crawler pressure sealing | REQUIRED |
 | D-023 | Local harness must pass >=500, target 1000 lift cycles plus wet/grit repeat | catalog flexibility alone is not enough for this custom route | REQUIRED |
-| D-024 | Local cable target is 6 x 0.25 mm² class, preferred OD 5.5...6.0 mm, hard package maximum 6.5 mm | electrical drop is acceptable on short local run and both M12 gland/SP13 S6I support this OD class | CONTROLLED target |
-| D-025 | Dry J_CAM_LIFT prototype candidate is 6-way Molex Micro-Fit 3.0 wire-to-wire rather than JST VH 8-way | Micro-Fit supports six-way service architecture and 20...24 AWG contact class; JST VH normal published conductor range starts at 0.33 mm² | CONTROLLED prototype |
+| D-024 | Local cable target is 6 x 0.25 mm² class, preferred OD about 5.4...6.0 mm, hard package maximum 6.5 mm | electrical drop is acceptable on short local run and both M12 gland/SP13 S6I support this OD class | CONTROLLED target |
+| D-025 | Dry J_CAM_LIFT prototype connector is 6-way Molex Micro-Fit 3.0; housings 43025-0600 / 43020-0601; prototype contacts 43030-0007 female / 43031-0007 male | exact six-way service architecture and 20...24 AWG contact class match current cable target | CONTROLLED prototype |
 | D-026 | Lower-arm guard conservative envelope is 10 mm for WB23G | gives service/abrasion allowance around <=Ø6.5 cable while retaining ~27.8 mm LOW ideal-DN150 clearance | CONTROLLED packaging |
 | D-027 | Historical 8-core WB21/WB23A executed validation remains archived only; it cannot control procurement or wiring | preserves engineering traceability without rewriting past executed data | SUPERSEDED |
+| D-028 | Primary physical local-cable sample is LAPP UNITRONIC FD P plus A `0028679`, exactly 6 x 0.25 mm², nominal OD 5.4 mm | best current exact-six-core continuous-flex/PUR mechanical fit; production use still depends on raw-CVBS/UART EMC test because cable is unshielded | PRIMARY SAMPLE / EMC HOLD |
+| D-029 | LAPP LiYCY `0034406` remains a shielded six-core A/B comparator, not automatic production winner | fits geometry but has weaker continuous-flex claim; screen alone does not outweigh flex-life requirement | TEST COMPARATOR |
+| D-030 | PX1 pressure port uses Proteus-like low-profile capped service topology rather than a permanently tall Schrader body | source drawings show valve shaft/cover/ball/O-rings/spring and official manual uses removable cap + screw-on pressure adaptor | CONTROLLED FUNCTIONAL ARCHITECTURE |
+| D-031 | WB24A driving protection-cap target is <=Ø12 x 1.5 mm exposed, with internal valve envelope <=Ø10 x 18 mm at X273/Y0 | executed CAD gives ~9.27 mm cap DN150 clearance and no collision with dry connector/gland; WB23E cover becomes limiting top feature | CONTROLLED PACKAGING / DETAIL HOLD |
+| D-032 | Valve service adaptor is removable, mechanically opens the check valve and includes/permits controlled purge before cover opening | mirrors documented Proteus service logic and keeps bulky pneumatic fittings off crawler roof | CONTROLLED TOOL CONCEPT |
+| D-033 | Original MiniCam valve dimensions are not reverse-invented; only confirmed topology and explicitly visible source dimensions are reused | individual FSS-001-843/FSS-001-844 detail drawings are not in current source set | FROZEN EVIDENCE RULE |
+| D-034 | Source spring geometry `d0.5 / De3.7 / L0 7.9` is a real standard DIN-size candidate but spring force/preload is not frozen from geometry alone | exact same geometry is commercially catalogued; valve adaptor will open check mechanically and bench tests determine preload | PROTOTYPE HOLD |
 
 ## Rule for future revisions
 
