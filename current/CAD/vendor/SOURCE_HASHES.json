@@ -1,0 +1,14 @@
+{
+  "Pololu_25D_75_99_Manufacturer.step": {
+    "url": "https://www.pololu.com/file/0J1113/25d-gearmotor-3d-models.zip",
+    "sha256": "485eebac72843380b2fab71a044ef586012512ccf50a66d5d8361c2e4825e85f"
+  },
+  "WeAct_F4_64Pin_V11_Manufacturer.step": {
+    "url": "https://raw.githubusercontent.com/WeActStudio/WeActStudio.STM32F4_64Pin_CoreBoard/master/Hardware/WeAct-STM32F4_64PIN-CoreBoard_V11%203D.step",
+    "sha256": "dbcf5ae535545af20e4869933e9a405cc663fb8f2da01bf5a7acc95ba2d41d62"
+  },
+  "Pololu_G2_24v13_Manufacturer.step": {
+    "url": "https://www.pololu.com/file/0J1330/g2-high-power-motor-driver-md31a.step",
+    "sha256": "6ea8d4a4f2e72be37ce66dde759fdb959e2bc57af225d82c0ba14610cf6019a6"
+  }
+}
