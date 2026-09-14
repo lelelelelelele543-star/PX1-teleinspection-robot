@@ -34,7 +34,7 @@ def finish_build(g):
         if not s.isValid() or s.Volume()<=0: invalid.append(n)
         assembly.add(s,name=n,color=cq.Color(*colors.get(c,(.65,.65,.65))))
         b=box(s)
-        registry.append({'id':n,'category':c,'geometry_state':'HOLD' if 'HOLD' in n else 'BOUNDARY_ENVELOPE_OR_DESIGN',
+        registry.append({'id':n,'category':c,'geometry_state':('MANUFACTURER_STEP' if 'MANUFACTURER_STEP' in n else 'HOLD' if 'HOLD' in n else 'BOUNDARY_ENVELOPE_OR_DESIGN'),
             'bbox_mm':[round(v,5) for v in b],'dimensions_mm':[round(b[i+3]-b[i],5) for i in range(3)],'volume_mm3':round(s.Volume(),5),'solids':len(s.Solids())})
     step=cad/'PX1_Current_Master.step';assembly.export(str(step),'STEP')
     # Every exported custom part is the exact assembly solid, not a separately redrawn surrogate.
@@ -68,7 +68,7 @@ def finish_build(g):
         'Z50':sum(n.startswith('HOLD_Z50_') for n in shapes),
         'Z40':sum(n.startswith('HOLD_Z40_BEVEL_') for n in shapes),
         'Z16':sum(n.startswith('HOLD_Z16_BEVEL_') for n in shapes),
-        'traction_motor':sum(n.startswith('HOLD_ISL_PGM32P_MOTOR_') for n in shapes),
+        'traction_motor':sum(n.startswith('POLOLU_5707_MOTOR_') for n in shapes),
         '61801_side':sum(n.startswith('61801_SIDE_') for n in shapes),
         '61801_pinion':sum(n.startswith('61801_Z16_') for n in shapes),
         '61903':sum(n.startswith('61903_SIDE_') for n in shapes),
@@ -92,6 +92,7 @@ def finish_build(g):
             if 'wheel' in (ca,cb):typ='WHEEL_PROFILE_HOLD_INTERFERENCE'
             if ca in ('gear','bevel') and cb in ('gear','bevel'):typ='TOOTH_CONTACT_HOLD'
             if ('WHEEL_RETENTION_M6' in a and 'WHEEL_SHAFT' in b) or ('WHEEL_RETENTION_M6' in b and 'WHEEL_SHAFT' in a):typ='THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY'
+            if ('WHEEL_RETENTION_M5' in a and 'WHEEL_SHAFT' in b) or ('WHEEL_RETENTION_M5' in b and 'WHEEL_SHAFT' in a):typ='THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY'
             if 'valve' == ca == cb:typ='VALVE_INTERNAL_ENVELOPE_HOLD'
             pairs.append({'a':a,'b':b,'volume_mm3':round(v,6),'classification':typ})
     # Radial containment tests ALL solids, including wheels, levers, covers and connectors.
@@ -118,34 +119,36 @@ def finish_build(g):
         return {'status':'BLOCKED' if result else ('ERROR' if error else 'NO_COLLISION_IN_DISCRETE_SCREEN'),
             'motion_mm':delta,'samples':steps,'collisions':result,'errors':error,'release':'HOLD: discrete envelope screen is not a certified service path'}
     body_names=[n for n in shapes if 'PRESSURE_BODY' in n]
-    motor_names=[n for n in shapes if 'ISL_PGM32P_MOTOR' in n]
+    motor_names=[n for n in shapes if 'POLOLU_5707_MOTOR' in n]
     rear_names=[n for n in shapes if n.startswith('HOLD_REAR_') or 'REAR_SERVICE_COVER' in n or 'REAR_PANEL' in n or 'MAIN_TETHER' in n]
-    motor_sweep=sweep_check(motor_names,(120,0,0),rear_names,8)
+    motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','SPLIT_ADAPTER')) or categories[n] in ('electronics','electronics_hold')]
+    motor_sweep=sweep_check(motor_names,(0,0,80),motor_removed,8)
+    motor_sweep['removed_before_screen']=motor_removed
     cam_names=[n for n in shapes if categories[n]=='camera' or 'CAM026_REFERENCE' in n]
     cam_sweep=sweep_check(cam_names,(-80,0,0),[n for n in shapes if 'SP13' in n or 'CAMERA_HARNESS' in n],8)
     tools=[]
-    for x in g['SERVICE_SCREW_X']:
-        probe=cq.Solid.makeCylinder(3,60,cq.Vector(x,0,117.1),cq.Vector(0,0,1));hits=[]
+    for x,y in itertools.product(g['SERVICE_SCREW_X'],(-19,19)):
+        probe=cq.Solid.makeCylinder(3,60,cq.Vector(x,y,82.1),cq.Vector(0,0,1));hits=[]
         for n,s in shapes.items():
             if possible(box(probe),boxes[n]):
                 try:v=probe.intersect(s).Volume()
                 except Exception as exc:errors.append({'tool':x,'part':n,'error':str(exc)});continue
                 if v>.01:hits.append({'id':n,'volume_mm3':v})
-        tools.append({'screw_x_mm':x,'tool_diameter_mm':6,'approach_mm':60,'collisions':hits,'release':'HOLD: screw/groove/mating dimensions unresolved'})
+        tools.append({'screw_x_mm':x,'screw_y_mm':y,'tool_diameter_mm':6,'approach_mm':60,'collisions':hits,'release':'HOLD: screw/groove/mating dimensions unresolved'})
     gas_sweep=[]
-    for deg in range(-16,61,2):
-        t=math.radians(deg);m=(g['PIVOT_X']-63*math.cos(t),16,g['PIVOT_Z_LOW']+63*math.sin(t))
-        L=math.dist(g['body_pt'],m);gas_sweep.append({'angle_deg':deg,'distance_mm':L,'within_bare_52_to_72':52<=L<=72})
+    for deg in range(0,71,2):
+        t=math.radians(deg);m=(g['PIVOT_X']-g['gas_move_s']*math.cos(t),16,g['PIVOT_Z_LOW']+g['gas_move_s']*math.sin(t))
+        L=math.dist(g['body_pt'],m);gas_sweep.append({'angle_deg':deg,'distance_mm':L,'within_bare_112_to_192':112<=L<=192})
     val={'revision':'Rev.C 2026-09-14','master':'CAD/PX1_Current_Master.step','source_sha256':hashlib.sha256(Path(g['__file__']).read_bytes()).hexdigest(),
         'status':'HOLD_NOT_MANUFACTURING_RELEASE','source_reference':'Proteus CRP150 DRW-002-374/375/386/744/745/752',
         'counts':counts,'expected_counts':expected,'counts_match':counts==expected,'component_count':len(components),'invalid_shapes':invalid,
         'collision_method':{'all_pairs':allpairs,'boolean_pairs_after_AABB':tested,'excluded_pairs':0,'errors':errors,'volume_threshold_mm3':1e-4},
         'interferences':pairs,'dn150':{'diameter_mm':150,'assumed_pipe_center_z_mm':pipeZ,'pose':'LOW, inherited wheel-ground pose H01',
             'all_component_results':radial,'global_status':'HOLD; reference protrusions are reported, real tyre/contact pose unknown'},
-        'service':{'motor_rear_extraction':motor_sweep,'camera_forward_removal':cam_sweep,'service_screw_tools':tools,
+        'service':{'motor_vertical_extraction':motor_sweep,'camera_forward_removal':cam_sweep,'service_screw_tools':tools,
             'wheel_removal':'HOLD H01: source quick-lock unknown; proxy cannot certify wheel removal',
             'harness_removal':'HOLD H07: SP13 cable end must be reterminated if larger than gland throat; replacement sequence in documentation'},
-        'gas_spring':{'assembled_distance_mm':g['gas_length'],'bare_limits_mm':[52,72],'sampled_angle_checks':gas_sweep,'release':'HOLD H06: end fittings, actual limit angles and physical 150 N balancing'},
+        'gas_spring':{'assembled_distance_mm':g['gas_length'],'bare_limits_mm':[112,192],'sampled_angle_checks':gas_sweep,'release':'HOLD H06: end fittings, actual limit angles and physical 150 N balancing'},
         'pressure':{'status':'HOLD H03 H07','cad_is_leak_test':False,'side_cover_window_error_fixed':True,'common_pressure_communication':'requires physical/section verification'},
         'print_outputs':print_validation,'metal_release':False,'part_exports':export_map,
         'unmodelled_required_items':['complete camera PAN/TILT/lighting/control internals','side-cover static seal installed contour','lift pivot bushings and seals','pressure valve spring and seat detail','SP13 panel half and contact inserts','SP17 cable half and seals','internal six-way service connector','board standoffs and all power terminal insulation','INA226 ready-made modules and branch capacitors/TVS/fuses','circlips, internal gear keys and complete fastening hardware'],

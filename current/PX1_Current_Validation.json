@@ -1,0 +1,11 @@
+{
+  "status": "BUILD_NOT_COMPLETED_AFTER_ENVIRONMENT_DISCONNECT",
+  "manufacturing_release": false,
+  "previous_local_screen": {
+    "components": 146,
+    "invalid_shapes": 0,
+    "rigid_interferences": 62,
+    "note": "Prior to latest source corrections; NOT results for current source"
+  },
+  "required_next": "Run current CAD and document export. No PASS."
+}

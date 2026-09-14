@@ -1,0 +1,49 @@
+name: PX1 current export
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'current/CAD/*.py'
+      - 'current/*.md'
+      - 'current/PX1_Current_BOM.csv'
+      - 'current/HOLD_REGISTER.json'
+      - '.github/workflows/px1-current.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: px1-current-export
+  cancel-in-progress: false
+jobs:
+  export:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libgl1 libegl1 fonts-dejavu-core
+          python -m pip install cadquery==2.6.1 reportlab matplotlib pymupdf
+      - name: Public manufacturer geometry
+        run: python current/CAD/vendor_sources.py
+      - name: Build and validate current
+        run: python -u current/CAD/PX1_Current_Master.py > current/build_log.txt 2>&1
+      - name: Documentation and drawings
+        run: python -u current/CAD/document_release.py
+      - name: Save generated current files
+        run: |
+          git add current/CAD/PX1_Current_Master.step current/CAD/Metal_HOLD current/CAD/Print_STL current/CAD/vendor current/PX1_Current_Validation.json current/component_registry.json current/PX1_Drawings_Current.pdf current/PX1_Documentation_Current.pdf current/PX1_RELEASE_MANIFEST.txt current/images/*.png
+          if ! git diff --cached --quiet; then
+            git -c user.name='PX1 export' -c user.email='px1-export@users.noreply.github.com' commit -m 'Export current PX1 reconstruction; manufacturing HOLD'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PX1_Current_Package
+          path: current/
+          retention-days: 30

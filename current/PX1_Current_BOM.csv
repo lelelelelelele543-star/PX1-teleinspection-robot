@@ -1,0 +1,128 @@
+﻿item;name_ru;qty;article;dimensions;source;route;cad_state;release
+M01;Корпус;1;CRP150 корпус DRW375;≈278×68×64;DRW375;MILL;GRAPHIC_APPROX;H02 H03
+M02;Боковая крышка;2;FAL-002-062;≈262×60×7;DRW374;MILL;GRAPHIC_APPROX;H02 H03
+M03;Фланец оси;6;FSS-002-061;OD≈50;DRW374;TURN;GRAPHIC_APPROX;H02 H03
+M04;Короткая ось;4;FSS-002-063;ступени12/17/18 длиныHOLD;DRW374;TURN;GRAPHIC_APPROX;H02
+M05;Длинная ось;2;FSS-002-064;задняяX250 соединениеHOLD;DRW374;TURN;GRAPHIC_APPROX;H02 H04
+M06;ВалZ40;2;FSS-002-066 family;10/18 socket12 provisional;DRW375;TURN;ADAPTATION;H02 H04
+M07;ВалZ16;2;FSS-002-083 family;6/12 длиныHOLD;DRW386;TURN;ADAPTATION;H04 H05
+M08;Парный держатель моторов;1;PX1-25D-HOLDER;52.8×30×3 отверстия2×2M3/17;Pololu dimension diagram;MILL;ADAPTATION;H05
+M09;Держатель опорZ16;1;PX1-PINION-HOLDER;52.8×26×5;DRW386 topology;MILL;ADAPTATION;H04 H05
+M10;Разрезная переходная втулка;2;PX1-SPLIT-6-4;OD6 ID4 L8;NBK/Pololu interfaces;TURN;ADAPTATION;H05
+M11;Палец холостойZ50;4;PX1 idler pin;10 длинаHOLD;DRW374;TURN;GRAPHIC_APPROX;H02
+G01;Z50 на осях;6;GEA-002-529;Z50 B4 m1 inferred;DRW374;GEAR;ANALYTIC_20DEG_HOLD;H04
+G02;Z50 холостая;4;GEA-002-528;Z50 B4 m1 inferred;DRW374;GEAR;ANALYTIC_20DEG_HOLD;H04
+G03;Z40;2;GEA-002-530;Z40 m1 inferred;DRW375;GEAR;CONICAL_ENVELOPE;H04
+G04;Z16;2;GEA-002-531;Z16 m1 inferred;DRW386;GEAR;CONICAL_ENVELOPE;H04
+B01;Подшипник61801;4;BEA-002-701 /61801-2RS;12×21×5;DRW374+386;BUY;BOUNDARY;ПосадкиH02
+B02;Подшипник61903;6;BEA-002-704 /61903-2RS;17×30×7;DRW374;BUY;BOUNDARY;ПосадкиH02
+B03;Подшипник61800;2;61800-2RS;10×19×5;DRW375;BUY;BOUNDARY;ПосадкиH02
+B04;Втулка холостой шестерни;4;BEA-002-537;10-12-4;DRW374;BUY;BOUNDARY;H02
+B05;Втулка средней оси;2;source12-14-4;12-14-4;DRW375;BUY;BOUNDARY;H02
+B06;Стальная втулка лифта;4;source8-10-4.5;8-10-4.5;DRW375;BUY;NOT_MODELLED;H06
+S01;X-ring колесной оси;6;SEA-002-526 /QRAR04116 N7004 reference;18.72×2.62;DRW374/TrelleborgTable8;BUY;INSTALLED_ENVELOPE;H03
+S02;СальникZ40;2;18-30-7 профиль/материалHOLD;18×30×7;DRW375;BUY;BOUNDARY;H03
+S03;O-ring боковой крышки;2;SEA-002-102;190×1.5;DRW374;BUY;NOT_MODELLED;H03
+S04;O-ring фланца;6;SEA-002-722;32×1.5;DRW374;BUY;FREE_RING_ENVELOPE;H03
+S05;O-ring корпуса;2;metric16×1;16×1;DRW375;BUY;NOT_MODELLED;H03
+S06;O-ring корпуса;2;metric38×1.5;38×1.5;DRW375;BUY;NOT_MODELLED;H03
+S07;O-ring крышкиPRESSURE;1;metric110×1.5;110×1.5;DRW745;BUY;NOT_MODELLED;H03
+S08;O-ring клапана;1;metric6×1.5;6×1.5;DRW745;BUY;NOT_MODELLED;H03
+S09;O-ring клапана;2;metric3×1;3×1;DRW745;BUY;NOT_MODELLED;H03
+S10;O-ring колпачка;1;metric10×1.5;10×1.5;DRW745;BUY;NOT_MODELLED;H03
+S11;O-ring лифта;2;metric15×2.5;15×2.5;DRW744;BUY;NOT_MODELLED;H03
+P01;Тяговый двигатель;2;Pololu5707 99:1 HP24V;Ø25×53.8 shaft4×12.5;https://www.pololu.com/product/5707;BUY;MANUFACTURER_STEP;H05 монтаж НЕ совместим по текущему screen
+P02;Муфта;2;NBKMLR-20C-6-6;Ø20×24 bores6/6;NBK manufacturer;BUY;BOUNDARY;H05
+P03;Колесо;6;MiniCamQRW90SR/150;Ø90 остальноеHOLD;MiniCam catalog;BUY;PHOTO_APPROX;H01
+L01;PRESSURE-крышка;1;DRW745/PX1;≈158×53×7;DRW745;MILL;GRAPHIC_APPROX;H03
+L02;Боковой рычаг;2;FSS-002-068;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06
+L03;Центральное звено;1;ASS-002-723;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06
+L04;Основание лифта;1;FAL-002-067 family;присоединенияHOLD;DRW744;MILL;GRAPHIC_APPROX;H06
+L05;Кронштейн камеры;1;PX1/source interface;HOLD;DRW752;MILL;GRAPHIC_APPROX;H06 H08
+L06;Газовая пружина;1;ACEGS-12-80-V4A F1=150N candidate;Ø12/4 stroke80 bare192;ACEGS12 catalog;BUY;BOUNDARY;H06 наконечники
+L07;Рычаг ручного зажима;1;FIX-002-527 family;M8 корпусHOLD;DRW744;BUY;GRAPHIC_APPROX;H06
+L08;Ось зажима;1;FSS-002-089;HOLD;DRW744;TURN;NOT_MODELLED;H06
+L09;Шайба зажима;1;FSS-002-077;HOLD;DRW744;TURN;NOT_MODELLED;H06
+L10;Боковая ось лифта;2;FSS-002-075;HOLD;DRW744;TURN;PARTIAL;H06
+L11;Верхняя ось лифта;2;FSS-002-079;HOLD;DRW744;TURN;PARTIAL;H06
+L12;Пластина лифта;1;FSS-002-073;HOLD;DRW744;MILL;NOT_MODELLED;H06
+L13;Пластина крепления лифта;2;FSS-002-084;HOLD;DRW375;MILL;NOT_MODELLED;H06
+L14;Ось крепления лифта;2;FSS-002-373;HOLD;DRW375;TURN;NOT_MODELLED;H06
+V01;Корпус/шток клапана;1;FSS-001-843 family;седлоHOLD;DRW745;TURN;GRAPHIC_APPROX;H03
+V02;Колпачок клапана;1;FSS-001-844 family;HOLD;DRW745;TURN;GRAPHIC_APPROX;H03
+V03;Шарик клапана;1;precision ballØ4;Ø4;DRW745;BUY;SPHERE;H03 седло
+V04;Пружина клапана;1;SPR-001-847;k/preload/LfreeHOLD;DRW745;BUY;NOT_MODELLED;H03
+V05;Бобышка прохода жгута;1;PX1/source adaptation;HOLD;DRW745;MILL;GRAPHIC_APPROX;H03 H07
+C01;Корпус ротации камеры;1;CAM026 family;OD≈62.5 headL132;ASM000/Drive photo;TURN;PHOTO_APPROX;H08
+C02;Боковая рама камеры;1;CAM026 family;HOLD;ASM001;MILL;GRAPHIC_APPROX;H08
+C03;Поворотный оптический корпус;1;CAM026 family;HOLD;ASM001;TURN/MILL;GRAPHIC_APPROX;H08
+C04;Окно камеры;1;Минеральное стекло/сапфир артикулHOLD;размерHOLD;ASM001;BUY;ENVELOPE;H08
+C05;КамераCVBS;1;RunCamPHOENIX2-SL family;19×19class 5–36V;existingWB16 /runcam.com;BUY;NOT_MODELLED;H08
+C06;Контроллер головы;1;WaveshareRP2040-Zero;18×23.5class;existingWB16 /waveshare.com;BUY;NOT_MODELLED;H08
+C07;Драйверы осей головы;2;AdafruitDRV8871#3190;6.5–45V размещениеHOLD;https://www.adafruit.com/product/3190;BUY;NOT_MODELLED;H08
+C08;МоторыPAN/ROTATE;2;12VN20 точный артикулHOLD;вал/редукторHOLD;existingWB16;BUY;NOT_MODELLED;H08
+C09;Токосъёмник;1;SenRingM125-06;Ø12.5×13.5class 6circuits;existingWB16 /senring.com;BUY;NOT_MODELLED;H08
+C10;БелыеLED;6;CreeXPGDWT-B1-0000-00LE2 candidate;3535;existingWB16;BUY;NOT_MODELLED;H08
+C11;ГотовыеMCPCB LED;6;Ø8мм3535 артикулHOLD;Ø8class;existingWB16;BUY;NOT_MODELLED;H08
+C12;ДрайверLED;2;P4115adj module family;29.3×15.1×9class;existingWB16;BUY;NOT_MODELLED;H08
+C13;Датчики угла;2;AS5600 ready module exactHOLD;размерHOLD;existingRevPG;BUY;NOT_MODELLED;H08
+C14;Упорный игольчатый подшипник;2;BEA-001-893;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
+C15;Упорная шайба;2;FSS-001-894;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
+C16;Полый вал ротации;1;FSS-001-895;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
+C17;Упорная шайба подшипника;1;BEA-001-815;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
+C18;Втулка ротации;1;MSC-001-899;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
+C19;Шестерня ротации;1;GEA-001-896;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
+H01;Локальный жгут;1;LAPP0028679 UNITRONIC FD P plus A;ровно6×0.25 OD5.4 Rmin≈27;LAPP catalog;BUY;ROUTE_APPROX;H07 финальная длинаHOLD купить3м для образцов
+H02;КабельнаяSP13;1;WEIPUSP1310/S6I-N;6female cable4–6.5;WEIPU catalog;BUY;ENVELOPE;H07
+H03;ПанельнаяSP13;1;WEIPUSP1312/P6-C;6male M13×1family;WEIPU catalog;BUY;NOT_MODELLED;H07
+H04;Гермоввод;1;LAPPSKINTOP53112000;M12×1.5 cable3.5–7 SW16;LAPP catalog;BUY;BOUNDARY;H03 H07
+H05;Панельный задний разъём;1;WEIPUSP1712 7contact суффиксHOLD;6used+1NC;WEIPU catalog;BUY;ENVELOPE;H07 H10
+H06;Кабельный задний разъём;1;WEIPUSP1710 7contact суффиксHOLD;6used+1NC;WEIPU catalog;BUY;NOT_MODELLED;H07 H10
+H07;Основнойtether;1;6-жильный Proteus/профессиональный аналог артикулHOLD;6copper+силовой элемент no coax длинаHOLD;USER cable stock;BUY;ENVELOPE;H07 H10
+H08;Гильза разгрузки;1;PX1 TAIL SLEEVE;OD24 ID20 L32 target;PX1;TURN;ADAPTATION;H07
+H09;Конус силового элемента;1;PX1 TAIL CONE;20→12 L30 target;PX1;TURN;ADAPTATION;H07
+H10;Внутренний разъём обслуживания;1;6way crimp pair артикулHOLD;6circuits;PX1;BUY;NOT_MODELLED;H07
+E01;Главный контроллер;1;WeActSTM32F446RET6CoreBoardV1.1;33.22×41.63×11.99;WeAct officialGithub;BUY;MANUFACTURER_STEP;H09
+E02;Драйвер тягового мотора;2;Pololu2992G2 24v13;33.02×20.32×9.575 STEPmd31a;https://www.pololu.com/product/2992/resources;BUY;MANUFACTURER_STEP;H09 H10 текущаяревизияmd31c
+E03;ВходнойDC/DC;1;CinconCQB150W110S24;43–160Vin24V6.3A 57.9×36.8×12.7;Cincon manufacturer;BUY;BODY_NO_PINS;H09 H10
+E04;DC/DC12V;1;Pololu5577D42V55F12;25.4×25.4×9 60Vmax;https://www.pololu.com/product/5577;BUY;BOUNDARY;H09 H10
+E05;DC/DC5V;1;Pololu5571D42V55F5;25.4×25.4×9 60Vmax;https://www.pololu.com/product/5571;BUY;BOUNDARY;H09 H10
+E06;ИзолированныйRS485;2;WaveshareTTL TO RS485(C)SKU27479;42.8×15.2×4.75;Waveshare manufacturer;BUY;1_CRAWLER_BOUNDARY_1_CCU;H09 H10
+E07;Давлениеcrawler;1;Adafruit3965MPRLS;17.8×16.7×7.5 0–25PSIabs;https://www.adafruit.com/product/3965;BUY;BOUNDARY;H03 H09
+E08;Видеобалун;2;Delta-OptiTR-1D*P2;43×16×15class 2блока=1пара;existingWB16 /DeltaOpti;BUY;1_CRAWLER_BOUNDARY_1_CCU;H07 H09
+E09;Входной электролит;1;NichiconUCS2D221MHD1TN;220uF200V Ø18×25;existingCurrent/NichiconUCS;BUY;BODY_NO_LEADS;H09 H10
+E10;ВходнойHVпредохранитель;1;DCrated артикул/номиналHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
+E11;Защита ветвей моторов;2;DCfuse/eFuse артикул/номиналHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
+E12;Защита камеры;1;DCfuse/eFuse артикул/номиналHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
+E13;Конденсатор у драйвера;2;lowESR63V ёмкость/артикулHOLD;HOLD;Pololu installation guidance;BUY;NOT_MODELLED;H10
+E14;Защита рекуперации24V;1;ready brake shunt артикулHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
+E15;Измерение тока;2;INA226 ready module шунт/артикулHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H09 H10
+E16;ИсточникCCU;1;isolated100–120VDC модельHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H10
+E17;Датчик влаги;1;электроды+ready module артикулHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H09 H10
+E18;Крепёж плат/изоляция/теплоотвод;TBD;стойки/термопрокладкиHOLD;HOLD;PX1;BUY;NOT_MODELLED;H09
+F01;M3×8 button;24;FIX-000-359;M3×8;DRW374 12per side;BUY;NOT_MODELLED;H02
+F02;M3×6 button;24;FIX-002-738;M3×6;DRW374 12per side;BUY;NOT_MODELLED;H02
+F03;Circlip12×1;8;FIX-002-549family;12×1;DRW3746+DRW3752;BUY;NOT_MODELLED;H02
+F04;Key4×4×12;6;MSC-002-705;4×4×12;DRW374;BUY;MODELLED;H02
+F05;Key4×4×7;2;FSS-002-735;4×4×7;DRW374;BUY;NOT_MODELLED;H04
+F06;M3×10 countersunk;8;ISO10642family;M3×10;DRW386;BUY;NOT_MODELLED;H05
+F07;M5×30+springwasher;1;standard family;M5×30;DRW386;BUY;NOT_MODELLED;H05
+F08;M8×16+springwasher;2;standard family;M8×16;DRW375;BUY;NOT_MODELLED;H06
+F09;M3×6 countersunk;6;standard family;M3×6;DRW375;BUY;NOT_MODELLED;H02
+F10;Belleville washer;3;source washer;20×10.2×1.1;DRW744;BUY;NOT_MODELLED;H06
+F11;PinM6×18;1;source pin;M6×18;DRW744;BUY;NOT_MODELLED;H06
+F12;M4×8 button;6;standard family;M4×8;DRW7442+DRW7454;BUY;NOT_MODELLED;H06
+F13;M4×12cap;4;standard family;M4×12;DRW744;BUY;NOT_MODELLED;H06
+F14;Circlip8×0.8;4;standard family;8×0.8;DRW744;BUY;NOT_MODELLED;H06
+F15;M10thin nut;2;ISO4035M10;M10;DRW744;BUY;NOT_MODELLED;H06
+F16;Circlip6×0.7;1;standard family;6×0.7;DRW744;BUY;NOT_MODELLED;H06
+F17;Shim;2;source shim;8×12×0.4;DRW744;BUY;NOT_MODELLED;H06
+F18;Shim;2;source shim;8×12×0.25;DRW744;BUY;NOT_MODELLED;H06
+F19;M3×16 button;2;standard family;M3×16;DRW745;BUY;NOT_MODELLED;H03
+F20;M3×8 countersunk;2;standard family;M3×8;DRW745;BUY;NOT_MODELLED;H03
+F21;Gas spring washer;2;source washer;HOLD;DRW744;BUY;NOT_MODELLED;H06
+F22;Wheelquick-lock;6;OEMQRWmechanism;HOLD;MiniCamcatalog;BUY;PROXY_BOLT_ONLY;H01 комплектколесаP03
+PR01;Защита жгута для примерки;1;PX1_Lift_Harness_Guard_PROTOTYPE.stl;OD9 ID6.4 L12;currentmaster;PRINT;DESIGN;FIT_CHECK_ONLY
+PR02;Макет держателя моторов;1;PX1_Motor_Holder_FitCheck_ONLY.stl;52.8×30×3;M08;PRINT;DESIGN;FIT_CHECK_ONLY
+PR03;МакетPRESSUREкрышки;1;PX1_PRESSURE_Cover_FitCheck_ONLY.stl;158×53×7;L01;PRINT;DESIGN;FIT_CHECK_ONLY
+PR04;Макет боковой крышки;1;PX1_Side_Cover_FitCheck_ONLY.stl;262×60×7;M02;PRINT;DESIGN;FIT_CHECK_ONLY

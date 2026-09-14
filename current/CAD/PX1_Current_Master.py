@@ -31,21 +31,21 @@ FLANGE_ORING=(32.0,1.5)
 
 # Current reconstructed global CRP150/PX1 screen from recovered CAD audits.
 # These are NOT released manufacturing dimensions unless separately called out.
-BODY_L_SOURCE_SCREEN=307.0
-BODY_HALF_W_SCREEN=46.0
-BODY_Z0=8.0
-BODY_TOP=90.0
+BODY_L_SOURCE_SCREEN=278.0
+BODY_HALF_W_SCREEN=34.0
+BODY_Z0=11.0
+BODY_TOP=75.0
 PIPE_R=75.0
 PIPE_CENTER_Z=52.0480547
 
 # New motor adaptation — exact product envelope where published
-MOTOR_OD=36.0; MOTOR_LEN=92.0; MOTOR_SHAFT_D=6.0; MOTOR_SHAFT_L=16.3
-MOTOR_FACE=307.3; MOTOR_Y=19.0 # integration datums HOLD; maximum OD36 per linked ISL drawing
+MOTOR_OD=25.0; MOTOR_LEN=53.8; MOTOR_SHAFT_D=4.0; MOTOR_SHAFT_L=12.5
+MOTOR_FACE=195.5; MOTOR_Y=13.5 # integration datums HOLD
 COUPLING_OD=20.0; COUPLING_L=24.0; COUPLING_BORE=6.0 # NBK MLR-20C-6-6
 
 # Purchased exact / published component dims
 LAPP_OD=17.6; LAPP_CMAX=26.5; LAPP_THREAD_L=6.5; LAPP_SW=16.0
-ACE_BODY_OD=12.0; ACE_ROD_OD=4.0; ACE_STROKE=20.0; ACE_EXTENDED=72.0
+ACE_BODY_OD=12.0; ACE_ROD_OD=4.0; ACE_STROKE=80.0; ACE_EXTENDED=192.0
 SP13_PLUG_OD=18.0; SP13_PLUG_L=48.0 # retailer/manufacturer class dimensions, exact connector still sample-gated
 SP17_PLUG_OD=24.6; SP17_PLUG_L=56.5; SP17_PANEL_OD=25.0; SP17_PANEL_THREAD=17.0; SP17_PANEL_L=19.7
 NUCLEO=(82.5,70.0,12.0)
@@ -59,14 +59,14 @@ WAVESHARE_27479=(42.8,15.2,4.75)
 VIDEO_SCREEN=(43.0,16.0,15.0)  # Delta TR-1D*P2 packaging screen
 
 # Current PX1 service cover engineering prototype dimensions
-SERVICE_CX=261.0; SERVICE_L=86.0; SERVICE_W=44.0; SERVICE_T=6.0; SERVICE_Z=111.0
+SERVICE_CX=208.0; SERVICE_L=158.0; SERVICE_W=53.0; SERVICE_T=7.0; SERVICE_Z=75.0
 SERVICE_OPEN=(48.0,22.0)
-SERVICE_SCREW_X=(226.0,296.0)
+SERVICE_SCREW_X=(132.0,284.0)
 
 # Lift kinematics recovered in current project
-PIVOT_X=200.0; PIVOT_Z_LOW=92.0; PIVOT_Z_HIGH=109.0; LINK_L=90.0
-ARM_Y=31.0; ARM_T=4.0; ARM_H=14.0
-CAM_Z=75.0; CAM026_MEASURED_BASE_OD=62.5; CAM_R=CAM026_MEASURED_BASE_OD/2; CAM_LEN=78.0
+PIVOT_X=240.0; PIVOT_Z_LOW=96.0; PIVOT_Z_HIGH=110.0; LINK_L=200.0
+ARM_Y=36.0; ARM_T=3.0; ARM_H=15.0
+CAM_Z=70.0; CAM026_MEASURED_BASE_OD=62.5; CAM_R=CAM026_MEASURED_BASE_OD/2; CAM_LEN=132.0
 
 # ------------------------------- helpers
 
@@ -137,35 +137,6 @@ def make_seal(id_,od,w,axis='Y'):
     elif axis=='X': p=p.rotate((0,0,0),(0,1,0),90)
     return p
 
-def make_wheel_visual():
-    # QRW90SR/150 exact OD is source-confirmed; width/tread/hub are not.
-    # Use a visibly treaded reference solid, named HOLD; never used for final DN150 PASS.
-    width=12.0
-    base=cq.Workplane('XZ').circle(45.0).circle(14.0).extrude(width,both=True)
-    # central metal hub
-    hub=cq.Workplane('XZ').circle(18).circle(8.5).extrude(width-2,both=True)
-    p=base.union(hub)
-    # tread grooves as shallow boxes around circumference
-    for i in range(24):
-        a=i*15
-        groove=boxc(0,0,45.0,width+2,5,4).rotate((0,0,0),(0,1,0),a)
-        p=p.cut(groove)
-    return p
-
-def make_motor():
-    # Dimensions explicitly printed on the drawing linked by the ISL product page.
-    # Rear motor OD36 conflicts with catalog diameter32; sample correspondence remains HOLD.
-    gearbox=cyl_x(0,0,0,16,34.9)
-    motor=cyl_x(34.9,0,0,18,57.1)
-    pilot=cyl_x(-3,0,0,9,3)
-    shaft=cyl_x(-16.3,0,0,3,16.3)
-    shaft=cut(shaft,box0(-16.3,-4,2.5,12,8,2)) # printed D-flat 5.50 across remaining shaft
-    p=fuse_all([gearbox,motor,pilot,shaft])
-    for ang in (45,135,225,315):
-        y=13*math.cos(math.radians(ang)); z=13*math.sin(math.radians(ang))
-        p=cut(p,cyl_x(-.1,y,z,1.5,5.6))
-    return p
-
 def make_coupling():
     p=cyl_x(0,0,0,COUPLING_OD/2,COUPLING_L)
     bore=cyl_x(-0.5,0,0,COUPLING_BORE/2,COUPLING_L+1)
@@ -193,318 +164,172 @@ def make_gland():
     tail=cyl_x(LAPP_THREAD_L+8,0,0,LAPP_OD/2,max(0.1,LAPP_CMAX-LAPP_THREAD_L-8))
     return cut(fuse_all([thread,hexp,tail]),cyl_x(-.1,0,0,3.5,LAPP_CMAX+.2))
 
-def make_gas_spring_extended():
-    # exact ACE GS-12-20-V4A main body/rod diameters + extended length envelope.
-    body_len=ACE_EXTENDED-ACE_STROKE-10
-    body=cyl_x(0,0,0,ACE_BODY_OD/2,body_len)
-    rod=cyl_x(body_len,0,0,ACE_ROD_OD/2,ACE_STROKE+10)
-    return fuse_all([body,rod])
 
-def make_board(dx,dy,dz,terminal=True,heatsink=False):
-    pcb=boxc(0,0,0,dx,dy,1.6)
-    parts=[pcb]
-    if terminal:
-        parts += [boxc(-dx/2+6,0,3.8,9,dy*0.7,6), boxc(dx/2-6,0,3.8,9,dy*0.7,6)]
-    if heatsink:
-        # base + fins
-        parts.append(boxc(0,0,8,dx*0.65,dy*0.65,5))
-        for y in [-dy*.24,-dy*.12,0,dy*.12,dy*.24]: parts.append(boxc(0,y,18,dx*.6,2,25))
-    return fuse_all(parts)
-
-# ------------------------------- BODY / PRESSURE STRUCTURE
-# Proteus-like side profile: current reconstruction screen only.
-profile=[(0,10),(300,10),(307,18),(307,66),(291,78),(230,86),(218,110),(205,110),(195,79),(140,31),(0,26)]
-outer=cq.Workplane('XZ',origin=(0,BODY_HALF_W_SCREEN,0)).polyline(profile).close().extrude(2*BODY_HALF_W_SCREEN)
-# internal dry cavity: offset-like simplified profile; preserve walls 4-8 mm
-inner_profile=[(8,15),(298,15),(300,22),(300,61),(286,72),(225,80),(214,102),(210,102),(201,74),(137,25),(8,21)]
-inner=cq.Workplane('XZ',origin=(0,38,0)).polyline(inner_profile).close().extrude(76)
-body=wp(outer.val().cut(inner.val()))
-# rear motor/electronics extension to accommodate real 92 mm motors without separate cassette
-rear_outer=cq.Workplane('YZ',origin=(295,0,63)).rect(92,90).workplane(offset=115).rect(84,90).loft(combine=True)
-rear_inner=cq.Workplane('YZ',origin=(301,0,63.5)).rect(78,79).workplane(offset=103).rect(76,79).loft(combine=True)
-body=wp(body.val().fuse(rear_outer.val()).cut(rear_inner.val()))
-# top service opening
-service_open=boxc(SERVICE_CX,0,SERVICE_Z-2,SERVICE_OPEN[0],SERVICE_OPEN[1],14)
-body=cut(body,service_open)
-# rear access opening/cap land
-rear_open=boxc(407,0,62,10,62,58)
-body=cut(body,rear_open)
-# internal longitudinal motor service tunnels; remain within common dry pressure volume
-for _y in (-17.0,17.0):
-    body=cut(body,cyl_x(280,_y,WHEEL_Z,18.0,124.0))
-
-# Correct source topology: a closed side cover and five gears, with two idle bushings.
-# All housing and shoulder coordinates below are inherited/adapted integration dimensions,
-# not dimensions extracted by scaling a factory illustration. Every custom part is HOLD.
-components=[]; side_housings=[]; side_covers=[]
+# SOURCE-DRIVEN RECONSTRUCTION. GRAPHIC_APPROX dimensions are not manufacturing tolerances.
+components=[]; side_covers=[]
+def add(n,p,c): components.append((n,p,c)); return p
+profile=[(18,17),(24,11),(278,11),(296,29),(296,73),(294,75),(20,75),(18,73)]
+body=cq.Workplane('XZ',origin=(0,34,0)).polyline(profile).close().extrude(68)
+body=cut(body,box0(24,-26.5,23,264,53,52.1))
+body=wp(body.val().fuse(box0(24,-26.5,71,264,53,4).val()))
+body=cut(body,box0(138,-18.5,70.9,140,37,4.2))
 for side in (-1,1):
-    sgn=side
-    # Remove obsolete overlapping side-rail solid before rebuilding the same side-drive bay.
-    body=cut(body,boxc(150,sgn*44,45,286,24,70))
-    discs=[cyl_y(x,sgn*30,WHEEL_Z,31,12,dir=sgn) for x in GEAR_X]
-    housing=fuse_all(discs+[boxc(150,sgn*36,45,200,12,54)])
-    pockets=[cyl_y(x,sgn*32,WHEEL_Z,27.5,11,dir=sgn) for x in GEAR_X]
-    pocket=fuse_all(pockets+[boxc(150,sgn*37.5,45,200,11,48)])
-    housing=cut(housing,pocket)
-    # Source front support: one 61801 per side, not two at every station.
-    housing=cut(housing,cyl_y(50,sgn*26.9,45,10.5,5.2,dir=sgn))
-    # Middle shaft support bushing 12-14-4 belongs to DRW-002-375.
-    housing=cut(housing,cyl_y(150,sgn*27.9,45,7,4.2,dir=sgn))
-    # Rear rotary seal / output path.
-    housing=cut(housing,cyl_y(250,sgn*21.9,45,15,10.2,dir=sgn))
-    body=wp(body.val().fuse(housing.val()))
-    cover_parts=[cyl_y(x,sgn*42,WHEEL_Z,30,4,dir=sgn) for x in GEAR_X]
-    cov=fuse_all(cover_parts+[boxc(150,sgn*44,45,200,4,50)])
-    # The former bridge 'lightening windows' breached the pressure boundary; removed.
-    for x in WHEEL_X: cov=cut(cov,cyl_y(x,sgn*41.9,45,17.05,4.2,dir=sgn))
-    side_covers.append((f'HOLD_SIDE_COVER_{side}_GROOVE_CONTOUR_MEASURE',cov))
-    components.append((side_covers[-1][0],cov,'metal'))
+    pockets=fuse_all([cyl_y(x,side*27.6,45,26.5,6.5,dir=side) for x in GEAR_X])
+    body=cut(body,pockets)
+    for x,r,y,w in [(50,10.5,24,5),(150,7,24,4),(250,15,22,12)]:
+        body=cut(body,cyl_y(x,side*y,45,r,w+.1,dir=side))
+    for x in (100,200): body=cut(body,cyl_y(x,side*24,45,5,10.2,dir=side))
+    cv=boxc(150,side*37.5,45,262,7,60).edges('|Y').chamfer(1)
+    for x in WHEEL_X: cv=cut(cv,cyl_y(x,side*33.9,45,17.05,7.2,dir=side))
+    side_covers.append((f'HOLD_SIDE_COVER_{side}_GRAPHIC262x60x7',cv));add(side_covers[-1][0],cv,'metal')
     for j,x in enumerate(GEAR_X):
         gear=make_spur_gear(50,1,4,12,'Y')
-        if j%2: gear=gear.rotate((0,0,0),(0,1,0),180/50)
-        components.append((f'HOLD_Z50_{side}_{int(x)}_20DEG_TOOTH_UNCONFIRMED',gear.translate((x,sgn*35,45)),'gear'))
-        if x in (100,200):
-            components.append((f'IDLE_BUSH_10_12_4_{side}_{int(x)}',ring_y(x,sgn*35,45,6,5,4),'bearing'))
-            components.append((f'HOLD_IDLE_PIN_{side}_{int(x)}',cyl_y(x,sgn*28,45,5,10,dir=sgn),'shaft'))
-    components.append((f'61801_SIDE_{side}_50_SOURCE_ONE_PER_SIDE',make_bearing(12,21,5,'Y').translate((50,sgn*29.5,45)),'bearing'))
-    components.append((f'MIDDLE_BUSH_12_14_4_{side}',ring_y(150,sgn*30,45,7,6,4),'bearing'))
+        if j%2:gear=gear.rotate((0,0,0),(0,1,0),3.6)
+        add(f'HOLD_Z50_{side}_{int(x)}_PROFILE_UNCONFIRMED',gear.translate((x,side*31.8,45)),'gear')
+        if j%2:
+            add(f'IDLE_BUSH_10_12_4_{side}_{x}',ring_y(x,side*31.8,45,6,5,4),'bearing')
+            add(f'HOLD_IDLE_PIN_{side}_{x}',cyl_y(x,side*24,45,5,10,dir=side),'shaft')
+    add(f'61801_SIDE_{side}_50_SOURCE_ONE_PER_SIDE',make_bearing(12,21,5).translate((50,side*26.5,45)),'bearing')
+    add(f'MIDDLE_BUSH_12_14_4_{side}',ring_y(150,side*26,45,7,6,4),'bearing')
     for x in WHEEL_X:
-        # Shoulder positions remain H02; exact journal diameters are distinguished from positions.
-        seg=[cyl_y(x,sgn*24,45,6,20,dir=sgn),cyl_y(x,sgn*44,45,8.5,7.5,dir=sgn),
-             cyl_y(x,sgn*51.5,45,9,3.8,dir=sgn),cyl_y(x,sgn*55.3,45,8.5,14.7,dir=sgn)]
-        shaft=fuse_all(seg)
-        # Positive wheel drive and captive bolt bore; exact wheel lock remains H01.
-        key=boxc(x,sgn*62,45+7.5,4,12,4)
-        shaft=cut(shaft,key); shaft=cut(shaft,cyl_y(x,sgn*60,45,2.5,10.5,dir=sgn))
-        components.append((f'HOLD_WHEEL_SHAFT_{side}_{int(x)}',shaft,'shaft'))
-        components.append((f'KEY_4x4x12_{side}_{int(x)}',key,'shaft'))
-        bearing=make_bearing(17,30,7,'Y').translate((x,sgn*48,45))
-        flange=cyl_y(x,sgn*42,45,17,13.3,dir=sgn)
-        flange=cut(flange,cyl_y(x,sgn*41.9,45,9.08,13.6,dir=sgn))
-        flange=cut(flange,cyl_y(x,sgn*44.5,45,15,7,dir=sgn))
-        flange=cut(flange,cyl_y(x,sgn*52,45,11.4,2.8,dir=sgn))
-        # Nominal assembled gland volume, not invented elastomer deformation.
-        xr=ring_y(x,sgn*53.4,45,11.4,9,2.8)
-        components.extend([(f'61903_SIDE_{side}_{int(x)}',bearing,'bearing'),
-          (f'HOLD_AXLE_FLANGE_{side}_{int(x)}',flange,'metal'),
-          (f'HOLD_XRING_INSTALLED_{side}_{int(x)}_FREE18p72x2p62',xr,'seal'),
-          (f'HOLD_QRW90SR150_WHEEL_{side}_{int(x)}_WIDTH_PROFILE_UNKNOWN',make_wheel_visual().translate((x,sgn*59,45)),'wheel')])
-        washer=ring_y(x,sgn*71,45,10,3.2,2)
-        bolt=cyl_y(x,sgn*61,45,3,10,dir=sgn)
-        components.append((f'HOLD_WHEEL_RETENTION_WASHER_{side}_{int(x)}',washer,'metal'))
-        components.append((f'HOLD_WHEEL_RETENTION_M6_{side}_{int(x)}',bolt,'shaft'))
-        # Flange static seal: nominal source size; detailed installed groove H03.
-        tor=cq.Solid.makeTorus(16.75,.75,cq.Vector(x,sgn*43,45),cq.Vector(0,1,0))
-        components.append((f'HOLD_FLANGE_ORING_32x1p5_{side}_{int(x)}',wp(tor),'seal'))
-
-# Correct 90-degree bevel orientation. Tooth and mounting-distance data are still H04.
-# Conical envelopes replace the incorrect spur-tooth representations.
+        shaft=fuse_all([cyl_y(x,side*23,45,6,16,dir=side),cyl_y(x,side*39,45,8.5,7,dir=side),
+          cyl_y(x,side*46,45,9,2.8,dir=side),cyl_y(x,side*48.8,45,8,12.1,dir=side)])
+        key=boxc(x,side*54.9,52,4,12,4);shaft=cut(shaft,key)
+        shaft=cut(shaft,cyl_y(x,side*51,45,2.1,10,dir=side))
+        add(f'HOLD_WHEEL_SHAFT_{side}_{x}_GRAPHIC_AXIAL_PACKAGE',shaft,'shaft')
+        add(f'KEY_4x4x12_{side}_{x}',key,'shaft')
+        add(f'61903_SIDE_{side}_{x}',make_bearing(17,30,7).translate((x,side*42.5,45)),'bearing')
+        flange=fuse_all([cyl_y(x,side*38,45,17,10.8,dir=side),cyl_y(x,side*41,45,25,2,dir=side)])
+        flange=cut(flange,cyl_y(x,side*37.9,45,9.08,11.2,dir=side))
+        flange=cut(flange,cyl_y(x,side*39,45,15,7,dir=side))
+        flange=cut(flange,cyl_y(x,side*46,45,11.4,2.8,dir=side))
+        add(f'HOLD_AXLE_FLANGE_{side}_{x}_GRAPHIC_CONTOUR',flange,'metal')
+        add(f'HOLD_XRING_INSTALLED_{side}_{x}_FREE18p72x2p62',ring_y(x,side*47.4,45,11.4,9,2.8),'seal')
+        add(f'HOLD_FLANGE_ORING_32x1p5_{side}_{x}',wp(cq.Solid.makeTorus(16.75,.75,cq.Vector(x,side*40.5,45),cq.Vector(0,1,0))),'seal')
+        pts=[(26,-12),(32,-12),(42,-8),(45,0),(42,8),(32,12),(8,12),(8,-2),(26,-2)]
+        if side<0:pts=[(r,-yy) for r,yy in pts]
+        tyre=cq.Workplane('XY').polyline(pts).close().revolve(360,(0,0),(0,1)).translate((x,side*54.5,45))
+        tyre=cut(tyre,key)
+        add(f'HOLD_QRW90SR150_WHEEL_{side}_{x}_PHOTO_PROFILE',tyre,'wheel')
+        add(f'HOLD_WHEEL_RETENTION_WASHER_{side}_{x}',ring_y(x,side*61.5,45,8,2.7,2),'metal')
+        bolt=fuse_all([cyl_y(x,side*51.5,45,2.5,11,dir=side),cyl_y(x,side*62.5,45,4.25,3.5,dir=side)])
+        add(f'HOLD_WHEEL_RETENTION_M5_{side}_{x}_QUICKLOCK_UNRESOLVED',bolt,'shaft')
+motor_vendor=cq.importers.importStep(str(CAD/'vendor'/'Pololu_25D_75_99_Manufacturer.step'))
+motor_vendor=motor_vendor.translate((-30.875,0,-18.375)).rotate((0,0,0),(0,1,0),90)
+motor_holder=boxc(197,0,45,3,52.8,30)
+pinion_holder=boxc(227,0,45,5,52.8,26)
 for side in (-1,1):
     y=side*MOTOR_Y
-    # The two pitch cones share an apex at (250,+/-19,45).
-    z40=wp(cq.Solid.makeCone(20.37,14.3,2.41,cq.Vector(250,side*11,45),cq.Vector(0,side,0)))
-    z40=cut(z40,cyl_y(250,side*10.9,45,5,3,dir=side))
-    z16=wp(cq.Solid.makeCone(2.0,8.93,6.96,cq.Vector(263.04,y,45),cq.Vector(1,0,0)))
-    z16=cut(z16,cyl_x(262.9,y,45,3,7.5))
-    axle=fuse_all([cyl_y(250,side*5.5,45,5,14.5,dir=side),cyl_y(250,side*20,45,9,12,dir=side)])
-    axle=cut(axle,cyl_y(250,side*24,45,6,8.1,dir=side))
-    components.extend([(f'HOLD_Z40_BEVEL_{side}_CONICAL_ENVELOPE',z40,'bevel'),(f'HOLD_Z16_BEVEL_{side}_CONICAL_ENVELOPE',z16,'bevel'),
-      (f'HOLD_Z40_OUTPUT_SHAFT_{side}_KEYED_SOCKET_UNRESOLVED',axle,'shaft'),
-      (f'61800_Z40_{side}',make_bearing(10,19,5,'Y').translate((250,side*8,45)),'bearing'),
-      (f'SHAFT_SEAL_Z40_{side}_18x30x7',make_seal(18,30,7,'Y').translate((250,side*25.5,45)),'seal')])
-    shaft=fuse_all([cyl_x(263,y,45,3,9.5),cyl_x(272.5,y,45,6,5),cyl_x(277.5,y,45,3,13)])
-    components.extend([(f'HOLD_Z16_SHAFT_{side}',shaft,'shaft'),
-      (f'61801_Z16_SUPPORT_{side}',make_bearing(12,21,5,'X').translate((275,y,45)),'bearing'),
-      (f'HOLD_NBK_MLR20C_6_6_COUPLING_{side}_EXTERNAL_DETAIL',make_coupling().translate((278.5,y,45)),'purchased'),
-      (f'HOLD_ISL_PGM32P_MOTOR_{side}_DRAWING_OD36_CATALOG_OD32',make_motor().translate((MOTOR_FACE,y,45)),'purchased')])
-
-# One conventional paired motor mounting plate, with published four-hole pattern per motor.
-motor_holder=boxc(MOTOR_FACE-1.5,0,45,3,76,44)
-for side in (-1,1):
-    motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-3.1,side*MOTOR_Y,45,9.1,3.2))
-    for a in (45,135,225,315):
-        yy=side*MOTOR_Y+13*math.cos(math.radians(a));zz=45+13*math.sin(math.radians(a))
-        motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-3.1,yy,zz,1.65,3.2))
-components.append(('HOLD_PAIRED_MOTOR_HOLDER_OD36_ADAPTATION',motor_holder,'metal'))
-
-# Restore the electronic pockets already present in the earlier current master.
-pod=box0(218,-39,84,89,78,27)
-pod_cavity=box0(222,-35.5,86,81,71,22)
-rear_pod=box0(300,-30,65,110,60,52)
-rear_pod_cavity=box0(304,-26,69,104,52,45)
-body=wp(body.val().fuse(pod.val()).fuse(rear_pod.val()))
-body=cut(body,pod_cavity);body=cut(body,rear_pod_cavity)
-body=cut(body,box0(230,-30,72,62,60,18))
-body=cut(body,box0(218,-33,84,81,66,18))
-body=cut(body,box0(242,-34,17,61,68,66))
-body=cut(body,service_open)
-body=cut(body,box0(404,-38,26,12,76,78))
-body=cut(body,box0(404,-26,104,12,52,10))
-for yy in (-MOTOR_Y,MOTOR_Y): body=cut(body,cyl_x(280,yy,45,18.3,124))
-# Complete the missing mating holes in the inherited CAD. Coordinates remain H02.
-for side in (-1,1):
-    for x in (100,200): body=cut(body,cyl_y(x,side*27.9,45,5,10.2,dir=side))
-    body=cut(body,cyl_y(150,side*23.9,45,6,8.2,dir=side))
-    body=cut(body,cyl_y(150,side*27.9,45,7,4.2,dir=side))
-body=cut(body,motor_holder) # provisional shared motor-plate seat; fastening/land H05
-components.insert(0,('HOLD_PRESSURE_BODY_INHERITED_SCREEN_NOT_FACTORY_DIMENSIONS',body,'body'))
-
-# ------------------------------- LIFT / CAMERA
-# low position parallelogram, camera held upright
-PAVG=(PIVOT_Z_LOW+PIVOT_Z_HIGH)/2
-cam_axis_target_z=CAM_Z
-# solve approximate link angle from average pivot to carrier center
-th=math.asin((cam_axis_target_z-PAVG)/LINK_L)
-dx=-LINK_L*math.cos(th); dz=LINK_L*math.sin(th)
-lo_end=(PIVOT_X+dx,PIVOT_Z_LOW+dz); hi_end=(PIVOT_X+dx,PIVOT_Z_HIGH+dz)
-for side in (-1,1):
-    for name,z0,end in [('LOWER',PIVOT_Z_LOW,lo_end),('UPPER',PIVOT_Z_HIGH,hi_end)]:
-        arm=plate_between((PIVOT_X,z0),end,side*ARM_Y)
-        for xx,zz in [(PIVOT_X,z0),end]: arm=cut(arm,cyl_y(xx,side*ARM_Y-3,zz,5,6))
-        components.append((f'LIFT_{name}_ARM_{side}_PROTOTYPE_RECONSTRUCTED',arm,'lift'))
-    # pivot bosses
-    for x,z in [(PIVOT_X,PIVOT_Z_LOW),(PIVOT_X,PIVOT_Z_HIGH),lo_end,hi_end]:
-        components.append((f'LIFT_PIVOT_BOSS_{side}_{int(x)}_{int(z)}',cyl_y(x,side*(ARM_Y-2),z,5,8,dir=1 if side>0 else -1),'lift'))
-carrier_x=(lo_end[0]+hi_end[0])/2; carrier_z=(lo_end[1]+hi_end[1])/2
-carrier=boxc(carrier_x,0,carrier_z,16,58,26)
-carrier=cut(carrier,cyl_x(carrier_x-9,0,93,11.5,18))
-components.append(('LIFT_CAMERA_CARRIER_PROTOTYPE',carrier,'lift'))
-# camera shell: CAM026-derived reference architecture. User photo with caliper gives ~62.5 mm base OD.
-# Other camera dimensions require H08 measurement; this is an inherited envelope, not CAM026 CAD.
-cam_x=carrier_x-8-CAM_LEN/2 # rear mounting face meets the carrier; previous offset buried it in the shell
-shell=cyl_x(cam_x-CAM_LEN/2,0,CAM_Z,CAM_R,CAM_LEN)
-inner_cam=cyl_x(cam_x-CAM_LEN/2+4,0,CAM_Z,CAM_R-4,CAM_LEN-8)
-shell=cut(shell,inner_cam)
-front_ring=cq.Workplane('YZ').circle(CAM_R-2.5).circle(16).extrude(5).translate((cam_x-CAM_LEN/2,0,CAM_Z))
-lens=cyl_x(cam_x-CAM_LEN/2-2,0,CAM_Z,12,4)
-back_ring=cq.Workplane('YZ').circle(CAM_R-2.0).circle(CAM_R-7.0).extrude(5).translate((cam_x+CAM_LEN/2-5,0,CAM_Z))
-cam=fuse_all([shell,front_ring,lens,back_ring])
-# six LED bosses around lens
-for i in range(6):
-    a=math.radians(i*60); yy=20*math.cos(a); zz=CAM_Z+20*math.sin(a)
-    cam=wp(cam.val().fuse(cyl_x(cam_x-CAM_LEN/2-3,yy,zz,2.5,3).val()))
-components.append(('CAMERA_SEALED_HOUSING_CAM026_DERIVED_OD62p5_APPROX_OTHER_DIMS_HOLD',cam,'camera'))
-# CAM026 disassembly evidence: hollow central rotor, internal ring gear, thrust bearing and multi-stage reduction.
-# Geometry below is a packaging/reference reconstruction only; all internal dimensions remain HOLD.
-rotor_tube=cq.Workplane('YZ').circle(11).circle(6).extrude(18).translate((cam_x-4,0,CAM_Z))
-ring_gear=cq.Workplane('YZ').circle(27.5).circle(23.5).extrude(5).translate((cam_x+8,0,CAM_Z))
-thrust_race1=cq.Workplane('YZ').circle(23).circle(10).extrude(1.0).translate((cam_x+3,0,CAM_Z))
-thrust_rollers=cq.Workplane('YZ').circle(21.5).circle(11.5).extrude(1.4).translate((cam_x+4.1,0,CAM_Z))
-thrust_race2=cq.Workplane('YZ').circle(23).circle(10).extrude(1.0).translate((cam_x+5.6,0,CAM_Z))
-pinion=cyl_x(cam_x+8,18,CAM_Z,4.2,5)
-cam_motor=cyl_x(cam_x-8,-17,CAM_Z-8,7.5,28)
-compound1=cyl_x(cam_x+1,-10,CAM_Z-7,7.0,4)
-compound2=cyl_x(cam_x+5,1,CAM_Z-8,5.0,4)
-components += [
- ('CAM026_REFERENCE_HOLLOW_CENTRAL_ROTOR_HOLD',rotor_tube,'camera'),
- ('CAM026_REFERENCE_INTERNAL_RING_GEAR_HOLD',ring_gear,'gear'),
- ('CAM026_REFERENCE_THRUST_BEARING_RACE_A_HOLD',thrust_race1,'bearing'),
- ('CAM026_REFERENCE_THRUST_BEARING_ROLLER_PACK_HOLD',thrust_rollers,'bearing'),
- ('CAM026_REFERENCE_THRUST_BEARING_RACE_B_HOLD',thrust_race2,'bearing'),
- ('CAM026_REFERENCE_FINAL_PINION_HOLD',pinion,'gear'),
- ('CAM026_REFERENCE_PAN_MOTOR_ENVELOPE_HOLD',cam_motor,'purchased'),
- ('CAM026_REFERENCE_COMPOUND_GEAR_STAGE_1_HOLD',compound1,'gear'),
- ('CAM026_REFERENCE_COMPOUND_GEAR_STAGE_2_HOLD',compound2,'gear'),
-]
-sp13=make_sp13_plug().translate((cam_x+CAM_LEN/2+2,0,93))
-components.append(('HOLD_WEIPU_SP13_6PIN_CAMERA_CONNECTOR',sp13,'connector'))
-
-# Gas spring has rigid body length; only the exposed rod changes, never uniform scaling.
-body_pt=(194.0,16.0,82.9);move_s=63.0
-moving=(PIVOT_X-move_s*math.cos(th),16.0,PIVOT_Z_LOW+move_s*math.sin(th))
-v=cq.Vector(*moving)-cq.Vector(*body_pt);gas_length=v.Length
-gas_body_length=ACE_EXTENDED-ACE_STROKE
-joint=cq.Vector(*body_pt)+v.normalized()*gas_body_length
-gas=between(body_pt,joint.toTuple(),ACE_BODY_OD/2)
-rod=between(joint.toTuple(),moving,ACE_ROD_OD/2)
-components.extend([('HOLD_ACE_GS12_20_V4A_150N_BODY_END_FITTINGS',gas,'purchased'),('HOLD_ACE_GS12_ROD',rod,'purchased')])
-# clamping lever visual
-lever_hub=cyl_y(PIVOT_X,37,PIVOT_Z_HIGH,8,8)
-lever_arm=boxc(PIVOT_X+18,41,PIVOT_Z_HIGH+10,36,6,7).rotate((PIVOT_X,41,PIVOT_Z_HIGH),(PIVOT_X,42,PIVOT_Z_HIGH),-25)
-components += [('M8_MANUAL_CLAMP_LEVER_AND_HANDLE',fuse_all([lever_hub,lever_arm]),'lift')]
-
-# ------------------------------- SERVICE COVER / VALVE / GLAND / HARNESS
-cover=boxc(SERVICE_CX,0,SERVICE_Z+SERVICE_T/2,SERVICE_L,SERVICE_W,SERVICE_T)
-# R3 visual corner rounding where feasible
-try: cover=cover.edges('|Z').fillet(3)
-except: pass
-# screw holes and provisional seal groove visible on underside
+    z40=wp(cq.Solid.makeCone(20.37,14.3,2.41,cq.Vector(250,side*5.5,45),cq.Vector(0,side,0)))
+    z40=cut(z40,cyl_y(250,side*5.4,45,5,3,dir=side))
+    z16=wp(cq.Solid.makeCone(8.93,2,6.96,cq.Vector(230,y,45),cq.Vector(1,0,0)))
+    z16=cut(z16,cyl_x(229.9,y,45,3,7.2))
+    add(f'HOLD_Z40_BEVEL_{side}_CONICAL_ENVELOPE',z40,'bevel');add(f'HOLD_Z16_BEVEL_{side}_CONICAL_ENVELOPE',z16,'bevel')
+    axle=fuse_all([cyl_y(250,side*.5,45,5,19.5,dir=side),cyl_y(250,side*20,45,9,9.8,dir=side)])
+    axle=cut(axle,cyl_y(250,side*23,45,6,6.9,dir=side))
+    add(f'HOLD_Z40_OUTPUT_SHAFT_{side}_SOCKET_TORQUE_TRANSFER_HOLD',axle,'shaft')
+    add(f'61800_Z40_{side}',make_bearing(10,19,5).translate((250,side*3,45)),'bearing')
+    add(f'SHAFT_SEAL_Z40_{side}_18x30x7',make_seal(18,30,7).translate((250,side*25.5,45)),'seal')
+    pin=fuse_all([cyl_x(209,y,45,3,15.5),cyl_x(224.5,y,45,6,5),cyl_x(229.5,y,45,3,7.5)])
+    add(f'HOLD_Z16_SHAFT_{side}',pin,'shaft')
+    add(f'61801_Z16_SUPPORT_{side}',make_bearing(12,21,5,'X').translate((227,y,45)),'bearing')
+    pinion_holder=cut(pinion_holder,cyl_x(224.4,y,45,10.5,5.2))
+    add(f'HOLD_NBK_MLR20C_6_6_COUPLING_{side}_EXTERNAL_DETAIL',make_coupling().translate((199.5,y,45)),'purchased')
+    adapter=cut(cyl_x(199.5,y,45,3,8),cyl_x(199.4,y,45,2,8.2))
+    adapter=cut(adapter,boxc(203.5,y+2.75,45,8.2,1.5,.5))
+    add(f'HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_{side}',adapter,'shaft')
+    add(f'POLOLU_5707_MOTOR_{side}_MANUFACTURER_STEP',motor_vendor.translate((MOTOR_FACE,y,45)),'purchased')
+    motor_holder=cut(motor_holder,cyl_x(195.4,y,45,3.6,3.2))
+    for zz in (36.5,53.5):motor_holder=cut(motor_holder,cyl_x(195.4,y,zz,1.65,3.2))
+add('HOLD_PAIRED_MOTOR_HOLDER_25D_ADAPTATION',motor_holder,'metal')
+add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
+cover=boxc(SERVICE_CX,0,78.5,SERVICE_L,SERVICE_W,SERVICE_T)
 for x in SERVICE_SCREW_X:
-    cover=cut(cover,cyl_z(x,0,SERVICE_Z-1,2.25,SERVICE_T+2))
-cover=cut(cover,cyl_z(273,0,SERVICE_Z-1,5.05,SERVICE_T+2))
-# service cover is PX1-engineered, groove remains hold
-components.append(('PRESSURE_CAMERA_SERVICE_COVER_86x44x6_PROTOTYPE_SEAL_GROOVE_HOLD',cover,'metal'))
-# compact source-family valve cartridge: dimensions are prototype, explicitly test-hold
-valve_body=cyl_z(273,0,SERVICE_Z-12,5,14)
-valve_cap=cyl_z(273,0,SERVICE_Z+SERVICE_T,6,1.5)
-valve_ball=cq.Workplane('XY').sphere(2).translate((273,0,SERVICE_Z-3))
-components += [('HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY',valve_body,'valve'),('PRESSURE_VALVE_CAP_PROTOTYPE',valve_cap,'valve'),('PRESSURE_VALVE_4MM_BALL',valve_ball,'valve')]
-# LAPP gland on side boss, axis X
-lapp=make_gland().rotate((0,0,0),(0,0,1),180).translate((215,12,103))
-components.append(('LAPP_SKINTOP_53112000_M12x1p5',lapp,'purchased'))
-# Continuous six-core service route, ending at the gland and at the SP13 backshell.
-# Route and jacket OD are integration-only until actual cable bend radius is supplied.
-harness_points=[(188.5,12,103),(182,20,101),(166,20,101),(cam_x+CAM_LEN/2+50,0,93)]
-def poly_tube(points, radius):
-    parts=[between(a,b,radius) for a,b in zip(points,points[1:])]
-    parts += [cq.Workplane('XY').sphere(radius).translate(v) for v in points[1:-1]]
-    return fuse_all(parts)
-jacket=poly_tube(harness_points,2.7) # LAPP 0028679 nominal OD5.4; radius of route still H07
-cores=[]
-for i,(name,a) in enumerate(zip(['12V','GND','TX','RX','CVBS_SIGNAL','CVBS_RETURN'],range(0,360,60))):
-    yy=1.8*math.cos(math.radians(a));zz=1.8*math.sin(math.radians(a))
-    core=poly_tube([(x,y+yy,z+zz) for x,y,z in harness_points],.35) # conductor display only; insulation dimensions unknown
-    cores.append(core);jacket=cut(jacket,core)
-    components.append((f'CAMERA_HARNESS_CORE_{i+1}_{name}_ROUTE_HOLD',core,'wire'))
-components.append(('HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_R27_UNRESOLVED',jacket,'cable'))
-hguard=between(harness_points[1],harness_points[2],5)
-hguard=cut(hguard,between(harness_points[1],harness_points[2],3.6))
-hguard=cut(hguard,boxc(174,20,106,22,4,8))
-components.append(('PX1_LIFT_HARNESS_GUARD_OPEN_PROFILE',hguard,'print'))
-
-# ------------------------------- REAR CONNECTOR / TETHER STRAIN RELIEF
-rear_panel=make_sp17_panel().translate((416,0,62))
-components.append(('WEIPU_SP1712_7PIN_REAR_PANEL_6_USED_1_SPARE',rear_panel,'connector'))
-# mechanical Kevlar termination eye and strain sleeve are separate from contacts
-strain=cut(cyl_x(436,0,62,12,32),cyl_x(435.9,0,62,10,32.2))
-cone=cq.Workplane('YZ').circle(10).workplane(offset=30).circle(6).loft(combine=True).translate((436,0,62))
-cone=cut(cone,cyl_x(435.9,0,62,4.5,32.2))
-components += [('HOLD_REAR_TETHER_STRAIN_SLEEVE',strain,'metal'),('HOLD_REAR_TETHER_ARАMID_CONE',cone,'metal')]
-# main tether visual, exact article HOLD
-tether=cyl_x(468,0,62,4.5,80)
-components.append(('HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_ТРЕБУЕТСЯ_ВЫБОР',tether,'cable'))
-
-# ------------------------------- INTERNAL ELECTRONICS
-# Real published outer dimensions when known, otherwise explicitly module-envelope HOLD.
-nucleo=boxc(260,0,92,*NUCLEO);components.append(('HOLD_NUCLEO_F446RE_PCB82p5x70_HEIGHT12_UNCONFIRMED',nucleo,'electronics'))
-cincon=boxc(261,0,78,*CINCON);components.append(('HOLD_CINCON_CQB150W110S24_BODY_ONLY_PINS_MISSING',cincon,'electronics'))
-cap=cyl_x(211.5,20,31,9,25);components.append(('NICHICON_UCS2D221MHD1TN_BODY18x25',cap,'electronics'))
-prs=boxc(210,0,70,*MPRLS);components.append(('ADAFRUIT_MPRLS_3965_ENVELOPE',prs,'electronics'))
-for i,x in enumerate((330,382),1): components.append((f'HOLD_BTS7960_IBT2_{i}_50x50x43',boxc(x,0,92.5,50,50,43),'electronics_hold'))
-components.append(('HOLD_POLOLU_5577_D42V55F12_ENVELOPE',boxc(215,0,48,*POLOLU_5577),'electronics'))
-components.append(('HOLD_POLOLU_5571_D42V55F5_ENVELOPE',boxc(291,0,59,*POLOLU_5571),'electronics'))
-components.append(('HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE',boxc(263,0,23,*WAVESHARE_27479),'electronics'))
-components.append(('HOLD_DELTA_TR1D_P2_VIDEO_BALUN',boxc(205,-20,42,*VIDEO_SCREEN),'electronics_hold'))
-
-# ------------------------------- rear cover
-rear_cover=fuse_all([boxc(413,0,63,6,84,90),boxc(413,0,112.5,6,60,9)])
-# connector clearance through cover
-rear_cover=cut(rear_cover,cyl_x(409.9,0,62,13,6.2))
-try: rear_cover=rear_cover.edges('|X').fillet(3)
-except: pass
-components.append(('REAR_SERVICE_COVER_PROTOTYPE_SEAL_GROOVE_HOLD',rear_cover,'metal'))
-
-# Retire fictitious CAM026 internals from the old master. Photos establish topology,
-# not dimensions; omitted internals are explicitly listed as unmodelled in H08/BOM.
-components=[(n,p,c) for n,p,c in components if not n.startswith('CAM026_REFERENCE_')]
-# Correct local pressure-cover and gland mating cuts without claiming a sealing release.
-body=cut(body,cover)
-body=cut(body,cyl_x(208.4,12,103,6,7))
-body=cut(body,cyl_x(184,12,103,9.3,24.4))
-components[0]=(components[0][0],body,'body')
-
-
-# Apply one unambiguous release policy to legacy prototype names.
-components=[((n if ('HOLD' in n or c in ('bearing','wire','print') or n.startswith(('KEY_','NICHICON_','ADAFRUIT_','SHAFT_SEAL_'))) else 'HOLD_'+n),p,c) for n,p,c in components]
+    for y in (-19,19):cover=cut(cover,cyl_z(x,y,74.9,2.25,7.2))
+cover=cut(cover,cyl_z(264,18,74.9,5.05,7.2))
+cover=cut(cover,cyl_z(245,0,74.9,4,7.2))
+add('HOLD_PRESSURE_ELECTRONICS_COVER_GRAPHIC158x53x7',cover,'metal')
+valve_body=cut(cyl_z(264,18,78,5,14),cyl_z(264,18,77.9,2.1,14.2))
+add('HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY',valve_body,'valve')
+add('HOLD_PRESSURE_VALVE_CAP',cyl_z(264,18,92,6,1.5),'valve')
+add('HOLD_PRESSURE_VALVE_4MM_BALL',cq.Workplane('XY').sphere(2).translate((264,18,88)),'valve')
+gland_boss=boxc(229,0,88.5,43,22,13)
+gland_boss=cut(gland_boss,cyl_x(207.4,0,88.5,6,44))
+gland_boss=cut(gland_boss,cyl_z(245,0,74.9,4,14))
+add('HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY',gland_boss,'metal')
+lapp=make_gland().rotate((0,0,0),(0,0,1),180).translate((214,0,88.5))
+add('HOLD_LAPP_SKINTOP_53112000_M12x1p5',lapp,'purchased')
+th=0.0;lo_end=(40,96);hi_end=(78,110)
+for side in (-1,1):
+    arm=plate_between((240,96),lo_end,side*ARM_Y,3,15)
+    for x in (40,240):arm=cut(arm,cyl_y(x,side*ARM_Y-2,96,4,4))
+    add(f'HOLD_LIFT_SIDE_ARM_{side}_GRAPHIC200',arm,'lift')
+    for x in (40,240):add(f'HOLD_LIFT_SIDE_PIN_{side}_{x}',cyl_y(x,side*(ARM_Y-1.5),96,4,3,dir=side),'lift')
+central=[]
+for y in (-12,12):
+    arm=plate_between((278,110),hi_end,y,2,12)
+    for x in (78,278):arm=cut(arm,cyl_y(x,y-1.1,110,3,2.2))
+    central.append(arm)
+central.append(boxc(178,0,116,200,26,2))
+add('HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200',fuse_all(central),'lift')
+carrier=fuse_all([boxc(46,0,95,70,50,5),boxc(13.5,0,81.25,5,50,27.5),boxc(77,0,104,5,26,14)])
+carrier=cut(carrier,cyl_x(10.9,0,70,10,5.2))
+carrier=cut(carrier,cyl_y(78,-13.1,110,3,26.2))
+add('HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN',carrier,'lift')
+base=boxc(260,0,88,46,53,12)
+for y in (-13.5,13.5):base=cut(base,cyl_x(236.9,y,88,4,46.2))
+base=cut(base,gland_boss);add('HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER',base,'lift')
+body_pt=(235,16,89);moving=(47,16,96);gas_length=math.dist(body_pt,moving);gas_move_s=193
+v=(cq.Vector(*moving)-cq.Vector(*body_pt)).normalized();joint=cq.Vector(*body_pt)+v*112
+add('HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS',between(body_pt,joint.toTuple(),6),'purchased')
+add('HOLD_ACE_GS12_80_ROD',between(joint.toTuple(),moving,2),'purchased')
+hub=cut(cyl_y(240,37,96,8,8),cyl_y(240,36.9,96,4,8.2));lever=boxc(225,41,91,30,6,7)
+add('HOLD_M8_MANUAL_CLAMP_LEVER_AND_HANDLE',fuse_all([hub,lever]),'lift')
+cam_rear=10;cam_front=cam_rear-132
+cam_rear_body=cut(cyl_x(cam_rear-68,0,CAM_Z,31.25,68),cyl_x(cam_rear-67.9,0,CAM_Z,27,63.9))
+cam_rear_body=cut(cam_rear_body,cyl_x(cam_rear-4.1,0,CAM_Z,7,4.2))
+add('HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5',cam_rear_body,'camera')
+fork=[boxc(cam_front+31,y,CAM_Z,62,4,46) for y in (-27,27)]
+add('HOLD_CAM026_SIDE_FRAME_GRAPHIC',fuse_all(fork),'camera')
+optical=cq.Workplane('XY').sphere(25).translate((cam_front+26,0,CAM_Z))
+optical=cut(optical,boxc(cam_front-9,0,CAM_Z,20,60,60))
+add('HOLD_CAM026_OPTICAL_HOUSING_GRAPHIC',optical,'camera')
+add('HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN',cyl_x(cam_front-1,0,CAM_Z,12,2),'camera')
+sp13=make_sp13_plug().translate((16,0,70));add('HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE',sp13,'connector')
+harness_points=[(187.5,0,88.5),(160,0,88.5)]
+for i in range(1,25):
+    a=math.pi*i/24;harness_points.append((160-27*math.sin(a),27-27*math.cos(a),88.5))
+harness_points += [(92,54,88.5),(64,0,70)]
+def poly_tube(points,radius):
+    return fuse_all([between(a,b,radius) for a,b in zip(points,points[1:]) if math.dist(a,b)>1e-5])
+jacket=poly_tube(harness_points,2.7)
+for i,name in enumerate(['12V','GND','TX','RX','CVBS_SIGNAL','CVBS_RETURN']):
+    core=poly_tube([(x,y,z+(i-2.5)*.65) for x,y,z in harness_points],.22)
+    jacket=cut(jacket,core);add(f'CAMERA_HARNESS_CORE_{i+1}_{name}_ROUTE_HOLD',core,'wire')
+add('HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE',jacket,'cable')
+hguard=cut(between((166,0,88.5),(178,0,88.5),4.5),between((165.9,0,88.5),(178.1,0,88.5),3.2))
+hguard=cut(hguard,boxc(172,0,92.5,14,4,5));add('PX1_LIFT_HARNESS_GUARD_OPEN_PROFILE',hguard,'print')
+controller=cq.importers.importStep(str(CAD/'vendor'/'WeAct_F4_64Pin_V11_Manufacturer.step'))
+controller=wp(cq.Compound.makeCompound(controller.vals()))
+b=controller.val().BoundingBox();controller=controller.translate((-(b.xmin+b.xmax)/2,-(b.ymin+b.ymax)/2,-b.zmin))
+controller=controller.rotate((0,0,0),(0,0,1),90).translate((208,0,59.5))
+add('WEACT_STM32F446RET6_V11_MANUFACTURER_STEP',controller,'electronics')
+g2=cq.importers.importStep(str(CAD/'vendor'/'Pololu_G2_24v13_Manufacturer.step')).translate((-16.51,-10.16,0))
+for i,x in enumerate((47,99),1):add(f'POLOLU_2992_G2_24v13_{i}_MANUFACTURER_STEP',g2.translate((x,0,26)),'electronics')
+add('HOLD_CINCON_CQB150W110S24_BODY_PINS_THERMAL_HOLD',boxc(155,0,64,*CINCON),'electronics')
+add('NICHICON_UCS2D221MHD1TN_BODY18x25',cyl_z(278,0,41,9,25),'electronics')
+add('ADAFRUIT_MPRLS_3965_ENVELOPE',boxc(277.5,-17.5,60,*MPRLS),'electronics')
+add('HOLD_POLOLU_5577_D42V55F12_ENVELOPE',boxc(208,-13.5,29,*POLOLU_5577),'electronics')
+add('HOLD_POLOLU_5571_D42V55F5_ENVELOPE',boxc(208,13.5,29,*POLOLU_5571),'electronics')
+add('HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE',boxc(264,0,68,*WAVESHARE_27479),'electronics')
+add('HOLD_DELTA_TR1D_P2_VIDEO_BALUN',boxc(263,0,31,*VIDEO_SCREEN),'electronics_hold')
+body=cut(body,cyl_x(287.9,0,45,8.6,8.2))
+add('HOLD_WEIPU_SP1712_7PIN_REAR_PANEL_6_USED',make_sp17_panel().translate((296,0,45)),'connector')
+strain=cut(cyl_x(316,0,45,12,32),cyl_x(315.9,0,45,10,32.2))
+cone=cq.Workplane('YZ').circle(10).workplane(offset=30).circle(6).loft(combine=True).translate((316,0,45))
+cone=cut(cone,cyl_x(315.9,0,45,4.5,32.2))
+add('HOLD_REAR_TETHER_STRAIN_SLEEVE',strain,'metal');add('HOLD_REAR_TETHER_ARAMID_CONE',cone,'metal')
+add('HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_UNKNOWN',cyl_x(348,0,45,4.5,80),'cable')
+components.insert(0,('HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED',body,'body'))
 from release_tools import finish_build
 finish_build(globals())
