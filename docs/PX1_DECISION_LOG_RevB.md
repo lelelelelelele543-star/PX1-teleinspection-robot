@@ -15,20 +15,24 @@ This file records controlling decisions so exploratory studies do not silently b
 | D-007 | Camera is separated from four-bar by rigid fixed carrier | corrects WB20/WB21 arm/camera collision | CONTROLLED |
 | D-008 | Removable camera uses six electrical functions through SP13 family | six required functions; old four-contact LEMO placeholder was insufficient | CONTROLLED prototype |
 | D-009 | Powered lift harness side uses female sockets | safer when camera is removed | CONTROLLED |
-| D-010 | WB21 Ø8 local CF99 harness geometry is not controlling | too bulky for source-like lift packaging; source uses compact M12 3.5–5 mm gland architecture | SUPERSEDED geometry |
+| D-010 | WB21 Ø8 local CF99 harness geometry is not controlling | too bulky for source-like lift packaging; source uses compact M12 gland architecture | SUPERSEDED geometry |
 | D-011 | WB23B R16 flex-fan / dual-flex-chamber concept stopped | over-engineered; repair photos and drawings show simpler local harness topology | REJECTED |
 | D-012 | WB23C controls camera-lift service topology | Proteus evidence supports removable sealed cover + valve + M12 gland + lift cover + camera connector | CONTROLLED |
-| D-013 | WB23C does not move lift pivot to X207.5 | no longer necessary after source topology correction | FROZEN X200 |
-| D-014 | Local wet lift harness target <=5 mm OD, 8 insulated cores + shield preferred | fits M12 gland/source topology and supports paired power conductors + UART + CVBS | CONTROLLED target |
-| D-015 | Cable pressure seal and electrical service disconnect are separate functions | gland should seal jacket; dry connector should provide replaceability | CONTROLLED |
+| D-013 | Service topology does not move lift pivot to X207.5 | no longer necessary after source topology correction | FROZEN X200 |
+| D-014 | Local wet lift harness is exactly 6 insulated conductors: +12V, GND, UART TX/RX, CVBS signal/return; optional overall shield is EMC only | matches six-function SP13 interface and user-confirmed six-core architecture; avoids pointless wet splices | FROZEN Rev.B |
+| D-015 | Cable pressure seal and electrical service disconnect are separate functions | gland seals jacket; dry connector provides replaceability | CONTROLLED |
 | D-016 | PX-1 compact pressure/service cover uses 2 x M4 as prototype choice | practical small cover; direct pressure load is low; exact Proteus screw count not proven | PROTOTYPE HOLD |
-| D-017 | M12 gland is horizontal / forward-facing in WB23C | avoids wasting DN150 roof clearance | CONTROLLED packaging |
-| D-018 | Fill valve must remain low-profile, <=Ø14 x 6 mm hard envelope until exact part is selected | current DN150 limiting fixed item is pressure port | PROCUREMENT HOLD |
+| D-017 | M12 gland is horizontal / forward-facing | avoids wasting DN150 roof clearance | CONTROLLED packaging |
+| D-018 | Fill valve preferred exposed envelope <=Ø12 x 5 mm; current prototype hard screen <=Ø14 x 6 mm | WB23F sensitivity: taller valves rapidly consume DN150 clearance; Ø14 x 8 fails 3 mm screen | PROCUREMENT HOLD |
 | D-019 | Only LOW lift position is required to remain inside DN150 | MID/HIGH are larger-pipe operating positions | FROZEN validation rule |
-| D-020 | WB23A absolute one-sided Y coordinates are not manufacturing data | helper Y-sign ambiguity; WB23C supersedes routing | SUPERSEDED |
+| D-020 | WB23A absolute one-sided Y coordinates are not manufacturing data | helper Y-sign ambiguity; newer service topology supersedes routing | SUPERSEDED |
 | D-021 | No final O-ring groove, cover torque or fill-valve thread is frozen before real samples | sealing depends on actual elastomer, flatness, boss and purchased part | HOLD |
 | D-022 | Pressure/service interface must pass +0.25 bar decay + submersion before field release | IP ratings and CAD packaging do not prove crawler pressure sealing | REQUIRED |
 | D-023 | Local harness must pass >=500, target 1000 lift cycles plus wet/grit repeat | catalog flexibility alone is not enough for this custom route | REQUIRED |
+| D-024 | Local cable target is 6 x 0.25 mm² class, preferred OD 5.5...6.0 mm, hard package maximum 6.5 mm | electrical drop is acceptable on short local run and both M12 gland/SP13 S6I support this OD class | CONTROLLED target |
+| D-025 | Dry J_CAM_LIFT prototype candidate is 6-way Molex Micro-Fit 3.0 wire-to-wire rather than JST VH 8-way | Micro-Fit supports six-way service architecture and 20...24 AWG contact class; JST VH normal published conductor range starts at 0.33 mm² | CONTROLLED prototype |
+| D-026 | Lower-arm guard conservative envelope is 10 mm for WB23G | gives service/abrasion allowance around <=Ø6.5 cable while retaining ~27.8 mm LOW ideal-DN150 clearance | CONTROLLED packaging |
+| D-027 | Historical 8-core WB21/WB23A executed validation remains archived only; it cannot control procurement or wiring | preserves engineering traceability without rewriting past executed data | SUPERSEDED |
 
 ## Rule for future revisions
 
