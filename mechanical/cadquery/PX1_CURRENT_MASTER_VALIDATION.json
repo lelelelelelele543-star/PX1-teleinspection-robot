@@ -1,0 +1,72 @@
+{
+  "status": "PASS_INTEGRATED_MASTER / WHEEL_GEOMETRY_DN150_HOLD / PRESSURE_TEST_HOLD / PROCUREMENT_HOLD",
+  "source_architecture": {
+    "crawler": "Proteus CRP150 six-wheel / three stations per side / five Z50 per side / rear X250 input",
+    "drive": "two motors, supported Z16 input into source-like Z40/rear axle architecture",
+    "lift": "manual four-arm lift with 150 N gas spring principle",
+    "pressure_service": "removable top service cover, compact pressure valve, M12 cable gland",
+    "camera": "separately sealed removable head, six electrical functions",
+    "tail": "ASS-002-090 / ASS-002-364 functional connector and strain-relief architecture"
+  },
+  "counts": {
+    "wheels": 6,
+    "Z50_gears": 10,
+    "traction_motors": 2,
+    "lift_arms": 4,
+    "local_camera_conductors": 6
+  },
+  "hard_dimensions_mm": {
+    "wheel_station_X": [50.0, 150.0, 250.0],
+    "Z50_X": [50.0, 100.0, 150.0, 200.0, 250.0],
+    "wheel_OD": 90.0,
+    "body_main_L": 307.0,
+    "body_W": 92.0,
+    "rear_motor_housing_end_X": 384.0,
+    "lift_body_pivot_X": 200.0,
+    "lift_link_L": 90.0,
+    "camera_shell_OD": 52.0,
+    "camera_shell_L": 78.0,
+    "service_cover_LxWxt": [86.0, 44.0, 6.0],
+    "service_opening_LxW": [48.0, 22.0],
+    "local_harness_OD_hard_max": 6.5
+  },
+  "pipe_clearance_low_mm": {
+    "body": 7.810507041247945,
+    "wheel_visualization_cylinder_min_NOT_RELEASE": -9.841027799374231,
+    "service_cover": 7.369745618885986,
+    "pressure_cap": 9.273789336854861,
+    "M12_gland": 13.855253251615224,
+    "lift_guard_LOW": 27.778914964792115,
+    "camera_outer_LOW_static_envelope": 24.974774582107038,
+    "rear_motor_outer": 18.35925565942665,
+    "tail_strain_relief": 57.9519453
+  },
+  "wheel_release": {
+    "visualization_proxy": "Ø90 x 16 straight cylinder only; not a production wheel solid",
+    "official_compatible_product": "QRW90SR/150",
+    "official_recommended_pipe_mm": 150,
+    "source_compatibility_accepted_for_master": true,
+    "exact_geometry_release": false,
+    "gate": "replace visualization cylinders with measured/purchased QRW90SR/150 or recovered exact wheel solid before physical DN150 release"
+  },
+  "unintended_collision_mm3": {
+    "top_vs_wheels": 0.0,
+    "top_vs_gears": 0.0,
+    "top_vs_arms": 0.0,
+    "top_vs_camera": 0.0,
+    "guard_vs_gears": 0.0,
+    "guard_vs_camera": 0.0,
+    "motor_vs_camera": 0.0
+  },
+  "release_holds": [
+    "exact matched Z16/Z40 geometry and mounting distance remains sample/drawing gate",
+    "rear tail exact dimensions remain to freeze; current model follows recovered source functional stack",
+    "exact QRW90SR/150 wheel profile remains required for final geometric DN150 release",
+    "SP13 exact mounting bracket and numeric pin orientation require physical pair",
+    "pressure valve seat/shaft detail requires pressure test",
+    "service-cover O-ring groove depth requires real seal sample",
+    "six-core cable requires flex/EMC test",
+    "existing full TILT sweep remains controlling for camera clearance; this master shows LOW static envelope",
+    "no machining release until physical pressure and DN150 jig tests pass"
+  ]
+}
