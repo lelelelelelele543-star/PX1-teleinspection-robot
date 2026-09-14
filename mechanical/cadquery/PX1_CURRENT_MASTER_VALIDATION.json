@@ -5,8 +5,7 @@
     "drive": "two motors, supported Z16 input into source-like Z40/rear axle architecture",
     "lift": "manual four-arm lift with 150 N gas spring principle",
     "pressure_service": "removable top service cover, compact pressure valve, M12 cable gland",
-    "camera": "separately sealed removable head, six electrical functions",
-    "tail": "ASS-002-090 / ASS-002-364 functional connector and strain-relief architecture"
+    "camera": "separately sealed removable head, six electrical functions"
   },
   "counts": {
     "wheels": 6,
@@ -15,9 +14,33 @@
     "lift_arms": 4,
     "local_camera_conductors": 6
   },
+  "internal_electronics": {
+    "envelopes": [
+      "TRACTION_DRIVER_L_RESERVE",
+      "TRACTION_DRIVER_R_RESERVE",
+      "DELTA_TR1D_P2",
+      "NICHICON_UCS2D221MHD1TN",
+      "INPUT_PROTECTION_RESERVE",
+      "CINCON_CQB150W110S24_CARRIER_RESERVE",
+      "PRESSURE_SENSOR_RESERVE",
+      "NUCLEO_F446RE_LOWPROFILE"
+    ],
+    "outside_dry_volume_mm3": {
+      "TRACTION_DRIVER_L_RESERVE": 0.0,
+      "TRACTION_DRIVER_R_RESERVE": 0.0,
+      "DELTA_TR1D_P2": 0.0,
+      "NICHICON_UCS2D221MHD1TN": 0.0,
+      "INPUT_PROTECTION_RESERVE": 0.0,
+      "CINCON_CQB150W110S24_CARRIER_RESERVE": 0.0,
+      "PRESSURE_SENSOR_RESERVE": 0.0,
+      "NUCLEO_F446RE_LOWPROFILE": 0.0
+    },
+    "pairwise_intersections_mm3": {},
+    "packaging_ok": true
+  },
   "hard_dimensions_mm": {
-    "wheel_station_X": [50.0, 150.0, 250.0],
-    "Z50_X": [50.0, 100.0, 150.0, 200.0, 250.0],
+    "wheel_station_X": [50.0,150.0,250.0],
+    "Z50_X": [50.0,100.0,150.0,200.0,250.0],
     "wheel_OD": 90.0,
     "body_main_L": 307.0,
     "body_W": 92.0,
@@ -26,8 +49,8 @@
     "lift_link_L": 90.0,
     "camera_shell_OD": 52.0,
     "camera_shell_L": 78.0,
-    "service_cover_LxWxt": [86.0, 44.0, 6.0],
-    "service_opening_LxW": [48.0, 22.0],
+    "service_cover_LxWxt": [86.0,44.0,6.0],
+    "service_opening_LxW": [48.0,22.0],
     "local_harness_OD_hard_max": 6.5
   },
   "pipe_clearance_low_mm": {
@@ -59,14 +82,14 @@
     "motor_vs_camera": 0.0
   },
   "release_holds": [
-    "exact matched Z16/Z40 geometry and mounting distance remains sample/drawing gate",
-    "rear tail exact dimensions remain to freeze; current model follows recovered source functional stack",
-    "exact QRW90SR/150 wheel profile remains required for final geometric DN150 release",
+    "Z16/Z40 exact matched bevel geometry and mounting distance remains sample/drawing gate",
+    "rear tail currently represents the ASS-002-090 / ASS-002-364 connector-housing / spring / gland / PU-sleeve / crimp / heatshrink / cable-cup functional stack; exact dimensions remain to freeze",
+    "exact QRW90SR/150 wheel solid/profile remains required for final geometric DN150 release; official catalogue compatibility is 150 mm",
     "SP13 exact mounting bracket and numeric pin orientation require physical pair",
     "pressure valve seat/shaft detail requires pressure test",
     "service-cover O-ring groove depth requires real seal sample",
     "six-core cable requires flex/EMC test",
-    "existing full TILT sweep remains controlling for camera clearance; this master shows LOW static envelope",
+    "WB22A full TILT sweep validation remains controlling for camera clearance; this master shows LOW static envelope",
     "no machining release until physical pressure and DN150 jig tests pass"
   ]
 }
