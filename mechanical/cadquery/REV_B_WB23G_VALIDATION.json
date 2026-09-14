@@ -1,0 +1,58 @@
+{
+  "status": "PASS_SIX_CORE_PACKAGING_SCREEN / SEAL_TEST_HOLD / FLEX_TEST_HOLD / CABLE_SAMPLE_HOLD / PROCUREMENT_HOLD",
+  "architecture": {
+    "wheels": 6,
+    "z50_gears": 10,
+    "body_pivot_x_mm": 200.0,
+    "wb23e_service_cover_retained": true
+  },
+  "local_harness": {
+    "insulated_cores": 6,
+    "functions": ["+12V_HEAD", "GND_HEAD", "UART_TX", "UART_RX", "CVBS_SIGNAL", "CVBS_RETURN"],
+    "shield": "overall EMC shield only; never DC return",
+    "target_conductor_mm2": 0.25,
+    "hard_max_OD_mm": 6.5,
+    "preferred_OD_mm": [5.5, 6.0],
+    "guard_envelope_OD_mm": 10.0
+  },
+  "dry_service_connector": {
+    "candidate": "Molex Micro-Fit 3.0 43025-0600 + 43020-0601",
+    "screen_envelope_LxW_mm": [14.0, 12.0],
+    "fits_48x22_opening": true
+  },
+  "fixed_dn150_clearance_mm": {
+    "cover": 7.369745618885986,
+    "pressure_port": 4.69890330994788,
+    "gland": 13.855253251615224,
+    "M4_head_1": 7.928746583771499,
+    "M4_head_2": 7.928746583771499
+  },
+  "lift_states": {
+    "LOW": {"camera_axis_xz_mm": [83.55688083875458, 75.0], "guard_dn150_clearance_mm": 27.778914964792115, "guard_vs_camera_mm3": 0.0, "guard_vs_Z50_mm3": 0.0},
+    "MID": {"camera_axis_xz_mm": [83.55688083875458, 130.0], "guard_dn150_clearance_mm": 3.2091057009444626, "guard_vs_camera_mm3": 0.0, "guard_vs_Z50_mm3": 0.0},
+    "HIGH": {"camera_axis_xz_mm": [133.28382691892222, 185.0], "guard_dn150_clearance_mm": -36.26649465077193, "guard_vs_camera_mm3": 0.0, "guard_vs_Z50_mm3": 0.0}
+  },
+  "worst_unintended_collision_mm3": {
+    "fixed_vs_Z50_mm3": 0.0,
+    "fixed_vs_wheels_mm3": 0.0,
+    "fixed_vs_lift_arms_mm3": 0.0,
+    "fixed_vs_camera_outer_mm3": 0.0,
+    "guard_vs_fixed_mm3": 0.0,
+    "guard_vs_Z50_mm3": 0.0,
+    "guard_vs_camera_mm3": 0.0
+  },
+  "seal_land": {
+    "minimum_screw_hole_to_groove_web_mm": 3.5,
+    "minimum_screw_head_to_cover_edge_mm": 4.0,
+    "minimum_groove_to_cover_y_edge_mm": 5.75
+  },
+  "voltage_drop_screen": {
+    "peak_current_A": 2.92,
+    "copper_resistivity_assumed_ohm_mm2_per_m": 0.0175,
+    "note": "screen only; purchased cable core resistance must be measured",
+    "0.4m": {"loop_R_ohm": 0.056, "drop_V_20C": 0.16352, "drop_percent_12V": 1.3627, "drop_V_plus20pct_R": 0.196224, "drop_percent_plus20pct_R": 1.6352},
+    "0.5m": {"loop_R_ohm": 0.07, "drop_V_20C": 0.2044, "drop_percent_12V": 1.7033, "drop_V_plus20pct_R": 0.24528, "drop_percent_plus20pct_R": 2.044},
+    "0.6m": {"loop_R_ohm": 0.084, "drop_V_20C": 0.24528, "drop_percent_12V": 2.044, "drop_V_plus20pct_R": 0.294336, "drop_percent_plus20pct_R": 2.4528}
+  },
+  "release_note": "Six-core topology is controlled. Cable article, flex life, actual resistance, shield termination and connector contacts remain qualification/procurement HOLD. Only LOW is required to satisfy DN150."
+}
