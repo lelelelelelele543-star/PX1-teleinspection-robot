@@ -1,7 +1,7 @@
-# PX-1 WB23E/WB23G pressure/camera service assembly — prototype BOM
+# PX-1 WB23E/WB23G/H pressure/camera service assembly — prototype BOM
 
 Date: 2026-09-14
-Status: **BOM CANDIDATE / PROCUREMENT HOLD**
+Status: **BOM CANDIDATE / PROCUREMENT + QUALIFICATION HOLD**
 
 This BOM is limited to the pressure-service cover and local camera/lift harness assembly.
 
@@ -15,10 +15,11 @@ This BOM is limited to the pressure-service cover and local camera/lift harness 
 | 1 | Valve protection cap | compact/recessed preferred | cap included in pressure-port hard envelope | fill valve | HOLD |
 | 1 | Dry receptacle housing | Molex Micro-Fit 3.0 `43025-0600` | 6 circuits | internal dry harness side | WB23G candidate |
 | 1 | Dry plug housing | Molex Micro-Fit 3.0 `43020-0601` | 6 circuits, no panel ears | internal dry mating side | WB23G candidate |
-| 6 | Female crimp contacts | Molex `43030-0007` candidate | 20/22/24 AWG class | `43025-0600` | sample HOLD |
-| 6 | Male crimp contacts | Molex `43031` family | exact article after real conductor/insulation measurement | `43020-0601` | article HOLD |
-| 1 | Local camera cable | **6 insulated cores + overall shield** | target 6 x 0.25 mm²; preferred OD 5.5–6.0 mm; hard max 6.5 mm | gland -> lift -> SP13 | article/flex HOLD |
-| 1 | Size benchmark cable | LAPP UNITRONIC LiYCY `0034406` | 6 x 0.25 mm², shielded, nominal OD 6.0 mm | prototype/sample benchmark only | FLEX-LIFE HOLD |
+| 6 | Female crimp contacts | Molex `43030-0007` | tin; 20/22/24 AWG; insulation <=1.85 mm | `43025-0600` | exact sample article |
+| 6 | Male crimp contacts | Molex `43031-0007` | tin; 20/22/24 AWG; insulation <=1.85 mm | `43020-0601` | exact sample article |
+| 1 | **Primary flex cable sample** | LAPP UNITRONIC FD P plus A `0028679` | exactly 6 x 0.25 mm²; nominal OD 5.4 mm; PUR; continuous-flex; unshielded | gland -> lift -> SP13 | PRIMARY SAMPLE / EMC HOLD |
+| 1 | Shielded A/B cable sample | LAPP UNITRONIC LiYCY `0034406` | 6 x 0.25 mm²; shielded; nominal OD ~6.0 mm | same prototype route | FLEX-LIFE HOLD |
+| 1 | Optional shielded high-cycle reference | Pepperl+Fuchs six-core PUR cordset cable construction | 6 x 0.25 mm²; OD 6.0 mm; foil+braid; >=2M chain cycles; moving R >10D | comparison only | sourcing/bend HOLD |
 | 1 | Camera cable plug | WEIPU `SP1310/S6I-N` | 6 sockets; cable range 4.0–6.5 mm | lift-harness end | WB15 candidate |
 | 1 | Camera panel connector | WEIPU `SP1312/P6-C` | 6 male contacts | sealed camera rear panel | WB15 candidate |
 | 1 | Lift-arm harness guard | 1 mm stainless/Al or printed fit prototype | conservative outside envelope ~10 mm; drain-open/removable | protects lower-arm straight run | WB23G screen PASS |
@@ -33,7 +34,20 @@ This BOM is limited to the pressure-service cover and local camera/lift harness 
 5. CVBS_SIGNAL
 6. CVBS_RETURN
 
-Overall braid/shield is EMC only and is not a DC return conductor.
+A cable screen, if present, is EMC only and is never a DC return conductor. The six insulated circuits do not change between screened and unscreened samples.
+
+## Cable decision rule
+
+Do not choose the production cable by the word `shielded` alone. The wet lift harness must survive repeated movement and must also carry stable raw CVBS/UART.
+
+Current priority:
+
+1. test LAPP `0028679` because its exact six-core/0.25-mm²/5.4-mm PUR continuous-flex construction best fits the mechanical duty;
+2. test a shielded 6 x 0.25 sample in the same electrical setup;
+3. if unshielded 0028679 passes the complete motor/LED/video interference test, do not make the harness thicker merely to add a screen;
+4. if it fails EMC, reopen screened high-flex cable/backshell choice using measured evidence.
+
+Do not substitute a 7-core cable. SAB SD90C and similar families may be excellent but a standard 7 x 0.25 article does not meet the frozen six-core architecture.
 
 ## WB23E cover/opening control values
 
@@ -52,7 +66,7 @@ The groove depth/compression is not machining release until the real seal is sel
 
 ## WB23G packaging correction
 
-The previous ≤5 mm / 8-core local cable study is superseded. WB23G validates a six-core cable hard envelope up to Ø6.5 mm with a 10 mm conservative arm-guard envelope. LOW guard ideal-DN150 clearance remains about 27.78 mm with no collision against Z50 or the camera envelope.
+WB23G validates a six-core cable hard envelope up to Ø6.5 mm with a 10 mm conservative arm-guard envelope. LOW guard ideal-DN150 clearance remains about 27.78 mm with no collision against Z50 or the camera envelope.
 
 ## Material notes
 
