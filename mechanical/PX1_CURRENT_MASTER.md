@@ -33,7 +33,7 @@ Confirmed / directly observed:
 - multi-stage reduction;
 - thrust-bearing/race stack carrying axial load.
 
-The current STEP uses ~62.5 mm as the CAM026-derived camera base-OD integration screen and contains reference solids for the hollow rotor, internal ring gear, thrust-bearing stack and reduction concept. Internal fits, wall thickness, tooth geometry and seal-groove dimensions remain HOLD. No further user teardown measurements are required; those items must be closed by controlled drawings, supplier samples or prototype work rather than invented values.
+The current release-pack STEP uses ~62.5 mm as the CAM026-derived camera base-OD integration screen and contains reference solids for the hollow rotor, internal ring gear, thrust-bearing stack and reduction concept. Internal fits, wall thickness, tooth geometry and seal-groove dimensions remain HOLD. No further user teardown measurements are required; those items must be closed by controlled drawings, supplier samples or prototype work rather than invented values.
 
 ## Current validation facts
 
@@ -57,11 +57,11 @@ The current STEP uses ~62.5 mm as the CAM026-derived camera base-OD integration 
 
 ## Current files
 
-- `mechanical/cadquery/PX1_Current_Master_RevB.py` - controlling current CAD generator path in GitHub.
-- `mechanical/cadquery/PX1_CURRENT_MASTER_VALIDATION.json` - current validation.
+- `mechanical/cadquery/PX1_Current_Master_RevB.py` - earlier GitHub executable source retained for history/reference; the exact generator used for the current binary master is distributed in the release pack as `PX1_Current_Master.py`.
+- `mechanical/cadquery/PX1_CURRENT_MASTER_VALIDATION.json` - current validation, synchronized with the current release pack.
 - `mechanical/PX1_CURRENT_CRAWLER_BOM_RevB.md` - current BOM mirror.
 - `mechanical/PX1_CHANGE_LOG.md` - current change journal.
 - `electrical/PX1_Current_Electrical_Pressure_Pinouts.md` - electrical / pressure / pinout specification.
 - `mechanical/PX1_Current_Manufacturing_Assembly_Test.md` - manufacturing, assembly and test sequence.
 
-Binary STEP/PDF/STL deliverables are distributed in the current release ZIP because GitHub Contents text updates do not replace the binary release pack.
+Binary STEP/PDF/STL deliverables and the exact current generator are distributed in the release ZIP. GitHub text specifications and validation are synchronized to this release.
