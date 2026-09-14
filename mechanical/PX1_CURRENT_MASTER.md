@@ -1,78 +1,93 @@
 # PX-1 current integrated crawler — Rev.B
 
-Date: 2026-09-14
-Status: **INTEGRATED MASTER BUILT / WHEEL PROFILE + PHYSICAL TEST HOLDS**
+Date: 2026-09-14  
+Status: **INTEGRATED MASTER PASS / EXACT WHEEL + FINAL BEVEL + PHYSICAL TEST HOLDS**
 
-This is the single current crawler assembly. Use the recovered Proteus solution whenever it is practical; do not create a new crawler architecture for details already solved by the source design.
+This is the single controlling crawler assembly. Recovered Proteus CRP150 architecture is used wherever it is known. Old WB files are retained only as engineering history/evidence; they do not override this master.
 
 ## Assembly chain
 
-`front crawler body -> 3 wheel stations/side -> 5 Z50/side -> rear X250 drive input -> 2 supported motor inputs -> dry internal electronics -> manual lift -> fixed camera carrier -> sealed removable camera`
+`pressure body -> 3 wheel stations/side -> 5 Z50/side -> rear X250 long-axle input -> 2 x Z40 -> 2 x supported Z16 -> 2 traction motors -> dry electronics -> manual lift -> fixed camera carrier -> sealed removable camera`
 
 Service chain:
 
-`dry pressure body -> removable PRESSURE/CAMERA cover -> compact flush pressure valve -> horizontal M12 gland -> 6-core camera harness -> lift-arm guard -> 6-pin SP13 -> camera`.
+`dry pressure body -> removable PRESSURE/CAMERA cover -> compact flush pressure valve -> M12 gland -> exactly 6-core camera harness -> lift-arm guard -> 6-pin SP13 -> camera`.
 
-Rear tether chain follows the recovered Proteus functional stack:
+## Source-controlled drivetrain details now present in the master
 
-`crawler connector -> spring/contact stack -> cable housing/nut -> seals/gland -> PU sleeve/crimp -> adhesive heatshrink -> cable cup -> reinforced tether`.
+From `DRW-002-374`, both side drives together contain:
+- 6 wheel stations;
+- 10 x Z50 total;
+- 6 x 61903-2RS bearings, 17 x 30 x 7;
+- 6 x X-ring 18.72 x 2.62;
+- 6 axle-flange envelopes;
+- 2 x 61801-2RS bearings, 12 x 21 x 5, on the rear long-axle stations.
 
-## Source-to-PX1 map
+From `DRW-002-375`, the crawler body input contains:
+- 2 x Z40 bevel gears;
+- 2 x 61800-2RS bearings, 10 x 19 x 5;
+- 2 x shaft seals 18 x 30 x 7.
 
-| PX-1 assembly | Recovered Proteus source | Current PX-1 implementation |
-|---|---|---|
-| Side drive | DRW-002-374 | 3 wheel stations/side; X50/X150/X250; five Z50/side; rear long axle |
-| Crawler housing / bevel input | DRW-002-375 | dry pressure body; source-style shaft sealing; two Z40 input paths |
-| Motor unit | DRW-002-386 | two motors total; supported Z16 shafts/bearings; purchasable motor/coupling candidates |
-| Manual lift | DRW-002-744 | two side-link planes; manual lift; 150 N gas spring principle; M8 clamp principle |
-| Lift housing / camera interface | DRW-002-752, ASS-002-890 | compact removable top service interface, M12 cable route, camera connector, protected harness |
-| Pressure valve | DRW-002-745 / CAM026 valve family | compact protected valve; no tall automotive Schrader baseline |
-| Crawler connector | ASS-002-090 | six electrical contacts/function interface reference |
-| Tether connector / strain relief | ASS-002-364 | connector spring/housing/nut/seals/gland/PU sleeve/crimp/heatshrink/cable-cup functional stack |
-| Wheel lock | ASS-002-103 | quick wheel mounting interface retained as source reference |
-| 90 mm wheel for DN150 | MiniCam Proteus QRW90SR/150 family | 150 mm source compatibility retained; exact outer profile still needs purchased/measured solid |
+From `DRW-002-386`, the motor input contains:
+- 2 traction motors;
+- 2 x Z16 bevel gears;
+- 2 separate Z16 shafts;
+- 2 x 61801-2RS support bearings, 12 x 21 x 5.
+
+Exact axle shoulders, flange thicknesses and axial Y positions remain drawing/measurement work where the assembly sheets do not state them numerically. The bearing/seal sizes and quantities above are no longer placeholders.
 
 ## Current hard geometry
 
-- six wheel stations total, X50 / X150 / X250;
-- ten m1 Z50 side gears total;
-- two traction motors total;
-- main body screen: 307 x 92 mm before rear motor extension;
-- current motor housing end X384;
+- wheel stations X50 / X150 / X250;
+- ten Z50 positions X50 / X100 / X150 / X200 / X250, mirrored left/right;
+- main body screen: 307 x 92 mm before rear extension;
+- rear dry body now ends at **X410 mm**;
 - lift body pivot X200;
-- lift pivot heights Z92 / 109;
+- lift pivot heights Z92 / Z109;
 - lift links 90 mm;
-- camera pressure shell Ø52 x 78 mm;
+- camera shell Ø52 x 78 mm;
 - service cover 86 x 44 x 6 mm;
-- service opening 48 x 22 mm;
-- compact pressure cap Ø12 x 1.5 mm envelope;
-- local camera harness: exactly 6 insulated conductors, hard OD max 6.5 mm;
-- lower-arm harness guard envelope 10 mm.
+- local camera harness: exactly six insulated conductors, hard OD max 6.5 mm.
 
-## Dry internal electronics already inside the same master
+## Real traction-driver packaging correction
 
-The master now contains the packaged envelopes already proven in the corrected Proteus-like body:
+The earlier `34 x 22 x 14 mm` traction-driver placeholders were wrong and are superseded.
 
-- 2 x traction-driver reserves;
-- STM32 `NUCLEO-F446RE` low-profile reserve `82.5 x 70 x 12 mm`;
-- Cincon `CQB150W-110S24` converter/carrier reserve `65 x 45 x 16 mm`;
+The current master uses two conservative **BTS7960 / IBT-2 envelopes of 50 x 50 x 43 mm each**. They are placed in one rear upper dry electronics tunnel, not in a separate cartridge/module.
+
+Current centers:
+- driver A: X330 / Y0 / Z91.5;
+- driver B: X382 / Y0 / Z91.5.
+
+The tunnel outer envelope is approximately:
+- X300...410;
+- width 60 mm;
+- Z65...117.
+
+Executed CadQuery result:
+- both BTS7960 envelopes outside dry volume: **0 mm³**;
+- electronics pairwise intersections: **0**;
+- electronics vs motor/Z16/coupling package intersections: **0**;
+- minimum ideal-DN150 clearance of the new electronics roof: **~3.45 mm**.
+
+This is a packaging PASS, not a manufactured-wall/pressure release. Physical DN150 testing remains mandatory because the margin is small.
+
+## Other electronics retained in the same dry body
+
+The current master also contains:
+- STM32 `NUCLEO-F446RE` low-profile envelope;
+- Cincon `CQB150W-110S24` converter/carrier envelope;
 - Nichicon `UCS2D221MHD1TN` 220 uF / 200 V capacitor envelope;
 - Delta-Opti `TR-1D*P2` video balun envelope;
-- input-protection reserve;
-- pressure-sensor reserve.
+- input-protection reserve.
 
-Executed check:
+All of those are inside the dry-volume union with zero pairwise overlap in the executed check.
 
-- outside dry volume for every electronics envelope: **0.0 mm³**;
-- pairwise electronics intersections: **none**;
-- no body enlargement was made to fit the electronics.
+The old generic Ø24.4 pressure-sensor cylinder has been removed from the fit claim rather than pretending it fits. **Pressure sensor exact article and mounting remain HOLD** and will be added only after selecting a real purchasable part.
 
-Exact brackets/fastener holes are still drawing work; the component pack itself fits the existing dry volume.
-
-## Electrical local camera branch
+## Six-core camera branch
 
 Exactly six insulated conductors:
-
 1. +12V_HEAD
 2. GND_HEAD
 3. UART_TX
@@ -80,59 +95,63 @@ Exactly six insulated conductors:
 5. CVBS_SIGNAL
 6. CVBS_RETURN
 
-Overall braid, if used, is EMC shielding only.
+Overall shield, if used, is EMC only and never a DC-return conductor.
 
-Dry disconnect candidate: Molex Micro-Fit 3.0 `43025-0600` + `43020-0601`, contacts `43030-0007` / `43031-0007`.
+Current connector candidates:
+- dry service: Molex Micro-Fit 3.0 `43025-0600` + `43020-0601`, contacts `43030-0007` / `43031-0007`;
+- wet camera side: WEIPU `SP1310/S6I-N` powered harness sockets -> `SP1312/P6-C` camera pins.
 
-Wet camera disconnect: WEIPU `SP1310/S6I-N` powered harness sockets -> `SP1312/P6-C` camera pins.
+## Executed integrated result
 
-## Executed integrated check
+`mechanical/cadquery/PX1_Current_Master_RevB.py` currently returns:
 
-The current master contains body, six wheel placeholders, ten Z50, wheel axles, both motor packages, internal electronics, four lift arms, fixed carrier, camera envelope, 150 N gas-spring envelope, service cover, M12 gland, flush pressure valve, dry six-way connector, six-core local harness/guard, SP13 and rear tether/strain-relief envelope.
+**PASS_INTEGRATED_MASTER / EXACT_WHEEL_PROFILE_HOLD / Z16_Z40_FINAL_PAIR_HOLD / PRESSURE_TEST_HOLD / PROCUREMENT_HOLD**
 
-No unintended collision was found between:
+Source-count check in the executed result:
+- wheels 6;
+- Z50 10;
+- 61903 6;
+- X-rings 6;
+- rear side-drive 61801 2;
+- Z40 2;
+- 61800 2;
+- 18x30x7 shaft seals 2;
+- Z16 2;
+- Z16 support 61801 2;
+- traction motors 2;
+- lift arms 4;
+- local camera conductors 6.
 
-- pressure/service top package and wheel/gear/lift/camera groups;
-- lift-harness guard and Z50/camera;
-- traction motor bodies and camera envelope;
-- packaged electronics and the outside of the dry cavity;
-- packaged electronics with each other.
-
-Current LOW ideal-DN150 clearances for released non-wheel envelopes:
-
-- body: ~7.81 mm;
+Current ideal-DN150 clearances for non-wheel LOW-state envelopes:
+- complete body including electronics roof: ~3.45 mm;
 - service cover: ~7.37 mm;
-- flush pressure cap: ~9.27 mm;
+- pressure cap: ~9.27 mm;
 - M12 gland: ~13.86 mm;
 - lift harness guard: ~27.78 mm;
 - rear motor housing: ~18.36 mm.
 
-The full camera TILT sweep remains governed by the already executed camera/lift validation rather than the simple LOW pose in this master.
+## Wheel rule
 
-## Wheel note — do not redesign the crawler around the placeholder
+The displayed Ø90 x 16 wheel remains only a visualization cylinder. It is not used as the final DN150 geometry.
 
-The master currently displays each wheel as a plain Ø90 x 16 cylinder only so the assembly is readable. That cylinder is **not** the real MiniCam wheel profile and therefore is not used for DN150 geometric release.
-
-The recovered drawing pack contains the wheel-lock assembly `ASS-002-103` but not a dimensioned production outer wheel/tire profile. Final DN150 release therefore requires either a purchased/measured QRW90SR/150 or the exact missing wheel solid/drawing.
-
-Until then the wheel profile is a physical-geometry HOLD, not an architecture-change trigger.
+MiniCam documentation identifies `QRW90SR/150` as the 90 mm soft-rubber wheel intended for CRP140/150 in 150 mm pipe. The exact production outer profile was not found in the recovered drawing pack, so final wheel clearance remains a measured-solid gate rather than a reason to redesign the crawler.
 
 ## Files
 
-- executable master: `mechanical/cadquery/PX1_Current_Master_RevB.py`;
-- executed result: `mechanical/cadquery/PX1_CURRENT_MASTER_VALIDATION.json`;
-- running the master exports `PX1_RevB_Current_Master.step`.
+- controlling executable: `mechanical/cadquery/PX1_Current_Master_RevB.py`;
+- controlling executed result: `mechanical/cadquery/PX1_CURRENT_MASTER_VALIDATION.json`;
+- local execution exports `PX1_RevB_Current_Master.step`.
 
 ## Remaining hard gates before machining release
 
-1. exact 90 mm wheel solid/profile and physical DN150 jig;
-2. purchased/matched Z16/Z40 geometry and mounting distance;
-3. exact pressure-cover seal groove from real elastomer;
-4. pressure valve +0.25 bar decay/submersion test;
-5. six-core cable flex/EMC test;
-6. physical SP13/Micro-Fit orientation and pin-number drawing;
-7. exact rear connector/tether-tail dimensions from purchased/source hardware;
-8. final electronics brackets/fastener pattern;
-9. final pressure and wet/grit crawler test.
+1. exact QRW90SR/150 wheel profile or measured equivalent + physical DN150 jig;
+2. final hardened matched Z16/Z40 pair and supplier mounting distance;
+3. exact axle shoulder/flange dimensions where not dimensioned in the recovered assembly sheets;
+4. select a real pressure-sensor article and add its actual model;
+5. final pressure-cover O-ring groove from the selected elastomer;
+6. +0.25 bar decay/submersion test of body/cover/valve/gland;
+7. six-core cable flex + CVBS/UART EMC test;
+8. exact rear connector/tether-tail geometry;
+9. physical dirty/wet crawler test.
 
-No new crawler architecture is to be introduced to solve these gates unless source hardware or a physical test proves the current Proteus-derived arrangement impossible.
+No new crawler architecture is to be introduced unless a source part or physical test proves the Proteus-derived arrangement impossible.
