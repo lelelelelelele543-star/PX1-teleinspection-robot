@@ -22,7 +22,6 @@ PX-1 remains a Proteus-inspired, serviceable six-wheel inspection crawler:
 Status: **PASS_SCREEN / MANUFACTURING HOLD / PROCUREMENT HOLD**.
 
 Controls:
-
 - corrected symmetric wet-bay cut;
 - four-bar separated from TILT axis by rigid fixed carrier;
 - body pivot X200;
@@ -30,119 +29,135 @@ Controls:
 - link 90 mm;
 - arms Y±31, 4 x 14 mm;
 - camera Ø52 x 78;
-- LOW optical axis X83.5569 / Z75;
-- complete TILT screen retained.
+- LOW optical axis X83.5569 / Z75.
 
-### WB23C — controlling pressure/service topology
+### WB23E — current pressure/service cover geometry
 
-Status: **PASS_PACKAGING_SCREEN / SEAL_TEST_HOLD / FLEX_TEST_HOLD / PROCUREMENT_HOLD**.
+Status: **PASS_SEAL_LAND_AND_FULL_INTEGRATION_SCREEN / SEAL_TEST_HOLD / PROCUREMENT_HOLD**.
 
-WB23C supersedes the abandoned WB23B dual-flex-chamber direction and WB23A routing coordinates.
-
-Functional topology:
-
-`dry body -> sealed PRESSURE/CAMERA SERVICE cover -> fill valve + horizontal M12 gland -> <=5 mm local harness -> simple arm guard -> fixed SP13 -> sealed removable camera`.
-
-### WB23D — first full WB22A integration
-
-Status: **PASS_FULL_INTEGRATION_SCREEN / SEAL_TEST_HOLD / FLEX_TEST_HOLD / PROCUREMENT_HOLD**.
-
-WB23D inserted the WB23C service package into the exact corrected WB22A body and confirmed zero unintended collision with six wheel envelopes, all ten Z50, lift arms and camera outer envelope.
-
-### WB23E — current service-cover dimensional baseline
-
-Status: **PASS_SEAL_LAND_AND_FULL_INTEGRATION_SCREEN / SEAL_TEST_HOLD / FLEX_TEST_HOLD / PROCUREMENT_HOLD**.
-
-WB23E corrected a real weakness in the first cover layout: the old 78 x 42 cover / 58 x 24 opening left too little material between M4 clearance holes and a realistic face-seal groove.
-
-Controlling prototype screen:
-
-- cover centre X261 / Y0;
-- cover **86 x 44 x 6 mm**;
-- cover X span 218...304;
-- service opening **48 x 22 mm**;
-- opening X237...285 / Y-11...+11;
-- 2 x M4 centres **X226 / X296**;
-- provisional groove centre path 4.0 mm outside opening;
+- cover 86 x 44 x 6 mm;
+- service opening 48 x 22 mm;
+- 2 x M4 centres X226 / X296;
+- provisional groove centre path 4 mm outside opening;
 - provisional groove width 2.5 mm;
-- minimum M4 clearance-hole edge to provisional groove outer edge **3.5 mm**;
-- minimum Ø8 screw-head edge to cover end **4.0 mm**;
-- minimum groove outer edge to cover Y edge **5.75 mm**;
-- dry JST VH 8-way connector envelope fits through opening.
+- minimum M4 hole-edge to groove outer edge 3.5 mm;
+- minimum screw-head edge to cover end 4.0 mm;
+- minimum groove outer edge to cover Y edge 5.75 mm;
+- horizontal LAPP M12 gland packaging retained.
 
-The exact original Proteus small pressure-cover screw count is still not claimed. Two M4 screws are a PX-1 prototype design choice and remain subject to pressure/seal/alignment tests.
+The exact original Proteus small-cover screw count is not claimed. Two M4 screws are a PX-1 prototype choice pending seal/flatness testing.
+
+### WB23F — pressure-port DN150 rule
+
+Status: **PACKAGING RULE FROZEN / VALVE ARTICLE PROCUREMENT HOLD**.
+
+The fill valve is the limiting fixed roof item in LOW. Preferred exposed valve+cap envelope is **<=Ø12 x 5 mm**. The current prototype hard screen is **<=Ø14 x 6 mm** (~4.70 mm ideal-DN150 clearance). Ø14 x 8 mm would fall below the current 3 mm screen and is not acceptable as baseline.
+
+### WB23G — six-core local camera/lift harness
+
+Status: **PASS_SIX_CORE_PACKAGING_SCREEN / SEAL_TEST_HOLD / FLEX_TEST_HOLD / CABLE_SAMPLE_HOLD / PROCUREMENT_HOLD**.
+
+The local wet harness is now explicitly **six insulated conductors**, not eight:
+
+1. +12V_HEAD
+2. GND_HEAD
+3. UART_TX
+4. UART_RX
+5. CVBS_SIGNAL
+6. CVBS_RETURN
+
+Overall shield is EMC only, never DC return.
+
+Packaging target:
+- conductor target 0.25 mm² class;
+- preferred finished OD 5.5...6.0 mm;
+- hard package maximum 6.5 mm;
+- conservative arm-guard outside envelope 10 mm;
+- WB22A X200 lift geometry and WB23E cover remain unchanged.
+
+Executed WB23G result:
+- 6 wheels / 10 Z50 retained;
+- fixed service package vs wheels/Z50/lift/camera: 0 mm³ unintended collision;
+- 10 mm guard vs Z50: 0 mm³;
+- 10 mm guard vs camera: 0 mm³;
+- LOW guard ideal-DN150 clearance ~27.78 mm;
+- 48 x 22 service opening accepts the new compact six-way dry connector envelope.
+
+Only LOW is required to fit DN150; MID/HIGH are larger-pipe lift positions.
 
 ## Electrical camera/lift state
 
-- eight insulated local conductors preferred;
-- 2 x +12 V in parallel;
-- 2 x GND in parallel;
-- UART TX/RX;
-- CVBS signal/return;
-- shield for EMC only;
-- dry internal disconnect candidate JST B8P-VH-B / VHR-8N;
-- removable camera interface remains WEIPU SP1312/P6-C + SP1310/S6I-N if purchased cable OD fits.
+Controlled local chain:
 
-## Pressure-service state
+`camera/control electronics -> dry 6-way service connector -> six-core shielded cable -> WEIPU SP13 6-pin -> sealed removable camera`.
 
-Current WB23E screen:
+Dry service candidate is now Molex Micro-Fit 3.0:
+- `43025-0600` receptacle housing, 6 circuits;
+- `43020-0601` plug housing, 6 circuits;
+- female contact candidate `43030-0007`, 20/22/24 AWG class;
+- exact mating male contact article held until cable conductor/insulation dimensions are measured.
 
-- corrected cover 86 x 44 x 6 mm;
+The old JST VH 8-way candidate and parallel +12/GND local-core scheme are superseded.
+
+Camera wet quick disconnect remains:
+- head: WEIPU `SP1312/P6-C`, male pins;
+- powered lift harness: WEIPU `SP1310/S6I-N`, female sockets.
+
+Size/electrical cable benchmark: LAPP UNITRONIC LiYCY `0034406`, 6 x 0.25 mm², shielded, nominal OD 6.0 mm. It is **not** a final flex-life release; it must pass the same lift-cycle/wet/grit qualification as any other candidate.
+
+Current copper-only screen at 2.92 A peak shows that one 0.25 mm² +12V core and one 0.25 mm² GND core are reasonable for the short local run. At 0.4 m, the +20% resistance screen is ~0.196 V drop (~1.64% of 12 V); at 0.6 m it is ~0.294 V (~2.45%). Purchased cable resistance and camera-terminal voltage must be measured.
+
+## Pressure/service state
+
+Current roof/service package:
+- WB23E cover 86 x 44 x 6 mm;
 - opening 48 x 22 mm;
-- 2 x M4 prototype retention at X226/X296;
-- horizontal LAPP 53112000 M12 gland;
-- fill-port current hard screen <=Ø14 x 6 mm;
-- limiting fixed ideal-DN150 clearance remains about **4.70 mm** at the pressure-port envelope;
-- corrected cover ideal-DN150 clearance ~7.37 mm;
-- gland ~13.86 mm;
-- M4 heads ~7.93 mm;
-- LOW lift guard ~29.23 mm.
+- 2 x M4 at X226/X296;
+- horizontal LAPP `53112000` M12 gland candidate;
+- preferred fill-valve hard envelope <=Ø12 x 5 mm;
+- current fixed ideal-DN150 clearances: cover ~7.37 mm, Ø14 x 6 pressure-port screen ~4.70 mm, gland ~13.86 mm, M4 heads ~7.93 mm.
 
-Pressure release still requires real parts, final groove, decay/submersion tests and physical DN150 tolerance validation.
+Pressure release still requires purchased parts, final groove, decay/submersion tests and physical DN150 tolerance validation.
 
 ## Source/evidence correction
 
-Repair photographs and MiniCam drawings now control the camera-lift service topology. Source drawings directly support M12 3.5–5 mm cable fittings, camera connector/lift cover architecture, compact pressure-valve family and a dedicated camera-lift arm cover.
+Repair photographs and MiniCam drawings control the service topology. They support a compact lift housing/cover, M12 cable fitting, camera connector and dedicated lift-arm cover. The project therefore no longer invents large local cable loops where the source demonstrates a compact protected harness.
 
-The project no longer invents large local flex loops where source hardware demonstrates a compact gland/cover/lift-guard solution.
-
-WB23A also contained a CAD Y-direction/sign ambiguity in a helper used for one-sided geometry; no downstream manufacturing decision may use WB23A absolute one-sided Y coordinates.
+Historical WB21/WB23A executed files may contain old 8-core/Ø8 studies. They remain archived for traceability but **do not control procurement, wiring or current mechanical packaging**.
 
 ## Immediate procurement samples — not bulk release
 
-After availability check, sample only:
-
-1. 1–2 x LAPP 53112000 M12 glands;
-2. small sample / one assembly of <=5 mm, 8-core + shield cable;
-3. 2 x WEIPU SP13 working pairs;
-4. JST VH 8-position connector samples + correct contacts;
-5. 2–3 candidate **very low-profile** fill valves;
+1. 1–2 x LAPP `53112000` M12 glands;
+2. one short sample of six-core shielded cable in the 0.25 mm² / OD <=6.5 mm class;
+3. 2 x WEIPU SP13 six-pin working pairs;
+4. Molex Micro-Fit 3.0 six-way housings + test crimp contacts;
+5. 2–3 candidate very low-profile fill valves, preferably <=Ø12 x 5 mm exposed with cap;
 6. FKM 2 mm cord / candidate molded seal material.
 
 ## Immediate physical prototypes
 
-1. 3D-print dummy WB23E pressure cover and arm guard on Anycubic Chiron for access/fit only.
+1. 3D-print dummy WB23E pressure cover and 10 mm-envelope arm guard on Anycubic Chiron for fit/access only.
 2. Machine first aluminium cover coupon after real gland/valve arrive.
 3. Build a pressure-box coupon reproducing cover/gland/valve geometry before risking the complete crawler body.
-4. Build a lift-cycle fixture with actual local cable and arm guard.
+4. Build a lift-cycle fixture with actual six-core cable, SP13 and guard.
 
 ## Qualification gates before machining release
 
 - exact purchased-part measurement;
 - +0.25 bar pressure decay;
 - submerged leak test;
-- 500-cycle minimum / 1000 target lift endurance;
+- >=500 lift cycles, target 1000;
 - wet/grit repeat;
 - post-cycle pressure test;
 - raw CVBS + UART + power under simultaneous motor/LED interference;
+- measure cable resistance and camera voltage under maximum load;
 - physical DN150 jig with final pressure cap/gland/screw heads;
 - final full-master tolerance/collision check;
 - only then freeze manufacturing drawing/BOM and STL/STEP handoff.
 
 ## Next controlled work blocks
 
-- WB23F: pressure-port DN150 sensitivity and preferred procurement envelope.
-- WB24A: exact pressure-service boss/seal drawing after real valve/gland selection.
-- WB24B: local cable sample electrical/flex qualification and final pin-number table.
-- WB25: complete crawler master with purchased connector/fastener/valve envelopes.
-- Release candidate: prototype body/lift drawings, arm guard, service cover and assembly/service documentation.
+- WB24A: select and dimension real fill valve/gland/seal, then release exact pressure-service boss/groove study;
+- WB24B: buy/measure six-core cable + Micro-Fit/SP13 samples, then freeze numeric six-pin table;
+- WB25: complete crawler master with purchased connector/fastener/valve envelopes;
+- release candidate: prototype body/lift drawings, arm guard, service cover and assembly/service documentation.
