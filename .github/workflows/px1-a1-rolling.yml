@@ -1,0 +1,36 @@
+name: PX1 A1 rolling 6x6
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'current/01_MECHANICAL_6X6/PX1_A1_Rolling_Chassis.py'
+      - '.github/workflows/px1-a1-rolling.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-a1:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencies
+        run: python -m pip install cadquery==2.6.1
+      - name: Generate A1 rolling chassis
+        run: |
+          export PX1_A1_OUT="$GITHUB_WORKSPACE/a1_generated"
+          python current/01_MECHANICAL_6X6/PX1_A1_Rolling_Chassis.py
+      - name: Verify package
+        run: |
+          test -s a1_generated/PX1_A1_Rolling_6x6_Assembly.step
+          test -s a1_generated/PX1_A1_SidePlate.stl
+          test -s a1_generated/PX1_A1_Z50_m1_PA20_TEST.stl
+          test -s a1_generated/PX1_A1_Validation.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PX1-A1-rolling-6x6
+          path: a1_generated/
+          retention-days: 30
