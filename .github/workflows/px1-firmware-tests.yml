@@ -1,0 +1,27 @@
+name: PX1 firmware host tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'current/03_FIRMWARE/**'
+      - '.github/workflows/px1-firmware-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  protocol-v1:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile protocol tests
+        run: |
+          gcc -std=c11 -Wall -Wextra -Werror -pedantic \
+            current/03_FIRMWARE/protocol/px1_protocol.c \
+            current/03_FIRMWARE/protocol/test_px1_protocol.c \
+            -Icurrent/03_FIRMWARE/protocol \
+            -o /tmp/px1_protocol_tests
+      - name: Run protocol tests
+        run: /tmp/px1_protocol_tests
