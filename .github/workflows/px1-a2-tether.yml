@@ -1,0 +1,30 @@
+name: PX1 A2 tether power model
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'current/05_TETHER_REEL/tether_power_calc.py'
+      - 'current/05_TETHER_REEL/test_tether_power_calc.py'
+      - '.github/workflows/px1-a2-tether.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tether-model:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regression tests
+        working-directory: current/05_TETHER_REEL
+        run: python test_tether_power_calc.py
+      - name: Generate matrix
+        run: python current/05_TETHER_REEL/tether_power_calc.py --out "$GITHUB_WORKSPACE/a2_generated"
+      - name: Verify outputs
+        run: |
+          test -s a2_generated/PX1_A2_Tether_Power_Matrix.csv
+          test -s a2_generated/PX1_A2_Tether_Power_Validation.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PX1-A2-tether-power
+          path: a2_generated/
+          retention-days: 30
