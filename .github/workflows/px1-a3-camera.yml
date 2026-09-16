@@ -1,0 +1,38 @@
+name: PX1 A3 camera-light bench
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'current/04_CAMERA_HEAD/PX1_A3_Camera_Bench.py'
+      - '.github/workflows/px1-a3-camera.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-a3:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencies
+        run: python -m pip install cadquery==2.6.1
+      - name: Generate A3 bench
+        run: |
+          export PX1_A3_OUT="$GITHUB_WORKSPACE/a3_generated"
+          python current/04_CAMERA_HEAD/PX1_A3_Camera_Bench.py
+      - name: Verify package
+        run: |
+          test -s a3_generated/PX1_A3_Camera_Light_Bench.step
+          test -s a3_generated/PX1_A3_FrontCarrier.stl
+          test -s a3_generated/PX1_A3_CameraCradle.stl
+          test -s a3_generated/PX1_A3_BenchBase.stl
+          test -s a3_generated/PX1_A3_LED_HeatSpreader_2mm.step
+          test -s a3_generated/PX1_A3_Validation.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PX1-A3-camera-light-bench
+          path: a3_generated/
+          retention-days: 30
