@@ -1,63 +1,69 @@
 # A0 motor-source match — ASS-002-386
 
-Status: MECHANICAL BASELINE SELECTED FOR A0 / OEM IDENTITY NOT CLAIMED.
+Status: SOURCE TOPOLOGY FROZEN / FINAL MOTOR-GEARHEAD PACKAGE NOT YET RELEASED.
 
-## Source evidence
-MiniCam ASS-002-386 lists:
-- 2 x MOT-001-760 MOTOR and GEAR;
-- 2 x GEA-002-531 Bevel Gear small Z16;
-- 2 x FSS-002-083 Axle Bevel Gear;
-- 2 x BEA-002-701 61801-2RS (12x21x5);
-- common FAL-002-082 motor holder.
+## What the MiniCam source actually proves
+ASS-002-386 / DRW-002-386 lists:
+- 2 × `MOT-001-760` MOTOR and GEAR;
+- 2 × `GEA-002-531` bevel gear small Z16;
+- 2 × `FSS-002-083` axle bevel gear;
+- 2 × `BEA-002-701` bearing 61801-2RS (12×21×5);
+- one common `FAL-002-082` motor holder.
 
-The 1:1 drawing shows a three-stage Ø26-class reduction gearhead followed by an Ø22-class motor. The Z16 is on a separate supported shaft, not simply cantilevered directly from the motor shaft.
+The source therefore proves the two-motor topology, separate supported Z16 shafts and the common holder. It does **not** identify the manufacturer or ratio of `MOT-001-760`.
 
-## FAULHABER envelope match
-Candidate used for PX1 A0:
-- motor: FAULHABER 2250S024BX4;
-- gearhead: FAULHABER 26/1 S, 66:1 three-stage candidate.
+The 1:1 drawing proportions are consistent with an approximately Ø26 gearhead / Ø22 motor class, but that is an envelope reconstruction, not an OEM identity claim.
 
-Published geometry:
-- motor Ø22 mm, L=51.8 mm;
-- 26/1 S Ø26 mm;
-- three-stage 26/1 S L2=44.4 mm;
-- gearhead output shaft Ø5 mm x 12 mm;
-- gearhead mounting pilot Ø13 mm;
-- 4 x M3 mounting holes on Ø20 mm circle;
-- 26/1 S continuous recommended input speed <=4000 rpm;
-- three-stage ratios include 43:1, 66:1 and 86:1.
+## Candidate A — existing FAULHABER 2250 + 26/1 S 66:1 stock path
+Mechanical study envelope:
+- motor `2250S024BX4`: Ø22 mm, L=51.8 mm, 24 V BLDC;
+- `26/1 S` three-stage 66:1: Ø26 mm, L2=44.4 mm, nominal ratio 66:1, exact ratio 66.220408;
+- 26/1 S output shaft Ø5 × 12 mm;
+- combined body length about 96.2 mm.
 
-Two Ø26 gearheads placed on the recovered 27 mm motor-centre spacing occupy 53 mm total width. This equals the current reconstructed 53 mm dry-cavity width. Combined motor + three-stage gearhead body length is 96.2 mm and matches the proportions of ASS-002-386 closely.
+Two Ø26 gearhead envelopes on the recovered 27 mm motor-centre spacing occupy 53 mm overall and reproduce the current dry-cavity width screen closely.
 
-This is sufficient to use the pair as the PX1 A0 source-match mechanical baseline. It is not sufficient to state that MOT-001-760 was manufactured by FAULHABER or that the original ratio was exactly 66:1.
+**Important compatibility gate:** the current FAULHABER 2250 product-combination table does not list the legacy 26/1 S as a standard current combination. Therefore PX1 must not assume that two loose parts can simply be bolted together. Use this path only when the actual stock drive is already a mechanically compatible/assembled unit or its interface is otherwise proven.
 
-## Motor electrical data relevant to A0
-2250S024BX4:
+## Candidate B — current manufacturer-supported 2250 + 26A path
+FAULHABER currently lists `26A` as a supported gearhead family for 2250 BX4 motors. The 26A family is manufacturer-mounted rather than sold as a loose retrofit combination.
+
+A three-stage 26A has:
+- Ø26 mm body;
+- L2=44.3 mm;
+- available ratios around the required range, including nominal 64:1;
+- `2250S...BX4 + 26A` total length about 96.1 mm.
+
+This is almost the same envelope as the 26/1 S study and is therefore the cleanest currently supported FAULHABER packaging fallback. Its output/interface differs from the 26/1 S, so the Z16 adapter must be regenerated for the actual purchased/stock package.
+
+## Electrical facts for 2250S024BX4
 - nominal voltage 24 V;
 - no-load speed about 6200 rpm;
 - rated speed about 4870 rpm;
 - rated torque 26.2 mNm;
 - rated current 0.85 A;
-- digital Hall sensors, +5 V supply, Hall A/B/C;
-- standard Hall outputs are open collector and require pull-ups unless the chosen controller provides them.
+- three motor phases;
+- +5 V Hall supply and Hall A/B/C;
+- digital Hall sensors.
 
-Because 6200 rpm exceeds the 26/1 S recommended continuous input limit, the motor controller must impose the gearhead speed limit rather than allowing full no-load motor speed.
+Therefore BTS7960 and Pololu G2 brushed H-bridges cannot directly commutate this motor. If a 2250 path is used, traction requires a BLDC controller with Hall inputs or a supported FAULHABER controller.
 
-## Estimated crawler output with 66:1
-Using the exact published nominal ratio 66.220408, 70% gearhead efficiency, Z16/Z40 = 2.5 and a planning-only 85% bevel efficiency:
-- rated motor torque 26.2 mNm -> about 1.21 Nm at the gearhead output;
-- after bevel reduction -> about 2.58 Nm at the rear X250 axle before losses in the side Z50 distribution;
-- at 3500 motor rpm -> about 21.1 wheel rpm / 6.0 m/min for Ø90 wheels.
+## A0 mechanical interface rule
+The A0 drivetrain fixture intentionally separates the motor package decision from the six-wheel side train:
 
-These are design estimates, not acceptance values. Actual current, speed and traction are measured in A0.
+`motor/gearhead candidate -> serviceable coupling/socket -> Ø12 supported pinion axle -> 61801 -> Z16 -> Z40 -> rear X250 long axle`.
 
-## Pinion support
-Keep the source logic:
-`gearhead Ø5 output -> short coupling/socket -> Ø12 supported pinion axle -> 61801 -> Z16`.
+This lets the Z50 chain and rear axle be proven before a final motor package is frozen. No production shaft or holder is released from envelope matching alone.
 
-A0 uses a split/pinch socket adapter so no permanent geometry is released before actual gear/shaft parts are tested. The final axle must be a single serviceable machined part after A0 determines socket depth, axial retention and Z16 hub dimensions.
+## Ratio planning
+For the 26/1 S 66:1 study only, with Z16/Z40=2.5, 3500 motor rpm corresponds to roughly 21 wheel rpm, or about 6 m/min at a nominal 90 mm wheel diameter before slip. This remains a planning value, not an acceptance result.
 
-## References
-- MiniCam source: DRW-002-386 / ASS-002-386.
-- FAULHABER 2250 ... BX4 current datasheet/product page.
-- FAULHABER 26/1 S planetary gearhead datasheet.
+## Release rule
+Final motor package selection requires all of the following:
+1. mechanically supported motor+gearhead combination;
+2. reproducible mounting in the PX1 dry body;
+3. correct BLDC/brushed driver class;
+4. A0 current/temperature/forward-reverse test;
+5. no change to the mandatory two-motor / Z16→Z40 / six-wheel topology.
+
+References: MiniCam DRW-002-386; FAULHABER 2250 BX4 current datasheet; FAULHABER 26/1 S and 26A gearhead datasheets.
