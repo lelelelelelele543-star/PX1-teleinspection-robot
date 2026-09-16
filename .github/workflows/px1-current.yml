@@ -10,10 +10,10 @@ on:
       - '.github/workflows/px1-current.yml'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: px1-current-export
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   export:
     runs-on: ubuntu-22.04
@@ -34,13 +34,13 @@ jobs:
         run: python -u current/CAD/PX1_Current_Master.py > current/build_log.txt 2>&1
       - name: Documentation and drawings
         run: python -u current/CAD/document_release.py
-      - name: Save generated current files
+      - name: Verify generated package
         run: |
-          git add current/CAD/PX1_Current_Master.step current/CAD/Metal_HOLD current/CAD/Print_STL current/CAD/vendor current/PX1_Current_Validation.json current/component_registry.json current/PX1_Drawings_Current.pdf current/PX1_Documentation_Current.pdf current/PX1_RELEASE_MANIFEST.txt current/images/*.png
-          if ! git diff --cached --quiet; then
-            git -c user.name='PX1 export' -c user.email='px1-export@users.noreply.github.com' commit -m 'Export current PX1 reconstruction; manufacturing HOLD'
-            git push
-          fi
+          test -s current/CAD/PX1_Current_Master.step
+          test -s current/PX1_Current_Validation.json
+          test -s current/PX1_Drawings_Current.pdf
+          test -s current/PX1_Documentation_Current.pdf
+          test -s current/PX1_RELEASE_MANIFEST.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
