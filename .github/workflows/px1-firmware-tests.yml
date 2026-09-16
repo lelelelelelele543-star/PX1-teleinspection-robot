@@ -25,3 +25,19 @@ jobs:
             -o /tmp/px1_protocol_tests
       - name: Run protocol tests
         run: /tmp/px1_protocol_tests
+
+  crawler-core:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile crawler core tests
+        run: |
+          gcc -std=c11 -Wall -Wextra -Werror -pedantic \
+            current/03_FIRMWARE/protocol/px1_protocol.c \
+            current/03_FIRMWARE/crawler/px1_crawler_core.c \
+            current/03_FIRMWARE/crawler/test_px1_crawler_core.c \
+            -Icurrent/03_FIRMWARE/protocol \
+            -Icurrent/03_FIRMWARE/crawler \
+            -o /tmp/px1_crawler_core_tests
+      - name: Run crawler core tests
+        run: /tmp/px1_crawler_core_tests
