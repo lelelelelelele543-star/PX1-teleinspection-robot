@@ -1,0 +1,50 @@
+name: PX1 A0 drivetrain fixture
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'current/01_MECHANICAL_6X6/CAD/PX1_A0_SourceMatch.py'
+      - '.github/workflows/px1-a0-drivetrain.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: px1-a0-drivetrain
+  cancel-in-progress: true
+
+jobs:
+  build-a0:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libgl1 libegl1
+          python -m pip install 'cadquery==2.8.0'
+      - name: Generate A0 fixture
+        run: python -u current/01_MECHANICAL_6X6/CAD/PX1_A0_SourceMatch.py
+      - name: Verify expected outputs
+        run: |
+          test -s current/01_MECHANICAL_6X6/CAD/PX1_A0_SourceMatch_Assembly.step
+          test -s current/01_MECHANICAL_6X6/CAD/PX1_A0_SourceMatch_MotorHolder.step
+          test -s current/01_MECHANICAL_6X6/CAD/PX1_A0_SideFixturePlate_1.stl
+          test -s current/01_MECHANICAL_6X6/CAD/PX1_A0_Z50_m1_PA20_TEST.stl
+          test -s current/01_MECHANICAL_6X6/CAD/PX1_A0_SourceMatch_Validation.json
+      - name: Upload A0 generated package
+        uses: actions/upload-artifact@v4
+        with:
+          name: PX1-A0-drivetrain-fixture
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            current/01_MECHANICAL_6X6/CAD/PX1_A0_*.step
+            current/01_MECHANICAL_6X6/CAD/PX1_A0_*.stl
+            current/01_MECHANICAL_6X6/CAD/PX1_A0_*Validation.json
