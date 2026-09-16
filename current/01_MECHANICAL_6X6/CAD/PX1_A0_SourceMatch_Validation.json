@@ -1,0 +1,48 @@
+{
+  "status": "A0_FIXTURE_READY_FOR_PART_CHECK__NOT_PRODUCTION_RELEASE",
+  "frozen_topology": {
+    "wheel_x": [50.0, 150.0, 250.0],
+    "gear_x": [50.0, 100.0, 150.0, 200.0, 250.0],
+    "z50": "m1 Z50 x5 per side",
+    "rear_input_x": 250.0
+  },
+  "source_match_motor_candidate": {
+    "motor": "FAULHABER 2250S024BX4",
+    "motor_d_mm": 22.0,
+    "motor_l_mm": 51.8,
+    "gearhead": "FAULHABER 26/1 S 66:1 candidate",
+    "gearhead_d_mm": 26.0,
+    "gearhead_l_mm": 44.4,
+    "combined_body_l_mm": 96.2,
+    "output_shaft_mm": "5 x 12",
+    "motor_centres_y_mm": [-13.5, 13.5],
+    "provenance_note": "Envelope match to ASS-002-386 is strong but does not prove MiniCam MOT-001-760 vendor/ratio identity."
+  },
+  "bevel_reference": {
+    "module": 1.0,
+    "teeth": [16, 40],
+    "ratio": 2.5,
+    "axis_angle_deg": 90.0,
+    "pitch_cone_angles_deg": [21.80140948635181, 68.19859051364818],
+    "cone_distance_mm": 21.540659228538015,
+    "face_width_reference_mm": 6.0,
+    "small_outer_apex_distance_mm": 20.0,
+    "big_outer_apex_distance_mm": 8.0,
+    "note": "Reference mounting geometry only. Actual purchased/source gear tooth form, correction, material and heat treatment remain H04."
+  },
+  "packaging": {
+    "gearhead_pack_total_width_mm": 53.0,
+    "pack_y_extent_mm": [-26.5, 26.5],
+    "side_drive_inner_keepout_abs_y_mm": 28.0,
+    "nominal_clearance_to_keepout_each_side_mm": 1.5,
+    "body_cavity_target_width_mm": 53.0,
+    "fit_note": "Two Ø26 gearheads on 27 mm centres exactly occupy 53 mm overall; this matches the reconstructed CRP150 inner cavity screen and explains the source layout."
+  },
+  "bench_fixture": {
+    "gear_support": "6001-2RS 12x28x8, A0 only",
+    "plate_thickness_mm": 8.0,
+    "shaft_centres_preserved": true,
+    "production_bearing_package_preserved": false,
+    "purpose": "prove centre distances, gear train, direction, backlash trend and motor/input behaviour before pressure-body release"
+  }
+}
