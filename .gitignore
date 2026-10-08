@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 current/images/assembly_mesh.json.gz
 current/PX1_Current_Package.zip
+
+# Local, possibly sensitive autonomous-agent logs
+.px1-agent/
