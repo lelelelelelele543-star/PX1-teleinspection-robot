@@ -1,0 +1,38 @@
+name: PX1 independent engineering gates - NOT RELEASE
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - 'engineering/**'
+      - 'tools/px1_gate.py'
+      - 'tools/px1_team.py'
+      - 'current/CAD/**'
+      - 'current/HOLD_REGISTER.json'
+      - 'current/PX1_Current_Validation.json'
+      - 'current/PX1_Current_BOM.csv'
+      - '.github/workflows/px1-engineering-gates.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-screens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Negative test and fault injection suite
+        run: python -m unittest discover -s engineering/tests -v
+      - name: Baseline HOLD plus independent engineering report
+        run: python tools/px1_gate.py
+      - name: Evidence artifact - NEVER a manufacturing approval
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: px1-gates-blockers-not-release
+          path: engineering/out/
+          retention-days: 30
+          if-no-files-found: warn

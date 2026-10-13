@@ -1,0 +1,72 @@
+{
+  "description": "Local sequential Codex passes. Independent gate is Python code and requires physical evidence before manufacturing release.",
+  "roles": [
+    {
+      "id": "reference",
+      "prompt": "engineering/agents/reference.md",
+      "allowed": [
+        "reference/",
+        "autonomy/",
+        "engineering/reviews/"
+      ]
+    },
+    {
+      "id": "mechanics",
+      "prompt": "engineering/agents/mechanics.md",
+      "allowed": [
+        "current/01_MECHANICAL_6X6/",
+        "current/CAD/",
+        "mechanical/",
+        "engineering/reviews/"
+      ]
+    },
+    {
+      "id": "camera_lift",
+      "prompt": "engineering/agents/camera_lift.md",
+      "allowed": [
+        "current/04_CAMERA_HEAD/",
+        "reference/Proteus-CRP-150/",
+        "engineering/reviews/"
+      ]
+    },
+    {
+      "id": "power_tether",
+      "prompt": "engineering/agents/power_tether.md",
+      "allowed": [
+        "current/02_ELECTRICAL/",
+        "current/05_TETHER_REEL/",
+        "electrical/",
+        "tether/",
+        "engineering/reviews/"
+      ]
+    },
+    {
+      "id": "controls",
+      "prompt": "engineering/agents/controls.md",
+      "allowed": [
+        "current/03_FIRMWARE/",
+        "firmware/",
+        "electronics/",
+        "engineering/reviews/"
+      ]
+    },
+    {
+      "id": "reel_console_bom",
+      "prompt": "engineering/agents/reel_console_bom.md",
+      "allowed": [
+        "current/05_TETHER_REEL/",
+        "current/06_CONSOLE/",
+        "current/08_PROCUREMENT/",
+        "procurement/",
+        "engineering/reviews/"
+      ]
+    },
+    {
+      "id": "independent_reviewer",
+      "prompt": "engineering/agents/independent_reviewer.md",
+      "allowed": [
+        "engineering/reviews/"
+      ]
+    }
+  ]
+}
