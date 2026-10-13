@@ -95,6 +95,21 @@ def audit(root: Path = ROOT) -> dict:
     with (root / "current/PX1_Current_BOM.csv").open(encoding="utf-8-sig", newline="") as f:
         bom = list(csv.DictReader(f, delimiter=";"))
     gates, errors = classify_evidence(val, holds, bom)
+    bench_text = (root / "current/01_MECHANICAL_6X6/A0_DRIVETRAIN_BENCH.md").read_text(encoding="utf-8")
+    motor_rows = [r for r in bom if (r.get("item") or "").strip() == "P01"]
+    motor_article = " ".join((r.get("article") or "") for r in motor_rows)
+    # A real master/BOM mismatch: active A0 source-match motor is FAULHABER,
+    # while the current Rev.C assembly/BOM still uses Pololu 5707 envelopes.
+    faulhaber_active = "active mechanical baseline is now the source-envelope-matched FAULHABER" in bench_text
+    pololu_still_in_bom = "5707" in motor_article or "pololu" in motor_article.lower()
+    motor_conflict = faulhaber_active and pololu_still_in_bom
+    gates.append(gate(
+        "mechanics_to_procurement_motor_fit",
+        "BASELINE_CONFLICT" if motor_conflict else "NEEDS_CROSSCHECK",
+        "A0 bench describes FAULHABER as the active motor but current BOM P01 is: "
+        + (motor_article or "MISSING") + ". Need a single verified motor envelope in CAD/BOM.",
+        ["current/01_MECHANICAL_6X6/A0_DRIVETRAIN_BENCH.md", "current/PX1_Current_BOM.csv"],
+    ))
     src = (root / "current/CAD/PX1_Current_Master.py").read_bytes()
     actual_hash = hashlib.sha256(src).hexdigest()
     manifest_hash = val.get("source_sha256")
