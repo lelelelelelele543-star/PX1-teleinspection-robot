@@ -6,6 +6,7 @@ Never pushes code, purchases parts, flashes hardware or certifies physical tests
 """
 import argparse
 import datetime as dt
+import hashlib
 import json
 import shutil
 import subprocess
@@ -22,10 +23,18 @@ def shell(argv, **kwargs):
 
 
 def changes():
-    p = shell(["git", "status", "--porcelain", "-uall"])
+    """Content fingerprints, not merely git status: catch edits to already-dirty files."""
+    p = shell(["git", "ls-files", "-co", "--exclude-standard", "-z"])
     if p.returncode:
         raise RuntimeError(p.stderr)
-    return {line[3:].replace("\\", "/") for line in p.stdout.splitlines() if len(line) > 3}
+    result = {}
+    for name in p.stdout.split("\0"):
+        if not name:
+            continue
+        path = ROOT / name
+        if path.is_file():
+            result[name.replace("\\", "/")] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return result
 
 
 def verify():
@@ -91,7 +100,8 @@ def main():
                 rc, stdout, stderr = 124, str(e.stdout or ""), str(e.stderr or "")
             (directory / "stdout.log").write_text(stdout, encoding="utf-8")
             (directory / "stderr.log").write_text(stderr, encoding="utf-8")
-            touched = sorted(changes() - before)
+            after = changes()
+            touched = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
             outside = [path for path in touched
                        if not any(path.startswith(a) for a in role["allowed"])]
             gate_rc, gates = verify()
