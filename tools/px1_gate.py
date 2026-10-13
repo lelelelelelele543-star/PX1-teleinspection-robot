@@ -79,6 +79,35 @@ def classify_evidence(validation: dict, hold_register: list, bom_rows: list[dict
     return checks, errors
 
 
+def check_motor_driver_compatibility(bench_text: str, bom_rows: list[dict]) -> dict:
+    """Cross-system failure gate: a 3-phase BLDC is not driven by a brushed H bridge.
+
+    This is a STATIC consistency check, not proof of a valid new BLDC controller.
+    """
+    motor_item = next((r for r in bom_rows if (r.get("item") or "").strip() == "P01"), {})
+    driver_item = next((r for r in bom_rows if (r.get("item") or "").strip() == "E02"), {})
+    motor = (motor_item.get("article") or "")
+    driver = (driver_item.get("article") or "")
+    faulhaber_active = (
+        "active mechanical baseline is now the source-envelope-matched FAULHABER"
+        in bench_text
+    )
+    hbridge = "Pololu2992" in driver or "G2 24v13" in driver or "BTS7960" in driver
+    state = "BASELINE_CONFLICT" if faulhaber_active and hbridge else "NEEDS_CROSSCHECK"
+    return gate(
+        "motor_to_controller_compatibility",
+        state,
+        ("A0 mechanical active candidate is FAULHABER 2250S024BX4 3-phase BLDC. "
+         "BOM P01 is " + (motor or "MISSING") + "; BOM E02 is " +
+         (driver or "MISSING") + ". Brushed H-bridges cannot directly "
+         "commutate a 3-phase BLDC. Choose one matched motor/controller set, "
+         "then check input ratings, Hall/encoder, interface, envelope and РФ supply."),
+        ["current/01_MECHANICAL_6X6/A0_DRIVETRAIN_BENCH.md",
+         "current/02_ELECTRICAL/A0_TRACTION_DRIVER.md",
+         "current/PX1_Current_BOM.csv"],
+    )
+
+
 def audit(root: Path = ROOT) -> dict:
     needed = [
         "AGENTS.md", "current/README.md", "current/PX1_Current_Validation.json",
@@ -103,6 +132,7 @@ def audit(root: Path = ROOT) -> dict:
     faulhaber_active = "active mechanical baseline is now the source-envelope-matched FAULHABER" in bench_text
     pololu_still_in_bom = "5707" in motor_article or "pololu" in motor_article.lower()
     motor_conflict = faulhaber_active and pololu_still_in_bom
+    gates.append(check_motor_driver_compatibility(bench_text, bom))
     gates.append(gate(
         "mechanics_to_procurement_motor_fit",
         "BASELINE_CONFLICT" if motor_conflict else "NEEDS_CROSSCHECK",
