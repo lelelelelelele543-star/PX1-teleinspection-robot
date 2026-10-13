@@ -11,7 +11,7 @@ sys.path.insert(0, str(ROOT / "engineering"))
 sys.path.insert(0, str(ROOT / "tools"))
 
 from simulation import dc_feeder, evaluate_model_suite, watchdog_timeline, wheel_speed_m_min
-from px1_gate import LOCKED_COUNTS, audit, classify_evidence
+from px1_gate import LOCKED_COUNTS, audit, classify_evidence, check_motor_driver_compatibility
 
 
 class ModelsTest(unittest.TestCase):
@@ -65,6 +65,20 @@ class GatesTest(unittest.TestCase):
         gates, errs = classify_evidence(bad, [{"id": "H01"}], [])
         self.assertTrue(any("contradicts" in e for e in errs))
         self.assertEqual(gates[1]["state"], "BLOCKED")
+
+    def test_bldc_faulhaber_rejects_brushed_pololu_hbridge(self):
+        bench = "The active mechanical baseline is now the source-envelope-matched FAULHABER package"
+        rows = [{"item": "P01", "article": "FAULHABER 2250S024BX4"},
+                {"item": "E02", "article": "Pololu2992G2 24v13"}]
+        g = check_motor_driver_compatibility(bench, rows)
+        self.assertEqual(g["state"], "BASELINE_CONFLICT")
+
+    def test_brushed_fallback_is_not_automatically_approved(self):
+        bench = "Active study is a 24V brushed 2-wire motor; pending CAD"
+        rows = [{"item": "P01", "article": "Brushed test motor"},
+                {"item": "E02", "article": "Pololu2992G2 24v13"}]
+        g = check_motor_driver_compatibility(bench, rows)
+        self.assertEqual(g["state"], "NEEDS_CROSSCHECK")
 
     def test_real_checkout_never_claims_auto_production_release(self):
         if not (ROOT / "current/PX1_Current_Validation.json").exists():
