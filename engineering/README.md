@@ -11,9 +11,9 @@ Install Python 3, Git and the Codex CLI on the Windows PC and sign in. In a clea
 3. Open engineering/out/gates.md for the CURRENT release blockers.
 4. py -3 tools/px1_team.py --dry-run
 5. py -3 tools/px1_team.py --role mechanics --cycles 1
-6. py -3 tools/px1_team.py --cycles 1 (one pass across all 7 roles)
+6. py -3 tools/px1_team.py --cycles 1 (one pass across all 8 roles)
 
-Codex calls occur locally, sequentially, in bounded time windows. They are not running in the background from mobile ChatGPT. Logs and checkpoints are written under .px1-team/. No server push, purchasing or physical operations are done by this script. The runner STOPS on failures or edits outside the chosen role paths; it does not silently discard engineering work.
+Codex calls occur locally, sequentially, in bounded time windows. They are not running in the background from mobile ChatGPT. To avoid costly unfocused passes, run --role mechanics on the A0 motor/gear conflict first, then --role systems_integrator after the relevant specialist evidence is available. Logs and checkpoints are written under .px1-team/. No server push, purchasing or physical operations are done by this script. The runner STOPS on failures or edits outside the chosen role paths; it does not silently discard engineering work.
 
 ## Who does what
 
@@ -23,6 +23,7 @@ camera_lift — sealed camera and hand-operated lift.
 power_tether — six-wire cable, power, RS-485, video, protection.
 controls — firmware watchdog, V1 protocol, operator controls.
 reel_console_bom — reel and control case, checked Russian suppliers.
+systems_integrator — resolves cross-subsystem contracts, BOM and authoritative integration notes.
 independent_reviewer — adversarial report ONLY, never writes CAD release.
 
 ## What the simulation really checks
@@ -34,3 +35,5 @@ The checker also reads the existing current CAD validation, every rigid interfer
 Not covered by this numerical model: true CAD rebuilding, seal grooves, torque under wet load, acoustic/thermal effects, electromagnetic interference, video integrity or live electrical emergency stop. Existing current CAD build and physical A0-A5 tests remain separate mandatory gates. The 110V tether computation is a numerical what-if ONLY — do not apply such voltage to an unqualified cable, slip ring, reel or console.
 
 Manufacturing drawings must not be signed off unless all real-component fits, sourcing, electrical safety and physical qualification tests are independently verified. The automatic tool has NO authorization to issue manufacturing release.
+
+**Ownership rule:** workers cannot edit independent reviews. Only systems_integrator updates the root current BOM. Reports in engineering/out are generated; reviewer findings are logged to engineering/reviews.
