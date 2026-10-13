@@ -1,5 +1,5 @@
 {
-  "description": "Local sequential Codex passes. Independent gate is Python code and requires physical evidence before manufacturing release.",
+  "description": "Bounded specialists with separate systems integrator, followed by independent reviewer. Python gate and real tests determine evidence status, never an AI vote.",
   "roles": [
     {
       "id": "reference",
@@ -7,7 +7,7 @@
       "allowed": [
         "reference/",
         "autonomy/",
-        "engineering/reviews/"
+        "engineering/worklogs/reference/"
       ]
     },
     {
@@ -17,7 +17,7 @@
         "current/01_MECHANICAL_6X6/",
         "current/CAD/",
         "mechanical/",
-        "engineering/reviews/"
+        "engineering/worklogs/mechanics/"
       ]
     },
     {
@@ -26,7 +26,7 @@
       "allowed": [
         "current/04_CAMERA_HEAD/",
         "reference/Proteus-CRP-150/",
-        "engineering/reviews/"
+        "engineering/worklogs/camera_lift/"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "current/05_TETHER_REEL/",
         "electrical/",
         "tether/",
-        "engineering/reviews/"
+        "engineering/worklogs/power_tether/"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "current/03_FIRMWARE/",
         "firmware/",
         "electronics/",
-        "engineering/reviews/"
+        "engineering/worklogs/controls/"
       ]
     },
     {
@@ -58,7 +58,20 @@
         "current/06_CONSOLE/",
         "current/08_PROCUREMENT/",
         "procurement/",
-        "engineering/reviews/"
+        "engineering/worklogs/reel_console_bom/"
+      ]
+    },
+    {
+      "id": "systems_integrator",
+      "prompt": "engineering/agents/systems_integrator.md",
+      "allowed": [
+        "current/PX1_Current_BOM.csv",
+        "current/ELECTRICAL_Current.md",
+        "current/ASSEMBLY_AND_TESTS_Current.md",
+        "current/PX1_Change_Log.md",
+        "current/09_RELEASE/",
+        "current/00_PROJECT_CONTROL/",
+        "engineering/worklogs/systems_integrator/"
       ]
     },
     {
