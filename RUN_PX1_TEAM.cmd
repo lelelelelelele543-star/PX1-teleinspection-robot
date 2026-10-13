@@ -14,7 +14,7 @@ if errorlevel 1 (
   pause
   exit /b 2
 )
-echo Running one bounded pass across seven roles. Logs: .px1-team
+echo Running one bounded pass across eight roles. Logs: .px1-team
 py -3 tools\px1_team.py --cycles 1
 set "RESULT=%ERRORLEVEL%"
 echo Completed with exit code %RESULT%. Check engineering\out\gates.md.
