@@ -1,0 +1,32 @@
+name: PX1 multi-agent runner checks
+
+on:
+  push:
+    paths:
+      - 'tools/px1_team_autorun.py'
+      - 'tests/test_px1_team_runner.py'
+      - '.github/workflows/px1-team-runner-checks.yml'
+  pull_request:
+    paths:
+      - 'tools/px1_team_autorun.py'
+      - 'tests/test_px1_team_runner.py'
+      - '.github/workflows/px1-team-runner-checks.yml'
+  workflow_dispatch:
+
+jobs:
+  offline-runner-tests:
+    name: Runner syntax and unit tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check script syntax
+        run: python -m py_compile tools/px1_team_autorun.py tools/px1_autorun.py
+      - name: Run offline tests (no Codex required)
+        run: python -m unittest discover -s tests -p test_px1_team_runner.py -v
