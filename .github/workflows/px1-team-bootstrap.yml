@@ -1,0 +1,28 @@
+name: PX1 multi-agent bootstrap checks
+on:
+  pull_request:
+    paths:
+      - "tools/px1_parallel.py"
+      - "tools/px1_team_autorun.py"
+      - "tests/test_px1_parallel.py"
+      - "autonomy/PX1_TEAM_*.md"
+      - "autonomy/PX1_WORK_PACKAGES.json"
+      - ".github/workflows/px1-team-bootstrap.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bootstrap:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate Python syntax
+        run: python -m py_compile tools/px1_autorun.py tools/px1_team_autorun.py tools/px1_parallel.py tests/test_px1_parallel.py
+      - name: Validate team role work packages
+        run: python -m json.tool autonomy/PX1_WORK_PACKAGES.json > /dev/null
+      - name: Test deterministic launcher with fake Codex (NO real model calls)
+        run: python -m unittest discover -s tests -p "test_px1_parallel.py" -v

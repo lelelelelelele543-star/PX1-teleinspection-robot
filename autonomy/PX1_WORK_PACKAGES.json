@@ -1,0 +1,5 @@
+{
+  "reference": "Inspect reference/Proteus-CRP-150 and current/CAD for the real state of CRP150 and CAM026 reference geometry. Produce a source-and-dimensions inventory with paths, uncertainty tags, and a reproducible first geometry/overlay validation artifact under your role directory. Do not declare reconstructed parts official without evidence.",
+  "tether": "Read current and historical six-conductor tether and power/video decisions; calculate 40m cable resistance/voltage drop conditionally from sourced conductor sizes and currents, distinguish unknowns and list bench test parameters. Inspect RS-485 and video pair assumptions and isolate hazardous-voltage release blockers. Supply a repeatable calculation script if defensible.",
+  "qa": "Read current/HOLD_REGISTER.json, validation.json, project test scripts and GitHub workflows. Find highest-priority machine-checkable failure and add a reproducible read-only validation/test/report under your role directory. Map H01-H10 to evidence, responsible subsystem and physical versus virtual gating."
+}
