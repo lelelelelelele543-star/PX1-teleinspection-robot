@@ -1,62 +1,94 @@
-# PX1 multi-agent — Windows launch
+# PX1 — запуск автономной инженерной команды с ноутбука
 
-**Prepared in GitHub, not running.** This is an experimental orchestration layer on top of the existing repository. It does not manufacture hardware, access your laptop remotely, or continue when the laptop is switched off.
+Система **подготовлена в GitHub, но ещё не запущена на ноутбуке**.
+Это безопасный черновой рабочий режим, а не производство готовых роботов.
 
-## What has been prepared
-- Eleven engineering specializations, one accountable chief engineer.
-- Native Codex multi-agent delegation requested with a cap of three simultaneous specialists plus coordinator.
-- Inter-agent messages and centralized integration required by the brief.
-- A persistent checkpoint, first-wave dependency/acceptance board, local run logs, and Windows/Linux CI checks for the Python launcher.
-- No custom PCBs; COTS electronic modules and repeatable firmware/CAD/BOM target for 2–3 equivalent complete PX1 complexes.
-- CRP150_REFERENCE and CAM026_REFERENCE are **not** allowed to be mixed with adapted PX1 master.
-- Physical manufacturing release remains HOLD until all relevant mechanical, power, tether, pressure, camera and endurance tests pass.
+## Что фактически реализовано
 
-## Tonight, on your Windows laptop
+Есть два способа запуска:
 
-Save local unfinished changes before switching branches. In PowerShell **inside the existing PX1 repo**, enter:
+1. `tools/px1_parallel.py` — **рекомендуемый**. Три настоящих параллельных процесса Codex CLI (REFERENCE, TETHER, QA) работают в независимых временных Git worktrees. Результаты каждого проверяются на существование и копируются только из `autonomy/team_work/<role>/`. Затем **четвёртый последовательный процесс** главного инженера интегрирует результаты и передаёт задания следующему циклу. Общие файлы одновременно не редактируются.
+2. `tools/px1_team_autorun.py` — запасной вариант, использующий один процесс Codex с предложением вызывать встроенных субагентов, если их интерфейс доступен. Реальная параллельность в этом режиме зависит от версии/модели Codex и не гарантируется.
+
+Весь проект развивается вокруг одной рабочей CRP150-подобной телеинспекции (робот, CAM026-подобная камера, катушка, пульт), которую можно затем воспроизвести ещё два раза. Электроника — покупные модули, без собственной PCB. Собственные запчасти на продажу — поздний этап.
+
+### Общение между агентами
+
+В режиме `px1_parallel.py` агенты работают **одновременно**, а главный инженер принимает их письменные сообщения и согласует интерфейсы **по завершении раунда**. На следующем раунде специалисты получают журнал предыдущих решений и задания. Это реальный процессный параллелизм, но **не непрерывный прямой чат между всеми четырьмя процессами**. Такой режим предсказуемее и предотвращает взаимную порчу файлов.
+
+## Вечером: Windows / PowerShell
+
+Открой PowerShell в **существующей папке** репозитория PX1:
 
 ```powershell
-git status --short
+git status
 git fetch origin
 git switch --track origin/feature/px1-multiagent-autonomy
-py -3 tools/px1_team_autorun.py --dry-run
-py -3 tools/px1_team_autorun.py --cycles 3 --timeout 2400
 ```
 
-If that branch already exists locally, use `git switch feature/px1-multiagent-autonomy` instead. **Do not discard or overwrite local changes.**
+Если эта ветка уже существует локально:
 
-Alternatively, after switching branches, double-click `start_px1_team.cmd` in the project directory for preflight + three bounded cycles (Python launcher and a signed-in Codex CLI must already be installed).
+```powershell
+git switch feature/px1-multiagent-autonomy
+git pull --ff-only
+```
 
-If `codex` is missing or outdated, install/update its CLI using the current OpenAI instructions, sign in and check `codex --version`. Codex also needs a working Internet connection.
+**Если `git status` показывает свои незакоммиченные изменения**, перед переключением ветки сохрани их коммитом в собственной ветке или через аккуратный stash; не используй `git reset --hard`. Ничего в старой ветке автоматически не удаляем.
 
-## What the launcher actually does
-- Checks Git and Codex executables and required project files.
-- Starts `codex exec --enable multi_agent`, limiting Codex to four total threads and a single delegation depth.
-- Sets sandbox to `workspace-write` and does not grant unrestricted computer control.
-- Sends the coordinating agent a project-specific task, preserves STDOUT JSON events, STDERR, last message, exact command and summary.
-- Runs bounded cycles (default 3), each with a timeout (default 2400s), and stops after two consecutive failed cycles.
-- Resumes from the checkpoint on subsequent explicit invocation.
+Проверь, что есть Python 3, Git и Codex CLI, и ты вошёл в Codex:
 
-Native child agents and messaging must be available in your local Codex version. The runner **requests** them, but only events/logs can establish whether they actually ran. `observed_spawn_tool_calls` indicates tool-call attempts, **not** a proof that three agents finished their tasks.
+```powershell
+py -3 --version
+git --version
+codex --version
+codex login
+```
 
-## Review progress
+Если `codex` не установлен, официальная CLI-инструкция разрешает установить его через npm `npm install -g @openai/codex`, но делай это только при необходимости и с обычными правами пользователя.
 
-- `autonomy/PX1_TEAM_PROGRESS.md` — coordinator-owned persistent checkpoint.
-- `autonomy/PX1_TEAM_BRIEF.md` — 11 roles, ownership, communication and release rules.
-- `autonomy/PX1_TEAM_TASKS.json` — first actual engineering wave (reference geometry / tether feasibility / QA).
-- `.px1-agent/team-runs/` — local logs; ignored by Git.
-- `current/HOLD_REGISTER.json` — actual outstanding release blockers H01–H10.
-- `autonomy/CRP150_REFERENCE_PROGRESS.md` — earlier single-agent reference reconstruction.
-- `tools/px1_autorun.py` — previous limited single-agent tool, left untouched.
+Проверь конфигурацию **без реального запуска агентов**:
 
-Do not mix team and old single-agent runs concurrently on the same checkout. Do not start a second team run against the same checkout while one is already running.
+```powershell
+py -3 tools/px1_parallel.py --dry-run
+```
 
-### Important practical limits
-- Both native agents and the coordinator work in a **shared repository** in this mode. Their editing boundaries are enforced by instructions and review, not OS-level write isolation. For strict parallel editing isolation, the next iteration should use separate Codex App worktrees or a controlled Git-worktree integration queue.
-- Do not run `git reset --hard` or `git clean -fd` to resolve branch conflicts. Preserve unknown files.
-- Codex tokens/rate limits, permissions, FreeCAD installations, bad source data, safety blockers and power loss can stop progress.
-- AI-simulated validation never replaces physical pressure, electrical safety and underwater system tests; high-voltage tether work needs qualified review.
+Первый короткий запуск:
 
-## Delivery target
+```powershell
+py -3 tools/px1_parallel.py --rounds 1 --timeout 1200
+```
 
-First a testable robot + camera + reel + console and 40m tether; verify it; then identical systems #2 and #3 from one revision-controlled production package. Spare parts as a separate business come later.
+В результате создаются локальные файлы:
+
+- `autonomy/team_work/reference/REPORT.md`
+- `autonomy/team_work/tether/REPORT.md`
+- `autonomy/team_work/qa/REPORT.md`
+- `autonomy/PX1_TEAM_PROGRESS.md` — новый отчёт главного инженера.
+- `autonomy/PX1_WORK_PACKAGES.json` — задания на следующий раунд.
+- `.px1-agent/parallel/<run-id>/round-01/results.json` и логи — остаются локальными и не публикуются.
+
+При успешном первом раунде можно продолжить несколькими раундами. Поскольку после работы файлы уже изменены, сначала просмотри `git status`. После проверки используй `--allow-dirty`, чтобы разрешить продолжение именно в текущем рабочем дереве:
+
+```powershell
+py -3 tools/px1_parallel.py --rounds 3 --timeout 1800 --allow-dirty
+```
+
+`--allow-dirty` не удаляет файлы, но позволяет координатору править существующие незакоммиченные файлы. Используй флаг лишь после проверки локальных изменений; при необходимости коммить только проверенные результаты.
+
+## Ограничения и безопасность
+
+- Программа не работает, пока ноутбук выключен или спит. Циклы конечны. Перезапуск — той же командой; состояние хранится на диске.
+- Каждый из трёх специалистов ограничен своей папкой для **импорта результатов**. Codex по инструкции не должен править общие файлы. Главный инженер интегрирует последовательно, но его инженерные решения требуют проверки.
+- Расчёты, источники и CAD-экспорт **не равны физической проверке** герметичности, прочности, двигателя, электробезопасности или видеоканала. Рабочий выпуск сохраняет HOLD, пока не пройдены испытания.
+- Ни один скрипт не покупает детали, не отправляет `git push` и не делает сборку физического робота. Запрос на права вне рабочего каталога не требуется.
+- Запуск одновременно нескольких Codex CLI расходует лимит модели быстрее. Начни с одного раунда, следи за лимитами.
+- На GitHub есть offline CI для синтаксиса, JSON и запуска с **фальшивым Codex** — это тест диспетчера, а не доказательство работы платной модели, CAD или реальной коммуникации агентов.
+- В корпоративной сети FreeCAD, браузер, сеть и доступ к исходникам могут быть ограничены. Работник обязан фиксировать SKIPPED/UNKNOWN, а не выдавать фантазию за PASS.
+
+## Источники и статус
+
+Основное техническое задание — `autonomy/PX1_TEAM_BRIEF.md`.
+Проверенные рабочие задания — `autonomy/PX1_WORK_PACKAGES.json`.
+Текущий адаптированный проект — `current/`.
+Отдельная эталонная реконструкция — `reference/Proteus-CRP-150/`.
+Решения и ход работ — `autonomy/PX1_TEAM_PROGRESS.md`.
