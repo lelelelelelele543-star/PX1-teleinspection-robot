@@ -46,7 +46,7 @@ def command(codex: str, final_path: Path) -> list[str]:
 def prompt(cycle: int) -> str:
     return f"""PX1 Engineering CHIEF ENGINEER, run {cycle}.
 Read AGENTS.md, current/README.md, current/REV_A_FAST_TRACK.md,
-current/HOLD_REGISTER.json, autonomy/PX1_TEAM_BRIEF.md,
+current/HOLD_REGISTER.json, autonomy/PX1_TEAM_BRIEF.md,\nautonomy/PX1_TEAM_TASKS.json,
 autonomy/PX1_TEAM_PROGRESS.md, autonomy/CRP150_REFERENCE_PROGRESS.md.
 
 Work toward complete CRP150-like crawler+camera+reel+console, 2-3 repeatable
@@ -54,7 +54,7 @@ units, standard purchasable electronic modules only, no custom PCB.
 The authoritative release status is HOLD; never fake a fabrication PASS.
 
 Use REAL native spawn_agent to delegate to no more than THREE simultaneous
-specialists for mutually independent tasks. Send and receive actual messages
+specialists for mutually independent first-wave tasks T001, T002, T003\nfrom autonomy/PX1_TEAM_TASKS.json. Send and receive actual messages
 about mounting dimensions, pinouts, source conflicts and dependencies. After
 worker completion, verify file paths, actual tools/commands, test results and
 sources; only coordinator integrates master files or changes the checkpoint.
@@ -62,7 +62,7 @@ Separate reference CAD from adapted PX1; follow frozen six-wheel drive and
 six-core tether constraints. Pick actual engineering tasks, not just planning.
 If native subagents are unavailable, record SUBAGENTS_UNAVAILABLE and perform
 one bounded engineering task. NEVER invent agent results or supplier claims.
-Do not publish, push, buy, exfiltrate repository sources, alter files outside
+Never upload proprietary, privately obtained or restricted factory documents.\nDo not publish, push, buy, exfiltrate repository sources, alter files outside
 workspace or override electrical and pressure safety tests.
 
 When done, update autonomy/PX1_TEAM_PROGRESS.md with:
