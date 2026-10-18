@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "project": "PX1 complete inspection kit, repeatable 2-3 units",
+  "release_status": "HOLD_NOT_MANUFACTURING_RELEASE",
+  "principles": [
+    "CRP150/CAM026 reference separate from PX1 adaptation",
+    "six wheels, gear train, two traction motors, manual lift",
+    "COTS modules only, no custom PCB",
+    "40m 6-core tether first",
+    "physical safety/reliability testing cannot be faked"
+  ],
+  "first_wave": [
+    {
+      "id": "T001",
+      "role": "R2_REFERENCE_CAD",
+      "priority": 1,
+      "inputs": [
+        "reference/Proteus-CRP-150/",
+        "autonomy/CRP150_REFERENCE_PROGRESS.md",
+        "current/SOURCE_REGISTER.md"
+      ],
+      "deliverables": [
+        "Original source inventory with citations",
+        "CRP150_REFERENCE/CAM026_REFERENCE available geometry inventory",
+        "overlay gap analysis"
+      ],
+      "acceptance": [
+        "Real referenced files",
+        "Verified image/source provenance",
+        "List of source conflicts"
+      ],
+      "collision_policy": "Only new files under reference/Proteus-CRP-150/cad/reconstruction and autonomy/team_work/R2_REFERENCE_CAD"
+    },
+    {
+      "id": "T002",
+      "role": "R6_TETHER_VIDEO_POWER",
+      "priority": 1,
+      "inputs": [
+        "current/ELECTRICAL_Current.md",
+        "current/HOLD_REGISTER.json",
+        "current/REV_A_FAST_TRACK.md"
+      ],
+      "deliverables": [
+        "40m six-core tether power/video feasibility calculations",
+        "Derating and interlock requirements",
+        "bench test protocol"
+      ],
+      "acceptance": [
+        "Calculations with units and actual datasheet parameters",
+        "Explicitly unknown conductor resistance and EMI until measured",
+        "No unsupported HV safety claims"
+      ],
+      "collision_policy": "Write only autonomy/team_work/R6_TETHER_VIDEO_POWER"
+    },
+    {
+      "id": "T003",
+      "role": "R11_QA",
+      "priority": 1,
+      "inputs": [
+        "current/PX1_Current_Validation.json",
+        "current/HOLD_REGISTER.json",
+        "current/CAD",
+        "tests"
+      ],
+      "deliverables": [
+        "CAD/test harness inventory",
+        "Reproducible blocker list H01-H10",
+        "Commands for checks with PASS/FAIL/SKIP"
+      ],
+      "acceptance": [
+        "Actual command and output on current host",
+        "No false manufacturing release"
+      ],
+      "collision_policy": "Write only autonomy/team_work/R11_QA"
+    }
+  ],
+  "next_wave": [
+    {
+      "id": "T004",
+      "role": "R3_DRIVETRAIN",
+      "prerequisites": [
+        "T001"
+      ],
+      "deliverable": "gear geometry and COTS motor packaging"
+    },
+    {
+      "id": "T005",
+      "role": "R7_COTS_ELECTRONICS",
+      "prerequisites": [
+        "T002"
+      ],
+      "deliverable": "sourced module envelopes and wiring viability"
+    },
+    {
+      "id": "T006",
+      "role": "R5_CAMERA",
+      "prerequisites": [
+        "T001",
+        "T005"
+      ],
+      "deliverable": "mechanism and module CAD, validated connectors"
+    },
+    {
+      "id": "T007",
+      "role": "R8_FIRMWARE",
+      "prerequisites": [
+        "T002",
+        "T005"
+      ],
+      "deliverable": "buildable firmware and repeatable flash procedure"
+    },
+    {
+      "id": "T008",
+      "role": "R9_REEL_CONSOLE",
+      "prerequisites": [
+        "T002",
+        "T007"
+      ],
+      "deliverable": "operator package and cable interface"
+    },
+    {
+      "id": "T009",
+      "role": "CHIEF_ENGINEER",
+      "prerequisites": [
+        "T003",
+        "T004",
+        "T006",
+        "T007",
+        "T008"
+      ],
+      "deliverable": "integrated checked CAD and prototype readiness package"
+    }
+  ]
+}
