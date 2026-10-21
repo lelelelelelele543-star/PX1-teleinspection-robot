@@ -168,15 +168,20 @@ def motor_holder():
     bridge_bot=boxc((PACK_FACE_X+PINION_BEAR_X)/2,0,Z_AXIS-18.0,PINION_BEAR_X-PACK_FACE_X,58.0,4.0)
     return fuse([rear,front,bridge_top,bridge_bot])
 
+def print_flat(shape):
+    shape=shape.rotate((0,0,0),(1,0,0),90)
+    bb=shape.val().BoundingBox()
+    return shape.translate((-(bb.xmin+bb.xmax)/2,-(bb.ymin+bb.ymax)/2,-bb.zmin))
+
 def side_fixture_plate(y):
     plate=boxc((PLATE_X0+PLATE_L/2),y,(PLATE_Z0+PLATE_H/2),PLATE_L,PLATE_T,PLATE_H)
     # Large windows lighten print/machining without touching bearing bosses.
     for x in (75,125,175,225):
-        plate=cut(plate,boxc(x,y,45,32,PLATE_T+1,38))
+        plate=cut(plate,boxc(x,y,45,14,PLATE_T+1,32))
     for x in GEAR_X:
         plate=cut(plate,cyl_y(x,y-PLATE_T/2-0.1,Z_AXIS,A0_BEARING_OD/2+0.05,PLATE_T+0.2))
         # four M4 fixture holes around each bearing for optional retainers
-        for dx,dz in ((-18,-18),(-18,18),(18,-18),(18,18)):
+        for dx,dz in ((0,-22),(0,22)):
             plate=cut(plate,cyl_y(x+dx,y-PLATE_T/2-0.1,Z_AXIS+dz,2.1,PLATE_T+0.2))
     # feet / bench mounting slots at ends
     for x in (35,265):
@@ -218,10 +223,10 @@ exporters.export(holder,str(OUT/'PX1_A0_SourceMatch_MotorHolder.step'))
 for idx,y in enumerate(PLATE_Y,1):
     plate=side_fixture_plate(y)
     exporters.export(plate,str(OUT/f'PX1_A0_SideFixturePlate_{idx}.step'))
-    exporters.export(plate,str(OUT/f'PX1_A0_SideFixturePlate_{idx}.stl'),tolerance=0.08,angularTolerance=0.15)
+    exporters.export(print_flat(plate),str(OUT/f'PX1_A0_SideFixturePlate_{idx}.stl'),tolerance=0.08,angularTolerance=0.15)
 printgear=make_spur_test_gear(Z50_N,M,Z50_FACE,A0_SHAFT_D,20.0)
 exporters.export(printgear,str(OUT/'PX1_A0_Z50_m1_PA20_TEST.step'))
-exporters.export(printgear,str(OUT/'PX1_A0_Z50_m1_PA20_TEST.stl'),tolerance=0.04,angularTolerance=0.10)
+exporters.export(print_flat(printgear),str(OUT/'PX1_A0_Z50_m1_PA20_TEST.stl'),tolerance=0.04,angularTolerance=0.10)
 
 # Validation / traceability values.
 pack_half_width=max(abs(MOTOR_Y[0]),abs(MOTOR_Y[1]))+GH_D/2
@@ -251,6 +256,8 @@ validation={
     'fit_note':'Two Ø26 gearheads on 27 mm centres exactly occupy 53 mm overall; this matches the reconstructed CRP150 inner cavity screen and explains the source layout.'
   },
   'bench_fixture':{
+    'bearing_to_window_min_ligament_mm':25.0-7.0-(A0_BEARING_OD/2+0.05),
+    'retainer_holes':'two vertically at z45 +/-22mm, not in cutout windows',
     'gear_support':'6001-2RS 12x28x8, A0 only','plate_thickness_mm':PLATE_T,
     'shaft_centres_preserved':True,'production_bearing_package_preserved':False,
     'purpose':'prove centre distances, gear train, direction, backlash trend and motor/input behaviour before pressure-body release'
