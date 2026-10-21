@@ -11,14 +11,14 @@ OUT=Path(os.environ.get('PX1_A1_OUT', str(Path(__file__).resolve().parent/'gener
 WHEEL_X=(50.0,150.0,250.0)
 GEAR_X=(50.0,100.0,150.0,200.0,250.0)
 Z=45.0
-GEAR_Y=31.8
+GEAR_Y=32.5
 WHEEL_Y=54.5
 Z50_N=50; MOD=1.0; FACE=4.0
 SHAFT_D=12.0
 BEARING_ID=12.0; BEARING_OD=28.0; BEARING_W=8.0 # bench-only 6001
 PLATE_T=6.0
 INNER_Y=25.5
-OUTER_Y=38.1
+OUTER_Y=39.5
 PLATE_X0=20.0; PLATE_L=260.0; PLATE_Z0=8.0; PLATE_H=74.0
 PIPE_R=75.0; PIPE_CZ=52.0480547
 
@@ -62,13 +62,13 @@ def bearing_y(x,y,z):
 def side_plate(y):
     p=boxc(150,y,45,PLATE_L,PLATE_T,PLATE_H)
     for x in (75,125,175,225):
-        p=cut(p,boxc(x,y,45,30,PLATE_T+1,36))
+        p=cut(p,boxc(x,y,45,14,PLATE_T+1,32))
     for x in GEAR_X:
         p=cut(p,cyl_y(x,y-PLATE_T/2-0.1,Z,BEARING_OD/2+0.08,PLATE_T+0.2))
-        for dx,dz in ((-17,-17),(-17,17),(17,-17),(17,17)):
+        for dx,dz in ((0,-22),(0,22)):
             p=cut(p,cyl_y(x+dx,y-PLATE_T/2-0.1,Z+dz,2.1,PLATE_T+0.2))
-    for x in (30,270):
-        for z in (15,75): p=cut(p,cyl_y(x,y-PLATE_T/2-0.1,z,2.6,PLATE_T+0.2))
+    for x,z in ((30,15),(150,75),(270,15)):
+        p=cut(p,cyl_y(x,y-PLATE_T/2-0.1,z,2.6,PLATE_T+0.2))
     return p
 
 def wheel_photo_screen(side,x):
@@ -82,8 +82,7 @@ def wheel_photo_screen(side,x):
 def crossbar(x,z):
     length=2*(INNER_Y-PLATE_T/2)
     b=boxc(x,0,z,14,length,12)
-    for side in (-1,1):
-        b=cut(b,cyl_y(x,side*(length/2+0.1),z,2.6,10,dir=-side))
+    b=cut(b,cyl_y(x,-length/2-0.1,z,2.6,length+0.2))
     return b
 
 parts=[]
@@ -106,7 +105,7 @@ for side in (-1,1):
     ln=abs(y0-y1)
     add(f'A1_REAR_LONG_AXLE_{side:+d}',cyl_y(250,min(y0,y1),Z,SHAFT_D/2,ln,dir=1),'bench_shaft')
 
-for x,z in ((35,20),(135,70),(235,20)):
+for x,z in ((30,15),(150,75),(270,15)):
     add(f'A1_CROSSBAR_{int(x)}',crossbar(x,z),'print')
 
 for side in (-1,1):
@@ -119,16 +118,16 @@ exporters.export(compound,str(OUT/'PX1_A1_Rolling_6x6_Assembly.step'))
 def localize(shape):
     bb=shape.val().BoundingBox()
     return shape.translate((-(bb.xmin+bb.xmax)/2, -(bb.ymin+bb.ymax)/2, -bb.zmin))
-master_plate=localize(side_plate(0))
+master_plate=localize(side_plate(0).rotate((0,0,0),(1,0,0),90))
 exporters.export(master_plate,str(OUT/'PX1_A1_SidePlate.step'))
 exporters.export(master_plate,str(OUT/'PX1_A1_SidePlate.stl'),tolerance=0.10,angularTolerance=0.18)
-for i,(x,z) in enumerate(((35,20),(135,70),(235,20)),1):
+for i,(x,z) in enumerate(((30,15),(150,75),(270,15)),1):
     b=localize(crossbar(x,z))
     exporters.export(b,str(OUT/f'PX1_A1_Crossbar_{i}.step'))
     exporters.export(b,str(OUT/f'PX1_A1_Crossbar_{i}.stl'),tolerance=0.10,angularTolerance=0.18)
-wheel=localize(wheel_photo_screen(1,0))
+wheel=localize(wheel_photo_screen(1,0).rotate((0,0,0),(1,0,0),90))
 exporters.export(wheel,str(OUT/'PX1_A1_QRW90_SCREEN_ONLY.stl'),tolerance=0.10,angularTolerance=0.18)
-gear=make_spur(Z50_N,MOD,FACE,SHAFT_D,20)
+gear=localize(make_spur(Z50_N,MOD,FACE,SHAFT_D,20).rotate((0,0,0),(1,0,0),90))
 exporters.export(gear,str(OUT/'PX1_A1_Z50_m1_PA20_TEST.stl'),tolerance=0.06,angularTolerance=0.12)
 
 pipe=cyl_x(0,0,PIPE_CZ,PIPE_R,300)
@@ -139,6 +138,11 @@ for name,shape,kind in parts:
     checks[name]={'volume_mm3':v,'outside_DN150_mm3':outside,'outside_fraction':outside/v if v else 0.0}
 maxfrac=max((d['outside_fraction'] for d in checks.values()),default=0)
 bb=compound.BoundingBox()
+window_web_mm=25.0-7.0-(BEARING_OD/2+0.08)
+assert window_web_mm>=3.8
+assert abs(GEAR_Y-(INNER_Y+OUTER_Y)/2)<1e-9
+gear_clearance=(OUTER_Y-INNER_Y-PLATE_T-(BEARING_W-PLATE_T)-FACE)/2
+assert gear_clearance>=0.8
 validation={
   'status':'A1_ROLLING_FIXTURE_GENERATED__NOT_PRESSURE_BODY__NOT_PRODUCTION_RELEASE',
   'source_trace':{
@@ -147,7 +151,7 @@ validation={
     'DRW-002-386':'Z16 motor unit topology with two motors and 61801 supports'
   },
   'frozen':{'wheel_x_mm':WHEEL_X,'gear_x_mm':GEAR_X,'gear_plane_y_mm':[-GEAR_Y,GEAR_Y],'z_axis_mm':Z},
-  'bench_substitutions':{'shaft_d_mm':SHAFT_D,'bearing':'6001-2RS 12x28x8','reason':'rapid A1 floor-running fixture; production axial stack remains H02/H04'},
+  'bench_substitutions':{'window_bearing_min_ligament_mm':window_web_mm,'gear_axial_nominal_clearance_each_side_mm':gear_clearance,'crossbar_bolt_datums_mm':[[30,15],[150,75],[270,15]],'crossbar_through_bore_mm':5.2,'shaft_d_mm':SHAFT_D,'bearing':'6001-2RS 12x28x8','reason':'rapid A1 floor-running fixture; production axial stack remains H02/H04'},
   'wheel_status':'QRW90SR/150 photo-screen only; exact tire/quick-lock remains H01',
   'bbox_mm':{'xmin':bb.xmin,'xmax':bb.xmax,'ymin':bb.ymin,'ymax':bb.ymax,'zmin':bb.zmin,'zmax':bb.zmax},
   'dn150_screen':{'pipe_radius_mm':PIPE_R,'pipe_center_z_mm':PIPE_CZ,'max_component_outside_fraction':maxfrac,'note':'screen only, not acceptance; physical pipe jig still required'},
