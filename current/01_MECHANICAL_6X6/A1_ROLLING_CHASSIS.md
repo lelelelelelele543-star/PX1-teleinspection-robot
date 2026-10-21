@@ -47,3 +47,11 @@ The generated assembly bounding box is approximately 290×133×90 mm. The recons
 6. Connect the rear X250 input to the A0 motor/bevel module only after its motor/gearhead interface is locked.
 
 A1 is complete only after the real assembled rig runs forward/reverse and differential-turns without gear binding or shaft migration. CAD generation alone does not close the gate.
+
+## 21.10.2026 — v2 fit-check corrections
+
+The original A0/A1 rectangular cutouts reached into Ø28.16 bearing seats and the M4 retainer positions crossed those cutouts. They are now reduced to 14×32 mm with a nominal 3.92 mm bearing-to-window wall; the two M4 clearance holes per bearing are placed vertically at ±22 mm.
+
+The three A1 crossbars are now aligned to exact panel holes (X,Z) = (30,15), (150,75), (270,15) in the source datums and have real through-bores Ø5.2 mm for long M5 bolts. Prior blind bores and 5 mm hole offsets could not assemble. Four panel STLs and Z50 STL are exported flat on the virtual print bed. The two side plates on each side are spaced 14 mm between plate centres to give ~1 mm nominal axial clearance each side after 6001 bearing protrusions.
+
+CI checks watertight STL, correct print-bed orientation and hole topology. A1 remains a dimensional fixture only: both wheel and gear-to-shaft torque interfaces have NOT been released; motor mounting and Z16/Z40 bevel transmission are missing; printed test gears cannot qualify loaded drivetrain. Do not operate it as a powered crawler or order production machining on this basis.
