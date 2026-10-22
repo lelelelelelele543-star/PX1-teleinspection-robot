@@ -1,0 +1,38 @@
+name: PX1 A1.5 fit blocker regression
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'current/07_TESTS/a15_motor_fit_audit.py'
+      - '.github/workflows/px1-motor-fit-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'current/07_TESTS/a15_motor_fit_audit.py'
+      - '.github/workflows/px1-motor-fit-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-existing-failure:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CAD kernel
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libgl1 libegl1
+          python -m pip install 'cadquery==2.8.0'
+      - name: Audit existing A1.5 motor clash
+        run: |
+          mkdir -p motor_fit_audit
+          PX1_MOTOR_AUDIT_OUT=motor_fit_audit python current/07_TESTS/a15_motor_fit_audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PX1-A15-MOTOR-FIT-BLOCKER
+          path: motor_fit_audit/PX1_MOTOR_FIT_AUDIT.json
+          retention-days: 30
