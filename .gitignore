@@ -3,5 +3,7 @@ __pycache__/
 current/images/assembly_mesh.json.gz
 current/PX1_Current_Package.zip
 
-# Local, possibly sensitive autonomous-agent logs
+# Local potentially sensitive agent records
 .px1-agent/
+.px1-team/
+engineering/out/

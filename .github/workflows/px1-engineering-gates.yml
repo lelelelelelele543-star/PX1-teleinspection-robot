@@ -1,0 +1,97 @@
+name: PX1 independent engineering gates - NOT RELEASE
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - 'engineering/**'
+      - 'tools/px1_gate.py'
+      - 'tools/px1_team.py'
+      - 'current/CAD/**'
+      - 'current/03_FIRMWARE/**'
+      - 'current/HOLD_REGISTER.json'
+      - 'current/PX1_Current_Validation.json'
+      - 'current/PX1_Current_BOM.csv'
+      - '.github/workflows/px1-engineering-gates.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-screens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax, fault-injection and regression tests
+        run: |
+          python -m py_compile tools/px1_gate.py tools/px1_team.py engineering/simulation.py
+          python -m unittest discover -s engineering/tests -v
+      - name: Explicit baseline HOLD report
+        run: python tools/px1_gate.py
+      - name: Upload report - not a manufacturing approval
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: px1-analytical-gates-NOT-RELEASE
+          path: engineering/out/
+          retention-days: 30
+          if-no-files-found: warn
+
+  firmware-host:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol V1 CRC and parser
+        run: |
+          gcc -std=c11 -Wall -Wextra -Werror -pedantic current/03_FIRMWARE/protocol/px1_protocol.c current/03_FIRMWARE/protocol/test_px1_protocol.c -Icurrent/03_FIRMWARE/protocol -o /tmp/px1_proto
+          /tmp/px1_proto
+          gcc -std=c11 -Wall -Wextra -Werror -pedantic current/03_FIRMWARE/protocol/px1_protocol.c current/03_FIRMWARE/protocol/px1_stream.c current/03_FIRMWARE/protocol/test_px1_stream.c -Icurrent/03_FIRMWARE/protocol -o /tmp/px1_stream
+          /tmp/px1_stream
+      - name: Crawler link-loss and motor core
+        run: |
+          gcc -std=c11 -Wall -Wextra -Werror -pedantic current/03_FIRMWARE/protocol/px1_protocol.c current/03_FIRMWARE/crawler/px1_crawler_core.c current/03_FIRMWARE/crawler/test_px1_crawler_core.c -Icurrent/03_FIRMWARE/protocol -Icurrent/03_FIRMWARE/crawler -o /tmp/px1_crawler
+          /tmp/px1_crawler
+      - name: Camera head protocol
+        run: |
+          gcc -std=c11 -Wall -Wextra -Werror -pedantic current/03_FIRMWARE/protocol/px1_protocol.c current/03_FIRMWARE/head/px1_head_protocol.c current/03_FIRMWARE/head/test_px1_head_protocol.c -Icurrent/03_FIRMWARE/protocol -Icurrent/03_FIRMWARE/head -o /tmp/px1_head
+          /tmp/px1_head
+
+  cad-boolean-rebuild:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install geometry solver and PDF support
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libgl1 libegl1 fonts-dejavu-core
+          python -m pip install cadquery==2.6.1 reportlab matplotlib pymupdf svglib
+      - name: Acquire existing manufacturer CAD geometry
+        run: python current/CAD/vendor_sources.py
+      - name: Rebuild actual current 3D assembly and calculate interferences
+        run: |
+          python -u current/CAD/PX1_Current_Master.py > /tmp/px1-cad-log.txt 2>&1 || { tail -n 100 /tmp/px1-cad-log.txt; exit 1; }
+          test -s current/CAD/PX1_Current_Master.step
+          test -s current/PX1_Current_Validation.json
+      - name: Independent gate uses newly generated validation
+        run: |
+          python tools/px1_gate.py
+          python -c "import json; v=json.load(open('current/PX1_Current_Validation.json')); assert v['counts_match']; assert v['status'] != 'PRODUCTION_RELEASED'; print('rigid overlaps:',sum(x.get('classification')=='RIGID_INTERFERENCE' for x in v['interferences']))"
+      - name: Upload real CAD artifact and release blockers
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: px1-CAD-REBUILT-NOT-RELEASE
+          path: |
+            current/PX1_Current_Validation.json
+            current/CAD/PX1_Current_Master.step
+            engineering/out/
+          retention-days: 14
+          if-no-files-found: warn

@@ -1,0 +1,85 @@
+{
+  "description": "Bounded specialists with separate systems integrator, followed by independent reviewer. Python gate and real tests determine evidence status, never an AI vote.",
+  "roles": [
+    {
+      "id": "reference",
+      "prompt": "engineering/agents/reference.md",
+      "allowed": [
+        "reference/",
+        "autonomy/",
+        "engineering/worklogs/reference/"
+      ]
+    },
+    {
+      "id": "mechanics",
+      "prompt": "engineering/agents/mechanics.md",
+      "allowed": [
+        "current/01_MECHANICAL_6X6/",
+        "current/CAD/",
+        "mechanical/",
+        "engineering/worklogs/mechanics/"
+      ]
+    },
+    {
+      "id": "camera_lift",
+      "prompt": "engineering/agents/camera_lift.md",
+      "allowed": [
+        "current/04_CAMERA_HEAD/",
+        "reference/Proteus-CRP-150/",
+        "engineering/worklogs/camera_lift/"
+      ]
+    },
+    {
+      "id": "power_tether",
+      "prompt": "engineering/agents/power_tether.md",
+      "allowed": [
+        "current/02_ELECTRICAL/",
+        "current/05_TETHER_REEL/",
+        "electrical/",
+        "tether/",
+        "engineering/worklogs/power_tether/"
+      ]
+    },
+    {
+      "id": "controls",
+      "prompt": "engineering/agents/controls.md",
+      "allowed": [
+        "current/03_FIRMWARE/",
+        "firmware/",
+        "electronics/",
+        "engineering/worklogs/controls/"
+      ]
+    },
+    {
+      "id": "reel_console_bom",
+      "prompt": "engineering/agents/reel_console_bom.md",
+      "allowed": [
+        "current/05_TETHER_REEL/",
+        "current/06_CONSOLE/",
+        "current/08_PROCUREMENT/",
+        "procurement/",
+        "engineering/worklogs/reel_console_bom/"
+      ]
+    },
+    {
+      "id": "systems_integrator",
+      "prompt": "engineering/agents/systems_integrator.md",
+      "allowed": [
+        "current/PX1_Current_BOM.csv",
+        "current/ELECTRICAL_Current.md",
+        "current/ASSEMBLY_AND_TESTS_Current.md",
+        "current/PX1_Change_Log.md",
+        "current/09_RELEASE/",
+        "current/00_PROJECT_CONTROL/",
+        "engineering/worklogs/systems_integrator/"
+      ]
+    },
+    {
+      "id": "independent_reviewer",
+      "prompt": "engineering/agents/independent_reviewer.md",
+      "allowed": [
+        "engineering/reviews/"
+      ]
+    }
+  ]
+}
