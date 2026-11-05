@@ -44,3 +44,16 @@
 - ZDI-26-257 (unrelated Labcenter CVE): https://www.zerodayinitiative.com/advisories/ZDI-26-257/
 
 **Scope safety:** no active scans, login attempts, exploitation, or access to Mini-Cam Ltd's servers were undertaken. The SD image remains private and unchanged.
+
+## Update: owner-operated Colab triage completed (2026-11-05)
+
+The owner executed the offline triage in Google Colab and saved `PX1_SD_REPORT.txt` to private Google Drive. The report confirms:
+
+- Source file: `ЛП.imgc` (compressed file 2,933,868,241 bytes).
+- IMGC format/header recognized by `unimgc`.
+- 16,777,216 decoded bytes examined.
+- MBR boot signature `55 AA` detected.
+- MBR partition 1: type `0x83` (conventionally Linux), start LBA 64260, length 15,454,530 sectors. With 512-byte sectors this begins 32,901,120 bytes (~31.4 MiB) into the decoded disk and describes ~7.91 GB of partition data.
+- The partition begins **after** the first 16 MiB examined, so filesystem type and OS version remain unknown. This is **not** a verified Linux installation and not a verified vulnerability.
+
+Next authorized offline step is to inspect the filesystem signature at the partition offset and, if possible, examine the root filesystem on a read-only copy in the owner's private environment. Do not upload original data, credential material, customer inspections, or proprietary firmware to this public repository.
