@@ -57,3 +57,9 @@ The owner executed the offline triage in Google Colab and saved `PX1_SD_REPORT.t
 - The partition begins **after** the first 16 MiB examined, so filesystem type and OS version remain unknown. This is **not** a verified Linux installation and not a verified vulnerability.
 
 Next authorized offline step is to inspect the filesystem signature at the partition offset and, if possible, examine the root filesystem on a read-only copy in the owner's private environment. Do not upload original data, credential material, customer inspections, or proprietary firmware to this public repository.
+
+## Additional forensic observation (derived from first 16 bytes)
+
+The owner's initial report lists the raw disk image prefix as `0e 02 00 ea ...`. Interpreted as a **little-endian ARM32 instruction**, the initial four bytes form `0xEA00020E`, which decodes as an unconditional ARM `B` with a branch destination at offset `0x840` (assuming code starts at address 0). This is **consistent with a bootloader or executable boot sector**, which strengthens but does not prove the hypothesis that the SD card is boot-related rather than survey-only media. The same bytes alone cannot reliably identify the actual processor, OS, or vulnerability. Do **not** conflate this hypothesis with a verified installed Linux/ARM version.
+
+A second, **read-only**, phone-triggerable Colab probe has been added: [PX1_SD_FS_Colab.ipynb](PX1_SD_FS_Colab.ipynb). It reads only 34 MiB of decompressed stream to check the filesystem superblock at sector 64260 and writes `PX1_SD_FS_REPORT.txt` privately on Drive; it neither extracts customer material nor uploads raw firmware to GitHub. The resulting report has **not yet** been received or inspected.
