@@ -182,3 +182,16 @@ This inventory found **no confirmed exploitable vulnerability**. The result is o
 Created [PX1_SD_Update_Offline_Colab.ipynb](PX1_SD_Update_Offline_Colab.ipynb) for private read-only review of `/root/GetSoftwareUpdate.sh`, `/root/startup.sh`, related launch scripts, `/root/Firmware` and `factoryupdate.zip`. It does **not** connect to updater endpoints, use firmware-supplied credentials, run firmware code or extract executable payloads. Its Drive-only report includes utility names, sanitized protocol+domain (no URL credentials or paths), simple file metadata, and ZIP filenames only. **There is no result yet; no network entry into manufacturer infrastructure has been attempted.**
 
 Separately, the owner's existing Drive folders already contain genuine manufacturer drawings. Examples: CRP150 `DRW-002-375.pdf` housing assembly, `DRW-002-374.pdf` drive-side gears, `DRW-002-386.pdf` crawler motor unit, `DRW-002-744.pdf` lift assembly, and CAM026 `ASM000.pdf` camera assembly. The PDFs have manufacturer distribution restrictions; do not republish them into the public repository. Use them privately to derive independent PX1 mechanical requirements and dimensions.
+
+## Offline updater package result (owner's eighth Colab run, 2026-11-05)
+
+Read the owner's private `PX1_SD_UPDATE_OFFLINE_REPORT.txt`. This is verified **offline metadata only**; neither firmware endpoints nor any outside hosts were contacted.
+
+- `/root/GetSoftwareUpdate.sh` exists (1,567 B; 27 non-comment lines). Matched `mount` and `wpa_supplicant`; no literal HTTP(S)/FTP/TFTP URL was found by this limited script scanner.
+- `/root/RunOnceScript.sh` exists (1,498 B; 29 non-comment lines), mentions `curl` and `unzip` but has no literal URL recognized by the current scanner. URLs may be assembled dynamically or read from different files; do not claim none exist.
+- `/root/startup.sh` (2,519 B) mentions Wi-Fi tools. `/root/wifi_boot.conf` exists but content or secrets were **not copied**.
+- `/root/Firmware` contains three directories: `~~factory`, `~~V6-4-6-G13`, `~~PROTEUS_V4.70`. Each contains `CP`, `VP`, `readme.txt`. Labels may be stored upgrade bundles, not the running version.
+- `/root/factoryupdate.zip`: **25,087,630 B** archive, **1,029 entries** totalling **62,856,970 B** uncompressed. Includes `CP/ProteusFirmware.s19` (**2,241,392 B**), a Motorola S-record-style extension commonly used to deliver microcontroller firmware. Must verify header before asserting CPU family or programming mechanism. Includes `VP/curl-binaries/curl`, local `libcurl.so.4.0.0`, `VP/gs` and many help/font/icon files.
+- The current notebook enumerated **only the first 80 ZIP entries**, so **no conclusion** can be made yet about whether PDF, PCB CAD, technical drawings or sources occur among the remaining files. A next-pass ZIP manifest inventory should check all entries before dismissing design data.
+
+**Current interpretation:** This image contains what appears to be a dual-component updater (`CP`/ `VP` trees), but the specific controller topology and implementation remain unproven. There is **no identified usable external update host**, no authenticated remote access, and no demonstrated Mini-Cam vulnerability. Do not attempt unauthorized access to any third-party infrastructure.
