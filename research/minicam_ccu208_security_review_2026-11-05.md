@@ -147,3 +147,18 @@ Verified findings:
 Risk prioritization (unverified candidate only): the disk demonstrably contains **Qt 4.7.4 and the TIFF plugin filename `libqtiff.so`**, making **CVE-2011-3194** worth inspecting at the library level. This vulnerability pertains to a TIFF parsing buffer overflow in upstream Qt 4.7.4. Presence of a matching-version library/plugin does *not* prove missing patches or that Mini-Cam feeds untrusted TIFF files to it. Reference: https://nvd.nist.gov/vuln/detail/CVE-2011-3194 . 
 
 **Next safe task:** offline inspect startup script *metadata* and executable dependencies to distinguish a compiled-in example or dormant program from actual runtime usage, while excluding passwords/customer data. Do not attempt network exposure checks on manufacturer systems without written authorization.
+
+## Sixth Colab inspection: Mini-Cam programs located (2026-11-05)
+
+The private owner-operated `PX1_SD_APP_DISCOVERY_REPORT.txt` was read. The **main application files are no longer hypothetical**; the SD image contains a clear vendor application tree in `/root`:
+
+- `/root/ProteusApp` and `/root/Proteus`, plus several apparent Proteus-version/test files.
+- `/root/UDProteus`, `/root/ProteusFPHub_ext.ko`, `/root/ProPipe`, `/root/WinCan` and `/root/Firmware`.
+- Operational script names: `/root/startup.sh`, `/root/GetSoftwareUpdate.sh`, `/root/startSamba.sh`, `/root/wifi_boot.conf`, `/root/wincan-web.sh`, `/root/sendEmail.sh`.
+- `/var/www/html/index.html` and `/var/www/cgi-bin` exist; these names alone do **not** establish that the web service is running.
+- `/etc/rc.d/rc.conf` has non-comment lines mentioning `dropbear`, `sshd`, `boa`, `inetd`, `dhcpd`. These can be names of configuration switches and **are not active-service evidence**.
+- `/etc/rc.d/init.d` contains startup scripts for Samba, Boa, SSH, Dropbear, etc.
+
+**Interpretation:** This is strong evidence that the source image contains the vendor's real control-system application assets, not merely example BSP files. It does **not** establish the specific executable invoked at boot, exposed network ports, application versions, or vulnerabilities. No script bodies, private files, credentials, proprietary application binaries or customer records were copied to the public repository.
+
+**Next offline scope:** confirm the **file type/ELF headers** of `/root/ProteusApp`, `/root/Proteus` and `/root/UDProteus`; list their required shared-library **names only**; inspect script references to executable paths while redacting configuration values and secrets. No connection to manufacturer systems.
