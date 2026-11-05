@@ -102,3 +102,12 @@ This is good evidence of **Freescale i.MX53 BSP lineage**, but does **not prove*
 For CVE-2016-5195 (Dirty COW), the **upstream** kernel family is in the affected version range. Local privilege escalation is possible in **unpatched, running** affected kernels. It cannot be asserted for Mini-Cam without checking vendor patches and the booted kernel; no exploit or active attack is part of this analysis. Upstream advisory: https://nvd.nist.gov/vuln/detail/CVE-2016-5195 .
 
 A fourth read-only Colab inventory notebook was created: [PX1_SD_Inventory_Colab.ipynb](PX1_SD_Inventory_Colab.ipynb). This notebook reports selected directory names and kernel configuration flags from an owner-controlled offline copy. The owner must initiate execution in their own Colab session. Its resulting report is not yet available.
+
+## Additional upstream CVE version-screening (not device findings)
+
+The Linux module directory in the offline image refers to a 2.6.35.3-derived kernel. Two upstream issues overlap this old kernel generation and merit *source/patch-level* review **if** that kernel is loaded:
+
+1. **CVE-2016-5195 (Dirty COW)** — local privilege escalation through the copy-on-write race. See https://nvd.nist.gov/vuln/detail/CVE-2016-5195 .
+2. **CVE-2014-3153 (futex_requeue)** — local privilege escalation or denial of service in affected, unpatched kernels through version 3.14.5. See https://ubuntu.com/security/CVE-2014-3153 .
+
+These are **candidates based on family and date, not confirmed vulnerabilities in Mini-Cam hardware**. The image may have vendor fixes, and the running kernel may differ. No exploit attempts, login attempts, or target scans have been made. A fourth owner's offline inventory notebook has been added, which lists files and selected configuration flags without reading customer records.
