@@ -129,3 +129,21 @@ The owner's private `PX1_SD_INVENTORY_REPORT.txt` was read successfully. Selecte
 - **CVE-2015-1860**: affected pre-4.8.7 Qt GUI GIF parsing can overflow when processing crafted images; relevance depends on whether a vulnerable Qt image handler is present and unpatched and whether crafted GIFs can reach it. Vendor Qt advisory: https://lists.qt-project.org/pipermail/announce/2015-April/000067.html
 
 **Finding status:** No exploitable issue has been demonstrated in Mini-Cam firmware; this is an **offline component inventory and version-screening**, not an active scan of Mini-Cam Ltd.
+
+## Fifth Colab inventory: verified component filenames (2026-11-05)
+
+The owner's private Drive report `PX1_SD_GUI_COMPONENTS_REPORT.txt` was found and read. The file enumerates **filesystem names only**, not running processes or listening ports.
+
+Verified findings:
+
+- `/usr/local/Trolltech/Qt-4.7.4-mx5x-x11/lib` contains `libQtCore.so.4.7.4`, `libQtGui.so.4.7.4`, `libQtNetwork.so.4.7.4`, `libQtWebKit.so.4.7.4`, and others, plus `plugins/imageformats/libqtiff.so`, `libqgif.so`, `libqjpeg.so`, `libqsvg.so`, `libqmng.so` and `libqico.so`.
+- The parallel `Qt-4.7.2-mx5x-x11/lib` directory contains **mixed** `4.7.2` and `4.8.0`-suffixed shared library filenames. Do **not** infer actual runtime dependencies just from the directory name.
+- `/usr/local/lib` contains OpenCV `2.4.0`-named libraries, including image processing/video functions, **not proof** that Mini-Cam's control application calls them.
+- `/etc/rc.d/init.d` contains network-service scripts `smb`, `boa`, `inetd`, `sshd`, `dropbear`, `dhcpd`, `network`, among others. Binaries `/sbin/telnetd`, `/sbin/httpd`, `/usr/sbin/dropbear` are also present. **No evidence any of these services are enabled, active or reachable**.
+- `/home` includes `user` and `revo`. The root listing also contains several unusual-looking filenames. Their significance is unknown.
+- Qt Mobility `1.2.0` libraries and demo applications reside under `/usr/local/Trolltech/Qtmobile-1.2.0-mx5x`, consistent with development/reference software being present.
+- No unambiguous Mini-Cam control-app executable has yet been identified from these listings.
+
+Risk prioritization (unverified candidate only): the disk demonstrably contains **Qt 4.7.4 and the TIFF plugin filename `libqtiff.so`**, making **CVE-2011-3194** worth inspecting at the library level. This vulnerability pertains to a TIFF parsing buffer overflow in upstream Qt 4.7.4. Presence of a matching-version library/plugin does *not* prove missing patches or that Mini-Cam feeds untrusted TIFF files to it. Reference: https://nvd.nist.gov/vuln/detail/CVE-2011-3194 . 
+
+**Next safe task:** offline inspect startup script *metadata* and executable dependencies to distinguish a compiled-in example or dormant program from actual runtime usage, while excluding passwords/customer data. Do not attempt network exposure checks on manufacturer systems without written authorization.
