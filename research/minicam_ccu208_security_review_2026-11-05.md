@@ -162,3 +162,17 @@ The private owner-operated `PX1_SD_APP_DISCOVERY_REPORT.txt` was read. The **mai
 **Interpretation:** This is strong evidence that the source image contains the vendor's real control-system application assets, not merely example BSP files. It does **not** establish the specific executable invoked at boot, exposed network ports, application versions, or vulnerabilities. No script bodies, private files, credentials, proprietary application binaries or customer records were copied to the public repository.
 
 **Next offline scope:** confirm the **file type/ELF headers** of `/root/ProteusApp`, `/root/Proteus` and `/root/UDProteus`; list their required shared-library **names only**; inspect script references to executable paths while redacting configuration values and secrets. No connection to manufacturer systems.
+
+## Seventh Colab: ARM application binaries confirmed (2026-11-05)
+
+The owner-run, privately stored `PX1_SD_PROGRAM_METADATA_REPORT.txt` was retrieved from Google Drive and reviewed. **These are actual executable-file findings, not guesses from directory names.**
+
+- `/root/ProteusApp`: **regular file, 15,008,309 bytes; ELF32 executable for ARM**. Dynamic library dependencies: `libEGL.so.1`, `libGLESv2.so.2`, `libX11.so.6`, `libasound.so.2`, `libc.so.6`, `libfreetype.so.6`, `libgcc_s.so.1`, `libgstinterfaces-0.10.so.0`, `libgstreamer-0.10.so.0`, `libipu.so.0`, `libjpeg.so.62`, `libm.so.6`, `libpng.so.3`, `libpthread.so.0`, `librt.so.1`, `libstdc++.so.6`, `libvpu.so.0`.
+- `/root/UDProteus`: **regular file, 8,398,634 bytes; ELF32 executable for ARM**. Its reported dynamic library dependencies are **identical** to those of ProteusApp.
+- `/root/Proteus`: **regular file, 8,945 bytes, not ELF**. It could be a script, configuration or other file; its format has not been determined.
+- `/root/ProPipe`, `/root/WinCan`, `/root/Firmware`: directories. Firmware directory has version-like entries `~~factory`, `~~V6-4-6-G13`, `~~PROTEUS_V4.70`. These are labels of files/dirs on the storage image and do **not prove installed firmware versions**.
+- `/root/startup.sh` (2519 B), `/root/GetSoftwareUpdate.sh` (1567 B), and `/root/startSamba.sh` (450 B) are regular files. A coarse keyword check of startup.sh detected `wpa_supplicant`; none of the inspected startup files explicitly matched the names ProteusApp or UDProteus in the report. This **does not** exclude indirect invocation, aliases, or launch by another service.
+
+**Interpretation:** The detected GLESv2/EGL, X11, Freescale IPU/VPU and GStreamer 0.10 dependencies indicate that these applications were built to use a video/graphics pipeline with hardware-specific components. They do *not*, by themselves, reveal the camera interface, crawler serial protocol or motor commands. **Importantly, neither binary lists a Qt library in its ELF NEEDED entries.** The separate Qt 4.x SDK/runtime directory should **not** be assumed to implement the Mini-Cam application UI without further evidence; dynamically loaded libraries remain a possibility.
+
+This inventory found **no confirmed exploitable vulnerability**. The result is only based on an owner's offline SD image. Do not publish extracted proprietary binaries, passwords, keys or customer records.
