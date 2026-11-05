@@ -86,3 +86,19 @@ Authoritative references:
 - i.MX53 START Linux Demo Image Readme: https://community.nxp.com/pwmxy87654/attachments/pwmxy87654/imx-processors/10054/2/478-i.MX53_START_Linux_DemoImage_Readme.pdf
 - Dirty COW: https://nvd.nist.gov/vuln/detail/CVE-2016-5195
 - US-CERT: https://www.kb.cert.org/vuls/id/243144
+
+## i.MX53 BSP comparison / passive fourth step (2026-11-05)
+
+Comparison of the private SD report with Freescale's official *i.MX53 START Linux Release Notes Rev 11.09.02* gives three matching traits:
+
+- Both the private image and Freescale's reference package include a file called `u-boot-mx53-loco.bin`.
+- Both include Linux **2.6.35.3**-family software and ARM.
+- The Freescale BSP release includes **GCC 4.4.4**, LTIB, a U-Boot bootloader and an SD/MMC boot workflow, consistent with the image's `/etc/issue` and `/etc/ltib-release` evidence.
+
+Official reference: https://community.nxp.com/pwmxy87654/attachments/pwmxy87654/imx-processors/80907/1/i.MX53_START_Linux_BSP_Release_Note.pdf .
+
+This is good evidence of **Freescale i.MX53 BSP lineage**, but does **not prove** the actual device SoC, loaded bootloader, or any manufacturer's firmware vulnerability. The file label `linux_ltib` and application version `9.1.1` refer to the firmware image's build metadata; they must not be confused with a Mini-Cam CCU application version.
+
+For CVE-2016-5195 (Dirty COW), the **upstream** kernel family is in the affected version range. Local privilege escalation is possible in **unpatched, running** affected kernels. It cannot be asserted for Mini-Cam without checking vendor patches and the booted kernel; no exploit or active attack is part of this analysis. Upstream advisory: https://nvd.nist.gov/vuln/detail/CVE-2016-5195 .
+
+A fourth read-only Colab inventory notebook was created: [PX1_SD_Inventory_Colab.ipynb](PX1_SD_Inventory_Colab.ipynb). This notebook reports selected directory names and kernel configuration flags from an owner-controlled offline copy. The owner must initiate execution in their own Colab session. Its resulting report is not yet available.
