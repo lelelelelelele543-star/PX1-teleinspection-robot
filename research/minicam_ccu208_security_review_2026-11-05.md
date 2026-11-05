@@ -111,3 +111,21 @@ The Linux module directory in the offline image refers to a 2.6.35.3-derived ker
 2. **CVE-2014-3153 (futex_requeue)** — local privilege escalation or denial of service in affected, unpatched kernels through version 3.14.5. See https://ubuntu.com/security/CVE-2014-3153 .
 
 These are **candidates based on family and date, not confirmed vulnerabilities in Mini-Cam hardware**. The image may have vendor fixes, and the running kernel may differ. No exploit attempts, login attempts, or target scans have been made. A fourth owner's offline inventory notebook has been added, which lists files and selected configuration flags without reading customer records.
+
+## Fourth Colab inventory: installed GUI runtimes and services (2026-11-05)
+
+The owner's private `PX1_SD_INVENTORY_REPORT.txt` was read successfully. Selected technical evidence:
+
+- `/usr/local/Trolltech` contains `Qtmobile-1.2.0-mx5x`, `Qt-4.7.4-mx5x-x11`, `Qt-4.7.2-mx5x-x11`, and `Qt-4.7.4-mx5x-x11-SAVED` directories. Multiple GUI/runtime versions coexist on the disk, but this **does not establish which one is used by the running application**.
+- `/usr/local/sbin` contains `wpa_supplicant`, `wpa_passphrase` and `wpa_cli`: software for Wi-Fi configuration is present. This is **not proof that a Wi-Fi service is listening or reachable**.
+- `/usr/local/bin` contains OpenCV sample/training executables and serial-transfer utilities `rz`, `rx`, `sz`, `sx`, `sb`, `rb`. Existence of these files is **not evidence the Mini-Cam app uses them**.
+- `/etc/rc.d` includes `rc.conf`, `rc.serial`, `rc.modules`, `rcS`, `rc.local`, `init.d`, consistent with a traditional SysV-style embedded-Linux boot scheme. Scripts have not been read or executed.
+- Image's `/boot/linux.config` contains `CONFIG_MODULES=y`, `CONFIG_INET=y`, `CONFIG_WIRELESS=y`, `CONFIG_USB_GADGET=y`. These describe a saved kernel *build configuration*, not verified active services.
+
+### Additional candidates worth patch-level review
+
+- **CVE-2011-3194**: TIFF image parsing overflow was reported for Qt 4.7.4. Directory names alone cannot show whether the bundled Qt libraries lack the correction or whether the affected TIFF handler is installed and used. Reference: https://security.gentoo.org/glsa/201206-02
+- **CVE-2012-6093**: Qt 4.7.x before 4.7.6 may mishandle TLS certificate-validation errors **under particular OpenSSL ABI/version combinations**. This is a conditional candidate, not proof of exposure. Reference: https://nvd.nist.gov/vuln/detail/CVE-2012-6093
+- **CVE-2015-1860**: affected pre-4.8.7 Qt GUI GIF parsing can overflow when processing crafted images; relevance depends on whether a vulnerable Qt image handler is present and unpatched and whether crafted GIFs can reach it. Vendor Qt advisory: https://lists.qt-project.org/pipermail/announce/2015-April/000067.html
+
+**Finding status:** No exploitable issue has been demonstrated in Mini-Cam firmware; this is an **offline component inventory and version-screening**, not an active scan of Mini-Cam Ltd.
