@@ -195,3 +195,16 @@ Read the owner's private `PX1_SD_UPDATE_OFFLINE_REPORT.txt`. This is verified **
 - The current notebook enumerated **only the first 80 ZIP entries**, so **no conclusion** can be made yet about whether PDF, PCB CAD, technical drawings or sources occur among the remaining files. A next-pass ZIP manifest inventory should check all entries before dismissing design data.
 
 **Current interpretation:** This image contains what appears to be a dual-component updater (`CP`/ `VP` trees), but the specific controller topology and implementation remain unproven. There is **no identified usable external update host**, no authenticated remote access, and no demonstrated Mini-Cam vulnerability. Do not attempt unauthorized access to any third-party infrastructure.
+
+## Complete ZIP contents verified (owner's offline Colab report; 2026-11-05)
+
+The owner's private `PX1_SD_ZIP_MANIFEST_REPORT.txt` has been read and verified. **The ZIP archive has 1,029 entries, of which 1,023 are files**, 62,856,970 bytes total after decompression.
+
+Files by top-level folder: **CP 1** file; **VP 1,022** files. File extensions include **814 PNG**, **52 INI**, **52 RTF**, **50 XML**, **22 JPG**, **12 SH**, **10 TTF** and **1 S19**, plus a few unextended/library/config files.
+
+- **No CAD, PCB schematic, or technical drawing filenames were found in the entire 1,029-entry archive.** This is a metadata search only: an obscured filename or embedded data in some other file cannot be ruled out.
+- Only filename with a recognized firmware-payload extension is `CP/ProteusFirmware.s19` (**2,241,392 bytes**). Its S-record format and target architecture have **not yet** been parsed.
+- The archive is overwhelmingly UI artwork, inspection/report templates, configuration, scripts and binaries for VP, plus an S19 payload for CP. CP/VP interpretations as processor partitions are **not confirmed** from filenames alone.
+- Version-like tokens in the three private readmes: `~~factory/readme.txt` = **V4.00**; `~~V6-4-6-G13/readme.txt` = **none detected**; `~~PROTEUS_V4.70/readme.txt` = **V4.70**. These are archive release labels, **not proof of the loaded firmware**.
+
+No update-server endpoints or remotely accessible vulnerabilities have been established. The user-controlled ZIP was only listed and not executed or uploaded. Next evidence-oriented task (if pursued): read-only validation of the S19 record types, CPU address ranges and any non-sensitive version/build identifiers, and reverse-engineering the owner's physical PCB only with appropriate authorization.
