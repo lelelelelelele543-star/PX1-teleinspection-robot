@@ -67,3 +67,22 @@ A second, **read-only**, phone-triggerable Colab probe has been added: [PX1_SD_F
 ## Filesystem verification from owner's second Colab run
 
 The private `PX1_SD_FS_REPORT.txt` confirms that partition 1 has an ext-family filesystem. Start offset: 32901120 bytes; size: 7912719360 bytes; block size: 4096 bytes; inode count: 483328; volume label: `linux_ltib`. LTIB is a Linux image build framework associated with Freescale/NXP. The label is suggestive only; the system and chipset have not been identified. No vulnerabilities have been confirmed. Source: https://www.nxp.com/docs/en/application-note/AN4426.pdf
+
+## Third owner-operated offline analysis (2026-11-05)
+
+The user ran the read-only Google Colab extractor and provided private `PX1_SD_OS_REPORT.txt` via connected Drive. Verified metadata (no customer data or credentials published):
+
+- Linux filesystem root includes `/bin`, `/boot`, `/etc`, `/lib`, `/sbin`, `/usr`.
+- `/boot`: `u-boot.bin`, `zImage`, `vmlinux`, `uImage`, `System.map`, `linux.config`. A separate `u-boot-mx53-loco.bin` also exists at the filesystem root.
+- `/lib/modules/2.6.35.3-1129-g691c08a` names a **Linux kernel 2.6.35.3-based module ABI**; installation/running-kernel status cannot be verified from disk contents alone.
+- `/etc/issue` identifies Freescale Semiconductor, an ARM GNU EABI toolchain GCC 4.4.4, and a root-filesystem build timestamp in February 2012.
+- `/etc/ltib-release` identifies LTIB release date May 2015 and application version `9.1.1`.
+- `/bin/busybox` has an **ARM ELF** header.
+- `u-boot-mx53-loco.bin` is the filename Freescale uses for the **i.MX53 START/LOCO reference board**. This is strong evidence of an i.MX53 software lineage but is **not proof of the physical SoC** in this exact CCU.
+
+Security triage: **CVE-2016-5195 (Dirty COW)** is a *version-range candidate* for the legacy 2.6.35 kernel family, based on the upstream affected range and the local privilege-escalation nature of the flaw. Its presence in the owner image is **not confirmed** because vendor backports, actual running kernel, reachability and any mitigations remain unknown. There has been no exploit execution or testing against vendor infrastructure.
+
+Authoritative references:
+- i.MX53 START Linux Demo Image Readme: https://community.nxp.com/pwmxy87654/attachments/pwmxy87654/imx-processors/10054/2/478-i.MX53_START_Linux_DemoImage_Readme.pdf
+- Dirty COW: https://nvd.nist.gov/vuln/detail/CVE-2016-5195
+- US-CERT: https://www.kb.cert.org/vuls/id/243144
