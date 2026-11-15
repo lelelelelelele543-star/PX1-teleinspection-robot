@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540">
+<rect width="900" height="540" fill="#f8fafc"/>
+<g font-family="Arial,sans-serif" fill="#172554"><text x="30" y="40" font-size="23">PX1 A17 | motor relief plates - parametric sections</text><text x="30" y="65" font-size="14">ASSUMED mm | 2D engineering projection, NOT FreeCAD render | no production release</text></g>
+<g transform="translate(105 110)" stroke-width="2">
+<text x="0" y="-12" font-family="Arial" font-size="16">X-Y top projection (scale 4 px/mm)</text>
+<rect x="0" y="0" width="200" height="24" fill="#94a3b8" stroke="#334155"/>
+<rect x="0" y="168" width="200" height="24" fill="#94a3b8" stroke="#334155"/>
+<rect x="40" y="0" width="128" height="16" fill="#fff7ed" stroke="#ea580c"/>
+<rect x="40" y="176" width="128" height="16" fill="#fff7ed" stroke="#ea580c"/>
+<rect x="40" y="42" width="128" height="108" rx="4" fill="#bfdbfe" stroke="#1d4ed8" stroke-dasharray="6 4"/>
+<text x="50" y="101" font-family="Arial" font-size="15" fill="#1e40af" stroke="none">motor envelopes (assumed)</text>
+<text x="0" y="220" font-family="Arial" font-size="14" stroke="none">Plate X 90..140 = 50; motor X 100..132 = 32</text>
+</g>
+<g transform="translate(520 120)">
+<text x="0" y="-22" font-family="Arial" font-size="16">Y-Z section at X=116</text>
+<rect x="0" y="0" width="36" height="240" fill="#94a3b8" stroke="#334155"/>
+<rect x="246" y="0" width="36" height="240" fill="#94a3b8" stroke="#334155"/>
+<circle cx="93" cy="120" r="75" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+<circle cx="189" cy="120" r="75" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+<path d="M36 42 A78 78 0 0 1 36 198 L36 42" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<path d="M246 42 A78 78 0 0 0 246 198 L246 42" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="-10" y="274" font-family="Arial" font-size="13">Ø25 motor +0.5 radial clearance</text>
+</g>
+<g font-family="Arial" fill="#334155" font-size="15"><text x="30" y="440">Plate thickness 6 | max pocket 4 | remaining web 2 | height 40 | x-length 50</text><text x="30" y="469">Orange = cylindrical subtraction region; blue = assumed motor envelope</text><text x="30" y="498">FreeCAD script performs true solid Boolean cut and STEP export when executed.</text><text x="30" y="523">Not checked: real motor body, bearings, X150 shaft, gear Z50, strength or seals.</text></g></svg>
