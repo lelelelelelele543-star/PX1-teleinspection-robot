@@ -1,0 +1,8 @@
+parameter,value,status,reason,future_verification
+module_mm,1.5,ASSUMED,A13 baseline,manufacturer gear catalogue
+Z1,16,ASSUMED,A13 baseline,CAD tooth count
+Z2,40,ASSUMED,A13 baseline,CAD tooth count
+x1,0.20,ASSUMED,A13 undercut screen,hob generation simulation
+x2,-0.20,ASSUMED,constant center distance,hob generation simulation
+root_transition,radial and chord approximation,ASSUMED,tool profile not selected,trochoid with actual cutter
+mesh_phase,unverified,NEEDS_CHECK,not swept,rotate both gears and boolean-intersect
