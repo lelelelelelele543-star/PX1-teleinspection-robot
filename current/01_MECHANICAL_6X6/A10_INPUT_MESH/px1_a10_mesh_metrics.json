@@ -1,0 +1,26 @@
+{
+  "assumptions": {
+    "module_mm": 1.5,
+    "pinion_teeth": 16,
+    "wheel_teeth": 40,
+    "pressure_angle_deg": 20,
+    "addendum_coefficient": 1,
+    "dedendum_coefficient": 1.25,
+    "center_distance_design_mm": 42,
+    "face_width_assumed_mm": 8
+  },
+  "derived": {
+    "center_distance_mm": 42,
+    "pinion_pitch_diameter_mm": 24,
+    "wheel_pitch_diameter_mm": 60,
+    "pinion_tip_diameter_mm": 27,
+    "wheel_tip_diameter_mm": 63,
+    "pinion_root_diameter_mm": 20.25,
+    "wheel_root_diameter_mm": 56.25,
+    "contact_ratio_nominal": 1.6061339523487448,
+    "theoretical_radial_clearance_mm": 0.375,
+    "reduction_ratio": 2.5,
+    "output_speed_fraction": 0.4,
+    "design_center_error_mm": 0
+  }
+}

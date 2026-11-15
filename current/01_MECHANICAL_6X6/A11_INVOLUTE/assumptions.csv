@@ -1,0 +1,7 @@
+parameter,value,units,status,verification
+module,1.5,mm,ASSUMED,manufacturer catalogue and strength
+pressure_angle,20,deg,ASSUMED,manufacturer catalogue
+Z_pinion,16,count,DESIGN_TARGET,undercut and profile shift check
+Z_wheel,40,count,DESIGN_TARGET,mesh verification
+profile_shift,0,module,ASSUMED,undercut verification
+center_distance,42,mm,DERIVED,pitch circle geometry
