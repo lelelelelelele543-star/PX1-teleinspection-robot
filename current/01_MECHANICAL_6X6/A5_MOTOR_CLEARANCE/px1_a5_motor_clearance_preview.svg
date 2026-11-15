@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 400">
+<rect width="950" height="400" fill="#f8fafc"/>
+<text x="40" y="28" font-size="18" font-family="sans-serif">PX1 A5 — motor / X150 clearance (XY envelope, assumed)</text>
+<rect x="40" y="68" width="834" height="204" rx="8" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+<rect x="40" y="80" width="834" height="180" fill="#fff" stroke="#64748b" stroke-dasharray="5 4"/>
+<rect x="164.5" y="68" width="51" height="204" fill="#94a3b8" fill-opacity=".55" stroke="#64748b"/>
+<text x="176" y="290" font-size="14" font-family="sans-serif">X50</text>
+<rect x="464.5" y="68" width="51" height="204" fill="#94a3b8" fill-opacity=".55" stroke="#64748b"/>
+<text x="476" y="290" font-size="14" font-family="sans-serif">X150</text>
+<rect x="764.5" y="68" width="51" height="204" fill="#94a3b8" fill-opacity=".55" stroke="#64748b"/>
+<text x="776" y="290" font-size="14" font-family="sans-serif">X250</text>
+<rect x="550" y="179" width="162" height="75" rx="8" fill="#38bdf8" fill-opacity=".75" stroke="#0369a1" stroke-width="2"/>
+<rect x="550" y="86" width="162" height="75" rx="8" fill="#38bdf8" fill-opacity=".75" stroke="#0369a1" stroke-width="2"/>
+<text x="545" y="184" font-size="13" font-family="sans-serif">2 x Ø25 × 54 motor envelopes</text>
+<text x="40" y="320" font-size="14" font-family="monospace">X150 gap: 11.5 mm | X250 gap: 17.5 mm | wall gap: 2.0 mm | motor gap: 6.0 mm</text>
+<text x="40" y="346" font-size="13" font-family="sans-serif">Axles shown as projected full-width keep-out zones. Gearbox, Z16/Z40, bearing seats and wiring NOT modeled.</text>
+<text x="40" y="369" font-size="13" font-family="sans-serif">Not a CRP150 measurement, no manufacturing release; all envelope checks are 2D only.</text></svg>
