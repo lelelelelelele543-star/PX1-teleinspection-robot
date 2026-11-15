@@ -1,0 +1,8 @@
+parameter,value_mm,classification,reason,verification
+motor_diameter,25,REFERENCE_A15,legacy motor envelope,manufacturer drawing
+motor_center_abs_y,13.5,REFERENCE_A15,legacy layout,3D assembly
+plate_center_abs_y,25.5,REFERENCE_A15,legacy layout,3D assembly
+plate_thickness,6,REFERENCE_A15,legacy layout,3D assembly
+assembly_clearance,0.5,ASSUMED,initial assembly allowance,tolerance stack
+pocket_depth,4.0,DERIVED,interference plus clearance,3D boolean
+remaining_web,2.0,DERIVED,plate thickness minus pocket,FEA and physical check
