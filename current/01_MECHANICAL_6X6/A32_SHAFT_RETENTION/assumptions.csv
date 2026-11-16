@@ -1,0 +1,8 @@
+parameter,value_mm,confidence,reason,verification
+shaft_diameter,12,ESTIMATED,Carry forward A31 shaft,Check actual bearing fit and shaft strength
+bearing_width,8,ESTIMATED,Carry forward A31 bearing envelope,Confirm manufacturer bearing drawing
+spacer_width,2,ESTIMATED,Close 2 mm bearing-to-gear axial intervals,Measure stack tolerance and inner-race land
+gear_width,8,ESTIMATED,A28 Z50 model,Verify gear face geometry in STEP
+clip_axial_envelope,1,ESTIMATED,Illustrative retaining feature only,Select actual DIN 471 clip and groove dimensions
+clip_groove_diameter,unknown,UNVERIFIED,Not selected yet,Determine from DIN 471 catalogue
+seal_pressure_bar,0.7,DESIGN_TARGET,Maximum required internal gauge pressure,Select pressure-rated sealing arrangement and test safely
