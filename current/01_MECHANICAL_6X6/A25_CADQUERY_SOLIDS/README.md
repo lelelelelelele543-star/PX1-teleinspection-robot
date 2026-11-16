@@ -1,0 +1,5 @@
+# A25 CadQuery actual-solid check
+Assumed geometry only; no manufacturer/Proteus measurement. Motor Ø25 X=101..135, Y=0; shaft Ø12 X=150 Y=-32..32; gear bounding cylinder Ø75 Y=24..30. Gear teeth, housing and bearings NOT modeled. The gear-shaft overlap is an intentional mount, not a collision. The motor is not verified against real motor hardware.
+Local CadQuery 3D boolean execution: PASS motor/shaft 0 mm³, motor/gear 0 mm³, shaft/gear 678.584 mm³ intentional. Negative test motor shifted +26 mm in Y intersects gear by 3229.249 mm³.
+Run: python px1_a25.py (requires cadquery). This regenerates STEP and SVG from CAD solid bounding boxes. STEP was generated locally but GitHub text connector cannot upload binary STEP; do not treat it as committed.
+Assumptions: all coordinates and radii ESTIMATED; verify by manufacturer STEP and full current assembly. NEXT: add real Z50 involute, bearing outer races and pressure body; run full Boolean and tolerance sweep.
