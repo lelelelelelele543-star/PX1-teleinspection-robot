@@ -1,0 +1,8 @@
+parameter,value,status,verification
+z,50,DESIGN_TARGET,gear train
+module_mm,1.5,ASSUMED,mesh with mating gears
+pressure_angle_deg,20,ASSUMED,verify meshing
+bore_mm,12,ASSUMED,shaft fit
+hub_diameter_mm,24,ASSUMED,axial clearance
+face_width_mm,8,ASSUMED,tooth strength
+hub_extra_mm,4,ASSUMED,axial clearance
