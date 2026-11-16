@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 480">
+<rect width="820" height="480" fill="white"/>
+<g font-family="sans-serif" fill="#172b42"><text x="25" y="30" font-size="20" font-weight="bold">PX1 A25 — CAD solid envelope, XZ / Y intervals</text>
+<text x="25" y="52" font-size="13">CadQuery solid bounds; assumed mm. Z50 shown as a cylinder, NOT teeth.</text></g>
+<line x1="35" y1="170" x2="790" y2="170" stroke="#888" stroke-dasharray="6 5"/>
+<rect x="118.0" y="132.5" width="102.0" height="75.0" fill="#91c5de" stroke="#245778" stroke-width="2"/>
+<circle cx="265.0" cy="170" r="18" fill="#f0c68a" stroke="#945a20" stroke-width="2"/>
+<circle cx="265.0" cy="170" r="112.5" fill="none" stroke="#a54686" stroke-width="2" stroke-dasharray="8 5"/>
+<g font-family="sans-serif" font-size="14"><text x="124" y="113">Motor Ø25</text><text x="290" y="175">Shaft Ø12</text><text x="310" y="77">Z50 envelope Ø75</text><text x="25" y="330">Y intervals (mm):</text></g>
+<line x1="120" y1="375" x2="700" y2="375" stroke="#777"/>
+<rect x="285.0" y="350" width="150.0" height="22" fill="#91c5de" stroke="#245778"/>
+<rect x="504.0" y="390" width="36.0" height="22" fill="#e4b3d1" stroke="#a54686"/>
+<g font-family="sans-serif" font-size="13"><text x="25" y="367">Motor</text><text x="25" y="406">Gear</text><text x="25" y="449">Motor–gear Y gap: 11.5 mm. Motor–shaft X separating gap: 9.0 mm.</text><text x="25" y="469">CAD boolean: motor/shaft = 0; motor/gear = 0; gear/shaft overlap intentional.</text></g></svg>

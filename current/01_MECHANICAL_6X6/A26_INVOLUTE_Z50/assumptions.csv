@@ -1,0 +1,7 @@
+parameter,value,status,verification
+module_mm,1.5,ASSUMED,confirm with frozen baseline and mating gear
+teeth,50,BASELINE,AGENTS.md
+pressure_angle_deg,20,ASSUMED,check gear pair drawings
+profile_shift,0,ASSUMED,mesh contact and undercut study
+root_fillet,not modeled,NEEDS_PHYSICAL_CHECK,add tool root geometry
+bore,not modeled,NEEDS_PHYSICAL_CHECK,check shaft and key interface
