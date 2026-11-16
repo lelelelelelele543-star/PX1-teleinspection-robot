@@ -1,0 +1,7 @@
+parameter,nominal_mm,assumed_half_tolerance_mm,status,verification
+bearing_width_each,8.0,0.10,ASSUMED,confirm exact manufacturer part and tolerance
+spacer_width_each,2.0,0.05,ASSUMED,machining drawing and inspection
+gear_width,8.0,0.10,ASSUMED,measure produced gear
+retainer_face_span,28.60,0.15,ASSUMED,verify DIN 471 grooves and axial stack
+bearing_inner_race_contact,,,NEEDS_PHYSICAL_CHECK,confirm spacer face OD contacts only inner race
+pressure_seal,,,NEEDS_PHYSICAL_CHECK,validate pressure-rated dynamic seal separately
