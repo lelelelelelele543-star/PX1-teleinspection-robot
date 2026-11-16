@@ -1,0 +1,7 @@
+item,value,status,reason,verification
+shaft diameter,12 mm,ASSUMED,prior A36 baseline,measure purchased bearing shaft fit
+shaft length,42 mm,ASSUMED,A36 baseline,full chassis assembly
+groove root diameter,11 mm,ASSUMED,A36 preliminary,verify DIN 471 manufacturer groove chart
+groove width,1.1 mm,ASSUMED,A36 preliminary,verify ring thickness and groove tolerance
+groove centers,+/-15 mm,ASSUMED,A36 clearance,check bearing and shim stack
+seal,not modeled,NEEDS_PHYSICAL_CHECK,0.7 bar target requires rated solution,select rated seal and bench test
