@@ -49,7 +49,7 @@ def render(d):
 <text x="28" y="32" font-size="21" font-weight="bold">PX1 A33 — X150 axial tolerance stack</text>
 <text x="28" y="55" font-size="13">Parametric 2D dimension diagram; ALL dimensions assumed, mm</text>
 {''.join(shapes)}
-<text x="28" y="280" font-size="14">Stack: 28.00 ± 0.50 mm; retainer-face span: 28.60 ± 0.15 mm</text>
+<text x="28" y="280" font-size="14">Stack: 28.00 ± 0.40 mm; retainer-face span: 28.60 ± 0.15 mm</text>
 <text x="28" y="303" font-size="14" font-weight="bold">Worst-case axial clearance: 0.05 … 1.15 mm (nominal 0.60)</text>
 <text x="28" y="327" font-size="12">Red faces represent idealized retainers, NOT DIN 471 groove geometry.</text>
 <text x="28" y="345" font-size="12">Bearing inner-race contact, preload, clip deformation, gear backlash: NOT validated.</text>
