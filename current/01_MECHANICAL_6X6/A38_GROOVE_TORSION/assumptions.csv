@@ -1,0 +1,7 @@
+parameter,value,classification,reason,verification
+shaft_diameter_mm,12,ASSUMED,Inherited A37,Check actual A37 solid
+root_diameter_mm,11,ASSUMED,Inherited A37 unverified groove,Verify DIN471 supplier data
+width_mm,1.1,ASSUMED,Inherited A37,Verify DIN471 supplier data
+torque_cases_Nm,5/10/20,ASSUMED,Sensitivity sweep not motor rated torque,Calculate from motor gear train and wheel traction
+stress_concentration_Kt,NOT_APPLIED,UNVERIFIED,No groove fillet radius or material known,FEA with measured radius and fatigue load
+pressure_seal,NOT_MODELED,UNVERIFIED,Separate sealing issue,Select pressure-rated gland and validate
