@@ -1,0 +1,12 @@
+id,parameter,value_mm,classification,reason,verification
+A31-01,shaft_diameter,12,ASSUMED,continuity with A30,verify actual shaft and fit
+A31-02,bearing_outer_diameter,28,ASSUMED,A30 bearing candidate not confirmed,manufacturer catalog SKU
+A31-03,bearing_width,8,ASSUMED,A30 bearing candidate not confirmed,manufacturer catalog SKU
+A31-04,gear_axial_range,0..8,ASSUMED,A28 Z50 model,compare current CAD
+A31-05,left_bearing_range,-9..-1,DESIGN_TARGET,1 mm offset from rotating gear,3D boolean and tolerance stack
+A31-06,right_bearing_range,9..17,DESIGN_TARGET,1 mm offset from rotating gear,3D boolean and tolerance stack
+A31-07,left_spacer_range,-1..-0.5,DESIGN_TARGET,0.5 mm spacer thickness,verify inner-race contact and retaining feature
+A31-08,right_spacer_range,8.5..9,DESIGN_TARGET,0.5 mm spacer thickness,verify inner-race contact and retaining feature
+A31-09,spacer_outer_diameter,17,ASSUMED,clear of 28 mm outer race,confirm bearing inner-race OD
+A31-10,minimum_gear_face_clearance,0.5,DESIGN_TARGET,avoid A30 gear-bearing contact,3D collision and tolerance analysis
+A31-11,shaft_axial_range,-12..20,ASSUMED,provisional axial envelope,verify housing and circlip locations
