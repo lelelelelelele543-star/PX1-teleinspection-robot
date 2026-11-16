@@ -1,0 +1,5 @@
+parameter,value,status,verification
+gear,Z50 m1.5,ASSUMED,mesh and metrology
+motor diameter,25 mm,ASSUMED,manufacturer datasheet
+motor axis,along Y at X55 Z4,ASSUMED,integrated CAD
+shaft diameter,12 mm,ASSUMED,bearing and fit selection
