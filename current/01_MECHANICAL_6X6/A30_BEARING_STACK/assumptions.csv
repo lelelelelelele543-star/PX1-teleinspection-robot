@@ -1,0 +1,8 @@
+item,value,status,reason,verification
+X150 shaft diameter,12 mm,ASSUMED,Inherited A29,Check shaft load and fits
+Candidate bearing envelope,12x28x8 mm,ASSUMED,Compact conceptual ring; no manufacturer rating asserted,Verify SKF/NSK catalogue and RF stock
+Front bearing axial extent,-8 to 0 mm,ASSUMED,Adjacent to gear front face,Check retaining shoulder and tolerance stack
+Rear bearing axial extent,12 to 20 mm,ASSUMED,Adjacent to gear hub end,Check axial retention and housing
+Gear axial extent,0 to 12 mm,DERIVED_FROM_A29,8 mm web plus 4 mm hub,Validate CAD assembly
+Shaft axial extent,-9 to 21 mm,DERIVED_FROM_A29,Existing A29 primitive,Recalculate for circlips and assembly
+Pressure seal,not included,OPEN,0.4-0.7 bar requires qualified seal,Select pressure-rated seal and verify groove

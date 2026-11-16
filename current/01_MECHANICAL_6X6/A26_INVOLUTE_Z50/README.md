@@ -1,0 +1,3 @@
+# A26 Z50 involute tooth outline
+
+Run `python px1_a26.py` to generate `outline.csv` and `px1_a26_preview.svg` from the same analytical coordinates. The geometry is a **2D design assumption**, not a verified gear, FreeCAD solid or STEP. This is a deliberate correction to A25: its Ø75 cylinder represented the **pitch** diameter, while the assumed module 1.5 mm gear has Ø78 addendum diameter. Next: extrude and boolean-check against housing and motors with real root fillets and hub; verify module against current drivetrain baseline. Test PASS locally for 50 teeth, pitch thickness, tip/root diameters; SKIPPED full solid test.
