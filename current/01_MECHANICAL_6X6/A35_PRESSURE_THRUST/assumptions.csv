@@ -1,0 +1,5 @@
+parameter,value,confidence,reason,verification
+shaft_diameter_mm,12,ASSUMED,A34 X150 design,verify against full CAD
+pressure_bar,0.4..0.7,DESIGN_TARGET,user requirement,bench test after safe fixture design
+effective_pressure_diameter_mm,12,ASSUMED,simplified projected shaft area,derive from final wetted cavity geometry
+screening_multiplier,2,ASSUMED,preliminary load comparison only,validate with standards and actual retaining-ring catalog
