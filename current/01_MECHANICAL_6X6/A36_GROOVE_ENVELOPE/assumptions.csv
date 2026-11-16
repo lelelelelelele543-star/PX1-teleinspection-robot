@@ -1,0 +1,7 @@
+parameter,value_mm,status,reason,verification
+shaft_diameter,12,ASSUMED,continuity with A35,measure or freeze CAD shaft
+groove_root_diameter,11,ASSUMED,exploratory radial section,verify manufacturer DIN471 data
+groove_width,1.1,ASSUMED,exploratory axial section,verify manufacturer DIN471 data
+groove_centres,+-15,ASSUMED,nominal 1mm away from bearing outer edge,stack tolerance analysis
+bearing_envelope,12x28x8,ASSUMED,continuity with A30,manufacturer datasheet
+seal_pressure_bar,0.7,DESIGN_TARGET,user requirement,qualified pressure-seal datasheet and physical test
