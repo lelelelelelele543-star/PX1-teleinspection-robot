@@ -1,0 +1,6 @@
+parameter,value,classification,rationale,verification
+shaft_diameter_mm,8,ASSUMED,initial envelope,torque and bearing fits
+bearing_ID_OD_width_mm,8x22x7,ASSUMED,generic ring envelope,primary catalogue
+motor_ends_x_mm,L120 R215,DERIVED_FROM_A49_ASSUMPTIONS,previous layout,3D motor model
+bearing_center_x_mm,234,DERIVED_FROM_A49_ASSUMPTIONS,previous support,3D collision check
+rear_station_x_mm,250,PROJECT_BASELINE,X250 station,CAD baseline
