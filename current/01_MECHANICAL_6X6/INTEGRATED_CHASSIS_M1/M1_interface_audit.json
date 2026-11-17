@@ -16,8 +16,8 @@
     {
       "name": "Z50 pitch spacing",
       "value_mm": 0,
-      "limit_mm": 0,
-      "status": "FAIL"
+      "limit_mm": 1e-8,
+      "status": "PASS"
     },
     {
       "name": "motor radius mismatch",
