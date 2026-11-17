@@ -7,7 +7,7 @@ def evaluate(torque_nm, kb=2.0, kt=2.0):
     fr=ft*math.tan(alpha)
     resultant=math.hypot(ft,fr)
     reaction=resultant/2
-    moment_nm=reaction*span/4/1000
+    moment_nm=reaction*span/2/1000
     sigma=kb*32*moment_nm*1000/(math.pi*d**3)
     tau=kt*16*torque_nm*1000/(math.pi*d**3)
     vm=math.hypot(sigma,math.sqrt(3)*tau)
