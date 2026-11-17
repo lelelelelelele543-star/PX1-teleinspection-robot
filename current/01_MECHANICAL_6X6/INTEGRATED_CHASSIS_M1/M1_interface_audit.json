@@ -1,0 +1,64 @@
+{
+  "basis": "PR81 M1 source; assumed proxy dimensions",
+  "checks": [
+    {
+      "name": "DN150 wheel bound",
+      "value_mm": 72.801,
+      "limit_mm": 75,
+      "status": "PASS"
+    },
+    {
+      "name": "wheel spacing",
+      "value_mm": 32,
+      "limit_mm": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "Z50 pitch spacing",
+      "value_mm": 0,
+      "limit_mm": 0,
+      "status": "FAIL"
+    },
+    {
+      "name": "motor radius mismatch",
+      "value_mm": 1,
+      "limit_mm": 0,
+      "status": "FAIL"
+    },
+    {
+      "name": "bearing/wheel axial clearance",
+      "value_mm": -3,
+      "limit_mm": 0,
+      "status": "FAIL"
+    },
+    {
+      "name": "body axle bores count",
+      "value_mm": 0,
+      "limit_mm": 6,
+      "status": "FAIL"
+    },
+    {
+      "name": "motor/Z50 actual gap",
+      "value_mm": 1,
+      "limit_mm": 2,
+      "status": "FAIL"
+    },
+    {
+      "name": "motor roof gap",
+      "value_mm": 8,
+      "limit_mm": 0,
+      "status": "PASS"
+    }
+  ],
+  "NOT_RUN": [
+    "FreeCAD Boolean",
+    "STEP export/reopen",
+    "real teeth",
+    "seal qualification"
+  ],
+  "PHYSICAL_CHECK": [
+    "bearings",
+    "pressure",
+    "pipe debris"
+  ]
+}
