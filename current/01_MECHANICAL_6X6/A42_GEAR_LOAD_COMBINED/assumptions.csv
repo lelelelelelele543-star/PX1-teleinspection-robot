@@ -1,0 +1,9 @@
+parameter,value,status,reason,verification
+gear_module_mm,1.5,ASSUMED,previous A41 scenario,confirm CAD gear
+gear_teeth,50,DESIGN TARGET,approved Z50,check CAD mesh
+bearing_span_mm,24,ASSUMED,A41 support separation,check CAD coordinates
+groove_root_diameter_mm,11,ASSUMED,A37 preliminary groove,verify DIN 471 supplier
+pressure_angle_deg,20,ASSUMED,common spur gear angle,check gear specification
+Kt_bending,2,ASSUMED,sensitivity scenario,fillet radius FEA
+Kt_torsion,2,ASSUMED,sensitivity scenario,fillet radius FEA
+torque_Nm,10,ASSUMED,load scenario,measure motor gearbox
