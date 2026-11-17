@@ -1,0 +1,7 @@
+metric,mm,confidence
+motor_diameter,25,ASSUMED
+motor_length,65,ASSUMED
+plate_inner_y,22.5,A15_BASELINE
+axis_abs_y,8.5,DESIGN_TARGET
+lateral_clearance,1.5,PASS_2D
+axial_gap,30,PASS_2D
