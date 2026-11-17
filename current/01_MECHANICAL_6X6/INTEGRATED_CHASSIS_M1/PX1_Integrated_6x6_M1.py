@@ -9,7 +9,7 @@ D=App.newDocument("PX1_Integrated_6x6_M1")
 P=dict(body_L=307.,body_W=80.,body_H=70.,wall=5.,wheel_D=78.,wheel_W=18.,
        stations=(-110.,0.,110.),gear_x=(-110.,-55.,0.,55.,110.),
        gear_m=1.1,gear_z=-5.,gear_y=32.,gear_thick=6.,axle_D=10.,
-       motor_D=24.,motor_L=62.,motor_z=10.,motor_y=18.,
+       motor_D=22.,motor_L=62.,motor_z=10.,motor_y=16.,
        pressure_bar_min=0.4,pressure_bar_max=0.7)
 parts=[]
 def add(name,shape,color):
@@ -28,8 +28,8 @@ gasket=Part.makeBox(174,79,2,V(-87,-39.5,34)).cut(Part.makeBox(168,73,2,V(-84,-3
 add("Lid_gasket_PROXY",gasket,(0.18,0.64,0.35))
 for side,s in (("L",-1),("R",1)):
     # Motors face rear wheel station; avoid center axle at X=0 by raising motor axes.
-    add("Motor_"+side+"_ENVELOPE",cyl(12,62,(35,s*18,10),(1,0,0)),(0.22,0.32,0.4))
-    add("Motor_shaft_"+side,cyl(4,16,(97,s*18,10),(1,0,0)),(0.8,0.7,0.3))
+    add("Motor_"+side+"_ENVELOPE",cyl(12,62,(35,s*16,10),(1,0,0)),(0.22,0.32,0.4))
+    add("Motor_shaft_"+side,cyl(4,16,(97,s*16,10),(1,0,0)),(0.8,0.7,0.3))
     # Five Z50 stations per side. m=1.1 design assumption -> 55 mm pitch diameter and 55 mm centers.
     for j,x in enumerate(P["gear_x"]):
         gy=s*32
@@ -45,7 +45,7 @@ for side,s in (("L",-1),("R",1)):
         else:
             add("Idler_stub_"+side+"_"+str(j),cyl(5,13,(x,s*25,-5),(0,s,0)),(0.7,0.73,0.76))
     # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
-    add("Bevel_Z16_PROXY_"+side,cyl(12,8,(101,s*18,10),(1,0,0)),(0.85,0.5,0.18))
+    add("Bevel_Z16_PROXY_"+side,cyl(12,8,(101,s*16,10),(1,0,0)),(0.85,0.5,0.18))
     add("Bevel_Z40_PROXY_"+side,cyl(30,8,(110,s*24,-5),(0,s,0)),(0.85,0.5,0.18))
 # Analytical envelope checks; not a substitute for FreeCAD Boolean collision tests.
 wheel_gap=(P["stations"][1]-P["stations"][0])-P["wheel_D"]
@@ -62,6 +62,13 @@ assert wheel_radial_envelope<=75, "Wheel violates DN150 circular envelope"
 assert body_radial_envelope<=75, "Body violates DN150 circular envelope"
 assert abs(gear_gap)<1e-8, "Z50 pitch mismatch"
 assert motor_top <= P["body_H"]/2-P["wall"], "Motor above inner roof"
+motor_to_spur_y_clearance = P["gear_y"]-P["gear_thick"]/2-(P["motor_y"]+P["motor_D"]/2)
+motor_pair_y_clearance = 2*P["motor_y"]-P["motor_D"]
+assert motor_to_spur_y_clearance >= 2, "Motor intersects Z50 spur envelope"
+assert motor_pair_y_clearance >= 2, "Traction motors collide across centerline"
+print("PASS motor/spur Y clearance", motor_to_spur_y_clearance,
+      "mm; left/right motor clearance", motor_pair_y_clearance, "mm")
+print("NOT_RUN bevel-to-motor, bearings-to-wheel, lid seal, complete 3D booleans")
 assert len([o for o in parts if o.Name.startswith("Wheel_L_") or o.Name.startswith("Wheel_R_")])==6
 print("PASS wheel clearance",wheel_gap,"mm; Z50 pitch",gear_pitch,"mm; motor top",motor_top,"mm; DN150 radial wheel",wheel_radial_envelope,"mm; body",body_radial_envelope,"mm")
 print("NOT_RUN bevel contact, real teeth, bearing fits, pressure seals, volumetric interference")
