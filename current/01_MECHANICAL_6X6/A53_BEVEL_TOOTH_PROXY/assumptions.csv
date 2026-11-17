@@ -1,0 +1,5 @@
+parameter,value,confidence,reason,verification
+module_mm,1.5,ASSUMED,A52 design target,Check gear geometry
+face_width_mm,8,ASSUMED,Less than one third cone distance,Contact and stress validation
+teeth,16/40,DESIGN_TARGET,AGENTS.md drivetrain baseline,Validate full drivetrain
+radial_sector_flanks,proxy_only,ASSUMED,Fast geometry envelope,Replace with conjugate bevel geometry

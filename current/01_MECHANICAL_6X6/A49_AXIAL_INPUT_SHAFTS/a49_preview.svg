@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="520" viewBox="0 0 1180 520">
+<rect width="1180" height="520" fill="#f8fafc"/>
+<text x="40" y="42" font-size="24" font-family="sans-serif">PX1 A49 — axial extension shaft packaging (ASSUMED)</text>
+<rect x="95" y="90" width="917.4" height="315" fill="#e2e8f0" stroke="#64748b"/>
+<line x1="920" y1="85" x2="920" y2="420" stroke="#dc2626" stroke-width="3" stroke-dasharray="8 5"/>
+<rect x="276.5" y="140" width="214.5" height="44" rx="7" fill="#0369a1"/>
+<text x="383.75" y="168" fill="white" font-size="17" text-anchor="middle">Motor L</text>
+<line x1="491" y1="162" x2="920" y2="162" stroke="#a16207" stroke-width="8"/>
+<rect x="491" y="147" width="39.599999999999994" height="30" fill="#f59e0b" stroke="#92400e"/>
+<rect x="855.65" y="128" width="23.099999999999998" height="68" fill="#94a3b8" stroke="#334155"/>
+<text x="705.5" y="220" text-anchor="middle" font-size="17">130 mm</text>
+<rect x="590" y="280" width="214.5" height="44" rx="7" fill="#0f766e"/>
+<text x="697.25" y="308" fill="white" font-size="17" text-anchor="middle">Motor R</text>
+<line x1="804.5" y1="302" x2="920" y2="302" stroke="#a16207" stroke-width="8"/>
+<rect x="804.5" y="287" width="39.599999999999994" height="30" fill="#f59e0b" stroke="#92400e"/>
+<rect x="855.65" y="268" width="23.099999999999998" height="68" fill="#94a3b8" stroke="#334155"/>
+<text x="862.25" y="360" text-anchor="middle" font-size="17">35 mm</text>
+<text x="40" y="449" font-size="17">Brown: Ø8 assumed shaft; orange: 12 mm coupling; gray: 7 mm support bearing</text>
+<text x="40" y="479" font-size="16" fill="#9a3412">2D axial clearance only. NOT MODELED: bevel teeth, mounting, shaft bending, pressure seals, collisions.</text>
+<text x="40" y="503" font-size="15">All geometry is design assumption, NOT measured Mini-Cam dimensions.</text></svg>
