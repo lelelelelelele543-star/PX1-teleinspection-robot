@@ -16,7 +16,7 @@ def check(name,actual,limit,op="ge",detail=""):
 wheel_radial=math.hypot(58,44)
 check("DN150 wheel bounding envelope",wheel_radial,75,"le","Nominal 150mm internal diameter ASSUMED")
 check("Adjacent wheel clearance",110-78,0)
-check("Z50 pitch spacing",55-50*1.1,0)
+check("Z50 pitch spacing",abs(55-50*1.1),1e-8,"le")
 # Existing M1 creates motor cylinder with literal radius 12 although P motor_D=22.
 check("Motor radius matches parameter",abs(12-P["motor_D"]/2),0,"le","M1 code uses cyl(12,62), not P['motor_D']/2")
 # M1 creates a bearing cylinder from y=36 to 43, and wheel from y=40 to 58.
