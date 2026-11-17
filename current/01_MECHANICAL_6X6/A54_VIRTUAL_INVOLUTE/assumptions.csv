@@ -1,0 +1,5 @@
+parameter,value,confidence,reason,verification
+module_mm,1.5,ASSUMED,A51-A53 baseline,gear supplier specification
+pressure_angle_deg,20,ASSUMED,common preliminary angle,verify cutter specification
+face_width_mm,8,ASSUMED,A52 baseline,contact and strength evaluation
+virtual_tooth_equivalent,z/cos(delta)^3,DERIVED,bevel virtual spur approximation,3D bevel contact model
