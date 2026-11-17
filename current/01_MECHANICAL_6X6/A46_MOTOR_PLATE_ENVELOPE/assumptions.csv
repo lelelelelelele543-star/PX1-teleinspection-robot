@@ -1,0 +1,5 @@
+parameter,value_mm,status,reason,verification
+motor_diameter,25,ASSUMED,A15 reference motor,manufacturer STEP
+motor_axis_y,13.5,ASSUMED,A15 reference spacing,full CAD
+plate_inner_y,22.5,DERIVED_A15,plate centre 25.5 and thickness 6,CAD section
+clearance_target,1.5,DESIGN_TARGET,preliminary clearance,tolerance and fastener study
