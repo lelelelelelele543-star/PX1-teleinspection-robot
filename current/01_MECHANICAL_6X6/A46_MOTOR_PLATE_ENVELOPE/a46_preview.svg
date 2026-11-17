@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="510" viewBox="0 0 820 510">
+<rect width="820" height="510" fill="#fafafa"/>
+<text x="30" y="40" font-family="sans-serif" font-size="22">PX1 A46 - Motor / plate cross-section</text>
+<text x="30" y="66" font-family="sans-serif" font-size="14">Parametric 2D envelope, ASSUMED motor Ø25; not CAD solid</text>
+<rect x="125" y="140" width="60" height="235" fill="#bfccd7" stroke="#324a5d" stroke-width="2"/>
+<rect x="635" y="140" width="60" height="235" fill="#bfccd7" stroke="#324a5d" stroke-width="2"/>
+<circle cx="275" cy="255" r="125" fill="#e2a66e" fill-opacity=".65" stroke="#ad5b24" stroke-width="2"/>
+<circle cx="545" cy="255" r="125" fill="#e2a66e" fill-opacity=".65" stroke="#ad5b24" stroke-width="2"/>
+<line x1="135" x2="135" y1="105" y2="390" stroke="#228b65" stroke-width="2" stroke-dasharray="8 5"/>
+<line x1="685" x2="685" y1="105" y2="390" stroke="#228b65" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="30" y="425" font-family="sans-serif" font-size="16">Existing plate inner faces: ±22.5 mm; motors reach ±26 mm</text>
+<text x="30" y="450" font-family="sans-serif" font-size="16" fill="#9b3c25">INTERFERENCE: 3.5 mm per side</text>
+<text x="30" y="475" font-family="sans-serif" font-size="16" fill="#187253">DESIGN TARGET: inner faces ±27.5 mm, nominal gap 1.5 mm</text>
+</svg>
