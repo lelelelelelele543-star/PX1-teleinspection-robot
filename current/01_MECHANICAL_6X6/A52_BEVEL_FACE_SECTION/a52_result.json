@@ -1,0 +1,21 @@
+{
+  "status": "PASS_GEOMETRY_ONLY",
+  "assumed_module_mm": 1.5,
+  "pinion_teeth": 16,
+  "wheel_teeth": 40,
+  "assumed_face_mm": 8,
+  "cone_distance_mm": 32.31098884280703,
+  "outer_pitch_radii_mm": [
+    12,
+    30
+  ],
+  "inner_pitch_radii_mm": [
+    9.028874589167172,
+    22.572186472917927
+  ],
+  "pitch_angles_deg": [
+    21.80140948635181,
+    68.19859051364818
+  ],
+  "warning": "No tooth profile, CAD solid, contact analysis or manufacturing approval"
+}
