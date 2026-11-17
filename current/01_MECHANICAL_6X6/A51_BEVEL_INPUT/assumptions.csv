@@ -1,0 +1,8 @@
+parameter,value,status,reason,verification
+shaft_angle_deg,90,ASSUMED,Longitudinal motor shaft to transverse rear axle,Validate full CAD shaft axes
+module_mm,1.5,ASSUMED,Previous Z16 Z40 input baseline,Check bevel gear supplier catalog and tooth design
+z_pinion,16,BASELINE,AGENTS.md frozen input,Confirm detailed CAD geometry
+z_wheel,40,BASELINE,AGENTS.md frozen input,Confirm detailed CAD geometry
+cone_distance_mm,32.310989,DERIVED,Right angle bevel pitch geometry,Verify CAD pitch cones
+tooth_profile,not_created,UNVERIFIED,Pitch cone not sufficient to machine teeth,Generate real bevel involute and inspect contact
+mounting,not_created,UNVERIFIED,Bearing shoulders and backlash not designed,Build 3D assembly and interference test
