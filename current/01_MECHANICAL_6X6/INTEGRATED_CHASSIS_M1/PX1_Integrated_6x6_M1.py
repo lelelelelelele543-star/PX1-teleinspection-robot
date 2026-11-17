@@ -6,7 +6,7 @@ import FreeCAD as App, Part, math, os
 from FreeCAD import Vector as V
 ROOT=os.path.dirname(os.path.abspath(__file__))
 D=App.newDocument("PX1_Integrated_6x6_M1")
-P=dict(body_L=307.,body_W=92.,body_H=70.,wall=5.,wheel_D=105.,wheel_W=18.,
+P=dict(body_L=307.,body_W=80.,body_H=70.,wall=5.,wheel_D=78.,wheel_W=18.,
        stations=(-110.,0.,110.),gear_x=(-110.,-55.,0.,55.,110.),
        gear_m=1.1,gear_z=-5.,gear_y=32.,gear_thick=6.,axle_D=10.,
        motor_D=24.,motor_L=62.,motor_z=10.,motor_y=18.,
@@ -36,12 +36,12 @@ for side,s in (("L",-1),("R",1)):
         # Pitch solids are intentionally NOT teeth or manufactured gears.
         add("Z50_pitch_PROXY_"+side+"_"+str(j+1),cyl(27.5,6,(x,gy-3,-5),(0,1,0)),(0.75,0.42,0.19))
         if j%2==0:
-            add("Wheel_axle_"+side+"_"+str(j//2+1),cyl(5,43,(x,s*29,-5),(0,s,0)),(0.77,0.78,0.79))
+            add("Wheel_axle_"+side+"_"+str(j//2+1),cyl(5,29,(x,s*29,-5),(0,s,0)),(0.77,0.78,0.79))
             # Bearing 10x22x7: geometry proxy, not manufacturer verification.
-            bp=(x,s*43,-5)
+            bp=(x,s*36,-5)
             add("Bearing_PROXY_"+side+"_"+str(j//2+1),
                 cyl(11,7,bp,(0,s,0)).cut(cyl(5,7,bp,(0,s,0))),(0.92,0.72,0.28))
-            add("Wheel_"+side+"_"+str(j//2+1),cyl(52.5,18,(x,s*60,-5),(0,s,0)),(0.11,0.14,0.18))
+            add("Wheel_"+side+"_"+str(j//2+1),cyl(P['wheel_D']/2,18,(x,s*40,-5),(0,s,0)),(0.11,0.14,0.18))
         else:
             add("Idler_stub_"+side+"_"+str(j),cyl(5,13,(x,s*25,-5),(0,s,0)),(0.7,0.73,0.76))
     # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
@@ -53,10 +53,17 @@ gear_pitch=P["gear_m"]*50
 gear_gap=(P["gear_x"][1]-P["gear_x"][0])-gear_pitch
 motor_top=P["motor_z"]+P["motor_D"]/2
 assert wheel_gap>=0, "Adjacent wheels overlap"
+# Conservative wheel bounding rectangle in YZ, DN150, including full rim width.
+wheel_outer_y=40+P["wheel_W"]
+wheel_z_extent=max(abs(-5-P["wheel_D"]/2),abs(-5+P["wheel_D"]/2))
+wheel_radial_envelope=math.hypot(wheel_outer_y,wheel_z_extent)
+body_radial_envelope=math.hypot(P["body_W"]/2,P["body_H"]/2)
+assert wheel_radial_envelope<=75, "Wheel violates DN150 circular envelope"
+assert body_radial_envelope<=75, "Body violates DN150 circular envelope"
 assert abs(gear_gap)<1e-8, "Z50 pitch mismatch"
 assert motor_top <= P["body_H"]/2-P["wall"], "Motor above inner roof"
 assert len([o for o in parts if o.Name.startswith("Wheel_L_") or o.Name.startswith("Wheel_R_")])==6
-print("PASS wheel clearance",wheel_gap,"mm; Z50 pitch",gear_pitch,"mm; motor top",motor_top,"mm")
+print("PASS wheel clearance",wheel_gap,"mm; Z50 pitch",gear_pitch,"mm; motor top",motor_top,"mm; DN150 radial wheel",wheel_radial_envelope,"mm; body",body_radial_envelope,"mm")
 print("NOT_RUN bevel contact, real teeth, bearing fits, pressure seals, volumetric interference")
 D.recompute()
 D.saveAs(os.path.join(ROOT,"PX1_Integrated_6x6_M1.FCStd"))
