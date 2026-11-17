@@ -1,0 +1,5 @@
+parameter,value,confidence,reason,verification
+module_mm,1.5,ESTIMATED,A51 inherited,gear supplier
+teeth,16/40,DESIGN_TARGET,AGENTS.md,contact CAD
+face_mm,8,ESTIMATED,A52 inherited,stress analysis
+axes_deg,90,DESIGN_TARGET,rear input,assembly CAD

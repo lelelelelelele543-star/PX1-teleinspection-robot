@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="620">
+<rect width="920" height="620" fill="#101827"/>
+<text x="30" y="42" fill="white" font-size="24">PX1 A57 — orthogonal bevel pitch cones</text>
+<text x="30" y="70" fill="#aebdd0">ASSUMED: m1.5, Z16/Z40, face 8 mm; NOT tooth CAD</text>
+<line x1="90.00" y1="310.00" x2="570.00" y2="310.00" stroke="#8899aa" stroke-width="2"/>
+<line x1="450.00" y1="470.00" x2="450.00" y2="-2.00" stroke="#8899aa" stroke-width="2"/>
+<line x1="450.00" y1="310.00" x2="269.42" y2="382.23" stroke="#e8a65c" stroke-width="2"/>
+<line x1="269.42" y1="382.23" x2="210.00" y2="406.00" stroke="#e8a65c" stroke-width="7"/>
+<line x1="450.00" y1="310.00" x2="269.42" y2="237.77" stroke="#e8a65c" stroke-width="2"/>
+<line x1="269.42" y1="237.77" x2="210.00" y2="214.00" stroke="#e8a65c" stroke-width="7"/>
+<line x1="450.00" y1="310.00" x2="269.42" y2="237.77" stroke="#55c5d5" stroke-width="2"/>
+<line x1="269.42" y1="237.77" x2="210.00" y2="214.00" stroke="#55c5d5" stroke-width="7"/>
+<line x1="450.00" y1="310.00" x2="630.58" y2="237.77" stroke="#55c5d5" stroke-width="2"/>
+<line x1="630.58" y1="237.77" x2="690.00" y2="214.00" stroke="#55c5d5" stroke-width="7"/>
+<circle cx="450" cy="310" r="5" fill="white"/>
+<text x="75" y="285" fill="#e8a65c">Z16 INPUT</text>
+<text x="470" y="110" fill="#55c5d5">Z40 OUTPUT</text>
+<text x="30" y="510" fill="white">R=32.311 mm; pitch angles 21.801 / 68.199 degrees</text>
+<text x="30" y="545" fill="#aebdd0">No teeth, hubs, bearings, motors or housing represented. No contact validation.</text>
+</svg>
