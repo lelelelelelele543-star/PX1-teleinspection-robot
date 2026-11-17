@@ -1,0 +1,5 @@
+parameter,value_mm,classification,reason,verification
+shaft_diameter,8,ASSUMED,continuity with A50,verify selected bearings and torque
+input_shaft_end_x,-10,ASSUMED,avoid orthogonal shaft intersection,3D CAD hub overlap test
+output_shaft_start_y,10,ASSUMED,avoid orthogonal shaft intersection,3D CAD hub overlap test
+face_width,8,ASSUMED,continuity with A52,gear contact and strength study
