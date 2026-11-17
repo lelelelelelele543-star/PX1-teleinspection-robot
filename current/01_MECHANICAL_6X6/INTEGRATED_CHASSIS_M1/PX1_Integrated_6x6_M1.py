@@ -45,7 +45,7 @@ for side,s in (("L",-1),("R",1)):
         else:
             add("Idler_stub_"+side+"_"+str(j),cyl(5,13,(x,s*25,-5),(0,s,0)),(0.7,0.73,0.76))
     # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
-    add("Bevel_Z16_PROXY_"+side,cyl(12,8,(101,s*18,10),(1,0,0)),(0.85,0.5,0.18))
+    add("Bevel_Z16_PROXY_"+side,cyl(12,8,(101,s*16,10),(1,0,0)),(0.85,0.5,0.18))
     add("Bevel_Z40_PROXY_"+side,cyl(30,8,(110,s*24,-5),(0,s,0)),(0.85,0.5,0.18))
 # Analytical envelope checks; not a substitute for FreeCAD Boolean collision tests.
 wheel_gap=(P["stations"][1]-P["stations"][0])-P["wheel_D"]
