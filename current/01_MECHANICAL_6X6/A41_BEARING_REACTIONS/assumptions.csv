@@ -1,0 +1,8 @@
+parameter,value,unit,confidence,reason,verification
+T,10,Nm,ASSUMED,screening load,measure motor gearbox stall torque
+module,1.5,mm,ASSUMED,prior drivetrain design,check current gear CAD
+Z,50,teeth,BASELINE,AGENTS.md,verify gear model
+pressure_angle,20,deg,ASSUMED,common spur gear design,verify cutter profile
+bearing_span,24,mm,ASSUMED,screening geometry,check X150 solid assembly
+gear_load_x,12,mm,ASSUMED,centered gear,verify assembled coordinates
+support_model,simple supports,,ASSUMED,first-order reactions,FEA with bearing compliance
