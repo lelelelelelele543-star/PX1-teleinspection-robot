@@ -1,0 +1,23 @@
+{
+  "basis": "Design assumptions only; calculations reproduced in JavaScript",
+  "checks": {
+    "motor_diameter_mm": 22,
+    "motor_y_clearance_mm": 2,
+    "bearing_wheel_gap_mm": 2,
+    "bearing_pocket_depth_mm": 3,
+    "axle_bore_diameter_mm": 11,
+    "axle_bore_count": 6,
+    "wheel_dn150_radial_mm": 72.80109889280517,
+    "wheel_pipe_margin_mm": 2.1989011071948283
+  },
+  "status": {
+    "motor_spur_y": "PASS_ANALYTICAL",
+    "bearing_wheel_axial": "PASS_ANALYTICAL",
+    "axle_bore_count": "PASS_SOURCE_INSPECTION",
+    "freecad_execution": "NOT_RUN",
+    "boolean_collision": "NOT_RUN",
+    "step_export_reopen": "NOT_RUN",
+    "pressure_seal": "PHYSICAL_CHECK"
+  },
+  "limitations": "Bearing seats are proxy counterbores; 3D mating and seals not validated. Gear teeth still proxy solids."
+}
