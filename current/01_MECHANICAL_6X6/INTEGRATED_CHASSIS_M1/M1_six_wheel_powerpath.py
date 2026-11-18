@@ -50,24 +50,47 @@ def audit():
  ])
  return {"model":"PX1 M1 conceptual power-path", "assumptions":ASSUMPTIONS,"nodes":sorted(nodes),"edges":[{"a":a,"b":b,"interface":k} for a,b,k in edges],"results":results}
 def svg():
- s=['<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="490" viewBox="0 0 1100 490">','<rect width="1100" height="490" fill="#f8fafc"/>','<style>text{font:15px sans-serif;fill:#172033}.h{font:bold 23px sans-serif}.note{font:13px sans-serif;fill:#526077}.gear{fill:#ffe4b5;stroke:#9a5c0a;stroke-width:2}.wheel{fill:#d1fae5;stroke:#176b4b;stroke-width:2}.motor{fill:#dbeafe;stroke:#2563eb;stroke-width:2}line{stroke:#334155;stroke-width:3}</style>','<text x="30" y="37" class="h">PX1 M1 | Six-wheel torque-path diagram (assumed)</text>','<text x="30" y="60" class="note">Connectivity and nominal ratio only. NOT a mechanical drawing, CAD render or proof of meshing.</text>']
+ """Two complete directed torque paths. Every Z50 station and wheel is drawn."""
+ import html
+ s=['<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="570" viewBox="0 0 1360 570">',
+ '<rect width="1360" height="570" fill="#f8fafc"/>',
+ '<style>text{font:15px sans-serif;fill:#172033}.h{font:bold 23px sans-serif}.note{font:13px sans-serif;fill:#526077}.gear{fill:#ffe4b5;stroke:#9a5c0a;stroke-width:2}.wheel{fill:#d1fae5;stroke:#176b4b;stroke-width:2}.motor{fill:#dbeafe;stroke:#2563eb;stroke-width:2}line{stroke:#334155;stroke-width:3}</style>',
+ '<text x="30" y="38" class="h">PX1 M1 | Full 6-wheel conceptual torque path</text>',
+ '<text x="30" y="62" class="note">Topology only, not spatial CAD: 5 Z50 per side, 3 wheels per side. All couplings assumed, tooth contact NOT_RUN.</text>']
  for row,side in enumerate(("L","R")):
-  y=135+row*205
-  s.append(f'<text x="30" y="{y+8}">{side} side</text>')
-  xs=[155,285,415,545,675,805,935]
-  for i in range(6):s.append(f'<line x1="{xs[i]+30}" y1="{y}" x2="{xs[i+1]-30}" y2="{y}"/>')
-  labels=["Motor","Z16","Z40","Z50@250","Z50@200","Z50@150","Z50@100"]
+  y=145+row*230
+  xs=[120,250,380,530,680,830,980,1130]
+  labels=["Motor","Z16","Z40","Z50@250","Z50@200","Z50@150","Z50@100","Z50@50"]
+  s.append(f'<text x="25" y="{y-43}" class="h">{side} side</text>')
+  for a,b in zip(xs,xs[1:]):
+   s.append(f'<line x1="{a+47}" y1="{y}" x2="{b-47}" y2="{y}"/>')
   for i,(x,label) in enumerate(zip(xs,labels)):
    cls="motor" if i==0 else "gear"
-   s.append(f'<rect class="{cls}" x="{x-48}" y="{y-23}" width="96" height="46" rx="9"/><text x="{x}" y="{y+5}" text-anchor="middle">{label}</text>')
-  s.append(f'<text x="325" y="{y-40}" class="note">bevel mesh</text><text x="600" y="{y-40}" class="note">rigid hub + spur meshes (assumed)</text>')
-  for x,station in [(545,250),(805,150),(935,50)]:
-   s.append(f'<line x1="{x}" y1="{y+24}" x2="{x}" y2="{y+64}"/><rect class="wheel" x="{x-47}" y="{y+64}" width="94" height="32" rx="8"/><text x="{x}" y="{y+85}" text-anchor="middle">Wheel {station}</text>')
-  s.append(f'<text x="960" y="{y+6}" class="note">Z50@50</text>')
- s.append('<text x="30" y="475" class="note">ASSUMPTIONS: 2 motors; 5 Z50/side; 16:40 input = 2.5:1; no pressure or tooth contact validation.</text></svg>')
- return "\n".join(s)
+   s.append(f'<rect class="{cls}" x="{x-49}" y="{y-24}" width="98" height="48" rx="8"/>')
+   s.append(f'<text x="{x}" y="{y+5}" text-anchor="middle">{html.escape(label)}</text>')
+  for x,station in ((530,250),(830,150),(1130,50)):
+   s.append(f'<line x1="{x}" y1="{y+24}" x2="{x}" y2="{y+72}"/>')
+   s.append(f'<rect class="wheel" x="{x-50}" y="{y+72}" width="100" height="34" rx="8"/>')
+   s.append(f'<text x="{x}" y="{y+94}" text-anchor="middle">Wheel {station}</text>')
+  s.append(f'<text class="note" x="250" y="{y-39}">Z16/Z40 bevel assumed</text>')
+  s.append(f'<text class="note" x="595" y="{y-39}">Z40/Z50 rigid hub + 4 spur meshes assumed</text>')
+ s.append('<text x="30" y="550" class="note">DESIGN ASSUMPTIONS: X stations 50/100/150/200/250 mm; 16:40 = 2.5:1; NOT_RUN: actual gears, bearings, pressure seals, 3D interference.</text>')
+ s.append('</svg>')
+ return "\\n".join(s)
+def test_svg():
+ """Fail if diagram omits, duplicates or mislabels any power-path station."""
+ import xml.etree.ElementTree as ET
+ root=ET.fromstring(svg())
+ texts=[(node.text or "") for node in root.iter() if node.tag.endswith("text")]
+ for label in ("Z50@250","Z50@200","Z50@150","Z50@100","Z50@50",
+               "Wheel 250","Wheel 150","Wheel 50","Z16","Z40","Motor"):
+  assert texts.count(label)==2, (label,texts.count(label))
+ assert len([node for node in root.iter() if node.attrib.get("class")=="wheel"])==6
+ assert len([node for node in root.iter() if node.attrib.get("class")=="gear"])==14
+ return True
 if __name__=="__main__":
  result=audit()
+ assert test_svg(), "SVG power-path layout mismatch"
  (ROOT/"M1_six_wheel_powerpath.json").write_text(json.dumps(result,indent=2),encoding="utf-8")
  (ROOT/"M1_six_wheel_powerpath.svg").write_text(svg(),encoding="utf-8")
  print(json.dumps({r["status"]:sum(x["status"]==r["status"] for x in result["results"]) for r in result["results"]},indent=2))
