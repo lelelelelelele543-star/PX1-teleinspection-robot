@@ -25,7 +25,9 @@ lid_opening=Part.makeBox(170,60,12,V(-85,-30,29))
 for xx in P["stations"]:
     for sign in (-1,1):
         outer=outer.cut(cyl(5.5,12,(xx,sign*34,0),(0,sign,0)))
-        outer=outer.cut(cyl(11,3,(xx,sign*35,0),(0,sign,0)))
+        # Bearing 10x22x7 occupies Y=34..41; cut full 5 mm shell wall (34..39).
+        # Previous Y=35..38 pocket left 2 mm of rigid shell/bearing interference.
+        outer=outer.cut(cyl(11,5,(xx,sign*34,0),(0,sign,0)))
 add("Body_hollow_ASSUMED",outer.cut(inner).cut(lid_opening),(0.64,0.69,0.73))
 # Separate lid is a design envelope; cut aperture into top before production release.
 add("Lid_ASSUMED",Part.makeBox(178,68,4,V(-89,-34,36)),(0.18,0.4,0.62))
@@ -87,6 +89,16 @@ assert 35 == P["body_H"]/2, "Gasket does not sit on top of shell"
 print("PASS nominal static clearances wheel/body",wheel_body_side_gap,"gear/inner-wall",gear_inner_wall_gap,"gear/bottom",gear_bottom_gap,"mm")
 print("PASS motor/spur Y clearance", motor_to_spur_y_clearance,
       "mm; left/right motor clearance", motor_pair_y_clearance, "mm")
+# Bearing seat coverage: full shell thickness, not merely a shallow counterbore.
+bearing_start=34.0
+bearing_length=7.0
+shell_outer=P["body_W"]/2
+shell_inner=shell_outer-P["wall"]
+seat_start=34.0
+seat_depth=5.0
+assert seat_start <= shell_inner and seat_start+seat_depth >= shell_outer, "Bearing shell interference: incomplete counterbore"
+assert bearing_start <= shell_inner and bearing_start+bearing_length >= shell_outer, "Bearing does not span wall"
+print("PASS nominal bearing counterbore covers full sidewall; 2 mm bearing protrusion is intentional")
 bearing_wheel_axial_clearance=43-(34+7)
 assert bearing_wheel_axial_clearance>=2, "Bearing-to-wheel axial clearance below target"
 assert P["motor_D"]==22, "Motor CAD diameter mismatch"
