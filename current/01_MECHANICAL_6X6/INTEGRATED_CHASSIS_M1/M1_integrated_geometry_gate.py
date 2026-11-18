@@ -9,7 +9,7 @@ tree=ast.parse(src)
 params=None
 for node in tree.body:
     if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=="P" for t in node.targets):
-        params=ast.literal_eval(node.value)
+        params={kw.arg:ast.literal_eval(kw.value) for kw in node.value.keywords} if isinstance(node.value,ast.Call) and isinstance(node.value.func,ast.Name) and node.value.func.id=='dict' else ast.literal_eval(node.value)
         break
 assert params is not None
 P=params
