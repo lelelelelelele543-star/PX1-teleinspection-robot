@@ -53,7 +53,7 @@ for side,s in (("L",-1),("R",1)):
             sp=(x,s*41,P["gear_z"])
             add("Shaft_seal_CARTRIDGE_PROXY_"+side+"_"+str(j//2+1),
                 cyl(11.5,4,sp,(0,s,0)).cut(cyl(5,4,sp,(0,s,0))),(0.18,0.56,0.48))
-            add("Wheel_"+side+"_"+str(j//2+1),cyl(P['wheel_D']/2,18,(x,s*46,P["gear_z"]),(0,s,0)),(0.11,0.14,0.18))
+            add("Wheel_"+side+"_"+str(j//2+1),cyl(P['wheel_D']/2,P["wheel_W"],(x,s*46,P["gear_z"]),(0,s,0)),(0.11,0.14,0.18))
         else:
             add("Idler_stub_"+side+"_"+str(j),cyl(5,13,(x,s*25,P["gear_z"]),(0,s,0)),(0.7,0.73,0.76))
     # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
@@ -117,6 +117,14 @@ assert 80-(35+P["motor_L"])>=3, "Motor rear-end intersects bevel proxy X envelop
 print("PASS rear motor/bevel X envelope gap",80-(35+P["motor_L"]),"mm; assumed motor L",P["motor_L"],"mm")
 print("PASS nominal shaft-seal axial packaging: 4 mm cartridge + 1 mm wheel clearance; PHYSICAL_CHECK pressure rating and shaft runout")
 print("NOT_RUN bearing bore-to-seat fits, bevel-to-motor actual teeth, lid seal, complete 3D booleans")
+# Integrated actual-solid geometry assertions (not merely parameters).
+for side_label in ("L","R"):
+    wheels=[o for o in parts if o.Name.startswith("Wheel_"+side_label+"_")]
+    assert len(wheels)==3
+    for wheel in wheels:
+        assert abs(wheel.Shape.BoundBox.YLength-P["wheel_W"])<1e-6, "Wheel CAD width differs from wheel_W"
+        assert abs(wheel.Shape.BoundBox.ZLength-P["wheel_D"])<1e-6, "Wheel CAD diameter differs from wheel_D"
+print("PASS actual FreeCAD wheel solid widths and diameters")
 assert len([o for o in parts if o.Name.startswith("Wheel_L_") or o.Name.startswith("Wheel_R_")])==6
 print("PASS wheel clearance",wheel_gap,"mm; Z50 pitch",gear_pitch,"mm; motor top",motor_top,"mm; DN150 radial wheel",wheel_radial_envelope,"mm; body",body_radial_envelope,"mm")
 print("NOT_RUN bevel contact, real teeth, bearing fits, pressure seals, volumetric interference")
