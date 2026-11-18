@@ -48,7 +48,12 @@ for side,s in (("L",-1),("R",1)):
             bp=(x,s*34,P["gear_z"])
             add("Bearing_PROXY_"+side+"_"+str(j//2+1),
                 cyl(11,7,bp,(0,s,0)).cut(cyl(5,7,bp,(0,s,0))),(0.92,0.72,0.28))
-            add("Wheel_"+side+"_"+str(j//2+1),cyl(P['wheel_D']/2,18,(x,s*43,P["gear_z"]),(0,s,0)),(0.11,0.14,0.18))
+            # External shaft seal cartridge between bearing outer face (Y=41) and wheel inner face (Y=46).
+            # Annular solids are packaging proxies only; seal type/pressure rating UNVERIFIED.
+            sp=(x,s*41,P["gear_z"])
+            add("Shaft_seal_CARTRIDGE_PROXY_"+side+"_"+str(j//2+1),
+                cyl(11.5,4,sp,(0,s,0)).cut(cyl(5,4,sp,(0,s,0))),(0.18,0.56,0.48))
+            add("Wheel_"+side+"_"+str(j//2+1),cyl(P['wheel_D']/2,18,(x,s*46,P["gear_z"]),(0,s,0)),(0.11,0.14,0.18))
         else:
             add("Idler_stub_"+side+"_"+str(j),cyl(5,13,(x,s*25,P["gear_z"]),(0,s,0)),(0.7,0.73,0.76))
     # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
@@ -63,7 +68,7 @@ assert P["gear_x"] == tuple(-100.+50.*i for i in range(5)), "AGENTS.md X50..X250
 motor_top=P["motor_z"]+P["motor_D"]/2
 assert wheel_gap>=0, "Adjacent wheels overlap"
 # Conservative wheel bounding rectangle in YZ, DN150, including full rim width.
-wheel_outer_y=43+P["wheel_W"]
+wheel_outer_y=46+P["wheel_W"]
 wheel_z_extent=max(abs(P["gear_z"]-P["wheel_D"]/2),abs(P["gear_z"]+P["wheel_D"]/2))
 wheel_radial_envelope=math.hypot(wheel_outer_y,wheel_z_extent)
 body_radial_envelope=math.hypot(P["body_W"]/2,P["body_H"]/2)
@@ -76,7 +81,7 @@ motor_pair_y_clearance = 2*P["motor_y"]-P["motor_D"]
 assert motor_to_spur_y_clearance >= 2, "Motor intersects Z50 spur envelope"
 assert motor_pair_y_clearance >= 2, "Traction motors collide across centerline"
 # Integrated static clearance gates; conservative envelopes, not 3D Boolean validation.
-wheel_body_side_gap = 43 - P["body_W"]/2
+wheel_body_side_gap = 46 - P["body_W"]/2
 gear_inner_wall_gap = P["body_W"]/2 - P["wall"] - (P["gear_y"] + P["gear_thick"]/2)
 gear_bottom_gap = P["gear_z"] - P["gear_m"]*50/2 - (-P["body_H"]/2+P["wall"])
 assert wheel_body_side_gap >= 1, "Wheel touches outer shell"
@@ -99,13 +104,13 @@ seat_depth=5.0
 assert seat_start <= shell_inner and seat_start+seat_depth >= shell_outer, "Bearing shell interference: incomplete counterbore"
 assert bearing_start <= shell_inner and bearing_start+bearing_length >= shell_outer, "Bearing does not span wall"
 print("PASS nominal bearing counterbore covers full sidewall; 2 mm bearing protrusion is intentional")
-bearing_wheel_axial_clearance=43-(34+7)
-assert bearing_wheel_axial_clearance>=2, "Bearing-to-wheel axial clearance below target"
+bearing_wheel_axial_clearance=46-(34+7)
+assert bearing_wheel_axial_clearance>=5, "Bearing-to-wheel axial clearance below seal cartridge target"\nassert 4+1 <= bearing_wheel_axial_clearance, "Seal cartridge + axial service clearance does not fit"\nassert math.hypot(46+P["wheel_W"],P["wheel_D"]/2) <= 75, "External seal packaging violates DN150 wheel envelope"
 assert P["motor_D"]==22, "Motor CAD diameter mismatch"
 print("PASS design envelope: motor Ø",P["motor_D"],"bearing-to-wheel axial gap",bearing_wheel_axial_clearance,"mm")
 assert 80-(35+P["motor_L"])>=3, "Motor rear-end intersects bevel proxy X envelope"
 print("PASS rear motor/bevel X envelope gap",80-(35+P["motor_L"]),"mm; assumed motor L",P["motor_L"],"mm")
-print("NOT_RUN bearing bore-to-seat fits, bevel-to-motor actual teeth, lid seal, complete 3D booleans")
+print("PASS nominal shaft-seal axial packaging: 4 mm cartridge + 1 mm wheel clearance; PHYSICAL_CHECK pressure rating and shaft runout")\nprint("NOT_RUN bearing bore-to-seat fits, bevel-to-motor actual teeth, lid seal, complete 3D booleans")
 assert len([o for o in parts if o.Name.startswith("Wheel_L_") or o.Name.startswith("Wheel_R_")])==6
 print("PASS wheel clearance",wheel_gap,"mm; Z50 pitch",gear_pitch,"mm; motor top",motor_top,"mm; DN150 radial wheel",wheel_radial_envelope,"mm; body",body_radial_envelope,"mm")
 print("NOT_RUN bevel contact, real teeth, bearing fits, pressure seals, volumetric interference")
