@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="660" viewBox="0 0 1120 660">
+<rect width="1120" height="660" fill="#f7f9fc"/>
+<text x="40" y="48" font-size="25" font-family="sans-serif" fill="#13243a">PX1 M1 — interface audit / design assumptions</text>
+<text x="40" y="76" font-size="15" font-family="sans-serif">2D geometry derived from current FreeCAD generator; NOT a CAD render</text>
+<text x="40" y="113" font-size="19" font-family="sans-serif">YZ cross-section / tube Ø150</text>
+<circle cx="280" cy="340" r="195" fill="none" stroke="#2479ad" stroke-width="4"/>
+<rect x="176" y="249" width="208" height="182" fill="#bbc5d1" fill-opacity=".5" stroke="#53677e" stroke-width="2"/>
+<text x="222" y="342" font-size="16" font-family="sans-serif">BODY</text>
+<circle cx="152.6" cy="353" r="101.4" fill="#2f3a4c" fill-opacity=".2" stroke="#202e42" stroke-width="2"/>
+<circle cx="407.4" cy="353" r="101.4" fill="#2f3a4c" fill-opacity=".2" stroke="#202e42" stroke-width="2"/>
+<text x="40" y="585" font-size="15" font-family="sans-serif">Wheel Y envelope ±58 mm, Z center −5 mm; conservative radius 72.80 mm</text>
+<text x="620" y="113" font-size="19" font-family="sans-serif">Critical axial interfaces</text>
+<text x="620" y="151" font-size="16" font-family="sans-serif">Motor → spur: 2 mm (PASS target)</text>
+<text x="620" y="184" font-size="16" font-family="sans-serif" fill="#b42318">Wheel → body: 0 mm (FAIL target 1 mm)</text>
+<text x="620" y="217" font-size="16" font-family="sans-serif" fill="#b42318">Spur → inner wall: 0 mm (FAIL target 1 mm)</text>
+<text x="620" y="250" font-size="16" font-family="sans-serif">Bearing → wheel: 2 mm (PASS target)</text>
+<text x="620" y="299" font-size="17" font-family="sans-serif">NOT_RUN: 3D booleans, teeth, bevel, seals, STEP</text>
+<text x="620" y="343" font-size="15" font-family="sans-serif">Suggested next integrated revision:</text>
+<text x="620" y="372" font-size="15" font-family="sans-serif">Move wheel outward 1–2 mm, then recalc DN150.</text>
+<text x="620" y="401" font-size="15" font-family="sans-serif">Move gear inward or add wall recess and verify.</text>
+<text x="620" y="430" font-size="15" font-family="sans-serif">Recheck bearing/axle engagement and pressure seal.</text>
+<text x="40" y="630" font-size="14" font-family="sans-serif" fill="#5a6777">Source: PX1_Integrated_6x6_M1_interface_repair.py; analytical audit, not manufacturing approval.</text>
+</svg>
