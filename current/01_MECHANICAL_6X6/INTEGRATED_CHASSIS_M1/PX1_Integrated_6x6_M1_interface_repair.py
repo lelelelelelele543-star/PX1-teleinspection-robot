@@ -90,7 +90,8 @@ assert bearing_wheel_axial_clearance>=2, "Bearing-to-wheel axial clearance below
 assert P["motor_D"]==22, "Motor CAD diameter mismatch"
 print("PASS design envelope: motor Ø",P["motor_D"],"bearing-to-wheel axial gap",bearing_wheel_axial_clearance,"mm")
 assert 80-(35+P["motor_L"])>=3, "Motor rear-end intersects bevel proxy X envelope"
-print("PASS rear motor/bevel X envelope gap",80-(35+P["motor_L"]),"mm; assumed motor L",P["motor_L"],"mm")\nprint("NOT_RUN bearing bore-to-seat fits, bevel-to-motor actual teeth, lid seal, complete 3D booleans")
+print("PASS rear motor/bevel X envelope gap",80-(35+P["motor_L"]),"mm; assumed motor L",P["motor_L"],"mm")
+print("NOT_RUN bearing bore-to-seat fits, bevel-to-motor actual teeth, lid seal, complete 3D booleans")
 assert len([o for o in parts if o.Name.startswith("Wheel_L_") or o.Name.startswith("Wheel_R_")])==6
 print("PASS wheel clearance",wheel_gap,"mm; Z50 pitch",gear_pitch,"mm; motor top",motor_top,"mm; DN150 radial wheel",wheel_radial_envelope,"mm; body",body_radial_envelope,"mm")
 print("NOT_RUN bevel contact, real teeth, bearing fits, pressure seals, volumetric interference")
