@@ -2,14 +2,14 @@
 M01;Корпус;1;CRP150 корпус DRW375;≈278×68×64;DRW375;MILL;GRAPHIC_APPROX;H02 H03
 M02;Боковая крышка;2;FAL-002-062;≈262×60×7;DRW374;MILL;GRAPHIC_APPROX;H02 H03
 M03;Фланец оси;6;FSS-002-061;OD≈50;DRW374;TURN;GRAPHIC_APPROX;H02 H03
-M04;Короткая ось;4;FSS-002-063;ступени12/17/18 длиныHOLD;DRW374;TURN;GRAPHIC_APPROX;H02
+M04;Передняя короткая ось;2;FSS-002-063;X50 absY23..60.9 stepped12/17/18 HOLD;DRW374;TURN;GRAPHIC_APPROX;H02
 M05;Длинная ось;2;FSS-002-064;задняяX250 соединениеHOLD;DRW374;TURN;GRAPHIC_APPROX;H02 H04
 M06;ВалZ40;2;FSS-002-066 family;10/18 socket12 provisional;DRW375;TURN;ADAPTATION;H02 H04
 M07;ВалZ16;2;FSS-002-083 family;6/12 длиныHOLD;DRW386;TURN;ADAPTATION;H04 H05
-M08;Парный держатель моторов;1;PX1-25D-HOLDER;52.8×30×3 отверстия2×2M3/17;Pololu dimension diagram;MILL;ADAPTATION;H05
+M08;Парный держатель моторов;1;PX1-RF25-HOLDER;52.8×30×3 отверстия2×2M3/17;JGA25 family 17mm mounting pattern / CAD estimate;MILL;ADAPTATION;H05 exact motor variant and screw engagement unqualified
 M09;Держатель опорZ16;1;PX1-PINION-HOLDER;52.8×26×5;DRW386 topology;MILL;ADAPTATION;H04 H05
-M10;Разрезная переходная втулка;2;PX1-SPLIT-6-4;OD6 ID4 L8;NBK/Pololu interfaces;TURN;ADAPTATION;H05
-M11;Палец холостойZ50;4;PX1 idler pin;10 длинаHOLD;DRW374;TURN;GRAPHIC_APPROX;H02
+M10;Разрезная переходная втулка;2;PX1-SPLIT-6-4;OD6 ID4 L8;NBK / RF25 shaft4 estimated interface;TURN;ADAPTATION;H05
+M11;Палец холостойZ50;4;PX1 idler pin;D10 L7 absY27..34;DRW374;TURN;ESTIMATED;H02 press fit/retention/strength unqualified
 G01;Z50 на осях;6;GEA-002-529;Z50 B4 m1 inferred;DRW374;GEAR;ANALYTIC_20DEG_HOLD;H04
 G02;Z50 холостая;4;GEA-002-528;Z50 B4 m1 inferred;DRW374;GEAR;ANALYTIC_20DEG_HOLD;H04
 G03;Z40;2;GEA-002-530;Z40 m1 inferred;DRW375;GEAR;CONICAL_ENVELOPE;H04
@@ -18,7 +18,7 @@ B01;Подшипник61801;4;BEA-002-701 /61801-2RS;12×21×5;DRW374+386;BUY;BO
 B02;Подшипник61903;6;BEA-002-704 /61903-2RS;17×30×7;DRW374;BUY;BOUNDARY;ПосадкиH02
 B03;Подшипник61800;2;61800-2RS;10×19×5;DRW375;BUY;BOUNDARY;ПосадкиH02
 B04;Втулка холостой шестерни;4;BEA-002-537;10-12-4;DRW374;BUY;BOUNDARY;H02
-B05;Втулка средней оси;2;source12-14-4;12-14-4;DRW375;BUY;BOUNDARY;H02
+B05;Втулка средней оси;2;PX1 middle bush 12-14-3;ID12 OD14 W3, absY26.8..29.8;integrated CAD engineering estimate;STUDY;ESTIMATED;H02 bearing pressure/wear/retention unqualified
 B06;Стальная втулка лифта;4;source8-10-4.5;8-10-4.5;DRW375;BUY;NOT_MODELLED;H06
 S01;X-ring колесной оси;6;SEA-002-526 /QRAR04116 N7004 reference;18.72×2.62;DRW374/TrelleborgTable8;BUY;INSTALLED_ENVELOPE;H03
 S02;СальникZ40;2;18-30-7 профиль/материалHOLD;18×30×7;DRW375;BUY;BOUNDARY;H03
@@ -31,14 +31,14 @@ S08;O-ring клапана;1;metric6×1.5;6×1.5;DRW745;BUY;NOT_MODELLED;H03
 S09;O-ring клапана;2;metric3×1;3×1;DRW745;BUY;NOT_MODELLED;H03
 S10;O-ring колпачка;1;metric10×1.5;10×1.5;DRW745;BUY;NOT_MODELLED;H03
 S11;O-ring лифта;2;metric15×2.5;15×2.5;DRW744;BUY;NOT_MODELLED;H03
-P01;Тяговый двигатель;2;Pololu5707 99:1 HP24V;Ø25×53.8 shaft4×12.5;https://www.pololu.com/product/5707;BUY;MANUFACTURER_STEP;H05 монтаж НЕ совместим по текущему screen
+P01;Тяговый двигатель;2;JGA25-370B 24V 77rpm FIT CANDIDATE;motor24.4x40 gearbox25x25 shaft4x10 estimated;https://compacttool.ru/motor-reduktor-jga25-370b-24v-1226-77-obmin;STUDY;SELLER_ENVELOPE_ESTIMATED;H05 NOT QUALIFIED: rated torque below target, ratio/shaft conflict
 P02;Муфта;2;NBKMLR-20C-6-6;Ø20×24 bores6/6;NBK manufacturer;BUY;BOUNDARY;H05
 P03;Колесо;6;MiniCamQRW90SR/150;Ø90 остальноеHOLD;MiniCam catalog;BUY;PHOTO_APPROX;H01
 L01;PRESSURE-крышка;1;DRW745/PX1;≈158×53×7;DRW745;MILL;GRAPHIC_APPROX;H03
 L02;Боковой рычаг;2;FSS-002-068;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06
 L03;Центральное звено;1;ASS-002-723;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06
 L04;Основание лифта;1;FAL-002-067 family;присоединенияHOLD;DRW744;MILL;GRAPHIC_APPROX;H06
-L05;Кронштейн камеры;1;PX1/source interface;HOLD;DRW752;MILL;GRAPHIC_APPROX;H06 H08
+L05;Кронштейн камеры;1;PX1/source interface;plate122x50x5, camera setback52, clevis eye(47,16,102);integrated CAD estimate from existing DRW752 topology;MILL;ESTIMATED;H06 H08 stiffness/balance/camera mount unqualified
 L06;Газовая пружина;1;ACEGS-12-80-V4A F1=150N candidate;Ø12/4 stroke80 bare192;ACEGS12 catalog;BUY;BOUNDARY;H06 наконечники
 L07;Рычаг ручного зажима;1;FIX-002-527 family;M8 корпусHOLD;DRW744;BUY;GRAPHIC_APPROX;H06
 L08;Ось зажима;1;FSS-002-089;HOLD;DRW744;TURN;NOT_MODELLED;H06
@@ -128,3 +128,5 @@ PR01;Защита жгута для примерки;1;PX1_Lift_Harness_Guard_PR
 PR02;Макет держателя моторов;1;PX1_Motor_Holder_FitCheck_ONLY.stl;52.8×30×3;M08;PRINT;DESIGN;FIT_CHECK_ONLY
 PR03;МакетPRESSUREкрышки;1;PX1_PRESSURE_Cover_FitCheck_ONLY.stl;158×53×7;L01;PRINT;DESIGN;FIT_CHECK_ONLY
 PR04;Макет боковой крышки;1;PX1_Side_Cover_FitCheck_ONLY.stl;262×60×7;M02;PRINT;DESIGN;FIT_CHECK_ONLY
+M04C;Средняя короткая ось;2;PX1 middle axle;X150 absY26.8..60.9 stepped12/17/18 HOLD;integrated CAD estimate;TURN;ESTIMATED;H02 strength/retention unqualified
+L17;Палец проушины газовой пружины;1;PX1 gas clevis pin;D4 L11;integrated CAD estimate;TURN;ESTIMATED;H06 retention/load unqualified

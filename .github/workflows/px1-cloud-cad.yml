@@ -22,11 +22,16 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install CadQuery
-        run: python -m pip install 'cadquery>=2.6,<3'
+        run: python -m pip install 'cadquery==2.7.0' pillow
       - name: Build real STEP, registry and CAD-derived outline
         env:
           PX1_CLOUD_OUT: ${{ runner.temp }}/px1_cloud
         run: bash scripts/cloud/build_current.sh
+      - name: Verify exported STEP and sampled gear motion
+        run: python scripts/cloud/check_integrated.py "${{ runner.temp }}/px1_cloud" --roundtrip
+      - name: Render actual CAD surfaces
+        if: always()
+        run: python scripts/cloud/render_model.py "${{ runner.temp }}/px1_cloud"
       - name: Upload geometry, QA and view (even if build fails)
         if: always()
         uses: actions/upload-artifact@v4
@@ -39,5 +44,8 @@ jobs:
             ${{ runner.temp }}/px1_cloud/PX1_Current_Validation.json
             ${{ runner.temp }}/px1_cloud/component_registry.json
             ${{ runner.temp }}/px1_cloud/cloud_build_summary.json
+            ${{ runner.temp }}/px1_cloud/integrated_checks.json
+            ${{ runner.temp }}/px1_cloud/images/*.png
+            ${{ runner.temp }}/px1_cloud/images/render_manifest.json
             ${{ runner.temp }}/px1_cloud/px1_side_envelope.svg
             ${{ runner.temp }}/px1_cloud/logs/*.log

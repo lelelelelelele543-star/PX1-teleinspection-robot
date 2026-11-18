@@ -1,5 +1,11 @@
 # A0 traction procurement shortlist
 
+> Update 2026-11-17: user excludes FAULHABER for RF availability. The FAULHABER
+> path below is historical, not the active procurement decision. See
+> `current/08_PROCUREMENT/RF_MOTOR_CANDIDATES_20261117.md` and the change log.
+> The integrated brushed motor is a fit/bench candidate, not a qualified traction selection.
+
+
 Only items needed to close the next physical gate are listed here.
 
 ## Use / source first

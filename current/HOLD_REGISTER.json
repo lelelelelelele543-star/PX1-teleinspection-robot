@@ -30,7 +30,7 @@
   {
     "blocks": "Моторная плита, соединение валов, тяга и ресурс",
     "id": "H05",
-    "required": "STEP Pololu5707 найден, Ø25×53.8, вал4×12.5. Предварительный CAD выявил конфликт с осью X150. Наличие у разрешённых продавцов не подтверждено.",
+    "required": "FAULHABER excluded by user 2026-11-17. RF JGA25-370B envelope integrated for fit/bench only; seller/manufacturer ratio and shaft data conflict; published rated torque below project target. Traction motor, coupling retention, mounting and thermal/current endurance remain unqualified.",
     "title": "Монтаж двигателей",
     "unresolved_dimension_label": "ТРЕБУЕТСЯ ЗАМЕР / РАЗМЕРНЫЙ ИСТОЧНИК. Это статус отсутствия данных, не поручение пользователю."
   },

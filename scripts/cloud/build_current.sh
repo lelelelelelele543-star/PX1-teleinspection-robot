@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Rebuild the existing, 146-component current master with CadQuery in an isolated output tree.
+# Rebuild the current integrated master with CadQuery in an isolated output tree.
 set -Eeuo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 OUT="${PX1_CLOUD_OUT:-${REPO}/_cloud_build}"

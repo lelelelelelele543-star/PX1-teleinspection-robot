@@ -48,3 +48,29 @@ directly resolves a blocker in this assembled model.
 This pipeline does not convert the STEP into native `FCStd` automatically,
 does not certify tooth geometry or water/pressure tightness, and does not
 launch Codex by itself. A user must publish/authorize a Codex environment.
+
+## Integrated verification (2026-11-18)
+
+The active master uses the RF JGA25 brushed motor **fit candidate** described in
+`current/08_PROCUREMENT/RF_MOTOR_CANDIDATES_20261117.md`, not a qualified traction
+selection. FAULHABER is excluded by the user. The prior 146-part count is historical;
+the expected wheel/gear/motor counts remain enforced.
+
+After `build_current.sh`, run:
+
+```sh
+python scripts/cloud/check_integrated.py _cloud_build --roundtrip
+python scripts/cloud/render_model.py _cloud_build
+```
+
+The first command fails on rigid/wheel collisions, invalid geometry, boolean
+errors, source-hash mismatch, sampled Z50 interference or STEP roundtrip changes.
+It retains seal/thread/bevel contact HOLDs and separately reports DN150 and
+service-path limitations. It does not qualify manufacturing or actual traction.
+The second command renders the actual saved triangle mesh with a depth buffer,
+using numpy/Pillow and `cc`, without FreeCAD, a display, or generative images.
+`images/render_manifest.json` records source, mesh and image hashes and hidden
+components for the drivetrain view. The bounding-box SVG remains only an outline.
+
+Validated release evidence is indexed in `current/09_RELEASE/integrated_20261117/`.
+Historical PDFs, part drawings and old illustrations are not current release evidence.

@@ -1,0 +1,25 @@
+Cannot create cache home directory: '/home/agent/.cache/ezdxf', cache files will not be saved.
+See also issue https://github.com/mozman/ezdxf/issues/923.
+{
+  "status": "PASS_REQUESTED_CAD_SCREENS_WITH_RELEASE_HOLD",
+  "checks": {
+    "counts_match_frozen_architecture": true,
+    "wheel_stations_preserved": true,
+    "gear_stations_preserved": true,
+    "component_ids_unique": true,
+    "source_matches_current_master": true,
+    "valid_shapes": true,
+    "boolean_errors_absent": true,
+    "no_excluded_pairs": true,
+    "all_pairs_enumerated": true,
+    "component_count_matches": true,
+    "no_rigid_or_wheel_or_unknown_clashes": true,
+    "manufacturing_release_remains_false": true,
+    "step_exists": true,
+    "spur_sampled_screen": true,
+    "step_roundtrip": true
+  },
+  "blocking_interferences": 0,
+  "unqualified_contacts": 20,
+  "report": "/workspace/PX1/_final_build/integrated_checks.json"
+}

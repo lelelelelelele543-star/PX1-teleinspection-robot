@@ -1,0 +1,4 @@
+# Preserve CAD kernel exports byte-for-byte; do not generate enormous text diffs.
+current/CAD/**/*.step binary
+current/CAD/*.step binary
+current/CAD/**/*.stl binary

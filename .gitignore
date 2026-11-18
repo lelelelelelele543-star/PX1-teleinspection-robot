@@ -5,3 +5,9 @@ current/PX1_Current_Package.zip
 
 # Local, possibly sensitive autonomous-agent logs
 .px1-agent/
+
+# Isolated CAD builds; verified deliverables are copied into current/.
+_cloud_build/
+_integrated_build/
+_source_match_build/
+_final_build/

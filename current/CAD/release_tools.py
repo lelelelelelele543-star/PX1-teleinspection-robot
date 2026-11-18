@@ -68,7 +68,7 @@ def finish_build(g):
         'Z50':sum(n.startswith('HOLD_Z50_') for n in shapes),
         'Z40':sum(n.startswith('HOLD_Z40_BEVEL_') for n in shapes),
         'Z16':sum(n.startswith('HOLD_Z16_BEVEL_') for n in shapes),
-        'traction_motor':sum(n.startswith('POLOLU_5707_MOTOR_') for n in shapes),
+        'traction_motor':sum(n.startswith('TRACTION_MOTOR_') for n in shapes),
         '61801_side':sum(n.startswith('61801_SIDE_') for n in shapes),
         '61801_pinion':sum(n.startswith('61801_Z16_') for n in shapes),
         '61903':sum(n.startswith('61903_SIDE_') for n in shapes),
@@ -119,7 +119,7 @@ def finish_build(g):
         return {'status':'BLOCKED' if result else ('ERROR' if error else 'NO_COLLISION_IN_DISCRETE_SCREEN'),
             'motion_mm':delta,'samples':steps,'collisions':result,'errors':error,'release':'HOLD: discrete envelope screen is not a certified service path'}
     body_names=[n for n in shapes if 'PRESSURE_BODY' in n]
-    motor_names=[n for n in shapes if 'POLOLU_5707_MOTOR' in n]
+    motor_names=[n for n in shapes if n.startswith('TRACTION_MOTOR_')]
     rear_names=[n for n in shapes if n.startswith('HOLD_REAR_') or 'REAR_SERVICE_COVER' in n or 'REAR_PANEL' in n or 'MAIN_TETHER' in n]
     motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','SPLIT_ADAPTER')) or categories[n] in ('electronics','electronics_hold')]
     motor_sweep=sweep_check(motor_names,(0,0,80),motor_removed,8)
@@ -137,9 +137,10 @@ def finish_build(g):
         tools.append({'screw_x_mm':x,'screw_y_mm':y,'tool_diameter_mm':6,'approach_mm':60,'collisions':hits,'release':'HOLD: screw/groove/mating dimensions unresolved'})
     gas_sweep=[]
     for deg in range(0,71,2):
-        t=math.radians(deg);m=(g['PIVOT_X']-g['gas_move_s']*math.cos(t),16,g['PIVOT_Z_LOW']+g['gas_move_s']*math.sin(t))
+        t=math.radians(deg);dx=g['moving'][0]-g['PIVOT_X']; dz=g['moving'][2]-g['PIVOT_Z_LOW']
+        m=(g['PIVOT_X']+dx*math.cos(t)+dz*math.sin(t),g['moving'][1],g['PIVOT_Z_LOW']-dx*math.sin(t)+dz*math.cos(t))
         L=math.dist(g['body_pt'],m);gas_sweep.append({'angle_deg':deg,'distance_mm':L,'within_bare_112_to_192':112<=L<=192})
-    val={'revision':'Rev.C 2026-09-14','master':'CAD/PX1_Current_Master.step','source_sha256':hashlib.sha256(Path(g['__file__']).read_bytes()).hexdigest(),
+    val={'revision':'Rev.A integrated CAD 2026-11-17','master':'CAD/PX1_Current_Master.step','source_sha256':hashlib.sha256(Path(g['__file__']).read_bytes()).hexdigest(),
         'status':'HOLD_NOT_MANUFACTURING_RELEASE','source_reference':'Proteus CRP150 DRW-002-374/375/386/744/745/752',
         'counts':counts,'expected_counts':expected,'counts_match':counts==expected,'component_count':len(components),'invalid_shapes':invalid,
         'collision_method':{'all_pairs':allpairs,'boolean_pairs_after_AABB':tested,'excluded_pairs':0,'errors':errors,'volume_threshold_mm3':1e-4},
@@ -151,7 +152,7 @@ def finish_build(g):
         'gas_spring':{'assembled_distance_mm':g['gas_length'],'bare_limits_mm':[112,192],'sampled_angle_checks':gas_sweep,'release':'HOLD H06: end fittings, actual limit angles and physical 150 N balancing'},
         'pressure':{'status':'HOLD H03 H07','cad_is_leak_test':False,'side_cover_window_error_fixed':True,'common_pressure_communication':'requires physical/section verification'},
         'print_outputs':print_validation,'metal_release':False,'part_exports':export_map,
-        'unmodelled_required_items':['complete camera PAN/TILT/lighting/control internals','side-cover static seal installed contour','lift pivot bushings and seals','pressure valve spring and seat detail','SP13 panel half and contact inserts','SP17 cable half and seals','internal six-way service connector','board standoffs and all power terminal insulation','INA226 ready-made modules and branch capacitors/TVS/fuses','circlips, internal gear keys and complete fastening hardware'],
+        'unmodelled_required_items':['complete camera PAN/TILT/lighting/control internals','side-cover static seal installed contour','lift pivot bushings and seals','pressure valve spring and seat detail','SP13 panel half and contact inserts','SP17 cable half and seals','internal six-way service connector','board standoffs and all power terminal insulation','INA226 ready-made modules and branch capacitors/TVS/fuses','motor socket torque transfer and rear connector/lead envelopes','RF-available brushed motor selection, driver current/thermal qualification','circlips, internal gear keys and complete fastening hardware'],
         'holds':json.loads((root/'HOLD_REGISTER.json').read_text())}
     (root/'PX1_Current_Validation.json').write_text(json.dumps(val,ensure_ascii=False,indent=2))
     (root/'component_registry.json').write_text(json.dumps(registry,ensure_ascii=False,indent=2))

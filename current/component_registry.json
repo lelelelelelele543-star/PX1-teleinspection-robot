@@ -16,7 +16,7 @@
       68.0,
       64.0
     ],
-    "volume_mm3": 360762.59181,
+    "volume_mm3": 361747.48111,
     "solids": 1
   },
   {
@@ -108,15 +108,15 @@
       -34.0,
       40.0,
       105.0,
-      -24.0,
+      -27.0,
       50.0
     ],
     "dimensions_mm": [
       10.0,
-      10.0,
+      7.0,
       10.0
     ],
-    "volume_mm3": 785.39816,
+    "volume_mm3": 549.77871,
     "solids": 1
   },
   {
@@ -188,15 +188,15 @@
       -34.0,
       40.0,
       205.0,
-      -24.0,
+      -27.0,
       50.0
     ],
     "dimensions_mm": [
       10.0,
-      10.0,
+      7.0,
       10.0
     ],
-    "volume_mm3": 785.39816,
+    "volume_mm3": 549.77871,
     "solids": 1
   },
   {
@@ -240,23 +240,23 @@
     "solids": 1
   },
   {
-    "id": "MIDDLE_BUSH_12_14_4_-1",
+    "id": "MIDDLE_BUSH_12_14_3_-1",
     "category": "bearing",
     "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
       143.0,
-      -28.0,
+      -29.8,
       38.0,
       157.0,
-      -24.0,
+      -26.8,
       52.0
     ],
     "dimensions_mm": [
       14.0,
-      4.0,
+      3.0,
       14.0
     ],
-    "volume_mm3": 163.36282,
+    "volume_mm3": 122.52211,
     "solids": 1
   },
   {
@@ -448,15 +448,15 @@
       -60.9,
       36.0,
       159.0,
-      -23.0,
+      -26.8,
       54.0
     ],
     "dimensions_mm": [
       18.0,
-      37.9,
+      34.1,
       18.0
     ],
-    "volume_mm3": 6266.65999,
+    "volume_mm3": 5836.89011,
     "solids": 1
   },
   {
@@ -885,7 +885,7 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       95.0,
-      24.0,
+      27.0,
       40.0,
       105.0,
       34.0,
@@ -893,10 +893,10 @@
     ],
     "dimensions_mm": [
       10.0,
-      10.0,
+      7.0,
       10.0
     ],
-    "volume_mm3": 785.39816,
+    "volume_mm3": 549.77871,
     "solids": 1
   },
   {
@@ -965,7 +965,7 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       195.0,
-      24.0,
+      27.0,
       40.0,
       205.0,
       34.0,
@@ -973,10 +973,10 @@
     ],
     "dimensions_mm": [
       10.0,
-      10.0,
+      7.0,
       10.0
     ],
-    "volume_mm3": 785.39816,
+    "volume_mm3": 549.77871,
     "solids": 1
   },
   {
@@ -1020,23 +1020,23 @@
     "solids": 1
   },
   {
-    "id": "MIDDLE_BUSH_12_14_4_1",
+    "id": "MIDDLE_BUSH_12_14_3_1",
     "category": "bearing",
     "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
       143.0,
-      24.0,
+      26.8,
       38.0,
       157.0,
-      28.0,
+      29.8,
       52.0
     ],
     "dimensions_mm": [
       14.0,
-      4.0,
+      3.0,
       14.0
     ],
-    "volume_mm3": 163.36282,
+    "volume_mm3": 122.52211,
     "solids": 1
   },
   {
@@ -1225,7 +1225,7 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       141.0,
-      23.0,
+      26.8,
       36.0,
       159.0,
       60.9,
@@ -1233,10 +1233,10 @@
     ],
     "dimensions_mm": [
       18.0,
-      37.9,
+      34.1,
       18.0
     ],
-    "volume_mm3": 6266.65999,
+    "volume_mm3": 5836.89011,
     "solids": 1
   },
   {
@@ -1760,23 +1760,23 @@
     "solids": 1
   },
   {
-    "id": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
+    "id": "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
     "category": "purchased",
-    "geometry_state": "MANUFACTURER_STEP",
+    "geometry_state": "HOLD",
     "bbox_mm": [
-      137.5,
+      130.5,
       -26.0,
       32.5,
-      208.0,
+      205.5,
       -1.0,
       57.5
     ],
     "dimensions_mm": [
-      70.5,
+      75.0,
       25.0,
       25.0
     ],
-    "volume_mm3": 25392.79717,
+    "volume_mm3": 31166.09138,
     "solids": 1
   },
   {
@@ -1960,27 +1960,27 @@
     "solids": 1
   },
   {
-    "id": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
+    "id": "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
     "category": "purchased",
-    "geometry_state": "MANUFACTURER_STEP",
+    "geometry_state": "HOLD",
     "bbox_mm": [
-      137.5,
+      130.5,
       1.0,
       32.5,
-      208.0,
+      205.5,
       26.0,
       57.5
     ],
     "dimensions_mm": [
-      70.5,
+      75.0,
       25.0,
       25.0
     ],
-    "volume_mm3": 25392.79717,
+    "volume_mm3": 31166.09138,
     "solids": 1
   },
   {
-    "id": "HOLD_PAIRED_MOTOR_HOLDER_25D_ADAPTATION",
+    "id": "HOLD_PAIRED_MOTOR_HOLDER_RF25_FIT_CANDIDATE",
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -2284,7 +2284,7 @@
     "category": "lift",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      11.0,
+      -41.0,
       -25.0,
       67.5,
       81.0,
@@ -2292,11 +2292,31 @@
       111.0
     ],
     "dimensions_mm": [
-      70.0,
+      122.0,
       50.0,
       43.5
     ],
-    "volume_mm3": 23833.58778,
+    "volume_mm3": 37112.76655,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_GAS_SPRING_CLEVIS_PIN",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      45.0,
+      10.5,
+      100.0,
+      49.0,
+      21.5,
+      104.0
+    ],
+    "dimensions_mm": [
+      4.0,
+      11.0,
+      4.0
+    ],
+    "volume_mm3": 138.23008,
     "solids": 1
   },
   {
@@ -2324,17 +2344,17 @@
     "category": "purchased",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      122.85431,
+      122.85291,
       10.0,
-      83.00415,
-      235.22325,
+      83.01429,
+      235.41391,
       22.0,
-      99.16317
+      102.71194
     ],
     "dimensions_mm": [
-      112.36894,
+      112.561,
       12.0,
-      16.15902
+      19.69764
     ],
     "volume_mm3": 12666.90158,
     "solids": 1
@@ -2344,19 +2364,19 @@
     "category": "purchased",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      46.92558,
+      43.0,
       14.0,
-      91.16871,
-      123.15197,
+      94.731,
+      123.40478,
       18.0,
-      97.99862
+      106.0
     ],
     "dimensions_mm": [
-      76.22639,
+      80.40478,
       4.0,
-      6.82991
+      11.269
     ],
-    "volume_mm3": 956.68124,
+    "volume_mm3": 1020.56138,
     "solids": 1
   },
   {
@@ -2384,10 +2404,10 @@
     "category": "camera",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      -58.0,
+      -110.0,
       -31.25,
       38.75,
-      10.0,
+      -42.0,
       31.25,
       101.25
     ],
@@ -2404,10 +2424,10 @@
     "category": "camera",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      -122.0,
+      -174.0,
       -29.0,
       47.0,
-      -60.0,
+      -112.0,
       29.0,
       93.0
     ],
@@ -2424,10 +2444,10 @@
     "category": "camera",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      -121.0,
+      -173.0,
       -25.0,
       45.0,
-      -71.0,
+      -123.0,
       25.0,
       95.0
     ],
@@ -2444,10 +2464,10 @@
     "category": "camera",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      -123.0,
+      -175.0,
       -12.0,
       58.0,
-      -121.0,
+      -173.0,
       12.0,
       82.0
     ],
@@ -2464,10 +2484,10 @@
     "category": "connector",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      16.0,
+      -36.0,
       -11.0,
       59.0,
-      64.0,
+      12.0,
       11.0,
       81.0
     ],
@@ -2484,19 +2504,19 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      63.80248,
-      -0.22,
-      68.16452,
-      187.59368,
-      54.22,
-      91.07406
+      8.0,
+      -1.845,
+      69.78,
+      187.5,
+      -1.405,
+      112.21988
     ],
     "dimensions_mm": [
-      123.79119,
-      54.44,
-      22.90954
+      179.5,
+      0.44,
+      42.43988
     ],
-    "volume_mm3": 36.7937,
+    "volume_mm3": 34.77615,
     "solids": 1
   },
   {
@@ -2504,19 +2524,19 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      63.80248,
-      -0.22,
-      68.81452,
-      187.59368,
-      54.22,
-      91.72406
+      8.0,
+      -1.195,
+      69.78,
+      187.5,
+      -0.755,
+      112.21988
     ],
     "dimensions_mm": [
-      123.79119,
-      54.44,
-      22.90954
+      179.5,
+      0.44,
+      42.43988
     ],
-    "volume_mm3": 36.7937,
+    "volume_mm3": 34.77616,
     "solids": 1
   },
   {
@@ -2524,19 +2544,19 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      63.80248,
-      -0.22,
-      69.46452,
-      187.59368,
-      54.22,
-      92.37406
+      8.0,
+      -0.545,
+      69.78,
+      187.5,
+      -0.105,
+      112.21988
     ],
     "dimensions_mm": [
-      123.79119,
-      54.44,
-      22.90954
+      179.5,
+      0.44,
+      42.43988
     ],
-    "volume_mm3": 36.7937,
+    "volume_mm3": 34.77615,
     "solids": 1
   },
   {
@@ -2544,19 +2564,19 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      63.80248,
-      -0.22,
-      70.11452,
-      187.59368,
-      54.22,
-      93.02406
+      8.0,
+      0.105,
+      69.78,
+      187.5,
+      0.545,
+      112.21988
     ],
     "dimensions_mm": [
-      123.79119,
-      54.44,
-      22.90954
+      179.5,
+      0.44,
+      42.43988
     ],
-    "volume_mm3": 36.79369,
+    "volume_mm3": 34.77615,
     "solids": 1
   },
   {
@@ -2564,19 +2584,19 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      63.80248,
-      -0.22,
-      70.76452,
-      187.59368,
-      54.22,
-      93.67406
+      8.0,
+      0.755,
+      69.78,
+      187.5,
+      1.195,
+      112.21988
     ],
     "dimensions_mm": [
-      123.79119,
-      54.44,
-      22.90954
+      179.5,
+      0.44,
+      42.43988
     ],
-    "volume_mm3": 36.7937,
+    "volume_mm3": 34.77615,
     "solids": 1
   },
   {
@@ -2584,19 +2604,19 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      63.80248,
-      -0.22,
-      71.41452,
-      187.59368,
-      54.22,
-      94.32406
+      8.0,
+      1.405,
+      69.78,
+      187.5,
+      1.845,
+      112.21988
     ],
     "dimensions_mm": [
-      123.79119,
-      54.44,
-      22.90954
+      179.5,
+      0.44,
+      42.43988
     ],
-    "volume_mm3": 36.7937,
+    "volume_mm3": 34.77615,
     "solids": 1
   },
   {
@@ -2604,19 +2624,19 @@
     "category": "cable",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      61.57593,
+      8.0,
       -2.7,
-      67.41683,
-      188.64965,
-      56.7,
-      94.94301
+      67.3,
+      187.5,
+      2.7,
+      114.69855
     ],
     "dimensions_mm": [
-      127.07372,
-      59.4,
-      27.52618
+      179.5,
+      5.4,
+      47.39855
     ],
-    "volume_mm3": 5089.58908,
+    "volume_mm3": 4873.18804,
     "solids": 1
   },
   {
@@ -2626,18 +2646,18 @@
     "bbox_mm": [
       166.0,
       -4.5,
-      84.0,
+      82.2,
       178.0,
       4.5,
-      92.53113
+      89.03113
     ],
     "dimensions_mm": [
       12.0,
       9.0,
-      8.53113
+      6.83113
     ],
-    "volume_mm3": 311.61854,
-    "solids": 1
+    "volume_mm3": 221.51984,
+    "solids": 2
   },
   {
     "id": "WEACT_STM32F446RET6_V11_MANUFACTURER_STEP",

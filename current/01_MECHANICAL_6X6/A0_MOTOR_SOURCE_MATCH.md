@@ -1,5 +1,11 @@
 # A0 motor-source match — ASS-002-386
 
+> Update 2026-11-17: user excludes FAULHABER for RF availability. The FAULHABER
+> path below is historical, not the active procurement decision. See
+> `current/08_PROCUREMENT/RF_MOTOR_CANDIDATES_20261117.md` and the change log.
+> The integrated brushed motor is a fit/bench candidate, not a qualified traction selection.
+
+
 Status: SOURCE TOPOLOGY FROZEN / FINAL MOTOR-GEARHEAD PACKAGE NOT YET RELEASED.
 
 ## What the MiniCam source actually proves

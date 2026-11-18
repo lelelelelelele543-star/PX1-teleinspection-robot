@@ -19,7 +19,8 @@ expected = validation["expected_counts"]
 missing = [name for name, num in expected.items() if counts.get(name) != num]
 invalid = validation.get("invalid_shapes", [])
 step_ok = step_path.is_file() and step_path.stat().st_size > 1024
-geometry_ok = step_ok and not missing and not invalid
+boolean_errors = validation.get('collision_method', {}).get('errors', [])
+geometry_ok = step_ok and not missing and not invalid and not boolean_errors
 clashes = validation.get("interferences", [])
 rigid = [c for c in clashes if c.get("classification") == "RIGID_INTERFERENCE"]
 
@@ -48,7 +49,7 @@ for item in registry:
     if "Z50_" in item["id"] or "Z40_BEVEL" in item["id"] or "Z16_BEVEL" in item["id"]:
         svg.append(circle_shape(item,"#f4b95c"))
 for item in registry:
-    if "MOTOR_" in item["id"] and "MANUFACTURER" in item["id"]:
+    if item["id"].startswith("TRACTION_MOTOR_"):
         svg.append(box_shape(item,"#58c3b4","0.45","#58c3b4"))
 for item in registry:
     if "_QRW90SR150_WHEEL_" in item["id"]:
@@ -68,6 +69,7 @@ summary = {
     "expected_counts": expected,
     "missing_counts": missing,
     "invalid_shapes": invalid,
+    "boolean_errors": boolean_errors,
     "rigid_interference_count": len(rigid),
     "geometry_validation_status": validation.get("status"),
     "pressure_test": "NOT_RUN",

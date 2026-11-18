@@ -1,7 +1,7 @@
 {
-  "revision": "Rev.C 2026-09-14",
+  "revision": "Rev.A integrated CAD 2026-11-17",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "26838d236940acc08c3594090f85fa6bbb30a1b515f4736569a1c882a7621a3f",
+  "source_sha256": "d0c149ac9330c8b9d049be1f8cdbfa7d3497427f3089d91e83783df2ceb2e538",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -31,64 +31,16 @@
     "camera_harness_cores": 6
   },
   "counts_match": true,
-  "component_count": 146,
+  "component_count": 147,
   "invalid_shapes": [],
   "collision_method": {
-    "all_pairs": 10585,
-    "boolean_pairs_after_AABB": 438,
+    "all_pairs": 10731,
+    "boolean_pairs_after_AABB": 345,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
   },
   "interferences": [
-    {
-      "a": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
-      "b": "HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE",
-      "volume_mm3": 4050.667973,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
-      "b": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
-      "volume_mm3": 2.090235,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
-      "b": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
-      "volume_mm3": 2.090235,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
-      "b": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
-      "volume_mm3": 2.090235,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
-      "b": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
-      "volume_mm3": 2.090235,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
-      "b": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
-      "volume_mm3": 2.072933,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
-      "b": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
-      "volume_mm3": 1.763636,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
-      "b": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-      "volume_mm3": 289.266599,
-      "classification": "RIGID_INTERFERENCE"
-    },
     {
       "a": "HOLD_SIDE_COVER_-1_GRAPHIC262x60x7",
       "b": "HOLD_FLANGE_ORING_32x1p5_-1_50.0",
@@ -108,24 +60,6 @@
       "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
     },
     {
-      "a": "HOLD_IDLE_PIN_-1_200.0",
-      "b": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
-      "volume_mm3": 2.879644,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_IDLE_PIN_-1_200.0",
-      "b": "HOLD_PAIRED_MOTOR_HOLDER_25D_ADAPTATION",
-      "volume_mm3": 55.27176,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "MIDDLE_BUSH_12_14_4_-1",
-      "b": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
-      "volume_mm3": 33.014098,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
       "a": "HOLD_WHEEL_SHAFT_-1_50.0_GRAPHIC_AXIAL_PACKAGE",
       "b": "HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED",
       "volume_mm3": 54.336987,
@@ -142,12 +76,6 @@
       "b": "HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED",
       "volume_mm3": 54.336987,
       "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    },
-    {
-      "a": "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE",
-      "b": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
-      "volume_mm3": 262.272114,
-      "classification": "RIGID_INTERFERENCE"
     },
     {
       "a": "HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR",
@@ -186,24 +114,6 @@
       "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
     },
     {
-      "a": "HOLD_IDLE_PIN_1_200.0",
-      "b": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
-      "volume_mm3": 2.879644,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_IDLE_PIN_1_200.0",
-      "b": "HOLD_PAIRED_MOTOR_HOLDER_25D_ADAPTATION",
-      "volume_mm3": 55.27176,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "MIDDLE_BUSH_12_14_4_1",
-      "b": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
-      "volume_mm3": 30.528533,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
       "a": "HOLD_WHEEL_SHAFT_1_50.0_GRAPHIC_AXIAL_PACKAGE",
       "b": "HOLD_WHEEL_RETENTION_M5_1_50.0_QUICKLOCK_UNRESOLVED",
       "volume_mm3": 54.336987,
@@ -222,52 +132,10 @@
       "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
     },
     {
-      "a": "HOLD_WHEEL_SHAFT_1_150.0_GRAPHIC_AXIAL_PACKAGE",
-      "b": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
-      "volume_mm3": 254.881219,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
       "a": "HOLD_AXLE_FLANGE_1_150.0_GRAPHIC_CONTOUR",
       "b": "HOLD_FLANGE_ORING_32x1p5_1_150.0",
       "volume_mm3": 134.299143,
       "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
-      "a": "HOLD_QRW90SR150_WHEEL_1_150.0_PHOTO_PROFILE",
-      "b": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
-      "volume_mm3": 6.387493,
-      "classification": "WHEEL_PROFILE_HOLD_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_QRW90SR150_WHEEL_1_150.0_PHOTO_PROFILE",
-      "b": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
-      "volume_mm3": 5.829657,
-      "classification": "WHEEL_PROFILE_HOLD_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_QRW90SR150_WHEEL_1_150.0_PHOTO_PROFILE",
-      "b": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
-      "volume_mm3": 5.178265,
-      "classification": "WHEEL_PROFILE_HOLD_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_QRW90SR150_WHEEL_1_150.0_PHOTO_PROFILE",
-      "b": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
-      "volume_mm3": 4.212674,
-      "classification": "WHEEL_PROFILE_HOLD_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_QRW90SR150_WHEEL_1_150.0_PHOTO_PROFILE",
-      "b": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
-      "volume_mm3": 1.747334,
-      "classification": "WHEEL_PROFILE_HOLD_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_QRW90SR150_WHEEL_1_150.0_PHOTO_PROFILE",
-      "b": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-      "volume_mm3": 386.430181,
-      "classification": "WHEEL_PROFILE_HOLD_INTERFERENCE"
     },
     {
       "a": "HOLD_WHEEL_SHAFT_1_250.0_GRAPHIC_AXIAL_PACKAGE",
@@ -292,84 +160,6 @@
       "b": "HOLD_Z16_BEVEL_1_CONICAL_ENVELOPE",
       "volume_mm3": 2.185653,
       "classification": "TOOTH_CONTACT_HOLD"
-    },
-    {
-      "a": "HOLD_LIFT_SIDE_ARM_1_GRAPHIC200",
-      "b": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
-      "volume_mm3": 0.482295,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_LIFT_SIDE_ARM_1_GRAPHIC200",
-      "b": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
-      "volume_mm3": 0.482295,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_LIFT_SIDE_ARM_1_GRAPHIC200",
-      "b": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
-      "volume_mm3": 0.482295,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_LIFT_SIDE_ARM_1_GRAPHIC200",
-      "b": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-      "volume_mm3": 34.748801,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN",
-      "b": "HOLD_ACE_GS12_80_ROD",
-      "volume_mm3": 422.65181,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-      "b": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
-      "volume_mm3": 0.439793,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-      "b": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
-      "volume_mm3": 1.014944,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-      "b": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
-      "volume_mm3": 1.327601,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-      "b": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
-      "volume_mm3": 1.544721,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-      "b": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
-      "volume_mm3": 1.706161,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-      "b": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
-      "volume_mm3": 1.827886,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-      "b": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-      "volume_mm3": 178.392029,
-      "classification": "RIGID_INTERFERENCE"
-    },
-    {
-      "a": "HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE",
-      "b": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-      "volume_mm3": 9.540878,
-      "classification": "RIGID_INTERFERENCE"
     }
   ],
   "dn150": {
@@ -450,8 +240,8 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "MIDDLE_BUSH_12_14_4_-1",
-        "clearance_mm": 43.6735,
+        "id": "MIDDLE_BUSH_12_14_3_-1",
+        "clearance_mm": 42.0548,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -684,8 +474,8 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "MIDDLE_BUSH_12_14_4_1",
-        "clearance_mm": 43.6735,
+        "id": "MIDDLE_BUSH_12_14_3_1",
+        "clearance_mm": 42.0548,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -906,7 +696,7 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
+        "id": "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
         "clearance_mm": 47.2718,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
@@ -966,13 +756,13 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
+        "id": "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
         "clearance_mm": 47.2718,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_PAIRED_MOTOR_HOLDER_25D_ADAPTATION",
+        "id": "HOLD_PAIRED_MOTOR_HOLDER_RF25_FIT_CANDIDATE",
         "clearance_mm": 40.6041,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
@@ -1068,6 +858,12 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "HOLD_GAS_SPRING_CLEVIS_PIN",
+        "clearance_mm": 18.775,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER",
         "clearance_mm": 25.3793,
         "status": "SCREEN_ONLY",
@@ -1075,13 +871,13 @@
       },
       {
         "id": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-        "clearance_mm": 24.8816,
+        "clearance_mm": 21.5564,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "HOLD_ACE_GS12_80_ROD",
-        "clearance_mm": 26.2277,
+        "clearance_mm": 18.2808,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1123,49 +919,49 @@
       },
       {
         "id": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
-        "clearance_mm": 10.5234,
+        "clearance_mm": 14.8062,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
-        "clearance_mm": 10.1688,
+        "clearance_mm": 14.8203,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
-        "clearance_mm": 9.8096,
+        "clearance_mm": 14.8273,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
-        "clearance_mm": 9.4459,
+        "clearance_mm": 14.8273,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
-        "clearance_mm": 9.0778,
+        "clearance_mm": 14.8203,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
-        "clearance_mm": 8.7054,
+        "clearance_mm": 14.8062,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-        "clearance_mm": 7.1483,
+        "clearance_mm": 12.35,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "PX1_LIFT_HARNESS_GUARD_OPEN_PROFILE",
-        "clearance_mm": 34.4676,
+        "clearance_mm": 37.9629,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1267,100 +1063,76 @@
       "samples": 8,
       "collisions": [
         {
-          "moving": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
-          "obstacle": "MIDDLE_BUSH_12_14_4_-1",
-          "fraction": 0.125,
-          "volume_mm3": 10.293
-        },
-        {
-          "moving": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
-          "obstacle": "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE",
-          "fraction": 0.125,
-          "volume_mm3": 28.553
-        },
-        {
-          "moving": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
-          "obstacle": "MIDDLE_BUSH_12_14_4_1",
-          "fraction": 0.125,
-          "volume_mm3": 9.167
-        },
-        {
-          "moving": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
-          "obstacle": "HOLD_WHEEL_SHAFT_1_150.0_GRAPHIC_AXIAL_PACKAGE",
-          "fraction": 0.125,
-          "volume_mm3": 26.091
-        },
-        {
-          "moving": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
           "fraction": 0.25,
-          "volume_mm3": 903.698
+          "volume_mm3": 1523.391
         },
         {
-          "moving": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
           "fraction": 0.25,
-          "volume_mm3": 901.265
+          "volume_mm3": 1523.391
         },
         {
-          "moving": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
           "fraction": 0.375,
-          "volume_mm3": 1465.602
+          "volume_mm3": 2354.1
         },
         {
-          "moving": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
           "fraction": 0.375,
-          "volume_mm3": 1461.225
+          "volume_mm3": 2354.1
         },
         {
-          "moving": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
           "fraction": 0.5,
-          "volume_mm3": 82.102
+          "volume_mm3": 245.442
         },
         {
-          "moving": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_LAPP_SKINTOP_53112000_M12x1p5",
           "fraction": 0.5,
-          "volume_mm3": 416.403
+          "volume_mm3": 451.753
         },
         {
-          "moving": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
           "fraction": 0.5,
-          "volume_mm3": 82.102
+          "volume_mm3": 245.442
         },
         {
-          "moving": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_LAPP_SKINTOP_53112000_M12x1p5",
           "fraction": 0.5,
-          "volume_mm3": 416.403
+          "volume_mm3": 451.753
         },
         {
-          "moving": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_LAPP_SKINTOP_53112000_M12x1p5",
           "fraction": 0.625,
-          "volume_mm3": 504.34
+          "volume_mm3": 588.056
         },
         {
-          "moving": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_LAPP_SKINTOP_53112000_M12x1p5",
           "fraction": 0.625,
-          "volume_mm3": 504.34
+          "volume_mm3": 588.056
         },
         {
-          "moving": "POLOLU_5707_MOTOR_-1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_LAPP_SKINTOP_53112000_M12x1p5",
           "fraction": 0.75,
-          "volume_mm3": 165.227
+          "volume_mm3": 165.441
         },
         {
-          "moving": "POLOLU_5707_MOTOR_1_MANUFACTURER_STEP",
+          "moving": "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
           "obstacle": "HOLD_LAPP_SKINTOP_53112000_M12x1p5",
           "fraction": 0.75,
-          "volume_mm3": 165.227
+          "volume_mm3": 165.441
         }
       ],
       "errors": [],
@@ -1370,7 +1142,7 @@
         "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1",
         "HOLD_NBK_MLR20C_6_6_COUPLING_1_EXTERNAL_DETAIL",
         "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1",
-        "HOLD_PAIRED_MOTOR_HOLDER_25D_ADAPTATION",
+        "HOLD_PAIRED_MOTOR_HOLDER_RF25_FIT_CANDIDATE",
         "HOLD_PRESSURE_ELECTRONICS_COVER_GRAPHIC158x53x7",
         "HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY",
         "HOLD_LIFT_SIDE_ARM_-1_GRAPHIC200",
@@ -1433,35 +1205,7 @@
         "collisions": [
           {
             "id": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-            "volume_mm3": 274.6549777995113
-          },
-          {
-            "id": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
-            "volume_mm3": 0.603051240697176
-          },
-          {
-            "id": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
-            "volume_mm3": 0.6030512406971669
-          },
-          {
-            "id": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
-            "volume_mm3": 0.6030512571777071
-          },
-          {
-            "id": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
-            "volume_mm3": 0.6030512406971701
-          },
-          {
-            "id": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
-            "volume_mm3": 0.6030512406971681
-          },
-          {
-            "id": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
-            "volume_mm3": 0.6030512406971833
-          },
-          {
-            "id": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-            "volume_mm3": 68.15571435278109
+            "volume_mm3": 275.1188779449159
           }
         ],
         "release": "HOLD: screw/groove/mating dimensions unresolved"
@@ -1487,7 +1231,7 @@
     "harness_removal": "HOLD H07: SP13 cable end must be reterminated if larger than gland throat; replacement sequence in documentation"
   },
   "gas_spring": {
-    "assembled_distance_mm": 188.13027401245128,
+    "assembled_distance_mm": 188.4489320744482,
     "bare_limits_mm": [
       112,
       192
@@ -1495,182 +1239,182 @@
     "sampled_angle_checks": [
       {
         "angle_deg": 0,
-        "distance_mm": 188.13027401245128,
+        "distance_mm": 188.4489320744482,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 2,
-        "distance_mm": 188.38384788495884,
+        "distance_mm": 188.70749042689073,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 4,
-        "distance_mm": 188.6430051050268,
+        "distance_mm": 188.97133153920896,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 6,
-        "distance_mm": 188.90740760935878,
+        "distance_mm": 189.24011254672044,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 8,
-        "distance_mm": 189.17671195504713,
+        "distance_mm": 189.51348566778768,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 10,
-        "distance_mm": 189.4505698401102,
+        "distance_mm": 189.7910987234531,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 12,
-        "distance_mm": 189.72862862302395,
+        "distance_mm": 190.07259565514445,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 14,
-        "distance_mm": 190.0105318402052,
+        "distance_mm": 190.35761703945758,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 16,
-        "distance_mm": 190.29591972046217,
+        "distance_mm": 190.64580059908067,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 18,
-        "distance_mm": 190.58442969548025,
+        "distance_mm": 190.93678170898016,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 20,
-        "distance_mm": 190.8756969054708,
+        "distance_mm": 191.23019389702745,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 22,
-        "distance_mm": 191.16935469916692,
+        "distance_mm": 191.52566933830167,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 24,
-        "distance_mm": 191.46503512741063,
+        "distance_mm": 191.82283934236588,
         "within_bare_112_to_192": true
       },
       {
         "angle_deg": 26,
-        "distance_mm": 191.7623694296321,
-        "within_bare_112_to_192": true
+        "distance_mm": 192.12133483286848,
+        "within_bare_112_to_192": false
       },
       {
         "angle_deg": 28,
-        "distance_mm": 192.06098851258096,
+        "distance_mm": 192.42078681888052,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 30,
-        "distance_mm": 192.36052342072693,
+        "distance_mm": 192.72082685743626,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 32,
-        "distance_mm": 192.6606057978024,
+        "distance_mm": 193.02108750679898,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 34,
-        "distance_mm": 192.96086833901515,
+        "distance_mm": 193.32120277002625,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 36,
-        "distance_mm": 193.26094523351225,
+        "distance_mm": 193.62080852846285,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 38,
-        "distance_mm": 193.5604725967287,
+        "distance_mm": 193.91954296483752,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 40,
-        "distance_mm": 193.85908889230186,
+        "distance_mm": 194.21704697568794,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 42,
-        "distance_mm": 194.15643534328257,
+        "distance_mm": 194.51296457288367,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 44,
-        "distance_mm": 194.45215633241668,
+        "distance_mm": 194.80694327405942,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 46,
-        "distance_mm": 194.74589979131568,
+        "distance_mm": 195.0986344818129,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 48,
-        "distance_mm": 195.03731757837352,
+        "distance_mm": 195.38769385155788,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 50,
-        "distance_mm": 195.32606584532556,
+        "distance_mm": 195.67378164795934,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 52,
-        "distance_mm": 195.61180539238129,
+        "distance_mm": 195.95656308991184,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 54,
-        "distance_mm": 195.89420201189375,
+        "distance_mm": 196.23570868405093,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 56,
-        "distance_mm": 196.17292682056097,
+        "distance_mm": 196.51089454681644,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 58,
-        "distance_mm": 196.44765658018056,
+        "distance_mm": 196.78180271511266,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 60,
-        "distance_mm": 196.71807400700516,
+        "distance_mm": 197.0481214456322,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 62,
-        "distance_mm": 196.9838680697687,
+        "distance_mm": 197.30954550293202,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 64,
-        "distance_mm": 197.2447342764755,
+        "distance_mm": 197.56577643636984,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 66,
-        "distance_mm": 197.50037495005932,
+        "distance_mm": 197.81652284602248,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 68,
-        "distance_mm": 197.7504994930398,
+        "distance_mm": 198.06150063772537,
         "within_bare_112_to_192": false
       },
       {
         "angle_deg": 70,
-        "distance_mm": 197.99482464131472,
+        "distance_mm": 198.30043326738215,
         "within_bare_112_to_192": false
       }
     ],
@@ -1688,7 +1432,7 @@
       "dimensions_mm": [
         12.0,
         9.0,
-        8.531128874149275
+        6.831128874149274
       ],
       "fits_chiron_400x400x450": true,
       "solid_valid": true,
@@ -1754,7 +1498,7 @@
     "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1": "CAD/Metal_HOLD/HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1.step",
     "HOLD_Z16_SHAFT_1": "CAD/Metal_HOLD/HOLD_Z16_SHAFT_1.step",
     "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1": "CAD/Metal_HOLD/HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1.step",
-    "HOLD_PAIRED_MOTOR_HOLDER_25D_ADAPTATION": "CAD/Metal_HOLD/HOLD_PAIRED_MOTOR_HOLDER_25D_ADAPTATION.step",
+    "HOLD_PAIRED_MOTOR_HOLDER_RF25_FIT_CANDIDATE": "CAD/Metal_HOLD/HOLD_PAIRED_MOTOR_HOLDER_RF25_FIT_CANDIDATE.step",
     "HOLD_PAIRED_PINION_BEARING_HOLDER": "CAD/Metal_HOLD/HOLD_PAIRED_PINION_BEARING_HOLDER.step",
     "HOLD_PRESSURE_ELECTRONICS_COVER_GRAPHIC158x53x7": "CAD/Metal_HOLD/HOLD_PRESSURE_ELECTRONICS_COVER_GRAPHIC158x53x7.step",
     "HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY": "CAD/Metal_HOLD/HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY.step",
@@ -1763,6 +1507,7 @@
     "HOLD_LIFT_SIDE_PIN_-1_240": "CAD/Metal_HOLD/HOLD_LIFT_SIDE_PIN_-1_240.step",
     "HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200": "CAD/Metal_HOLD/HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200.step",
     "HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN": "CAD/Metal_HOLD/HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN.step",
+    "HOLD_GAS_SPRING_CLEVIS_PIN": "CAD/Metal_HOLD/HOLD_GAS_SPRING_CLEVIS_PIN.step",
     "HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER": "CAD/Metal_HOLD/HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER.step",
     "HOLD_M8_MANUAL_CLAMP_LEVER_AND_HANDLE": "CAD/Metal_HOLD/HOLD_M8_MANUAL_CLAMP_LEVER_AND_HANDLE.step",
     "HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5": "CAD/Metal_HOLD/HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5.step",
@@ -1782,6 +1527,8 @@
     "internal six-way service connector",
     "board standoffs and all power terminal insulation",
     "INA226 ready-made modules and branch capacitors/TVS/fuses",
+    "motor socket torque transfer and rear connector/lead envelopes",
+    "RF-available brushed motor selection, driver current/thermal qualification",
     "circlips, internal gear keys and complete fastening hardware"
   ],
   "holds": [
@@ -1816,7 +1563,7 @@
     {
       "blocks": "Моторная плита, соединение валов, тяга и ресурс",
       "id": "H05",
-      "required": "STEP Pololu5707 найден, Ø25×53.8, вал4×12.5. Предварительный CAD выявил конфликт с осью X150. Наличие у разрешённых продавцов не подтверждено.",
+      "required": "FAULHABER excluded by user 2026-11-17. RF JGA25-370B envelope integrated for fit/bench only; seller/manufacturer ratio and shaft data conflict; published rated torque below project target. Traction motor, coupling retention, mounting and thermal/current endurance remain unqualified.",
       "title": "Монтаж двигателей",
       "unresolved_dimension_label": "ТРЕБУЕТСЯ ЗАМЕР / РАЗМЕРНЫЙ ИСТОЧНИК. Это статус отсутствия данных, не поручение пользователю."
     },
@@ -1854,22 +1601,6 @@
       "required": "24Vвнутри; основной6-жильныйtether безкоаксиала. ИсточникCCU100–120V,DCзащита,рекуперация и окончательная прошивка требуют квалификации.",
       "title": "Питание и испытания",
       "unresolved_dimension_label": "ТРЕБУЕТСЯ ЗАМЕР / РАЗМЕРНЫЙ ИСТОЧНИК. Это статус отсутствия данных, не поручение пользователю."
-    }
-  ],
-  "documentation_QA": [
-    {
-      "file": "PX1_Documentation_Current.pdf",
-      "pages": 16,
-      "rendered_pages": 16,
-      "blank_pages": [],
-      "human_visual_review": "NOT_PERFORMED_IN_REMOTE_RECOVERY"
-    },
-    {
-      "file": "PX1_Drawings_Current.pdf",
-      "pages": 46,
-      "rendered_pages": 46,
-      "blank_pages": [],
-      "human_visual_review": "NOT_PERFORMED_IN_REMOTE_RECOVERY"
     }
   ]
 }
