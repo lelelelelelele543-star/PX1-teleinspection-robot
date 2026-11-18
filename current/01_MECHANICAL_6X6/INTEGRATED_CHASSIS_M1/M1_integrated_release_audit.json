@@ -1,0 +1,82 @@
+{
+  "source": "PX1_Integrated_6x6_M1_interface_repair.py",
+  "checks": [
+    {
+      "name": "six wheels",
+      "status": "PASS",
+      "detail": "three stations per side"
+    },
+    {
+      "name": "ten Z50",
+      "status": "PASS",
+      "detail": "five stations per side"
+    },
+    {
+      "name": "Z50 pitch",
+      "status": "PASS",
+      "detail": "pitch circles only"
+    },
+    {
+      "name": "DN150 conservative wheel envelope",
+      "status": "PASS",
+      "detail": "rectangular corner bound"
+    },
+    {
+      "name": "motor/Z50 Y clearance",
+      "status": "PASS",
+      "detail": "envelopes only"
+    },
+    {
+      "name": "motor pair Y clearance",
+      "status": "PASS",
+      "detail": "envelopes only"
+    },
+    {
+      "name": "gear pitch/bottom",
+      "status": "PASS",
+      "detail": "pitch circle, not addendum"
+    },
+    {
+      "name": "pressure-rated dynamic shaft seals",
+      "status": "FAIL",
+      "detail": "No modeled shaft seal grooves or rated seal parts"
+    },
+    {
+      "name": "real Z16/Z40 bevel mesh",
+      "status": "FAIL",
+      "detail": "Cylindrical proxies, no bevel teeth/contact"
+    },
+    {
+      "name": "Z40/Z50 torque coupling",
+      "status": "FAIL",
+      "detail": "Independent hub proxy; no keyed/splined joint validation"
+    },
+    {
+      "name": "idler bearing support",
+      "status": "FAIL",
+      "detail": "Idler stubs have no bearings"
+    },
+    {
+      "name": "FreeCAD/STEP/Boolean",
+      "status": "NOT_RUN",
+      "detail": "Requires FreeCADCmd"
+    },
+    {
+      "name": "pressure 0.4–0.7 bar",
+      "status": "PHYSICAL_CHECK",
+      "detail": "Qualified seals and safe pressure test"
+    },
+    {
+      "name": "motor Ø22×42",
+      "status": "PHYSICAL_CHECK",
+      "detail": "Unverified design envelope"
+    }
+  ],
+  "summary": {
+    "PASS": 7,
+    "FAIL": 4,
+    "NOT_RUN": 1,
+    "PHYSICAL_CHECK": 2
+  },
+  "note": "Source-derived static audit only. Not FreeCAD geometry or production qualification."
+}
