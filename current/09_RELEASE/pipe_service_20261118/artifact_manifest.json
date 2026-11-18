@@ -1,0 +1,324 @@
+{
+  "base_commit": "d394e26a7c94e8c4029ddec10a72ccece9b3a1c1",
+  "branch": "feature/px1-integrated-cad-20261117",
+  "saved_date_utc": "2026-11-18",
+  "manufacturing_release": false,
+  "files": {
+    "current/09_RELEASE/pipe_service_20261118/ENGINEERING_BASIS.md": {
+      "bytes": 4390,
+      "sha256": "8735ad2079be3ebe2684153a4e92bb7774f6eabeedece41699cf8c4db50d8ff5"
+    },
+    "current/09_RELEASE/pipe_service_20261118/PX1_Current_Validation.json": {
+      "bytes": 53941,
+      "sha256": "e8bc34314f89ef2369a7ec16c77724837049b8c95e0cb087604e860aa3bd676b"
+    },
+    "current/09_RELEASE/pipe_service_20261118/README.md": {
+      "bytes": 7769,
+      "sha256": "0512953393c0dbd859d470fdaf96c5825a7b925c2def83c77df913d94ef0d726"
+    },
+    "current/09_RELEASE/pipe_service_20261118/assembly_components.csv": {
+      "bytes": 9931,
+      "sha256": "7db4f0b0e919a828054e5189f4ce3253db13d956d0cace89725e48c18810e000"
+    },
+    "current/09_RELEASE/pipe_service_20261118/baseline_validation.json": {
+      "bytes": 55767,
+      "sha256": "3ec152934a29077131df8eff118ff8bed63891a4d8583172ec535b9d4e1cfcac"
+    },
+    "current/09_RELEASE/pipe_service_20261118/cloud_build_summary.json": {
+      "bytes": 894,
+      "sha256": "ac0fefe939f60d15ba54f6ddabe46beed916a665db0c5023aca64d135df14477"
+    },
+    "current/09_RELEASE/pipe_service_20261118/component_registry.json": {
+      "bytes": 48401,
+      "sha256": "b01443b2ebdff0cd27f8f48cda01665730872d1f0c273a00ffab874dea4441a2"
+    },
+    "current/09_RELEASE/pipe_service_20261118/images/assembly_mesh.json.gz": {
+      "bytes": 17512803,
+      "sha256": "37e28d6dbc66f74a7401996d63890fba825460d3c053b56a88079bbb7238c4ea"
+    },
+    "current/09_RELEASE/pipe_service_20261118/images/px1_drivetrain.png": {
+      "bytes": 163487,
+      "sha256": "570e7b077592936e92066944a655416bc0b8b5f5cf8da124e9df490768ca2e90"
+    },
+    "current/09_RELEASE/pipe_service_20261118/images/px1_isometric.png": {
+      "bytes": 95516,
+      "sha256": "39773d4d41e0aa7846a813e53e6e0d2159f3ad97f0c178b1114f8ea3d3f92f48"
+    },
+    "current/09_RELEASE/pipe_service_20261118/images/px1_pipe.png": {
+      "bytes": 73454,
+      "sha256": "334e8096568691df215fcdb55e3b3b7384302493077fdf0cd40d971dce34965e"
+    },
+    "current/09_RELEASE/pipe_service_20261118/images/px1_side.png": {
+      "bytes": 49368,
+      "sha256": "5b888e8959403d3669ec699bd1a9a1eca06126333cf65a85fc5c81f7e1d0c461"
+    },
+    "current/09_RELEASE/pipe_service_20261118/images/render_manifest.json": {
+      "bytes": 29054,
+      "sha256": "f54e0036945218c3b5676ed8b11861da2dc75a52225907229b36673b7af6d533"
+    },
+    "current/09_RELEASE/pipe_service_20261118/integrated_checks.json": {
+      "bytes": 8636,
+      "sha256": "1af773bcf548c3e4a3c3c75a8b8295ea77f5418e4c6b77b2c73092aed5b18f8a"
+    },
+    "current/09_RELEASE/pipe_service_20261118/logs/build.log": {
+      "bytes": 613,
+      "sha256": "93a70e578e0c3a36c3af8c142a07631801596d338b36ab8ab5a8de956be637b6"
+    },
+    "current/09_RELEASE/pipe_service_20261118/logs/checks.log": {
+      "bytes": 1076,
+      "sha256": "361daddb698174c0cdea1d737dc2add304a8820893b127af00ce97dd8a55bcc8"
+    },
+    "current/09_RELEASE/pipe_service_20261118/logs/environment.log": {
+      "bytes": 15,
+      "sha256": "d97d6f73a8f6ccf1c37ba67ea1df4bc6ae0f800e190d260dd4f98e8746087de0"
+    },
+    "current/09_RELEASE/pipe_service_20261118/logs/pipe.log": {
+      "bytes": 405,
+      "sha256": "1a44facf1a422fc08c70f41dd1b7c2d36b41d547c96410ca051d822b1f6c771f"
+    },
+    "current/09_RELEASE/pipe_service_20261118/logs/render.log": {
+      "bytes": 231,
+      "sha256": "7cf4cfa15151a7a5a5b025bae2a260799f8bee8ec1730a916254864c9e339704"
+    },
+    "current/09_RELEASE/pipe_service_20261118/pipe_pose_analysis.json": {
+      "bytes": 31936,
+      "sha256": "fa4f12c80cf475676f1bb1a2948e5539cb765c26498bbfe6e10d3963d534a93e"
+    },
+    "current/09_RELEASE/pipe_service_20261118/pipe_verification.json": {
+      "bytes": 50376,
+      "sha256": "0c7612313ce5ca6d29ffe0a88e9fb7c17737940bb3a7810b784ddc9235f6f045"
+    },
+    "current/09_RELEASE/pipe_service_20261118/px1_side_envelope.svg": {
+      "bytes": 3862,
+      "sha256": "acee62c3f3c2900f972fa0a637e1a7b524c08cf1e0e204d9c380e2b49fd918e9"
+    },
+    "current/CAD/Metal_HOLD/HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR.step": {
+      "bytes": 24769,
+      "sha256": "345222a03d4346c56a571a9a2af7b16da71101e597f4cf04a03f826fd04f3e44"
+    },
+    "current/CAD/Metal_HOLD/HOLD_AXLE_FLANGE_-1_250.0_GRAPHIC_CONTOUR.step": {
+      "bytes": 24769,
+      "sha256": "5fb8dd256a36871119cbf7274f279bc19771e1a588b12232b4727d6b7a983281"
+    },
+    "current/CAD/Metal_HOLD/HOLD_AXLE_FLANGE_-1_50.0_GRAPHIC_CONTOUR.step": {
+      "bytes": 24725,
+      "sha256": "8bf892f0d983dab0019a416d5ba673d379c2bd037585260d71434b781b5fc913"
+    },
+    "current/CAD/Metal_HOLD/HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN.step": {
+      "bytes": 5688,
+      "sha256": "33ae146ad5cb8e67ce6eb864cd7dfee4e059dae9ab7ffccfeb369d5c2f00e22e"
+    },
+    "current/CAD/Metal_HOLD/HOLD_CAM026_OPTICAL_HOUSING_GRAPHIC.step": {
+      "bytes": 2114,
+      "sha256": "83617569a37f0bc3c386914b0ad03c57b7b1833afdc24e80e95a5252a232a87f"
+    },
+    "current/CAD/Metal_HOLD/HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5.step": {
+      "bytes": 13500,
+      "sha256": "b937bc8e6bf6e28efa1e13e91a82c2c1476331dfe4df5fc08646f236c7b00202"
+    },
+    "current/CAD/Metal_HOLD/HOLD_CAM026_SIDE_FRAME_GRAPHIC.step": {
+      "bytes": 32759,
+      "sha256": "87f91c7727047adc0e6c5acbf040692de3b5ddf805b92e029f57c1ef5b126378"
+    },
+    "current/CAD/Metal_HOLD/HOLD_GAS_SPRING_CLEVIS_PIN.step": {
+      "bytes": 5644,
+      "sha256": "126f1ac6fad9325e57e2cb7cfd1ac0d97e89771f96da6e787689b7d5d424f7f8"
+    },
+    "current/CAD/Metal_HOLD/HOLD_IDLE_PIN_-1_100.0.step": {
+      "bytes": 5652,
+      "sha256": "589d123caf4f74ad0788053231f636bc902951920838e3e52507557830c07710"
+    },
+    "current/CAD/Metal_HOLD/HOLD_IDLE_PIN_-1_200.0.step": {
+      "bytes": 5652,
+      "sha256": "dce8613962827088c5d7b18ea70cd1f849a85aa0bea3ad311b9dcefff5ecaddc"
+    },
+    "current/CAD/Metal_HOLD/HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER.step": {
+      "bytes": 197413,
+      "sha256": "0b28ba0048d62d5cf283ced972037a400f20e589ed21bdbeb304ad7d19c0bcae"
+    },
+    "current/CAD/Metal_HOLD/HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN.step": {
+      "bytes": 102884,
+      "sha256": "739bca8724e52ccda5e1a6c08c6b322c6bae0c3d107589f578c1245de48427e6"
+    },
+    "current/CAD/Metal_HOLD/HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200.step": {
+      "bytes": 88906,
+      "sha256": "ebe18978bffea6acc05fcbcc757866e2c87486d3a71505f5a316d36fe460c0ad"
+    },
+    "current/CAD/Metal_HOLD/HOLD_LIFT_SIDE_ARM_-1_GRAPHIC200.step": {
+      "bytes": 30303,
+      "sha256": "2bb45b77c33a2a311ce1deb02b1742a27fe7ec256b4fafe80a824021d511e6d6"
+    },
+    "current/CAD/Metal_HOLD/HOLD_LIFT_SIDE_PIN_-1_240.step": {
+      "bytes": 5662,
+      "sha256": "68f050584c1c5c38c751ac8355c7fc63f1eaa081950cf9761355d18e2f525857"
+    },
+    "current/CAD/Metal_HOLD/HOLD_LIFT_SIDE_PIN_-1_40.step": {
+      "bytes": 5654,
+      "sha256": "56a22bb46099d6dc63303651824c465f284c1c5ed73b706f5de488a76e0e3baf"
+    },
+    "current/CAD/Metal_HOLD/HOLD_M8_MANUAL_CLAMP_LEVER_AND_HANDLE.step": {
+      "bytes": 37919,
+      "sha256": "80f29dd478fa3e8aac47214bda31639aad8604971ee318667eded4ef5efa0f01"
+    },
+    "current/CAD/Metal_HOLD/HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1.step": {
+      "bytes": 30931,
+      "sha256": "90ce3da0f6922bb7d81e0143034ae700880ee204c4cff971fb6dc648b447c08f"
+    },
+    "current/CAD/Metal_HOLD/HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1.step": {
+      "bytes": 30890,
+      "sha256": "7a629dfc8fd1fa5548d38aa05ad98e304f91a8e5588a69d6d0138f2928020a4f"
+    },
+    "current/CAD/Metal_HOLD/HOLD_PAIRED_MOTOR_HOLDER_RF25_FIT_CANDIDATE.step": {
+      "bytes": 37593,
+      "sha256": "7555bce7a441da412a955939bafd0a78b564a9b1c8924023e45b3973d3da26f3"
+    },
+    "current/CAD/Metal_HOLD/HOLD_PAIRED_PINION_BEARING_HOLDER.step": {
+      "bytes": 22890,
+      "sha256": "625e968c187d2f8bbc0c35013c5d645820d66859b6331b28525c462ef2d17991"
+    },
+    "current/CAD/Metal_HOLD/HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED.step": {
+      "bytes": 306418,
+      "sha256": "4e1350e1cf66aecc190e6bb3077609f189c7a4afac6d52315b6c6769a81bef49"
+    },
+    "current/CAD/Metal_HOLD/HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE167x68x7.step": {
+      "bytes": 99046,
+      "sha256": "c0d2cd60131ef21debcd04538a6b77be3ad9d1b12cbbcf1999ce09fe6a10136c"
+    },
+    "current/CAD/Metal_HOLD/HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY.step": {
+      "bytes": 80238,
+      "sha256": "831af8106278e86308d4437281007898ad23b0bb29d4cddc52562c9d58a8cfdc"
+    },
+    "current/CAD/Metal_HOLD/HOLD_REAR_TETHER_ARAMID_CONE.step": {
+      "bytes": 9549,
+      "sha256": "d8626e95905a05dc9e9a9e01b9351af1eacc396a611d89f992e9262a2495b2d7"
+    },
+    "current/CAD/Metal_HOLD/HOLD_REAR_TETHER_STRAIN_SLEEVE.step": {
+      "bytes": 9349,
+      "sha256": "44c98cb6d0648979f73e96ce29f2d8b85534b2476c231708301ddf86cdf379d0"
+    },
+    "current/CAD/Metal_HOLD/HOLD_SIDE_COVER_-1_GRAPHIC262x60x7.step": {
+      "bytes": 43917,
+      "sha256": "2985e050236a74be3520c4723b92fd2599e7924acc54fecebffe472a94c5590e"
+    },
+    "current/CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED.step": {
+      "bytes": 9550,
+      "sha256": "ebb34eb017da3aff460745e7ec3394cc0e5d5b9238b8143d947820991a109bef"
+    },
+    "current/CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED.step": {
+      "bytes": 9550,
+      "sha256": "88f7ff1d6b4d37b6b654c2ffa13eac41bc453c46504c88e316f63eee4c9df5ff"
+    },
+    "current/CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED.step": {
+      "bytes": 9535,
+      "sha256": "45928b2f54ee18284e106b2618da47feb9f6529f0f3f5d34d3eaad43c48b46d0"
+    },
+    "current/CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_WASHER_-1_150.0.step": {
+      "bytes": 9294,
+      "sha256": "96d99f76bc1f76a32af04cbb120146b781f70a5a7661601b446ae2b8c3b14243"
+    },
+    "current/CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_WASHER_-1_250.0.step": {
+      "bytes": 9294,
+      "sha256": "01f65086d9e4d2a52e5566dc75c344b743f62a9083e0bce8678e1cd9bda8a208"
+    },
+    "current/CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_WASHER_-1_50.0.step": {
+      "bytes": 9278,
+      "sha256": "53b73a0b36bb2f25549d9d3c901acf6e9a78a4dcd86d5fbeec8c07515c9baefe"
+    },
+    "current/CAD/Metal_HOLD/HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE.step": {
+      "bytes": 35843,
+      "sha256": "05696b86eca461239f5fc50e7b46dec67bddd536ae7e15087027ce182e95cff2"
+    },
+    "current/CAD/Metal_HOLD/HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE.step": {
+      "bytes": 35837,
+      "sha256": "0a38124e1d9fdf3cb9beaf6d64abda68aa163e7451b273dc4968c77a69ca2c3b"
+    },
+    "current/CAD/Metal_HOLD/HOLD_WHEEL_SHAFT_-1_50.0_GRAPHIC_AXIAL_PACKAGE.step": {
+      "bytes": 35775,
+      "sha256": "ac5f0d6de4c51f7f94052b449bfdeef35d788cc12ad5994800f9cb1d870f05a4"
+    },
+    "current/CAD/Metal_HOLD/HOLD_Z16_SHAFT_-1.step": {
+      "bytes": 13372,
+      "sha256": "a1e2c2d6565990bdd415d7aa8f2b6bc0e803ed5ab5d3e234b2c8476594b45eaf"
+    },
+    "current/CAD/Metal_HOLD/HOLD_Z16_SHAFT_1.step": {
+      "bytes": 13350,
+      "sha256": "e9716a8eb78cc39bca8c67b39b0ffb9bc273874ab6ef77e726c56c4b4720299b"
+    },
+    "current/CAD/Metal_HOLD/HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD.step": {
+      "bytes": 13371,
+      "sha256": "e1956a58ae31a86ef70f676c0c488e7beb1a69388eda2db67f9816e355bcafda"
+    },
+    "current/CAD/Metal_HOLD/KEY_4x4x12_-1_150.0.step": {
+      "bytes": 15525,
+      "sha256": "57aaf1cabb9f7ced922408fca2048b833788d91e8a0a8e9e073695f9a4099ae5"
+    },
+    "current/CAD/Metal_HOLD/KEY_4x4x12_-1_250.0.step": {
+      "bytes": 15525,
+      "sha256": "7aaabd9111aa5f1fae8baae96601d785fcce1c38a46e2f339ab06b0b41d13dab"
+    },
+    "current/CAD/Metal_HOLD/KEY_4x4x12_-1_50.0.step": {
+      "bytes": 15497,
+      "sha256": "91f2761b6e42324f3030756d49b1d878fa279633e50ef00696bde8ed590ecff4"
+    },
+    "current/CAD/PX1_Current_Master.py": {
+      "bytes": 22844,
+      "sha256": "e3f9f4b29f6487be13ba8680880e4e09c7e87ef7b10463261668851dc91db2ea"
+    },
+    "current/CAD/PX1_Current_Master.step": {
+      "bytes": 97511436,
+      "sha256": "7db3e6c692d29d9f13e2832b5e55d36d6856a7ed912b20a45f21290682abe141"
+    },
+    "current/CAD/Print_STL/PX1_Lift_Harness_Guard_PROTOTYPE.stl": {
+      "bytes": 25684,
+      "sha256": "ae3436e76ddcd5b03a83d61eb77d058c9f01b2c00dbe4f5aab2b7cb170baef48"
+    },
+    "current/CAD/Print_STL/PX1_Motor_Holder_FitCheck_ONLY.stl": {
+      "bytes": 127884,
+      "sha256": "26717d896c5d540497526fb997c44528b82161de02f29d2b8e7652e880aaeea5"
+    },
+    "current/CAD/Print_STL/PX1_PRESSURE_Cover_FitCheck_ONLY.stl": {
+      "bytes": 172684,
+      "sha256": "424174270812827a2db1e3066d90d4aac428373fff78689a3fd0fd62ddeb36f6"
+    },
+    "current/CAD/Print_STL/PX1_Side_Cover_FitCheck_ONLY.stl": {
+      "bytes": 65084,
+      "sha256": "9a6b5e151a9fa0baf0f41c4c10ad017e28629116b92876c4e790adf71b49835f"
+    },
+    "current/CAD/release_tools.py": {
+      "bytes": 15020,
+      "sha256": "2f9cff410177c5a360dc0bb72b71a6dbaa8f1bb86752fc2e0bc97f15b02a3c72"
+    },
+    "current/HOLD_REGISTER.json": {
+      "bytes": 6227,
+      "sha256": "dd8937ff6e98354656b4225526ddcbe7d978923e3097f61e6e6c5474c945a0ac"
+    },
+    "current/PX1_Current_BOM.csv": {
+      "bytes": 15060,
+      "sha256": "f88dc40872ca0ece51877d20818edefd85fb53940ebd45cd61488e086ef9e57b"
+    },
+    "scripts/cloud/build_current.sh": {
+      "bytes": 1294,
+      "sha256": "e2e89e96e7bbfabef40ecdcf6337ba76d73484406db3abdab6063e8c19d61e4d"
+    },
+    "scripts/cloud/check_integrated.py": {
+      "bytes": 10312,
+      "sha256": "4f45197b19f4bf599c8fb7546a3762a2bb600b7ea0cc18997e04d8896b20e4d3"
+    },
+    "scripts/cloud/check_pipe_pose.py": {
+      "bytes": 10181,
+      "sha256": "b7032eb857cef49d5840ccaddc634dfc6f7d39905c671dca0cef09fa88566c67"
+    },
+    "scripts/cloud/render_model.py": {
+      "bytes": 8331,
+      "sha256": "d38b847d3e322005100aa8205a975b203e3a34e95352d4d72ecf98253a504767"
+    },
+    "scripts/cloud/report.py": {
+      "bytes": 4436,
+      "sha256": "5c6762faa698c9dd4c6e9151b0dd2b04028c1fe7b834d69216c416b78fe4956f"
+    },
+    "scripts/cloud/setup_codex.sh": {
+      "bytes": 783,
+      "sha256": "048b4f4833ed774351abd745e16151e471a0c3cf85fdcb049519e5523d1b5f74"
+    }
+  }
+}

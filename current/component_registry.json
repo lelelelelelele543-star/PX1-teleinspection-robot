@@ -16,7 +16,7 @@
       68.0,
       64.0
     ],
-    "volume_mm3": 361747.48111,
+    "volume_mm3": 350510.40148,
     "solids": 1
   },
   {
@@ -380,7 +380,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_QRW90SR150_WHEEL_-1_50.0_PHOTO_PROFILE",
+    "id": "HOLD_QRW90SR150_WHEEL_-1_50.0_ENGINEERED_OUTER_SHOULDER",
     "category": "wheel",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -396,7 +396,7 @@
       24.0,
       90.0
     ],
-    "volume_mm3": 104975.83986,
+    "volume_mm3": 92161.28343,
     "solids": 1
   },
   {
@@ -560,7 +560,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_QRW90SR150_WHEEL_-1_150.0_PHOTO_PROFILE",
+    "id": "HOLD_QRW90SR150_WHEEL_-1_150.0_ENGINEERED_OUTER_SHOULDER",
     "category": "wheel",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -576,7 +576,7 @@
       24.0,
       90.0
     ],
-    "volume_mm3": 104975.83986,
+    "volume_mm3": 92161.28343,
     "solids": 1
   },
   {
@@ -740,7 +740,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_QRW90SR150_WHEEL_-1_250.0_PHOTO_PROFILE",
+    "id": "HOLD_QRW90SR150_WHEEL_-1_250.0_ENGINEERED_OUTER_SHOULDER",
     "category": "wheel",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -756,7 +756,7 @@
       24.0,
       90.0
     ],
-    "volume_mm3": 104975.83986,
+    "volume_mm3": 92161.28343,
     "solids": 1
   },
   {
@@ -1160,7 +1160,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_QRW90SR150_WHEEL_1_50.0_PHOTO_PROFILE",
+    "id": "HOLD_QRW90SR150_WHEEL_1_50.0_ENGINEERED_OUTER_SHOULDER",
     "category": "wheel",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -1176,7 +1176,7 @@
       24.0,
       90.0
     ],
-    "volume_mm3": 104975.83986,
+    "volume_mm3": 92161.28343,
     "solids": 1
   },
   {
@@ -1340,7 +1340,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_QRW90SR150_WHEEL_1_150.0_PHOTO_PROFILE",
+    "id": "HOLD_QRW90SR150_WHEEL_1_150.0_ENGINEERED_OUTER_SHOULDER",
     "category": "wheel",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -1356,7 +1356,7 @@
       24.0,
       90.0
     ],
-    "volume_mm3": 104975.83986,
+    "volume_mm3": 92161.28343,
     "solids": 1
   },
   {
@@ -1520,7 +1520,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_QRW90SR150_WHEEL_1_250.0_PHOTO_PROFILE",
+    "id": "HOLD_QRW90SR150_WHEEL_1_250.0_ENGINEERED_OUTER_SHOULDER",
     "category": "wheel",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -1536,7 +1536,7 @@
       24.0,
       90.0
     ],
-    "volume_mm3": 104975.83986,
+    "volume_mm3": 92161.28343,
     "solids": 1
   },
   {
@@ -2020,23 +2020,23 @@
     "solids": 1
   },
   {
-    "id": "HOLD_PRESSURE_ELECTRONICS_COVER_GRAPHIC158x53x7",
+    "id": "HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE167x68x7",
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      129.0,
-      -26.5,
+      120.0,
+      -34.0,
       75.0,
       287.0,
-      26.5,
+      34.0,
       82.0
     ],
     "dimensions_mm": [
-      158.0,
-      53.0,
+      167.0,
+      68.0,
       7.0
     ],
-    "volume_mm3": 57259.9916,
+    "volume_mm3": 77360.99769,
     "solids": 1
   },
   {

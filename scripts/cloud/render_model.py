@@ -76,11 +76,15 @@ def main():
     compiler = shutil.which('cc')
     if not compiler:
         raise SystemExit('A C compiler (cc) is needed for the headless depth-buffer renderer.')
+    pipe_z=validation['dn150']['assumed_pipe_center_z_mm']
+    pipe_r=validation['dn150']['diameter_mm']/2
     views = [
         ('isometric', 'PX1 | Integrated six-wheel assembly', (-.7, -1., .65), lambda _: True,
          'All components shown; opaque CAD surfaces.'),
         ('side', 'PX1 | Side view', (0., -1., 0.), lambda _: True,
          'All components shown; opposite-side parts may be occluded.'),
+        ('pipe', 'PX1 | Nominal DN150 contact pose', (-1.,0.,0.), lambda _: True,
+         'Actual CAD front projection; engineered tyre profile, nominal ID150 circle. Physical fit NOT qualified.'),
         ('drivetrain', 'PX1 | Drivetrain inspection view', (-.45, -1., .95), drivetrain,
          'Hidden: body, covers, tyres, camera, lift, electronics and harnesses. Not a section cut.'),
     ]
@@ -107,6 +111,9 @@ def main():
             basis = np.array([right, -up, direction]).T
             vertices = [np.asarray(item['vertices'], dtype=float) @ basis for item in shown]
             bounds = np.vstack([(v.min(axis=0), v.max(axis=0)) for v in vertices])
+            if key=='pipe':
+                pipe_extrema=np.asarray([(0,-pipe_r,pipe_z),(0,pipe_r,pipe_z),(0,0,pipe_z-pipe_r),(0,0,pipe_z+pipe_r)])@basis
+                bounds=np.vstack([bounds,pipe_extrema])
             low, high = bounds.min(axis=0), bounds.max(axis=0)
             scale = min((w-140)/(high[0]-low[0]), (h-280)/(high[1]-low[1]))
             center = (low + high)/2
@@ -132,6 +139,11 @@ def main():
                 count += len(faces)
             im = Image.fromarray(rgb)
             draw = ImageDraw.Draw(im)
+            if key=='pipe':
+                pc=np.asarray([0.,0.,pipe_z])@basis
+                pc=(pc[:2]-center[:2])*scale+np.array([w/2,h/2+20])
+                rr=pipe_r*scale
+                draw.ellipse((pc[0]-rr,pc[1]-rr,pc[0]+rr,pc[1]+rr),outline='#16758d',width=3)
             draw.text((48,28), title, font=font(32), fill='#172c40')
             draw.text((48,77), note, font=font(20), fill='#40556a')
             draw.line((48,115,w-48,115), fill='#becbd5', width=2)

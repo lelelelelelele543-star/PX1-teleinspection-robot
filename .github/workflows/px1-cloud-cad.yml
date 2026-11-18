@@ -27,8 +27,10 @@ jobs:
         env:
           PX1_CLOUD_OUT: ${{ runner.temp }}/px1_cloud
         run: bash scripts/cloud/build_current.sh
+      - name: Verify nominal pipe contact and solid bounds
+        run: python scripts/cloud/check_pipe_pose.py --active --mesh "${{ runner.temp }}/px1_cloud/images/assembly_mesh.json.gz" --out "${{ runner.temp }}/px1_cloud/pipe_verification.json"
       - name: Verify exported STEP and sampled gear motion
-        run: python scripts/cloud/check_integrated.py "${{ runner.temp }}/px1_cloud" --roundtrip
+        run: python scripts/cloud/check_integrated.py "${{ runner.temp }}/px1_cloud" --roundtrip --require-pipe-service
       - name: Render actual CAD surfaces
         if: always()
         run: python scripts/cloud/render_model.py "${{ runner.temp }}/px1_cloud"
@@ -45,6 +47,7 @@ jobs:
             ${{ runner.temp }}/px1_cloud/component_registry.json
             ${{ runner.temp }}/px1_cloud/cloud_build_summary.json
             ${{ runner.temp }}/px1_cloud/integrated_checks.json
+            ${{ runner.temp }}/px1_cloud/pipe_verification.json
             ${{ runner.temp }}/px1_cloud/images/*.png
             ${{ runner.temp }}/px1_cloud/images/render_manifest.json
             ${{ runner.temp }}/px1_cloud/px1_side_envelope.svg

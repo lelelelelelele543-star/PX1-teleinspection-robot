@@ -121,13 +121,34 @@ def finish_build(g):
     body_names=[n for n in shapes if 'PRESSURE_BODY' in n]
     motor_names=[n for n in shapes if n.startswith('TRACTION_MOTOR_')]
     rear_names=[n for n in shapes if n.startswith('HOLD_REAR_') or 'REAR_SERVICE_COVER' in n or 'REAR_PANEL' in n or 'MAIN_TETHER' in n]
-    motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','SPLIT_ADAPTER')) or categories[n] in ('electronics','electronics_hold')]
-    motor_sweep=sweep_check(motor_names,(0,0,80),motor_removed,8)
+    motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','SPLIT_ADAPTER','LAPP_SKINTOP')) or categories[n] in ('electronics','electronics_hold','valve')]
+    motor_sweep=sweep_check(motor_names,(0,0,80),motor_removed,32)
     motor_sweep['removed_before_screen']=motor_removed
+    motor_sweep['sequence_scope']='Lift/head/harness and electronics detached, cover WITH boss/gland/valve removed, couplings and motor holder removed, then motors lift vertically. Access and removal of preceding subassemblies not certified.'
+    # Exact continuous translation envelope for this four-cylinder motor candidate.
+    continuous=[]; continuous_errors=[]
+    segments=[(g['MOTOR_FACE']-g['GEARHEAD_LEN']-g['MOTOR_LEN'],g['MOTOR_LEN'],g['MOTOR_OD']/2),
+              (g['MOTOR_FACE']-g['GEARHEAD_LEN'],g['GEARHEAD_LEN'],g['GEARHEAD_OD']/2),
+              (g['MOTOR_FACE'],g['MOTOR_PILOT_L'],g['MOTOR_PILOT_D']/2),
+              (g['MOTOR_FACE'],g['MOTOR_SHAFT_L'],g['MOTOR_SHAFT_D']/2)]
+    for side in (-1,1):
+        y=side*g['MOTOR_Y']; swept=[]
+        for x,length,radius in segments:
+            swept.extend([g['cyl_x'](x,y,45,radius,length),g['cyl_x'](x,y,125,radius,length),
+                          g['box0'](x,y-radius,45,length,2*radius,80)])
+        env=shape(g['fuse_all'](swept)); eb=box(env)
+        for name,obstacle in shapes.items():
+            if name in motor_names or name in motor_removed or not possible(eb,boxes[name]):continue
+            try:volume=env.intersect(obstacle).Volume()
+            except Exception as exc:continuous_errors.append({'obstacle':name,'error':str(exc)});continue
+            if volume>1e-4:continuous.append({'motor_side':side,'obstacle':name,'volume_mm3':volume})
+    motor_sweep['continuous_translation_screen']={'status':'ERROR' if continuous_errors else 'BLOCKED' if continuous else 'PASS_CANDIDATE_ENVELOPE',
+        'collisions':continuous,'errors':continuous_errors,'method':'Exact union of X-cylinders swept along Z by80mm; four coaxial cylindrical segments of the active motor candidate. No leads/fasteners added.'}
+    motor_sweep['release']='HOLD: motor-envelope trajectory only, preceding removals, actual motors/leads and tool access unqualified'
     cam_names=[n for n in shapes if categories[n]=='camera' or 'CAM026_REFERENCE' in n]
     cam_sweep=sweep_check(cam_names,(-80,0,0),[n for n in shapes if 'SP13' in n or 'CAMERA_HARNESS' in n],8)
     tools=[]
-    for x,y in itertools.product(g['SERVICE_SCREW_X'],(-19,19)):
+    for x,y in itertools.product(g['SERVICE_SCREW_X'],g['SERVICE_SCREW_Y']):
         probe=cq.Solid.makeCylinder(3,60,cq.Vector(x,y,82.1),cq.Vector(0,0,1));hits=[]
         for n,s in shapes.items():
             if possible(box(probe),boxes[n]):
@@ -140,19 +161,19 @@ def finish_build(g):
         t=math.radians(deg);dx=g['moving'][0]-g['PIVOT_X']; dz=g['moving'][2]-g['PIVOT_Z_LOW']
         m=(g['PIVOT_X']+dx*math.cos(t)+dz*math.sin(t),g['moving'][1],g['PIVOT_Z_LOW']-dx*math.sin(t)+dz*math.cos(t))
         L=math.dist(g['body_pt'],m);gas_sweep.append({'angle_deg':deg,'distance_mm':L,'within_bare_112_to_192':112<=L<=192})
-    val={'revision':'Rev.A integrated CAD 2026-11-17','master':'CAD/PX1_Current_Master.step','source_sha256':hashlib.sha256(Path(g['__file__']).read_bytes()).hexdigest(),
+    val={'revision':'Rev.A pipe/service CAD 2026-11-18','master':'CAD/PX1_Current_Master.step','source_sha256':hashlib.sha256(Path(g['__file__']).read_bytes()).hexdigest(),
         'status':'HOLD_NOT_MANUFACTURING_RELEASE','source_reference':'Proteus CRP150 DRW-002-374/375/386/744/745/752',
         'counts':counts,'expected_counts':expected,'counts_match':counts==expected,'component_count':len(components),'invalid_shapes':invalid,
         'collision_method':{'all_pairs':allpairs,'boolean_pairs_after_AABB':tested,'excluded_pairs':0,'errors':errors,'volume_threshold_mm3':1e-4},
-        'interferences':pairs,'dn150':{'diameter_mm':150,'assumed_pipe_center_z_mm':pipeZ,'pose':'LOW, inherited wheel-ground pose H01',
-            'all_component_results':radial,'global_status':'HOLD; reference protrusions are reported, real tyre/contact pose unknown'},
+        'interferences':pairs,'dn150':{'diameter_mm':150,'assumed_pipe_center_z_mm':pipeZ,'pose':'LOW, contact-derived symmetric lower-wall crown support; engineered outer tyre shoulder H01',
+            'all_component_results':radial,'global_status':'HOLD: nominal CAD containment only; tyre profile is engineered estimate, physical tyre/contact/tolerances unqualified'},
         'service':{'motor_vertical_extraction':motor_sweep,'camera_forward_removal':cam_sweep,'service_screw_tools':tools,
             'wheel_removal':'HOLD H01: source quick-lock unknown; proxy cannot certify wheel removal',
             'harness_removal':'HOLD H07: SP13 cable end must be reterminated if larger than gland throat; replacement sequence in documentation'},
         'gas_spring':{'assembled_distance_mm':g['gas_length'],'bare_limits_mm':[112,192],'sampled_angle_checks':gas_sweep,'release':'HOLD H06: end fittings, actual limit angles and physical 150 N balancing'},
         'pressure':{'status':'HOLD H03 H07','cad_is_leak_test':False,'side_cover_window_error_fixed':True,'common_pressure_communication':'requires physical/section verification'},
         'print_outputs':print_validation,'metal_release':False,'part_exports':export_map,
-        'unmodelled_required_items':['complete camera PAN/TILT/lighting/control internals','side-cover static seal installed contour','lift pivot bushings and seals','pressure valve spring and seat detail','SP13 panel half and contact inserts','SP17 cable half and seals','internal six-way service connector','board standoffs and all power terminal insulation','INA226 ready-made modules and branch capacitors/TVS/fuses','motor socket torque transfer and rear connector/lead envelopes','RF-available brushed motor selection, driver current/thermal qualification','circlips, internal gear keys and complete fastening hardware'],
+        'unmodelled_required_items':['complete camera PAN/TILT/lighting/control internals','side-cover static seal installed contour','closed service-cover seal and screws: groove/pilot holes modelled, seal/threads/fasteners unqualified','lift pivot bushings and seals','pressure valve spring and seat detail','SP13 panel half and contact inserts','SP17 cable half and seals','internal six-way service connector','board standoffs and all power terminal insulation','INA226 ready-made modules and branch capacitors/TVS/fuses','motor socket torque transfer and rear connector/lead envelopes','RF-available brushed motor selection, driver current/thermal qualification','circlips, internal gear keys and complete fastening hardware'],
         'holds':json.loads((root/'HOLD_REGISTER.json').read_text())}
     (root/'PX1_Current_Validation.json').write_text(json.dumps(val,ensure_ascii=False,indent=2))
     (root/'component_registry.json').write_text(json.dumps(registry,ensure_ascii=False,indent=2))

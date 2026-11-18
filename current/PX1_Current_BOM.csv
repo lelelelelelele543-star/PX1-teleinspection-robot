@@ -26,15 +26,15 @@ S03;O-ring боковой крышки;2;SEA-002-102;190×1.5;DRW374;BUY;NOT_MOD
 S04;O-ring фланца;6;SEA-002-722;32×1.5;DRW374;BUY;FREE_RING_ENVELOPE;H03
 S05;O-ring корпуса;2;metric16×1;16×1;DRW375;BUY;NOT_MODELLED;H03
 S06;O-ring корпуса;2;metric38×1.5;38×1.5;DRW375;BUY;NOT_MODELLED;H03
-S07;O-ring крышкиPRESSURE;1;metric110×1.5;110×1.5;DRW745;BUY;NOT_MODELLED;H03
+S07;O-ring крышкиPRESSURE;1;"closed moulded face seal candidate; NOT legacy110x1.5";section1.5, rounded-rectangle centreline156x58 R3;pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;GROOVE_ONLY_SEAL_NOT_MODELLED;H03 exact closed seal/material and pressure qualification required
 S08;O-ring клапана;1;metric6×1.5;6×1.5;DRW745;BUY;NOT_MODELLED;H03
 S09;O-ring клапана;2;metric3×1;3×1;DRW745;BUY;NOT_MODELLED;H03
 S10;O-ring колпачка;1;metric10×1.5;10×1.5;DRW745;BUY;NOT_MODELLED;H03
 S11;O-ring лифта;2;metric15×2.5;15×2.5;DRW744;BUY;NOT_MODELLED;H03
 P01;Тяговый двигатель;2;JGA25-370B 24V 77rpm FIT CANDIDATE;motor24.4x40 gearbox25x25 shaft4x10 estimated;https://compacttool.ru/motor-reduktor-jga25-370b-24v-1226-77-obmin;STUDY;SELLER_ENVELOPE_ESTIMATED;H05 NOT QUALIFIED: rated torque below target, ratio/shaft conflict
 P02;Муфта;2;NBKMLR-20C-6-6;Ø20×24 bores6/6;NBK manufacturer;BUY;BOUNDARY;H05
-P03;Колесо;6;MiniCamQRW90SR/150;Ø90 остальноеHOLD;MiniCam catalog;BUY;PHOTO_APPROX;H01
-L01;PRESSURE-крышка;1;DRW745/PX1;≈158×53×7;DRW745;MILL;GRAPHIC_APPROX;H03
+P03;Колесо;6;PX1 engineered D90 tyre, QRW90 topology reference;D90 W24, outer shoulder r34.5 at y8, edge r27.5 at y12;pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;ENGINEERED_PROFILE_ESTIMATED;H01 nominal CAD only, rubber/contact/tolerances/traction unqualified
+L01;PRESSURE-крышка;1;PX1 service cover 20261118;167x68x7,4xD3.4,M3 body pilots,groove1.9x1.2;pipe_service_20261118/ENGINEERING_BASIS.md;MILL;ENGINEERED_ESTIMATED;H03 seal/material/pressure/thread preload unqualified
 L02;Боковой рычаг;2;FSS-002-068;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06
 L03;Центральное звено;1;ASS-002-723;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06
 L04;Основание лифта;1;FAL-002-067 family;присоединенияHOLD;DRW744;MILL;GRAPHIC_APPROX;H06

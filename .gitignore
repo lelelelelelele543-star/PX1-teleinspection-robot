@@ -11,3 +11,5 @@ _cloud_build/
 _integrated_build/
 _source_match_build/
 _final_build/
+
+_pipe_service_build/

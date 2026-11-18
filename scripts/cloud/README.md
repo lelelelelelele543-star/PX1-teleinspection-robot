@@ -74,3 +74,23 @@ components for the drivetrain view. The bounding-box SVG remains only an outline
 
 Validated release evidence is indexed in `current/09_RELEASE/integrated_20261117/`.
 Historical PDFs, part drawings and old illustrations are not current release evidence.
+
+
+## Nominal pipe and service-window revision (2026-11-18)
+
+The active wheel outer shoulder is an engineered profile, not an OEM tyre
+reconstruction. The nominal contact-derived pose and the enlarged pressure-cover
+opening are documented in `current/09_RELEASE/pipe_service_20261118/`.
+
+```sh
+python scripts/cloud/check_pipe_pose.py --active --mesh _cloud_build/images/assembly_mesh.json.gz --out _cloud_build/pipe_verification.json
+python scripts/cloud/check_integrated.py _cloud_build --roundtrip --require-pipe-service
+python scripts/cloud/render_model.py _cloud_build
+```
+
+The added gate requires analytical tyre containment, conservative nonwheel solid
+bounds, continuous candidate-motor exit,32 diagnostic motor poses and four service
+tool approaches. The pipe view renders actual CAD inside the nominal circle.
+Passing this gate does not prove real tyre compliance, pipe passage, pressure
+integrity or the preceding dismantling sequence. The active motor remains a fit
+candidate with insufficient demonstrated full-load torque.

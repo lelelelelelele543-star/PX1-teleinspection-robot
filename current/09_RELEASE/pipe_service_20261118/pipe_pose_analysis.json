@@ -1,0 +1,1102 @@
+{
+  "status": "PROPOSED_GEOMETRY_SCREEN_ONLY",
+  "manufacturing_release": false,
+  "dimensions_mm": {
+    "pipe_inner_radius": 75.0,
+    "wheel_axis_z": 45.0,
+    "wheel_center_abs_y": 54.5,
+    "crown_radius": 45.0,
+    "outer_width": 133.0,
+    "wheel_diameter": 90.0
+  },
+  "baseline_profile_radius_local_y_mm": [
+    [
+      26.0,
+      -12.0
+    ],
+    [
+      32.0,
+      -12.0
+    ],
+    [
+      42.0,
+      -8.0
+    ],
+    [
+      45.0,
+      0.0
+    ],
+    [
+      42.0,
+      8.0
+    ],
+    [
+      32.0,
+      12.0
+    ],
+    [
+      8.0,
+      12.0
+    ],
+    [
+      8.0,
+      -2.0
+    ],
+    [
+      26.0,
+      -2.0
+    ]
+  ],
+  "proposed_profile_radius_local_y_mm": [
+    [
+      26.0,
+      -12.0
+    ],
+    [
+      32.0,
+      -12.0
+    ],
+    [
+      42.0,
+      -8.0
+    ],
+    [
+      45.0,
+      0.0
+    ],
+    [
+      34.5,
+      8.0
+    ],
+    [
+      27.5,
+      12.0
+    ],
+    [
+      8.0,
+      12.0
+    ],
+    [
+      8.0,
+      -2.0
+    ],
+    [
+      26.0,
+      -2.0
+    ]
+  ],
+  "inherited_pose": {
+    "pipe_center_z_mm": 52.0480547,
+    "exact_profile_screen": {
+      "minimum_radial_clearance_mm": -4.447855036207187,
+      "worst_vertex": {
+        "radius_mm": 42.0,
+        "local_y_mm": 8.0,
+        "global_y_mm": 62.5,
+        "max_pipe_radial_mm": 79.44785503620719,
+        "radial_clearance_mm": -4.447855036207187
+      },
+      "vertices": [
+        {
+          "radius_mm": 26.0,
+          "local_y_mm": -12.0,
+          "global_y_mm": 42.5,
+          "max_pipe_radial_mm": 53.837012542062475,
+          "radial_clearance_mm": 21.162987457937525
+        },
+        {
+          "radius_mm": 32.0,
+          "local_y_mm": -12.0,
+          "global_y_mm": 42.5,
+          "max_pipe_radial_mm": 57.714821110822065,
+          "radial_clearance_mm": 17.285178889177935
+        },
+        {
+          "radius_mm": 42.0,
+          "local_y_mm": -8.0,
+          "global_y_mm": 46.5,
+          "max_pipe_radial_mm": 67.58669743266194,
+          "radial_clearance_mm": 7.413302567338064
+        },
+        {
+          "radius_mm": 45.0,
+          "local_y_mm": 0.0,
+          "global_y_mm": 54.5,
+          "max_pipe_radial_mm": 75.36079881512796,
+          "radial_clearance_mm": -0.3607988151279642
+        },
+        {
+          "radius_mm": 42.0,
+          "local_y_mm": 8.0,
+          "global_y_mm": 62.5,
+          "max_pipe_radial_mm": 79.44785503620719,
+          "radial_clearance_mm": -4.447855036207187
+        },
+        {
+          "radius_mm": 32.0,
+          "local_y_mm": 12.0,
+          "global_y_mm": 66.5,
+          "max_pipe_radial_mm": 77.1167982728419,
+          "radial_clearance_mm": -2.116798272841905
+        },
+        {
+          "radius_mm": 8.0,
+          "local_y_mm": 12.0,
+          "global_y_mm": 66.5,
+          "max_pipe_radial_mm": 68.18133139103543,
+          "radial_clearance_mm": 6.818668608964572
+        },
+        {
+          "radius_mm": 8.0,
+          "local_y_mm": -2.0,
+          "global_y_mm": 52.5,
+          "max_pipe_radial_mm": 54.6140453569793,
+          "radial_clearance_mm": 20.385954643020703
+        },
+        {
+          "radius_mm": 26.0,
+          "local_y_mm": -2.0,
+          "global_y_mm": 52.5,
+          "max_pipe_radial_mm": 62.0356665109209,
+          "radial_clearance_mm": 12.964333489079102
+        }
+      ],
+      "feasible_pipe_center_delta_interval_mm": null,
+      "maximum_permitted_absolute_center_delta_mm": -0.5421901205574997,
+      "all_rigid_revolved_geometry_inside": false
+    }
+  },
+  "baseline_best_centered_pose": {
+    "pipe_center_z_mm": 45.0,
+    "exact_profile_screen": {
+      "minimum_radial_clearance_mm": -0.30106240950388496,
+      "worst_vertex": {
+        "radius_mm": 42.0,
+        "local_y_mm": 8.0,
+        "global_y_mm": 62.5,
+        "max_pipe_radial_mm": 75.30106240950388,
+        "radial_clearance_mm": -0.30106240950388496
+      },
+      "vertices": [
+        {
+          "radius_mm": 26.0,
+          "local_y_mm": -12.0,
+          "global_y_mm": 42.5,
+          "max_pipe_radial_mm": 49.82218381404011,
+          "radial_clearance_mm": 25.17781618595989
+        },
+        {
+          "radius_mm": 32.0,
+          "local_y_mm": -12.0,
+          "global_y_mm": 42.5,
+          "max_pipe_radial_mm": 53.20009398487939,
+          "radial_clearance_mm": 21.799906015120612
+        },
+        {
+          "radius_mm": 42.0,
+          "local_y_mm": -8.0,
+          "global_y_mm": 46.5,
+          "max_pipe_radial_mm": 62.659795722616266,
+          "radial_clearance_mm": 12.340204277383734
+        },
+        {
+          "radius_mm": 45.0,
+          "local_y_mm": 0.0,
+          "global_y_mm": 54.5,
+          "max_pipe_radial_mm": 70.67708256570867,
+          "radial_clearance_mm": 4.322917434291327
+        },
+        {
+          "radius_mm": 42.0,
+          "local_y_mm": 8.0,
+          "global_y_mm": 62.5,
+          "max_pipe_radial_mm": 75.30106240950388,
+          "radial_clearance_mm": -0.30106240950388496
+        },
+        {
+          "radius_mm": 32.0,
+          "local_y_mm": 12.0,
+          "global_y_mm": 66.5,
+          "max_pipe_radial_mm": 73.79871272590057,
+          "radial_clearance_mm": 1.2012872740994283
+        },
+        {
+          "radius_mm": 8.0,
+          "local_y_mm": 12.0,
+          "global_y_mm": 66.5,
+          "max_pipe_radial_mm": 66.97947446792935,
+          "radial_clearance_mm": 8.02052553207065
+        },
+        {
+          "radius_mm": 8.0,
+          "local_y_mm": -2.0,
+          "global_y_mm": 52.5,
+          "max_pipe_radial_mm": 53.10602602341847,
+          "radial_clearance_mm": 21.893973976581528
+        },
+        {
+          "radius_mm": 26.0,
+          "local_y_mm": -2.0,
+          "global_y_mm": 52.5,
+          "max_pipe_radial_mm": 58.58540773947041,
+          "radial_clearance_mm": 16.414592260529588
+        }
+      ],
+      "feasible_pipe_center_delta_interval_mm": null,
+      "maximum_permitted_absolute_center_delta_mm": -0.5421901205574997,
+      "all_rigid_revolved_geometry_inside": false
+    },
+    "conclusion": "No rigid centred level pose fits the inherited wheel meridian: outer shoulder already exceeds R75 with zero centre offset."
+  },
+  "derived_supported_pose": {
+    "pipe_center_z_mm": 51.52426612771889,
+    "wheel_below_pipe_axis_mm": 6.524266127718889,
+    "crown_contact_points_yz_mm": [
+      [
+        -54.5,
+        0.0
+      ],
+      [
+        54.5,
+        0.0
+      ]
+    ],
+    "normal_vertical_fraction": 0.6869902150362518,
+    "derivation": "pipe_z = wheel_z - crown_radius + sqrt(pipe_radius^2-wheel_center_y^2); paired lower-wall crown contacts support gravity with symmetric lateral reactions."
+  },
+  "proposed_exact_profile_screen": {
+    "minimum_radial_clearance_mm": 0.0,
+    "worst_vertex": {
+      "radius_mm": 45.0,
+      "local_y_mm": 0.0,
+      "global_y_mm": 54.5,
+      "max_pipe_radial_mm": 75.0,
+      "radial_clearance_mm": 0.0
+    },
+    "vertices": [
+      {
+        "radius_mm": 26.0,
+        "local_y_mm": -12.0,
+        "global_y_mm": 42.5,
+        "max_pipe_radial_mm": 53.517080330925026,
+        "radial_clearance_mm": 21.482919669074974
+      },
+      {
+        "radius_mm": 32.0,
+        "local_y_mm": -12.0,
+        "global_y_mm": 42.5,
+        "max_pipe_radial_mm": 57.36173882196485,
+        "radial_clearance_mm": 17.63826117803515
+      },
+      {
+        "radius_mm": 42.0,
+        "local_y_mm": -8.0,
+        "global_y_mm": 46.5,
+        "max_pipe_radial_mm": 67.2075472192944,
+        "radial_clearance_mm": 7.792452780705602
+      },
+      {
+        "radius_mm": 45.0,
+        "local_y_mm": 0.0,
+        "global_y_mm": 54.5,
+        "max_pipe_radial_mm": 75.0,
+        "radial_clearance_mm": 0.0
+      },
+      {
+        "radius_mm": 34.5,
+        "local_y_mm": 8.0,
+        "global_y_mm": 62.5,
+        "max_pipe_radial_mm": 74.7612226446164,
+        "radial_clearance_mm": 0.23877735538360412
+      },
+      {
+        "radius_mm": 27.5,
+        "local_y_mm": 12.0,
+        "global_y_mm": 66.5,
+        "max_pipe_radial_mm": 74.69873282412385,
+        "radial_clearance_mm": 0.3012671758761485
+      },
+      {
+        "radius_mm": 8.0,
+        "local_y_mm": 12.0,
+        "global_y_mm": 66.5,
+        "max_pipe_radial_mm": 68.06764507861868,
+        "radial_clearance_mm": 6.932354921381318
+      },
+      {
+        "radius_mm": 8.0,
+        "local_y_mm": -2.0,
+        "global_y_mm": 52.5,
+        "max_pipe_radial_mm": 54.47205069160516,
+        "radial_clearance_mm": 20.527949308394838
+      },
+      {
+        "radius_mm": 26.0,
+        "local_y_mm": -2.0,
+        "global_y_mm": 52.5,
+        "max_pipe_radial_mm": 61.75822121099896,
+        "radial_clearance_mm": 13.241778789001039
+      }
+    ],
+    "feasible_pipe_center_delta_interval_mm": [
+      -6.524266127718889,
+      6.524266127718889
+    ],
+    "maximum_permitted_absolute_center_delta_mm": 6.524266127718889,
+    "all_rigid_revolved_geometry_inside": true
+  },
+  "nonwheel_integrated_mesh_screen": {
+    "source": "current/09_RELEASE/integrated_20261117/images/assembly_mesh.json.gz",
+    "sha256": "1dfc39188ee786733e9ef574999418c8e09862011ffe624541d6eb79380240a7",
+    "method": "All vertices of the archived assembly mesh; no surrogate boxes.",
+    "mesh_limit": "Master tessellation tolerance .25 mm; a discrete surface screen, not exact BRep containment.",
+    "proposed_wheels_not_substituted_in_mesh": true,
+    "minimum_nonwheel_clearance_mm": 5.871838984141405,
+    "nonwheel_protrusions": [],
+    "component_results": [
+      {
+        "id": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
+        "category": "body",
+        "radial_clearance_mm": 22.10183230781822
+      },
+      {
+        "id": "HOLD_SIDE_COVER_-1_GRAPHIC262x60x7",
+        "category": "metal",
+        "radial_clearance_mm": 20.090783868566895
+      },
+      {
+        "id": "HOLD_Z50_-1_50_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517937
+      },
+      {
+        "id": "HOLD_Z50_-1_100_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.094991152195043
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_-1_100.0",
+        "category": "bearing",
+        "radial_clearance_mm": 38.9542340622657
+      },
+      {
+        "id": "HOLD_IDLE_PIN_-1_100.0",
+        "category": "shaft",
+        "radial_clearance_mm": 39.10001796960771
+      },
+      {
+        "id": "HOLD_Z50_-1_150_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517937
+      },
+      {
+        "id": "HOLD_Z50_-1_200_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.094991152195043
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_-1_200.0",
+        "category": "bearing",
+        "radial_clearance_mm": 38.9542340622657
+      },
+      {
+        "id": "HOLD_IDLE_PIN_-1_200.0",
+        "category": "shaft",
+        "radial_clearance_mm": 39.10001796960771
+      },
+      {
+        "id": "HOLD_Z50_-1_250_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517937
+      },
+      {
+        "id": "61801_SIDE_-1_50_SOURCE_ONE_PER_SIDE",
+        "category": "bearing",
+        "radial_clearance_mm": 41.373299708525465
+      },
+      {
+        "id": "MIDDLE_BUSH_12_14_3_-1",
+        "category": "bearing",
+        "radial_clearance_mm": 42.274692143642646
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_-1_50.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.391978896080722
+      },
+      {
+        "id": "KEY_4x4x12_-1_50.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.049698456805316
+      },
+      {
+        "id": "61903_SIDE_-1_50.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_-1_50.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_-1_50.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_50.0",
+        "category": "seal",
+        "radial_clearance_mm": 27.53882972312195
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_-1_50.0_PHOTO_PROFILE",
+        "category": "wheel",
+        "radial_clearance_mm": -4.12046992226837
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_WASHER_-1_50.0",
+        "category": "metal",
+        "radial_clearance_mm": 9.965690815849541
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED",
+        "category": "shaft",
+        "radial_clearance_mm": 7.731546690956904
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.391978896080722
+      },
+      {
+        "id": "KEY_4x4x12_-1_150.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.049698456805316
+      },
+      {
+        "id": "61903_SIDE_-1_150.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_-1_150.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_150.0",
+        "category": "seal",
+        "radial_clearance_mm": 27.53882972312195
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_-1_150.0_PHOTO_PROFILE",
+        "category": "wheel",
+        "radial_clearance_mm": -4.12046992226837
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_WASHER_-1_150.0",
+        "category": "metal",
+        "radial_clearance_mm": 9.965690815849541
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED",
+        "category": "shaft",
+        "radial_clearance_mm": 7.731546690956904
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.391978896080722
+      },
+      {
+        "id": "KEY_4x4x12_-1_250.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.049698456805316
+      },
+      {
+        "id": "61903_SIDE_-1_250.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_-1_250.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_-1_250.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_250.0",
+        "category": "seal",
+        "radial_clearance_mm": 27.53882972312195
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_-1_250.0_PHOTO_PROFILE",
+        "category": "wheel",
+        "radial_clearance_mm": -4.12046992226837
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_WASHER_-1_250.0",
+        "category": "metal",
+        "radial_clearance_mm": 9.965690815849541
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED",
+        "category": "shaft",
+        "radial_clearance_mm": 7.731546690956904
+      },
+      {
+        "id": "HOLD_SIDE_COVER_1_GRAPHIC262x60x7",
+        "category": "metal",
+        "radial_clearance_mm": 20.090783868566895
+      },
+      {
+        "id": "HOLD_Z50_1_50_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517944
+      },
+      {
+        "id": "HOLD_Z50_1_100_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.09499115219505
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_1_100.0",
+        "category": "bearing",
+        "radial_clearance_mm": 38.9542340622657
+      },
+      {
+        "id": "HOLD_IDLE_PIN_1_100.0",
+        "category": "shaft",
+        "radial_clearance_mm": 39.10001796960771
+      },
+      {
+        "id": "HOLD_Z50_1_150_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517944
+      },
+      {
+        "id": "HOLD_Z50_1_200_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.09499115219505
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_1_200.0",
+        "category": "bearing",
+        "radial_clearance_mm": 38.9542340622657
+      },
+      {
+        "id": "HOLD_IDLE_PIN_1_200.0",
+        "category": "shaft",
+        "radial_clearance_mm": 39.10001796960771
+      },
+      {
+        "id": "HOLD_Z50_1_250_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517944
+      },
+      {
+        "id": "61801_SIDE_1_50_SOURCE_ONE_PER_SIDE",
+        "category": "bearing",
+        "radial_clearance_mm": 41.373299708525465
+      },
+      {
+        "id": "MIDDLE_BUSH_12_14_3_1",
+        "category": "bearing",
+        "radial_clearance_mm": 42.274692143642646
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_1_50.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.392347211691423
+      },
+      {
+        "id": "KEY_4x4x12_1_50.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.049698456805316
+      },
+      {
+        "id": "61903_SIDE_1_50.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_1_50.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_1_50.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_50.0",
+        "category": "seal",
+        "radial_clearance_mm": 27.538829723121943
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_1_50.0_PHOTO_PROFILE",
+        "category": "wheel",
+        "radial_clearance_mm": -4.12046992226837
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_WASHER_1_50.0",
+        "category": "metal",
+        "radial_clearance_mm": 9.965690815849541
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_M5_1_50.0_QUICKLOCK_UNRESOLVED",
+        "category": "shaft",
+        "radial_clearance_mm": 7.731546690956904
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_1_150.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.392347211691423
+      },
+      {
+        "id": "KEY_4x4x12_1_150.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.049698456805316
+      },
+      {
+        "id": "61903_SIDE_1_150.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_1_150.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_1_150.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_150.0",
+        "category": "seal",
+        "radial_clearance_mm": 27.538829723121943
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_1_150.0_PHOTO_PROFILE",
+        "category": "wheel",
+        "radial_clearance_mm": -4.12046992226837
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_WASHER_1_150.0",
+        "category": "metal",
+        "radial_clearance_mm": 9.965690815849541
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_M5_1_150.0_QUICKLOCK_UNRESOLVED",
+        "category": "shaft",
+        "radial_clearance_mm": 7.731546690956904
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_1_250.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.392347211691423
+      },
+      {
+        "id": "KEY_4x4x12_1_250.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.049698456805316
+      },
+      {
+        "id": "61903_SIDE_1_250.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_1_250.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_1_250.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_250.0",
+        "category": "seal",
+        "radial_clearance_mm": 27.538829723121943
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_1_250.0_PHOTO_PROFILE",
+        "category": "wheel",
+        "radial_clearance_mm": -4.12046992226837
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_WASHER_1_250.0",
+        "category": "metal",
+        "radial_clearance_mm": 9.965690815849541
+      },
+      {
+        "id": "HOLD_WHEEL_RETENTION_M5_1_250.0_QUICKLOCK_UNRESOLVED",
+        "category": "shaft",
+        "radial_clearance_mm": 7.731546690956904
+      },
+      {
+        "id": "HOLD_Z40_BEVEL_-1_CONICAL_ENVELOPE",
+        "category": "bevel",
+        "radial_clearance_mm": 47.54910656192467
+      },
+      {
+        "id": "HOLD_Z16_BEVEL_-1_CONICAL_ENVELOPE",
+        "category": "bevel",
+        "radial_clearance_mm": 51.07627558628629
+      },
+      {
+        "id": "HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD",
+        "category": "shaft",
+        "radial_clearance_mm": 41.398767302311064
+      },
+      {
+        "id": "61800_Z40_-1",
+        "category": "bearing",
+        "radial_clearance_mm": 58.05990184292564
+      },
+      {
+        "id": "SHAFT_SEAL_Z40_-1_18x30x7",
+        "category": "seal",
+        "radial_clearance_mm": 38.88675589303324
+      },
+      {
+        "id": "HOLD_Z16_SHAFT_-1",
+        "category": "shaft",
+        "radial_clearance_mm": 54.006242166303466
+      },
+      {
+        "id": "61801_Z16_SUPPORT_-1",
+        "category": "bearing",
+        "radial_clearance_mm": 49.506290332989195
+      },
+      {
+        "id": "HOLD_NBK_MLR20C_6_6_COUPLING_-1_EXTERNAL_DETAIL",
+        "category": "purchased",
+        "radial_clearance_mm": 50.006285837642615
+      },
+      {
+        "id": "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1",
+        "category": "shaft",
+        "radial_clearance_mm": 57.006383861211056
+      },
+      {
+        "id": "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
+        "category": "purchased",
+        "radial_clearance_mm": 47.50630667933635
+      },
+      {
+        "id": "HOLD_Z40_BEVEL_1_CONICAL_ENVELOPE",
+        "category": "bevel",
+        "radial_clearance_mm": 47.54910656192466
+      },
+      {
+        "id": "HOLD_Z16_BEVEL_1_CONICAL_ENVELOPE",
+        "category": "bevel",
+        "radial_clearance_mm": 51.07627558628629
+      },
+      {
+        "id": "HOLD_Z40_OUTPUT_SHAFT_1_SOCKET_TORQUE_TRANSFER_HOLD",
+        "category": "shaft",
+        "radial_clearance_mm": 41.398767302311064
+      },
+      {
+        "id": "61800_Z40_1",
+        "category": "bearing",
+        "radial_clearance_mm": 58.05990184292564
+      },
+      {
+        "id": "SHAFT_SEAL_Z40_1_18x30x7",
+        "category": "seal",
+        "radial_clearance_mm": 38.88675589303324
+      },
+      {
+        "id": "HOLD_Z16_SHAFT_1",
+        "category": "shaft",
+        "radial_clearance_mm": 54.006242166303466
+      },
+      {
+        "id": "61801_Z16_SUPPORT_1",
+        "category": "bearing",
+        "radial_clearance_mm": 49.506290332989195
+      },
+      {
+        "id": "HOLD_NBK_MLR20C_6_6_COUPLING_1_EXTERNAL_DETAIL",
+        "category": "purchased",
+        "radial_clearance_mm": 50.006285837642615
+      },
+      {
+        "id": "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1",
+        "category": "shaft",
+        "radial_clearance_mm": 57.006205318729116
+      },
+      {
+        "id": "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
+        "category": "purchased",
+        "radial_clearance_mm": 47.50630667933635
+      },
+      {
+        "id": "HOLD_PAIRED_MOTOR_HOLDER_RF25_FIT_CANDIDATE",
+        "category": "metal",
+        "radial_clearance_mm": 40.93749814918366
+      },
+      {
+        "id": "HOLD_PAIRED_PINION_BEARING_HOLDER",
+        "category": "metal",
+        "radial_clearance_mm": 42.1646993644646
+      },
+      {
+        "id": "HOLD_PRESSURE_ELECTRONICS_COVER_GRAPHIC158x53x7",
+        "category": "metal",
+        "radial_clearance_mm": 34.61410697961351
+      },
+      {
+        "id": "HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY",
+        "category": "valve",
+        "radial_clearance_mm": 28.44637963247458
+      },
+      {
+        "id": "HOLD_PRESSURE_VALVE_CAP",
+        "category": "valve",
+        "radial_clearance_mm": 26.648109587142372
+      },
+      {
+        "id": "HOLD_PRESSURE_VALVE_4MM_BALL",
+        "category": "valve",
+        "radial_clearance_mm": 32.325038725309064
+      },
+      {
+        "id": "HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY",
+        "category": "metal",
+        "radial_clearance_mm": 22.654979437487
+      },
+      {
+        "id": "HOLD_LAPP_SKINTOP_53112000_M12x1p5",
+        "category": "purchased",
+        "radial_clearance_mm": 25.22426612771889
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_ARM_-1_GRAPHIC200",
+        "category": "lift",
+        "radial_clearance_mm": 10.908448984579948
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_PIN_-1_40",
+        "category": "lift",
+        "radial_clearance_mm": 13.712588776680882
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_PIN_-1_240",
+        "category": "lift",
+        "radial_clearance_mm": 13.712588776680882
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_ARM_1_GRAPHIC200",
+        "category": "lift",
+        "radial_clearance_mm": 10.908448984579948
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_PIN_1_40",
+        "category": "lift",
+        "radial_clearance_mm": 13.712588776680882
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_PIN_1_240",
+        "category": "lift",
+        "radial_clearance_mm": 13.712588776680882
+      },
+      {
+        "id": "HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200",
+        "category": "lift",
+        "radial_clearance_mm": 8.246185681162913
+      },
+      {
+        "id": "HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN",
+        "category": "lift",
+        "radial_clearance_mm": 14.551650811238801
+      },
+      {
+        "id": "HOLD_GAS_SPRING_CLEVIS_PIN",
+        "category": "shaft",
+        "radial_clearance_mm": 18.290630003195496
+      },
+      {
+        "id": "HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER",
+        "category": "lift",
+        "radial_clearance_mm": 24.935661714261627
+      },
+      {
+        "id": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
+        "category": "purchased",
+        "radial_clearance_mm": 21.063288797948744
+      },
+      {
+        "id": "HOLD_ACE_GS12_80_ROD",
+        "category": "purchased",
+        "radial_clearance_mm": 17.782383998251063
+      },
+      {
+        "id": "HOLD_M8_MANUAL_CLAMP_LEVER_AND_HANDLE",
+        "category": "lift",
+        "radial_clearance_mm": 5.871838984141405
+      },
+      {
+        "id": "HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5",
+        "category": "camera",
+        "radial_clearance_mm": 25.27426612771889
+      },
+      {
+        "id": "HOLD_CAM026_SIDE_FRAME_GRAPHIC",
+        "category": "camera",
+        "radial_clearance_mm": 24.391339671511886
+      },
+      {
+        "id": "HOLD_CAM026_OPTICAL_HOUSING_GRAPHIC",
+        "category": "camera",
+        "radial_clearance_mm": 31.52426612771889
+      },
+      {
+        "id": "HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN",
+        "category": "camera",
+        "radial_clearance_mm": 44.52426612771889
+      },
+      {
+        "id": "HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE",
+        "category": "connector",
+        "radial_clearance_mm": 45.52426612771889
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 14.282634802587268
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 14.296553339073185
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 14.303513804207853
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 14.303513804207853
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 14.296553339073185
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 14.282634802587268
+      },
+      {
+        "id": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
+        "category": "cable",
+        "radial_clearance_mm": 11.826222357299088
+      },
+      {
+        "id": "PX1_LIFT_HARNESS_GUARD_OPEN_PROFILE",
+        "category": "print",
+        "radial_clearance_mm": 37.439851530118155
+      },
+      {
+        "id": "WEACT_STM32F446RET6_V11_MANUFACTURER_STEP",
+        "category": "electronics",
+        "radial_clearance_mm": 49.306176263029535
+      },
+      {
+        "id": "POLOLU_2992_G2_24v13_1_MANUFACTURER_STEP",
+        "category": "electronics",
+        "radial_clearance_mm": 47.52794581108617
+      },
+      {
+        "id": "POLOLU_2992_G2_24v13_2_MANUFACTURER_STEP",
+        "category": "electronics",
+        "radial_clearance_mm": 47.52794581108617
+      },
+      {
+        "id": "HOLD_CINCON_CQB150W110S24_BODY_PINS_THERMAL_HOLD",
+        "category": "electronics",
+        "radial_clearance_mm": 48.675709775381364
+      },
+      {
+        "id": "NICHICON_UCS2D221MHD1TN_BODY18x25",
+        "category": "electronics",
+        "radial_clearance_mm": 51.67057624105189
+      },
+      {
+        "id": "ADAFRUIT_MPRLS_3965_ENVELOPE",
+        "category": "electronics",
+        "radial_clearance_mm": 46.40470198239155
+      },
+      {
+        "id": "HOLD_POLOLU_5577_D42V55F12_ENVELOPE",
+        "category": "electronics",
+        "radial_clearance_mm": 37.36024761317133
+      },
+      {
+        "id": "HOLD_POLOLU_5571_D42V55F5_ENVELOPE",
+        "category": "electronics",
+        "radial_clearance_mm": 37.36024761317133
+      },
+      {
+        "id": "HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE",
+        "category": "electronics",
+        "radial_clearance_mm": 54.674888253109984
+      },
+      {
+        "id": "HOLD_DELTA_TR1D_P2_VIDEO_BALUN",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 62.94025791553176
+      },
+      {
+        "id": "HOLD_WEIPU_SP1712_7PIN_REAR_PANEL_6_USED",
+        "category": "connector",
+        "radial_clearance_mm": 47.37134522651701
+      },
+      {
+        "id": "HOLD_REAR_TETHER_STRAIN_SLEEVE",
+        "category": "metal",
+        "radial_clearance_mm": 56.47573387228111
+      },
+      {
+        "id": "HOLD_REAR_TETHER_ARAMID_CONE",
+        "category": "metal",
+        "radial_clearance_mm": 58.47651435090146
+      },
+      {
+        "id": "HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_UNKNOWN",
+        "category": "cable",
+        "radial_clearance_mm": 63.97573387228111
+      }
+    ]
+  },
+  "limits": [
+    "Nominal rigid, straight circular ID150 pipe, level crawler, static lift LOW only.",
+    "Wheel outer contour is an engineering estimate, not a recovered OEM QRW90 profile.",
+    "Tyre deformation, loading/contact stress, wear, traction and tolerances not qualified.",
+    "No curved-pipe, joint/obstacle, full-lift or endurance/pressure test claimed.",
+    "Rebuild full CAD with proposed profile and contact-derived pose, rerun all-pair collision and STEP checks before adopting."
+  ],
+  "proposed_screen_passes": true
+}

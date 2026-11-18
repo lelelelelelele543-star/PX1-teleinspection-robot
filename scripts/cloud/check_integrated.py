@@ -92,6 +92,7 @@ def main():
     parser.add_argument('--source', type=Path, default=Path(__file__).resolve().parents[2] / 'current/CAD/PX1_Current_Master.py')
     parser.add_argument('--roundtrip', action='store_true', help='Reimport full STEP and compare geometry to registry')
     parser.add_argument('--skip-spur', action='store_true', help='Record spur screen NOT_RUN, useful for fast diagnostics')
+    parser.add_argument('--require-pipe-service', action='store_true', help='Require the current pipe/contact report and continuous motor exit screen')
     args = parser.parse_args()
     out = args.output.resolve()
     val = json.loads((out / 'PX1_Current_Validation.json').read_text())
@@ -148,6 +149,17 @@ def main():
             checks['step_roundtrip'] = False
     else:
         report['step_roundtrip'] = {'status': 'NOT_RUN'}
+    if args.require_pipe_service:
+        pipe_path=out/'pipe_verification.json'
+        pipe=json.loads(pipe_path.read_text()) if pipe_path.is_file() else {}
+        service=val.get('service',{}).get('motor_vertical_extraction',{})
+        continuous=service.get('continuous_translation_screen',{})
+        checks['pipe_contact_profile_and_solid_bounds']=pipe.get('proposed_screen_passes') is True and pipe.get('active_source_sha256')==actual_source_hash
+        checks['motor_continuous_exit']=continuous.get('status')=='PASS_CANDIDATE_ENVELOPE' and continuous.get('errors')==[]
+        checks['motor_discrete_exit']=service.get('status')=='NO_COLLISION_IN_DISCRETE_SCREEN' and service.get('errors')==[]
+        tools=val.get('service',{}).get('service_screw_tools',[])
+        checks['four_service_tool_approaches']=len(tools)==4 and all(not i.get('collisions') for i in tools)
+        report['pipe_service_scope']='Nominal engineered tyre in perfect straight ID150; active candidate motor exit after explicit preceding disassembly; no physical passage, sealing, traction or complete service-sequence qualification.'
     report['status'] = 'PASS_REQUESTED_CAD_SCREENS_WITH_RELEASE_HOLD' if all(checks.values()) else 'FAIL_CAD_SCREEN'
     (out / 'integrated_checks.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
     print(json.dumps({'status': report['status'], 'checks': checks, 'blocking_interferences': len(blocking),

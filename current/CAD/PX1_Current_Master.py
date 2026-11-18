@@ -36,7 +36,12 @@ BODY_HALF_W_SCREEN=34.0
 BODY_Z0=11.0
 BODY_TOP=75.0
 PIPE_R=75.0
-PIPE_CENTER_Z=52.0480547
+WHEEL_CENTRE_Y=54.5
+WHEEL_CROWN_R=45.0
+# DERIVED: paired lower-wall crown contacts, not an arbitrary fit translation.
+PIPE_CENTER_Z=WHEEL_Z-WHEEL_CROWN_R+math.sqrt(PIPE_R**2-WHEEL_CENTRE_Y**2)
+# ESTIMATED asymmetric outer shoulder; retains D90 and total width133.
+WHEEL_PROFILE=[(26,-12),(32,-12),(42,-8),(45,0),(34.5,8),(27.5,12),(8,12),(8,-2),(26,-2)]
 
 # RF seller's JGA25-370B 24V/77rpm envelope, bench/fit candidate ONLY.
 # FAULHABER excluded by user. Rated torque is inadequate for the existing full-load
@@ -64,9 +69,13 @@ WAVESHARE_27479=(42.8,15.2,4.75)
 VIDEO_SCREEN=(43.0,16.0,15.0)  # Delta TR-1D*P2 packaging screen
 
 # Current PX1 service cover engineering prototype dimensions
-SERVICE_CX=208.0; SERVICE_L=158.0; SERVICE_W=53.0; SERVICE_T=7.0; SERVICE_Z=75.0
-SERVICE_OPEN=(48.0,22.0)
-SERVICE_SCREW_X=(132.0,284.0)
+SERVICE_CX=203.5; SERVICE_L=167.0; SERVICE_W=68.0; SERVICE_T=7.0; SERVICE_Z=75.0
+SERVICE_OPEN_X0=128.0; SERVICE_OPEN_X1=278.0; SERVICE_OPEN_W=53.0
+SERVICE_SCREW_X=(123.0,284.0); SERVICE_SCREW_Y=(-30.5,30.5)
+# ESTIMATED static face-seal gland: 1.5 section, 20% nominal squeeze,
+# 77.5% cross-section fill; exact closed seal/material and leak test unresolved.
+SERVICE_GROOVE_CX=203.0; SERVICE_GROOVE_L=156.0; SERVICE_GROOVE_W=58.0
+SERVICE_GROOVE_RADIUS=3.0; SERVICE_GROOVE_WIDTH=1.9; SERVICE_GROOVE_DEPTH=1.2
 
 # Lift kinematics recovered in current project
 PIVOT_X=240.0; PIVOT_Z_LOW=96.0; PIVOT_Z_HIGH=110.0; LINK_L=200.0
@@ -188,7 +197,11 @@ profile=[(18,17),(24,11),(278,11),(296,29),(296,73),(294,75),(20,75),(18,73)]
 body=cq.Workplane('XZ',origin=(0,34,0)).polyline(profile).close().extrude(68)
 body=cut(body,box0(24,-26.5,23,264,53,52.1))
 body=wp(body.val().fuse(box0(24,-26.5,71,264,53,4).val()))
-body=cut(body,box0(138,-18.5,70.9,140,37,4.2))
+body=cut(body,box0(SERVICE_OPEN_X0,-SERVICE_OPEN_W/2,70.9,
+                  SERVICE_OPEN_X1-SERVICE_OPEN_X0,SERVICE_OPEN_W,4.2))
+# Four M3 pilot holes in solid rails, nominal 8 mm engagement. Threads unmodelled.
+for sx in SERVICE_SCREW_X:
+    for sy in SERVICE_SCREW_Y: body=cut(body,cyl_z(sx,sy,67,1.25,8.1))
 for side in (-1,1):
     pockets=fuse_all([cyl_y(x,side*27.6,45,26.5,6.5,dir=side) for x in GEAR_X])
     body=cut(body,pockets)
@@ -228,12 +241,12 @@ for side in (-1,1):
         add(f'HOLD_AXLE_FLANGE_{side}_{x}_GRAPHIC_CONTOUR',flange,'metal')
         add(f'HOLD_XRING_INSTALLED_{side}_{x}_FREE18p72x2p62',ring_y(x,side*47.4,45,11.4,9,2.8),'seal')
         add(f'HOLD_FLANGE_ORING_32x1p5_{side}_{x}',wp(cq.Solid.makeTorus(16.75,.75,cq.Vector(x,side*40.5,45),cq.Vector(0,1,0))),'seal')
-        pts=[(26,-12),(32,-12),(42,-8),(45,0),(42,8),(32,12),(8,12),(8,-2),(26,-2)]
+        pts=list(WHEEL_PROFILE)
         if side<0:pts=[(r,-yy) for r,yy in pts]
-        tyre=cq.Workplane('XY').polyline(pts).close().revolve(360,(0,0),(0,1)).translate((x,side*54.5,45))
+        tyre=cq.Workplane('XY').polyline(pts).close().revolve(360,(0,0),(0,1)).translate((x,side*WHEEL_CENTRE_Y,WHEEL_Z))
         tyre=cut(tyre,key)
         tyre=cut(tyre,cyl_y(x,side*60.9,45,10.2,5.7,dir=side)) # provisional retention recess H01, not OEM quick-lock
-        add(f'HOLD_QRW90SR150_WHEEL_{side}_{x}_PHOTO_PROFILE',tyre,'wheel')
+        add(f'HOLD_QRW90SR150_WHEEL_{side}_{x}_ENGINEERED_OUTER_SHOULDER',tyre,'wheel')
         add(f'HOLD_WHEEL_RETENTION_WASHER_{side}_{x}',ring_y(x,side*61.9,45,10,2.7,2),'metal')
         bolt=fuse_all([cyl_y(x,side*51.5,45,2.5,11.4,dir=side),cyl_y(x,side*62.9,45,4.25,3.5,dir=side)])
         add(f'HOLD_WHEEL_RETENTION_M5_{side}_{x}_QUICKLOCK_UNRESOLVED',bolt,'shaft')
@@ -273,10 +286,17 @@ add('HOLD_PAIRED_MOTOR_HOLDER_RF25_FIT_CANDIDATE',motor_holder,'metal')
 add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
 cover=boxc(SERVICE_CX,0,78.5,SERVICE_L,SERVICE_W,SERVICE_T)
 for x in SERVICE_SCREW_X:
-    for y in (-19,19):cover=cut(cover,cyl_z(x,y,74.9,2.25,7.2))
+    for y in SERVICE_SCREW_Y:cover=cut(cover,cyl_z(x,y,74.9,1.7,7.2))
 cover=cut(cover,cyl_z(264,18,74.9,5.05,7.2))
 cover=cut(cover,cyl_z(245,0,74.9,4,7.2))
-add('HOLD_PRESSURE_ELECTRONICS_COVER_GRAPHIC158x53x7',cover,'metal')
+outer=boxc(SERVICE_GROOVE_CX,0,75+(SERVICE_GROOVE_DEPTH-.1)/2,
+           SERVICE_GROOVE_L+SERVICE_GROOVE_WIDTH,SERVICE_GROOVE_W+SERVICE_GROOVE_WIDTH,
+           SERVICE_GROOVE_DEPTH+.1).edges('|Z').fillet(SERVICE_GROOVE_RADIUS+SERVICE_GROOVE_WIDTH/2)
+inner=boxc(SERVICE_GROOVE_CX,0,75+(SERVICE_GROOVE_DEPTH-.1)/2,
+           SERVICE_GROOVE_L-SERVICE_GROOVE_WIDTH,SERVICE_GROOVE_W-SERVICE_GROOVE_WIDTH,
+           SERVICE_GROOVE_DEPTH+.3).edges('|Z').fillet(SERVICE_GROOVE_RADIUS-SERVICE_GROOVE_WIDTH/2)
+cover=cut(cover,cut(outer,inner))
+add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE167x68x7',cover,'metal')
 valve_body=cut(cyl_z(264,18,78,5,14),cyl_z(264,18,77.9,2.1,14.2))
 add('HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY',valve_body,'valve')
 add('HOLD_PRESSURE_VALVE_CAP',cyl_z(264,18,92,6,1.5),'valve')
