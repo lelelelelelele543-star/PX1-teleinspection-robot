@@ -28,7 +28,7 @@ for name in ("Full 3D Boolean collisions","Real involute teeth and gear backlash
              "Bevel input contact and shaft coupling","Dynamic shaft sealing at 0.7 bar",
              "STEP export and STEP reopen","Manufacturing bearing fit"):
     tests.append({"name":name,"status":"NOT_RUN","reason":"requires FreeCAD or verified hardware data"})
-# A true circular wheel cross-section cannot be assessed by a bounding rectangle alone.
+# A wheel cylinder aligned to Y appears as a rectangle in YZ; bounding corners are conservative.
 # This is deliberately a conservative screening check, not a pipe-traversal simulation.
 svg=['<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="660" viewBox="0 0 1120 660">',
 '<rect width="1120" height="660" fill="#f7f9fc"/>',
@@ -44,7 +44,7 @@ for side in (-1,1):
     yc=side*(40+9)
     cx=280+yc*scale
     cy=340-(-5)*scale
-    svg.append(f'<circle cx="{cx:.2f}" cy="{cy:.2f}" r="{39*scale:.2f}" fill="#2f3a4c" fill-opacity=".2" stroke="#202e42" stroke-width="2"/>')
+    svg.append(f'<rect x="{cx-9*scale:.2f}" y="{cy-39*scale:.2f}" width="{18*scale:.2f}" height="{78*scale:.2f}" fill="#2f3a4c" fill-opacity=".2" stroke="#202e42" stroke-width="2"/>')
     svg.append(f'<rect x="{280+side*35*scale-3 if side>0 else 280-35*scale-3:.1f}" y="326" width="6" height="28" fill="#df7d24"/>')
 svg+=['<text x="40" y="585" font-size="15" font-family="sans-serif">Wheel Y envelope ±58 mm, Z center −5 mm; conservative radius %.2f mm</text>'%r,
 '<text x="620" y="113" font-size="19" font-family="sans-serif">Critical axial interfaces</text>',
