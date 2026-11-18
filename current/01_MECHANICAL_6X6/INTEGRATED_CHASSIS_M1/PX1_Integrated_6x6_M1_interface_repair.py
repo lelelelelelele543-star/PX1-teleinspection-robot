@@ -7,8 +7,8 @@ from FreeCAD import Vector as V
 ROOT=os.path.dirname(os.path.abspath(__file__))
 D=App.newDocument("PX1_Integrated_6x6_M1")
 P=dict(body_L=307.,body_W=78.,body_H=70.,wall=5.,wheel_D=78.,wheel_W=18.,
-       stations=(-110.,0.,110.),gear_x=(-110.,-55.,0.,55.,110.),
-       gear_m=1.1,gear_z=0.,gear_y=30.,gear_thick=6.,axle_D=10.,
+       stations=(-100.,0.,100.),gear_x=(-100.,-50.,0.,50.,100.),
+       gear_m=1.0,gear_z=0.,gear_y=30.,gear_thick=6.,axle_D=10.,
        motor_D=22.,motor_L=42.,motor_z=10.,motor_y=14.,
        pressure_bar_min=0.4,pressure_bar_max=0.7)
 parts=[]
@@ -35,11 +35,11 @@ for side,s in (("L",-1),("R",1)):
     # Motors face rear wheel station; avoid center axle at X=0 by raising motor axes.
     add("Motor_"+side+"_ENVELOPE",cyl(P["motor_D"]/2,P["motor_L"],(35,s*14,10),(1,0,0)),(0.22,0.32,0.4))
     add("Motor_shaft_"+side,cyl(4,32,(77,s*14,10),(1,0,0)),(0.8,0.7,0.3))
-    # Five Z50 stations per side. m=1.1 design assumption -> 55 mm pitch diameter and 55 mm centers.
+    # Five Z50 stations per side. m=1.0 design assumption -> 50 mm pitch diameter and 50 mm centers.
     for j,x in enumerate(P["gear_x"]):
         gy=s*P["gear_y"]
         # Pitch solids are intentionally NOT teeth or manufactured gears.
-        add("Z50_pitch_PROXY_"+side+"_"+str(j+1),cyl(27.5,6,(x,gy-3,P["gear_z"]),(0,1,0)),(0.75,0.42,0.19))
+        add("Z50_pitch_PROXY_"+side+"_"+str(j+1),cyl(P["gear_m"]*50/2,6,(x,gy-3,P["gear_z"]),(0,1,0)),(0.75,0.42,0.19))
         if j%2==0:
             add("Wheel_axle_"+side+"_"+str(j//2+1),cyl(5,34,(x,s*29,P["gear_z"]),(0,s,0)),(0.77,0.78,0.79))
             # Bearing 10x22x7: geometry proxy, not manufacturer verification.
@@ -56,6 +56,8 @@ for side,s in (("L",-1),("R",1)):
 wheel_gap=(P["stations"][1]-P["stations"][0])-P["wheel_D"]
 gear_pitch=P["gear_m"]*50
 gear_gap=(P["gear_x"][1]-P["gear_x"][0])-gear_pitch
+assert P["stations"] == (P["gear_x"][0],P["gear_x"][2],P["gear_x"][4]), "Wheel stations disagree with gear chain"
+assert P["gear_x"] == tuple(-100.+50.*i for i in range(5)), "AGENTS.md X50..X250 local-coordinate mapping failed"
 motor_top=P["motor_z"]+P["motor_D"]/2
 assert wheel_gap>=0, "Adjacent wheels overlap"
 # Conservative wheel bounding rectangle in YZ, DN150, including full rim width.
@@ -98,5 +100,6 @@ print("NOT_RUN bevel contact, real teeth, bearing fits, pressure seals, volumetr
 D.recompute()
 D.saveAs(os.path.join(ROOT,"PX1_Integrated_6x6_M1.FCStd"))
 Part.export(parts,os.path.join(ROOT,"PX1_Integrated_6x6_M1.step"))
+# Export is a proxy assembly only, not validated involute gears or pressure seals.
 print("NOT_RUN STEP reopen / Boolean checks; PHYSICAL_CHECK bearing seating, shaft seals, pressure")
 print("DESIGN PROXY ONLY: generated FCStd/STEP; check interference, gear mesh, pressure seals before manufacturing")
