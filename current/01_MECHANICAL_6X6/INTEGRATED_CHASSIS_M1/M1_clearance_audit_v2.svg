@@ -6,8 +6,8 @@
 <circle cx="280" cy="340" r="195" fill="none" stroke="#2479ad" stroke-width="4"/>
 <rect x="176" y="249" width="208" height="182" fill="#bbc5d1" fill-opacity=".5" stroke="#53677e" stroke-width="2"/>
 <text x="222" y="342" font-size="16" font-family="sans-serif">BODY</text>
-<circle cx="152.6" cy="353" r="101.4" fill="#2f3a4c" fill-opacity=".2" stroke="#202e42" stroke-width="2"/>
-<circle cx="407.4" cy="353" r="101.4" fill="#2f3a4c" fill-opacity=".2" stroke="#202e42" stroke-width="2"/>
+<rect x="129.2" y="251.6" width="46.8" height="202.8" fill="#2f3a4c" fill-opacity=".2" stroke="#202e42" stroke-width="2"/>
+<rect x="384" y="251.6" width="46.8" height="202.8" fill="#2f3a4c" fill-opacity=".2" stroke="#202e42" stroke-width="2"/>
 <text x="40" y="585" font-size="15" font-family="sans-serif">Wheel Y envelope ±58 mm, Z center −5 mm; conservative radius 72.80 mm</text>
 <text x="620" y="113" font-size="19" font-family="sans-serif">Critical axial interfaces</text>
 <text x="620" y="151" font-size="16" font-family="sans-serif">Motor → spur: 2 mm (PASS target)</text>
