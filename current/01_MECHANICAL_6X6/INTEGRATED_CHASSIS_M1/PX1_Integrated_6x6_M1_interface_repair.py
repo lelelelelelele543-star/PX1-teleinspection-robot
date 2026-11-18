@@ -6,7 +6,7 @@ import FreeCAD as App, Part, math, os
 from FreeCAD import Vector as V
 ROOT=os.path.dirname(os.path.abspath(__file__))
 D=App.newDocument("PX1_Integrated_6x6_M1")
-P=dict(body_L=307.,body_W=78.,body_H=70.,wall=5.,wheel_D=78.,wheel_W=18.,
+P=dict(body_L=307.,body_W=78.,body_H=70.,wall=5.,wheel_D=78.,wheel_W=14.,
        stations=(-100.,0.,100.),gear_x=(-100.,-50.,0.,50.,100.),
        gear_m=1.0,gear_z=0.,gear_y=30.,gear_thick=6.,axle_D=10.,
        motor_D=22.,motor_L=42.,motor_z=10.,motor_y=14.,
@@ -71,8 +71,10 @@ assert wheel_gap>=0, "Adjacent wheels overlap"
 wheel_outer_y=46+P["wheel_W"]
 wheel_z_extent=max(abs(P["gear_z"]-P["wheel_D"]/2),abs(P["gear_z"]+P["wheel_D"]/2))
 wheel_radial_envelope=math.hypot(wheel_outer_y,wheel_z_extent)
+# Reserve a real design clearance instead of accepting the previous 0.047 mm nominal margin.
+minimum_pipe_clearance=2.0
 body_radial_envelope=math.hypot(P["body_W"]/2,P["body_H"]/2)
-assert wheel_radial_envelope<=75, "Wheel violates DN150 circular envelope"
+assert wheel_radial_envelope<=75-minimum_pipe_clearance, "Wheel DN150 clearance below 2 mm design target"
 assert body_radial_envelope<=75, "Body violates DN150 circular envelope"
 assert abs(gear_gap)<1e-8, "Z50 pitch mismatch"
 assert motor_top <= P["body_H"]/2-P["wall"], "Motor above inner roof"
@@ -107,8 +109,9 @@ print("PASS nominal bearing counterbore covers full sidewall; 2 mm bearing protr
 bearing_wheel_axial_clearance=46-(34+7)
 assert bearing_wheel_axial_clearance>=5, "Bearing-to-wheel axial clearance below seal cartridge target"
 assert 4+1 <= bearing_wheel_axial_clearance, "Seal cartridge + axial service clearance does not fit"
-assert math.hypot(46+P["wheel_W"],P["wheel_D"]/2) <= 75, "External seal packaging violates DN150 wheel envelope"
+assert math.hypot(46+P["wheel_W"],P["wheel_D"]/2) <= 75-minimum_pipe_clearance, "External seal packaging leaves under 2 mm DN150 radial margin"
 assert P["motor_D"]==22, "Motor CAD diameter mismatch"
+print("PASS DN150 nominal radial clearance",round(75-wheel_radial_envelope,3),"mm; wheel width",P["wheel_W"],"mm; ASSUMED, verify traction/contact")
 print("PASS design envelope: motor Ø",P["motor_D"],"bearing-to-wheel axial gap",bearing_wheel_axial_clearance,"mm")
 assert 80-(35+P["motor_L"])>=3, "Motor rear-end intersects bevel proxy X envelope"
 print("PASS rear motor/bevel X envelope gap",80-(35+P["motor_L"]),"mm; assumed motor L",P["motor_L"],"mm")
