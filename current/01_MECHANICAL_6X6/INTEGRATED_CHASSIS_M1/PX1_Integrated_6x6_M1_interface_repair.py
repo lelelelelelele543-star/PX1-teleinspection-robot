@@ -20,7 +20,7 @@ def cyl(r,h,p,d): return Part.makeCylinder(r,h,V(*p),V(*d))
 L,W,H=P["body_L"],P["body_W"],P["body_H"]
 outer=Part.makeBox(L,W,H,V(-L/2,-W/2,-H/2))
 inner=Part.makeBox(L-10,W-10,H-10,V(-L/2+5,-W/2+5,-H/2+5))
-lid_opening=Part.makeBox(170,75,12,V(-85,-37.5,29))
+lid_opening=Part.makeBox(170,60,12,V(-85,-30,29))
 # Six through-wall shaft passages and bearing counterbores (design targets).
 for xx in P["stations"]:
     for sign in (-1,1):
@@ -28,8 +28,8 @@ for xx in P["stations"]:
         outer=outer.cut(cyl(11,3,(xx,sign*35,0),(0,sign,0)))
 add("Body_hollow_ASSUMED",outer.cut(inner).cut(lid_opening),(0.64,0.69,0.73))
 # Separate lid is a design envelope; cut aperture into top before production release.
-add("Lid_ASSUMED",Part.makeBox(170,75,4,V(-85,-37.5,35)),(0.18,0.4,0.62))
-gasket=Part.makeBox(174,79,2,V(-87,-39.5,34)).cut(Part.makeBox(168,73,2,V(-84,-36.5,34)))
+add("Lid_ASSUMED",Part.makeBox(178,68,4,V(-89,-34,36)),(0.18,0.4,0.62))
+gasket=Part.makeBox(174,64,1,V(-87,-32,35)).cut(Part.makeBox(166,56,1,V(-83,-28,35)))
 add("Lid_gasket_PROXY",gasket,(0.18,0.64,0.35))
 for side,s in (("L",-1),("R",1)):
     # Motors face rear wheel station; avoid center axle at X=0 by raising motor axes.
@@ -78,6 +78,10 @@ gear_bottom_gap = P["gear_z"] - P["gear_m"]*50/2 - (-P["body_H"]/2+P["wall"])
 assert wheel_body_side_gap >= 1, "Wheel touches outer shell"
 assert gear_inner_wall_gap >= 1, "Z50 proxy touches inner wall"
 assert gear_bottom_gap >= 1, "Z50 proxy cuts bottom wall"
+# Lid perimeter: 4 mm nominal flange outside 170x60 opening; gasket lands on top face.
+assert (178-170)/2 >= 4 and (68-60)/2 >= 4, "Lid flange below design target"
+assert 68 <= P["body_W"] and 64 <= P["body_W"], "Lid/gasket overhang body"
+assert 35 == P["body_H"]/2, "Gasket does not sit on top of shell"
 print("PASS nominal static clearances wheel/body",wheel_body_side_gap,"gear/inner-wall",gear_inner_wall_gap,"gear/bottom",gear_bottom_gap,"mm")
 print("PASS motor/spur Y clearance", motor_to_spur_y_clearance,
       "mm; left/right motor clearance", motor_pair_y_clearance, "mm")
