@@ -27,7 +27,7 @@ B61800=(10.0,19.0,5.0)
 XRING=(18.72,2.62)
 SEAL_18_30_7=(18.0,30.0,7.0)
 SIDE_ORING=(190.0,1.5)
-# F17 ballast blocks in free cavity space (bbox search, 0.5 mm shrink, motor-extraction keep-out). Material HOLD (steel/W-alloy).
+# F17 ballast blocks in free cavity space (bbox search, 0.5 mm shrink, motor-extraction keep-out). Material: STEEL (user decision 2026-11-19).
 BALLAST_BOXES=[(25.0,-21.5,25.0,90.0,-11.5,66.0),(25.0,11.5,25.0,90.0,21.5,66.0),(117.0,-25.5,25.0,188.0,25.5,30.0),(266.0,10.5,25.0,287.0,25.5,68.0),(266.0,-25.5,25.0,287.0,-10.5,54.0)]
 QRW_HUB_R=22.0   # F17 aluminium hub radius inside D90 tyre, ESTIMATED from Mini-Cam ASS-004-496 view (hub ~0.5 D)
 # F11 FSS-002-060 weight plate (DRW-002-375 A-A, 1:1): stainless, in external bottom recess, flush.
@@ -524,7 +524,7 @@ add('HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_UNKNOWN',cyl_x(348,0,45,4.5,80),'
 add('FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD',
     box0(WEIGHT_PLATE_X0,-WEIGHT_PLATE_W/2,BODY_Z0,WEIGHT_PLATE_X1-WEIGHT_PLATE_X0,WEIGHT_PLATE_W,WEIGHT_PLATE_H),'metal')
 for i,b in enumerate(BALLAST_BOXES,1):
-    add(f'HOLD_BALLAST_{i}_MATERIAL_TBD',box0(b[0],b[1],b[2],b[3]-b[0],b[4]-b[1],b[5]-b[2]),'metal')
+    add(f'HOLD_BALLAST_{i}_STEEL',box0(b[0],b[1],b[2],b[3]-b[0],b[4]-b[1],b[5]-b[2]),'metal')
 components.insert(0,('HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED',body,'body'))
 from release_tools import finish_build
 finish_build(globals())

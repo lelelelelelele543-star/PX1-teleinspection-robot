@@ -131,5 +131,5 @@ PR04;Макет боковой крышки;1;PX1_Side_Cover_FitCheck_ONLY.stl;2
 M04C;Средняя короткая ось;2;PX1 middle axle;X150 absY26.8..60.9 stepped12/17/18 HOLD;integrated CAD estimate;TURN;ESTIMATED;H02 strength/retention unqualified
 L17;Палец проушины газовой пружины;1;PX1 gas clevis pin;D4 L11;integrated CAD estimate;TURN;ESTIMATED;H06 retention/load unqualified
 M20;Грузовая плита (нерж.);1;FSS-002-060;50.3×12×247.5;DRW375 A-A 1:1;MILL;MODELLED_F11;H02 длина ESTIMATED, крепление 2×M8 HOLD
-M21;Балластные блоки;5;PX1-BALLAST-F17;≈94 см³ всего, BALLAST_BOXES;F17 free-space search;MILL;MODELLED_F17;материал HOLD сталь/W-сплав, крепление HOLD
+M21;Балластные блоки;5;PX1-BALLAST-F17;≈94 см³ всего, BALLAST_BOXES;F17 free-space search;MILL;MODELLED_F17;материал СТАЛЬ (решение пользователя 2026-11-19), крепление HOLD
 P03b;Ступица колеса Al;6;QRW90 hub ESTIMATED;r22 inside D90 tyre;Mini-Cam ASS-004-496 view;TURN;MODELLED_F17;H01 замок QRW: поворотный упор под винтом M5, ключ 4 мм
