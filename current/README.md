@@ -35,7 +35,7 @@ FAULHABER исключён пользователем. JGA25 — только г
 ## Current engineering baseline
 
 - CAD/PX1_Current_Master.py — единственный исходник текущей сборки.
-- CAD/PX1_Current_Master.step — экспорт после успешной сборки.
+- CAD/PX1_Current_Master.step.gz — экспорт после успешной сборки, сжат gzip (полный STEP ~100 МБ превышает лимит GitHub); распаковать `gunzip -k`.
 - PX1_Current_BOM.csv — единая BOM.
 - PX1_Current_Validation.json — проверка конкретного экспорта; старые результаты не переносить.
 - PX1_Change_Log.md — единый журнал изменений.

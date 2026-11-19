@@ -6,7 +6,7 @@
 
 Механический эталон — Proteus CRP-150. Электроника собственная, на готовых модулях. Текущий статус: **HOLD — рабочая конструкция к изготовлению не выпущена**. Успех CAD-экспорта не означает PASS механики.
 
-- [Общий STEP](current/CAD/PX1_Current_Master.step)
+- [Общий STEP, gzip](current/CAD/PX1_Current_Master.step.gz) — распаковать: `gunzip -k`
 - [Текущая BOM](current/PX1_Current_BOM.csv)
 - [Validation](current/PX1_Current_Validation.json)
 - [Чертежи и CAD-виды](current/PX1_Drawings_Current.pdf)
