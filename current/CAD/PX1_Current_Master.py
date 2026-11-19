@@ -274,15 +274,37 @@ def candidate_motor_pack(y):
         cyl_x(MOTOR_FACE-GEARHEAD_LEN,y,45,GEARHEAD_OD/2,GEARHEAD_LEN),
         cyl_x(MOTOR_FACE,y,45,MOTOR_PILOT_D/2,MOTOR_PILOT_L),
         cyl_x(MOTOR_FACE,y,45,MOTOR_SHAFT_D/2,MOTOR_SHAFT_L)])
+# F06 bevel pair, built once. Layout DERIVED: apex (250,±MOTOR_Y,45); Z16 pitch circle X230,
+# Z40 pitch circle |Y|5.5. m1, 20°, face 6, backlash .05, tip clearance .1 — ESTIMATED (H04).
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parent/'vendor_py'))
+import cq_gears
+BEVEL_FACE_W=6.0; BEVEL_BACKLASH=0.05; BEVEL_CLEARANCE=0.1
+_bp=cq_gears.BevelGearPair(module=BEVEL_MOD,gear_teeth=Z40_TEETH,pinion_teeth=Z16_TEETH,face_width=BEVEL_FACE_W,
+                           backlash=BEVEL_BACKLASH,clearance=BEVEL_CLEARANCE)
+_ba=_bp.assemble(build_gear=True,build_pinion=True,transform_pinion=True)
+def _child(asm,key):
+    c=[ch for ch in asm.children if key(ch.name)][0]
+    o=c.obj.val() if hasattr(c.obj,'val') else c.obj
+    return o.moved(c.loc)
+BEVEL_GEAR_SOLID=_child(_ba,lambda n:'gear' in n and 'pinion' not in n)
+BEVEL_PINION_SOLID=_child(_ba,lambda n:'pinion' in n)
+BEVEL_CONE_H=float(_bp.gear.cone_h)    # apex height above Z40 back face in library frame
+BEVEL_APEX_Y=MOTOR_Y
 motor_holder=boxc(MOTOR_FACE+1.5,0,45,3,52.8,30)
 pinion_holder=boxc(227,0,45,5,52.8,26)
 for side in (-1,1):
     y=side*MOTOR_Y
-    z40=wp(cq.Solid.makeCone(20.37,14.3,2.41,cq.Vector(250,side*5.5,45),cq.Vector(0,side,0)))
-    z40=cut(z40,cyl_y(250,side*5.4,45,5,3,dir=side))
-    z16=wp(cq.Solid.makeCone(8.93,2,6.96,cq.Vector(230,y,45),cq.Vector(1,0,0)))
-    z16=cut(z16,cyl_x(229.9,y,45,3,7.2))
-    add(f'HOLD_Z40_BEVEL_{side}_CONICAL_ENVELOPE',z40,'bevel');add(f'HOLD_Z16_BEVEL_{side}_CONICAL_ENVELOPE',z16,'bevel')
+    # F06: straight bevel teeth (cq_gears), common apex at Z40 axis x Z16 axis.
+    def place(sh):
+        sh=sh.rotate(cq.Vector(0,0,0),cq.Vector(1,0,0),-90*side)
+        return wp(sh.translate(cq.Vector(250,side*(BEVEL_APEX_Y-BEVEL_CONE_H),45)))
+    z40=place(BEVEL_GEAR_SOLID)
+    z40=cut(z40,cyl_y(250,side*(BEVEL_APEX_Y-BEVEL_CONE_H-.1),45,9.7,5.5-(BEVEL_APEX_Y-BEVEL_CONE_H)+.15,dir=side)) # 61800 clearance counterbore, ESTIMATED
+    z40=cut(z40,cyl_y(250,side*.4,45,5,15,dir=side))   # bore on Z40 output shaft r5
+    z16=place(BEVEL_PINION_SOLID)
+    z16=cut(z16,cyl_x(228,y,45,3,12))                  # bore on Z16 shaft r3
+    add(f'HOLD_Z40_BEVEL_{side}_STRAIGHT_M1_TEETH',z40,'bevel');add(f'HOLD_Z16_BEVEL_{side}_STRAIGHT_M1_TEETH',z16,'bevel')
     axle=fuse_all([cyl_y(250,side*.5,45,5,19.5,dir=side),cyl_y(250,side*20,45,9,9.8,dir=side)])
     axle=cut(axle,cyl_y(250,side*23,45,6,6.9,dir=side))
     add(f'HOLD_Z40_OUTPUT_SHAFT_{side}_SOCKET_TORQUE_TRANSFER_HOLD',axle,'shaft')

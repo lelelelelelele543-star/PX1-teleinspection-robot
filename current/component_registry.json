@@ -1580,43 +1580,43 @@
     "solids": 1
   },
   {
-    "id": "HOLD_Z40_BEVEL_-1_CONICAL_ENVELOPE",
+    "id": "HOLD_Z40_BEVEL_-1_STRAIGHT_M1_TEETH",
     "category": "bevel",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      229.63,
-      -7.91,
-      24.63,
-      270.37,
-      -5.5,
-      65.37
+      229.68697,
+      -8.40369,
+      24.68697,
+      270.31303,
+      -4.35479,
+      65.31303
     ],
     "dimensions_mm": [
-      40.74,
-      2.41,
-      40.74
+      40.62605,
+      4.0489,
+      40.62605
     ],
-    "volume_mm3": 2109.13979,
+    "volume_mm3": 2451.53378,
     "solids": 1
   },
   {
-    "id": "HOLD_Z16_BEVEL_-1_CONICAL_ENVELOPE",
+    "id": "HOLD_Z16_BEVEL_-1_STRAIGHT_M1_TEETH",
     "category": "bevel",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      230.0,
-      -22.43,
-      36.07,
-      235.95567,
-      -4.57,
-      53.93
+      229.57013,
+      -22.41887,
+      36.08113,
+      235.85404,
+      -4.58113,
+      53.91887
     ],
     "dimensions_mm": [
-      5.95567,
-      17.86,
-      17.86
+      6.28391,
+      17.83774,
+      17.83774
     ],
-    "volume_mm3": 552.17128,
+    "volume_mm3": 696.58848,
     "solids": 1
   },
   {
@@ -1780,43 +1780,43 @@
     "solids": 1
   },
   {
-    "id": "HOLD_Z40_BEVEL_1_CONICAL_ENVELOPE",
+    "id": "HOLD_Z40_BEVEL_1_STRAIGHT_M1_TEETH",
     "category": "bevel",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      229.63,
-      5.5,
-      24.63,
-      270.37,
-      7.91,
-      65.37
+      229.68697,
+      4.35479,
+      24.68697,
+      270.31303,
+      8.40369,
+      65.31303
     ],
     "dimensions_mm": [
-      40.74,
-      2.41,
-      40.74
+      40.62605,
+      4.0489,
+      40.62605
     ],
-    "volume_mm3": 2109.13979,
+    "volume_mm3": 2451.53378,
     "solids": 1
   },
   {
-    "id": "HOLD_Z16_BEVEL_1_CONICAL_ENVELOPE",
+    "id": "HOLD_Z16_BEVEL_1_STRAIGHT_M1_TEETH",
     "category": "bevel",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      230.0,
-      4.57,
-      36.07,
-      235.95567,
-      22.43,
-      53.93
+      229.57013,
+      4.58113,
+      36.08113,
+      235.85404,
+      22.41887,
+      53.91887
     ],
     "dimensions_mm": [
-      5.95567,
-      17.86,
-      17.86
+      6.28391,
+      17.83774,
+      17.83774
     ],
-    "volume_mm3": 552.17128,
+    "volume_mm3": 696.58848,
     "solids": 1
   },
   {
