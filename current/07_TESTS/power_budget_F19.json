@@ -1,0 +1,513 @@
+{
+  "motor24": {
+    "R_ohm": 8.0,
+    "Kt_mNm_A": 36.0,
+    "Kv_rpm_V": 265.25823848649225,
+    "T_friction_mNm": 4.9999999999999964,
+    "I0_A": 0.13888888888888878,
+    "I_stall_A": 3.0,
+    "I_stall_cold_A": 3.333333333333333,
+    "T_stall_mNm": 103.0,
+    "I_rated_A": 0.6,
+    "T_motor_duty_mNm": 17.921146953405017,
+    "I_duty_A": 0.6366985264834726,
+    "n_out_at_24V_rpm": 80.88841108097104,
+    "V_needed_for_target_rpm": 25.428489140023792,
+    "P_el_duty_W": 15.280764635603342,
+    "P_mech_out_W": 8.47061460041766
+  },
+  "seller_check": {
+    "motor_rpm": 12006,
+    "kv_needed": 500.25,
+    "kv_24V_winding": 265.25823848649225,
+    "kv_12V_winding": 530.5164769729845,
+    "I_stall_12V_winding_at_24V_A": 12.0
+  },
+  "rails": {
+    "led_W": 7.2333333333333325,
+    "head12_nom_W": 11.953333333333331,
+    "head12_peak_W": 21.07333333333333,
+    "head_from24_nom_W": 13.281481481481478,
+    "head_from24_peak_W": 23.41481481481481,
+    "logic_from24_W": 1.7647058823529411
+  },
+  "I_lim_max_per_motor_A": 1.9629266521423385,
+  "cincon_design_limit_W": 120.0,
+  "cases_W_24V": {
+    "A_duty_1Nm": {
+      "P_W": 46.20771663504111,
+      "I_bus_A": 1.9253215264600463,
+      "pct_of_150W": 30.805144423360737,
+      "over_rating": false,
+      "over_ocp_min": false
+    },
+    "B_both_at_Ilim_full_speed": {
+      "P_W": 112.17952069716776,
+      "I_bus_A": 4.674146695715323,
+      "pct_of_150W": 74.78634713144517,
+      "over_rating": false,
+      "over_ocp_min": false
+    },
+    "B2_both_stalled_chopping_at_Ilim": {
+      "P_W": 77.61952069716776,
+      "I_bus_A": 3.234146695715323,
+      "pct_of_150W": 51.74634713144517,
+      "over_rating": false,
+      "over_ocp_min": false
+    },
+    "C_uncontrolled_start_24V_winding": {
+      "P_W": 169.77952069716775,
+      "I_bus_A": 7.074146695715323,
+      "pct_of_150W": 113.18634713144517,
+      "over_rating": true,
+      "over_ocp_min": true
+    },
+    "C2_same_cold_R-10%": {
+      "P_W": 185.77952069716775,
+      "I_bus_A": 7.7408133623819895,
+      "pct_of_150W": 123.85301379811183,
+      "over_rating": true,
+      "over_ocp_min": true
+    },
+    "D_12V_winding_on_24V_stall": {
+      "P_W": 601.7795206971678,
+      "I_bus_A": 25.074146695715324,
+      "pct_of_150W": 401.1863471314452,
+      "over_rating": true,
+      "over_ocp_min": true
+    }
+  },
+  "thermal": {
+    "R_body_amb_KpW": 1.2195121951219512,
+    "P_internal_duty_W": 24.21775543714296,
+    "cincon_loss_duty_W": 6.904601336270507,
+    "motor_gear_loss_W": 13.620300070371364,
+    "T_wall_C": 69.53384809407677,
+    "T_air_int_C": 79.53384809407677,
+    "cincon_pout_allowed_bare_W": 10.247945284198943,
+    "cincon_loss_150W": 18.53932584269664,
+    "Tc_bonded_at_150W_C": 75.09564584688576
+  },
+  "caps_regen": {
+    "C_per_G2_for_0p1V_ripple_uF": 225.0,
+    "C_bus_total_uF": 1330.0,
+    "v_m_s": 0.15247106280751788,
+    "E_robot_J": 0.10751934059565003,
+    "E_rotors_J": 0.220649633766929,
+    "E_total_J": 0.328168974362579,
+    "V_bus_if_dumped_no_load": 32.70301483797174,
+    "C_needed_for_27V_uF": 4289.790514543517,
+    "regen_W_with_ramp": 0.656337948725158,
+    "aux_load_min_W": 3.3647058823529408,
+    "D_start_cap": 0.6,
+    "J_reflected_kgm2": 3.8982830385015604e-07,
+    "t_accel_at_Ilim_s": 0.014920938103651612,
+    "cs_V_at_Ilim": 0.12200000000000001
+  },
+  "tether": {
+    "A_duty|110V|20C": {
+      "P_in_W": 53.11231797131162,
+      "R_loop_ohm": 12.03,
+      "Vin": 103.84730099816284,
+      "I_A": 0.511446301067095,
+      "drop_V": 6.1526990018371635,
+      "margin_to_43V": 60.84730099816284
+    },
+    "A_duty|110V|hot": {
+      "P_in_W": 53.11231797131162,
+      "R_loop_ohm": 14.435999999999998,
+      "Vin": 102.52126447987412,
+      "I_A": 0.5180614796429678,
+      "drop_V": 7.4787355201258805,
+      "margin_to_43V": 59.52126447987412
+    },
+    "A_duty|100V|20C": {
+      "P_in_W": 53.11231797131162,
+      "R_loop_ohm": 12.03,
+      "Vin": 93.13999089945571,
+      "I_A": 0.5702418204941224,
+      "drop_V": 6.860009100544289,
+      "margin_to_43V": 50.13999089945571
+    },
+    "A_duty|100V|hot": {
+      "P_in_W": 53.11231797131162,
+      "R_loop_ohm": 14.435999999999998,
+      "Vin": 91.63256631251724,
+      "I_A": 0.5796227270353809,
+      "drop_V": 8.367433687482759,
+      "margin_to_43V": 48.63256631251724
+    },
+    "B_limit|110V|20C": {
+      "P_in_W": 126.04440527771658,
+      "R_loop_ohm": 12.03,
+      "Vin": 93.84180485648253,
+      "I_A": 1.3431583660446778,
+      "drop_V": 16.158195143517474,
+      "margin_to_43V": 50.841804856482526
+    },
+    "B_limit|110V|hot": {
+      "P_in_W": 126.04440527771658,
+      "R_loop_ohm": 14.435999999999998,
+      "Vin": 89.71920168164706,
+      "I_A": 1.404876580656203,
+      "drop_V": 20.280798318352936,
+      "margin_to_43V": 46.719201681647064
+    },
+    "B_limit|100V|20C": {
+      "P_in_W": 126.04440527771658,
+      "R_loop_ohm": 12.03,
+      "Vin": 81.36376578966673,
+      "I_A": 1.5491466509005207,
+      "drop_V": 18.63623421033327,
+      "margin_to_43V": 38.36376578966673
+    },
+    "B_limit|100V|hot": {
+      "P_in_W": 126.04440527771658,
+      "R_loop_ohm": 14.435999999999998,
+      "Vin": 76.08491835162387,
+      "I_A": 1.6566279889426527,
+      "drop_V": 23.91508164837613,
+      "margin_to_43V": 33.08491835162387
+    },
+    "cincon_150W|110V|20C": {
+      "P_in_W": 168.53932584269663,
+      "R_loop_ohm": 12.03,
+      "Vin": 86.58277869523769,
+      "I_A": 1.9465686870126608,
+      "drop_V": 23.417221304762307,
+      "margin_to_43V": 43.58277869523769
+    },
+    "cincon_150W|110V|hot": {
+      "P_in_W": 168.53932584269663,
+      "R_loop_ohm": 14.435999999999998,
+      "Vin": 79.33035741897007,
+      "I_A": 2.1245249779045396,
+      "drop_V": 30.669642581029933,
+      "margin_to_43V": 36.33035741897007
+    },
+    "cincon_150W|100V|20C": {
+      "P_in_W": 168.53932584269663,
+      "R_loop_ohm": 12.03,
+      "Vin": 71.73641898087999,
+      "I_A": 2.349424856119702,
+      "drop_V": 28.26358101912001,
+      "margin_to_43V": 28.73641898087999
+    },
+    "cincon_150W|100V|hot": {
+      "P_in_W": 168.53932584269663,
+      "R_loop_ohm": 14.435999999999998,
+      "Vin": 58.183293477251794,
+      "I_A": 2.896696212437532,
+      "drop_V": 41.816706522748206,
+      "margin_to_43V": 15.183293477251794
+    }
+  },
+  "tether_Pmax_collapse_W": 209.54558049321145,
+  "inputs": {
+    "cincon_pout_max_W": {
+      "value": 150.0,
+      "tag": "CONFIRMED",
+      "source": "CQB150W-110S24, 24 V / 6.3 A"
+    },
+    "cincon_iout_max_A": {
+      "value": 6.3,
+      "tag": "CONFIRMED",
+      "source": "datasheet"
+    },
+    "cincon_ocp_min_frac": {
+      "value": 1.1,
+      "tag": "CONFIRMED",
+      "source": "OCP 110-160 % rated, hiccup"
+    },
+    "cincon_ovp_min_V": {
+      "value": 27.599999999999998,
+      "tag": "CONFIRMED",
+      "source": "OVP 115-140 % (typ 125 %)"
+    },
+    "cincon_vin_min_V": {
+      "value": 43.0,
+      "tag": "CONFIRMED",
+      "source": "input 43-160 V; UVLO off 37-39 V"
+    },
+    "cincon_eff_full": {
+      "value": 0.89,
+      "tag": "CONFIRMED",
+      "source": "89 % @ 110 V full load"
+    },
+    "cincon_eff_part": {
+      "value": 0.87,
+      "tag": "ESTIMATED",
+      "source": "typical part-load efficiency < 50 % load"
+    },
+    "cincon_tc_max_C": {
+      "value": 105.0,
+      "tag": "CONFIRMED",
+      "source": "case -40..105 C, OTP 110 C at baseplate"
+    },
+    "cincon_tc_design_C": {
+      "value": 95.0,
+      "tag": "ESTIMATED",
+      "source": "10 K margin below Tc max"
+    },
+    "cincon_rca_bare_KpW": {
+      "value": 10.1,
+      "tag": "CONFIRMED",
+      "source": "Rca natural convection, no heatsink"
+    },
+    "cincon_rcs_bonded_KpW": {
+      "value": 0.3,
+      "tag": "ESTIMATED",
+      "source": "baseplate -> Al body wall via 0.5 mm 3 W/mK pad"
+    },
+    "cincon_cout_max_uF": {
+      "value": 6300.0,
+      "tag": "CONFIRMED",
+      "source": "max output capacitance"
+    },
+    "derating_frac": {
+      "value": 0.8,
+      "tag": "ESTIMATED",
+      "source": "design continuous limit 80 % of rating"
+    },
+    "g2_cs_V_per_A": {
+      "value": 0.04,
+      "tag": "CONFIRMED",
+      "source": "pololu.com/product/2992: ~40 mV/A + 50 mV"
+    },
+    "g2_cs_offset_V": {
+      "value": 0.05,
+      "tag": "CONFIRMED",
+      "source": "same"
+    },
+    "g2_ilim_default_A": {
+      "value": 30.0,
+      "tag": "CONFIRMED",
+      "source": "default current-limit threshold ~30 A"
+    },
+    "g2_vabs_max_V": {
+      "value": 40.0,
+      "tag": "CONFIRMED",
+      "source": "absolute max supply"
+    },
+    "g2_cbulk_onboard_uF": {
+      "value": 100.0,
+      "tag": "CONFIRMED",
+      "source": "onboard capacitor"
+    },
+    "g2_loss_W": {
+      "value": 0.3,
+      "tag": "ESTIMATED",
+      "source": "per board at <=2 A, 20 kHz"
+    },
+    "pwm_hz": {
+      "value": 20000.0,
+      "tag": "CONFIRMED",
+      "source": "ELECTRICAL_Current.md bench setting"
+    },
+    "R12_ohm": {
+      "value": 2.0,
+      "tag": "CONFIRMED",
+      "source": "MP2238-01 12 V catalogue"
+    },
+    "Kt12_mNm_A": {
+      "value": 18.0,
+      "tag": "CONFIRMED",
+      "source": "MP2238-01 (Kv ~525 rpm/V)"
+    },
+    "Irated12_A": {
+      "value": 1.2,
+      "tag": "CONFIRMED",
+      "source": "rated 16.6 mN·m / 1.2 A"
+    },
+    "Trated_mNm": {
+      "value": 16.6,
+      "tag": "CONFIRMED",
+      "source": "rated torque (winding-independent)"
+    },
+    "Istall12_A": {
+      "value": 6.0,
+      "tag": "CONFIRMED",
+      "source": "stall 99.5 mN·m / 6 A @ 12 V"
+    },
+    "Tstall12_mNm": {
+      "value": 99.5,
+      "tag": "CONFIRMED",
+      "source": "same"
+    },
+    "winding_scale": {
+      "value": 2.0,
+      "tag": "DERIVED",
+      "source": "24 V winding = 2x turns, same copper volume"
+    },
+    "R_tol": {
+      "value": 0.9,
+      "tag": "ESTIMATED",
+      "source": "cold/tolerance: R -10 % -> stall +11 %"
+    },
+    "J_rotor_kgm2": {
+      "value": 8e-07,
+      "tag": "ESTIMATED",
+      "source": "Ø22 rotor class (maxon DCX22L 8.6 g·cm²)"
+    },
+    "gear_ratio": {
+      "value": 62.0,
+      "tag": "DERIVED",
+      "source": "F12 note: 24 V winding needs i=62 for ~85 rpm"
+    },
+    "gear_eff": {
+      "value": 0.9,
+      "tag": "CONFIRMED",
+      "source": "ZWSMD026026 3-stage catalogue"
+    },
+    "T_out_duty_Nm": {
+      "value": 1.0,
+      "tag": "ESTIMATED",
+      "source": "F12 duty point per motor"
+    },
+    "n_out_target_rpm": {
+      "value": 87.0,
+      "tag": "ESTIMATED",
+      "source": "F12 target"
+    },
+    "bevel_ratio": {
+      "value": 2.5,
+      "tag": "CONFIRMED",
+      "source": "Z16->Z40"
+    },
+    "wheel_r_m": {
+      "value": 0.045,
+      "tag": "CONFIRMED",
+      "source": "D90 wheel"
+    },
+    "mass_kg": {
+      "value": 9.25,
+      "tag": "CONFIRMED",
+      "source": "Proteus CRP150 catalogue mass"
+    },
+    "motors": {
+      "value": 2,
+      "tag": "CONFIRMED",
+      "source": "two traction motors"
+    },
+    "cam_W": {
+      "value": 1.44,
+      "tag": "CONFIRMED",
+      "source": "RunCam Phoenix 2: 85-120 mA @ 12 V (A3_CAMERA_LIGHT_BENCH.md)"
+    },
+    "led_strings": {
+      "value": 2,
+      "tag": "CONFIRMED",
+      "source": "2 strings x 3 LED (A3 bench)"
+    },
+    "led_I_A": {
+      "value": 0.35,
+      "tag": "CONFIRMED",
+      "source": "initial 350 mA per string (A3 bench)"
+    },
+    "led_Vf_V": {
+      "value": 3.1,
+      "tag": "ESTIMATED",
+      "source": "XP-G class Vf @ 350 mA"
+    },
+    "led_drv_eff": {
+      "value": 0.9,
+      "tag": "ESTIMATED",
+      "source": "P4115 buck module"
+    },
+    "pan_rot_run_W": {
+      "value": 2.88,
+      "tag": "ESTIMATED",
+      "source": "2x N20 12 V running ~0.12 A"
+    },
+    "pan_rot_peak_W": {
+      "value": 12.0,
+      "tag": "ESTIMATED",
+      "source": "2x N20 12 V stalled/limited 0.5 A"
+    },
+    "head_ctrl_W": {
+      "value": 0.4,
+      "tag": "ESTIMATED",
+      "source": "RP2040-Zero + 2x AS5600 + DRV8871 quiescent"
+    },
+    "reg12_eff": {
+      "value": 0.9,
+      "tag": "ESTIMATED",
+      "source": "Pololu 5577 D42V55F12 @ 24 V in"
+    },
+    "logic5_W": {
+      "value": 1.5,
+      "tag": "ESTIMATED",
+      "source": "WeAct F446 0.25 + iso RS-485 0.4 + sensors/LEDs/margin"
+    },
+    "reg5_eff": {
+      "value": 0.85,
+      "tag": "ESTIMATED",
+      "source": "Pololu 5571 D42V55F5 light load"
+    },
+    "src_V": {
+      "value": 110.0,
+      "tag": "CONFIRMED",
+      "source": "A2 design point"
+    },
+    "src_V_low": {
+      "value": 100.0,
+      "tag": "CONFIRMED",
+      "source": "CCU range 100-120 V (ELECTRICAL_Current.md)"
+    },
+    "tether_m": {
+      "value": 150.0,
+      "tag": "CONFIRMED",
+      "source": "AGENTS.md later 100-150 m"
+    },
+    "core_ohm_per_km": {
+      "value": 40.1,
+      "tag": "CONFIRMED",
+      "source": "0.5 mm² Cu class 5 @ 20 C"
+    },
+    "hot_mult": {
+      "value": 1.2,
+      "tag": "ESTIMATED",
+      "source": "hot copper / reel, as A2 calc"
+    },
+    "Ta_C": {
+      "value": 40.0,
+      "tag": "ESTIMATED",
+      "source": "worst: dry pipe / bench in summer, still air"
+    },
+    "body_area_m2": {
+      "value": 0.082,
+      "tag": "DERIVED",
+      "source": "278x68x64 box surface"
+    },
+    "h_W_m2K": {
+      "value": 10.0,
+      "tag": "ESTIMATED",
+      "source": "natural convection + radiation, still air"
+    },
+    "dT_air_internal_K": {
+      "value": 10.0,
+      "tag": "ESTIMATED",
+      "source": "internal air above wall, sealed 1 bar, no fan"
+    },
+    "I_peak_lim_A": {
+      "value": 1.8,
+      "tag": "DERIVED",
+      "source": "per motor: <= I_lim_max (1.96 A) with ~8 % margin"
+    },
+    "ramp_s": {
+      "value": 0.5,
+      "tag": "ESTIMATED",
+      "source": "proposed 0->100 % duty"
+    },
+    "C_add_per_G2_uF": {
+      "value": 330.0,
+      "tag": "DERIVED",
+      "source": "ripple calc below"
+    },
+    "C_cincon_out_uF": {
+      "value": 470.0,
+      "tag": "ESTIMATED",
+      "source": "at Cincon output"
+    }
+  }
+}
