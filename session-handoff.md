@@ -1,4 +1,4 @@
-# Session handoff — 2026-11-19
+# Session handoff — 2026-11-20
 
 Ветка: feature/px1-integrated-cad-20261117 (claude/px1-audit-traction-20261119 на GitHub не существует).
 Источник геометрии: current/CAD/PX1_Current_Master.py.
@@ -18,6 +18,8 @@
 - F13 — замок колеса по ASS-002-103 (диск-кулачок, M6×14): current/09_RELEASE/f13_wheel_lock_20261119/README.md.
 - F14 — крепление плиты 2×M8 по DRW-002-375: current/09_RELEASE/f14_plate_fixing_20261119/README.md.
 - F18 — лифт камеры по DRW-002-744/752 (параллелограмм, зажим, газовая пружина, CAM026): current/09_RELEASE/f18_camera_lift_20261119/README.md.
+- F19 — бюджет мощности: current/02_ELECTRICAL/POWER_BUDGET_F19_20261119.md.
+- F20 — Cincon на крышке с термопрокладкой, конденсаторы/TVS/шунт шины 24 В: current/09_RELEASE/f20_cincon_thermal_20261120/README.md.
 
 Решения пользователя 2026-11-19: догрузить PX1 до ~9 кг; более сильный мотор искать сейчас; балласт — СТАЛЬ; работать с помощниками (агентами) параллельно, CAD-мастер правит один исполнитель за раз.
 
@@ -31,7 +33,10 @@
 3. Окружение: pip install --break-system-packages cadquery (2.8.0); сборка ~3–9 мин, интегральная проверка ~1 мин.
 
 ## Следующий шаг
-F18 выполнен (ветка f18-lift, без push). Следующий — первый пункт со статусом "next" в feature_list.json.
-Открыто по F18: крепление основания 4×M4 к крышке и резьба в 7-мм крышке; назначение FSS-002-084/373 (X100) — GAP;
-внутренности корпуса лифта 752; упор θmax и баланс пружины; динамическая укладка кабеля камеры.
-Новая проверка: python3 tools/lift/check_lift_kinematics.py (добавить в список обязательных).
+F20 выполнен (ветка f20-cincon, без push). Следующий — первый пункт со статусом "next" в feature_list.json.
+Открыто по F20: код опции Cincon «-C» и число втулок (2/4) по полному чертежу; материал крышки L01 — только Al;
+разъёмы и петля проводов Cincon ↔ корпус (крышка снимается вместе с Cincon); мощность тормозного резистора
+(F19: 25 Вт, импульс 73 Вт при 27 В) и схема платы шунта (HOLD-P5); крепление 330 мкФ.
+Метка ON_SERVICE_COVER в имени детали = снимается вместе с крышкой (учтено в проверке извлечения моторов).
+Обязательные проверки: build, check_pipe_pose --active, check_integrated --roundtrip --require-pipe-service,
+check_master_vs_drawings, tools/lift/check_lift_kinematics.py.

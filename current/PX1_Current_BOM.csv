@@ -34,7 +34,7 @@ S11;O-ring лифта;2;metric15×2.5;15×2.5;DRW744;BUY;NOT_MODELLED;H03
 P01;Тяговый двигатель;2;ZHAOWEI ZWSMD026026 3-stage + D22 motor (24V winding to order) CANDIDATE;GP D26x44.9 + motor D22.2x53.0, faceX189.5;08_PROCUREMENT/MOTOR_F12_PROTEUS_CLASS_20261119.md;STUDY;PROTEUS_CLASS_ENVELOPE;H05 24V winding/ratio, shaft/flange drawing, thermal unqualified; GA24Y-370 kept as bench fallback
 P02;Муфта;2;NBKMLR-20C-6-6;Ø20×24 bores6/6;NBK manufacturer;BUY;BOUNDARY;H05
 P03;Колесо;6;PX1 engineered D90 tyre, QRW90 topology reference;D90 W24, outer shoulder r28.5 at y8, edge r20.5 at y12 (F04 >=3mm DN150 gap);pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;ENGINEERED_PROFILE_ESTIMATED;H01 nominal CAD only, rubber/contact/tolerances/traction unqualified
-L01;PRESSURE-крышка;1;PX1 service cover F16 20261119;205x68x7,4xD3.4,M3 body pilots,groove1.9x1.2;pipe_service_20261118/ENGINEERING_BASIS.md;MILL;ENGINEERED_ESTIMATED;H03 seal/material/pressure/thread preload unqualified
+L01;PRESSURE-крышка;1;PX1 service cover F16 20261119;205x68x7 (Al обязателен: теплоотвод Cincon F20),4xD3.4,M3 body pilots,groove1.9x1.2; F20: 8 глухих M3 снизу (Cincon 4×5,3, резистор 2×5,0, стойки 2×4,0), Cincon+шунт крепятся к крышке и снимаются с ней;pipe_service_20261118/ENGINEERING_BASIS.md;MILL;ENGINEERED_ESTIMATED;H03 seal/material/pressure/thread preload unqualified
 L02;Боковой рычаг (звено параллелограмма);2;FSS-002-068;BD 200,1 (DERIVED, чертёж 200,0), t4 h15, Y±25,2 (744: ±27,9 DERIVED; −2,7 ESTIMATED под ключ винтов крышки);DRW744 F18;MILL;MODELLED_F18;H06
 L03;Центральный рычаг + пластина;1;ASS-002-723 + FSS-002-073;AC 200,1 DERIVED; пластина шир. 54,4 DERIVED, щёки Y±6,6…9,6 ESTIMATED;DRW744 F18;MILL;MODELLED_F18;H06
 L04;Основание лифта;1;FAL-002-067;55×68,7 DERIVED; A на 22,9 над опорой DERIVED; на крышке L01, A X250 Z104,9 ESTIMATED; 4×M4 в крышку NOT_MODELLED;DRW744 F18;MILL;MODELLED_F18;H06 крепление к крышке/резьба
@@ -85,7 +85,7 @@ H09;Конус силового элемента;1;PX1 TAIL CONE;20→12 L30 tar
 H10;Внутренний разъём обслуживания;1;6way crimp pair артикулHOLD;6circuits;PX1;BUY;NOT_MODELLED;H07
 E01;Главный контроллер;1;WeActSTM32F446RET6CoreBoardV1.1;33.22×41.63×11.99;WeAct officialGithub;BUY;MANUFACTURER_STEP;H09
 E02;Драйвер тягового мотора;2;Pololu2992G2 24v13;33.02×20.32×9.575 STEPmd31a;https://www.pololu.com/product/2992/resources;BUY;MANUFACTURER_STEP;H09 H10 текущаяревизияmd31c
-E03;ВходнойDC/DC;1;CinconCQB150W110S24;43–160Vin24V6.3A 57.9×36.8×12.7;Cincon manufacturer;BUY;BODY_NO_PINS;H09 H10
+E03;ВходнойDC/DC;1;CinconCQB150W-110S24 опция -C (сквозные втулки Ø3,2);43–160Vin24V6.3A 57.9×36.8×12.7, 68 г; F20: основанием вверх под крышкой L01 через прокладку 0,5, 4×M3×18 DIN 912 в глухие резьбы крышки;Cincon manufacturer;BUY;BODY_PINS_F20;H09 H10 HOLD-P3 код опции -C подтвердить
 E04;DC/DC12V;1;Pololu5577D42V55F12;25.4×25.4×9 60Vmax;https://www.pololu.com/product/5577;BUY;BOUNDARY;H09 H10
 E05;DC/DC5V;1;Pololu5571D42V55F5;25.4×25.4×9 60Vmax;https://www.pololu.com/product/5571;BUY;BOUNDARY;H09 H10
 E06;ИзолированныйRS485;2;WaveshareTTL TO RS485(C)SKU27479;42.8×15.2×4.75;Waveshare manufacturer;BUY;1_CRAWLER_BOUNDARY_1_CCU;H09 H10
@@ -95,13 +95,18 @@ E09;Входной электролит;1;NichiconUCS2D221MHD1TN;220uF200V Ø18�
 E10;ВходнойHVпредохранитель;1;DCrated артикул/номиналHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
 E11;Защита ветвей моторов;2;DCfuse/eFuse артикул/номиналHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
 E12;Защита камеры;1;DCfuse/eFuse артикул/номиналHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
-E13;Конденсатор у драйвера;2;lowESR63V ёмкость/артикулHOLD;HOLD;Pololu installation guidance;BUY;NOT_MODELLED;H10
-E14;Защита рекуперации24V;1;ready brake shunt артикулHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
+E13;Конденсатор у драйвера;2;330 мкФ/50 В low-ESR (класс Nichicon UHE1H331MPD);Ø10×16 ESTIMATED, пульсации ≥1 А;POWER_BUDGET_F19;BUY;ENVELOPE_F20;H10 крепление (клипса/компаунд) HOLD
+E14;Тормозной шунт 24V: плата;1;компаратор 27,0/26,0 В + MOSFET, артикул HOLD;плата 30×14 + детали ≤4,5 мм, на 2 стойках M3×2,5 под крышкой;POWER_BUDGET_F19;BUY/PCB;ENVELOPE_F20;H10 HOLD-P5
 E15;Измерение тока;2;INA226 ready module шунт/артикулHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H09 H10
 E16;ИсточникCCU;1;isolated100–120VDC модельHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H10
 E17;Датчик влаги;1;электроды+ready module артикулHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H09 H10
 E18;Крепёж плат/изоляция/теплоотвод;TBD;стойки/термопрокладкиHOLD;HOLD;PX1;BUY;NOT_MODELLED;H09
 E19;Подтяжки SLP/FLT;4;Резистор4.7kΩ выводной артикулHOLD;4.7kΩ номинал проектный;ELECTRICAL_Current;BUY;NOT_MODELLED;H09
+E20;Конденсатор у выхода Cincon;1;470 мкФ/50 В low-ESR (класс Nichicon UHE1H471MPD);Ø10×20 ESTIMATED, под крышкой у выходного ряда выводов;POWER_BUDGET_F19;BUY;ENVELOPE_F20;H10
+E21;TVS шины 24V;1;SMBJ26A (Vrwm 26 В);DO-214AA ≤5,6×3,9×2,6 CONFIRMED JEDEC;POWER_BUDGET_F19;BUY;ENVELOPE_F20;H10 HOLD-P5
+E22;Тормозной резистор;1;10 Ом 10 Вт в Al корпусе (класс Arcol HS10 / Vishay RH010);огибающая 30×16×9 ESTIMATED; на крышке через прокладку 0,5, 2×M3×8 DIN 912;POWER_BUDGET_F19;BUY;ENVELOPE_F20;H10 HOLD-P5 F19 предлагал 25 Вт — проверить импульс 73 Вт при 27 В
+E23;Термопрокладка;2;силикон 0,5 мм ~3 Вт/м·К (артикул HOLD);57,9×36,8 (Cincon) + 30×16 (резистор);F20;BUY;MODELLED_F20;HOLD-P3
+E24;Крепёж F20;1 компл.;DIN 912 M3×18 ×4, DIN 912 M3×8 ×2, стойка M3 6-гр. 2,5 мм ×2;стандарт;F20;BUY;MODELLED_F20;резьба в крышке глухая 5,3 (Cincon) / 5,0 (резистор) / 4,0 (стойки)
 F01;M3×8 button ISO7380;24;FIX-000-359;M3×8;DRW374 12per side;BUY;MODELLED_F08;H02 момент/резьба
 F02;M3×6 button ISO7380;24;FIX-002-738;M3×6;DRW374 12per side;BUY;MODELLED_F08;H02 момент/резьба
 F03;Circlip12×1;8;FIX-002-549family;12×1;DRW3746+DRW3752;BUY;NOT_MODELLED;H02

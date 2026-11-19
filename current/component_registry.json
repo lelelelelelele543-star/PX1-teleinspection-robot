@@ -3396,7 +3396,7 @@
       68.0,
       7.0
     ],
-    "volume_mm3": 94822.64505,
+    "volume_mm3": 94541.31543,
     "solids": 1
   },
   {
@@ -4220,23 +4220,343 @@
     "solids": 1
   },
   {
-    "id": "HOLD_CINCON_CQB150W110S24_BODY_PINS_THERMAL_HOLD",
+    "id": "HOLD_CINCON_CQB150W110S24C_BASEPLATE_UP_ON_SERVICE_COVER",
     "category": "electronics",
     "geometry_state": "HOLD",
     "bbox_mm": [
       126.05,
       -18.4,
-      58.65,
+      57.7,
       183.95,
       18.4,
-      71.35
+      74.5
     ],
     "dimensions_mm": [
       57.9,
       36.8,
-      12.7
+      16.8
     ],
-    "volume_mm3": 27060.144,
+    "volume_mm3": 26709.54854,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_THERMAL_PAD_0p5_3WmK_DCDC_ON_SERVICE_COVER",
+    "category": "electronics_hold",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      126.05,
+      -18.4,
+      74.5,
+      183.95,
+      18.4,
+      75.0
+    ],
+    "dimensions_mm": [
+      57.9,
+      36.8,
+      0.5
+    ],
+    "volume_mm3": 1047.20159,
+    "solids": 1
+  },
+  {
+    "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_1",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      128.65,
+      -15.825,
+      58.8,
+      134.15,
+      -10.325,
+      79.8
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      21.0
+    ],
+    "volume_mm3": 187.73819,
+    "solids": 1
+  },
+  {
+    "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_2",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      128.65,
+      10.325,
+      58.8,
+      134.15,
+      15.825,
+      79.8
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      21.0
+    ],
+    "volume_mm3": 187.73819,
+    "solids": 1
+  },
+  {
+    "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_3",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      175.85,
+      -15.825,
+      58.8,
+      181.35,
+      -10.325,
+      79.8
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      21.0
+    ],
+    "volume_mm3": 187.73819,
+    "solids": 1
+  },
+  {
+    "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_4",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      175.85,
+      10.325,
+      58.8,
+      181.35,
+      15.825,
+      79.8
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      21.0
+    ],
+    "volume_mm3": 187.73819,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BRAKE_SHUNT_10R_10W_ALU_HOUSED_ON_SERVICE_COVER",
+    "category": "electronics_hold",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      94.0,
+      9.5,
+      65.5,
+      124.0,
+      25.5,
+      74.5
+    ],
+    "dimensions_mm": [
+      30.0,
+      16.0,
+      9.0
+    ],
+    "volume_mm3": 3119.74514,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_THERMAL_PAD_0p5_BRAKE_SHUNT_ON_SERVICE_COVER",
+    "category": "electronics_hold",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      94.0,
+      9.5,
+      74.5,
+      124.0,
+      25.5,
+      75.0
+    ],
+    "dimensions_mm": [
+      30.0,
+      16.0,
+      0.5
+    ],
+    "volume_mm3": 230.9208,
+    "solids": 1
+  },
+  {
+    "id": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_1",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      94.25,
+      14.75,
+      68.5,
+      99.75,
+      20.25,
+      79.5
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      11.0
+    ],
+    "volume_mm3": 117.05236,
+    "solids": 1
+  },
+  {
+    "id": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_2",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      118.25,
+      14.75,
+      68.5,
+      123.75,
+      20.25,
+      79.5
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      11.0
+    ],
+    "volume_mm3": 117.05236,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BRAKE_SHUNT_CTRL_BOARD_CMP27V_MOSFET_ON_SERVICE_COVER",
+    "category": "electronics_hold",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      94.0,
+      -7.0,
+      66.4,
+      124.0,
+      7.0,
+      72.5
+    ],
+    "dimensions_mm": [
+      30.0,
+      14.0,
+      6.1
+    ],
+    "volume_mm3": 1644.0,
+    "solids": 1
+  },
+  {
+    "id": "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_1",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      94.25,
+      -2.75,
+      72.5,
+      99.75,
+      2.75,
+      79.0
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      6.5
+    ],
+    "volume_mm3": 87.67007,
+    "solids": 1
+  },
+  {
+    "id": "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_2",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      118.25,
+      -2.75,
+      72.5,
+      123.75,
+      2.75,
+      79.0
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      6.5
+    ],
+    "volume_mm3": 87.67007,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_TVS_SMBJ26A_DO214AA_ON_SERVICE_COVER",
+    "category": "electronics_hold",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      116.2,
+      -1.95,
+      68.3,
+      121.8,
+      1.95,
+      70.9
+    ],
+    "dimensions_mm": [
+      5.6,
+      3.9,
+      2.6
+    ],
+    "volume_mm3": 56.784,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BUS_CAP_470uF_50V_CINCON_OUT_ON_SERVICE_COVER",
+    "category": "electronics_hold",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      100.0,
+      -20.5,
+      64.0,
+      120.0,
+      -10.5,
+      74.0
+    ],
+    "dimensions_mm": [
+      20.0,
+      10.0,
+      10.0
+    ],
+    "volume_mm3": 1570.79633,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BUS_CAP_330uF_50V_G2_1",
+    "category": "electronics_hold",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      64.5,
+      -5.0,
+      59.0,
+      80.5,
+      5.0,
+      69.0
+    ],
+    "dimensions_mm": [
+      16.0,
+      10.0,
+      10.0
+    ],
+    "volume_mm3": 1256.63706,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BUS_CAP_330uF_50V_G2_2",
+    "category": "electronics_hold",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      72.0,
+      -5.0,
+      24.5,
+      82.0,
+      5.0,
+      40.5
+    ],
+    "dimensions_mm": [
+      10.0,
+      10.0,
+      16.0
+    ],
+    "volume_mm3": 1256.63706,
     "solids": 1
   },
   {

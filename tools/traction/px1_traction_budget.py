@@ -58,6 +58,9 @@ NAME_DENSITY = [  # (substring, g/cm3, reason) — first match wins, overrides c
     ('ISO4035', 7.9, 'F18: M10 nuts FIX-002-725 A2'),
     ('LIFT_GAS_SPRING', 7.9, 'F18: gas spring pins (FIX-002-749 M6x18) A2'),
     ('SIDE_COVER', 2.7, 'FAL-002-062 Side cover'),
+    ('CINCON_CQB150W', 2.546, 'F20: CQB150W envelope density scaled to datasheet 68 g (CONFIRMED mass)'),
+    ('THERMAL_PAD', 3.0, 'F20: silicone gap pad ~3 g/cm3 ESTIMATED'),
+    ('BRAKE_SHUNT_10R', 2.7, 'F20: Al-housed resistor envelope, aluminium ESTIMATED'),
     ('PRESSURE_BODY', 2.7, 'FAL-002-058 Crawler Housing'),
 ]
 

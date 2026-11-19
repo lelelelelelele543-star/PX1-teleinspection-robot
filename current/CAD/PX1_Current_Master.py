@@ -128,6 +128,27 @@ SP13_PLUG_OD=18.0; SP13_PLUG_L=48.0 # retailer/manufacturer class dimensions, ex
 SP17_PLUG_OD=24.6; SP17_PLUG_L=56.5; SP17_PANEL_OD=25.0; SP17_PANEL_THREAD=17.0; SP17_PANEL_L=19.7
 NUCLEO=(82.5,70.0,12.0)
 CINCON=(57.9,36.8,12.7)
+# F20 (2026-11-20) Cincon thermal mount, HOLD-P3: baseplate UP, bonded to the underside of the removable Al service
+# cover L01 (7 mm, outer face = housing top) via 0.5 mm pad; 4x DIN 912 M3x18 from the pin side into blind taps in the cover.
+CINCON_XC=155.0; CINCON_YC=0.0                 # unchanged X/Y over the motor pair, ESTIMATED
+CINCON_HOLE_PITCH=(47.2,26.15)                 # CQB150W drawing 1.86" x 1.030", DERIVED (4 inserts ESTIMATED)
+CINCON_HOLE_R=1.6                              # option "-C" clear insert D3.2, DERIVED (datasheet)
+CINCON_PIN_ROW_DX=50.8                         # pin-row pitch 2.000", DERIVED
+CINCON_PIN_L=4.1                               # 0.16" min, DERIVED
+CINCON_PIN_Y_IN=(-7.62,0.0,7.62)               # 3 input pins @0.300" (rear row, toward SP17), DERIVED pitch / ESTIMATED order
+CINCON_PIN_Y_OUT=(-7.62,-3.81,0.0,3.81,7.62)   # 5 output pins @0.150" (front row, toward 470 uF), DERIVED pitch / ESTIMATED order
+CINCON_PIN_R=0.75                              # D1.5 envelope for all pins, ESTIMATED
+THERMAL_PAD_T=0.5                              # silicone pad ~3 W/mK, ESTIMATED
+ISO4762_M3=(2.75,3.0)                          # DIN 912 / ISO 4762 M3 head dk/2, k, CONFIRMED standard
+CINCON_SCREW_L=18.0                            # 12.7 module + 0.5 pad + 4.8 thread (1.6d) in cover, DERIVED
+COVER_TAP_DEPTH=5.3                            # blind M3 in 7 mm cover, 1.7 mm skin left, no through hole, ESTIMATED
+# F20 24 V bus protection per POWER_BUDGET_F19 (envelopes, ESTIMATED unless noted).
+BUS_CAP_330=(5.0,16.0)       # 330 uF/50 V low-ESR radial D10x16 (UHE1H331MPD class), ESTIMATED
+BUS_CAP_470=(5.0,20.0)       # 470 uF/50 V low-ESR radial D10x20 (UHE1H471MPD class), ESTIMATED
+SMB_DO214AA=(5.6,3.9,2.6)    # SMBJ26A DO-214AA max L(incl. leads) x W x H, CONFIRMED JEDEC outline
+SHUNT_R_ENV=(30.0,16.0,9.0)  # 10 Ohm 10 W Al-housed (Arcol HS10 / Vishay RH010 class) L x W x H incl. tabs, ESTIMATED
+SHUNT_R_TAB=(6.0,3.0)        # mounting tab length / thickness, holes at tab centres, ESTIMATED
+SHUNT_BOARD=(30.0,14.0,1.6)  # comparator 27.0/26.0 V + MOSFET board, PCB, ESTIMATED
 MPRLS=(17.8,16.7,7.5)
 NICHICON_D=18.0; NICHICON_L=25.0
 BTS_SCREEN=(50.0,50.0,43.0) # board-dependent HOLD
@@ -521,6 +542,16 @@ inner=boxc(SERVICE_GROOVE_CX,0,75+(SERVICE_GROOVE_DEPTH-.1)/2,
            SERVICE_GROOVE_L-SERVICE_GROOVE_WIDTH,SERVICE_GROOVE_W-SERVICE_GROOVE_WIDTH,
            SERVICE_GROOVE_DEPTH+.3).edges('|Z').fillet(SERVICE_GROOVE_RADIUS-SERVICE_GROOVE_WIDTH/2)
 cover=cut(cover,cut(outer,inner))
+# F20: blind taps in the cover underside (no penetration of the 7 mm pressure wall).
+F20_CINCON_HOLES=[(CINCON_XC+sx*CINCON_HOLE_PITCH[0]/2,CINCON_YC+sy*CINCON_HOLE_PITCH[1]/2) for sx in (-1,1) for sy in (-1,1)]
+F20_SHUNT_XY=(109.0,17.5)                                   # resistor centre under cover, ESTIMATED
+F20_SHUNT_HOLES=[(F20_SHUNT_XY[0]+sx*(SHUNT_R_ENV[0]-SHUNT_R_TAB[0])/2,F20_SHUNT_XY[1]) for sx in (-1,1)]
+F20_BOARD_XY=(109.0,0.0)
+F20_STANDOFFS=[(97.0,0.0),(121.0,0.0)]
+for _hx,_hy in F20_CINCON_HOLES+F20_SHUNT_HOLES:
+    cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z-.1,1.5,COVER_TAP_DEPTH+.1))   # M3 cosmetic thread (major D3)
+for _hx,_hy in F20_STANDOFFS:
+    cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z-.1,1.5,4.1))
 add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7',cover,'metal')
 VX,VY=VALVE_XY
 valve_body=cut(cyl_z(VX,VY,78,5,14),cyl_z(VX,VY,77.9,2.1,14.2))
@@ -634,7 +665,46 @@ controller=controller.rotate((0,0,0),(0,0,1),90).translate((208,0,60.1))
 add('WEACT_STM32F446RET6_V11_MANUFACTURER_STEP',controller,'electronics')
 g2=cq.importers.importStep(str(CAD/'vendor'/'Pololu_G2_24v13_Manufacturer.step')).translate((-16.51,-10.16,0))
 for i,(x,z) in enumerate(((47,59),(99,24.5)),1):add(f'POLOLU_2992_G2_24v13_{i}_MANUFACTURER_STEP',g2.translate((x,0,z)),'electronics')  # F16: #2 lowered under motors; F14: #1 raised Z26->59 above the balun (clears M8 plate-screw boss)
-add('HOLD_CINCON_CQB150W110S24_BODY_PINS_THERMAL_HOLD',boxc(155,0,65,*CINCON),'electronics')  # F16: +1 mm over D26 gearheads
+# ---------------- F20 Cincon on the cover underside + 24 V bus protection ----------------
+_pad_z0=SERVICE_Z-THERMAL_PAD_T; _mod_z0=_pad_z0-CINCON[2]          # pad Z74.5..75, module Z61.8..74.5
+cinc=boxc(CINCON_XC,CINCON_YC,_mod_z0+CINCON[2]/2,*CINCON)
+for _hx,_hy in F20_CINCON_HOLES: cinc=cut(cinc,cyl_z(_hx,_hy,_mod_z0-.1,CINCON_HOLE_R,CINCON[2]+.2))
+_pins=[cyl_z(CINCON_XC+CINCON_PIN_ROW_DX/2,CINCON_YC+y,_mod_z0-CINCON_PIN_L,CINCON_PIN_R,CINCON_PIN_L+.01) for y in CINCON_PIN_Y_IN]
+_pins+=[cyl_z(CINCON_XC-CINCON_PIN_ROW_DX/2,CINCON_YC+y,_mod_z0-CINCON_PIN_L,CINCON_PIN_R,CINCON_PIN_L+.01) for y in CINCON_PIN_Y_OUT]
+cinc=fuse_all([cinc]+_pins)
+add('HOLD_CINCON_CQB150W110S24C_BASEPLATE_UP_ON_SERVICE_COVER',cinc,'electronics')
+pad=boxc(CINCON_XC,CINCON_YC,_pad_z0+THERMAL_PAD_T/2,CINCON[0],CINCON[1],THERMAL_PAD_T)
+for _hx,_hy in F20_CINCON_HOLES: pad=cut(pad,cyl_z(_hx,_hy,_pad_z0-.1,1.7,THERMAL_PAD_T+.2))
+add('HOLD_THERMAL_PAD_0p5_3WmK_DCDC_ON_SERVICE_COVER',pad,'electronics_hold')
+def socket_screw_up(x,y,z_bear,length):
+    hr,hk=ISO4762_M3
+    head=cut(cyl_z(x,y,z_bear-hk,hr,hk),cq.Workplane('XY').polygon(6,2.5/math.cos(math.pi/6)).extrude(2.0).translate((x,y,z_bear-hk-.01)))
+    return fuse_all([head,cyl_z(x,y,z_bear,1.5,length)])
+for _i,(_hx,_hy) in enumerate(F20_CINCON_HOLES,1):
+    add(f'FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_{_i}',socket_screw_up(_hx,_hy,_mod_z0,CINCON_SCREW_L),'shaft')
+# Brake shunt 10 Ohm Al-housed resistor, bonded (pad) to the cover, 2x M3x8 through its tabs.
+_sx,_sy=F20_SHUNT_XY; _L,_W,_H=SHUNT_R_ENV; _tl,_tt=SHUNT_R_TAB; _rz0=_pad_z0
+shunt=fuse_all([boxc(_sx,_sy,_rz0-_tt/2,_L,_W,_tt),boxc(_sx,_sy,_rz0-_H/2,_L-2*_tl,_W,_H)])
+for _hx,_hy in F20_SHUNT_HOLES: shunt=cut(shunt,cyl_z(_hx,_hy,_rz0-_tt-.1,1.6,_tt+.2))
+add('HOLD_BRAKE_SHUNT_10R_10W_ALU_HOUSED_ON_SERVICE_COVER',shunt,'electronics_hold')
+spad=boxc(_sx,_sy,_pad_z0+THERMAL_PAD_T/2,_L,_W,THERMAL_PAD_T)
+for _hx,_hy in F20_SHUNT_HOLES: spad=cut(spad,cyl_z(_hx,_hy,_pad_z0-.1,1.7,THERMAL_PAD_T+.2))
+add('HOLD_THERMAL_PAD_0p5_BRAKE_SHUNT_ON_SERVICE_COVER',spad,'electronics_hold')
+for _i,(_hx,_hy) in enumerate(F20_SHUNT_HOLES,1):
+    add(f'FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_{_i}',socket_screw_up(_hx,_hy,_rz0-_tt,8.0),'shaft')
+# Shunt control board (comparator 27.0 on / 26.0 off + MOSFET) on 2x M3 hex standoffs; TVS SMBJ26A on its underside.
+_bx,_by=F20_BOARD_XY; _bL,_bW,_bT=SHUNT_BOARD; _so=2.5; _pcb_z1=SERVICE_Z-_so
+board=fuse_all([boxc(_bx,_by,_pcb_z1-_bT/2,_bL,_bW,_bT),box0(_bx-_bL/2+1,_by-_bW/2+1,_pcb_z1-_bT-4.5,18,_bW-2,4.5)])
+add('HOLD_BRAKE_SHUNT_CTRL_BOARD_CMP27V_MOSFET_ON_SERVICE_COVER',board,'electronics_hold')
+for _i,(_hx,_hy) in enumerate(F20_STANDOFFS,1):
+    add(f'FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_{_i}',fuse_all([cyl_z(_hx,_hy,_pcb_z1,2.75,_so),cyl_z(_hx,_hy,SERVICE_Z,1.5,4.0)]),'shaft')
+_tL,_tW,_tH=SMB_DO214AA
+add('HOLD_TVS_SMBJ26A_DO214AA_ON_SERVICE_COVER',boxc(_bx+_bL/2-5,_by,_pcb_z1-_bT-_tH/2,_tL,_tW,_tH),'electronics_hold')
+# 470 uF/50 V at the Cincon output row (front, X129.6), lying along X under the cover.
+add('HOLD_BUS_CAP_470uF_50V_CINCON_OUT_ON_SERVICE_COVER',cyl_x(100.0,-15.5,69.0,*BUS_CAP_470),'electronics_hold')
+# 2x 330 uF/50 V next to each G2 (power terminals end), housing-mounted (clip/adhesive HOLD).
+add('HOLD_BUS_CAP_330uF_50V_G2_1',cyl_x(64.5,0.0,64.0,*BUS_CAP_330),'electronics_hold')
+add('HOLD_BUS_CAP_330uF_50V_G2_2',cyl_z(77.0,0.0,CAVITY_FLOOR_Z+.5,*BUS_CAP_330),'electronics_hold')
 add('NICHICON_UCS2D221MHD1TN_BODY18x25',cyl_z(278,0,30,9,25),'electronics')
 add('ADAFRUIT_MPRLS_3965_ENVELOPE',boxc(277.5,-17.5,60,*MPRLS),'electronics')
 add('HOLD_POLOLU_5577_D42V55F12_ENVELOPE',boxc(211.5,-13.5,29,*POLOLU_5577),'electronics')
