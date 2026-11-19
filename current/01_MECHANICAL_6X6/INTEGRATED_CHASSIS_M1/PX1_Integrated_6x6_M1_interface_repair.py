@@ -54,7 +54,7 @@ add("Lid_gasket_PROXY",gasket,(0.18,0.64,0.35))
 for side,s in (("L",-1),("R",1)):
     # Relocated motors: X=-30..12, raised Z=18. Assumed envelopes, not mounting design.
     add("Motor_"+side+"_ENVELOPE",cyl(P["motor_D"]/2,P["motor_L"],(P["motor_x"],s*14,P["motor_z"]),(1,0,0)),(0.22,0.32,0.4))
-    add("Motor_shaft_"+side,cyl(4,88,(P["motor_x"]+P["motor_L"],s*14,P["motor_z"]),(1,0,0)),(0.8,0.7,0.3))
+    add("Motor_shaft_"+side,cyl(4,93,(P["motor_x"]+P["motor_L"],s*14,P["motor_z"]),(1,0,0)),(0.8,0.7,0.3))
     # Five Z50 stations per side. m=1.0 design assumption -> 50 mm pitch diameter and 50 mm centers.
     for j,x in enumerate(P["gear_x"]):
         gy=s*P["gear_y"]
@@ -90,6 +90,10 @@ for side,s in (("L",-1),("R",1)):
     # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
     add("Bevel_Z16_PROXY_"+side,cyl(12,8,(101,s*14,P["motor_z"]),(1,0,0)),(0.85,0.5,0.18))
     add("Bevel_Z40_PROXY_"+side,cyl(30,8,(100,s*19,P["gear_z"]),(0,s,0)),(0.85,0.5,0.18))
+    # Drive shaft X=12..105 enters Z16 X=101..109 by 4 mm; interference is intentional for a nominal hub.
+    # This is NOT a torque-rated key, press fit, or validated bevel mesh.
+    assert P["motor_x"]+P["motor_L"]+93 >= 105 and P["motor_x"]+P["motor_L"]+93-101 >= 4
+    print("PASS nominal motor-shaft/Z16 overlap 4 mm; NOT_RUN torque joint and actual fits",side)
 # Explicit rear coaxiality gate: this checks the modeled bevel Z40 axis, not tooth engagement.
 for side_label in ("L","R"):
     z40=next(o for o in parts if o.Name=="Bevel_Z40_PROXY_"+side_label)
