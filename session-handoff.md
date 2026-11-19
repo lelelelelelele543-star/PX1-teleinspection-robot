@@ -9,6 +9,7 @@
 - F06 — коническая пара Z16/Z40 с зубьями: current/09_RELEASE/f06_bevel_teeth_20261119/README.md.
 - F07 — резьба M5 колеса, сборка без пересечений и HOLD-контактов: current/09_RELEASE/f07_m5_cosmetic_thread_20261119/README.md.
 - F08 — крепёж M3 крышек и фланцев: current/09_RELEASE/f08_m3_fasteners_20261119/README.md.
+- F09 — бюджет тяги и скорости: current/07_TESTS/TRACTION_BUDGET_F09.md.
 
 ## Важно для следующей сессии
 1. Прежние feature_list.json / progress.md / session-handoff.md на GitHub отсутствовали; список F05–F10 составлен заново.
@@ -18,4 +19,4 @@
 3. Окружение: pip install --break-system-packages cadquery (2.8.0); сборка ~3–9 мин, интегральная проверка ~1 мин.
 
 ## Следующий шаг
-F09 — расчёт тяги и скорости (status "next"). Источники вне чертежей: YouTube Mini-Cam Proteus, открытые источники, Google Диск.
+F10 — канавка уплотнения боковой крышки 190×1,5 по DRW-002-374 (status "next"). Источники вне чертежей: YouTube Mini-Cam Proteus, открытые источники, Google Диск.
