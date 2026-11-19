@@ -22,8 +22,8 @@ L,W,H=P["body_L"],P["body_W"],P["body_H"]
 outer=Part.makeBox(L,W,H,V(-L/2,-W/2,-H/2))
 inner=Part.makeBox(L-10,W-10,H-10,V(-L/2+5,-W/2+5,-H/2+5))
 lid_opening=Part.makeBox(170,60,12,V(-85,-30,29))
-# Six through-wall shaft passages and bearing counterbores (design targets).
-for xx in P["gear_x"]:
+# Only six wheel through-wall shaft passages; four idlers remain internal.
+for xx in P["stations"]:
     for sign in (-1,1):
         outer=outer.cut(cyl(5.5,12,(xx,sign*34,0),(0,sign,0)))
         # Bearing 10x22x7 occupies Y=34..41; cut full 5 mm shell wall (34..39).
@@ -57,12 +57,16 @@ for side,s in (("L",-1),("R",1)):
             add("Wheel_"+side+"_"+str(j//2+1),cyl(P['wheel_D']/2,P["wheel_W"],(x,s*46,P["gear_z"]),(0,s,0)),(0.11,0.14,0.18))
         else:
             # Idler support shares the 10x22x7 nominal envelope with wheel bearings.
-            # Housing bore now exists at all five gear stations, not just three wheel stations.
+            # Idlers use blind internal carriers, not wall penetrations.
             # Axle and bearing are simplified envelopes, not verified fits or load ratings.
-            add("Idler_stub_"+side+"_"+str(j),cyl(5,18,(x,s*25,P["gear_z"]),(0,s,0)),(0.7,0.73,0.76))
-            ip=(x,s*34,P["gear_z"])
+            # Blind internal idler: NO through-wall hole. Carrier attachment is NOT_RUN.
+            add("Idler_stub_"+side+"_"+str(j),cyl(5,15,(x,s*19,P["gear_z"]),(0,s,0)),(0.7,0.73,0.76))
+            ip=(x,s*19,P["gear_z"])
             add("Idler_bearing_PROXY_"+side+"_"+str(j),
                 cyl(11,7,ip,(0,s,0)).cut(cyl(5,7,ip,(0,s,0))),(0.88,0.68,0.25))
+            cp=(x,s*18,P["gear_z"])
+            add("Idler_carrier_PROXY_"+side+"_"+str(j),
+                cyl(12,9,cp,(0,s,0)).cut(cyl(11,9,cp,(0,s,0))),(0.44,0.54,0.62))
     # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
     add("Bevel_Z16_PROXY_"+side,cyl(12,8,(101,s*14,10),(1,0,0)),(0.85,0.5,0.18))
     add("Bevel_Z40_PROXY_"+side,cyl(30,8,(110,s*19,P["gear_z"]),(0,s,0)),(0.85,0.5,0.18))
@@ -142,7 +146,8 @@ assert len([o for o in parts if o.Name.startswith("Idler_bearing_PROXY_")])==4
 assert len([o for o in parts if o.Name.startswith("Idler_stub_")])==4
 assert set(P["gear_x"])-set(P["stations"])=={-50.,50.}
 assert seat_start<=shell_inner and seat_start+seat_depth>=shell_outer
-print("PASS 4 idler bearing proxies and full-wall bore stations (analytical)")
+assert len([o for o in parts if o.Name.startswith("Idler_carrier_PROXY_")])==4
+print("PASS 6 wheel wall passages and 4 internal idler carrier proxies; mounting NOT_RUN")
 print("NOT_RUN actual bearing fits, idler loads and volumetric Boolean collision tests")
 assert len([o for o in parts if o.Name.startswith("Wheel_L_") or o.Name.startswith("Wheel_R_")])==6
 print("PASS wheel clearance",wheel_gap,"mm; Z50 pitch",gear_pitch,"mm; motor top",motor_top,"mm; DN150 radial wheel",wheel_radial_envelope,"mm; body",body_radial_envelope,"mm")
