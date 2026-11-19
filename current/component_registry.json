@@ -16,7 +16,7 @@
       68.0,
       64.0
     ],
-    "volume_mm3": 347552.76507,
+    "volume_mm3": 212153.76535,
     "solids": 1
   },
   {
@@ -3937,6 +3937,26 @@
       9.0
     ],
     "volume_mm3": 5089.3801,
+    "solids": 1
+  },
+  {
+    "id": "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      24.5,
+      -25.15,
+      11.0,
+      272.0,
+      25.15,
+      23.0
+    ],
+    "dimensions_mm": [
+      247.5,
+      50.3,
+      12.0
+    ],
+    "volume_mm3": 149391.0,
     "solids": 1
   }
 ]

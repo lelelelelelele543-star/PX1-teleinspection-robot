@@ -130,3 +130,4 @@ PR03;МакетPRESSUREкрышки;1;PX1_PRESSURE_Cover_FitCheck_ONLY.stl;158×
 PR04;Макет боковой крышки;1;PX1_Side_Cover_FitCheck_ONLY.stl;262×60×7;M02;PRINT;DESIGN;FIT_CHECK_ONLY
 M04C;Средняя короткая ось;2;PX1 middle axle;X150 absY26.8..60.9 stepped12/17/18 HOLD;integrated CAD estimate;TURN;ESTIMATED;H02 strength/retention unqualified
 L17;Палец проушины газовой пружины;1;PX1 gas clevis pin;D4 L11;integrated CAD estimate;TURN;ESTIMATED;H06 retention/load unqualified
+M20;Грузовая плита (нерж.);1;FSS-002-060;50.3×12×247.5;DRW375 A-A 1:1;MILL;MODELLED_F11;H02 длина ESTIMATED, крепление 2×M8 HOLD

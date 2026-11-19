@@ -27,6 +27,10 @@ B61800=(10.0,19.0,5.0)
 XRING=(18.72,2.62)
 SEAL_18_30_7=(18.0,30.0,7.0)
 SIDE_ORING=(190.0,1.5)
+# F11 FSS-002-060 weight plate (DRW-002-375 A-A, 1:1): stainless, in external bottom recess, flush.
+WEIGHT_PLATE_W=50.3; WEIGHT_PLATE_H=12.0     # DERIVED from 1:1 section (±0.1)
+WEIGHT_PLATE_X0=24.5; WEIGHT_PLATE_X1=272.0  # ESTIMATED: front ~5 mm from housing end per side view; rear not visible
+CAVITY_FLOOR_Z=24.0                           # was 23; leaves 1.0 Al over plate (Proteus ~1.4 under Z40), ESTIMATED
 # F10 side-cover seal SEA-002-102 190x1.5, lobed track around Z50 gears (DRW-002-374 top view):
 SIDE_SEAL_R=28.0        # lobe radius about each Z50 centre, DERIVED from drawing (~27.5-28)
 SIDE_SEAL_CUSP=19.0     # track distance from axis between gears, DERIVED from drawing (~18.4-19)
@@ -253,7 +257,8 @@ components=[]; side_covers=[]
 def add(n,p,c): components.append((n,p,c)); return p
 profile=[(18,17),(24,11),(278,11),(296,29),(296,73),(294,75),(20,75),(18,73)]
 body=cq.Workplane('XZ',origin=(0,34,0)).polyline(profile).close().extrude(68)
-body=cut(body,box0(24,-26.5,23,264,53,52.1))
+body=cut(body,box0(24,-26.5,CAVITY_FLOOR_Z,264,53,75.1-CAVITY_FLOOR_Z))
+body=cut(body,box0(WEIGHT_PLATE_X0,-WEIGHT_PLATE_W/2,BODY_Z0-.1,WEIGHT_PLATE_X1-WEIGHT_PLATE_X0,WEIGHT_PLATE_W,WEIGHT_PLATE_H+.1))  # plate recess
 body=wp(body.val().fuse(box0(24,-26.5,71,264,53,4).val()))
 body=cut(body,box0(SERVICE_OPEN_X0,-SERVICE_OPEN_W/2,70.9,
                   SERVICE_OPEN_X1-SERVICE_OPEN_X0,SERVICE_OPEN_W,4.2))
@@ -509,6 +514,8 @@ cone=cq.Workplane('YZ').circle(10).workplane(offset=30).circle(6).loft(combine=T
 cone=cut(cone,cyl_x(315.9,0,45,4.5,32.2))
 add('HOLD_REAR_TETHER_STRAIN_SLEEVE',strain,'metal');add('HOLD_REAR_TETHER_ARAMID_CONE',cone,'metal')
 add('HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_UNKNOWN',cyl_x(348,0,45,4.5,80),'cable')
+add('FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD',
+    box0(WEIGHT_PLATE_X0,-WEIGHT_PLATE_W/2,BODY_Z0,WEIGHT_PLATE_X1-WEIGHT_PLATE_X0,WEIGHT_PLATE_W,WEIGHT_PLATE_H),'metal')
 components.insert(0,('HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED',body,'body'))
 from release_tools import finish_build
 finish_build(globals())

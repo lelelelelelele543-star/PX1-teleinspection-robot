@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "08624b5116717463f269367b8de7758c5c9d6877a85f611eeef65476d5db1ed4",
+  "source_sha256": "15b65db67bdc9aae1bcad888c1ee7ea487af869232e0a3182a8fc2fbb28c907d",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -31,11 +31,11 @@
     "camera_harness_cores": 6
   },
   "counts_match": true,
-  "component_count": 197,
+  "component_count": 198,
   "invalid_shapes": [],
   "collision_method": {
-    "all_pairs": 19306,
-    "boolean_pairs_after_AABB": 575,
+    "all_pairs": 19503,
+    "boolean_pairs_after_AABB": 576,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
@@ -1227,6 +1227,12 @@
         "clearance_mm": 63.9757,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD",
+        "clearance_mm": 27.3058,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
       }
     ],
     "global_status": "HOLD: nominal CAD containment only; tyre profile is engineered estimate, physical tyre/contact/tolerances unqualified"
@@ -1657,7 +1663,8 @@
     "HOLD_CAM026_OPTICAL_HOUSING_GRAPHIC": "CAD/Metal_HOLD/HOLD_CAM026_OPTICAL_HOUSING_GRAPHIC.step",
     "HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN": "CAD/Metal_HOLD/HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN.step",
     "HOLD_REAR_TETHER_STRAIN_SLEEVE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_STRAIN_SLEEVE.step",
-    "HOLD_REAR_TETHER_ARAMID_CONE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_ARAMID_CONE.step"
+    "HOLD_REAR_TETHER_ARAMID_CONE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_ARAMID_CONE.step",
+    "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD": "CAD/Metal_HOLD/FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD.step"
   },
   "unmodelled_required_items": [
     "complete camera PAN/TILT/lighting/control internals",

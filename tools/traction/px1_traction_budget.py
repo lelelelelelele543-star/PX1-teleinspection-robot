@@ -45,11 +45,28 @@ def master_constants(path):
     return vals
 
 
+# Mini-Cam part-code prefixes in DRW-002-374/375/386: FAL = aluminium, FSS = stainless, FBR = brass.
+NAME_DENSITY = [  # (substring, g/cm3, reason) — first match wins, overrides category
+    ('WEIGHT_PLATE', 7.9, 'FSS-002-060 Waight Plate (DRW375)'),
+    ('AXLE_FLANGE', 7.9, 'FSS-002-061 Axle Flange (DRW374)'),
+    ('LIFT_SIDE_ARM', 7.9, 'FSS lift parts (DRW375 FSS-002-084/373)'),
+    ('LIFT_SIDE_PIN', 7.9, 'FSS-002-373 Axle Lift'),
+    ('SIDE_COVER', 2.7, 'FAL-002-062 Side cover'),
+    ('PRESSURE_BODY', 2.7, 'FAL-002-058 Crawler Housing'),
+]
+
+
 def cad_mass(registry):
     by = defaultdict(float)
     for item in registry:
-        by[item['category']] += item.get('volume_mm3', 0.0) / 1000.0
-    mass = {k: v * DENSITY.get(k, 2.7) / 1000.0 for k, v in by.items()}
+        rho = DENSITY.get(item['category'], 2.7)
+        key = item['category']
+        for sub, d, _ in NAME_DENSITY:
+            if sub in item['id']:
+                rho, key = d, sub
+                break
+        by[key] += item.get('volume_mm3', 0.0) / 1000.0 * rho
+    mass = {k: v / 1000.0 for k, v in by.items()}
     return sum(mass.values()), {k: round(v, 3) for k, v in sorted(mass.items(), key=lambda kv: -kv[1])}
 
 
