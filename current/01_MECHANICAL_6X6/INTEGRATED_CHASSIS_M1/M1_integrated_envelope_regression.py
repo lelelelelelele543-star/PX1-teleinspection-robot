@@ -8,7 +8,7 @@ ROOT=pathlib.Path(__file__).resolve().parent
 SRC=ROOT/"PX1_Integrated_6x6_M1_interface_repair.py"
 tree=ast.parse(SRC.read_text(encoding="utf-8"))
 pnode=next(n.value for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=="P" for t in n.targets))
-P={k.value:ast.literal_eval(v) for k,v in zip(pnode.keys,pnode.values)}
+P={kw.arg:ast.literal_eval(kw.value) for kw in pnode.keywords} if isinstance(pnode,ast.Call) and isinstance(pnode.func,ast.Name) and pnode.func.id=="dict" else ast.literal_eval(pnode)
 checks={}
 def gate(name,condition,details):
     checks[name]={"status":"PASS" if condition else "FAIL","details":details}
