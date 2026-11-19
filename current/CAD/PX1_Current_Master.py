@@ -71,9 +71,10 @@ PIPE_CENTER_Z=WHEEL_Z-WHEEL_CROWN_R+math.sqrt(PIPE_R**2-WHEEL_CENTRE_Y**2)
 WHEEL_PROFILE=[(26,-12),(32,-12),(42,-8),(45,0),(28.5,8),(20.5,12),(8,12),(8,-2),(26,-2)]
 WHEEL_MIN_NONCONTACT_GAP=3.0
 
-# GA24Y-370-2485 / 138:1 candidate, NOT seller-verified or manufacturing released.
-# Conservative ESTIMATED family envelope (different-ratio drawing); see procurement report.
-MOTOR_OD=24.4; MOTOR_LEN=30.8; GEARHEAD_OD=24.4; GEARHEAD_LEN=36.8
+# F16 Proteus-class drive envelope (DRW-002-386 1:1: gearhead D26.0x44.6, motor D22.2x51.7 — DERIVED).
+# Candidate ZHAOWEI ZWSMD026026 3-stage (44.9) + D22 motor, NOT seller-verified (see F12 report).
+# Motor length 53.0 >= Proteus 51.7, so the envelope also covers the original-class motor.
+MOTOR_OD=22.2; MOTOR_LEN=53.0; GEARHEAD_OD=26.0; GEARHEAD_LEN=44.9  # 53.0 DERIVED (ZHAOWEI total 97.9 - gearhead 44.9); rear X91.6
 MOTOR_SHAFT_D=4.0; MOTOR_SHAFT_L=17.5
 MOTOR_FACE=189.5; MOTOR_Y=13.5
 MOTOR_PILOT_D=6.4; MOTOR_PILOT_L=2.0
@@ -95,12 +96,12 @@ WAVESHARE_27479=(42.8,15.2,4.75)
 VIDEO_SCREEN=(43.0,16.0,15.0)  # Delta TR-1D*P2 packaging screen
 
 # Current PX1 service cover engineering prototype dimensions
-SERVICE_CX=198.5; SERVICE_L=177.0; SERVICE_W=68.0; SERVICE_T=7.0; SERVICE_Z=75.0
-SERVICE_OPEN_X0=118.0; SERVICE_OPEN_X1=278.0; SERVICE_OPEN_W=53.0
-SERVICE_SCREW_X=(113.0,284.0); SERVICE_SCREW_Y=(-30.5,30.5)
+SERVICE_CX=184.5; SERVICE_L=205.0; SERVICE_W=68.0; SERVICE_T=7.0; SERVICE_Z=75.0
+SERVICE_OPEN_X0=90.0;  SERVICE_OPEN_X1=278.0; SERVICE_OPEN_W=53.0
+SERVICE_SCREW_X=(85.0,284.0); SERVICE_SCREW_Y=(-30.5,30.5)
 # ESTIMATED static face-seal gland: 1.5 section, 20% nominal squeeze,
 # 77.5% cross-section fill; exact closed seal/material and leak test unresolved.
-SERVICE_GROOVE_CX=198.0; SERVICE_GROOVE_L=166.0; SERVICE_GROOVE_W=58.0
+SERVICE_GROOVE_CX=184.0; SERVICE_GROOVE_L=194.0; SERVICE_GROOVE_W=58.0
 SERVICE_GROOVE_RADIUS=3.0; SERVICE_GROOVE_WIDTH=1.9; SERVICE_GROOVE_DEPTH=1.2
 
 # Lift kinematics recovered in current project
@@ -397,13 +398,13 @@ for side in (-1,1):
     adapter=cut(cyl_x(199.5,y,45,3,8),cyl_x(199.4,y,45,2,8.2))
     adapter=cut(adapter,boxc(203.5,y+2.75,45,8.2,1.5,.5))
     add(f'HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_{side}',adapter,'shaft')
-    add(f'TRACTION_MOTOR_{side}_GA24Y_370_2485_138_ESTIMATED_HOLD',candidate_motor_pack(y),'purchased')
+    add(f'TRACTION_MOTOR_{side}_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD',candidate_motor_pack(y),'purchased')
     motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y,45,3.3,3.2))
     # ESTIMATED 4-hole pattern; exact supplied variant and body attachment HOLD.
     for angle in (45,135,225,315):
         a=math.radians(angle)
         motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y+9.5*math.cos(a),45+9.5*math.sin(a),1.35,3.2))
-add('HOLD_PAIRED_MOTOR_HOLDER_GA24_ESTIMATED',motor_holder,'metal')
+add('HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED',motor_holder,'metal')
 add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
 cover=boxc(SERVICE_CX,0,78.5,SERVICE_L,SERVICE_W,SERVICE_T)
 for x in SERVICE_SCREW_X:
@@ -417,7 +418,7 @@ inner=boxc(SERVICE_GROOVE_CX,0,75+(SERVICE_GROOVE_DEPTH-.1)/2,
            SERVICE_GROOVE_L-SERVICE_GROOVE_WIDTH,SERVICE_GROOVE_W-SERVICE_GROOVE_WIDTH,
            SERVICE_GROOVE_DEPTH+.3).edges('|Z').fillet(SERVICE_GROOVE_RADIUS-SERVICE_GROOVE_WIDTH/2)
 cover=cut(cover,cut(outer,inner))
-add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE177x68x7',cover,'metal')
+add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7',cover,'metal')
 valve_body=cut(cyl_z(264,18,78,5,14),cyl_z(264,18,77.9,2.1,14.2))
 add('HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY',valve_body,'valve')
 add('HOLD_PRESSURE_VALVE_CAP',cyl_z(264,18,92,6,1.5),'valve')
@@ -499,14 +500,14 @@ b=controller.val().BoundingBox();controller=controller.translate((-(b.xmin+b.xma
 controller=controller.rotate((0,0,0),(0,0,1),90).translate((208,0,60.1))
 add('WEACT_STM32F446RET6_V11_MANUFACTURER_STEP',controller,'electronics')
 g2=cq.importers.importStep(str(CAD/'vendor'/'Pololu_G2_24v13_Manufacturer.step')).translate((-16.51,-10.16,0))
-for i,x in enumerate((47,99),1):add(f'POLOLU_2992_G2_24v13_{i}_MANUFACTURER_STEP',g2.translate((x,0,26)),'electronics')
-add('HOLD_CINCON_CQB150W110S24_BODY_PINS_THERMAL_HOLD',boxc(155,0,64,*CINCON),'electronics')
+for i,(x,z) in enumerate(((47,26),(99,24.5)),1):add(f'POLOLU_2992_G2_24v13_{i}_MANUFACTURER_STEP',g2.translate((x,0,z)),'electronics')  # F16: #2 lowered under motors
+add('HOLD_CINCON_CQB150W110S24_BODY_PINS_THERMAL_HOLD',boxc(155,0,65,*CINCON),'electronics')  # F16: +1 mm over D26 gearheads
 add('NICHICON_UCS2D221MHD1TN_BODY18x25',cyl_z(278,0,30,9,25),'electronics')
 add('ADAFRUIT_MPRLS_3965_ENVELOPE',boxc(277.5,-17.5,60,*MPRLS),'electronics')
 add('HOLD_POLOLU_5577_D42V55F12_ENVELOPE',boxc(211.5,-13.5,29,*POLOLU_5577),'electronics')
 add('HOLD_POLOLU_5571_D42V55F5_ENVELOPE',boxc(211.5,13.5,29,*POLOLU_5571),'electronics')
 add('HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE',boxc(264,0,68,*WAVESHARE_27479),'electronics')
-add('HOLD_DELTA_TR1D_P2_VIDEO_BALUN',boxc(85,0,50,*VIDEO_SCREEN),'electronics_hold')
+add('HOLD_DELTA_TR1D_P2_VIDEO_BALUN',boxc(52,0,50,*VIDEO_SCREEN),'electronics_hold')  # F16: moved forward of motors
 body=cut(body,cyl_x(287.9,0,45,8.6,8.2))
 add('HOLD_WEIPU_SP1712_7PIN_REAR_PANEL_6_USED',make_sp17_panel().translate((296,0,45)),'connector')
 strain=cut(cyl_x(316,0,45,12,32),cyl_x(315.9,0,45,10,32.2))

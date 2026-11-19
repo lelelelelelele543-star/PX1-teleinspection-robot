@@ -16,7 +16,7 @@
       68.0,
       64.0
     ],
-    "volume_mm3": 212153.76535,
+    "volume_mm3": 206208.22766,
     "solids": 1
   },
   {
@@ -2760,23 +2760,23 @@
     "solids": 1
   },
   {
-    "id": "TRACTION_MOTOR_-1_GA24Y_370_2485_138_ESTIMATED_HOLD",
+    "id": "TRACTION_MOTOR_-1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
     "category": "purchased",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      121.9,
-      -25.7,
-      32.8,
+      91.6,
+      -26.5,
+      32.0,
       207.0,
-      -1.3,
-      57.2
+      -0.5,
+      58.0
     ],
     "dimensions_mm": [
-      85.1,
-      24.4,
-      24.4
+      115.4,
+      26.0,
+      26.0
     ],
-    "volume_mm3": 31868.51694,
+    "volume_mm3": 44612.84621,
     "solids": 1
   },
   {
@@ -2960,27 +2960,27 @@
     "solids": 1
   },
   {
-    "id": "TRACTION_MOTOR_1_GA24Y_370_2485_138_ESTIMATED_HOLD",
+    "id": "TRACTION_MOTOR_1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
     "category": "purchased",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      121.9,
-      1.3,
-      32.8,
+      91.6,
+      0.5,
+      32.0,
       207.0,
-      25.7,
-      57.2
+      26.5,
+      58.0
     ],
     "dimensions_mm": [
-      85.1,
-      24.4,
-      24.4
+      115.4,
+      26.0,
+      26.0
     ],
-    "volume_mm3": 31868.51694,
+    "volume_mm3": 44612.84621,
     "solids": 1
   },
   {
-    "id": "HOLD_PAIRED_MOTOR_HOLDER_GA24_ESTIMATED",
+    "id": "HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED",
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -3020,11 +3020,11 @@
     "solids": 1
   },
   {
-    "id": "HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE177x68x7",
+    "id": "HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7",
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      110.0,
+      82.0,
       -34.0,
       75.0,
       287.0,
@@ -3032,11 +3032,11 @@
       82.0
     ],
     "dimensions_mm": [
-      177.0,
+      205.0,
       68.0,
       7.0
     ],
-    "volume_mm3": 82075.39769,
+    "volume_mm3": 95275.71769,
     "solids": 1
   },
   {
@@ -3706,10 +3706,10 @@
     "bbox_mm": [
       82.49,
       -10.16,
-      26.0,
+      24.5,
       115.51,
       10.16,
-      35.5748
+      34.0748
     ],
     "dimensions_mm": [
       33.02,
@@ -3726,10 +3726,10 @@
     "bbox_mm": [
       126.05,
       -18.4,
-      57.65,
+      58.65,
       183.95,
       18.4,
-      70.35
+      71.35
     ],
     "dimensions_mm": [
       57.9,
@@ -3844,10 +3844,10 @@
     "category": "electronics_hold",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      63.5,
+      30.5,
       -8.0,
       42.5,
-      106.5,
+      73.5,
       8.0,
       57.5
     ],
