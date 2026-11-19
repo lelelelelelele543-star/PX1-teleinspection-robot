@@ -44,7 +44,7 @@ for side,s in (("L",-1),("R",1)):
         # Pitch solids are intentionally NOT teeth or manufactured gears.
         add("Z50_pitch_PROXY_"+side+"_"+str(j+1),cyl(P["gear_m"]*50/2,6,(x,gy-3,P["gear_z"]),(0,1,0)),(0.75,0.42,0.19))
         if j%2==0:
-            add("Wheel_axle_"+side+"_"+str(j//2+1),cyl(5,36,(x,s*29,P["gear_z"]),(0,s,0)),(0.77,0.78,0.79))
+            add("Wheel_axle_"+side+"_"+str(j//2+1),cyl(5,30,(x,s*29,P["gear_z"]),(0,s,0)),(0.77,0.78,0.79))
             # Bearing 10x22x7: geometry proxy, not manufacturer verification.
             bp=(x,s*34,P["gear_z"])
             add("Bearing_PROXY_"+side+"_"+str(j//2+1),
@@ -141,6 +141,18 @@ for side_label in ("L","R"):
         assert abs(wheel.Shape.BoundBox.YLength-P["wheel_W"])<1e-6, "Wheel CAD width differs from wheel_W"
         assert abs(wheel.Shape.BoundBox.ZLength-P["wheel_D"])<1e-6, "Wheel CAD diameter differs from wheel_D"
 print("PASS actual FreeCAD wheel solid widths and diameters")
+# Wheel axle tip must remain recessed relative to the wheel outside face on BOTH sides.
+# Previously 29+36=65 exceeded the wheel outer face 46+14=60 by 5 mm.
+axle_tip=29+30
+wheel_outer_face=46+P["wheel_W"]
+assert axle_tip<=wheel_outer_face-1, "Wheel axle protrudes beyond wheel face"
+for side_label in ("L","R"):
+    axles=[o for o in parts if o.Name.startswith("Wheel_axle_"+side_label+"_")]
+    assert len(axles)==3
+    for axle in axles:
+        assert abs(axle.Shape.BoundBox.YLength-30)<1e-6, "Actual axle length mismatch"
+print("PASS six axle tips recessed",wheel_outer_face-axle_tip,"mm; ASSUMED wheel fastening still NOT_RUN")
+
 # Verify integrated support inventory, nominal idler bore coverage and shaft support.
 assert len([o for o in parts if o.Name.startswith("Idler_bearing_PROXY_")])==4
 assert len([o for o in parts if o.Name.startswith("Idler_stub_")])==4
