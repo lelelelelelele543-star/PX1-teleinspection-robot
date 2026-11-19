@@ -9,7 +9,7 @@ D=App.newDocument("PX1_Integrated_6x6_M1")
 P=dict(body_L=307.,body_W=78.,body_H=70.,wall=5.,wheel_D=78.,wheel_W=14.,
        stations=(-100.,0.,100.),gear_x=(-100.,-50.,0.,50.,100.),
        gear_m=1.0,gear_z=0.,gear_y=30.,gear_thick=6.,axle_D=10.,
-       motor_D=22.,motor_L=42.,motor_z=10.,motor_y=14.,
+       motor_D=22.,motor_L=42.,motor_z=18.,motor_y=14.,motor_x=-30.,
        pressure_bar_min=0.4,pressure_bar_max=0.7,
        lid_gasket_nominal=1.0,lid_gasket_compression=0.3)
 parts=[]
@@ -52,9 +52,9 @@ for i,(bx,by) in enumerate(lid_bolts,1):
 gasket=Part.makeBox(174,64,1,V(-87,-32,35)).cut(Part.makeBox(166,56,1,V(-83,-28,35)))
 add("Lid_gasket_PROXY",gasket,(0.18,0.64,0.35))
 for side,s in (("L",-1),("R",1)):
-    # Motors face rear wheel station; avoid center axle at X=0 by raising motor axes.
-    add("Motor_"+side+"_ENVELOPE",cyl(P["motor_D"]/2,P["motor_L"],(35,s*14,10),(1,0,0)),(0.22,0.32,0.4))
-    add("Motor_shaft_"+side,cyl(4,32,(77,s*14,10),(1,0,0)),(0.8,0.7,0.3))
+    # Relocated motors: X=-30..12, raised Z=18. Assumed envelopes, not mounting design.
+    add("Motor_"+side+"_ENVELOPE",cyl(P["motor_D"]/2,P["motor_L"],(P["motor_x"],s*14,P["motor_z"]),(1,0,0)),(0.22,0.32,0.4))
+    add("Motor_shaft_"+side,cyl(4,88,(P["motor_x"]+P["motor_L"],s*14,P["motor_z"]),(1,0,0)),(0.8,0.7,0.3))
     # Five Z50 stations per side. m=1.0 design assumption -> 50 mm pitch diameter and 50 mm centers.
     for j,x in enumerate(P["gear_x"]):
         gy=s*P["gear_y"]
@@ -88,7 +88,7 @@ for side,s in (("L",-1),("R",1)):
     # These are still pitch cylinders, NOT conjugate bevel teeth or a validated keyed hub.
     assert P["gear_x"][-1] == 100., "Rear gear coordinate changed"
     # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
-    add("Bevel_Z16_PROXY_"+side,cyl(12,8,(101,s*14,10),(1,0,0)),(0.85,0.5,0.18))
+    add("Bevel_Z16_PROXY_"+side,cyl(12,8,(101,s*14,P["motor_z"]),(1,0,0)),(0.85,0.5,0.18))
     add("Bevel_Z40_PROXY_"+side,cyl(30,8,(100,s*19,P["gear_z"]),(0,s,0)),(0.85,0.5,0.18))
 # Explicit rear coaxiality gate: this checks the modeled bevel Z40 axis, not tooth engagement.
 for side_label in ("L","R"):
@@ -119,6 +119,14 @@ motor_to_spur_y_clearance = P["gear_y"]-P["gear_thick"]/2-(P["motor_y"]+P["motor
 motor_pair_y_clearance = 2*P["motor_y"]-P["motor_D"]
 assert motor_to_spur_y_clearance >= 2, "Motor intersects Z50 spur envelope"
 assert motor_pair_y_clearance >= 2, "Traction motors collide across centerline"
+# Motor/idler and longitudinal drive-shaft/idler clearance, conservative radial envelope.
+# Idler bearing: Y=19..26, Z radius 11; shaft radius 4 at Y=14,Z=18.
+# Shaft overlaps idler stations X=+-50, so cross-sectional separation is required.
+idler_to_shaft=math.hypot(P["motor_y"]-19.,P["motor_z"]-P["gear_z"])
+assert idler_to_shaft >= 11.+4.+1., "Drive shaft intersects idler bearing envelope"
+# Motor X interval must not reach the X=+-50 idler bearing radius (11 mm).
+assert P["motor_x"] >= -50.+11.+1. and P["motor_x"]+P["motor_L"] <= 50.-11.-1., "Motor X envelope intersects idler station"
+print("PASS motor/idler axial separation and drive-shaft/idler radial clearance",round(idler_to_shaft-15.,3),"mm (assumed envelopes)")
 # Integrated static clearance gates; conservative envelopes, not 3D Boolean validation.
 wheel_body_side_gap = 46 - P["body_W"]/2
 gear_inner_wall_gap = P["body_W"]/2 - P["wall"] - (P["gear_y"] + P["gear_thick"]/2)
@@ -155,8 +163,9 @@ assert math.hypot(46+P["wheel_W"],P["wheel_D"]/2) <= 75-minimum_pipe_clearance, 
 assert P["motor_D"]==22, "Motor CAD diameter mismatch"
 print("PASS DN150 nominal radial clearance",round(75-wheel_radial_envelope,3),"mm; wheel width",P["wheel_W"],"mm; ASSUMED, verify traction/contact")
 print("PASS design envelope: motor Ø",P["motor_D"],"bearing-to-wheel axial gap",bearing_wheel_axial_clearance,"mm")
-assert 80-(35+P["motor_L"])>=3, "Motor rear-end intersects bevel proxy X envelope"
-print("PASS rear motor/bevel X envelope gap",80-(35+P["motor_L"]),"mm; assumed motor L",P["motor_L"],"mm")
+# Axial motor-to-bevel spacing; long drive shaft is an unverified single-piece proxy.
+assert 100-(P["motor_x"]+P["motor_L"])>=80, "Relocated motor has insufficient drive run"
+print("PASS motor relocated X",P["motor_x"],"to",P["motor_x"]+P["motor_L"],"mm; rear run",100-(P["motor_x"]+P["motor_L"]),"mm")
 print("PASS nominal shaft-seal axial packaging: 4 mm cartridge + 1 mm wheel clearance; PHYSICAL_CHECK pressure rating and shaft runout")
 print("NOT_RUN bearing bore-to-seat fits, bevel-to-motor actual teeth, lid seal, complete 3D booleans")
 # Integrated actual-solid geometry assertions (not merely parameters).
