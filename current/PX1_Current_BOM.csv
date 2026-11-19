@@ -134,6 +134,8 @@ PR03;МакетPRESSUREкрышки;1;PX1_PRESSURE_Cover_FitCheck_ONLY.stl;158×
 PR04;Макет боковой крышки;1;PX1_Side_Cover_FitCheck_ONLY.stl;262×60×7;M02;PRINT;DESIGN;FIT_CHECK_ONLY
 M04C;Средняя короткая ось;2;PX1 middle axle;X150 absY26.8..60.9 stepped12/17/18 HOLD;integrated CAD estimate;TURN;ESTIMATED;H02 strength/retention unqualified
 L17;Палец проушины газовой пружины;1;PX1 gas clevis pin;D4 L11;integrated CAD estimate;TURN;ESTIMATED;H06 retention/load unqualified
-M20;Грузовая плита (нерж.);1;FSS-002-060;50.3×12×247.5;DRW375 A-A 1:1;MILL;MODELLED_F11;H02 длина ESTIMATED, крепление 2×M8 HOLD
-M21;Балластные блоки;5;PX1-BALLAST-F17;≈94 см³ всего, BALLAST_BOXES;F17 free-space search;MILL;MODELLED_F17;материал СТАЛЬ (решение пользователя 2026-11-19), крепление HOLD
+M20;Грузовая плита (нерж.);1;FSS-002-060;50.3×12×247.5, 2 цековки Ø15 (перемычка 4) + Ø8,4;DRW375 A-A 1:1, вид сбоку 1:1;MILL;MODELLED_F14;H02 длина ESTIMATED, крепление 2×M8 смоделировано (F14), винт №2 ESTIMATED
+F23;Винт M8×16 DIN 7984 A2 (низкая головка);2;FIX-002-764;M8×16 dk13 k5 s5;DRW375 поз.15;BUY;MODELLED_F14;стандарт, свинчивание 10,0 мм
+F24;Шайба пружинная M8 A2;2;FIX-002-741;DIN 127 B Ø8,1/Ø14,8×2,0;DRW375 поз.16;BUY;MODELLED_F14;стандарт
+M21;Балластные блоки;6;PX1-BALLAST-F17;≈93,8 см³ всего (F14: блок 5 разрезан на 5+6), BALLAST_BOXES;F17 free-space search;MILL;MODELLED_F17;материал СТАЛЬ (решение пользователя 2026-11-19), крепление HOLD
 P03b;Ступица колеса Al;6;QRW90 hub ESTIMATED;r22 inside D90 tyre;Mini-Cam ASS-004-496 view;TURN;MODELLED_F17;H01 карман под диск ASS-002-103 Ø20,4 ESTIMATED

@@ -27,13 +27,29 @@ B61800=(10.0,19.0,5.0)
 XRING=(18.72,2.62)
 SEAL_18_30_7=(18.0,30.0,7.0)
 SIDE_ORING=(190.0,1.5)
+SIDE_COVER_L=262.0; SIDE_COVER_H=60.0; SIDE_COVER_T=7.0   # DRW-002-374 side cover ~262x60x7, DERIVED
 # F17 ballast blocks in free cavity space (bbox search, 0.5 mm shrink, motor-extraction keep-out). Material: STEEL (user decision 2026-11-19).
-BALLAST_BOXES=[(25.0,-21.5,25.0,90.0,-11.5,66.0),(25.0,11.5,25.0,90.0,21.5,66.0),(117.0,-25.5,25.0,188.0,25.5,30.0),(266.0,10.5,25.0,287.0,25.5,68.0),(266.0,-25.5,25.0,287.0,-10.5,54.0)]
+# F14: block 5 split around the rear plate-screw boss (was 266..287 x Z25..54): 5 = X270..287 Z25..55.75 (MPRLS-0.5),
+#      6 = X266..270 above the boss Z39..55.75. Net volume -289 mm3 (-2.3 g steel).
+BALLAST_BOXES=[(25.0,-21.5,25.0,90.0,-11.5,66.0),(25.0,11.5,25.0,90.0,21.5,66.0),(117.0,-25.5,25.0,188.0,25.5,30.0),(266.0,10.5,25.0,287.0,25.5,68.0),(270.0,-25.5,25.0,287.0,-10.5,55.75),(266.0,-25.5,39.0,270.0,-10.5,55.75)]
 QRW_HUB_R=22.0   # F17 aluminium hub radius inside D90 tyre, ESTIMATED from Mini-Cam ASS-004-496 view (hub ~0.5 D)
 # F11 FSS-002-060 weight plate (DRW-002-375 A-A, 1:1): stainless, in external bottom recess, flush.
 WEIGHT_PLATE_W=50.3; WEIGHT_PLATE_H=12.0     # DERIVED from 1:1 section (±0.1)
 WEIGHT_PLATE_X0=24.5; WEIGHT_PLATE_X1=272.0  # ESTIMATED: front ~5 mm from housing end per side view; rear not visible
 CAVITY_FLOOR_Z=24.0                           # was 23; leaves 1.0 Al over plate (Proteus ~1.4 under Z40), ESTIMATED
+# F14 plate fixing: DRW-002-375 pos.15 FIX-002-764 M8x16 DIN 7984 x2, pos.16 FIX-002-741 M8 spring washer x2.
+# Side view 1:1 measured at 600 dpi (housing 278.07 over 278 -> scale 1.000). Drawing right end = PX1 front (X18).
+PLATE_SCREW_XY=((46.0,0.0),(263.0,-15.5))   # #1: 28.0 from front end, DERIVED (±0.2); Y0 ESTIMATED (centre-plane section)
+                                            # #2: not visible on DRW-002-375; PX1 position clear of Z40 pair, ESTIMATED
+DIN7984_M8=(6.5,5.0,5.0)      # head dk/2, k, socket s — DIN 7984 M8, CONFIRMED standard (drawing k 5.1)
+PLATE_SCREW_L=16.0            # FIX-002-764 M8 X 16, CONFIRMED (part list)
+SPRING_WASHER_M8=(4.05,7.4,2.0)  # DIN 127 B M8 d1/2, d2/2, s, CONFIRMED standard
+PLATE_CBORE_R=7.5             # Ø15.0 counterbore in plate, DERIVED (15.0)
+PLATE_CBORE_LIG=4.0           # plate ligament under counterbore floor, DERIVED (4.0)
+PLATE_SCREW_HOLE_R=4.2        # Ø8.4 through hole (ISO 273 fine; drawing ~8.1), ESTIMATED
+M8_COSMETIC_THREAD_R=4.0      # tapped hole drawn at major Ø8 (cosmetic thread), ISO 262 M8, CONFIRMED standard
+PLATE_TAP_TOP_Z=37.0          # thread Z23..37 = 14 mm (allows M8x20 option), ESTIMATED
+PLATE_BOSS_R=6.5; PLATE_BOSS_TOP_Z=38.5   # Ø13 Al boss from cavity floor, 1.5 mm closed cap (pressure housing), ESTIMATED
 # F10 side-cover seal SEA-002-102 190x1.5, lobed track around Z50 gears (DRW-002-374 top view):
 SIDE_SEAL_R=28.0        # lobe radius about each Z50 centre, DERIVED from drawing (~27.5-28)
 SIDE_SEAL_CUSP=19.0     # track distance from axis between gears, DERIVED from drawing (~18.4-19)
@@ -319,6 +335,10 @@ body=cq.Workplane('XZ',origin=(0,34,0)).polyline(profile).close().extrude(68)
 body=cut(body,box0(24,-26.5,CAVITY_FLOOR_Z,264,53,75.1-CAVITY_FLOOR_Z))
 body=cut(body,box0(WEIGHT_PLATE_X0,-WEIGHT_PLATE_W/2,BODY_Z0-.1,WEIGHT_PLATE_X1-WEIGHT_PLATE_X0,WEIGHT_PLATE_W,WEIGHT_PLATE_H+.1))  # plate recess
 body=wp(body.val().fuse(box0(24,-26.5,71,264,53,4).val()))
+# F14: threaded bosses for FIX-002-764 (blind, closed top), part of the housing solid.
+for _px,_py in PLATE_SCREW_XY:
+    body=wp(body.val().fuse(cyl_z(_px,_py,CAVITY_FLOOR_Z-.5,PLATE_BOSS_R,PLATE_BOSS_TOP_Z-CAVITY_FLOOR_Z+.5).val()))
+    body=cut(body,cyl_z(_px,_py,BODY_Z0+WEIGHT_PLATE_H-.05,M8_COSMETIC_THREAD_R,PLATE_TAP_TOP_Z-BODY_Z0-WEIGHT_PLATE_H+.05))
 body=cut(body,box0(SERVICE_OPEN_X0,-SERVICE_OPEN_W/2,70.9,
                   SERVICE_OPEN_X1-SERVICE_OPEN_X0,SERVICE_OPEN_W,4.2))
 # Four M3 pilot holes in solid rails, nominal 8 mm engagement. Threads unmodelled.
@@ -335,7 +355,7 @@ for side in (-1,1):
     for x,r,y,w in [(50,10.5,24,5),(150,7,26.4,3.5),(250,15,22,12)]:
         body=cut(body,cyl_y(x,side*y,45,r,w+.1,dir=side))
     for x in (100,200): body=cut(body,cyl_y(x,side*24,45,5,10.2,dir=side))
-    cv=boxc(150,side*37.5,45,262,7,60).edges('|Y').chamfer(1)
+    cv=boxc(150,side*(34.0+SIDE_COVER_T/2),45,SIDE_COVER_L,SIDE_COVER_T,SIDE_COVER_H).edges('|Y').chamfer(1)
     # F05 per DRW-002-374 A-A: 61903 straddles cover/flange joint, no flange spigot.
     for x in WHEEL_X:
         cv=cut(cv,cyl_y(x,side*33.9,45,COVER_BEARING_SHOULDER_R,5.2,dir=side)) # outer-race shoulder
@@ -563,7 +583,7 @@ b=controller.val().BoundingBox();controller=controller.translate((-(b.xmin+b.xma
 controller=controller.rotate((0,0,0),(0,0,1),90).translate((208,0,60.1))
 add('WEACT_STM32F446RET6_V11_MANUFACTURER_STEP',controller,'electronics')
 g2=cq.importers.importStep(str(CAD/'vendor'/'Pololu_G2_24v13_Manufacturer.step')).translate((-16.51,-10.16,0))
-for i,(x,z) in enumerate(((47,26),(99,24.5)),1):add(f'POLOLU_2992_G2_24v13_{i}_MANUFACTURER_STEP',g2.translate((x,0,z)),'electronics')  # F16: #2 lowered under motors
+for i,(x,z) in enumerate(((47,59),(99,24.5)),1):add(f'POLOLU_2992_G2_24v13_{i}_MANUFACTURER_STEP',g2.translate((x,0,z)),'electronics')  # F16: #2 lowered under motors; F14: #1 raised Z26->59 above the balun (clears M8 plate-screw boss)
 add('HOLD_CINCON_CQB150W110S24_BODY_PINS_THERMAL_HOLD',boxc(155,0,65,*CINCON),'electronics')  # F16: +1 mm over D26 gearheads
 add('NICHICON_UCS2D221MHD1TN_BODY18x25',cyl_z(278,0,30,9,25),'electronics')
 add('ADAFRUIT_MPRLS_3965_ENVELOPE',boxc(277.5,-17.5,60,*MPRLS),'electronics')
@@ -578,8 +598,19 @@ cone=cq.Workplane('YZ').circle(10).workplane(offset=30).circle(6).loft(combine=T
 cone=cut(cone,cyl_x(315.9,0,45,4.5,32.2))
 add('HOLD_REAR_TETHER_STRAIN_SLEEVE',strain,'metal');add('HOLD_REAR_TETHER_ARAMID_CONE',cone,'metal')
 add('HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_UNKNOWN',cyl_x(348,0,45,4.5,80),'cable')
-add('FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD',
-    box0(WEIGHT_PLATE_X0,-WEIGHT_PLATE_W/2,BODY_Z0,WEIGHT_PLATE_X1-WEIGHT_PLATE_X0,WEIGHT_PLATE_W,WEIGHT_PLATE_H),'metal')
+plate=box0(WEIGHT_PLATE_X0,-WEIGHT_PLATE_W/2,BODY_Z0,WEIGHT_PLATE_X1-WEIGHT_PLATE_X0,WEIGHT_PLATE_W,WEIGHT_PLATE_H)
+_cb_floor=BODY_Z0+WEIGHT_PLATE_H-PLATE_CBORE_LIG          # Z19.0
+_wri,_wro,_ws=SPRING_WASHER_M8; _hr,_hk,_hs=DIN7984_M8
+_bear=_cb_floor-_ws                                         # head bearing face Z17.0; head bottom Z12.0 (1.0 recessed)
+for _i,(_px,_py) in enumerate(PLATE_SCREW_XY,1):
+    plate=cut(plate,cyl_z(_px,_py,BODY_Z0-.1,PLATE_CBORE_R,_cb_floor-BODY_Z0+.1))
+    plate=cut(plate,cyl_z(_px,_py,_cb_floor-.1,PLATE_SCREW_HOLE_R,PLATE_CBORE_LIG+.2))
+    head=cut(cyl_z(_px,_py,_bear-_hk,_hr,_hk),
+             cq.Workplane('XY').polygon(6,_hs/math.cos(math.pi/6)).extrude(3.0).translate((_px,_py,_bear-_hk-.01)))
+    screw=fuse_all([head,cyl_z(_px,_py,_bear,M8_COSMETIC_THREAD_R,PLATE_SCREW_L)])   # tip Z33.0, engagement 10.0
+    add(f'FIX002764_M8x16_DIN7984_PLATE_{_i}',screw,'shaft')
+    add(f'FIX002741_M8_SPRING_WASHER_{_i}',cut(cyl_z(_px,_py,_bear,_wro,_ws),cyl_z(_px,_py,_bear-.1,_wri,_ws+.2)),'shaft')
+add('FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD',plate,'metal')
 for i,b in enumerate(BALLAST_BOXES,1):
     add(f'HOLD_BALLAST_{i}_STEEL',box0(b[0],b[1],b[2],b[3]-b[0],b[4]-b[1],b[5]-b[2]),'metal')
 components.insert(0,('HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED',body,'body'))

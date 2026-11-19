@@ -16,7 +16,7 @@
       68.0,
       64.0
     ],
-    "volume_mm3": 206208.22766,
+    "volume_mm3": 208650.03055,
     "solids": 1
   },
   {
@@ -4046,10 +4046,10 @@
     "bbox_mm": [
       30.49,
       -10.16,
-      26.0,
+      59.0,
       63.51,
       10.16,
-      35.5748
+      68.5748
     ],
     "dimensions_mm": [
       33.02,
@@ -4300,6 +4300,86 @@
     "solids": 1
   },
   {
+    "id": "FIX002764_M8x16_DIN7984_PLATE_1",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      39.5,
+      -6.5,
+      12.0,
+      52.5,
+      6.5,
+      33.0
+    ],
+    "dimensions_mm": [
+      13.0,
+      13.0,
+      21.0
+    ],
+    "volume_mm3": 1403.17377,
+    "solids": 1
+  },
+  {
+    "id": "FIX002741_M8_SPRING_WASHER_1",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      38.6,
+      -7.4,
+      17.0,
+      53.4,
+      7.4,
+      19.0
+    ],
+    "dimensions_mm": [
+      14.8,
+      14.8,
+      2.0
+    ],
+    "volume_mm3": 241.00728,
+    "solids": 1
+  },
+  {
+    "id": "FIX002764_M8x16_DIN7984_PLATE_2",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      256.5,
+      -22.0,
+      12.0,
+      269.5,
+      -9.0,
+      33.0
+    ],
+    "dimensions_mm": [
+      13.0,
+      13.0,
+      21.0
+    ],
+    "volume_mm3": 1403.17377,
+    "solids": 1
+  },
+  {
+    "id": "FIX002741_M8_SPRING_WASHER_2",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      255.6,
+      -22.9,
+      17.0,
+      270.4,
+      -8.1,
+      19.0
+    ],
+    "dimensions_mm": [
+      14.8,
+      14.8,
+      2.0
+    ],
+    "volume_mm3": 241.00728,
+    "solids": 1
+  },
+  {
     "id": "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD",
     "category": "metal",
     "geometry_state": "HOLD",
@@ -4316,7 +4396,7 @@
       50.3,
       12.0
     ],
-    "volume_mm3": 149391.0,
+    "volume_mm3": 146120.22506,
     "solids": 1
   },
   {
@@ -4404,19 +4484,39 @@
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      266.0,
+      270.0,
       -25.5,
       25.0,
       287.0,
       -10.5,
-      54.0
+      55.75
     ],
     "dimensions_mm": [
-      21.0,
+      17.0,
       15.0,
-      29.0
+      30.75
     ],
-    "volume_mm3": 9135.0,
+    "volume_mm3": 7841.25,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BALLAST_6_STEEL",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      266.0,
+      -25.5,
+      39.0,
+      270.0,
+      -10.5,
+      55.75
+    ],
+    "dimensions_mm": [
+      4.0,
+      15.0,
+      16.75
+    ],
+    "volume_mm3": 1005.0,
     "solids": 1
   }
 ]

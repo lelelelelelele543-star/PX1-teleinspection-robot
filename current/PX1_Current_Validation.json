@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "7d0ca6a6ef9d865b8294557d36273cb707ba3871198ab4c24905073cd1356d28",
+  "source_sha256": "595f49ad35290fc68dab7c75d0b4d8b5fe0f67e607b6e848776bf4c587131dcd",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -31,11 +31,11 @@
     "camera_harness_cores": 6
   },
   "counts_match": true,
-  "component_count": 221,
+  "component_count": 226,
   "invalid_shapes": [],
   "collision_method": {
-    "all_pairs": 24310,
-    "boolean_pairs_after_AABB": 679,
+    "all_pairs": 25425,
+    "boolean_pairs_after_AABB": 692,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
@@ -1260,7 +1260,7 @@
       },
       {
         "id": "POLOLU_2992_G2_24v13_1_MANUFACTURER_STEP",
-        "clearance_mm": 47.5279,
+        "clearance_mm": 55.5123,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1337,6 +1337,30 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "FIX002764_M8x16_DIN7984_PLATE_1",
+        "clearance_mm": 34.945,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX002741_M8_SPRING_WASHER_1",
+        "clearance_mm": 39.6919,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX002764_M8x16_DIN7984_PLATE_2",
+        "clearance_mm": 29.766,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX002741_M8_SPRING_WASHER_2",
+        "clearance_mm": 33.5721,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD",
         "clearance_mm": 27.3058,
         "status": "SCREEN_ONLY",
@@ -1369,6 +1393,12 @@
       {
         "id": "HOLD_BALLAST_5_STEEL",
         "clearance_mm": 38.2062,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_BALLAST_6_STEEL",
+        "clearance_mm": 46.5904,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       }
@@ -1808,12 +1838,17 @@
     "HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN": "CAD/Metal_HOLD/HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN.step",
     "HOLD_REAR_TETHER_STRAIN_SLEEVE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_STRAIN_SLEEVE.step",
     "HOLD_REAR_TETHER_ARAMID_CONE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_ARAMID_CONE.step",
+    "FIX002764_M8x16_DIN7984_PLATE_1": "CAD/Metal_HOLD/FIX002764_M8x16_DIN7984_PLATE_1.step",
+    "FIX002741_M8_SPRING_WASHER_1": "CAD/Metal_HOLD/FIX002741_M8_SPRING_WASHER_1.step",
+    "FIX002764_M8x16_DIN7984_PLATE_2": "CAD/Metal_HOLD/FIX002764_M8x16_DIN7984_PLATE_2.step",
+    "FIX002741_M8_SPRING_WASHER_2": "CAD/Metal_HOLD/FIX002741_M8_SPRING_WASHER_2.step",
     "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD": "CAD/Metal_HOLD/FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD.step",
     "HOLD_BALLAST_1_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_1_STEEL.step",
     "HOLD_BALLAST_2_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_2_STEEL.step",
     "HOLD_BALLAST_3_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_3_STEEL.step",
     "HOLD_BALLAST_4_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_4_STEEL.step",
-    "HOLD_BALLAST_5_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_5_STEEL.step"
+    "HOLD_BALLAST_5_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_5_STEEL.step",
+    "HOLD_BALLAST_6_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_6_STEEL.step"
   },
   "unmodelled_required_items": [
     "complete camera PAN/TILT/lighting/control internals",
