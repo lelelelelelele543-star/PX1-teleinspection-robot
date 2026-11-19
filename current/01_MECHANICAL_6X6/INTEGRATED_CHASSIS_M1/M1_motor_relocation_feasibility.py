@@ -4,8 +4,8 @@ Run: python M1_motor_relocation_feasibility.py
 """
 import math, json, pathlib
 HERE=pathlib.Path(__file__).resolve().parent
-# Motor axes x=-5..37 (42 mm), y=+/-14, z=10. Existing x=35..77 collides x=50 idlers.
-MOTOR=(-5.,37.); MOTOR_R=11.; IDLER_X=(-50.,50.); IDLER_R=11.
+# Motor axes x=-30..12 (42 mm), y=+/-14, z=10. Existing x=35..77 collides x=50 idlers.
+MOTOR=(-30.,12.); MOTOR_R=11.; IDLER_X=(-50.,50.); IDLER_R=11.
 MOTOR_Y=14.; MOTOR_Z=10.; IDLER_Y=19.; IDLER_Z=0.
 # Cylinder with axis X vs bearing cylinder with axis Y: conservative sphere-like bounding criterion.
 # For guaranteed clearance use nearest Euclidean distance between their finite axis segments.
@@ -16,7 +16,7 @@ def distance_x_y(x0,x1,y_motor,z_motor,x_idler,y0,y1,z_idler):
 results={}
 for side in (-1,1):
     for x in IDLER_X:
-        # Idler bearing spans Y=19..26, X extent radius 11, motor spans x -5..37.
+        # Idler bearing spans Y=19..26, X extent radius 11, motor spans x -30..12.
         # Axis-segment distance compared to sum of cylinder radii is conservative.
         d=distance_x_y(*MOTOR,side*MOTOR_Y,MOTOR_Z,x,*sorted((side*19.,side*26.)),IDLER_Z)
         results[f"side_{side}_idler_{int(x)}"]={"axis_distance":round(d,3),"conservative_clearance":round(d-22,3)}
