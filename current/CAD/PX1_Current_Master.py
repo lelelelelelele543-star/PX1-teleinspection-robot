@@ -43,14 +43,12 @@ PIPE_CENTER_Z=WHEEL_Z-WHEEL_CROWN_R+math.sqrt(PIPE_R**2-WHEEL_CENTRE_Y**2)
 # ESTIMATED asymmetric outer shoulder; retains D90 and total width133.
 WHEEL_PROFILE=[(26,-12),(32,-12),(42,-8),(45,0),(34.5,8),(27.5,12),(8,12),(8,-2),(26,-2)]
 
-# RF seller's JGA25-370B 24V/77rpm envelope, bench/fit candidate ONLY.
-# FAULHABER excluded by user. Rated torque is inadequate for the existing full-load
-# target; ratio/shaft dimensions conflict between listing and manufacturer drawing.
-# See current/08_PROCUREMENT/RF_MOTOR_CANDIDATES_20261117.md.
-MOTOR_OD=24.4; MOTOR_LEN=40.0; GEARHEAD_OD=25.0; GEARHEAD_LEN=25.0
-MOTOR_SHAFT_D=4.0; MOTOR_SHAFT_L=10.0
-MOTOR_FACE=195.5; MOTOR_Y=13.5 # ESTIMATED integration datums
-MOTOR_PILOT_D=7.0; MOTOR_PILOT_L=2.5 # manufacturer family drawing, variant unverified
+# GA24Y-370-2485 / 138:1 candidate, NOT seller-verified or manufacturing released.
+# Conservative ESTIMATED family envelope (different-ratio drawing); see procurement report.
+MOTOR_OD=24.4; MOTOR_LEN=30.8; GEARHEAD_OD=24.4; GEARHEAD_LEN=36.8
+MOTOR_SHAFT_D=4.0; MOTOR_SHAFT_L=17.5
+MOTOR_FACE=189.5; MOTOR_Y=13.5
+MOTOR_PILOT_D=6.4; MOTOR_PILOT_L=2.0
 COUPLING_OD=20.0; COUPLING_L=24.0; COUPLING_BORE=6.0 # NBK MLR-20C-6-6
 
 # Purchased exact / published component dims
@@ -69,12 +67,12 @@ WAVESHARE_27479=(42.8,15.2,4.75)
 VIDEO_SCREEN=(43.0,16.0,15.0)  # Delta TR-1D*P2 packaging screen
 
 # Current PX1 service cover engineering prototype dimensions
-SERVICE_CX=203.5; SERVICE_L=167.0; SERVICE_W=68.0; SERVICE_T=7.0; SERVICE_Z=75.0
-SERVICE_OPEN_X0=128.0; SERVICE_OPEN_X1=278.0; SERVICE_OPEN_W=53.0
-SERVICE_SCREW_X=(123.0,284.0); SERVICE_SCREW_Y=(-30.5,30.5)
+SERVICE_CX=198.5; SERVICE_L=177.0; SERVICE_W=68.0; SERVICE_T=7.0; SERVICE_Z=75.0
+SERVICE_OPEN_X0=118.0; SERVICE_OPEN_X1=278.0; SERVICE_OPEN_W=53.0
+SERVICE_SCREW_X=(113.0,284.0); SERVICE_SCREW_Y=(-30.5,30.5)
 # ESTIMATED static face-seal gland: 1.5 section, 20% nominal squeeze,
 # 77.5% cross-section fill; exact closed seal/material and leak test unresolved.
-SERVICE_GROOVE_CX=203.0; SERVICE_GROOVE_L=156.0; SERVICE_GROOVE_W=58.0
+SERVICE_GROOVE_CX=198.0; SERVICE_GROOVE_L=166.0; SERVICE_GROOVE_W=58.0
 SERVICE_GROOVE_RADIUS=3.0; SERVICE_GROOVE_WIDTH=1.9; SERVICE_GROOVE_DEPTH=1.2
 
 # Lift kinematics recovered in current project
@@ -251,13 +249,13 @@ for side in (-1,1):
         bolt=fuse_all([cyl_y(x,side*51.5,45,2.5,11.4,dir=side),cyl_y(x,side*62.9,45,4.25,3.5,dir=side)])
         add(f'HOLD_WHEEL_RETENTION_M5_{side}_{x}_QUICKLOCK_UNRESOLVED',bolt,'shaft')
 def candidate_motor_pack(y):
-    # Conservative seller envelope retains rear encoder volume in the 40 mm length.
+    # Provisional conservative family envelope; leads and exact 138:1 outline unresolved.
     return fuse_all([
         cyl_x(MOTOR_FACE-GEARHEAD_LEN-MOTOR_LEN,y,45,MOTOR_OD/2,MOTOR_LEN),
         cyl_x(MOTOR_FACE-GEARHEAD_LEN,y,45,GEARHEAD_OD/2,GEARHEAD_LEN),
         cyl_x(MOTOR_FACE,y,45,MOTOR_PILOT_D/2,MOTOR_PILOT_L),
         cyl_x(MOTOR_FACE,y,45,MOTOR_SHAFT_D/2,MOTOR_SHAFT_L)])
-motor_holder=boxc(197,0,45,3,52.8,30)
+motor_holder=boxc(MOTOR_FACE+1.5,0,45,3,52.8,30)
 pinion_holder=boxc(227,0,45,5,52.8,26)
 for side in (-1,1):
     y=side*MOTOR_Y
@@ -279,10 +277,13 @@ for side in (-1,1):
     adapter=cut(cyl_x(199.5,y,45,3,8),cyl_x(199.4,y,45,2,8.2))
     adapter=cut(adapter,boxc(203.5,y+2.75,45,8.2,1.5,.5))
     add(f'HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_{side}',adapter,'shaft')
-    add(f'TRACTION_MOTOR_{side}_JGA25_370B_RF_FIT_CANDIDATE_HOLD',candidate_motor_pack(y),'purchased')
-    motor_holder=cut(motor_holder,cyl_x(195.4,y,45,3.6,3.2))
-    for zz in (36.5,53.5):motor_holder=cut(motor_holder,cyl_x(195.4,y,zz,1.65,3.2))
-add('HOLD_PAIRED_MOTOR_HOLDER_RF25_FIT_CANDIDATE',motor_holder,'metal')
+    add(f'TRACTION_MOTOR_{side}_GA24Y_370_2485_138_ESTIMATED_HOLD',candidate_motor_pack(y),'purchased')
+    motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y,45,3.3,3.2))
+    # ESTIMATED 4-hole pattern; exact supplied variant and body attachment HOLD.
+    for angle in (45,135,225,315):
+        a=math.radians(angle)
+        motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y+9.5*math.cos(a),45+9.5*math.sin(a),1.35,3.2))
+add('HOLD_PAIRED_MOTOR_HOLDER_GA24_ESTIMATED',motor_holder,'metal')
 add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
 cover=boxc(SERVICE_CX,0,78.5,SERVICE_L,SERVICE_W,SERVICE_T)
 for x in SERVICE_SCREW_X:
@@ -296,7 +297,7 @@ inner=boxc(SERVICE_GROOVE_CX,0,75+(SERVICE_GROOVE_DEPTH-.1)/2,
            SERVICE_GROOVE_L-SERVICE_GROOVE_WIDTH,SERVICE_GROOVE_W-SERVICE_GROOVE_WIDTH,
            SERVICE_GROOVE_DEPTH+.3).edges('|Z').fillet(SERVICE_GROOVE_RADIUS-SERVICE_GROOVE_WIDTH/2)
 cover=cut(cover,cut(outer,inner))
-add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE167x68x7',cover,'metal')
+add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE177x68x7',cover,'metal')
 valve_body=cut(cyl_z(264,18,78,5,14),cyl_z(264,18,77.9,2.1,14.2))
 add('HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY',valve_body,'valve')
 add('HOLD_PRESSURE_VALVE_CAP',cyl_z(264,18,92,6,1.5),'valve')

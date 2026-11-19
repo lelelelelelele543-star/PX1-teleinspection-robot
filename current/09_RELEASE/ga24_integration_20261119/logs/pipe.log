@@ -1,0 +1,10 @@
+{
+  "report": "_ga24_build/pipe_verification.json",
+  "pipe_center_z_mm": 51.52426612771889,
+  "old_best_possible_clearance_mm": -0.30106240950388496,
+  "candidate_clearance_mm": 0.0,
+  "candidate_outer_shoulder_clearance_mm": 0.23877735538360412,
+  "candidate_outer_edge_clearance_mm": 0.3012671758761485,
+  "nonwheel_mesh_min_clearance_mm": 5.871838984141405,
+  "proposed_screen_passes": true
+}

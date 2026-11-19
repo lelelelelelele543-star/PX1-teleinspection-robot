@@ -1,0 +1,24 @@
+Cannot create cache home directory: '/home/agent/.cache/ezdxf', cache files will not be saved.
+See also issue https://github.com/mozman/ezdxf/issues/923.
+{
+  "components": 147,
+  "counts": {
+    "wheel": 6,
+    "Z50": 10,
+    "Z40": 2,
+    "Z16": 2,
+    "traction_motor": 2,
+    "61801_side": 2,
+    "61801_pinion": 2,
+    "61903": 6,
+    "61800": 2,
+    "idler_bush": 4,
+    "camera_harness_cores": 6
+  },
+  "invalid": [],
+  "interference_count": 20,
+  "rigid_interferences": 0,
+  "dn150_protrusions": [],
+  "motor_sweep": "NO_COLLISION_IN_DISCRETE_SCREEN",
+  "camera_sweep": "NO_COLLISION_IN_DISCRETE_SCREEN"
+}

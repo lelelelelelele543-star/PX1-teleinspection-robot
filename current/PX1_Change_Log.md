@@ -80,3 +80,7 @@
 ## Проверка оформления текущего выпуска
 
 Исправлено выпадение кириллицы в двух PDF-схемах: все подписи используют встроенный DejaVu Sans. Убраны одинокие строки на последних страницах; перечень HOLD сведён в таблицу. Чертежи, STEP и STL не изменялись. Геометрия: 146 объектов, 29 жёстких пересечений, ошибок Boolean нет. Производственный статус остаётся HOLD.
+
+## 2026-11-19 — GA24 motor integration (engineering HOLD)
+
+Replaced weak JGA25 fit candidate with conservative GA24Y-370-2485/138 family envelopes. Shifted motor faces to X189.5 to remove shaft clash; provisional holder 4-hole PCD19. Service opening extended forward10mm to X118, cover177x68x7 and matching groove166x58, front screwsX113. Six wheels, gear stations, rear input, two motors and pressure/manual-lift architecture unchanged. Larger opening requires strength/seal qualification; exact motor dimensions, mounting to body, fasteners, wiring and complete preceding disassembly remain unqualified. See 09_RELEASE/ga24_integration_20261119. No physical test or manufacturing release.
