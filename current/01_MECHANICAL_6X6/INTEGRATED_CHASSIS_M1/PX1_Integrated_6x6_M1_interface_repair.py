@@ -153,3 +153,30 @@ Part.export(parts,os.path.join(ROOT,"PX1_Integrated_6x6_M1.step"))
 # Export is a proxy assembly only, not validated involute gears or pressure seals.
 print("NOT_RUN STEP reopen / Boolean checks; PHYSICAL_CHECK bearing seating, shaft seals, pressure")
 print("DESIGN PROXY ONLY: generated FCStd/STEP; check interference, gear mesh, pressure seals before manufacturing")
+
+
+# M1 integrated STEP round-trip gate. Runs in FreeCADCmd, no GUI required.
+# This is a topology/export verification, NOT a pressure or manufacturability certification.
+step_path=os.path.join(ROOT,"PX1_Integrated_6x6_M1.step")
+if not os.path.isfile(step_path) or os.path.getsize(step_path)<1024:
+    raise RuntimeError("FAIL STEP missing/implausibly small")
+check_doc=App.newDocument("PX1_M1_STEP_Roundtrip")
+try:
+    imported=Part.read(step_path)
+    if imported.isNull():
+        raise RuntimeError("FAIL STEP imported null shape")
+    expected=Part.makeCompound([o.Shape for o in parts])
+    if expected.isNull() or expected.Volume<=0 or imported.Volume<=0:
+        raise RuntimeError("FAIL invalid original/imported assembly volume")
+    # STEP compound may reorder solids; compare aggregate envelopes and volume, not topology indices.
+    b1,b2=expected.BoundBox,imported.BoundBox
+    for axis in ("XLength","YLength","ZLength"):
+        if abs(getattr(b1,axis)-getattr(b2,axis))>0.05:
+            raise RuntimeError("FAIL STEP envelope "+axis)
+    volume_error=abs(expected.Volume-imported.Volume)/expected.Volume
+    if volume_error>1e-4:
+        raise RuntimeError("FAIL STEP round-trip volume error "+str(volume_error))
+    print("PASS STEP round-trip: envelope within 0.05 mm, relative volume error",volume_error)
+finally:
+    App.closeDocument(check_doc.Name)
+print("NOT_RUN true involute mesh, physical shaft-seal pressure, fastener preload and motion collision sweep")
