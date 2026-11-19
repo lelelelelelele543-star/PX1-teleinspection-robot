@@ -10,7 +10,7 @@ P=dict(body_L=307.,body_W=78.,body_H=70.,wall=5.,wheel_D=78.,wheel_W=14.,
        stations=(-100.,0.,100.),gear_x=(-100.,-50.,0.,50.,100.),
        gear_m=1.0,gear_z=0.,gear_y=30.,gear_thick=6.,axle_D=10.,
        motor_D=22.,motor_L=42.,motor_z=10.,motor_y=14.,
-       pressure_bar_min=0.4,pressure_bar_max=0.7)
+       pressure_bar_min=0.4,pressure_bar_max=0.7,\n       lid_gasket_nominal=1.0,lid_gasket_compression=0.3)
 parts=[]
 def add(name,shape,color):
     if shape.isNull(): raise RuntimeError(name+" null shape")
@@ -30,7 +30,7 @@ for xx in P["gear_x"]:
         outer=outer.cut(cyl(11,5,(xx,sign*34,0),(0,sign,0)))
 add("Body_hollow_ASSUMED",outer.cut(inner).cut(lid_opening),(0.64,0.69,0.73))
 # Separate lid is a design envelope; cut aperture into top before production release.
-add("Lid_ASSUMED",Part.makeBox(178,68,4,V(-89,-34,36)),(0.18,0.4,0.62))
+add("Lid_ASSUMED",Part.makeBox(178,68,4,V(-89,-34,35+P["lid_gasket_nominal"]-P["lid_gasket_compression"])),(0.18,0.4,0.62))
 gasket=Part.makeBox(174,64,1,V(-87,-32,35)).cut(Part.makeBox(166,56,1,V(-83,-28,35)))
 add("Lid_gasket_PROXY",gasket,(0.18,0.64,0.35))
 for side,s in (("L",-1),("R",1)):
@@ -98,7 +98,7 @@ assert gear_bottom_gap >= 1, "Z50 proxy cuts bottom wall"
 # Lid perimeter: 4 mm nominal flange outside 170x60 opening; gasket lands on top face.
 assert (178-170)/2 >= 4 and (68-60)/2 >= 4, "Lid flange below design target"
 assert 68 <= P["body_W"] and 64 <= P["body_W"], "Lid/gasket overhang body"
-assert 35 == P["body_H"]/2, "Gasket does not sit on top of shell"
+assert 35 == P["body_H"]/2, "Gasket does not sit on top of shell"\n# Design-target gasket compression by lid placement; no fasteners or material stiffness yet.\nlid_z=35+P["lid_gasket_nominal"]-P["lid_gasket_compression"]\nassert 0 < P["lid_gasket_compression"] < P["lid_gasket_nominal"]\nassert abs(lid_z-35.7)<1e-8\nprint("PASS nominal lid/gasket overlap",P["lid_gasket_compression"],"mm; NOT_RUN clamp load, gasket extrusion, groove and bolts")
 print("PASS nominal static clearances wheel/body",wheel_body_side_gap,"gear/inner-wall",gear_inner_wall_gap,"gear/bottom",gear_bottom_gap,"mm")
 print("PASS motor/spur Y clearance", motor_to_spur_y_clearance,
       "mm; left/right motor clearance", motor_pair_y_clearance, "mm")
