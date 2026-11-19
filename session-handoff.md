@@ -7,6 +7,7 @@
 - F04 — зазор шин в DN150 ≥3 мм: current/09_RELEASE/f04_wheel_gap_20261119/README.md.
 - F05 — торцевое уплотнение фланца по DRW-002-374: current/09_RELEASE/f05_flange_face_seal_20261119/README.md.
 - F06 — коническая пара Z16/Z40 с зубьями: current/09_RELEASE/f06_bevel_teeth_20261119/README.md.
+- F07 — резьба M5 колеса, сборка без пересечений и HOLD-контактов: current/09_RELEASE/f07_m5_cosmetic_thread_20261119/README.md.
 
 ## Важно для следующей сессии
 1. Прежние feature_list.json / progress.md / session-handoff.md на GitHub отсутствовали; список F05–F10 составлен заново.
@@ -16,4 +17,4 @@
 3. Окружение: pip install --break-system-packages cadquery (2.8.0); сборка ~3–9 мин, интегральная проверка ~1 мин.
 
 ## Следующий шаг
-F07 — крепление колеса M5 (status "next" в feature_list.json).
+F08 — крепёж фланца оси M3×6 и боковой крышки M3×8 по DRW-002-374 (status "next").

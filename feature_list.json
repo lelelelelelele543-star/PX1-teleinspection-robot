@@ -24,13 +24,14 @@
     {
       "id": "F07",
       "title": "Крепление колеса M5: резьбовое отверстие под винт вместо наложения тел",
-      "status": "next",
-      "done_when": "0 контактов THREAD_ENGAGEMENT_HOLD, все проверки PASS"
+      "status": "done",
+      "done_when": "0 контактов THREAD_ENGAGEMENT_HOLD, все проверки PASS",
+      "evidence": "current/09_RELEASE/f07_m5_cosmetic_thread_20261119/"
     },
     {
       "id": "F08",
       "title": "Крепёж фланца оси M3×6 (поз. 16, DRW374) и боковой крышки M3×8 (поз. 15) в модели",
-      "status": "todo"
+      "status": "next"
     },
     {
       "id": "F09",

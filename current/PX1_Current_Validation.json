@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "6afdcae13f009c623bd99c8407bf6f7c3b0f0f1179a164757f119e3a8dab6578",
+  "source_sha256": "c2f50e39eeac628b6c5d5382b15023522d046e898e09e6577d032b9518767449",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -40,44 +40,7 @@
     "errors": [],
     "volume_threshold_mm3": 0.0001
   },
-  "interferences": [
-    {
-      "a": "HOLD_WHEEL_SHAFT_-1_50.0_GRAPHIC_AXIAL_PACKAGE",
-      "b": "HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED",
-      "volume_mm3": 54.336987,
-      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    },
-    {
-      "a": "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE",
-      "b": "HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED",
-      "volume_mm3": 54.336987,
-      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    },
-    {
-      "a": "HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE",
-      "b": "HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED",
-      "volume_mm3": 54.336987,
-      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    },
-    {
-      "a": "HOLD_WHEEL_SHAFT_1_50.0_GRAPHIC_AXIAL_PACKAGE",
-      "b": "HOLD_WHEEL_RETENTION_M5_1_50.0_QUICKLOCK_UNRESOLVED",
-      "volume_mm3": 54.336987,
-      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    },
-    {
-      "a": "HOLD_WHEEL_SHAFT_1_150.0_GRAPHIC_AXIAL_PACKAGE",
-      "b": "HOLD_WHEEL_RETENTION_M5_1_150.0_QUICKLOCK_UNRESOLVED",
-      "volume_mm3": 54.336987,
-      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    },
-    {
-      "a": "HOLD_WHEEL_SHAFT_1_250.0_GRAPHIC_AXIAL_PACKAGE",
-      "b": "HOLD_WHEEL_RETENTION_M5_1_250.0_QUICKLOCK_UNRESOLVED",
-      "volume_mm3": 54.336987,
-      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    }
-  ],
+  "interferences": [],
   "dn150": {
     "diameter_mm": 150,
     "assumed_pipe_center_z_mm": 51.52426612771889,

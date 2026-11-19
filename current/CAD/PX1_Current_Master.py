@@ -28,6 +28,7 @@ XRING=(18.72,2.62)
 SEAL_18_30_7=(18.0,30.0,7.0)
 SIDE_ORING=(190.0,1.5)
 FLANGE_ORING=(32.0,1.5)
+M5_COSMETIC_THREAD_R=2.5         # F07: tapped hole shown at major diameter, ISO 262 M5
 # F05 axle-flange face seal, DRW-002-374 section A-A (layout DERIVED, sizes ESTIMATED):
 COVER_BEARING_BORE_R=15.0      # 61903 OD30 seat in side cover, CONFIRMED bearing OD
 COVER_BEARING_SHOULDER_R=13.5  # Ø27 <= SKF Da max 28 for 61903, ESTIMATED
@@ -244,7 +245,9 @@ for side in (-1,1):
         shaft=fuse_all([cyl_y(x,side*inner_y,45,6,39-inner_y,dir=side),cyl_y(x,side*39,45,8.5,7,dir=side),
           cyl_y(x,side*46,45,9,2.8,dir=side),cyl_y(x,side*48.8,45,8,12.1,dir=side)])
         key=boxc(x,side*54.9,52,4,12,4);shaft=cut(shaft,key)
-        shaft=cut(shaft,cyl_y(x,side*51,45,2.1,10,dir=side))
+        # F07: M5 tapped hole drawn at nominal major Ø5 (cosmetic thread convention); tap drill Ø4.2,
+        # thread depth 9.9 (Y51..60.9 incl. 0.5 tip gap), engagement ~9.4 = 1.9d — DERIVED from model.
+        shaft=cut(shaft,cyl_y(x,side*51,45,M5_COSMETIC_THREAD_R,10,dir=side))
         add(f'HOLD_WHEEL_SHAFT_{side}_{x}_GRAPHIC_AXIAL_PACKAGE',shaft,'shaft')
         add(f'KEY_4x4x12_{side}_{x}',key,'shaft')
         add(f'61903_SIDE_{side}_{x}',make_bearing(17,30,7).translate((x,side*42.5,45)),'bearing')
