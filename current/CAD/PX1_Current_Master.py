@@ -35,7 +35,13 @@ COVER_BEARING_SHOULDER_R=13.5  # Ø27 <= SKF Da max 28 for 61903, ESTIMATED
 FLANGE_GROOVE_RI=16.0          # = O-ring ID32/2, zero stretch, ESTIMATED
 FLANGE_GROOVE_RO=18.1          # width 2.1, ESTIMATED
 FLANGE_GROOVE_DEPTH=1.15       # 23% squeeze of CS1.5, ESTIMATED
-FLANGE_COLLAR_T=3.5            # was 2.0; leaves 2.35 above groove, ESTIMATED
+FLANGE_COLLAR_T=2.6            # was 2.0; 1.45 above groove, M3x6 engages 3.4 in cover, ESTIMATED
+# F08 fasteners per DRW-002-374 (pos.15 FIX-000-359 M3x8, pos.16 FIX-002-738 M3x6, Torx button head):
+COVER_SCREW_DX=(-125.0,-75.0,-25.0,25.0,75.0,125.0)  # about X150, DERIVED from DRW374 view (±0.2)
+COVER_SCREW_DZ=(-24.0,24.0)                           # about Z45, DERIVED
+COVER_SCREW_CBORE=(3.25,3.0)                          # Ø6.5 x 3 head recess, ESTIMATED (8-long screw in 7 cover)
+FLANGE_SCREW_R=20.9                                   # 4x at 45°, DERIVED from DRW374 view
+ISO7380_M3=(2.85,1.65)                                # head r, height — ISO 7380 M3, CONFIRMED standard
 FLANGE_ORING_INST_RO=FLANGE_GROOVE_RI+math.pi*.75**2/FLANGE_GROOVE_DEPTH  # area-equal installed section
 
 # Current reconstructed global CRP150/PX1 screen from recovered CAD audits.
@@ -174,6 +180,12 @@ def make_seal(id_,od,w,axis='Y'):
     elif axis=='X': p=p.rotate((0,0,0),(0,1,0),90)
     return p
 
+def make_button_screw(x,y,z,length,axis_dir):
+    """ISO 7380 M3 button head; head on +axis_dir side, shank goes -axis_dir from bearing face y."""
+    hr,hh=ISO7380_M3
+    head=cyl_y(x,y,z,hr,hh,dir=axis_dir)
+    shank=cyl_y(x,y,z,1.5,length,dir=-axis_dir)
+    return fuse_all([head,shank])
 def make_coupling():
     p=cyl_x(0,0,0,COUPLING_OD/2,COUPLING_L)
     bore=cyl_x(-0.5,0,0,COUPLING_BORE/2,COUPLING_L+1)
@@ -230,7 +242,21 @@ for side in (-1,1):
     for x in WHEEL_X:
         cv=cut(cv,cyl_y(x,side*33.9,45,COVER_BEARING_SHOULDER_R,5.2,dir=side)) # outer-race shoulder
         cv=cut(cv,cyl_y(x,side*38.9,45,COVER_BEARING_BORE_R,2.2,dir=side))     # 61903 OD30 seat
+    for dx in COVER_SCREW_DX:
+        for dz in COVER_SCREW_DZ:
+            sx,sz=150+dx,45+dz
+            cv=cut(cv,cyl_y(sx,side*33.9,45+dz,1.7,7.2,dir=side))                 # clearance Ø3.4
+            cv=cut(cv,cyl_y(sx,side*(41-COVER_SCREW_CBORE[1]),sz,COVER_SCREW_CBORE[0],COVER_SCREW_CBORE[1]+.1,dir=side))
+            body=cut(body,cyl_y(sx,side*34.1,sz,1.5,5.1,dir=-side))                # M3 cosmetic thread, depth 5
+    for x in WHEEL_X:
+        for a in (45,135,225,315):  # M3 cosmetic taps for flange screws, depth 4
+            fx=x+FLANGE_SCREW_R*math.cos(math.radians(a)); fz=45+FLANGE_SCREW_R*math.sin(math.radians(a))
+            cv=cut(cv,cyl_y(fx,side*41.1,fz,1.5,4.1,dir=-side))
     side_covers.append((f'HOLD_SIDE_COVER_{side}_GRAPHIC262x60x7',cv));add(side_covers[-1][0],cv,'metal')
+    for dx in COVER_SCREW_DX:
+        for dz in COVER_SCREW_DZ:
+            add(f'FIX000359_M3x8_ISO7380_COVER_{side}_{int(150+dx)}_{int(45+dz)}',
+                make_button_screw(150+dx,side*(41-COVER_SCREW_CBORE[1]),45+dz,8,side),'shaft')
     for j,x in enumerate(GEAR_X):
         gear=make_spur_gear(50,1,4,12,'Y')
         if j%2:gear=gear.rotate((0,0,0),(0,1,0),3.6)
@@ -257,7 +283,15 @@ for side in (-1,1):
         # Face-seal groove in flange underside (DRW374 pos.11 location; dims ESTIMATED).
         flange=cut(flange,ring_y(x,side*(41+FLANGE_GROOVE_DEPTH/2-.05),45,FLANGE_GROOVE_RO,FLANGE_GROOVE_RI,FLANGE_GROOVE_DEPTH+.1))
         flange=cut(flange,cyl_y(x,side*46,45,11.4,2.8,dir=side))
+        fscrews=[]
+        for a in (45,135,225,315):
+            fx=x+FLANGE_SCREW_R*math.cos(math.radians(a)); fz=45+FLANGE_SCREW_R*math.sin(math.radians(a))
+            flange=cut(flange,cyl_y(fx,side*40.9,fz,1.7,FLANGE_COLLAR_T+.2,dir=side))
+            fscrews.append((a,fx,fz))
         add(f'HOLD_AXLE_FLANGE_{side}_{x}_GRAPHIC_CONTOUR',flange,'metal')
+        for a,fx,fz in fscrews:
+            add(f'FIX002738_M3x6_ISO7380_FLANGE_{side}_{int(x)}_{a}',
+                make_button_screw(fx,side*(41+FLANGE_COLLAR_T),fz,6,side),'shaft')
         add(f'HOLD_XRING_INSTALLED_{side}_{x}_FREE18p72x2p62',ring_y(x,side*47.4,45,11.4,9,2.8),'seal')
         add(f'HOLD_FLANGE_ORING_32x1p5_{side}_{x}_FACE_GLAND_INSTALLED',
             ring_y(x,side*(41+FLANGE_GROOVE_DEPTH/2),45,FLANGE_ORING_INST_RO,FLANGE_GROOVE_RI,FLANGE_GROOVE_DEPTH),'seal')

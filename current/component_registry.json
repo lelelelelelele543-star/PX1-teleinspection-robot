@@ -16,7 +16,7 @@
       68.0,
       64.0
     ],
-    "volume_mm3": 348400.99376,
+    "volume_mm3": 347552.76507,
     "solids": 1
   },
   {
@@ -36,7 +36,247 @@
       7.0,
       60.0
     ],
-    "volume_mm3": 97156.23008,
+    "volume_mm3": 95186.54573,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_25_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      22.15,
+      -39.65,
+      18.15,
+      27.85,
+      -30.0,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_25_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      22.15,
+      -39.65,
+      66.15,
+      27.85,
+      -30.0,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_75_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      72.15,
+      -39.65,
+      18.15,
+      77.85,
+      -30.0,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_75_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      72.15,
+      -39.65,
+      66.15,
+      77.85,
+      -30.0,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_125_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      122.15,
+      -39.65,
+      18.15,
+      127.85,
+      -30.0,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_125_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      122.15,
+      -39.65,
+      66.15,
+      127.85,
+      -30.0,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_175_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      172.15,
+      -39.65,
+      18.15,
+      177.85,
+      -30.0,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_175_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      172.15,
+      -39.65,
+      66.15,
+      177.85,
+      -30.0,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_225_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      222.15,
+      -39.65,
+      18.15,
+      227.85,
+      -30.0,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_225_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      222.15,
+      -39.65,
+      66.15,
+      227.85,
+      -30.0,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_275_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      272.15,
+      -39.65,
+      18.15,
+      277.85,
+      -30.0,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_-1_275_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      272.15,
+      -39.65,
+      66.15,
+      277.85,
+      -30.0,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
     "solids": 1
   },
   {
@@ -336,7 +576,87 @@
       7.8,
       50.0
     ],
-    "volume_mm3": 5840.09665,
+    "volume_mm3": 4795.65532,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_45",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      61.92853,
+      -45.25,
+      56.92853,
+      67.62853,
+      -37.6,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_135",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      32.37147,
+      -45.25,
+      56.92853,
+      38.07147,
+      -37.6,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_225",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      32.37147,
+      -45.25,
+      27.37147,
+      38.07147,
+      -37.6,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_315",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      61.92853,
+      -45.25,
+      27.37147,
+      67.62853,
+      -37.6,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
     "solids": 1
   },
   {
@@ -516,7 +836,87 @@
       7.8,
       50.0
     ],
-    "volume_mm3": 5840.09665,
+    "volume_mm3": 4795.65532,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_45",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      161.92853,
+      -45.25,
+      56.92853,
+      167.62853,
+      -37.6,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_135",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      132.37147,
+      -45.25,
+      56.92853,
+      138.07147,
+      -37.6,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_225",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      132.37147,
+      -45.25,
+      27.37147,
+      138.07147,
+      -37.6,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_315",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      161.92853,
+      -45.25,
+      27.37147,
+      167.62853,
+      -37.6,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
     "solids": 1
   },
   {
@@ -696,7 +1096,87 @@
       7.8,
       50.0
     ],
-    "volume_mm3": 5840.09665,
+    "volume_mm3": 4795.65532,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_45",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      261.92853,
+      -45.25,
+      56.92853,
+      267.62853,
+      -37.6,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_135",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      232.37147,
+      -45.25,
+      56.92853,
+      238.07147,
+      -37.6,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_225",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      232.37147,
+      -45.25,
+      27.37147,
+      238.07147,
+      -37.6,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_315",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      261.92853,
+      -45.25,
+      27.37147,
+      267.62853,
+      -37.6,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
     "solids": 1
   },
   {
@@ -816,7 +1296,247 @@
       7.0,
       60.0
     ],
-    "volume_mm3": 97156.23008,
+    "volume_mm3": 95186.54573,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_25_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      22.15,
+      30.0,
+      18.15,
+      27.85,
+      39.65,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_25_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      22.15,
+      30.0,
+      66.15,
+      27.85,
+      39.65,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_75_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      72.15,
+      30.0,
+      18.15,
+      77.85,
+      39.65,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_75_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      72.15,
+      30.0,
+      66.15,
+      77.85,
+      39.65,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_125_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      122.15,
+      30.0,
+      18.15,
+      127.85,
+      39.65,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_125_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      122.15,
+      30.0,
+      66.15,
+      127.85,
+      39.65,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_175_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      172.15,
+      30.0,
+      18.15,
+      177.85,
+      39.65,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_175_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      172.15,
+      30.0,
+      66.15,
+      177.85,
+      39.65,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_225_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      222.15,
+      30.0,
+      18.15,
+      227.85,
+      39.65,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_225_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      222.15,
+      30.0,
+      66.15,
+      227.85,
+      39.65,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_275_21",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      272.15,
+      30.0,
+      18.15,
+      277.85,
+      39.65,
+      23.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
+    "solids": 1
+  },
+  {
+    "id": "FIX000359_M3x8_ISO7380_COVER_1_275_69",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      272.15,
+      30.0,
+      66.15,
+      277.85,
+      39.65,
+      71.85
+    ],
+    "dimensions_mm": [
+      5.7,
+      9.65,
+      5.7
+    ],
+    "volume_mm3": 98.65269,
     "solids": 1
   },
   {
@@ -1116,7 +1836,87 @@
       7.8,
       50.0
     ],
-    "volume_mm3": 5840.09665,
+    "volume_mm3": 4795.65532,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_45",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      61.92853,
+      37.6,
+      56.92853,
+      67.62853,
+      45.25,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_135",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      32.37147,
+      37.6,
+      56.92853,
+      38.07147,
+      45.25,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_225",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      32.37147,
+      37.6,
+      27.37147,
+      38.07147,
+      45.25,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_315",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      61.92853,
+      37.6,
+      27.37147,
+      67.62853,
+      45.25,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
     "solids": 1
   },
   {
@@ -1296,7 +2096,87 @@
       7.8,
       50.0
     ],
-    "volume_mm3": 5840.09665,
+    "volume_mm3": 4795.65532,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_45",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      161.92853,
+      37.6,
+      56.92853,
+      167.62853,
+      45.25,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_135",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      132.37147,
+      37.6,
+      56.92853,
+      138.07147,
+      45.25,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_225",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      132.37147,
+      37.6,
+      27.37147,
+      138.07147,
+      45.25,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_315",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      161.92853,
+      37.6,
+      27.37147,
+      167.62853,
+      45.25,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
     "solids": 1
   },
   {
@@ -1476,7 +2356,87 @@
       7.8,
       50.0
     ],
-    "volume_mm3": 5840.09665,
+    "volume_mm3": 4795.65532,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_45",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      261.92853,
+      37.6,
+      56.92853,
+      267.62853,
+      45.25,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_135",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      232.37147,
+      37.6,
+      56.92853,
+      238.07147,
+      45.25,
+      62.62853
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_225",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      232.37147,
+      37.6,
+      27.37147,
+      238.07147,
+      45.25,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
+    "solids": 1
+  },
+  {
+    "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_315",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      261.92853,
+      37.6,
+      27.37147,
+      267.62853,
+      45.25,
+      33.07147
+    ],
+    "dimensions_mm": [
+      5.7,
+      7.65,
+      5.7
+    ],
+    "volume_mm3": 84.51552,
     "solids": 1
   },
   {
