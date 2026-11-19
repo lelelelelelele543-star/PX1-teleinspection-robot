@@ -52,7 +52,20 @@
     {"id": "side_cover_l", "master_constant": "SIDE_COVER_L", "expected": 262.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-374 ~262x60x7 (no named constant in master yet: literal in boxc)"},
     {"id": "side_cover_h", "master_constant": "SIDE_COVER_H", "expected": 60.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-374 ~262x60x7"},
     {"id": "side_cover_t", "master_constant": "SIDE_COVER_T", "expected": 7.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-374 ~262x60x7"},
-    {"id": "lift_link_l", "master_constant": "LINK_L", "expected": 200.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-744 200.025"},
+    {"id": "lift_link_l", "master_constant": "LINK_L", "expected": 200.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-744 200.025; F18 LIFT_RESEARCH AC 200.1 / BD 200.0"},
+    {"id": "lift_base_link_ab", "master_constant": "LIFT_AB", "expected": [38.2, -12.5], "tol_mm": 0.0, "tag": "DERIVED", "source": "F18: DRW-002-744 side view 1:1.5, B rel. clamp axle A (|AB| 40.2)"},
+    {"id": "lift_base_fal002067", "master_constant": "(LIFT_BASE_L, LIFT_BASE_W)", "expected": [55.0, 68.7], "tol_mm": 0.5, "tag": "DERIVED", "source": "F18: DRW-002-744 top/side 1:1.5, FAL-002-067 54.8..55.5 x 68.7"},
+    {"id": "lift_a_above_base", "master_constant": "LIFT_A_ABOVE_BASE", "expected": 22.9, "tol_mm": 0.5, "tag": "DERIVED", "source": "F18: DRW-002-744 side view, A above base seating face"},
+    {"id": "lift_gas_upper_eye", "master_constant": "LIFT_GAS_G", "expected": [125.0, 1.0], "tol_mm": 2.0, "tag": "DERIVED", "source": "F18: DRW-002-744, gas spring eye on lever ~125 from A"},
+    {"id": "lift_gas_lower_eye", "master_constant": "LIFT_GAS_E", "expected": [7.0, -16.8], "tol_mm": 0.0, "tag": "ESTIMATED", "source": "F18: Proteus (7.0,-24.8) in housing pocket; PX1 +8 (base on 7 mm cover, no pocket)"},
+    {"id": "lift_side_link_y", "master_constant": "LIFT_SIDE_Y", "expected": 27.9, "tol_mm": 3.0, "tag": "DERIVED", "source": "F18: DRW-002-744 top view side links Y+-27.9 t4; PX1 25.2 (cover-screw tool access)"},
+    {"id": "lift_lever_plate_w", "master_constant": "LIFT_LEVER_PLATE_W", "expected": 54.4, "tol_mm": 0.5, "tag": "DERIVED", "source": "F18: DRW-002-744 top view FSS-002-073"},
+    {"id": "lift_a_x", "master_constant": "LIFT_A_X", "expected": 250.0, "tol_mm": 0.0, "tag": "ESTIMATED", "source": "F18: Proteus pocket (DRW-002-375 A-A at X250) gives A~262; PX1 250 frees cover strip for gland/valve"},
+    {"id": "lift_catalogue_range", "master_constant": "LIFT_CAT_RANGE", "expected": [70.0, 257.0], "tol_mm": 0.0, "tag": "CONFIRMED", "source": "CRP150 catalogue: manual lift 70-257 mm"},
+    {"id": "camera_axis_folded", "master_constant": "CAM_Z", "expected": 70.0, "tol_mm": 5.0, "tag": "CONFIRMED", "source": "CRP150 catalogue lower bound 70 (read as camera axis above floor)"},
+    {"id": "cam026_envelope", "master_constant": "CAM026_ENVELOPE", "expected": [120.0, 74.0, 74.0], "tol_mm": 0.0, "tag": "CONFIRMED", "source": "GAP catalogue sy1083 CAM026 120x74x74"},
+    {"id": "cam026_mass", "master_constant": "CAM026_MASS_KG", "expected": 0.864, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "GAP catalogue sy1083 CAM026 0.864 kg"},
+    {"id": "lift_housing_752", "master_constant": "(LIFT_HOUSING_W, LIFT_HOUSING_L)", "expected": [48.0, 52.0], "tol_mm": 2.0, "tag": "DERIVED", "source": "F18: DRW-002-752 1:1 C-C width ~48, side view length ~52"},
     {"id": "camera_head_l", "master_constant": "CAM_LEN", "expected": 132.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: CAM026 ASM000 head 132"},
     {"id": "camera_base_od", "master_constant": "CAM026_MEASURED_BASE_OD", "expected": 62.5, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: base ~62.5 (photo with caliper)"},
 
@@ -80,6 +93,9 @@
     {"id": "wheel_outer_width", "kind": "wheel_width", "expected": 133.0, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "SOURCE_REGISTER.md: catalogue CRP150 307x133x110 (width over wheels 133)"},
     {"id": "motor_rear_clear_of_service_window", "kind": "expr_range", "expr": "MOTOR_FACE-GEARHEAD_LEN-MOTOR_LEN-SERVICE_OPEN_X0", "range": [0.0, null], "units": "mm", "tag": "DERIVED", "source": "F16 README: motor rear X91.6 >= service window X90 (vertical motor extraction)"},
     {"id": "z50_pitch_matches_gear_spacing", "kind": "expr_range", "expr": "GEAR_X[1]-GEAR_X[0]-Z50_TEETH*Z50_MOD", "range": [0.0, 0.0], "units": "mm", "tag": "DERIVED", "source": "Z50 m1 meshing: centre distance = z*m = 50"},
-    {"id": "bevel_ratio", "kind": "expr_range", "expr": "Z40_TEETH/Z16_TEETH", "range": [2.5, 2.5], "units": "-", "tag": "CONFIRMED", "source": "F06 / F09: Z16->Z40 i=2.5"}
+    {"id": "bevel_ratio", "kind": "expr_range", "expr": "Z40_TEETH/Z16_TEETH", "range": [2.5, 2.5], "units": "-", "tag": "CONFIRMED", "source": "F06 / F09: Z16->Z40 i=2.5"},
+    {"id": "lift_camera_axis_raised", "kind": "expr_range", "expr": "CAM_Z+LINK_L*math.sin(math.radians(LIFT_THETA_MAX))", "range": [252.0, 262.0], "units": "mm", "tag": "DERIVED", "source": "F18: catalogue 257 +-5 at theta_max (tools/lift/check_lift_kinematics.py)"},
+    {"id": "lift_cam_drop_consistent", "kind": "expr_range", "expr": "LIFT_A_Z-CAM_DROP-CAM_Z", "range": [0.0, 0.0], "units": "mm", "tag": "DERIVED", "source": "F18: folded camera axis = CAM_Z"},
+    {"id": "lift_gas_folded_in_ace", "kind": "expr_range", "expr": "math.hypot(LIFT_GAS_G[0]-LIFT_GAS_E[0],LIFT_GAS_G[1]-LIFT_GAS_E[1])-(ACE_EXTENDED-ACE_STROKE)", "range": [3.0, null], "units": "mm", "tag": "DERIVED", "source": "F18: GS-12-80 folded eye-to-eye >= compressed 112 + 3"}
   ]
 }

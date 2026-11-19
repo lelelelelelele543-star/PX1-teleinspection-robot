@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "595f49ad35290fc68dab7c75d0b4d8b5fe0f67e607b6e848776bf4c587131dcd",
+  "source_sha256": "0216af7238ad883ca495cd6f4995dad06f5addbfd78ff6fd0b2ed367592e028d",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -31,11 +31,11 @@
     "camera_harness_cores": 6
   },
   "counts_match": true,
-  "component_count": 226,
+  "component_count": 233,
   "invalid_shapes": [],
   "collision_method": {
-    "all_pairs": 25425,
-    "boolean_pairs_after_AABB": 692,
+    "all_pairs": 27028,
+    "boolean_pairs_after_AABB": 794,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
@@ -1085,92 +1085,140 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY",
-        "clearance_mm": 22.655,
+        "id": "HOLD_LAPP_SKINTOP_53112000_M12x1p5_CAMERA_CABLE_IN_COVER",
+        "clearance_mm": 23.7632,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LAPP_SKINTOP_53112000_M12x1p5",
-        "clearance_mm": 25.2243,
+        "id": "HOLD_LIFT_BASE_FAL002067_ON_SERVICE_COVER",
+        "clearance_mm": 10.0529,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LIFT_SIDE_ARM_-1_GRAPHIC200",
-        "clearance_mm": 10.9084,
+        "id": "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10",
+        "clearance_mm": 11.0024,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LIFT_SIDE_PIN_-1_40",
-        "clearance_mm": 13.7126,
+        "id": "HOLD_LIFT_CLAMP_WASHER_FSS002077",
+        "clearance_mm": 9.7085,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LIFT_SIDE_PIN_-1_240",
-        "clearance_mm": 13.7126,
+        "id": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1",
+        "clearance_mm": 9.3186,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LIFT_SIDE_ARM_1_GRAPHIC200",
-        "clearance_mm": 10.9084,
+        "id": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_2",
+        "clearance_mm": 8.8946,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LIFT_SIDE_PIN_1_40",
-        "clearance_mm": 13.7126,
+        "id": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_3",
+        "clearance_mm": 8.4372,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LIFT_SIDE_PIN_1_240",
-        "clearance_mm": 13.7126,
+        "id": "HOLD_LIFT_NUT_ISO4035_M10_1",
+        "clearance_mm": 10.2138,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200",
-        "clearance_mm": 8.2462,
+        "id": "HOLD_LIFT_NUT_ISO4035_M10_2",
+        "clearance_mm": 8.5602,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN",
-        "clearance_mm": 14.5517,
+        "id": "HOLD_LIFT_CLAMP_LEVER_M8_FIX002527",
+        "clearance_mm": 7.393,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_GAS_SPRING_CLEVIS_PIN",
-        "clearance_mm": 18.2906,
+        "id": "HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073",
+        "clearance_mm": 6.9517,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER",
-        "clearance_mm": 24.9357,
+        "id": "HOLD_LIFT_SIDE_LINK_FSS002068_-1",
+        "clearance_mm": 19.5018,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_AXLE_FSS002075_-1",
+        "clearance_mm": 15.9868,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_LIFT_TOP_AXLE_FSS002079_-1",
+        "clearance_mm": 20.0362,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_LINK_FSS002068_1",
+        "clearance_mm": 19.5018,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_AXLE_FSS002075_1",
+        "clearance_mm": 15.9868,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_LIFT_TOP_AXLE_FSS002079_1",
+        "clearance_mm": 20.0362,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
-        "clearance_mm": 21.0633,
+        "clearance_mm": 17.5754,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "HOLD_ACE_GS12_80_ROD",
-        "clearance_mm": 17.7824,
+        "clearance_mm": 16.0712,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_M8_MANUAL_CLAMP_LEVER_AND_HANDLE",
-        "clearance_mm": 5.8718,
+        "id": "HOLD_LIFT_GAS_SPRING_PIN_M6x18_FIX002749",
+        "clearance_mm": 34.4626,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_LIFT_GAS_SPRING_UPPER_PIN",
+        "clearance_mm": 16.876,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_LIFT_HOUSING_DRW002752_SIMPLIFIED_INTERFACE",
+        "clearance_mm": 14.1866,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_LIFT_TOP_LEVER_AXLE_FSS002076",
+        "clearance_mm": 16.876,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1181,14 +1229,8 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_CAM026_SIDE_FRAME_GRAPHIC",
-        "clearance_mm": 24.3913,
-        "status": "SCREEN_ONLY",
-        "tessellation_tolerance_mm": 0.12
-      },
-      {
-        "id": "HOLD_CAM026_OPTICAL_HOUSING_GRAPHIC",
-        "clearance_mm": 31.5243,
+        "id": "HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74",
+        "clearance_mm": 12.8495,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1206,49 +1248,49 @@
       },
       {
         "id": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
-        "clearance_mm": 14.2826,
+        "clearance_mm": 8.7843,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
-        "clearance_mm": 14.2966,
+        "clearance_mm": 8.7971,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
-        "clearance_mm": 14.3035,
+        "clearance_mm": 8.8035,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
-        "clearance_mm": 14.3035,
+        "clearance_mm": 8.8035,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
-        "clearance_mm": 14.2966,
+        "clearance_mm": 8.7971,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
-        "clearance_mm": 14.2826,
+        "clearance_mm": 8.7843,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-        "clearance_mm": 11.8262,
+        "clearance_mm": 6.3243,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "PX1_LIFT_HARNESS_GUARD_OPEN_PROFILE",
-        "clearance_mm": 37.4399,
+        "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE",
+        "clearance_mm": 4.9646,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1433,19 +1475,29 @@
         "HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY",
         "HOLD_PRESSURE_VALVE_CAP",
         "HOLD_PRESSURE_VALVE_4MM_BALL",
-        "HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY",
-        "HOLD_LAPP_SKINTOP_53112000_M12x1p5",
-        "HOLD_LIFT_SIDE_ARM_-1_GRAPHIC200",
-        "HOLD_LIFT_SIDE_PIN_-1_40",
-        "HOLD_LIFT_SIDE_PIN_-1_240",
-        "HOLD_LIFT_SIDE_ARM_1_GRAPHIC200",
-        "HOLD_LIFT_SIDE_PIN_1_40",
-        "HOLD_LIFT_SIDE_PIN_1_240",
-        "HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200",
-        "HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN",
-        "HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER",
+        "HOLD_LAPP_SKINTOP_53112000_M12x1p5_CAMERA_CABLE_IN_COVER",
+        "HOLD_LIFT_BASE_FAL002067_ON_SERVICE_COVER",
+        "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10",
+        "HOLD_LIFT_CLAMP_WASHER_FSS002077",
+        "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1",
+        "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_2",
+        "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_3",
+        "HOLD_LIFT_NUT_ISO4035_M10_1",
+        "HOLD_LIFT_NUT_ISO4035_M10_2",
+        "HOLD_LIFT_CLAMP_LEVER_M8_FIX002527",
+        "HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073",
+        "HOLD_LIFT_SIDE_LINK_FSS002068_-1",
+        "HOLD_LIFT_SIDE_AXLE_FSS002075_-1",
+        "HOLD_LIFT_TOP_AXLE_FSS002079_-1",
+        "HOLD_LIFT_SIDE_LINK_FSS002068_1",
+        "HOLD_LIFT_SIDE_AXLE_FSS002075_1",
+        "HOLD_LIFT_TOP_AXLE_FSS002079_1",
         "HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS",
         "HOLD_ACE_GS12_80_ROD",
+        "HOLD_LIFT_GAS_SPRING_PIN_M6x18_FIX002749",
+        "HOLD_LIFT_GAS_SPRING_UPPER_PIN",
+        "HOLD_LIFT_HOUSING_DRW002752_SIMPLIFIED_INTERFACE",
+        "HOLD_LIFT_TOP_LEVER_AXLE_FSS002076",
         "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
         "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
         "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
@@ -1453,7 +1505,7 @@
         "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
         "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
         "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-        "PX1_LIFT_HARNESS_GUARD_OPEN_PROFILE",
+        "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE",
         "WEACT_STM32F446RET6_V11_MANUFACTURER_STEP",
         "POLOLU_2992_G2_24v13_1_MANUFACTURER_STEP",
         "POLOLU_2992_G2_24v13_2_MANUFACTURER_STEP",
@@ -1522,192 +1574,379 @@
     "wheel_removal": "HOLD H01: source quick-lock unknown; proxy cannot certify wheel removal",
     "harness_removal": "HOLD H07: SP13 cable end must be reterminated if larger than gland throat; replacement sequence in documentation"
   },
+  "lift": {
+    "A_mm": [
+      250.0,
+      104.9
+    ],
+    "lever_mm": 200.1,
+    "theta_max_deg": 69.0,
+    "camera_axis_z_mm": {
+      "folded": 70.0,
+      "raised": 256.80944334209005
+    },
+    "catalogue_range_mm": [
+      70.0,
+      257.0
+    ],
+    "check": "tools/lift/check_lift_kinematics.py"
+  },
   "gas_spring": {
-    "assembled_distance_mm": 188.4489320744482,
+    "assembled_distance_mm": 119.33499067750414,
     "bare_limits_mm": [
-      112,
-      192
+      112.0,
+      192.0
     ],
     "sampled_angle_checks": [
       {
-        "angle_deg": 0,
-        "distance_mm": 188.4489320744482,
+        "angle_deg": 0.0,
+        "distance_mm": 119.33499067750414,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 2,
-        "distance_mm": 188.70749042689073,
+        "angle_deg": 1.0,
+        "distance_mm": 119.64382916289617,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 4,
-        "distance_mm": 188.97133153920896,
+        "angle_deg": 2.0,
+        "distance_mm": 119.95395809896714,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 6,
-        "distance_mm": 189.24011254672044,
+        "angle_deg": 3.0,
+        "distance_mm": 120.26527340074114,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 8,
-        "distance_mm": 189.51348566778768,
+        "angle_deg": 4.0,
+        "distance_mm": 120.57767141760444,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 10,
-        "distance_mm": 189.7910987234531,
+        "angle_deg": 5.0,
+        "distance_mm": 120.89104896614124,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 12,
-        "distance_mm": 190.07259565514445,
+        "angle_deg": 6.0,
+        "distance_mm": 121.20530336169199,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 14,
-        "distance_mm": 190.35761703945758,
+        "angle_deg": 7.0,
+        "distance_mm": 121.52033244865702,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 16,
-        "distance_mm": 190.64580059908067,
+        "angle_deg": 8.0,
+        "distance_mm": 121.83603462956961,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 18,
-        "distance_mm": 190.93678170898016,
+        "angle_deg": 9.0,
+        "distance_mm": 122.15230889296379,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 20,
-        "distance_mm": 191.23019389702745,
+        "angle_deg": 10.0,
+        "distance_mm": 122.46905484006271,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 22,
-        "distance_mm": 191.52566933830167,
+        "angle_deg": 11.0,
+        "distance_mm": 122.78617271031453,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 24,
-        "distance_mm": 191.82283934236588,
+        "angle_deg": 12.0,
+        "distance_mm": 123.10356340580292,
         "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 26,
-        "distance_mm": 192.12133483286848,
-        "within_bare_112_to_192": false
+        "angle_deg": 13.0,
+        "distance_mm": 123.42112851456052,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 28,
-        "distance_mm": 192.42078681888052,
-        "within_bare_112_to_192": false
+        "angle_deg": 14.0,
+        "distance_mm": 123.73877033281396,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 30,
-        "distance_mm": 192.72082685743626,
-        "within_bare_112_to_192": false
+        "angle_deg": 15.0,
+        "distance_mm": 124.05639188618808,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 32,
-        "distance_mm": 193.02108750679898,
-        "within_bare_112_to_192": false
+        "angle_deg": 16.0,
+        "distance_mm": 124.37389694989986,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 34,
-        "distance_mm": 193.32120277002625,
-        "within_bare_112_to_192": false
+        "angle_deg": 17.0,
+        "distance_mm": 124.69119006797014,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 36,
-        "distance_mm": 193.62080852846285,
-        "within_bare_112_to_192": false
+        "angle_deg": 18.0,
+        "distance_mm": 125.00817657148279,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 38,
-        "distance_mm": 193.91954296483752,
-        "within_bare_112_to_192": false
+        "angle_deg": 19.0,
+        "distance_mm": 125.32476259592033,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 40,
-        "distance_mm": 194.21704697568794,
-        "within_bare_112_to_192": false
+        "angle_deg": 20.0,
+        "distance_mm": 125.64085509760521,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 42,
-        "distance_mm": 194.51296457288367,
-        "within_bare_112_to_192": false
+        "angle_deg": 21.0,
+        "distance_mm": 125.95636186927635,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 44,
-        "distance_mm": 194.80694327405942,
-        "within_bare_112_to_192": false
+        "angle_deg": 22.0,
+        "distance_mm": 126.27119155482862,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 46,
-        "distance_mm": 195.0986344818129,
-        "within_bare_112_to_192": false
+        "angle_deg": 23.0,
+        "distance_mm": 126.58525366324479,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 48,
-        "distance_mm": 195.38769385155788,
-        "within_bare_112_to_192": false
+        "angle_deg": 24.0,
+        "distance_mm": 126.89845858174822,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 50,
-        "distance_mm": 195.67378164795934,
-        "within_bare_112_to_192": false
+        "angle_deg": 25.0,
+        "distance_mm": 127.21071758820325,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 52,
-        "distance_mm": 195.95656308991184,
-        "within_bare_112_to_192": false
+        "angle_deg": 26.0,
+        "distance_mm": 127.52194286279236,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 54,
-        "distance_mm": 196.23570868405093,
-        "within_bare_112_to_192": false
+        "angle_deg": 27.0,
+        "distance_mm": 127.83204749899585,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 56,
-        "distance_mm": 196.51089454681644,
-        "within_bare_112_to_192": false
+        "angle_deg": 28.0,
+        "distance_mm": 128.14094551390153,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 58,
-        "distance_mm": 196.78180271511266,
-        "within_bare_112_to_192": false
+        "angle_deg": 29.0,
+        "distance_mm": 128.44855185787034,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 60,
-        "distance_mm": 197.0481214456322,
-        "within_bare_112_to_192": false
+        "angle_deg": 30.0,
+        "distance_mm": 128.75478242358378,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 62,
-        "distance_mm": 197.30954550293202,
-        "within_bare_112_to_192": false
+        "angle_deg": 31.0,
+        "distance_mm": 129.0595540544979,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 64,
-        "distance_mm": 197.56577643636984,
-        "within_bare_112_to_192": false
+        "angle_deg": 32.0,
+        "distance_mm": 129.36278455272918,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 66,
-        "distance_mm": 197.81652284602248,
-        "within_bare_112_to_192": false
+        "angle_deg": 33.0,
+        "distance_mm": 129.6643926863956,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 68,
-        "distance_mm": 198.06150063772537,
-        "within_bare_112_to_192": false
+        "angle_deg": 34.0,
+        "distance_mm": 129.96429819643646,
+        "within_bare_112_to_192": true
       },
       {
-        "angle_deg": 70,
-        "distance_mm": 198.30043326738215,
-        "within_bare_112_to_192": false
+        "angle_deg": 35.0,
+        "distance_mm": 130.2624218029347,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 36.0,
+        "distance_mm": 130.55868521096298,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 37.0,
+        "distance_mm": 130.8530111159753,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 38.0,
+        "distance_mm": 131.1453232087662,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 39.0,
+        "distance_mm": 131.43554618001656,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 40.0,
+        "distance_mm": 131.72360572444734,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 41.0,
+        "distance_mm": 132.00942854459916,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 42.0,
+        "distance_mm": 132.29294235425724,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 43.0,
+        "distance_mm": 132.5740758815396,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 44.0,
+        "distance_mm": 132.8527588716657,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 45.0,
+        "distance_mm": 133.12892208942247,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 46.0,
+        "distance_mm": 133.40249732134424,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 47.0,
+        "distance_mm": 133.67341737762192,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 48.0,
+        "distance_mm": 133.94161609375703,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 49.0,
+        "distance_mm": 134.20702833197467,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 50.0,
+        "distance_mm": 134.46958998240976,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 51.0,
+        "distance_mm": 134.72923796408017,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 52.0,
+        "distance_mm": 134.98591022565935,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 53.0,
+        "distance_mm": 135.23954574606174,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 54.0,
+        "distance_mm": 135.49008453485158,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 55.0,
+        "distance_mm": 135.73746763248852,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 56.0,
+        "distance_mm": 135.98163711041929,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 57.0,
+        "distance_mm": 136.2225360710269,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 58.0,
+        "distance_mm": 136.46010864744798,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 59.0,
+        "distance_mm": 136.69430000326673,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 60.0,
+        "distance_mm": 136.92505633209583,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 61.0,
+        "distance_mm": 137.15232485705297,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 62.0,
+        "distance_mm": 137.37605383014107,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 63.0,
+        "distance_mm": 137.59619253154074,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 64.0,
+        "distance_mm": 137.81269126882302,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 65.0,
+        "distance_mm": 138.0255013760888,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 66.0,
+        "distance_mm": 138.2345752130436,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 67.0,
+        "distance_mm": 138.43986616401216,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 68.0,
+        "distance_mm": 138.64132863690165,
+        "within_bare_112_to_192": true
+      },
+      {
+        "angle_deg": 69.0,
+        "distance_mm": 138.83891806211852,
+        "within_bare_112_to_192": true
       }
     ],
     "release": "HOLD H06: end fittings, actual limit angles and physical 150 N balancing"
@@ -1720,11 +1959,11 @@
   },
   "print_outputs": [
     {
-      "file": "PX1_Lift_Harness_Guard_PROTOTYPE.stl",
+      "file": "PX1_Lift_Harness_Clip_PROTOTYPE.stl",
       "dimensions_mm": [
         12.0,
         9.0,
-        6.831128874149274
+        7.531128874149275
       ],
       "fits_chiron_400x400x450": true,
       "solid_valid": true,
@@ -1823,18 +2062,28 @@
     "HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED": "CAD/Metal_HOLD/HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED.step",
     "HOLD_PAIRED_PINION_BEARING_HOLDER": "CAD/Metal_HOLD/HOLD_PAIRED_PINION_BEARING_HOLDER.step",
     "HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7": "CAD/Metal_HOLD/HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7.step",
-    "HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY": "CAD/Metal_HOLD/HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY.step",
-    "HOLD_LIFT_SIDE_ARM_-1_GRAPHIC200": "CAD/Metal_HOLD/HOLD_LIFT_SIDE_ARM_-1_GRAPHIC200.step",
-    "HOLD_LIFT_SIDE_PIN_-1_40": "CAD/Metal_HOLD/HOLD_LIFT_SIDE_PIN_-1_40.step",
-    "HOLD_LIFT_SIDE_PIN_-1_240": "CAD/Metal_HOLD/HOLD_LIFT_SIDE_PIN_-1_240.step",
-    "HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200": "CAD/Metal_HOLD/HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200.step",
-    "HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN": "CAD/Metal_HOLD/HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN.step",
-    "HOLD_GAS_SPRING_CLEVIS_PIN": "CAD/Metal_HOLD/HOLD_GAS_SPRING_CLEVIS_PIN.step",
-    "HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER": "CAD/Metal_HOLD/HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER.step",
-    "HOLD_M8_MANUAL_CLAMP_LEVER_AND_HANDLE": "CAD/Metal_HOLD/HOLD_M8_MANUAL_CLAMP_LEVER_AND_HANDLE.step",
+    "HOLD_LIFT_BASE_FAL002067_ON_SERVICE_COVER": "CAD/Metal_HOLD/HOLD_LIFT_BASE_FAL002067_ON_SERVICE_COVER.step",
+    "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10": "CAD/Metal_HOLD/HOLD_LIFT_CLAMP_AXLE_FSS002089_M10.step",
+    "HOLD_LIFT_CLAMP_WASHER_FSS002077": "CAD/Metal_HOLD/HOLD_LIFT_CLAMP_WASHER_FSS002077.step",
+    "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1": "CAD/Metal_HOLD/HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1.step",
+    "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_2": "CAD/Metal_HOLD/HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_2.step",
+    "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_3": "CAD/Metal_HOLD/HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_3.step",
+    "HOLD_LIFT_NUT_ISO4035_M10_1": "CAD/Metal_HOLD/HOLD_LIFT_NUT_ISO4035_M10_1.step",
+    "HOLD_LIFT_NUT_ISO4035_M10_2": "CAD/Metal_HOLD/HOLD_LIFT_NUT_ISO4035_M10_2.step",
+    "HOLD_LIFT_CLAMP_LEVER_M8_FIX002527": "CAD/Metal_HOLD/HOLD_LIFT_CLAMP_LEVER_M8_FIX002527.step",
+    "HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073": "CAD/Metal_HOLD/HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073.step",
+    "HOLD_LIFT_SIDE_LINK_FSS002068_-1": "CAD/Metal_HOLD/HOLD_LIFT_SIDE_LINK_FSS002068_-1.step",
+    "HOLD_LIFT_SIDE_AXLE_FSS002075_-1": "CAD/Metal_HOLD/HOLD_LIFT_SIDE_AXLE_FSS002075_-1.step",
+    "HOLD_LIFT_TOP_AXLE_FSS002079_-1": "CAD/Metal_HOLD/HOLD_LIFT_TOP_AXLE_FSS002079_-1.step",
+    "HOLD_LIFT_SIDE_LINK_FSS002068_1": "CAD/Metal_HOLD/HOLD_LIFT_SIDE_LINK_FSS002068_1.step",
+    "HOLD_LIFT_SIDE_AXLE_FSS002075_1": "CAD/Metal_HOLD/HOLD_LIFT_SIDE_AXLE_FSS002075_1.step",
+    "HOLD_LIFT_TOP_AXLE_FSS002079_1": "CAD/Metal_HOLD/HOLD_LIFT_TOP_AXLE_FSS002079_1.step",
+    "HOLD_LIFT_GAS_SPRING_PIN_M6x18_FIX002749": "CAD/Metal_HOLD/HOLD_LIFT_GAS_SPRING_PIN_M6x18_FIX002749.step",
+    "HOLD_LIFT_GAS_SPRING_UPPER_PIN": "CAD/Metal_HOLD/HOLD_LIFT_GAS_SPRING_UPPER_PIN.step",
+    "HOLD_LIFT_HOUSING_DRW002752_SIMPLIFIED_INTERFACE": "CAD/Metal_HOLD/HOLD_LIFT_HOUSING_DRW002752_SIMPLIFIED_INTERFACE.step",
+    "HOLD_LIFT_TOP_LEVER_AXLE_FSS002076": "CAD/Metal_HOLD/HOLD_LIFT_TOP_LEVER_AXLE_FSS002076.step",
     "HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5": "CAD/Metal_HOLD/HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5.step",
-    "HOLD_CAM026_SIDE_FRAME_GRAPHIC": "CAD/Metal_HOLD/HOLD_CAM026_SIDE_FRAME_GRAPHIC.step",
-    "HOLD_CAM026_OPTICAL_HOUSING_GRAPHIC": "CAD/Metal_HOLD/HOLD_CAM026_OPTICAL_HOUSING_GRAPHIC.step",
+    "HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74": "CAD/Metal_HOLD/HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74.step",
     "HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN": "CAD/Metal_HOLD/HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN.step",
     "HOLD_REAR_TETHER_STRAIN_SLEEVE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_STRAIN_SLEEVE.step",
     "HOLD_REAR_TETHER_ARAMID_CONE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_ARAMID_CONE.step",

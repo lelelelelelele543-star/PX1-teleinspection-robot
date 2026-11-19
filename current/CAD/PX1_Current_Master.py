@@ -145,10 +145,33 @@ SERVICE_SCREW_X=(85.0,284.0); SERVICE_SCREW_Y=(-30.5,30.5)
 SERVICE_GROOVE_CX=184.0; SERVICE_GROOVE_L=194.0; SERVICE_GROOVE_W=58.0
 SERVICE_GROOVE_RADIUS=3.0; SERVICE_GROOVE_WIDTH=1.9; SERVICE_GROOVE_DEPTH=1.2
 
-# Lift kinematics recovered in current project
-PIVOT_X=240.0; PIVOT_Z_LOW=96.0; PIVOT_Z_HIGH=110.0; LINK_L=200.0
-ARM_Y=36.0; ARM_T=3.0; ARM_H=15.0
-CAM_Z=70.0; CAM026_MEASURED_BASE_OD=62.5; CAM_R=CAM026_MEASURED_BASE_OD/2; CAM_LEN=132.0
+# F18 camera lift per DRW-002-744 (Crawler Lift Parts) + DRW-002-752 (Lift Housing), folded state theta=0.
+# Origin A = clamp axle FSS-002-089 (M10, 3x DIN2093) = pivot of central lever ASS-002-723.
+# In PX1 coordinates "toward camera" = -X. Tags: CONFIRMED / DERIVED / ESTIMATED.
+LIFT_BASE_L=55.0; LIFT_BASE_W=68.7            # FAL-002-067 54.8..55.5 x 68.7, DERIVED (744 top/side 1:1.5)
+LIFT_A_ABOVE_BASE=22.9                         # A above base seating face, DERIVED (744 side view)
+LIFT_BASE_BEHIND_A=10.2                        # base rear end behind A, DERIVED (744 side view)
+LIFT_A_X=250.0                                 # ESTIMATED: Proteus boss/pocket at X~250 (375 A-A) gives A~262;
+                                               # PX1 -12 to free cover strip X262..287 for valve + camera gland
+LIFT_A_Z=SERVICE_Z+SERVICE_T+LIFT_A_ABOVE_BASE # 104.9: base on PX1 removable cover (Proteus: on housing top, A~97.9), DERIVED+ESTIMATED
+LIFT_AB=(38.2,-12.5)                           # side-link base pivot FSS-002-075 rel. A, DERIVED (|AB|=40.2)
+LINK_L=200.1                                   # AC = BD (central lever / side links FSS-002-068), DERIVED (200.1/200.0)
+LIFT_THETA_MAX=69.0                            # DERIVED: asin((257-70)/LINK_L)=69.2 from CRP150 catalogue 70..257 (stop ESTIMATED)
+LIFT_CAT_RANGE=(70.0,257.0)                    # CRP150 catalogue manual lift, camera axis above floor, CONFIRMED
+LIFT_GAS_E=(7.0,-16.8)                         # gas spring lower eye rel. A; Proteus (7.0,-24.8) DERIVED sits in housing pocket,
+                                               # PX1 +8 up because base sits on 7 mm cover without pocket, ESTIMATED
+LIFT_GAS_G=(125.0,1.0)                         # upper eye on lever rel. A, DERIVED (744, +-2)
+LIFT_SIDE_Y=25.2; LIFT_SIDE_T=4.0; LIFT_SIDE_H=15.0  # side links: 744 top view Y+-27.9 t4 h15 DERIVED; Y-2.7 ESTIMATED for cover-screw tool access
+LIFT_LEVER_PLATE_W=54.4                        # FSS-002-073 lever sheet plate width, DERIVED
+LIFT_CHEEK_Y=(6.6,9.6)                         # central-lever cheeks (fork 24 wide at C, DERIVED) around gas spring, ESTIMATED
+LIFT_HOUSING_W=46.0; LIFT_HOUSING_L=52.0       # DRW-002-752 lift housing ~48 wide / 52 long, DERIVED 1:1; simplified block ESTIMATED
+CAM026_ENVELOPE=(120.0,74.0,74.0)              # GAP catalogue sy1083 L x W x H, CONFIRMED (0.864 kg)
+CAM026_MASS_KG=0.864                           # CONFIRMED catalogue
+CAM_Z=70.0                                     # camera axis folded = catalogue lower bound, CONFIRMED (interpretation: axis above floor)
+CAM_REAR_X=-40.5                               # camera rear face = lift-housing front -0.5, ESTIMATED
+CAM_DROP=LIFT_A_Z-CAM_Z                        # C/A level to camera axis, DERIVED from catalogue (752 interface ESTIMATED)
+CAM026_MEASURED_BASE_OD=62.5; CAM_R=CAM026_MEASURED_BASE_OD/2; CAM_LEN=132.0  # ASM000 boom variant (head 132), DERIVED reference only
+CAM_GLAND_XY=(272.0,0.0); VALVE_XY=(272.0,18.0) # camera cable M12 gland + pressure valve in cover rear strip, ESTIMATED
 
 # Integrated packaging datums: ESTIMATED engineering dimensions, mm.
 # Same six-wheel topology; no change to gear or motor axes.
@@ -156,10 +179,7 @@ MIDDLE_INNER_Y=26.8
 MIDDLE_BUSH_W=3.0
 IDLER_PIN_INNER_Y=27.0
 SUPPORT_BOSS_INNER_Y=26.5
-CAMERA_SETBACK=52.0
-HARNESS_LOOP_R=27.0
-HARNESS_DECK_Z=85.0
-GAS_MOVING_Z=102.0
+HARNESS_TOP_Z=117.5   # camera cable over the folded lever (static folded routing), ESTIMATED
 
 # ------------------------------- helpers
 
@@ -492,8 +512,8 @@ add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
 cover=boxc(SERVICE_CX,0,78.5,SERVICE_L,SERVICE_W,SERVICE_T)
 for x in SERVICE_SCREW_X:
     for y in SERVICE_SCREW_Y:cover=cut(cover,cyl_z(x,y,74.9,1.7,7.2))
-cover=cut(cover,cyl_z(264,18,74.9,5.05,7.2))
-cover=cut(cover,cyl_z(245,0,74.9,4,7.2))
+cover=cut(cover,cyl_z(VALVE_XY[0],VALVE_XY[1],74.9,5.05,7.2))   # F18: valve moved to cover rear strip, ESTIMATED
+cover=cut(cover,cyl_z(CAM_GLAND_XY[0],CAM_GLAND_XY[1],74.9,6.05,7.2)) # F18: M12 camera-cable gland thread, ESTIMATED
 outer=boxc(SERVICE_GROOVE_CX,0,75+(SERVICE_GROOVE_DEPTH-.1)/2,
            SERVICE_GROOVE_L+SERVICE_GROOVE_WIDTH,SERVICE_GROOVE_W+SERVICE_GROOVE_WIDTH,
            SERVICE_GROOVE_DEPTH+.1).edges('|Z').fillet(SERVICE_GROOVE_RADIUS+SERVICE_GROOVE_WIDTH/2)
@@ -502,81 +522,111 @@ inner=boxc(SERVICE_GROOVE_CX,0,75+(SERVICE_GROOVE_DEPTH-.1)/2,
            SERVICE_GROOVE_DEPTH+.3).edges('|Z').fillet(SERVICE_GROOVE_RADIUS-SERVICE_GROOVE_WIDTH/2)
 cover=cut(cover,cut(outer,inner))
 add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7',cover,'metal')
-valve_body=cut(cyl_z(264,18,78,5,14),cyl_z(264,18,77.9,2.1,14.2))
+VX,VY=VALVE_XY
+valve_body=cut(cyl_z(VX,VY,78,5,14),cyl_z(VX,VY,77.9,2.1,14.2))
 add('HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY',valve_body,'valve')
-add('HOLD_PRESSURE_VALVE_CAP',cyl_z(264,18,92,6,1.5),'valve')
-add('HOLD_PRESSURE_VALVE_4MM_BALL',cq.Workplane('XY').sphere(2).translate((264,18,88)),'valve')
-gland_boss=boxc(229,0,92.5,43,19,21)
-gland_boss=cut(gland_boss,cyl_x(207.4,0,92.5,6,44))
-gland_boss=cut(gland_boss,cyl_z(245,0,74.9,4,24))
-add('HOLD_PRESSURE_LIFT_CABLE_BOSS_SOURCE_TOPOLOGY',gland_boss,'metal')
-lapp=make_gland().rotate((0,0,0),(0,0,1),180).translate((214,0,92.5))
-add('HOLD_LAPP_SKINTOP_53112000_M12x1p5',lapp,'purchased')
-th=0.0;lo_end=(40,96);hi_end=(78,110)
-for side in (-1,1):
-    arm=plate_between((240,96),lo_end,side*ARM_Y,3,15)
-    for x in (40,240):arm=cut(arm,cyl_y(x,side*ARM_Y-2,96,4,4))
-    add(f'HOLD_LIFT_SIDE_ARM_{side}_GRAPHIC200',arm,'lift')
-    for x in (40,240):add(f'HOLD_LIFT_SIDE_PIN_{side}_{x}',cyl_y(x,side*(ARM_Y-1.5),96,4,3,dir=side),'lift')
-central=[]
-for y in (-12,12):
-    arm=plate_between((278,110),hi_end,y,2,12)
-    for x in (78,278):arm=cut(arm,cyl_y(x,y-1.1,110,3,2.2))
-    central.append(arm)
-central.append(boxc(178,0,116,200,26,2))
-add('HOLD_LIFT_CENTRAL_LEVER_ASS002723_GRAPHIC200',fuse_all(central),'lift')
-carrier=fuse_all([boxc(46-CAMERA_SETBACK/2,0,95,70+CAMERA_SETBACK,50,5),boxc(13.5-CAMERA_SETBACK,0,81.25,5,50,27.5),boxc(77,0,104,5,21.6,14)])
-carrier=cut(carrier,cyl_x(10.9-CAMERA_SETBACK,0,70,10,5.2))
-carrier=cut(carrier,cyl_y(78,-13.1,110,3,26.2))
-# Two clevis ears support the gas-spring eye above the carrier deck.
-for ey in (12.0,20.0):
-    ear=cut(boxc(47,ey,101.75,10,2,8.5),cyl_y(47,ey-1.1,GAS_MOVING_Z,2.2,2.2))
-    carrier=wp(carrier.val().fuse(ear.val()))
-add('HOLD_LIFT_CAMERA_CARRIER_SOURCE_INTERFACE_UNKNOWN',carrier,'lift')
-add('HOLD_GAS_SPRING_CLEVIS_PIN',cyl_y(47,10.5,GAS_MOVING_Z,2,11),'shaft')
-base=boxc(260,0,88,46,53,12)
-for y in (-13.5,13.5):base=cut(base,cyl_x(236.9,y,88,4,46.2))
-base=cut(base,gland_boss)
-base=cut(base,cyl_z(264,18,81.9,6.3,12.2)) # valve clearance, structural base only, sealing cover retained H03
-for yy in (-19,19):base=cut(base,cyl_z(284,yy,81.9,3.3,12.2)) # access to existing cover screw locations H06
-add('HOLD_LIFT_BASE_ON_REMOVABLE_PRESSURE_COVER',base,'lift')
-body_pt=(235,16,89);moving=(47,16,GAS_MOVING_Z);gas_length=math.dist(body_pt,moving);gas_move_s=193
-v=(cq.Vector(*moving)-cq.Vector(*body_pt)).normalized();joint=cq.Vector(*body_pt)+v*112
-add('HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS',between(body_pt,joint.toTuple(),6),'purchased')
-gas_rod=fuse_all([between(joint.toTuple(),moving,2),ring_y(47,16,GAS_MOVING_Z,4,2.2,3)])
-gas_rod=cut(gas_rod,cyl_y(47,13.9,GAS_MOVING_Z,2.2,4.2))
-add('HOLD_ACE_GS12_80_ROD',gas_rod,'purchased')
-hub=cut(cyl_y(240,37.6,96,8,7.4),cyl_y(240,37.5,96,4,7.6));lever=boxc(225,41,91,30,6,7)
-add('HOLD_M8_MANUAL_CLAMP_LEVER_AND_HANDLE',fuse_all([hub,lever]),'lift')
-cam_rear=10-CAMERA_SETBACK;cam_front=cam_rear-132
-cam_rear_body=cut(cyl_x(cam_rear-68,0,CAM_Z,31.25,68),cyl_x(cam_rear-67.9,0,CAM_Z,27,63.9))
-cam_rear_body=cut(cam_rear_body,cyl_x(cam_rear-4.1,0,CAM_Z,7,4.2))
-add('HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5',cam_rear_body,'camera')
-fork=[boxc(cam_front+31,y,CAM_Z,62,4,46) for y in (-27,27)]
-add('HOLD_CAM026_SIDE_FRAME_GRAPHIC',fuse_all(fork),'camera')
-optical=cq.Workplane('XY').sphere(25).translate((cam_front+26,0,CAM_Z))
-optical=cut(optical,boxc(cam_front-9,0,CAM_Z,20,60,60))
-add('HOLD_CAM026_OPTICAL_HOUSING_GRAPHIC',optical,'camera')
-add('HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN',cyl_x(cam_front-1,0,CAM_Z,12,2),'camera')
-sp13=make_sp13_plug().translate((16-CAMERA_SETBACK,0,70));add('HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE',sp13,'connector')
-# Central vertical service loop avoids wheel/lift-arm/gas-spring envelopes.
-# Bend transitions and full moving-lift routing remain physical qualification items.
-harness_points=[(187.5,0,92.5),(184,0,92.5),(179,0,HARNESS_DECK_Z),(160,0,HARNESS_DECK_Z)]
-for i in range(1,49):
-    a=math.pi*i/48
-    harness_points.append((160-HARNESS_LOOP_R+HARNESS_LOOP_R*math.cos(a),0,
-                           HARNESS_DECK_Z+HARNESS_LOOP_R*math.sin(a)))
-harness_points += [(15,0,HARNESS_DECK_Z),(15,0,70),(8,0,70)]
+add('HOLD_PRESSURE_VALVE_CAP',cyl_z(VX,VY,92,6,1.5),'valve')
+add('HOLD_PRESSURE_VALVE_4MM_BALL',cq.Workplane('XY').sphere(2).translate((VX,VY,88)),'valve')
+# F18: camera cable enters the cover through a vertical M12 gland behind the lift base (Proteus: M12 entry, DRW-002-745).
+lapp=make_gland().rotate((0,0,0),(0,1,0),-90).translate((CAM_GLAND_XY[0],CAM_GLAND_XY[1],SERVICE_Z+.5))
+add('HOLD_LAPP_SKINTOP_53112000_M12x1p5_CAMERA_CABLE_IN_COVER',lapp,'purchased')
+
+# ---------------- F18 camera lift DRW-002-744 / DRW-002-752 (folded, theta=0) ----------------
+AX,AZ=LIFT_A_X,LIFT_A_Z
+def lift_rel(d): return (AX-d[0],AZ+d[1])        # toward camera = -X
+LB=lift_rel(LIFT_AB)                             # side-link base pivot B
+LC=(AX-LINK_L,AZ)                                # central lever top pivot C (on lift housing)
+LD=(LB[0]-LINK_L,LB[1])                          # side-link top pivot D: exact parallelogram, CD=AB
+LE=lift_rel(LIFT_GAS_E); LG=lift_rel(LIFT_GAS_G) # gas spring eyes
+BASE_X0=AX-(LIFT_BASE_L-LIFT_BASE_BEHIND_A); BASE_X1=AX+LIFT_BASE_BEHIND_A; BASE_Z0=SERVICE_Z+SERVICE_T
+SW_IN=LIFT_SIDE_Y-LIFT_SIDE_T/2; SW_OUT=LIFT_SIDE_Y+LIFT_SIDE_T/2
+# Base FAL-002-067: 8 mm plate (ESTIMATED) on the cover, A-cheeks, B-lugs, gas-spring slot and side-link reliefs.
+lbase=box0(BASE_X0,-LIFT_BASE_W/2,BASE_Z0,LIFT_BASE_L,LIFT_BASE_W,8)
+for sy in (-1,1):
+    lbase=lbase.union(box0(AX-10,sy*12.2-2,BASE_Z0+8,20,4,AZ+10-BASE_Z0-8))                      # A cheeks Y+-10.2..14.2
+    lbase=lbase.union(box0(LB[0]-6.5,(SW_OUT+.2) if sy>0 else -LIFT_BASE_W/2,BASE_Z0+8,14,
+                           LIFT_BASE_W/2-SW_OUT-.2,LB[1]+8-BASE_Z0-8))                             # B lugs outside links
+    lbase=cut(lbase,box0(BASE_X0-.1,(SW_IN-.3) if sy>0 else -(SW_OUT+.2),BASE_Z0-.1,LB[0]+8-BASE_X0,SW_OUT-SW_IN+.5,8.2))
+lbase=cut(lbase,box0(BASE_X0-.1,-6.5,BASE_Z0-.1,LE[0]+6.5-BASE_X0+.1,13,8.2))                     # gas-spring slot
+lbase=cut(lbase,cyl_y(AX,-15,AZ,5.1,30)); lbase=cut(lbase,cyl_y(LB[0],-35,LB[1],4.05,70))
+lbase=cut(lbase,cyl_y(LE[0],-12.1,LE[1],3.05,24.2))
+add('HOLD_LIFT_BASE_FAL002067_ON_SERVICE_COVER',lbase,'lift')
+# Clamp axle FSS-002-089 (M10, M8 end), washer FSS-002-077, 3x DIN2093 20x10.2x1.1, 2x ISO4035 M10, clamp lever FIX-002-527 M8.
+caxle=fuse_all([cyl_y(AX,-20.35,AZ,4.95,44.55),cyl_y(AX,-28.35,AZ,4.0,8.0)])
+add('HOLD_LIFT_CLAMP_AXLE_FSS002089_M10',caxle,'lift')
+add('HOLD_LIFT_CLAMP_WASHER_FSS002077',ring_y(AX,-14.95,AZ,10,5.1,1.5),'lift')
+for i,yc in enumerate((-16.475,-18.025,-19.575),1):
+    add(f'HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_{i}',ring_y(AX,yc,AZ,10,5.1,1.55),'lift')
+def hex_nut_y(y0,w):
+    n=cq.Workplane('XZ').polygon(6,17/math.cos(math.pi/6)).extrude(-w).translate((AX,y0,AZ))
+    return cut(n,cyl_y(AX,y0-.1,AZ,5.0,w+.2))
+for i,y0 in enumerate((14.2,19.2),1):add(f'HOLD_LIFT_NUT_ISO4035_M10_{i}',hex_nut_y(y0,5),'lift')
+clamp=fuse_all([cyl_y(AX,-28.35,AZ,8,8),between((AX,-24.35,AZ),(AX-70,-24.35,AZ),3.5)])
+clamp=cut(clamp,cyl_y(AX,-28.45,AZ,4.05,8.2))
+add('HOLD_LIFT_CLAMP_LEVER_M8_FIX002527',clamp,'lift')
+# Central lever ASS-002-723 + lever sheet plate FSS-002-073 (AC = LINK_L).
+lever=[cyl_y(AX,-10,AZ,9,20),boxc((LC[0]+14+AX-11)/2,0,AZ+7.5,AX-11-LC[0]-14,LIFT_LEVER_PLATE_W,3)]
+for sy in (-1,1):
+    yc=sy*sum(LIFT_CHEEK_Y)/2; tc=LIFT_CHEEK_Y[1]-LIFT_CHEEK_Y[0]
+    lever.append(plate_between((AX,AZ+.25),(LC[0],AZ+.25),yc,tc,11.5))
+    lever.append(cyl_y(LC[0],yc-tc/2,LC[1],7,tc))
+lever=fuse_all(lever)
+lever=cut(lever,cyl_y(AX,-10.1,AZ,5.1,20.2)); lever=cut(lever,cyl_y(LC[0],-10,LC[1],4.05,20))
+lever=cut(lever,cyl_y(LG[0],-10,LG[1],3.05,20))
+add('HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073',lever,'lift')
+# Side links FSS-002-068 (BD = LINK_L) with axles FSS-002-075 (base) and FSS-002-079 (lift housing).
+for sy in (-1,1):
+    yc=sy*LIFT_SIDE_Y
+    link=fuse_all([plate_between(LB,LD,yc,LIFT_SIDE_T,LIFT_SIDE_H),
+                   cyl_y(LB[0],yc-LIFT_SIDE_T/2,LB[1],7.5,LIFT_SIDE_T),cyl_y(LD[0],yc-LIFT_SIDE_T/2,LD[1],7.5,LIFT_SIDE_T)])
+    for px,pz in (LB,LD):link=cut(link,cyl_y(px,yc-LIFT_SIDE_T/2-.1,pz,4.05,LIFT_SIDE_T+.2))
+    add(f'HOLD_LIFT_SIDE_LINK_FSS002068_{sy}',link,'lift')
+    add(f'HOLD_LIFT_SIDE_AXLE_FSS002075_{sy}',fuse_all([cyl_y(LB[0],sy*SW_IN,LB[1],3.95,(LIFT_BASE_W/2-SW_IN),dir=sy),
+        cyl_y(LB[0],sy*LIFT_BASE_W/2,LB[1],6,1.5,dir=sy)]),'lift')
+    add(f'HOLD_LIFT_TOP_AXLE_FSS002079_{sy}',fuse_all([cyl_y(LD[0],sy*16,LD[1],3.95,SW_OUT-16,dir=sy),
+        cyl_y(LD[0],sy*SW_OUT,LD[1],6,1.5,dir=sy)]),'lift')
+# Gas spring SPR-002-524 150 N -> ACE GS-12-80-V4A (eye-to-eye 112..192), pins M6x18 FIX-002-749.
+E3=cq.Vector(LE[0],0,LE[1]); G3=cq.Vector(LG[0],0,LG[1]); gu=(G3-E3).normalized()
+gas_length=(G3-E3).Length; body_pt=E3.toTuple(); moving=G3.toTuple()
+gbody=fuse_all([ring_y(LE[0],0,LE[1],5,3.05,6),between((E3+gu*4).toTuple(),(E3+gu*7.2).toTuple(),3),
+                between((E3+gu*7).toTuple(),(E3+gu*100).toTuple(),ACE_BODY_OD/2)])
+add('HOLD_ACE_GS12_80_V4A_150N_BODY_END_FITTINGS',gbody,'purchased')
+grod=fuse_all([between((E3+gu*100).toTuple(),(G3-gu*4).toTuple(),ACE_ROD_OD/2),ring_y(LG[0],0,LG[1],4.5,3.05,5)])
+add('HOLD_ACE_GS12_80_ROD',grod,'purchased')
+add('HOLD_LIFT_GAS_SPRING_PIN_M6x18_FIX002749',cyl_y(LE[0],-9,LE[1],2.95,18),'lift')
+add('HOLD_LIFT_GAS_SPRING_UPPER_PIN',cyl_y(LG[0],-LIFT_CHEEK_Y[1],LG[1],2.95,2*LIFT_CHEEK_Y[1]),'lift')
+# Camera harness: SP13 (in lift housing) -> up behind the housing -> over the folded lever -> M12 gland in cover.
+harness_points=[(8,0,CAM_Z),(15,0,CAM_Z),(15,0,HARNESS_TOP_Z),(CAM_GLAND_XY[0]-8,0,HARNESS_TOP_Z),
+                (CAM_GLAND_XY[0],0,104),(CAM_GLAND_XY[0],0,96)]
 def poly_tube(points,radius):
     return fuse_all([between(a,b,radius) for a,b in zip(points,points[1:]) if math.dist(a,b)>1e-5])
+# Lift housing DRW-002-752 (simplified interface): camera socket block, D lug, C arm.
+LHX1=14.0
+lh=fuse_all([box0(LHX1-LIFT_HOUSING_L-2,-LIFT_HOUSING_W/2,CAM_Z-24,LIFT_HOUSING_L+2,LIFT_HOUSING_W,48),
+             box0(2,-LIFT_HOUSING_W/2+.5,LD[1]-7.4,19,LIFT_HOUSING_W-1,15),
+             box0(0,-6.4,91,LC[0]+7.1,12.8,21)])
+lh=cut(lh,cyl_x(LHX1-LIFT_HOUSING_L-2.1,0,CAM_Z,11.5,LIFT_HOUSING_L+2.2))
+lh=cut(lh,cyl_y(LD[0],-LIFT_HOUSING_W/2-.1,LD[1],4.05,LIFT_HOUSING_W+.2))
+lh=cut(lh,cyl_y(LC[0],-6.5,LC[1],4.05,13))
+lh=cut(lh,box0(11.7,-3.3,CAM_Z+6,6.6,6.6,HARNESS_TOP_Z-CAM_Z-7))   # harness slot behind the camera socket (box: robust STEP)
+add('HOLD_LIFT_HOUSING_DRW002752_SIMPLIFIED_INTERFACE',lh,'lift')
+add('HOLD_LIFT_TOP_LEVER_AXLE_FSS002076',cyl_y(LC[0],-LIFT_CHEEK_Y[1],LC[1],3.95,2*LIFT_CHEEK_Y[1]),'lift')
+# CAM026 catalogue envelope 120x74x74 (rear rotate housing + pan/tilt head + window).
+cam_rear=CAM_REAR_X; cam_front=cam_rear-CAM026_ENVELOPE[0]
+add('HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5',cyl_x(cam_rear-60,0,CAM_Z,CAM_R,60),'camera')
+head=boxc(cam_front+1+29.5,0,CAM_Z,59,CAM026_ENVELOPE[1],CAM026_ENVELOPE[2]).edges('|X').fillet(12)
+add('HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74',head,'camera')
+add('HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN',cyl_x(cam_front,0,CAM_Z,12,1),'camera')
+sp13=make_sp13_plug().translate((-36,0,CAM_Z));add('HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE',sp13,'connector')
 jacket=poly_tube(harness_points,2.7)
 for i,name in enumerate(['12V','GND','TX','RX','CVBS_SIGNAL','CVBS_RETURN']):
     core=poly_tube([(x,y+(i-2.5)*.65,z) for x,y,z in harness_points],.22)
     jacket=cut(jacket,core);add(f'CAMERA_HARNESS_CORE_{i+1}_{name}_ROUTE_HOLD',core,'wire')
 add('HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE',jacket,'cable')
-hguard=cut(between((166,0,HARNESS_DECK_Z),(178,0,HARNESS_DECK_Z),4.5),between((165.9,0,HARNESS_DECK_Z),(178.1,0,HARNESS_DECK_Z),3.2))
-hguard=cut(hguard,box0(160,-10,70,25,20,12.2))
-hguard=cut(hguard,boxc(172,0,HARNESS_DECK_Z+4,14,4,5));add('PX1_LIFT_HARNESS_GUARD_OPEN_PROFILE',hguard,'print')
+hx=150.0
+hguard=cut(between((hx-6,0,HARNESS_TOP_Z),(hx+6,0,HARNESS_TOP_Z),4.5),between((hx-6.1,0,HARNESS_TOP_Z),(hx+6.1,0,HARNESS_TOP_Z),3.2))
+hguard=cut(hguard,box0(hx-6.2,-5,AZ,12.4,10,HARNESS_TOP_Z-3.5-AZ))
+hguard=cut(hguard,boxc(hx,0,HARNESS_TOP_Z+4,14,4,5));add('PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE',hguard,'print')
 controller=cq.importers.importStep(str(CAD/'vendor'/'WeAct_F4_64Pin_V11_Manufacturer.step'))
 controller=wp(cq.Compound.makeCompound(controller.vals()))
 b=controller.val().BoundingBox();controller=controller.translate((-(b.xmin+b.xmax)/2,-(b.ymin+b.ymax)/2,-b.zmin))

@@ -47,7 +47,7 @@ def finish_build(g):
         used.add(stem);fn=metal/(n+'.step');exporters.export(shapes[n],str(fn));export_map[n]=str(fn.relative_to(root))
     # Non-pressure print outputs are also made from the active assembly geometry.
     print_map={
-      'PX1_Lift_Harness_Guard_PROTOTYPE.stl':shape(g['hguard']),
+      'PX1_Lift_Harness_Clip_PROTOTYPE.stl':shape(g['hguard']),
       'PX1_Motor_Holder_FitCheck_ONLY.stl':shape(g['motor_holder']),
       'PX1_PRESSURE_Cover_FitCheck_ONLY.stl':shape(g['cover']),
       'PX1_Side_Cover_FitCheck_ONLY.stl':shape(g['side_covers'][1][1]),
@@ -155,11 +155,16 @@ def finish_build(g):
                 except Exception as exc:errors.append({'tool':x,'part':n,'error':str(exc)});continue
                 if v>.01:hits.append({'id':n,'volume_mm3':v})
         tools.append({'screw_x_mm':x,'screw_y_mm':y,'tool_diameter_mm':6,'approach_mm':60,'collisions':hits,'release':'HOLD: screw/groove/mating dimensions unresolved'})
-    gas_sweep=[]
-    for deg in range(0,71,2):
-        t=math.radians(deg);dx=g['moving'][0]-g['PIVOT_X']; dz=g['moving'][2]-g['PIVOT_Z_LOW']
-        m=(g['PIVOT_X']+dx*math.cos(t)+dz*math.sin(t),g['moving'][1],g['PIVOT_Z_LOW']-dx*math.sin(t)+dz*math.cos(t))
-        L=math.dist(g['body_pt'],m);gas_sweep.append({'angle_deg':deg,'distance_mm':L,'within_bare_112_to_192':112<=L<=192})
+    # F18: gas spring E (base) to G (central lever, rotating about clamp axle A), 0..LIFT_THETA_MAX.
+    gas_sweep=[];AX,AZ=g['LIFT_A_X'],g['LIFT_A_Z'];gx,gz=g['LIFT_GAS_G'];E=g['body_pt']
+    lo,hi=g['ACE_EXTENDED']-g['ACE_STROKE'],g['ACE_EXTENDED'];tmax=g['LIFT_THETA_MAX']
+    for k in range(0,int(math.ceil(tmax))+1):
+        deg=min(float(k),tmax);t=math.radians(deg)
+        m=(AX-gx*math.cos(t)+gz*math.sin(t),0.0,AZ+gx*math.sin(t)+gz*math.cos(t))
+        L=math.dist(E,m);gas_sweep.append({'angle_deg':deg,'distance_mm':L,'within_bare_%g_to_%g'%(lo,hi):lo<=L<=hi})
+    lift={'A_mm':[AX,AZ],'lever_mm':g['LINK_L'],'theta_max_deg':tmax,
+          'camera_axis_z_mm':{'folded':g['CAM_Z'],'raised':g['CAM_Z']+g['LINK_L']*math.sin(math.radians(tmax))},
+          'catalogue_range_mm':list(g['LIFT_CAT_RANGE']),'check':'tools/lift/check_lift_kinematics.py'}
     val={'revision':'Rev.A pipe/service CAD 2026-11-18','master':'CAD/PX1_Current_Master.step','source_sha256':hashlib.sha256(Path(g['__file__']).read_bytes()).hexdigest(),
         'status':'HOLD_NOT_MANUFACTURING_RELEASE','source_reference':'Proteus CRP150 DRW-002-374/375/386/744/745/752',
         'counts':counts,'expected_counts':expected,'counts_match':counts==expected,'component_count':len(components),'invalid_shapes':invalid,
@@ -169,7 +174,7 @@ def finish_build(g):
         'service':{'motor_vertical_extraction':motor_sweep,'camera_forward_removal':cam_sweep,'service_screw_tools':tools,
             'wheel_removal':'HOLD H01: source quick-lock unknown; proxy cannot certify wheel removal',
             'harness_removal':'HOLD H07: SP13 cable end must be reterminated if larger than gland throat; replacement sequence in documentation'},
-        'gas_spring':{'assembled_distance_mm':g['gas_length'],'bare_limits_mm':[112,192],'sampled_angle_checks':gas_sweep,'release':'HOLD H06: end fittings, actual limit angles and physical 150 N balancing'},
+        'lift':lift,'gas_spring':{'assembled_distance_mm':g['gas_length'],'bare_limits_mm':[lo,hi],'sampled_angle_checks':gas_sweep,'release':'HOLD H06: end fittings, actual limit angles and physical 150 N balancing'},
         'pressure':{'status':'HOLD H03 H07','cad_is_leak_test':False,'side_cover_window_error_fixed':True,'common_pressure_communication':'requires physical/section verification'},
         'print_outputs':print_validation,'metal_release':False,'part_exports':export_map,
         'unmodelled_required_items':['complete camera PAN/TILT/lighting/control internals','side-cover static seal installed contour','closed service-cover seal and screws: groove/pilot holes modelled, seal/threads/fasteners unqualified','lift pivot bushings and seals','pressure valve spring and seat detail','SP13 panel half and contact inserts','SP17 cable half and seals','internal six-way service connector','board standoffs and all power terminal insulation','INA226 ready-made modules and branch capacitors/TVS/fuses','motor socket torque transfer and rear connector/lead envelopes','RF-available brushed motor selection, driver current/thermal qualification','circlips, internal gear keys and complete fastening hardware'],
