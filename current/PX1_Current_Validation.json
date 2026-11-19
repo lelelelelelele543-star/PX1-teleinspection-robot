@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "9cee1b715d2d98d83ff916ef33d9754762081eec0f545617444c26e53490a3d0",
+  "source_sha256": "b96c79addcfc0d24d95652a4fff1dcf4a2cafd1732c84cb5cb7d37048b4823ed",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {

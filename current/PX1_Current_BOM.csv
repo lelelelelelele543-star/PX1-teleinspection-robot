@@ -33,7 +33,7 @@ S10;O-ring колпачка;1;metric10×1.5;10×1.5;DRW745;BUY;NOT_MODELLED;H03
 S11;O-ring лифта;2;metric15×2.5;15×2.5;DRW744;BUY;NOT_MODELLED;H03
 P01;Тяговый двигатель;2;GA24Y-370-2485 24V 138:1 CANDIDATE;OD24.4 body67.6 shaft4x17.5 faceX189.5 ESTIMATED;08_PROCUREMENT/GA24Y_370_SELECTION_20261119.md;STUDY;FAMILY_ENVELOPE_ESTIMATED;H05 seller identity and 138:1 dimensions thermal and traction unqualified
 P02;Муфта;2;NBKMLR-20C-6-6;Ø20×24 bores6/6;NBK manufacturer;BUY;BOUNDARY;H05
-P03;Колесо;6;PX1 engineered D90 tyre, QRW90 topology reference;D90 W24, outer shoulder r34.5 at y8, edge r27.5 at y12;pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;ENGINEERED_PROFILE_ESTIMATED;H01 nominal CAD only, rubber/contact/tolerances/traction unqualified
+P03;Колесо;6;PX1 engineered D90 tyre, QRW90 topology reference;D90 W24, outer shoulder r28.5 at y8, edge r20.5 at y12 (F04 >=3mm DN150 gap);pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;ENGINEERED_PROFILE_ESTIMATED;H01 nominal CAD only, rubber/contact/tolerances/traction unqualified
 L01;PRESSURE-крышка;1;PX1 service cover GA24 20261119;177x68x7,4xD3.4,M3 body pilots,groove1.9x1.2;pipe_service_20261118/ENGINEERING_BASIS.md;MILL;ENGINEERED_ESTIMATED;H03 seal/material/pressure/thread preload unqualified
 L02;Боковой рычаг;2;FSS-002-068;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06
 L03;Центральное звено;1;ASS-002-723;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06

@@ -16,7 +16,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 BASELINE = [(26.,-12.),(32.,-12.),(42.,-8.),(45.,0.),(42.,8.),(32.,12.),(8.,12.),(8.,-2.),(26.,-2.)]
-PROPOSED = [(26.,-12.),(32.,-12.),(42.,-8.),(45.,0.),(34.5,8.),(27.5,12.),(8.,12.),(8.,-2.),(26.,-2.)]
+PROPOSED = [(26.,-12.),(32.,-12.),(42.,-8.),(45.,0.),(28.5,8.),(20.5,12.),(8.,12.),(8.,-2.),(26.,-2.)]
+MIN_NONCONTACT_GAP = 3.0  # F04 requirement, mm
 
 
 def profile_screen(points, pipe_radius, wheel_y, wheel_z, pipe_z):
@@ -38,11 +39,18 @@ def profile_screen(points, pipe_radius, wheel_y, wheel_z, pipe_z):
                          'radial_clearance_mm': pipe_radius-distance})
     limit = min(math.sqrt(max(0., pipe_radius**2-(wheel_y+y)**2))-r for r,y in points)
     worst = max(vertices, key=lambda p: p['max_pipe_radial_mm'])
+    # F04: every vertex except the grounded crown contact (r=crown, local y=0)
+    # must keep the required radial gap. Segment maxima lie at endpoints (see above).
+    non_contact = [v for v in vertices if not (v['local_y_mm'] == 0 and v['radius_mm'] == max(r for r, _ in points))]
+    non_contact_min = min(v['radial_clearance_mm'] for v in non_contact)
     return {'minimum_radial_clearance_mm': worst['radial_clearance_mm'],
             'worst_vertex': worst, 'vertices': vertices,
             'feasible_pipe_center_delta_interval_mm': [-limit, limit] if limit >= 0 else None,
             'maximum_permitted_absolute_center_delta_mm': limit,
-            'all_rigid_revolved_geometry_inside': worst['radial_clearance_mm'] >= -1e-9}
+            'all_rigid_revolved_geometry_inside': worst['radial_clearance_mm'] >= -1e-9,
+            'minimum_noncontact_vertex_clearance_mm': non_contact_min,
+            'noncontact_gap_requirement_mm': MIN_NONCONTACT_GAP,
+            'noncontact_gap_ok': non_contact_min >= MIN_NONCONTACT_GAP - 1e-9}
 
 
 def scan_mesh(path, pipe_r, pipe_z):
@@ -114,6 +122,7 @@ def main():
             'wheel_y_matches':values['WHEEL_CENTRE_Y']==wheel_y,
             'wheel_z_matches':values['WHEEL_Z']==wheel_z,
             'crown_matches':values['WHEEL_CROWN_R']==crown_r,
+            'noncontact_gap_requirement_matches':values.get('WHEEL_MIN_NONCONTACT_GAP')==MIN_NONCONTACT_GAP,
             'pipe_radius_matches':values['PIPE_R']==pipe_r,
             'contact_pose_matches':abs(validation['dn150']['assumed_pipe_center_z_mm']-pipe_z)<1e-9,
             'source_hash_matches':validation['source_sha256']==active_source_hash}
@@ -132,7 +141,7 @@ def main():
         report['status']='ACTIVE_NOMINAL_CAD_SCREEN_WITH_RELEASE_HOLD'
         report['nonwheel_integrated_mesh_screen']['proposed_wheels_not_substituted_in_mesh']=False
         report['active_all_component_mesh_protrusions']=[i for i in report['nonwheel_integrated_mesh_screen']['component_results'] if i['radial_clearance_mm'] < -.12]
-    report['proposed_screen_passes'] = candidate['all_rigid_revolved_geometry_inside'] and not report['nonwheel_integrated_mesh_screen']['nonwheel_protrusions']
+    report['proposed_screen_passes'] = candidate['all_rigid_revolved_geometry_inside'] and candidate['noncontact_gap_ok'] and not report['nonwheel_integrated_mesh_screen']['nonwheel_protrusions']
     if args.active:
         report['proposed_screen_passes'] = report['proposed_screen_passes'] and all(report['active_master_checks'].values()) and not report['active_all_component_mesh_protrusions']
     args.out.parent.mkdir(parents=True,exist_ok=True)
@@ -142,6 +151,7 @@ def main():
                       'candidate_clearance_mm':candidate['minimum_radial_clearance_mm'],
                       'candidate_outer_shoulder_clearance_mm':candidate['vertices'][4]['radial_clearance_mm'],
                       'candidate_outer_edge_clearance_mm':candidate['vertices'][5]['radial_clearance_mm'],
+                      'candidate_min_noncontact_clearance_mm':candidate['minimum_noncontact_vertex_clearance_mm'],
                       'nonwheel_mesh_min_clearance_mm':report['nonwheel_integrated_mesh_screen']['minimum_nonwheel_clearance_mm'],
                       'proposed_screen_passes':report['proposed_screen_passes']},indent=2))
     return 0 if report['proposed_screen_passes'] else 1

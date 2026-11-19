@@ -1,0 +1,17 @@
+# Session handoff — 2026-11-19
+
+Ветка: feature/px1-integrated-cad-20261117 (claude/px1-audit-traction-20261119 на GitHub не существует).
+Источник геометрии: current/CAD/PX1_Current_Master.py.
+
+## Сделано
+F04 — зазор шин в DN150 ≥3 мм. Детали: current/09_RELEASE/f04_wheel_gap_20261119/README.md.
+
+## Важно для следующей сессии
+1. Прежние feature_list.json / progress.md / session-handoff.md на GitHub отсутствовали; feature_list.json
+   восстановлен только с F04. Нужно вернуть остальные пункты (F01–F03, F05+).
+2. tools/drawing_measure/check_master_vs_drawings.py в ветке нет — первую проверку из списка выполнить нельзя,
+   пока скрипт не будет добавлен.
+3. Окружение: pip install --break-system-packages cadquery (2.8.0); сборка ~9 мин, интегральная проверка ~1 мин.
+
+## Следующий шаг
+Взять первый пункт со статусом "next" в feature_list.json, когда список будет восстановлен.

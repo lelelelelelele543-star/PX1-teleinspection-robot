@@ -41,7 +41,12 @@ WHEEL_CROWN_R=45.0
 # DERIVED: paired lower-wall crown contacts, not an arbitrary fit translation.
 PIPE_CENTER_Z=WHEEL_Z-WHEEL_CROWN_R+math.sqrt(PIPE_R**2-WHEEL_CENTRE_Y**2)
 # ESTIMATED asymmetric outer shoulder; retains D90 and total width133.
-WHEEL_PROFILE=[(26,-12),(32,-12),(42,-8),(45,0),(34.5,8),(27.5,12),(8,12),(8,-2),(26,-2)]
+# F04 (2026-11-19): outer shoulder r34.5->r28.5 @y8, edge r27.5->r20.5 @y12.
+# DERIVED limit for >=3 mm radial gap in nominal ID150 at contact pose:
+#   r <= sqrt((PIPE_R-3)^2-(WHEEL_CENTRE_Y+y)^2)-(PIPE_CENTER_Z-WHEEL_Z) -> 29.22@y8, 21.08@y12.
+# Crown r45@y0 (contact) and inner side unchanged; values themselves ESTIMATED, not OEM QRW90.
+WHEEL_PROFILE=[(26,-12),(32,-12),(42,-8),(45,0),(28.5,8),(20.5,12),(8,12),(8,-2),(26,-2)]
+WHEEL_MIN_NONCONTACT_GAP=3.0
 
 # GA24Y-370-2485 / 138:1 candidate, NOT seller-verified or manufacturing released.
 # Conservative ESTIMATED family envelope (different-ratio drawing); see procurement report.
