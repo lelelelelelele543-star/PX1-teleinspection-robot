@@ -22,7 +22,7 @@ B05;Втулка средней оси;2;PX1 middle bush 12-14-3;ID12 OD14 W3, a
 B06;Стальная втулка лифта;4;source8-10-4.5;8-10-4.5;DRW375;BUY;NOT_MODELLED;H06
 S01;X-ring колесной оси;6;SEA-002-526 /QRAR04116 N7004 reference;18.72×2.62;DRW374/TrelleborgTable8;BUY;INSTALLED_ENVELOPE;H03
 S02;СальникZ40;2;18-30-7 профиль/материалHOLD;18×30×7;DRW375;BUY;BOUNDARY;H03
-S03;O-ring боковой крышки;2;SEA-002-102;190×1.5;DRW374;BUY;NOT_MODELLED;H03
+S03;O-ring боковой крышки;2;SEA-002-102;190×1.5;DRW374;BUY;LOBED_GLAND_R28_W2_D1.15;H03 материал/давление
 S04;O-ring фланца;6;SEA-002-722;32×1.5;DRW374;BUY;FACE_GLAND_INSTALLED_D32x36.2x1.15;H03 материал/давление
 S05;O-ring корпуса;2;metric16×1;16×1;DRW375;BUY;NOT_MODELLED;H03
 S06;O-ring корпуса;2;metric38×1.5;38×1.5;DRW375;BUY;NOT_MODELLED;H03

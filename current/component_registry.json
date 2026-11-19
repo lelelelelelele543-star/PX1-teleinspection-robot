@@ -36,7 +36,27 @@
       7.0,
       60.0
     ],
-    "volume_mm3": 95186.54573,
+    "volume_mm3": 93784.3741,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_SIDE_ORING_190x1p5_-1_LOBED_GLAND_INSTALLED",
+    "category": "seal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      21.23168,
+      -35.15,
+      16.23168,
+      278.76832,
+      -34.0,
+      73.76832
+    ],
+    "dimensions_mm": [
+      257.53665,
+      1.15,
+      57.53665
+    ],
+    "volume_mm3": 1077.32252,
     "solids": 1
   },
   {
@@ -1296,7 +1316,27 @@
       7.0,
       60.0
     ],
-    "volume_mm3": 95186.54573,
+    "volume_mm3": 93784.3741,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_SIDE_ORING_190x1p5_1_LOBED_GLAND_INSTALLED",
+    "category": "seal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      21.23168,
+      34.0,
+      16.23168,
+      278.76832,
+      35.15,
+      73.76832
+    ],
+    "dimensions_mm": [
+      257.53665,
+      1.15,
+      57.53665
+    ],
+    "volume_mm3": 1077.32252,
     "solids": 1
   },
   {

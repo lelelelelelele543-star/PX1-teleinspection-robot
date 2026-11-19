@@ -43,12 +43,13 @@
     {
       "id": "F10",
       "title": "Боковое уплотнение крышки 190×1,5 (поз. 13): канавка по DRW-002-374",
-      "status": "next"
+      "status": "done",
+      "evidence": "current/09_RELEASE/f10_side_cover_seal_20261119/"
     },
     {
       "id": "F11",
       "title": "Довести массу PX1 до ~9 кг как у CRP150 (балласт/материалы корпуса), пересчитать F09",
-      "status": "todo"
+      "status": "next"
     },
     {
       "id": "F12",

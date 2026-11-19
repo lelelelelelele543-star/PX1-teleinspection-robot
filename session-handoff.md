@@ -10,6 +10,7 @@
 - F07 — резьба M5 колеса, сборка без пересечений и HOLD-контактов: current/09_RELEASE/f07_m5_cosmetic_thread_20261119/README.md.
 - F08 — крепёж M3 крышек и фланцев: current/09_RELEASE/f08_m3_fasteners_20261119/README.md.
 - F09 — бюджет тяги и скорости: current/07_TESTS/TRACTION_BUDGET_F09.md.
+- F10 — уплотнение боковой крышки 190×1,5: current/09_RELEASE/f10_side_cover_seal_20261119/README.md.
 
 ## Важно для следующей сессии
 1. Прежние feature_list.json / progress.md / session-handoff.md на GitHub отсутствовали; список F05–F10 составлен заново.
@@ -19,4 +20,4 @@
 3. Окружение: pip install --break-system-packages cadquery (2.8.0); сборка ~3–9 мин, интегральная проверка ~1 мин.
 
 ## Следующий шаг
-F10 — канавка уплотнения боковой крышки 190×1,5 по DRW-002-374 (status "next"). Источники вне чертежей: YouTube Mini-Cam Proteus, открытые источники, Google Диск.
+F11 — масса PX1 ~9 кг как у CRP150 (status "next"). Источники вне чертежей: YouTube Mini-Cam Proteus, открытые источники, Google Диск.

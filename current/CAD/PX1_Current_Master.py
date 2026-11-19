@@ -27,6 +27,10 @@ B61800=(10.0,19.0,5.0)
 XRING=(18.72,2.62)
 SEAL_18_30_7=(18.0,30.0,7.0)
 SIDE_ORING=(190.0,1.5)
+# F10 side-cover seal SEA-002-102 190x1.5, lobed track around Z50 gears (DRW-002-374 top view):
+SIDE_SEAL_R=28.0        # lobe radius about each Z50 centre, DERIVED from drawing (~27.5-28)
+SIDE_SEAL_CUSP=19.0     # track distance from axis between gears, DERIVED from drawing (~18.4-19)
+SIDE_SEAL_W=2.0; SIDE_SEAL_D=1.15   # groove in cover inner face, ESTIMATED (23% squeeze)
 FLANGE_ORING=(32.0,1.5)
 M5_COSMETIC_THREAD_R=2.5         # F07: tapped hole shown at major diameter, ISO 262 M5
 # F05 axle-flange face seal, DRW-002-374 section A-A (layout DERIVED, sizes ESTIMATED):
@@ -186,6 +190,36 @@ def make_button_screw(x,y,z,length,axis_dir):
     head=cyl_y(x,y,z,hr,hh,dir=axis_dir)
     shank=cyl_y(x,y,z,1.5,length,dir=-axis_dir)
     return fuse_all([head,shank])
+def lobed_seal_face(o):
+    """Closed lobed track (offset o from centreline) in local XY: x=X, y=Z-45. DERIVED, see F10."""
+    R=SIDE_SEAL_R; c=SIDE_SEAL_CUSP; half=25.0
+    rf=((c*c+half*half)-R*R)/(2*(R-c)); zc=c+rf
+    cx=[g for g in GEAR_X]; Rg=R+o; Rf=rf-o
+    def P(cxx,cy,r,a): return (cxx+r*math.cos(a),cy+r*math.sin(a))
+    phi=math.atan2(zc,half)
+    w=cq.Workplane('XY').moveTo(*P(cx[0],0,Rg,math.pi))
+    for sgn in (1,-1):
+        seq=cx if sgn>0 else cx[::-1]
+        for k,g in enumerate(seq):
+            first,last=k==0,k==len(seq)-1
+            if sgn>0:
+                a0=math.pi if first else math.pi-phi; a1=0.0 if last else phi
+            else:
+                a0=0.0 if first else -phi; a1=-math.pi if last else -(math.pi-phi)
+            if sgn>0: am=(a0+a1)/2
+            else: am=(a0+a1)/2
+            w=w.threePointArc(P(g,0,Rg,am),P(g,0,Rg,a1))
+            if not last:
+                nx=g+sgn*50; fx=(g+nx)/2; fy=sgn*zc
+                b0=math.atan2(-sgn*zc,(g-fx)); b1=math.atan2(-sgn*zc,(nx-fx))
+                w=w.threePointArc(P(fx,fy,Rf,-sgn*math.pi/2),P(fx,fy,Rf,b1))
+    return w.close()
+def lobed_band(o_in,o_out,depth,side,y_face):
+    outer=lobed_seal_face(o_out).extrude(depth); inner=lobed_seal_face(o_in).extrude(depth)
+    band=wp(outer.val().cut(inner.val()))
+    band=band.rotate((0,0,0),(1,0,0),90)          # local y->Z, extrusion -> -Y
+    if side>0: return band.translate((0,y_face+depth,45))
+    return band.translate((0,-y_face,45))
 def make_coupling():
     p=cyl_x(0,0,0,COUPLING_OD/2,COUPLING_L)
     bore=cyl_x(-0.5,0,0,COUPLING_BORE/2,COUPLING_L+1)
@@ -252,7 +286,10 @@ for side in (-1,1):
         for a in (45,135,225,315):  # M3 cosmetic taps for flange screws, depth 4
             fx=x+FLANGE_SCREW_R*math.cos(math.radians(a)); fz=45+FLANGE_SCREW_R*math.sin(math.radians(a))
             cv=cut(cv,cyl_y(fx,side*41.1,fz,1.5,4.1,dir=-side))
+    cv=cut(cv,lobed_band(-SIDE_SEAL_W/2,SIDE_SEAL_W/2,SIDE_SEAL_D,side,34.0))   # F10 groove
     side_covers.append((f'HOLD_SIDE_COVER_{side}_GRAPHIC262x60x7',cv));add(side_covers[-1][0],cv,'metal')
+    _hw=math.pi*.75**2/SIDE_SEAL_D/2   # area-equal installed section half-width
+    add(f'HOLD_SIDE_ORING_190x1p5_{side}_LOBED_GLAND_INSTALLED',lobed_band(-_hw,_hw,SIDE_SEAL_D,side,34.0),'seal')
     for dx in COVER_SCREW_DX:
         for dz in COVER_SCREW_DZ:
             add(f'FIX000359_M3x8_ISO7380_COVER_{side}_{int(150+dx)}_{int(45+dz)}',
