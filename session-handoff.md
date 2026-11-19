@@ -14,6 +14,7 @@
 - F11 — грузовая плита FSS-002-060, масса 6,1 кг: current/09_RELEASE/f11_weight_plate_20261119/README.md.
 - F12 — подбор мотора класса Proteus: current/08_PROCUREMENT/MOTOR_F12_PROTEUS_CLASS_20261119.md.
 - F16 — привод габарита Proteus вписан: current/09_RELEASE/f16_proteus_class_motor_20261119/README.md.
+- F17 — балласт и ступицы, масса 7,1/8,0 кг: current/09_RELEASE/f17_ballast_hubs_20261119/README.md.
 
 Решения пользователя 2026-11-19: догрузить PX1 до ~9 кг; более сильный мотор искать сейчас.
 
@@ -26,4 +27,4 @@
 3. Окружение: pip install --break-system-packages cadquery (2.8.0); сборка ~3–9 мин, интегральная проверка ~1 мин.
 
 ## Следующий шаг
-F17 — догрузка до ~9 кг: ступица/замок колеса (данные в progress.md) + балласт (status "next"); на Диске в папке CRP150 только 6 сборочных DRW (374/375/386/744/745/752). Источники вне чертежей: YouTube Mini-Cam Proteus, открытые источники, Google Диск.
+F13 — замок колеса QRW (status "next"); на Диске в папке CRP150 только 6 сборочных DRW (374/375/386/744/745/752). Источники вне чертежей: YouTube Mini-Cam Proteus, открытые источники, Google Диск.

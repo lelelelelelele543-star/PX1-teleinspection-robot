@@ -725,7 +725,7 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       5.0,
-      -66.5,
+      -65.75,
       0.0,
       95.0,
       -42.5,
@@ -733,10 +733,30 @@
     ],
     "dimensions_mm": [
       90.0,
-      24.0,
+      23.25,
       90.0
     ],
-    "volume_mm3": 82215.00109,
+    "volume_mm3": 64559.27088,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      28.0,
+      -66.5,
+      23.0,
+      72.0,
+      -52.5,
+      67.0
+    ],
+    "dimensions_mm": [
+      44.0,
+      14.0,
+      44.0
+    ],
+    "volume_mm3": 17655.73021,
     "solids": 1
   },
   {
@@ -985,7 +1005,7 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       105.0,
-      -66.5,
+      -65.75,
       0.0,
       195.0,
       -42.5,
@@ -993,10 +1013,30 @@
     ],
     "dimensions_mm": [
       90.0,
-      24.0,
+      23.25,
       90.0
     ],
-    "volume_mm3": 82215.00109,
+    "volume_mm3": 64559.27088,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      128.0,
+      -66.5,
+      23.0,
+      172.0,
+      -52.5,
+      67.0
+    ],
+    "dimensions_mm": [
+      44.0,
+      14.0,
+      44.0
+    ],
+    "volume_mm3": 17655.73021,
     "solids": 1
   },
   {
@@ -1245,7 +1285,7 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       205.0,
-      -66.5,
+      -65.75,
       0.0,
       295.0,
       -42.5,
@@ -1253,10 +1293,30 @@
     ],
     "dimensions_mm": [
       90.0,
-      24.0,
+      23.25,
       90.0
     ],
-    "volume_mm3": 82215.00109,
+    "volume_mm3": 64559.27088,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      228.0,
+      -66.5,
+      23.0,
+      272.0,
+      -52.5,
+      67.0
+    ],
+    "dimensions_mm": [
+      44.0,
+      14.0,
+      44.0
+    ],
+    "volume_mm3": 17655.73021,
     "solids": 1
   },
   {
@@ -2008,15 +2068,35 @@
       42.5,
       0.0,
       95.0,
-      66.5,
+      65.75,
       90.0
     ],
     "dimensions_mm": [
       90.0,
-      24.0,
+      23.25,
       90.0
     ],
-    "volume_mm3": 82215.00109,
+    "volume_mm3": 64559.27088,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_QRW90_HUB_AL_1_50.0_ESTIMATED",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      28.0,
+      52.5,
+      23.0,
+      72.0,
+      66.5,
+      67.0
+    ],
+    "dimensions_mm": [
+      44.0,
+      14.0,
+      44.0
+    ],
+    "volume_mm3": 17655.73021,
     "solids": 1
   },
   {
@@ -2268,15 +2348,35 @@
       42.5,
       0.0,
       195.0,
-      66.5,
+      65.75,
       90.0
     ],
     "dimensions_mm": [
       90.0,
-      24.0,
+      23.25,
       90.0
     ],
-    "volume_mm3": 82215.00109,
+    "volume_mm3": 64559.27088,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_QRW90_HUB_AL_1_150.0_ESTIMATED",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      128.0,
+      52.5,
+      23.0,
+      172.0,
+      66.5,
+      67.0
+    ],
+    "dimensions_mm": [
+      44.0,
+      14.0,
+      44.0
+    ],
+    "volume_mm3": 17655.73021,
     "solids": 1
   },
   {
@@ -2528,15 +2628,35 @@
       42.5,
       0.0,
       295.0,
-      66.5,
+      65.75,
       90.0
     ],
     "dimensions_mm": [
       90.0,
-      24.0,
+      23.25,
       90.0
     ],
-    "volume_mm3": 82215.00109,
+    "volume_mm3": 64559.27088,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_QRW90_HUB_AL_1_250.0_ESTIMATED",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      228.0,
+      52.5,
+      23.0,
+      272.0,
+      66.5,
+      67.0
+    ],
+    "dimensions_mm": [
+      44.0,
+      14.0,
+      44.0
+    ],
+    "volume_mm3": 17655.73021,
     "solids": 1
   },
   {
@@ -3957,6 +4077,106 @@
       12.0
     ],
     "volume_mm3": 149391.0,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BALLAST_1_MATERIAL_TBD",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      25.0,
+      -21.5,
+      25.0,
+      90.0,
+      -11.5,
+      66.0
+    ],
+    "dimensions_mm": [
+      65.0,
+      10.0,
+      41.0
+    ],
+    "volume_mm3": 26650.0,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BALLAST_2_MATERIAL_TBD",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      25.0,
+      11.5,
+      25.0,
+      90.0,
+      21.5,
+      66.0
+    ],
+    "dimensions_mm": [
+      65.0,
+      10.0,
+      41.0
+    ],
+    "volume_mm3": 26650.0,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BALLAST_3_MATERIAL_TBD",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      117.0,
+      -25.5,
+      25.0,
+      188.0,
+      25.5,
+      30.0
+    ],
+    "dimensions_mm": [
+      71.0,
+      51.0,
+      5.0
+    ],
+    "volume_mm3": 18105.0,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BALLAST_4_MATERIAL_TBD",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      266.0,
+      10.5,
+      25.0,
+      287.0,
+      25.5,
+      68.0
+    ],
+    "dimensions_mm": [
+      21.0,
+      15.0,
+      43.0
+    ],
+    "volume_mm3": 13545.0,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_BALLAST_5_MATERIAL_TBD",
+    "category": "metal",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      266.0,
+      -25.5,
+      25.0,
+      287.0,
+      -10.5,
+      54.0
+    ],
+    "dimensions_mm": [
+      21.0,
+      15.0,
+      29.0
+    ],
+    "volume_mm3": 9135.0,
     "solids": 1
   }
 ]

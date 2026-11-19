@@ -47,6 +47,8 @@ def master_constants(path):
 
 # Mini-Cam part-code prefixes in DRW-002-374/375/386: FAL = aluminium, FSS = stainless, FBR = brass.
 NAME_DENSITY = [  # (substring, g/cm3, reason) — first match wins, overrides category
+    ('BALLAST', 7.85, 'F17 ballast blocks, steel by default (override --ballast-density)'),
+    ('QRW90_HUB_AL', 2.7, 'F17 wheel hub, aluminium ESTIMATED'),
     ('WEIGHT_PLATE', 7.9, 'FSS-002-060 Waight Plate (DRW375)'),
     ('AXLE_FLANGE', 7.9, 'FSS-002-061 Axle Flange (DRW374)'),
     ('LIFT_SIDE_ARM', 7.9, 'FSS lift parts (DRW375 FSS-002-084/373)'),
@@ -77,9 +79,12 @@ def main():
     ap.add_argument('--motor-torque', type=float, help='override continuous output torque per motor, N·m')
     ap.add_argument('--motor-rpm', type=float, help='override loaded output speed, rpm')
     ap.add_argument('--label', default='GA24Y-370-2485 138:1')
+    ap.add_argument('--ballast-density', type=float, help='g/cm3 for HOLD_BALLAST blocks (steel 7.85, W-alloy 17.5)')
     a = ap.parse_args()
     if a.motor_torque: INPUTS['motor_rated_torque_Nm'] = (a.motor_torque, 'ESTIMATED', f'candidate {a.label}')
     if a.motor_rpm: INPUTS['motor_rated_rpm'] = (a.motor_rpm, 'ESTIMATED', f'candidate {a.label}'); INPUTS['motor_no_load_rpm'] = (a.motor_rpm*1.08, 'ESTIMATED', 'no-load ~ loaded x1.08')
+    if a.ballast_density:
+        NAME_DENSITY[0] = ('BALLAST', a.ballast_density, f'ballast override {a.ballast_density}')
     v = {k: x[0] for k, x in INPUTS.items()}
     c = master_constants(ROOT/'current/CAD/PX1_Current_Master.py')
     # Contact geometry DERIVED from master: crown contacts on lower wall, normal tilted.

@@ -27,6 +27,9 @@ B61800=(10.0,19.0,5.0)
 XRING=(18.72,2.62)
 SEAL_18_30_7=(18.0,30.0,7.0)
 SIDE_ORING=(190.0,1.5)
+# F17 ballast blocks in free cavity space (bbox search, 0.5 mm shrink, motor-extraction keep-out). Material HOLD (steel/W-alloy).
+BALLAST_BOXES=[(25.0,-21.5,25.0,90.0,-11.5,66.0),(25.0,11.5,25.0,90.0,21.5,66.0),(117.0,-25.5,25.0,188.0,25.5,30.0),(266.0,10.5,25.0,287.0,25.5,68.0),(266.0,-25.5,25.0,287.0,-10.5,54.0)]
+QRW_HUB_R=22.0   # F17 aluminium hub radius inside D90 tyre, ESTIMATED from Mini-Cam ASS-004-496 view (hub ~0.5 D)
 # F11 FSS-002-060 weight plate (DRW-002-375 A-A, 1:1): stainless, in external bottom recess, flush.
 WEIGHT_PLATE_W=50.3; WEIGHT_PLATE_H=12.0     # DERIVED from 1:1 section (±0.1)
 WEIGHT_PLATE_X0=24.5; WEIGHT_PLATE_X1=272.0  # ESTIMATED: front ~5 mm from housing end per side view; rear not visible
@@ -343,7 +346,10 @@ for side in (-1,1):
         tyre=cq.Workplane('XY').polyline(pts).close().revolve(360,(0,0),(0,1)).translate((x,side*WHEEL_CENTRE_Y,WHEEL_Z))
         tyre=cut(tyre,key)
         tyre=cut(tyre,cyl_y(x,side*60.9,45,10.2,5.7,dir=side)) # provisional retention recess H01, not OEM quick-lock
+        hubcyl=cyl_y(x,side*30,45,QRW_HUB_R,40,dir=side)
+        hub=wp(tyre.val().intersect(hubcyl.val())); tyre=cut(tyre,hubcyl)
         add(f'HOLD_QRW90SR150_WHEEL_{side}_{x}_ENGINEERED_OUTER_SHOULDER',tyre,'wheel')
+        add(f'HOLD_QRW90_HUB_AL_{side}_{x}_ESTIMATED',hub,'metal')
         add(f'HOLD_WHEEL_RETENTION_WASHER_{side}_{x}',ring_y(x,side*61.9,45,10,2.7,2),'metal')
         bolt=fuse_all([cyl_y(x,side*51.5,45,2.5,11.4,dir=side),cyl_y(x,side*62.9,45,4.25,3.5,dir=side)])
         add(f'HOLD_WHEEL_RETENTION_M5_{side}_{x}_QUICKLOCK_UNRESOLVED',bolt,'shaft')
@@ -517,6 +523,8 @@ add('HOLD_REAR_TETHER_STRAIN_SLEEVE',strain,'metal');add('HOLD_REAR_TETHER_ARAMI
 add('HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_UNKNOWN',cyl_x(348,0,45,4.5,80),'cable')
 add('FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD',
     box0(WEIGHT_PLATE_X0,-WEIGHT_PLATE_W/2,BODY_Z0,WEIGHT_PLATE_X1-WEIGHT_PLATE_X0,WEIGHT_PLATE_W,WEIGHT_PLATE_H),'metal')
+for i,b in enumerate(BALLAST_BOXES,1):
+    add(f'HOLD_BALLAST_{i}_MATERIAL_TBD',box0(b[0],b[1],b[2],b[3]-b[0],b[4]-b[1],b[5]-b[2]),'metal')
 components.insert(0,('HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED',body,'body'))
 from release_tools import finish_build
 finish_build(globals())

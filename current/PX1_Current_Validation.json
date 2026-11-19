@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "58b240d3075814fdefc5a096c372c95c9f81dabfeeefd21fc4622e9be7c14ca9",
+  "source_sha256": "47eeb54ca00512753ad2a3a5a358e9b42c42b474f4f8a845de30f9fef6d8b479",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -31,11 +31,11 @@
     "camera_harness_cores": 6
   },
   "counts_match": true,
-  "component_count": 198,
+  "component_count": 209,
   "invalid_shapes": [],
   "collision_method": {
-    "all_pairs": 19503,
-    "boolean_pairs_after_AABB": 578,
+    "all_pairs": 21736,
+    "boolean_pairs_after_AABB": 613,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
@@ -269,6 +269,12 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED",
+        "clearance_mm": 3.2202,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "HOLD_WHEEL_RETENTION_WASHER_-1_50.0",
         "clearance_mm": 9.9657,
         "status": "SCREEN_ONLY",
@@ -347,6 +353,12 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED",
+        "clearance_mm": 3.2202,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "HOLD_WHEEL_RETENTION_WASHER_-1_150.0",
         "clearance_mm": 9.9657,
         "status": "SCREEN_ONLY",
@@ -421,6 +433,12 @@
       {
         "id": "HOLD_QRW90SR150_WHEEL_-1_250.0_ENGINEERED_OUTER_SHOULDER",
         "clearance_mm": 0.0061,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED",
+        "clearance_mm": 3.2202,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -653,6 +671,12 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "HOLD_QRW90_HUB_AL_1_50.0_ESTIMATED",
+        "clearance_mm": 3.2202,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "HOLD_WHEEL_RETENTION_WASHER_1_50.0",
         "clearance_mm": 9.9657,
         "status": "SCREEN_ONLY",
@@ -731,6 +755,12 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "HOLD_QRW90_HUB_AL_1_150.0_ESTIMATED",
+        "clearance_mm": 3.2202,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "HOLD_WHEEL_RETENTION_WASHER_1_150.0",
         "clearance_mm": 9.9657,
         "status": "SCREEN_ONLY",
@@ -805,6 +835,12 @@
       {
         "id": "HOLD_QRW90SR150_WHEEL_1_250.0_ENGINEERED_OUTER_SHOULDER",
         "clearance_mm": 0.0061,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_1_250.0_ESTIMATED",
+        "clearance_mm": 3.2202,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1233,6 +1269,36 @@
         "clearance_mm": 27.3058,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_BALLAST_1_MATERIAL_TBD",
+        "clearance_mm": 40.8564,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_BALLAST_2_MATERIAL_TBD",
+        "clearance_mm": 40.8564,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_BALLAST_3_MATERIAL_TBD",
+        "clearance_mm": 38.2062,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_BALLAST_4_MATERIAL_TBD",
+        "clearance_mm": 38.2062,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_BALLAST_5_MATERIAL_TBD",
+        "clearance_mm": 38.2062,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
       }
     ],
     "global_status": "HOLD: nominal CAD containment only; tyre profile is engineered estimate, physical tyre/contact/tolerances unqualified"
@@ -1621,6 +1687,7 @@
     "FIX002738_M3x6_ISO7380_FLANGE_-1_50_135": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_50_135.step",
     "FIX002738_M3x6_ISO7380_FLANGE_-1_50_225": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_50_225.step",
     "FIX002738_M3x6_ISO7380_FLANGE_-1_50_315": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_50_315.step",
+    "HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED": "CAD/Metal_HOLD/HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED.step",
     "HOLD_WHEEL_RETENTION_WASHER_-1_50.0": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_WASHER_-1_50.0.step",
     "HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED.step",
     "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE": "CAD/Metal_HOLD/HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE.step",
@@ -1630,6 +1697,7 @@
     "FIX002738_M3x6_ISO7380_FLANGE_-1_150_135": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_150_135.step",
     "FIX002738_M3x6_ISO7380_FLANGE_-1_150_225": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_150_225.step",
     "FIX002738_M3x6_ISO7380_FLANGE_-1_150_315": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_150_315.step",
+    "HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED": "CAD/Metal_HOLD/HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED.step",
     "HOLD_WHEEL_RETENTION_WASHER_-1_150.0": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_WASHER_-1_150.0.step",
     "HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED.step",
     "HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE": "CAD/Metal_HOLD/HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE.step",
@@ -1639,6 +1707,7 @@
     "FIX002738_M3x6_ISO7380_FLANGE_-1_250_135": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_250_135.step",
     "FIX002738_M3x6_ISO7380_FLANGE_-1_250_225": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_250_225.step",
     "FIX002738_M3x6_ISO7380_FLANGE_-1_250_315": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_250_315.step",
+    "HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED": "CAD/Metal_HOLD/HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED.step",
     "HOLD_WHEEL_RETENTION_WASHER_-1_250.0": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_WASHER_-1_250.0.step",
     "HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED.step",
     "HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD": "CAD/Metal_HOLD/HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD.step",
@@ -1664,7 +1733,12 @@
     "HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN": "CAD/Metal_HOLD/HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN.step",
     "HOLD_REAR_TETHER_STRAIN_SLEEVE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_STRAIN_SLEEVE.step",
     "HOLD_REAR_TETHER_ARAMID_CONE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_ARAMID_CONE.step",
-    "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD": "CAD/Metal_HOLD/FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD.step"
+    "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD": "CAD/Metal_HOLD/FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD.step",
+    "HOLD_BALLAST_1_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_1_MATERIAL_TBD.step",
+    "HOLD_BALLAST_2_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_2_MATERIAL_TBD.step",
+    "HOLD_BALLAST_3_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_3_MATERIAL_TBD.step",
+    "HOLD_BALLAST_4_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_4_MATERIAL_TBD.step",
+    "HOLD_BALLAST_5_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_5_MATERIAL_TBD.step"
   },
   "unmodelled_required_items": [
     "complete camera PAN/TILT/lighting/control internals",
