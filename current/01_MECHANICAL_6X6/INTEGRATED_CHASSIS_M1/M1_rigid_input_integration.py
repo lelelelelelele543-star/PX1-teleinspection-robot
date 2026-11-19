@@ -11,9 +11,13 @@ checks=[]
 for side,sgn in [('L',-1),('R',1)]:
     # Shared shaft/hub: 19..33 mm from mid-plane, Z40 19..27, Z50 27..33.
     y0=19 if sgn==1 else -33
-    hub=Part.makeCylinder(7,14,V(110,y0,0),V(0,1,0))
+    hub=Part.makeCylinder(7,14,V(100,y0,0),V(0,1,0))
     obj=D.addObject('PartDesign::Feature','Rigid_Z40_Z50_hub_'+side+'_ASSUMED')
     obj.Shape=hub;obj.ViewObject.ShapeColor=(0.3,0.75,0.85);parts.append(obj)
+    z40=next(o for o in parts if o.Name=='Bevel_Z40_PROXY_'+side)
+    z50=next(o for o in parts if o.Name=='Z50_pitch_PROXY_'+side+'_5')
+    assert abs(hub.BoundBox.XCenter-z40.Shape.BoundBox.XCenter)<1e-6
+    assert abs(hub.BoundBox.XCenter-z50.Shape.BoundBox.XCenter)<1e-6
     checks.append({'side':side,'status':'PASS','check':'hub nominally spans Z40/Z50 axial interface',
                    'note':'Geometric proxy; real key/spline, bearing, stress and torque NOT_RUN'})
     nodes=['motor','Z16','Z40','hub','Z50_5','Z50_4','Z50_3','Z50_2','Z50_1',
