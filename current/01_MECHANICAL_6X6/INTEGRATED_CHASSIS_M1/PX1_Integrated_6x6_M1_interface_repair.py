@@ -29,9 +29,26 @@ for xx in P["stations"]:
         # Bearing 10x22x7 occupies Y=34..41; cut full 5 mm shell wall (34..39).
         # Previous Y=35..38 pocket left 2 mm of rigid shell/bearing interference.
         outer=outer.cut(cyl(11,5,(xx,sign*34,0),(0,sign,0)))
+# Eight blind M3 pilot holes on the existing solid lid land, never through the pressure boundary.
+# These are ESTIMATED locations; no thread, torque, gasket stress or pressure proof is implied.
+lid_bolts=[(x,y) for x in (-90.,0.,90.) for y in (-34.5,34.5)]
+lid_bolts += [(-90.,0.),(90.,0.)]
+assert len(lid_bolts)==8 and len(set(lid_bolts))==8
+for bx,by in lid_bolts:
+    outer=outer.cut(cyl(1.25,4,(bx,by,31),(0,0,1)))
 add("Body_hollow_ASSUMED",outer.cut(inner).cut(lid_opening),(0.64,0.69,0.73))
-# Separate lid is a design envelope; cut aperture into top before production release.
-add("Lid_ASSUMED",Part.makeBox(178,68,4,V(-89,-34,35+P["lid_gasket_nominal"]-P["lid_gasket_compression"])),(0.18,0.4,0.62))
+# 190 x 78 lid provides a nominal 10 mm x-land and 9 mm y-land around aperture.
+# Existing gasket stays 174 x 64; holes are outside its nominal footprint.
+lid_bottom=35+P["lid_gasket_nominal"]-P["lid_gasket_compression"]
+lid_shape=Part.makeBox(190,78,4,V(-95,-39,lid_bottom))
+for bx,by in lid_bolts:
+    lid_shape=lid_shape.cut(cyl(1.7,4,(bx,by,lid_bottom),(0,0,1)))
+add("Lid_ASSUMED",lid_shape,(0.18,0.4,0.62))
+for i,(bx,by) in enumerate(lid_bolts,1):
+    # Screw is a proxy only; no thread engagement, washer or preload model.
+    shank=cyl(1.5,7.7,(bx,by,32),(0,0,1))
+    head=cyl(2.8,2.5,(bx,by,lid_bottom+4),(0,0,1))
+    add("Lid_M3_fastener_PROXY_"+str(i),shank.fuse(head),(0.65,0.65,0.68))
 gasket=Part.makeBox(174,64,1,V(-87,-32,35)).cut(Part.makeBox(166,56,1,V(-83,-28,35)))
 add("Lid_gasket_PROXY",gasket,(0.18,0.64,0.35))
 for side,s in (("L",-1),("R",1)):
@@ -101,14 +118,14 @@ assert wheel_body_side_gap >= 1, "Wheel touches outer shell"
 assert gear_inner_wall_gap >= 1, "Z50 proxy touches inner wall"
 assert gear_bottom_gap >= 1, "Z50 proxy cuts bottom wall"
 # Lid perimeter: 4 mm nominal flange outside 170x60 opening; gasket lands on top face.
-assert (178-170)/2 >= 4 and (68-60)/2 >= 4, "Lid flange below design target"
-assert 68 <= P["body_W"] and 64 <= P["body_W"], "Lid/gasket overhang body"
+assert (190-170)/2 >= 9 and (78-60)/2 >= 9, "Lid flange below design target"
+assert 78 <= P["body_W"] and 64 <= P["body_W"], "Lid/gasket overhang body"
 assert 35 == P["body_H"]/2, "Gasket does not sit on top of shell"
 # Design-target gasket compression by lid placement; no fasteners or material stiffness yet.
 lid_z=35+P["lid_gasket_nominal"]-P["lid_gasket_compression"]
 assert 0 < P["lid_gasket_compression"] < P["lid_gasket_nominal"]
 assert abs(lid_z-35.7)<1e-8
-print("PASS nominal lid/gasket overlap",P["lid_gasket_compression"],"mm; NOT_RUN clamp load, gasket extrusion, groove and bolts")
+print("PASS nominal lid/gasket overlap",P["lid_gasket_compression"],"mm; 8 blind M3 pilot holes, 8 fastener proxies; NOT_RUN clamp load, gasket extrusion and threads")
 print("PASS nominal static clearances wheel/body",wheel_body_side_gap,"gear/inner-wall",gear_inner_wall_gap,"gear/bottom",gear_bottom_gap,"mm")
 print("PASS motor/spur Y clearance", motor_to_spur_y_clearance,
       "mm; left/right motor clearance", motor_pair_y_clearance, "mm")
@@ -164,6 +181,13 @@ print("NOT_RUN actual bearing fits, idler loads and volumetric Boolean collision
 assert len([o for o in parts if o.Name.startswith("Wheel_L_") or o.Name.startswith("Wheel_R_")])==6
 print("PASS wheel clearance",wheel_gap,"mm; Z50 pitch",gear_pitch,"mm; motor top",motor_top,"mm; DN150 radial wheel",wheel_radial_envelope,"mm; body",body_radial_envelope,"mm")
 print("NOT_RUN bevel contact, real teeth, bearing fits, pressure seals, volumetric interference")
+# Validate fastener inventory and lid hole placement against aperture and gasket.
+assert len([o for o in parts if o.Name.startswith("Lid_M3_fastener_PROXY_")])==8
+for bx,by in lid_bolts:
+    assert (abs(bx)>=90 or abs(by)>=34.5)
+    assert abs(bx)<=95-2.8 and abs(by)<=39-2.8, "M3 head exceeds lid boundary"
+    assert abs(bx)>87 or abs(by)>32, "M3 screw intrudes into gasket footprint"
+print("PASS 8 lid fastener proxy positions and blind pilot depths; PHYSICAL_CHECK thread engagement and pressure preload")
 D.recompute()
 D.saveAs(os.path.join(ROOT,"PX1_Integrated_6x6_M1.FCStd"))
 Part.export(parts,os.path.join(ROOT,"PX1_Integrated_6x6_M1.step"))
