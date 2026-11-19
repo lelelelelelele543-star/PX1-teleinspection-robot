@@ -1,0 +1,54 @@
+{
+  "source": "PX1_Integrated_6x6_M1_interface_repair.py",
+  "classification": "DESIGN_ASSUMPTIONS",
+  "checks": [
+    {
+      "name": "6 wheel stations",
+      "status": "PASS"
+    },
+    {
+      "name": "10 gear positions",
+      "status": "PASS"
+    },
+    {
+      "name": "DN150 conservative wheel corner >=2mm",
+      "status": "PASS"
+    },
+    {
+      "name": "bearing counterbore penetrates shell",
+      "status": "PASS"
+    },
+    {
+      "name": "seal packaging 4mm +1mm",
+      "status": "PASS"
+    },
+    {
+      "name": "nominal gasket overlap",
+      "status": "PASS"
+    },
+    {
+      "name": "all sidewall passages have modeled pressure seals",
+      "status": "FAIL"
+    },
+    {
+      "name": "pressure-qualified dynamic seals",
+      "status": "FAIL"
+    },
+    {
+      "name": "lid mechanical fastening",
+      "status": "FAIL"
+    },
+    {
+      "name": "gear involute tooth geometry",
+      "status": "FAIL"
+    }
+  ],
+  "summary": {
+    "PASS": 6,
+    "FAIL": 4
+  },
+  "freecad": "NOT_RUN",
+  "step": "NOT_RUN",
+  "pressure_test": "PHYSICAL_CHECK",
+  "note": "Reference diagnostic snapshot; regenerate with Python audit for detailed results."
+}
