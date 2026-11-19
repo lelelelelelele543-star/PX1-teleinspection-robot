@@ -5,3 +5,7 @@
 - Зазор до ID150 вне опоры: 3.36 / 3.22 мм (было 0.24 / 0.30). Предел DERIVED, значения ESTIMATED.
 - build_current.sh PASS, check_pipe_pose.py --active PASS, check_integrated.py --roundtrip --require-pipe-service 19/19 PASS.
 - tools/drawing_measure/check_master_vs_drawings.py в ветке отсутствует — не запускался.
+
+## 2026-11-19 · F05 — DONE
+- Узел фланца оси приведён к DRW-002-374 A-A: 61903 на стыке, хвостовик убран, торцевая канавка Ø32…36,2×1,15 во фланце.
+- HOLD-контактов 20 → 8, жёстких пересечений 0, проверка трубы PASS, интегральная 19/19 PASS.

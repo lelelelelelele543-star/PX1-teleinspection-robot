@@ -28,6 +28,14 @@ XRING=(18.72,2.62)
 SEAL_18_30_7=(18.0,30.0,7.0)
 SIDE_ORING=(190.0,1.5)
 FLANGE_ORING=(32.0,1.5)
+# F05 axle-flange face seal, DRW-002-374 section A-A (layout DERIVED, sizes ESTIMATED):
+COVER_BEARING_BORE_R=15.0      # 61903 OD30 seat in side cover, CONFIRMED bearing OD
+COVER_BEARING_SHOULDER_R=13.5  # Ø27 <= SKF Da max 28 for 61903, ESTIMATED
+FLANGE_GROOVE_RI=16.0          # = O-ring ID32/2, zero stretch, ESTIMATED
+FLANGE_GROOVE_RO=18.1          # width 2.1, ESTIMATED
+FLANGE_GROOVE_DEPTH=1.15       # 23% squeeze of CS1.5, ESTIMATED
+FLANGE_COLLAR_T=3.5            # was 2.0; leaves 2.35 above groove, ESTIMATED
+FLANGE_ORING_INST_RO=FLANGE_GROOVE_RI+math.pi*.75**2/FLANGE_GROOVE_DEPTH  # area-equal installed section
 
 # Current reconstructed global CRP150/PX1 screen from recovered CAD audits.
 # These are NOT released manufacturing dimensions unless separately called out.
@@ -217,7 +225,10 @@ for side in (-1,1):
         body=cut(body,cyl_y(x,side*y,45,r,w+.1,dir=side))
     for x in (100,200): body=cut(body,cyl_y(x,side*24,45,5,10.2,dir=side))
     cv=boxc(150,side*37.5,45,262,7,60).edges('|Y').chamfer(1)
-    for x in WHEEL_X: cv=cut(cv,cyl_y(x,side*33.9,45,17.05,7.2,dir=side))
+    # F05 per DRW-002-374 A-A: 61903 straddles cover/flange joint, no flange spigot.
+    for x in WHEEL_X:
+        cv=cut(cv,cyl_y(x,side*33.9,45,COVER_BEARING_SHOULDER_R,5.2,dir=side)) # outer-race shoulder
+        cv=cut(cv,cyl_y(x,side*38.9,45,COVER_BEARING_BORE_R,2.2,dir=side))     # 61903 OD30 seat
     side_covers.append((f'HOLD_SIDE_COVER_{side}_GRAPHIC262x60x7',cv));add(side_covers[-1][0],cv,'metal')
     for j,x in enumerate(GEAR_X):
         gear=make_spur_gear(50,1,4,12,'Y')
@@ -237,13 +248,16 @@ for side in (-1,1):
         add(f'HOLD_WHEEL_SHAFT_{side}_{x}_GRAPHIC_AXIAL_PACKAGE',shaft,'shaft')
         add(f'KEY_4x4x12_{side}_{x}',key,'shaft')
         add(f'61903_SIDE_{side}_{x}',make_bearing(17,30,7).translate((x,side*42.5,45)),'bearing')
-        flange=fuse_all([cyl_y(x,side*38,45,17,10.8,dir=side),cyl_y(x,side*41,45,25,2,dir=side)])
-        flange=cut(flange,cyl_y(x,side*37.9,45,9.08,11.2,dir=side))
-        flange=cut(flange,cyl_y(x,side*39,45,15,7,dir=side))
+        flange=fuse_all([cyl_y(x,side*41,45,17,7.8,dir=side),cyl_y(x,side*41,45,25,FLANGE_COLLAR_T,dir=side)])
+        flange=cut(flange,cyl_y(x,side*40.9,45,9.08,8.2,dir=side))
+        flange=cut(flange,cyl_y(x,side*40.9,45,15,5.1,dir=side))
+        # Face-seal groove in flange underside (DRW374 pos.11 location; dims ESTIMATED).
+        flange=cut(flange,ring_y(x,side*(41+FLANGE_GROOVE_DEPTH/2-.05),45,FLANGE_GROOVE_RO,FLANGE_GROOVE_RI,FLANGE_GROOVE_DEPTH+.1))
         flange=cut(flange,cyl_y(x,side*46,45,11.4,2.8,dir=side))
         add(f'HOLD_AXLE_FLANGE_{side}_{x}_GRAPHIC_CONTOUR',flange,'metal')
         add(f'HOLD_XRING_INSTALLED_{side}_{x}_FREE18p72x2p62',ring_y(x,side*47.4,45,11.4,9,2.8),'seal')
-        add(f'HOLD_FLANGE_ORING_32x1p5_{side}_{x}',wp(cq.Solid.makeTorus(16.75,.75,cq.Vector(x,side*40.5,45),cq.Vector(0,1,0))),'seal')
+        add(f'HOLD_FLANGE_ORING_32x1p5_{side}_{x}_FACE_GLAND_INSTALLED',
+            ring_y(x,side*(41+FLANGE_GROOVE_DEPTH/2),45,FLANGE_ORING_INST_RO,FLANGE_GROOVE_RI,FLANGE_GROOVE_DEPTH),'seal')
         pts=list(WHEEL_PROFILE)
         if side<0:pts=[(r,-yy) for r,yy in pts]
         tyre=cq.Workplane('XY').polyline(pts).close().revolve(360,(0,0),(0,1)).translate((x,side*WHEEL_CENTRE_Y,WHEEL_Z))

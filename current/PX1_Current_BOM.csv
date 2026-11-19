@@ -23,7 +23,7 @@ B06;Стальная втулка лифта;4;source8-10-4.5;8-10-4.5;DRW375;BU
 S01;X-ring колесной оси;6;SEA-002-526 /QRAR04116 N7004 reference;18.72×2.62;DRW374/TrelleborgTable8;BUY;INSTALLED_ENVELOPE;H03
 S02;СальникZ40;2;18-30-7 профиль/материалHOLD;18×30×7;DRW375;BUY;BOUNDARY;H03
 S03;O-ring боковой крышки;2;SEA-002-102;190×1.5;DRW374;BUY;NOT_MODELLED;H03
-S04;O-ring фланца;6;SEA-002-722;32×1.5;DRW374;BUY;FREE_RING_ENVELOPE;H03
+S04;O-ring фланца;6;SEA-002-722;32×1.5;DRW374;BUY;FACE_GLAND_INSTALLED_D32x36.2x1.15;H03 материал/давление
 S05;O-ring корпуса;2;metric16×1;16×1;DRW375;BUY;NOT_MODELLED;H03
 S06;O-ring корпуса;2;metric38×1.5;38×1.5;DRW375;BUY;NOT_MODELLED;H03
 S07;O-ring крышкиPRESSURE;1;"closed moulded face seal candidate; NOT legacy110x1.5";section1.5, rounded-rectangle centreline166x58 R3;pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;GROOVE_ONLY_SEAL_NOT_MODELLED;H03 exact closed seal/material and pressure qualification required

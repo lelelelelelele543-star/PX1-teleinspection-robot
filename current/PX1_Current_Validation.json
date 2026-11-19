@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "b96c79addcfc0d24d95652a4fff1dcf4a2cafd1732c84cb5cb7d37048b4823ed",
+  "source_sha256": "cf1ed1c4759ac1cdf4cd5a6218d63306e59032252f45a321d8753283fae9cf02",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -35,41 +35,17 @@
   "invalid_shapes": [],
   "collision_method": {
     "all_pairs": 10731,
-    "boolean_pairs_after_AABB": 345,
+    "boolean_pairs_after_AABB": 333,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
   },
   "interferences": [
     {
-      "a": "HOLD_SIDE_COVER_-1_GRAPHIC262x60x7",
-      "b": "HOLD_FLANGE_ORING_32x1p5_-1_50.0",
-      "volume_mm3": 45.275848,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
-      "a": "HOLD_SIDE_COVER_-1_GRAPHIC262x60x7",
-      "b": "HOLD_FLANGE_ORING_32x1p5_-1_150.0",
-      "volume_mm3": 45.275848,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
-      "a": "HOLD_SIDE_COVER_-1_GRAPHIC262x60x7",
-      "b": "HOLD_FLANGE_ORING_32x1p5_-1_250.0",
-      "volume_mm3": 45.275848,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
       "a": "HOLD_WHEEL_SHAFT_-1_50.0_GRAPHIC_AXIAL_PACKAGE",
       "b": "HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED",
       "volume_mm3": 54.336987,
       "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    },
-    {
-      "a": "HOLD_AXLE_FLANGE_-1_50.0_GRAPHIC_CONTOUR",
-      "b": "HOLD_FLANGE_ORING_32x1p5_-1_50.0",
-      "volume_mm3": 134.299143,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
     },
     {
       "a": "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE",
@@ -78,40 +54,10 @@
       "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
     },
     {
-      "a": "HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR",
-      "b": "HOLD_FLANGE_ORING_32x1p5_-1_150.0",
-      "volume_mm3": 134.299143,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
       "a": "HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE",
       "b": "HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED",
       "volume_mm3": 54.336987,
       "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    },
-    {
-      "a": "HOLD_AXLE_FLANGE_-1_250.0_GRAPHIC_CONTOUR",
-      "b": "HOLD_FLANGE_ORING_32x1p5_-1_250.0",
-      "volume_mm3": 134.299143,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
-      "a": "HOLD_SIDE_COVER_1_GRAPHIC262x60x7",
-      "b": "HOLD_FLANGE_ORING_32x1p5_1_50.0",
-      "volume_mm3": 45.275848,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
-      "a": "HOLD_SIDE_COVER_1_GRAPHIC262x60x7",
-      "b": "HOLD_FLANGE_ORING_32x1p5_1_150.0",
-      "volume_mm3": 45.275848,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
-      "a": "HOLD_SIDE_COVER_1_GRAPHIC262x60x7",
-      "b": "HOLD_FLANGE_ORING_32x1p5_1_250.0",
-      "volume_mm3": 45.275848,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
     },
     {
       "a": "HOLD_WHEEL_SHAFT_1_50.0_GRAPHIC_AXIAL_PACKAGE",
@@ -120,34 +66,16 @@
       "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
     },
     {
-      "a": "HOLD_AXLE_FLANGE_1_50.0_GRAPHIC_CONTOUR",
-      "b": "HOLD_FLANGE_ORING_32x1p5_1_50.0",
-      "volume_mm3": 134.299143,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
       "a": "HOLD_WHEEL_SHAFT_1_150.0_GRAPHIC_AXIAL_PACKAGE",
       "b": "HOLD_WHEEL_RETENTION_M5_1_150.0_QUICKLOCK_UNRESOLVED",
       "volume_mm3": 54.336987,
       "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
     },
     {
-      "a": "HOLD_AXLE_FLANGE_1_150.0_GRAPHIC_CONTOUR",
-      "b": "HOLD_FLANGE_ORING_32x1p5_1_150.0",
-      "volume_mm3": 134.299143,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
-    },
-    {
       "a": "HOLD_WHEEL_SHAFT_1_250.0_GRAPHIC_AXIAL_PACKAGE",
       "b": "HOLD_WHEEL_RETENTION_M5_1_250.0_QUICKLOCK_UNRESOLVED",
       "volume_mm3": 54.336987,
       "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
-    },
-    {
-      "a": "HOLD_AXLE_FLANGE_1_250.0_GRAPHIC_CONTOUR",
-      "b": "HOLD_FLANGE_ORING_32x1p5_1_250.0",
-      "volume_mm3": 134.299143,
-      "classification": "SEAL_CONTACT_REQUIRES_GLAND_CHECK"
     },
     {
       "a": "HOLD_Z40_BEVEL_-1_CONICAL_ENVELOPE",
@@ -265,7 +193,7 @@
       },
       {
         "id": "HOLD_AXLE_FLANGE_-1_50.0_GRAPHIC_CONTOUR",
-        "clearance_mm": 20.8259,
+        "clearance_mm": 20.4653,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -276,8 +204,8 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_FLANGE_ORING_32x1p5_-1_50.0",
-        "clearance_mm": 27.5388,
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_50.0_FACE_GLAND_INSTALLED",
+        "clearance_mm": 26.466,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -319,7 +247,7 @@
       },
       {
         "id": "HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR",
-        "clearance_mm": 20.8259,
+        "clearance_mm": 20.4653,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -330,8 +258,8 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_FLANGE_ORING_32x1p5_-1_150.0",
-        "clearance_mm": 27.5388,
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_150.0_FACE_GLAND_INSTALLED",
+        "clearance_mm": 26.466,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -373,7 +301,7 @@
       },
       {
         "id": "HOLD_AXLE_FLANGE_-1_250.0_GRAPHIC_CONTOUR",
-        "clearance_mm": 20.8259,
+        "clearance_mm": 20.4653,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -384,8 +312,8 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_FLANGE_ORING_32x1p5_-1_250.0",
-        "clearance_mm": 27.5388,
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_250.0_FACE_GLAND_INSTALLED",
+        "clearance_mm": 26.466,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -499,7 +427,7 @@
       },
       {
         "id": "HOLD_AXLE_FLANGE_1_50.0_GRAPHIC_CONTOUR",
-        "clearance_mm": 20.8259,
+        "clearance_mm": 20.4653,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -510,8 +438,8 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_FLANGE_ORING_32x1p5_1_50.0",
-        "clearance_mm": 27.5388,
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_50.0_FACE_GLAND_INSTALLED",
+        "clearance_mm": 26.466,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -553,7 +481,7 @@
       },
       {
         "id": "HOLD_AXLE_FLANGE_1_150.0_GRAPHIC_CONTOUR",
-        "clearance_mm": 20.8259,
+        "clearance_mm": 20.4653,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -564,8 +492,8 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_FLANGE_ORING_32x1p5_1_150.0",
-        "clearance_mm": 27.5388,
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_150.0_FACE_GLAND_INSTALLED",
+        "clearance_mm": 26.466,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -607,7 +535,7 @@
       },
       {
         "id": "HOLD_AXLE_FLANGE_1_250.0_GRAPHIC_CONTOUR",
-        "clearance_mm": 20.8259,
+        "clearance_mm": 20.4653,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -618,8 +546,8 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_FLANGE_ORING_32x1p5_1_250.0",
-        "clearance_mm": 27.5388,
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_250.0_FACE_GLAND_INSTALLED",
+        "clearance_mm": 26.466,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1065,6 +993,12 @@
       "errors": [],
       "release": "HOLD: motor-envelope trajectory only, preceding removals, actual motors/leads and tool access unqualified",
       "removed_before_screen": [
+        "HOLD_FLANGE_ORING_32x1p5_-1_50.0_FACE_GLAND_INSTALLED",
+        "HOLD_FLANGE_ORING_32x1p5_-1_150.0_FACE_GLAND_INSTALLED",
+        "HOLD_FLANGE_ORING_32x1p5_-1_250.0_FACE_GLAND_INSTALLED",
+        "HOLD_FLANGE_ORING_32x1p5_1_50.0_FACE_GLAND_INSTALLED",
+        "HOLD_FLANGE_ORING_32x1p5_1_150.0_FACE_GLAND_INSTALLED",
+        "HOLD_FLANGE_ORING_32x1p5_1_250.0_FACE_GLAND_INSTALLED",
         "HOLD_NBK_MLR20C_6_6_COUPLING_-1_EXTERNAL_DETAIL",
         "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1",
         "HOLD_NBK_MLR20C_6_6_COUPLING_1_EXTERNAL_DETAIL",

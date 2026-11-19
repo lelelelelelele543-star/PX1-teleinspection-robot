@@ -1,0 +1,179 @@
+{
+  "status": "PASS_REQUESTED_CAD_SCREENS_WITH_RELEASE_HOLD",
+  "manufacturing_release": false,
+  "source_sha256": "cf1ed1c4759ac1cdf4cd5a6218d63306e59032252f45a321d8753283fae9cf02",
+  "build_source_sha256": "cf1ed1c4759ac1cdf4cd5a6218d63306e59032252f45a321d8753283fae9cf02",
+  "step_sha256": "e02d6c894ff38e9536133945bb093f2bbc98a971fa2e9862b86b08436b32970e",
+  "checks": {
+    "counts_match_frozen_architecture": true,
+    "wheel_stations_preserved": true,
+    "gear_stations_preserved": true,
+    "component_ids_unique": true,
+    "source_matches_current_master": true,
+    "valid_shapes": true,
+    "boolean_errors_absent": true,
+    "no_excluded_pairs": true,
+    "all_pairs_enumerated": true,
+    "component_count_matches": true,
+    "no_rigid_or_wheel_or_unknown_clashes": true,
+    "manufacturing_release_remains_false": true,
+    "step_exists": true,
+    "spur_sampled_screen": true,
+    "step_roundtrip": true,
+    "pipe_contact_profile_and_solid_bounds": true,
+    "motor_continuous_exit": true,
+    "motor_discrete_exit": true,
+    "four_service_tool_approaches": true
+  },
+  "interference_class_counts": {
+    "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY": 6,
+    "TOOTH_CONTACT_HOLD": 2
+  },
+  "blocking_interferences": [],
+  "unqualified_contacts_status": "HOLD",
+  "unqualified_contacts": [
+    {
+      "a": "HOLD_WHEEL_SHAFT_-1_50.0_GRAPHIC_AXIAL_PACKAGE",
+      "b": "HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED",
+      "volume_mm3": 54.336987,
+      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
+    },
+    {
+      "a": "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE",
+      "b": "HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED",
+      "volume_mm3": 54.336987,
+      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
+    },
+    {
+      "a": "HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE",
+      "b": "HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED",
+      "volume_mm3": 54.336987,
+      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
+    },
+    {
+      "a": "HOLD_WHEEL_SHAFT_1_50.0_GRAPHIC_AXIAL_PACKAGE",
+      "b": "HOLD_WHEEL_RETENTION_M5_1_50.0_QUICKLOCK_UNRESOLVED",
+      "volume_mm3": 54.336987,
+      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
+    },
+    {
+      "a": "HOLD_WHEEL_SHAFT_1_150.0_GRAPHIC_AXIAL_PACKAGE",
+      "b": "HOLD_WHEEL_RETENTION_M5_1_150.0_QUICKLOCK_UNRESOLVED",
+      "volume_mm3": 54.336987,
+      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
+    },
+    {
+      "a": "HOLD_WHEEL_SHAFT_1_250.0_GRAPHIC_AXIAL_PACKAGE",
+      "b": "HOLD_WHEEL_RETENTION_M5_1_250.0_QUICKLOCK_UNRESOLVED",
+      "volume_mm3": 54.336987,
+      "classification": "THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY"
+    },
+    {
+      "a": "HOLD_Z40_BEVEL_-1_CONICAL_ENVELOPE",
+      "b": "HOLD_Z16_BEVEL_-1_CONICAL_ENVELOPE",
+      "volume_mm3": 2.185653,
+      "classification": "TOOTH_CONTACT_HOLD"
+    },
+    {
+      "a": "HOLD_Z40_BEVEL_1_CONICAL_ENVELOPE",
+      "b": "HOLD_Z16_BEVEL_1_CONICAL_ENVELOPE",
+      "volume_mm3": 2.185653,
+      "classification": "TOOTH_CONTACT_HOLD"
+    }
+  ],
+  "physical_A0_A1_A5_tests": "NOT_PERFORMED",
+  "dn150_status": "HOLD: nominal CAD containment only; tyre profile is engineered estimate, physical tyre/contact/tolerances unqualified",
+  "dn150_protrusions": [],
+  "scope": "Export reproducibility, static rigid clearance and requested sampled geometric checks only. Does not release pressure sealing, gear tooth manufacture, dynamic lift routing, service paths, fatigue, thermal design or purchased-part compatibility.",
+  "spur_screen": {
+    "status": "PASS_DISCRETE_REFERENCE_PROFILE",
+    "threshold_mm3": 0.0001,
+    "maximum_intersection_mm3": 0.0,
+    "centre_distance_mm": 50.0,
+    "samples": [
+      {
+        "driven_angle_deg": 0.0,
+        "other_angle_deg": 3.6,
+        "intersection_mm3": 0.0
+      },
+      {
+        "driven_angle_deg": 0.9,
+        "other_angle_deg": 2.7,
+        "intersection_mm3": 0.0
+      },
+      {
+        "driven_angle_deg": 1.8,
+        "other_angle_deg": 1.8,
+        "intersection_mm3": 0.0
+      },
+      {
+        "driven_angle_deg": 2.7,
+        "other_angle_deg": 0.8999999999999999,
+        "intersection_mm3": 0.0
+      },
+      {
+        "driven_angle_deg": 3.6,
+        "other_angle_deg": 0.0,
+        "intersection_mm3": 0.0
+      },
+      {
+        "driven_angle_deg": 4.5,
+        "other_angle_deg": -0.8999999999999999,
+        "intersection_mm3": 0.0
+      },
+      {
+        "driven_angle_deg": 5.4,
+        "other_angle_deg": -1.8000000000000003,
+        "intersection_mm3": 0.0
+      },
+      {
+        "driven_angle_deg": 6.3,
+        "other_angle_deg": -2.6999999999999997,
+        "intersection_mm3": 0.0
+      },
+      {
+        "driven_angle_deg": 7.2,
+        "other_angle_deg": -3.6,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "scope": "One adjacent equal-Z50 pair, opposite rotation through one tooth pitch; representative of identical alternating gears on both sides.",
+    "limitations": "Discrete sample only; not a continuous sweep, OEM tooth definition, backlash/tolerance assessment, bevel test or physical A0 pass."
+  },
+  "step_roundtrip": {
+    "status": "PASS",
+    "checks": {
+      "valid_compound": true,
+      "valid_solids": true,
+      "solid_count_matches": true,
+      "volume_matches": true,
+      "bounds_match": true
+    },
+    "actual_solids": 372,
+    "expected_solids": 372,
+    "actual_volume_mm3": 1803349.6620485305,
+    "registry_volume_mm3": 1803349.66373,
+    "actual_bounds_mm": [
+      -175.0,
+      -66.5,
+      0.0,
+      428.0,
+      66.5,
+      117.0
+    ],
+    "registry_bounds_mm": [
+      -175.0,
+      -66.5,
+      0.0,
+      428.0,
+      66.5,
+      117.0
+    ],
+    "tolerance": {
+      "volume_relative": 1e-06,
+      "volume_absolute_floor_mm3": 0.01,
+      "bounds_absolute_mm": 0.001
+    }
+  },
+  "pipe_service_scope": "Nominal engineered tyre in perfect straight ID150; active candidate motor exit after explicit preceding disassembly; no physical passage, sealing, traction or complete service-sequence qualification."
+}
