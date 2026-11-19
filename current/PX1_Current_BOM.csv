@@ -123,7 +123,11 @@ F18;Shim;2;source shim;8×12×0.25;DRW744;BUY;NOT_MODELLED;H06
 F19;M3×16 button;2;standard family;M3×16;DRW745;BUY;NOT_MODELLED;H03
 F20;M3×8 countersunk;2;standard family;M3×8;DRW745;BUY;NOT_MODELLED;H03
 F21;Gas spring washer;2;source washer;HOLD;DRW744;BUY;NOT_MODELLED;H06
-F22;Wheelquick-lock;6;OEMQRWmechanism;HOLD;MiniCamcatalog;BUY;PROXY_BOLT_ONLY;H01 комплектколесаP03
+F22;Замок колеса ASS-002-103 (сборка);6;Mini-Cam ASS-002-103 Crawler Wheel Bolt - ASSY;см. F22a-d;ASS-002-103;BUY/TURN;MODELLED_F13;H01 карман ступицы и угол поворота ESTIMATED
+F22a;Диск-кулачок колеса;6;FSS-002-065 WHEEL DISK нерж.;фланец 6,0 R8,27 e0,51 лыска 7,11, хвостовик Ø10,4×2,6;ASS-002-103 A-A 2:1;TURN+MILL;DERIVED;H01
+F22b;Винт M6×14 ISO 7380 A2;6;FIX-002-105;M6×14 dk10,5 k3,3 s4;ASS-002-103;BUY;MODELLED_F13;стандарт
+F22c;Шайба пружинная M6 A2 (Schnorr);6;FIX-002-104;Ø6,4/Ø10;ASS-002-103;BUY;MODELLED_F13;размер D DERIVED
+F22d;Кольцо 10×1,8;6;SEA-002-106;ID10 CS1,8;ASS-002-103;BUY;MODELLED_F13;материал не указан
 PR01;Защита жгута для примерки;1;PX1_Lift_Harness_Guard_PROTOTYPE.stl;OD9 ID6.4 L12;currentmaster;PRINT;DESIGN;FIT_CHECK_ONLY
 PR02;Макет держателя моторов;1;PX1_Motor_Holder_FitCheck_ONLY.stl;52.8×30×3;M08;PRINT;DESIGN;FIT_CHECK_ONLY
 PR03;МакетPRESSUREкрышки;1;PX1_PRESSURE_Cover_FitCheck_ONLY.stl;158×53×7;L01;PRINT;DESIGN;FIT_CHECK_ONLY
@@ -132,4 +136,4 @@ M04C;Средняя короткая ось;2;PX1 middle axle;X150 absY26.8..60.
 L17;Палец проушины газовой пружины;1;PX1 gas clevis pin;D4 L11;integrated CAD estimate;TURN;ESTIMATED;H06 retention/load unqualified
 M20;Грузовая плита (нерж.);1;FSS-002-060;50.3×12×247.5;DRW375 A-A 1:1;MILL;MODELLED_F11;H02 длина ESTIMATED, крепление 2×M8 HOLD
 M21;Балластные блоки;5;PX1-BALLAST-F17;≈94 см³ всего, BALLAST_BOXES;F17 free-space search;MILL;MODELLED_F17;материал СТАЛЬ (решение пользователя 2026-11-19), крепление HOLD
-P03b;Ступица колеса Al;6;QRW90 hub ESTIMATED;r22 inside D90 tyre;Mini-Cam ASS-004-496 view;TURN;MODELLED_F17;H01 замок QRW: поворотный упор под винтом M5, ключ 4 мм
+P03b;Ступица колеса Al;6;QRW90 hub ESTIMATED;r22 inside D90 tyre;Mini-Cam ASS-004-496 view;TURN;MODELLED_F17;H01 карман под диск ASS-002-103 Ø20,4 ESTIMATED

@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "47eeb54ca00512753ad2a3a5a358e9b42c42b474f4f8a845de30f9fef6d8b479",
+  "source_sha256": "7d0ca6a6ef9d865b8294557d36273cb707ba3871198ab4c24905073cd1356d28",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -31,11 +31,11 @@
     "camera_harness_cores": 6
   },
   "counts_match": true,
-  "component_count": 209,
+  "component_count": 221,
   "invalid_shapes": [],
   "collision_method": {
-    "all_pairs": 21736,
-    "boolean_pairs_after_AABB": 613,
+    "all_pairs": 24310,
+    "boolean_pairs_after_AABB": 679,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
@@ -275,14 +275,26 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_WASHER_-1_50.0",
-        "clearance_mm": 9.9657,
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_50",
+        "clearance_mm": 6.7875,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED",
-        "clearance_mm": 7.7315,
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_50",
+        "clearance_mm": 7.9807,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_50",
+        "clearance_mm": 10.4482,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_50",
+        "clearance_mm": 8.2449,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -359,14 +371,26 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_WASHER_-1_150.0",
-        "clearance_mm": 9.9657,
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_150",
+        "clearance_mm": 6.7875,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED",
-        "clearance_mm": 7.7315,
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_150",
+        "clearance_mm": 7.9807,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_150",
+        "clearance_mm": 10.4482,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_150",
+        "clearance_mm": 8.2449,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -443,14 +467,26 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_WASHER_-1_250.0",
-        "clearance_mm": 9.9657,
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_250",
+        "clearance_mm": 6.7875,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED",
-        "clearance_mm": 7.7315,
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_250",
+        "clearance_mm": 7.9807,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_250",
+        "clearance_mm": 10.4482,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_250",
+        "clearance_mm": 8.2449,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -677,14 +713,26 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_WASHER_1_50.0",
-        "clearance_mm": 9.9657,
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_50",
+        "clearance_mm": 6.7875,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_M5_1_50.0_QUICKLOCK_UNRESOLVED",
-        "clearance_mm": 7.7315,
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_50",
+        "clearance_mm": 7.9807,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_50",
+        "clearance_mm": 10.4482,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_50",
+        "clearance_mm": 8.2449,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -761,14 +809,26 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_WASHER_1_150.0",
-        "clearance_mm": 9.9657,
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_150",
+        "clearance_mm": 6.7875,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_M5_1_150.0_QUICKLOCK_UNRESOLVED",
-        "clearance_mm": 7.7315,
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_150",
+        "clearance_mm": 7.9807,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_150",
+        "clearance_mm": 10.4482,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_150",
+        "clearance_mm": 8.2449,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -845,14 +905,26 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_WASHER_1_250.0",
-        "clearance_mm": 9.9657,
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_250",
+        "clearance_mm": 6.7875,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_WHEEL_RETENTION_M5_1_250.0_QUICKLOCK_UNRESOLVED",
-        "clearance_mm": 7.7315,
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_250",
+        "clearance_mm": 7.9807,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_250",
+        "clearance_mm": 10.4482,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_250",
+        "clearance_mm": 8.2449,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1271,31 +1343,31 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_BALLAST_1_MATERIAL_TBD",
+        "id": "HOLD_BALLAST_1_STEEL",
         "clearance_mm": 40.8564,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_BALLAST_2_MATERIAL_TBD",
+        "id": "HOLD_BALLAST_2_STEEL",
         "clearance_mm": 40.8564,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_BALLAST_3_MATERIAL_TBD",
+        "id": "HOLD_BALLAST_3_STEEL",
         "clearance_mm": 38.2062,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_BALLAST_4_MATERIAL_TBD",
+        "id": "HOLD_BALLAST_4_STEEL",
         "clearance_mm": 38.2062,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "HOLD_BALLAST_5_MATERIAL_TBD",
+        "id": "HOLD_BALLAST_5_STEEL",
         "clearance_mm": 38.2062,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
@@ -1688,8 +1760,9 @@
     "FIX002738_M3x6_ISO7380_FLANGE_-1_50_225": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_50_225.step",
     "FIX002738_M3x6_ISO7380_FLANGE_-1_50_315": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_50_315.step",
     "HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED": "CAD/Metal_HOLD/HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED.step",
-    "HOLD_WHEEL_RETENTION_WASHER_-1_50.0": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_WASHER_-1_50.0.step",
-    "HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED.step",
+    "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_50": "CAD/Metal_HOLD/FSS002065_WHEEL_DISK_CAM_ASS002103_-1_50.step",
+    "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_50": "CAD/Metal_HOLD/FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_50.step",
+    "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_50": "CAD/Metal_HOLD/FIX002104_M6_SPRING_WASHER_SCHNORR_-1_50.step",
     "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE": "CAD/Metal_HOLD/HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE.step",
     "KEY_4x4x12_-1_150.0": "CAD/Metal_HOLD/KEY_4x4x12_-1_150.0.step",
     "HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR": "CAD/Metal_HOLD/HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR.step",
@@ -1698,8 +1771,9 @@
     "FIX002738_M3x6_ISO7380_FLANGE_-1_150_225": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_150_225.step",
     "FIX002738_M3x6_ISO7380_FLANGE_-1_150_315": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_150_315.step",
     "HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED": "CAD/Metal_HOLD/HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED.step",
-    "HOLD_WHEEL_RETENTION_WASHER_-1_150.0": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_WASHER_-1_150.0.step",
-    "HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED.step",
+    "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_150": "CAD/Metal_HOLD/FSS002065_WHEEL_DISK_CAM_ASS002103_-1_150.step",
+    "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_150": "CAD/Metal_HOLD/FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_150.step",
+    "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_150": "CAD/Metal_HOLD/FIX002104_M6_SPRING_WASHER_SCHNORR_-1_150.step",
     "HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE": "CAD/Metal_HOLD/HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE.step",
     "KEY_4x4x12_-1_250.0": "CAD/Metal_HOLD/KEY_4x4x12_-1_250.0.step",
     "HOLD_AXLE_FLANGE_-1_250.0_GRAPHIC_CONTOUR": "CAD/Metal_HOLD/HOLD_AXLE_FLANGE_-1_250.0_GRAPHIC_CONTOUR.step",
@@ -1708,8 +1782,9 @@
     "FIX002738_M3x6_ISO7380_FLANGE_-1_250_225": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_250_225.step",
     "FIX002738_M3x6_ISO7380_FLANGE_-1_250_315": "CAD/Metal_HOLD/FIX002738_M3x6_ISO7380_FLANGE_-1_250_315.step",
     "HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED": "CAD/Metal_HOLD/HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED.step",
-    "HOLD_WHEEL_RETENTION_WASHER_-1_250.0": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_WASHER_-1_250.0.step",
-    "HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED": "CAD/Metal_HOLD/HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED.step",
+    "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_250": "CAD/Metal_HOLD/FSS002065_WHEEL_DISK_CAM_ASS002103_-1_250.step",
+    "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_250": "CAD/Metal_HOLD/FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_250.step",
+    "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_250": "CAD/Metal_HOLD/FIX002104_M6_SPRING_WASHER_SCHNORR_-1_250.step",
     "HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD": "CAD/Metal_HOLD/HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD.step",
     "HOLD_Z16_SHAFT_-1": "CAD/Metal_HOLD/HOLD_Z16_SHAFT_-1.step",
     "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1": "CAD/Metal_HOLD/HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1.step",
@@ -1734,11 +1809,11 @@
     "HOLD_REAR_TETHER_STRAIN_SLEEVE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_STRAIN_SLEEVE.step",
     "HOLD_REAR_TETHER_ARAMID_CONE": "CAD/Metal_HOLD/HOLD_REAR_TETHER_ARAMID_CONE.step",
     "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD": "CAD/Metal_HOLD/FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD.step",
-    "HOLD_BALLAST_1_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_1_MATERIAL_TBD.step",
-    "HOLD_BALLAST_2_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_2_MATERIAL_TBD.step",
-    "HOLD_BALLAST_3_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_3_MATERIAL_TBD.step",
-    "HOLD_BALLAST_4_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_4_MATERIAL_TBD.step",
-    "HOLD_BALLAST_5_MATERIAL_TBD": "CAD/Metal_HOLD/HOLD_BALLAST_5_MATERIAL_TBD.step"
+    "HOLD_BALLAST_1_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_1_STEEL.step",
+    "HOLD_BALLAST_2_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_2_STEEL.step",
+    "HOLD_BALLAST_3_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_3_STEEL.step",
+    "HOLD_BALLAST_4_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_4_STEEL.step",
+    "HOLD_BALLAST_5_STEEL": "CAD/Metal_HOLD/HOLD_BALLAST_5_STEEL.step"
   },
   "unmodelled_required_items": [
     "complete camera PAN/TILT/lighting/control internals",

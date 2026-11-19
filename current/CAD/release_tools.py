@@ -91,8 +91,7 @@ def finish_build(g):
             if 'seal' in (ca,cb):typ='SEAL_CONTACT_REQUIRES_GLAND_CHECK'
             if 'wheel' in (ca,cb):typ='WHEEL_PROFILE_HOLD_INTERFERENCE'
             if ca in ('gear','bevel') and cb in ('gear','bevel'):typ='TOOTH_CONTACT_HOLD'
-            if ('WHEEL_RETENTION_M6' in a and 'WHEEL_SHAFT' in b) or ('WHEEL_RETENTION_M6' in b and 'WHEEL_SHAFT' in a):typ='THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY'
-            if ('WHEEL_RETENTION_M5' in a and 'WHEEL_SHAFT' in b) or ('WHEEL_RETENTION_M5' in b and 'WHEEL_SHAFT' in a):typ='THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY'
+            if ('FIX002105_M6x14' in a and 'WHEEL_SHAFT' in b) or ('FIX002105_M6x14' in b and 'WHEEL_SHAFT' in a):typ='THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY'
             if 'valve' == ca == cb:typ='VALVE_INTERNAL_ENVELOPE_HOLD'
             pairs.append({'a':a,'b':b,'volume_mm3':round(v,6),'classification':typ})
     # Radial containment tests ALL solids, including wheels, levers, covers and connectors.

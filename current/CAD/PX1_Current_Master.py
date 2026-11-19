@@ -39,7 +39,29 @@ SIDE_SEAL_R=28.0        # lobe radius about each Z50 centre, DERIVED from drawin
 SIDE_SEAL_CUSP=19.0     # track distance from axis between gears, DERIVED from drawing (~18.4-19)
 SIDE_SEAL_W=2.0; SIDE_SEAL_D=1.15   # groove in cover inner face, ESTIMATED (23% squeeze)
 FLANGE_ORING=(32.0,1.5)
-M5_COSMETIC_THREAD_R=2.5         # F07: tapped hole shown at major diameter, ISO 262 M5
+M6_COSMETIC_THREAD_R=3.0         # F13: shaft-end tapped hole shown at major Ø6 (cosmetic thread), ISO 262 M6 — CONFIRMED standard
+# F13 Mini-Cam ASS-002-103 "Crawler Wheel Bolt - ASSY" (section A-A 2:1 + top view 2:1, measured at 600 dpi,
+# scale checked on M6 thread 6.01 mm and button head dk 10.50 mm). Local axis from disk flange back face.
+WD_FLANGE_T=6.0          # FSS-002-065 flange thickness, DERIVED (6.01)
+WD_FLANGE_R=8.27         # cam profile circle radius, DERIVED (section r8.25 at 90°, top view r8.78 lobe)
+WD_FLANGE_E=0.51         # cam profile eccentricity toward lobe, DERIVED (top view r8.78 / r7.11)
+WD_FLAT=7.11             # flat on the side opposite the lobe, distance from axis, DERIVED (top view)
+WD_FACE_R=6.54           # outer face radius before 45° chamfer, DERIVED
+WD_SPIGOT_R=5.2          # spigot Ø10.4, DERIVED (10.37)
+WD_SPIGOT_FLAT=3.9       # spigot D-flat (lobe side), DERIVED (top view)
+WD_SPIGOT_L=2.6          # spigot length, DERIVED (2.60)
+WD_LIP_R=5.5; WD_LIP_D=1.04         # Ø11.0 entry lip retaining the O-ring, DERIVED
+WD_GROOVE_R=6.5; WD_GROOVE_D=3.32   # Ø13.0 O-ring groove from face 1.04..3.32, DERIVED
+WD_SEAT_R=5.5; WD_SEAT_D=4.5        # Ø11.0 washer seat 3.32..4.50, DERIVED
+WD_HOLE_R=3.2                        # Ø6.4 clearance for M6, ESTIMATED (ISO 273 medium)
+ISO7380_M6=(5.25,3.3,4.0)            # dk/2, k, hex s — ISO 7380 M6, CONFIRMED standard
+WD_HEAD_BEAR_D=3.42                  # head bearing face below disk outer face, DERIVED
+WHEEL_SCREW_L=14.0                   # FIX-002-105 M6x14, CONFIRMED (part list)
+SCHNORR_M6=(3.2,5.0,1.06)            # FIX-002-104 spring washer ri/ro/installed h, DERIVED (Ø6.4 std, Ø10 measured)
+WD_ORING=(5.6,0.88,2.2)              # SEA-002-106 10x1.8 installed: torus major r / tube r / centre below face, DERIVED
+SHAFT_SPIGOT_BORE_R=5.3; SHAFT_SPIGOT_BORE_D=2.7   # shaft-end counterbore for disk spigot, ESTIMATED
+SHAFT_END_Y=60.9                     # wheel-shaft end face |Y| (unchanged), DERIVED from model
+WD_BACK_Y=60.95                      # disk flange back |Y|, 0.05 above shaft end, ESTIMATED
 # F05 axle-flange face seal, DRW-002-374 section A-A (layout DERIVED, sizes ESTIMATED):
 COVER_BEARING_BORE_R=15.0      # 61903 OD30 seat in side cover, CONFIRMED bearing OD
 COVER_BEARING_SHOULDER_R=13.5  # Ø27 <= SKF Da max 28 for 61903, ESTIMATED
@@ -198,6 +220,39 @@ def make_button_screw(x,y,z,length,axis_dir):
     head=cyl_y(x,y,z,hr,hh,dir=axis_dir)
     shank=cyl_y(x,y,z,1.5,length,dir=-axis_dir)
     return fuse_all([head,shank])
+def _wd_local_to_world(shape,x,side):
+    """Local build: axis +Z from disk back face, lobe toward local -Y. Maps local Z->|Y|, local -Y->+Z (key side)."""
+    sh=shape.rotate((0,0,0),(1,0,0),-90).translate((0,WD_BACK_Y,0))
+    if side<0: sh=sh.mirror('XZ')
+    return sh.translate((x,0,45))
+def make_wheel_bolt_assy(x,side):
+    """Mini-Cam ASS-002-103 wheel bolt assembly, shown in the 'aligned' state: lobe and spigot D-flat toward the
+    key (spigot flat clears the 4x4 key, DERIVED). Turning CW swings the lobe over the hub pocket floor."""
+    T=WD_FLANGE_T
+    prof=(cq.Workplane('XY').center(0,-WD_FLANGE_E).circle(WD_FLANGE_R).extrude(T)
+          .cut(cq.Workplane('XY').box(40,20,T+2,centered=(True,False,False)).translate((0,WD_FLAT,-1))))
+    cone=cq.Workplane('XY').add(cq.Solid.makeCone(WD_FACE_R+T,WD_FACE_R,T,cq.Vector(0,0,0),cq.Vector(0,0,1)))
+    disk=prof.intersect(cone)
+    spig=(cq.Workplane('XY').circle(WD_SPIGOT_R).extrude(-WD_SPIGOT_L)
+          .cut(cq.Workplane('XY').box(20,10,WD_SPIGOT_L+2,centered=(True,False,False)).translate((0,-WD_SPIGOT_FLAT-10,-WD_SPIGOT_L-1))))
+    disk=disk.union(spig)
+    for r,d0,d1 in ((WD_LIP_R,0,WD_LIP_D),(WD_GROOVE_R,WD_LIP_D,WD_GROOVE_D),(WD_SEAT_R,WD_GROOVE_D,WD_SEAT_D)):
+        disk=disk.cut(cq.Workplane('XY').circle(r).extrude(d1-d0+.001).translate((0,0,T-d1)))
+    disk=disk.cut(cq.Workplane('XY').circle(WD_HOLE_R).extrude(T+WD_SPIGOT_L+2).translate((0,0,-WD_SPIGOT_L-1)))
+    hr,hk,hs=ISO7380_M6; zb=T-WD_HEAD_BEAR_D; Rs=(hr*hr+hk*hk)/(2*hk)
+    head=cq.Workplane('XY').add(cq.Solid.makeSphere(Rs,cq.Vector(0,0,zb+hk-Rs),angleDegrees1=-90,angleDegrees2=90))
+    head=head.intersect(cq.Workplane('XY').circle(hr).extrude(hk).translate((0,0,zb)))
+    head=head.cut(cq.Workplane('XY').polygon(6,hs/math.cos(math.pi/6)).extrude(2.0).translate((0,0,zb+hk-2.0)))
+    shank=cq.Workplane('XY').circle(M6_COSMETIC_THREAD_R).extrude(-WHEEL_SCREW_L).translate((0,0,zb))
+    screw=head.union(shank)
+    wri,wro,wh=SCHNORR_M6
+    washer=cq.Workplane('XY').circle(wro).circle(wri).extrude(wh).translate((0,0,T-WD_SEAT_D+.005))
+    R0,rt,dc=WD_ORING
+    oring=cq.Workplane('XY').add(cq.Solid.makeTorus(R0,rt,cq.Vector(0,0,T-dc),cq.Vector(0,0,1)))
+    return [('FSS002065_WHEEL_DISK_CAM_ASS002103',_wd_local_to_world(disk,x,side),'metal'),
+            ('FIX002105_M6x14_ISO7380_WHEEL_BOLT',_wd_local_to_world(screw,x,side),'shaft'),
+            ('FIX002104_M6_SPRING_WASHER_SCHNORR',_wd_local_to_world(washer,x,side),'metal'),
+            ('SEA002106_ORING_10x1p8_WHEEL_DISK',_wd_local_to_world(oring,x,side),'seal')]
 def lobed_seal_face(o):
     """Closed lobed track (offset o from centreline) in local XY: x=X, y=Z-45. DERIVED, see F10."""
     R=SIDE_SEAL_R; c=SIDE_SEAL_CUSP; half=25.0
@@ -317,9 +372,11 @@ for side in (-1,1):
         shaft=fuse_all([cyl_y(x,side*inner_y,45,6,39-inner_y,dir=side),cyl_y(x,side*39,45,8.5,7,dir=side),
           cyl_y(x,side*46,45,9,2.8,dir=side),cyl_y(x,side*48.8,45,8,12.1,dir=side)])
         key=boxc(x,side*54.9,52,4,12,4);shaft=cut(shaft,key)
-        # F07: M5 tapped hole drawn at nominal major Ø5 (cosmetic thread convention); tap drill Ø4.2,
-        # thread depth 9.9 (Y51..60.9 incl. 0.5 tip gap), engagement ~9.4 = 1.9d — DERIVED from model.
-        shaft=cut(shaft,cyl_y(x,side*51,45,M5_COSMETIC_THREAD_R,10,dir=side))
+        # F13: shaft end per ASS-002-103 — counterbore for the FSS-002-065 spigot + M6 tapped hole drawn at
+        # major Ø6 (cosmetic thread). Screw tip at |Y|49.53, hole bottom 48.9 -> tip gap 0.63 mm, DERIVED.
+        shaft=cut(shaft,cyl_y(x,side*(SHAFT_END_Y-SHAFT_SPIGOT_BORE_D),45,SHAFT_SPIGOT_BORE_R,SHAFT_SPIGOT_BORE_D+.1,dir=side))
+        _tap0=SHAFT_END_Y-SHAFT_SPIGOT_BORE_D+.05; _tapbot=WD_BACK_Y+WD_FLANGE_T-WD_HEAD_BEAR_D-WHEEL_SCREW_L-0.63
+        shaft=cut(shaft,cyl_y(x,side*_tap0,45,M6_COSMETIC_THREAD_R,_tap0-_tapbot,dir=-side))
         add(f'HOLD_WHEEL_SHAFT_{side}_{x}_GRAPHIC_AXIAL_PACKAGE',shaft,'shaft')
         add(f'KEY_4x4x12_{side}_{x}',key,'shaft')
         add(f'61903_SIDE_{side}_{x}',make_bearing(17,30,7).translate((x,side*42.5,45)),'bearing')
@@ -345,14 +402,14 @@ for side in (-1,1):
         if side<0:pts=[(r,-yy) for r,yy in pts]
         tyre=cq.Workplane('XY').polyline(pts).close().revolve(360,(0,0),(0,1)).translate((x,side*WHEEL_CENTRE_Y,WHEEL_Z))
         tyre=cut(tyre,key)
-        tyre=cut(tyre,cyl_y(x,side*60.9,45,10.2,5.7,dir=side)) # provisional retention recess H01, not OEM quick-lock
+        # F13: pocket in the Al hub for the FSS-002-065 cam disk (Ø20.4 vs disk max r8.78), ESTIMATED.
+        tyre=cut(tyre,cyl_y(x,side*SHAFT_END_Y,45,10.2,5.7,dir=side))
         hubcyl=cyl_y(x,side*30,45,QRW_HUB_R,40,dir=side)
         hub=wp(tyre.val().intersect(hubcyl.val())); tyre=cut(tyre,hubcyl)
         add(f'HOLD_QRW90SR150_WHEEL_{side}_{x}_ENGINEERED_OUTER_SHOULDER',tyre,'wheel')
         add(f'HOLD_QRW90_HUB_AL_{side}_{x}_ESTIMATED',hub,'metal')
-        add(f'HOLD_WHEEL_RETENTION_WASHER_{side}_{x}',ring_y(x,side*61.9,45,10,2.7,2),'metal')
-        bolt=fuse_all([cyl_y(x,side*51.5,45,2.5,11.4,dir=side),cyl_y(x,side*62.9,45,4.25,3.5,dir=side)])
-        add(f'HOLD_WHEEL_RETENTION_M5_{side}_{x}_QUICKLOCK_UNRESOLVED',bolt,'shaft')
+        for nm,part,cat in make_wheel_bolt_assy(x,side):
+            add(f'{nm}_{side}_{int(x)}',part,cat)
 def candidate_motor_pack(y):
     # Provisional conservative family envelope; leads and exact 138:1 outline unresolved.
     return fuse_all([

@@ -536,7 +536,7 @@
       37.9,
       18.0
     ],
-    "volume_mm3": 6209.43274,
+    "volume_mm3": 5904.50914,
     "solids": 1
   },
   {
@@ -760,43 +760,83 @@
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_WASHER_-1_50.0",
+    "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_50",
     "category": "metal",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      40.0,
-      -62.9,
-      35.0,
-      60.0,
-      -60.9,
-      55.0
+      41.73,
+      -66.95,
+      37.89,
+      58.27,
+      -58.35,
+      53.78
     ],
     "dimensions_mm": [
-      20.0,
-      2.0,
-      20.0
+      16.54,
+      8.6,
+      15.89
     ],
-    "volume_mm3": 582.51411,
+    "volume_mm3": 758.73418,
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_M5_-1_50.0_QUICKLOCK_UNRESOLVED",
+    "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_50",
     "category": "shaft",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      45.75,
-      -66.4,
-      40.75,
-      54.25,
-      -51.5,
-      49.25
+      44.75,
+      -66.47596,
+      39.75,
+      55.25,
+      -49.53,
+      50.25
     ],
     "dimensions_mm": [
-      8.5,
-      14.9,
-      8.5
+      10.5,
+      16.94596,
+      10.5
     ],
-    "volume_mm3": 422.44604,
+    "volume_mm3": 532.52199,
+    "solids": 1
+  },
+  {
+    "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_50",
+    "category": "metal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      45.0,
+      -63.515,
+      40.0,
+      55.0,
+      -62.455,
+      50.0
+    ],
+    "dimensions_mm": [
+      10.0,
+      1.06,
+      10.0
+    ],
+    "volume_mm3": 49.1521,
+    "solids": 1
+  },
+  {
+    "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_50",
+    "category": "seal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      43.52,
+      -65.63,
+      38.52,
+      56.48,
+      -63.87,
+      51.48
+    ],
+    "dimensions_mm": [
+      12.96,
+      1.76,
+      12.96
+    ],
+    "volume_mm3": 85.60184,
     "solids": 1
   },
   {
@@ -816,7 +856,7 @@
       34.1,
       18.0
     ],
-    "volume_mm3": 5779.66286,
+    "volume_mm3": 5474.73927,
     "solids": 1
   },
   {
@@ -1040,43 +1080,83 @@
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_WASHER_-1_150.0",
+    "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_150",
     "category": "metal",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      140.0,
-      -62.9,
-      35.0,
-      160.0,
-      -60.9,
-      55.0
+      141.73,
+      -66.95,
+      37.89,
+      158.27,
+      -58.35,
+      53.78
     ],
     "dimensions_mm": [
-      20.0,
-      2.0,
-      20.0
+      16.54,
+      8.6,
+      15.89
     ],
-    "volume_mm3": 582.51411,
+    "volume_mm3": 758.73418,
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_M5_-1_150.0_QUICKLOCK_UNRESOLVED",
+    "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_150",
     "category": "shaft",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      145.75,
-      -66.4,
-      40.75,
-      154.25,
-      -51.5,
-      49.25
+      144.75,
+      -66.47596,
+      39.75,
+      155.25,
+      -49.53,
+      50.25
     ],
     "dimensions_mm": [
-      8.5,
-      14.9,
-      8.5
+      10.5,
+      16.94596,
+      10.5
     ],
-    "volume_mm3": 422.44604,
+    "volume_mm3": 532.52199,
+    "solids": 1
+  },
+  {
+    "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_150",
+    "category": "metal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      145.0,
+      -63.515,
+      40.0,
+      155.0,
+      -62.455,
+      50.0
+    ],
+    "dimensions_mm": [
+      10.0,
+      1.06,
+      10.0
+    ],
+    "volume_mm3": 49.1521,
+    "solids": 1
+  },
+  {
+    "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_150",
+    "category": "seal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      143.52,
+      -65.63,
+      38.52,
+      156.48,
+      -63.87,
+      51.48
+    ],
+    "dimensions_mm": [
+      12.96,
+      1.76,
+      12.96
+    ],
+    "volume_mm3": 85.60184,
     "solids": 1
   },
   {
@@ -1096,7 +1176,7 @@
       37.9,
       18.0
     ],
-    "volume_mm3": 6209.43274,
+    "volume_mm3": 5904.50914,
     "solids": 1
   },
   {
@@ -1320,43 +1400,83 @@
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_WASHER_-1_250.0",
+    "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_250",
     "category": "metal",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      240.0,
-      -62.9,
-      35.0,
-      260.0,
-      -60.9,
-      55.0
+      241.73,
+      -66.95,
+      37.89,
+      258.27,
+      -58.35,
+      53.78
     ],
     "dimensions_mm": [
-      20.0,
-      2.0,
-      20.0
+      16.54,
+      8.6,
+      15.89
     ],
-    "volume_mm3": 582.51411,
+    "volume_mm3": 758.73418,
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_M5_-1_250.0_QUICKLOCK_UNRESOLVED",
+    "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_250",
     "category": "shaft",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      245.75,
-      -66.4,
-      40.75,
-      254.25,
-      -51.5,
-      49.25
+      244.75,
+      -66.47596,
+      39.75,
+      255.25,
+      -49.53,
+      50.25
     ],
     "dimensions_mm": [
-      8.5,
-      14.9,
-      8.5
+      10.5,
+      16.94596,
+      10.5
     ],
-    "volume_mm3": 422.44604,
+    "volume_mm3": 532.52199,
+    "solids": 1
+  },
+  {
+    "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_250",
+    "category": "metal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      245.0,
+      -63.515,
+      40.0,
+      255.0,
+      -62.455,
+      50.0
+    ],
+    "dimensions_mm": [
+      10.0,
+      1.06,
+      10.0
+    ],
+    "volume_mm3": 49.1521,
+    "solids": 1
+  },
+  {
+    "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_250",
+    "category": "seal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      243.52,
+      -65.63,
+      38.52,
+      256.48,
+      -63.87,
+      51.48
+    ],
+    "dimensions_mm": [
+      12.96,
+      1.76,
+      12.96
+    ],
+    "volume_mm3": 85.60184,
     "solids": 1
   },
   {
@@ -1876,7 +1996,7 @@
       37.9,
       18.0
     ],
-    "volume_mm3": 6209.43274,
+    "volume_mm3": 5904.50914,
     "solids": 1
   },
   {
@@ -2100,43 +2220,83 @@
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_WASHER_1_50.0",
+    "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_50",
     "category": "metal",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      40.0,
-      60.9,
-      35.0,
-      60.0,
-      62.9,
-      55.0
+      41.73,
+      58.35,
+      37.89,
+      58.27,
+      66.95,
+      53.78
     ],
     "dimensions_mm": [
-      20.0,
-      2.0,
-      20.0
+      16.54,
+      8.6,
+      15.89
     ],
-    "volume_mm3": 582.51411,
+    "volume_mm3": 758.73418,
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_M5_1_50.0_QUICKLOCK_UNRESOLVED",
+    "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_50",
     "category": "shaft",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      45.75,
-      51.5,
-      40.75,
-      54.25,
-      66.4,
-      49.25
+      44.75,
+      49.53,
+      39.75,
+      55.25,
+      66.47596,
+      50.25
     ],
     "dimensions_mm": [
-      8.5,
-      14.9,
-      8.5
+      10.5,
+      16.94596,
+      10.5
     ],
-    "volume_mm3": 422.44604,
+    "volume_mm3": 532.52199,
+    "solids": 1
+  },
+  {
+    "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_50",
+    "category": "metal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      45.0,
+      62.455,
+      40.0,
+      55.0,
+      63.515,
+      50.0
+    ],
+    "dimensions_mm": [
+      10.0,
+      1.06,
+      10.0
+    ],
+    "volume_mm3": 49.1521,
+    "solids": 1
+  },
+  {
+    "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_50",
+    "category": "seal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      43.52,
+      63.87,
+      38.52,
+      56.48,
+      65.63,
+      51.48
+    ],
+    "dimensions_mm": [
+      12.96,
+      1.76,
+      12.96
+    ],
+    "volume_mm3": 85.60184,
     "solids": 1
   },
   {
@@ -2156,7 +2316,7 @@
       34.1,
       18.0
     ],
-    "volume_mm3": 5779.66286,
+    "volume_mm3": 5474.73927,
     "solids": 1
   },
   {
@@ -2380,43 +2540,83 @@
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_WASHER_1_150.0",
+    "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_150",
     "category": "metal",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      140.0,
-      60.9,
-      35.0,
-      160.0,
-      62.9,
-      55.0
+      141.73,
+      58.35,
+      37.89,
+      158.27,
+      66.95,
+      53.78
     ],
     "dimensions_mm": [
-      20.0,
-      2.0,
-      20.0
+      16.54,
+      8.6,
+      15.89
     ],
-    "volume_mm3": 582.51411,
+    "volume_mm3": 758.73418,
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_M5_1_150.0_QUICKLOCK_UNRESOLVED",
+    "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_150",
     "category": "shaft",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      145.75,
-      51.5,
-      40.75,
-      154.25,
-      66.4,
-      49.25
+      144.75,
+      49.53,
+      39.75,
+      155.25,
+      66.47596,
+      50.25
     ],
     "dimensions_mm": [
-      8.5,
-      14.9,
-      8.5
+      10.5,
+      16.94596,
+      10.5
     ],
-    "volume_mm3": 422.44604,
+    "volume_mm3": 532.52199,
+    "solids": 1
+  },
+  {
+    "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_150",
+    "category": "metal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      145.0,
+      62.455,
+      40.0,
+      155.0,
+      63.515,
+      50.0
+    ],
+    "dimensions_mm": [
+      10.0,
+      1.06,
+      10.0
+    ],
+    "volume_mm3": 49.1521,
+    "solids": 1
+  },
+  {
+    "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_150",
+    "category": "seal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      143.52,
+      63.87,
+      38.52,
+      156.48,
+      65.63,
+      51.48
+    ],
+    "dimensions_mm": [
+      12.96,
+      1.76,
+      12.96
+    ],
+    "volume_mm3": 85.60184,
     "solids": 1
   },
   {
@@ -2436,7 +2636,7 @@
       37.9,
       18.0
     ],
-    "volume_mm3": 6209.43274,
+    "volume_mm3": 5904.50914,
     "solids": 1
   },
   {
@@ -2660,43 +2860,83 @@
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_WASHER_1_250.0",
+    "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_250",
     "category": "metal",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      240.0,
-      60.9,
-      35.0,
-      260.0,
-      62.9,
-      55.0
+      241.73,
+      58.35,
+      37.89,
+      258.27,
+      66.95,
+      53.78
     ],
     "dimensions_mm": [
-      20.0,
-      2.0,
-      20.0
+      16.54,
+      8.6,
+      15.89
     ],
-    "volume_mm3": 582.51411,
+    "volume_mm3": 758.73418,
     "solids": 1
   },
   {
-    "id": "HOLD_WHEEL_RETENTION_M5_1_250.0_QUICKLOCK_UNRESOLVED",
+    "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_250",
     "category": "shaft",
-    "geometry_state": "HOLD",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      245.75,
-      51.5,
-      40.75,
-      254.25,
-      66.4,
-      49.25
+      244.75,
+      49.53,
+      39.75,
+      255.25,
+      66.47596,
+      50.25
     ],
     "dimensions_mm": [
-      8.5,
-      14.9,
-      8.5
+      10.5,
+      16.94596,
+      10.5
     ],
-    "volume_mm3": 422.44604,
+    "volume_mm3": 532.52199,
+    "solids": 1
+  },
+  {
+    "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_250",
+    "category": "metal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      245.0,
+      62.455,
+      40.0,
+      255.0,
+      63.515,
+      50.0
+    ],
+    "dimensions_mm": [
+      10.0,
+      1.06,
+      10.0
+    ],
+    "volume_mm3": 49.1521,
+    "solids": 1
+  },
+  {
+    "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_250",
+    "category": "seal",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      243.52,
+      63.87,
+      38.52,
+      256.48,
+      65.63,
+      51.48
+    ],
+    "dimensions_mm": [
+      12.96,
+      1.76,
+      12.96
+    ],
+    "volume_mm3": 85.60184,
     "solids": 1
   },
   {
@@ -4080,7 +4320,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_BALLAST_1_MATERIAL_TBD",
+    "id": "HOLD_BALLAST_1_STEEL",
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -4100,7 +4340,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_BALLAST_2_MATERIAL_TBD",
+    "id": "HOLD_BALLAST_2_STEEL",
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -4120,7 +4360,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_BALLAST_3_MATERIAL_TBD",
+    "id": "HOLD_BALLAST_3_STEEL",
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -4140,7 +4380,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_BALLAST_4_MATERIAL_TBD",
+    "id": "HOLD_BALLAST_4_STEEL",
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
@@ -4160,7 +4400,7 @@
     "solids": 1
   },
   {
-    "id": "HOLD_BALLAST_5_MATERIAL_TBD",
+    "id": "HOLD_BALLAST_5_STEEL",
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
