@@ -1,0 +1,58 @@
+{
+  "status": "TECHNICAL_SELECTION_PENDING_SUPPLIER_CONFIRMATION_AND_CAD_INTEGRATION",
+  "candidate": "2 x Z22DP2410-60S / 22PM105 (K bearing suffix to confirm)",
+  "registry_sha256": "b01443b2ebdff0cd27f8f48cda01665730872d1f0c273a00ffab874dea4441a2",
+  "catalogue_output_torque_Nm": 0.8,
+  "catalogue_loaded_output_rpm": 57,
+  "assumed_downstream_efficiency": 0.75,
+  "required_motor_output_torque_for_50N_Nm": 0.6,
+  "calculated_total_force_N_not_measured": 66.66666666666667,
+  "calculated_speed_m_min_not_measured": 6.446548125166256,
+  "minimum_downstream_efficiency_for_50N": 0.5625,
+  "motor_pair_body_width_mm": 49,
+  "existing_cavity_width_mm": 53,
+  "body_rear_x_mm": 69.9,
+  "existing_service_opening_front_x_mm": 128,
+  "screens": [
+    {
+      "side": -1,
+      "body_bounds_mm": [
+        69.9,
+        -24.5,
+        34,
+        195.5,
+        -2.5,
+        56
+      ],
+      "bbox_candidates_not_confirmed_collisions": [
+        "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
+        "TRACTION_MOTOR_-1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
+        "POLOLU_2992_G2_24v13_2_MANUFACTURER_STEP",
+        "HOLD_DELTA_TR1D_P2_VIDEO_BALUN"
+      ]
+    },
+    {
+      "side": 1,
+      "body_bounds_mm": [
+        69.9,
+        2.5,
+        34,
+        195.5,
+        24.5,
+        56
+      ],
+      "bbox_candidates_not_confirmed_collisions": [
+        "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
+        "TRACTION_MOTOR_1_JGA25_370B_RF_FIT_CANDIDATE_HOLD",
+        "POLOLU_2992_G2_24v13_2_MANUFACTURER_STEP",
+        "HOLD_DELTA_TR1D_P2_VIDEO_BALUN"
+      ]
+    }
+  ],
+  "limitations": [
+    "Bounds overlap is not a solid intersection test.",
+    "Pilot, shaft, wire bend envelope and replacement mounts need integration.",
+    "Previous STEP validation applies only to the unchanged JGA25 assembly.",
+    "No stock, thermal, traction, extraction or manufacturing qualification."
+  ]
+}
