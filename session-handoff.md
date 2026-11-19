@@ -26,6 +26,7 @@
 2. tools/drawing_measure/check_master_vs_drawings.py в ветке нет — первую проверку из списка выполнить нельзя,
    пока скрипт не будет добавлен.
 2a. Общий STEP хранится как current/CAD/PX1_Current_Master.step.gz (полный ~100 МБ > лимита GitHub). После сборки: gzip -9 -c _cloud_build/CAD/PX1_Current_Master.step > current/CAD/PX1_Current_Master.step.gz
+2b. Сетку assembly_mesh.json.gz держать только в последнем F-выпуске (см. current/09_RELEASE/README.md).
 3. Окружение: pip install --break-system-packages cadquery (2.8.0); сборка ~3–9 мин, интегральная проверка ~1 мин.
 
 ## Следующий шаг
