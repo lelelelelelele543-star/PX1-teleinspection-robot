@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440">
+<rect width="900" height="440" fill="#f8fafc"/>
+<text x="35" y="36" font-family="sans-serif" font-size="20">PX1 M1 — integrated drivetrain XY feasibility</text>
+<text x="35" y="58" font-family="sans-serif" font-size="13">DESIGN ASSUMPTIONS / schematic XY / NOT CAD or STEP</text>
+<rect x="22.299999999999955" y="89.19999999999999" width="675.4000000000001" height="171.60000000000002" rx="12" fill="none" stroke="#64748b" stroke-width="2"/>
+<circle cx="139.99999999999997" cy="291.6" r="85.80000000000001" fill="#94a3b8" fill-opacity=".12" stroke="#64748b" stroke-dasharray="5 5"/>
+<circle cx="360" cy="291.6" r="85.80000000000001" fill="#94a3b8" fill-opacity=".12" stroke="#64748b" stroke-dasharray="5 5"/>
+<circle cx="580" cy="291.6" r="85.80000000000001" fill="#94a3b8" fill-opacity=".12" stroke="#64748b" stroke-dasharray="5 5"/>
+<circle cx="250" cy="224.5" r="24.200000000000003" fill="#f59e0b" fill-opacity=".5" stroke="#b45309"/>
+<circle cx="470" cy="224.5" r="24.200000000000003" fill="#f59e0b" fill-opacity=".5" stroke="#b45309"/>
+<rect x="305" y="181.6" width="92.4" height="48.400000000000006" fill="#2563eb" fill-opacity=".6" stroke="#1d4ed8"/>
+<circle cx="139.99999999999997" cy="58.39999999999999" r="85.80000000000001" fill="#94a3b8" fill-opacity=".12" stroke="#64748b" stroke-dasharray="5 5"/>
+<circle cx="360" cy="58.39999999999999" r="85.80000000000001" fill="#94a3b8" fill-opacity=".12" stroke="#64748b" stroke-dasharray="5 5"/>
+<circle cx="580" cy="58.39999999999999" r="85.80000000000001" fill="#94a3b8" fill-opacity=".12" stroke="#64748b" stroke-dasharray="5 5"/>
+<circle cx="250" cy="125.5" r="24.200000000000003" fill="#f59e0b" fill-opacity=".5" stroke="#b45309"/>
+<circle cx="470" cy="125.5" r="24.200000000000003" fill="#f59e0b" fill-opacity=".5" stroke="#b45309"/>
+<rect x="305" y="120" width="92.4" height="48.400000000000006" fill="#2563eb" fill-opacity=".6" stroke="#1d4ed8"/>
+<rect x="397.4" y="166.2" width="182.60000000000002" height="17.6" fill="#16a34a" fill-opacity=".6" stroke="#15803d"/>
+<text x="35" y="367" font-family="sans-serif" font-size="14">Blue: 2 motors Ø22×42, X -25..17; orange: internal idler bearing envelopes Ø22</text>
+<text x="35" y="390" font-family="sans-serif" font-size="14">Green: central shaft Ø8, X 17..100; grey: wheel envelopes Ø78</text>
+<text x="35" y="415" font-family="sans-serif" font-size="14" fill="#b91c1c">NOT BUILT: motor-to-shaft and shaft-to-rear-bevel torque transfer</text>
+</svg>
