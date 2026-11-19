@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="450" viewBox="0 0 920 450">
+<rect width="920" height="450" fill="#f8fafc"/>
+<text x="30" y="36" font-family="sans-serif" font-size="21">PX1 M1 — IDLER / SHELL INTERFACE (2D PARAMETRIC)</text>
+<text x="30" y="60" font-family="sans-serif" font-size="13">DESIGN ASSUMPTIONS; NOT CAD RENDER; units mm. Four idler stub penetrations uncut.</text>
+<rect x="76.25" y="112.5" width="767.5" height="195" fill="#dbe4ee" stroke="#334155" stroke-width="2"/>
+<circle cx="210" cy="285" r="10" fill="#15803d" opacity=".85"/>
+<circle cx="210" cy="135" r="10" fill="#15803d" opacity=".85"/>
+<circle cx="335" cy="285" r="10" fill="#dc2626" opacity=".85"/>
+<circle cx="335" cy="300" r="6" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="335" cy="135" r="10" fill="#dc2626" opacity=".85"/>
+<circle cx="335" cy="120" r="6" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="460" cy="285" r="10" fill="#15803d" opacity=".85"/>
+<circle cx="460" cy="135" r="10" fill="#15803d" opacity=".85"/>
+<circle cx="585" cy="285" r="10" fill="#dc2626" opacity=".85"/>
+<circle cx="585" cy="300" r="6" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="585" cy="135" r="10" fill="#dc2626" opacity=".85"/>
+<circle cx="585" cy="120" r="6" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="710" cy="285" r="10" fill="#15803d" opacity=".85"/>
+<circle cx="710" cy="135" r="10" fill="#15803d" opacity=".85"/>
+<text x="30" y="395" font-family="sans-serif" font-size="15" fill="#b91c1c">FAIL: 4 idler stubs overlap uncut shell by 4 mm laterally (Y=34..38).</text>
+<text x="30" y="421" font-family="sans-serif" font-size="14">Next: idler bearing seats + wall bores + independent gear support; then 3D Boolean check.</text>
+</svg>
