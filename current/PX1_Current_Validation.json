@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "25f2202d318cd6df22e2bcc7d6f53fa698ce615a7895f37929f0c25fb105a1bb",
+  "source_sha256": "95082391866cd1362fd9d8f7d1dce03e0241fb24a9bde8ab5731a2bfe8e15e82",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -31,11 +31,11 @@
     "camera_harness_cores": 6
   },
   "counts_match": true,
-  "component_count": 255,
+  "component_count": 258,
   "invalid_shapes": [],
   "collision_method": {
-    "all_pairs": 32385,
-    "boolean_pairs_after_AABB": 984,
+    "all_pairs": 33153,
+    "boolean_pairs_after_AABB": 1031,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
@@ -1067,6 +1067,24 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "SEA002721_ORING_110x1p5_RADIAL_ON_SERVICE_COVER_SPIGOT",
+        "clearance_mm": 40.4461,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "SEA001861_ORING_10x1p5_VALVE_PASSAGE_ON_SERVICE_COVER",
+        "clearance_mm": 40.2778,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_ORING_16x1p5_GLAND_PASSAGE_ON_SERVICE_COVER",
+        "clearance_mm": 48.619,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY",
         "clearance_mm": 28.4464,
         "status": "SCREEN_ONLY",
@@ -1386,25 +1404,25 @@
       },
       {
         "id": "HOLD_BRAKE_SHUNT_10R_10W_ALU_HOUSED_ON_SERVICE_COVER",
-        "clearance_mm": 40.676,
+        "clearance_mm": 42.3484,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "HOLD_THERMAL_PAD_0p5_BRAKE_SHUNT_ON_SERVICE_COVER",
-        "clearance_mm": 40.3394,
+        "clearance_mm": 41.9947,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_1",
-        "clearance_mm": 41.1824,
+        "clearance_mm": 42.419,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_2",
-        "clearance_mm": 41.1824,
+        "clearance_mm": 42.419,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1476,7 +1494,7 @@
       },
       {
         "id": "HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE",
-        "clearance_mm": 54.6749,
+        "clearance_mm": 45.5703,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1604,6 +1622,9 @@
         "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1",
         "HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED",
         "HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7",
+        "SEA002721_ORING_110x1p5_RADIAL_ON_SERVICE_COVER_SPIGOT",
+        "SEA001861_ORING_10x1p5_VALVE_PASSAGE_ON_SERVICE_COVER",
+        "HOLD_ORING_16x1p5_GLAND_PASSAGE_ON_SERVICE_COVER",
         "HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY",
         "HOLD_PRESSURE_VALVE_CAP",
         "HOLD_PRESSURE_VALVE_4MM_BALL",
@@ -2150,7 +2171,7 @@
       "dimensions_mm": [
         205.0,
         68.0,
-        7.0
+        11.0
       ],
       "fits_chiron_400x400x450": true,
       "solid_valid": true,

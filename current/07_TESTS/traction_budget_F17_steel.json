@@ -95,19 +95,19 @@
     "speed_no_load_m_min": 10.62662564632669
   },
   "cad_mass_estimate": {
-    "total_kg": 8.01502824863073,
+    "total_kg": 8.05213581839973,
     "by_category_kg": {
       "WEIGHT_PLATE": 1.154,
       "CAM026": 0.864,
       "BALLAST": 0.736,
+      "PRESSURE_BODY": 0.589,
       "gear": 0.577,
-      "PRESSURE_BODY": 0.563,
       "SIDE_COVER": 0.506,
       "purchased": 0.474,
       "shaft": 0.473,
       "wheel": 0.465,
       "lift": 0.393,
-      "metal": 0.312,
+      "metal": 0.323,
       "QRW90_HUB_AL": 0.286,
       "_FSS0020": 0.257,
       "AXLE_FLANGE": 0.227,
@@ -119,7 +119,7 @@
       "electronics": 0.046,
       "cable": 0.025,
       "electronics_hold": 0.024,
-      "seal": 0.015,
+      "seal": 0.016,
       "ISO4035": 0.014,
       "valve": 0.009,
       "DIN2093": 0.008,
@@ -133,13 +133,13 @@
   },
   "cases": {
     "PX1_CAD_estimate": {
-      "mass_kg": 8.02,
-      "weight_N": 78.6,
+      "mass_kg": 8.05,
+      "weight_N": 79.0,
       "base_resistance_N": 3.9,
       "adhesion_limit_N": {
-        "slime/grease": 34.3,
-        "wet concrete/PVC": 57.2,
-        "dry/clean": 80.1
+        "slime/grease": 34.5,
+        "wet concrete/PVC": 57.5,
+        "dry/clean": 80.5
       },
       "by_tether_length": [
         {
@@ -147,14 +147,14 @@
           "tether_drag_N": 14.1,
           "required_N": 18.1,
           "available_N": {
-            "slime/grease": 34.3,
-            "wet concrete/PVC": 57.2,
-            "dry/clean": 80.1
+            "slime/grease": 34.5,
+            "wet concrete/PVC": 57.5,
+            "dry/clean": 80.5
           },
           "margin_N": {
-            "slime/grease": 16.3,
-            "wet concrete/PVC": 39.2,
-            "dry/clean": 62.1
+            "slime/grease": 16.4,
+            "wet concrete/PVC": 39.4,
+            "dry/clean": 62.4
           },
           "ok": {
             "slime/grease": true,
@@ -165,16 +165,16 @@
         {
           "tether_m": 100,
           "tether_drag_N": 35.3,
-          "required_N": 39.2,
+          "required_N": 39.3,
           "available_N": {
-            "slime/grease": 34.3,
-            "wet concrete/PVC": 57.2,
-            "dry/clean": 80.1
+            "slime/grease": 34.5,
+            "wet concrete/PVC": 57.5,
+            "dry/clean": 80.5
           },
           "margin_N": {
-            "slime/grease": -4.9,
-            "wet concrete/PVC": 18.0,
-            "dry/clean": 40.9
+            "slime/grease": -4.8,
+            "wet concrete/PVC": 18.2,
+            "dry/clean": 41.2
           },
           "ok": {
             "slime/grease": false,
@@ -187,14 +187,14 @@
           "tether_drag_N": 53.0,
           "required_N": 56.9,
           "available_N": {
-            "slime/grease": 34.3,
-            "wet concrete/PVC": 57.2,
-            "dry/clean": 80.1
+            "slime/grease": 34.5,
+            "wet concrete/PVC": 57.5,
+            "dry/clean": 80.5
           },
           "margin_N": {
-            "slime/grease": -22.6,
-            "wet concrete/PVC": 0.3,
-            "dry/clean": 23.2
+            "slime/grease": -22.4,
+            "wet concrete/PVC": 0.6,
+            "dry/clean": 23.6
           },
           "ok": {
             "slime/grease": false,

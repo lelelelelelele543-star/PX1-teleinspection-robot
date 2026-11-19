@@ -159,12 +159,34 @@ VIDEO_SCREEN=(43.0,16.0,15.0)  # Delta TR-1D*P2 packaging screen
 
 # Current PX1 service cover engineering prototype dimensions
 SERVICE_CX=184.5; SERVICE_L=205.0; SERVICE_W=68.0; SERVICE_T=7.0; SERVICE_Z=75.0
-SERVICE_OPEN_X0=90.0;  SERVICE_OPEN_X1=278.0; SERVICE_OPEN_W=53.0
 SERVICE_SCREW_X=(85.0,284.0); SERVICE_SCREW_Y=(-30.5,30.5)
-# ESTIMATED static face-seal gland: 1.5 section, 20% nominal squeeze,
-# 77.5% cross-section fill; exact closed seal/material and leak test unresolved.
-SERVICE_GROOVE_CX=184.0; SERVICE_GROOVE_L=194.0; SERVICE_GROOVE_W=58.0
-SERVICE_GROOVE_RADIUS=3.0; SERVICE_GROOVE_WIDTH=1.9; SERVICE_GROOVE_DEPTH=1.2
+# F22 (2026-11-20) DRW-002-745 "Crawler Cover Parts": FAL-002-059 "Cover Electronic" is the TOP electronics cover of the
+# CRP150 housing (not a rear cover). Read from the 1:1 views (scale checked on the M4 thread 4.0-4.3 and the M12 gland hex):
+PROTEUS_COVER_L=157.5; PROTEUS_COVER_W=53.0; PROTEUS_COVER_T=7.1  # outline incl. screw ears, DERIVED (+-0.3)
+PROTEUS_COVER_EAR_T=2.5                       # screw ears at both ends, outer-face level, DERIVED
+PROTEUS_COVER_M4=(149.5,38.0,40.0)            # 4x FIX-002-518 M4x8 button: X pitch, |Y| pitch front / rear, DERIVED (+-0.5)
+PROTEUS_HOLDER=(38.8,20.3,16.3)               # FAL-002-086 cable-fitting holder L x W x H on the cover, DERIVED
+PROTEUS_VALVE_FROM_FRONT=(30.8,17.4)          # valve FSS-001-843/844 axis: from cover front end / from centreline, DERIVED
+PROTEUS_GLAND_AXIS=(15.4,9.6)                 # M12 CAB-002-461 axis (parallel to cover, toward the U-slot end): |Y| / above cover, DERIVED
+PROTEUS_FEED_BORE_D=8.0                       # vertical cable bore holder->cover, sealed by SEA-001-861 10x1.5, DERIVED
+# Sealing principle per 745 C-C: the cover is a PLUG in the housing-top opening with the 110x1.5 O-ring (SEA-002-721,
+# CONFIRMED part list) in a groove round its periphery = RADIAL seal against the opening wall (not a face seal).
+SERVICE_ORING=(110.0,1.5)                     # SEA-002-721, CONFIRMED part list
+PASSAGE_ORING=(10.0,1.5)                      # SEA-001-861 (745 pos.15), CONFIRMED part list
+GLAND_PASSAGE_ORING=(16.0,1.5)                # PX1: around the M12 bore (Proteus has 10x1.5 round an 8 mm bore), ESTIMATED
+SERVICE_PLUG_L=143.0; SERVICE_OPEN_W=53.0; SERVICE_PLUG_R=6.6   # plug body = housing opening, DERIVED from 745 (+-0.5)
+SERVICE_OPEN_X0=88.0; SERVICE_OPEN_X1=SERVICE_OPEN_X0+SERVICE_PLUG_L   # X88..231: motors X91.6..207.1 + cover electronics, ESTIMATED
+SERVICE_PLUG_CLR=0.05                         # radial clearance spigot/opening, ESTIMATED (H8/f7 class)
+SERVICE_SPIGOT_H=4.0; SERVICE_SPIGOT_WALL=2.5 # spigot rim under the PX1 plate = housing top wall Z71..75; hollow so the
+                                              # Cincon/shunt keep the Z75 cover underside as heat sink, ESTIMATED
+SERVICE_RGROOVE_Z=73.0; SERVICE_RGROOVE_W=2.0; SERVICE_RGROOVE_D=1.10  # groove in the spigot periphery, ESTIMATED
+SERVICE_RGLAND_D=SERVICE_RGROOVE_D+SERVICE_PLUG_CLR                    # 1.15 radial gland -> 23.3 % nominal squeeze, DERIVED
+PASSAGE_GROOVE_D=1.15; PASSAGE_GROOVE_W=2.0   # face grooves (cover underside) round the valve / gland passages, ESTIMATED
+VALVE_SEAT_Z0=77.0                            # valve body counterbore from the cover top, Ø4 vent below, ESTIMATED
+SERVICE_RGROOVE_ROOT_P=(2*((SERVICE_PLUG_L-2*SERVICE_PLUG_CLR-2*SERVICE_RGROOVE_D)+(SERVICE_OPEN_W-2*SERVICE_PLUG_CLR-2*SERVICE_RGROOVE_D))
+                        -(8-2*math.pi)*(SERVICE_PLUG_R-SERVICE_PLUG_CLR-SERVICE_RGROOVE_D))   # 373.4 groove-root perimeter, DERIVED
+SERVICE_ORING_STRETCH=SERVICE_RGROOVE_ROOT_P/(math.pi*SERVICE_ORING[0])-1                     # 8.0 % ID stretch, DERIVED
+SERVICE_ORING_CS_INST=SERVICE_ORING[1]/math.sqrt(1+SERVICE_ORING_STRETCH)                     # 1.44 stretched section, DERIVED
 
 # F18 camera lift per DRW-002-744 (Crawler Lift Parts) + DRW-002-752 (Lift Housing), folded state theta=0.
 # Origin A = clamp axle FSS-002-089 (M10, 3x DIN2093) = pivot of central lever ASS-002-723.
@@ -429,8 +451,11 @@ body=wp(body.val().fuse(box0(24,-26.5,71,264,53,4).val()))
 for _px,_py in PLATE_SCREW_XY:
     body=wp(body.val().fuse(cyl_z(_px,_py,CAVITY_FLOOR_Z-.5,PLATE_BOSS_R,PLATE_BOSS_TOP_Z-CAVITY_FLOOR_Z+.5).val()))
     body=cut(body,cyl_z(_px,_py,BODY_Z0+WEIGHT_PLATE_H-.05,M8_COSMETIC_THREAD_R,PLATE_TAP_TOP_Z-BODY_Z0-WEIGHT_PLATE_H+.05))
-body=cut(body,box0(SERVICE_OPEN_X0,-SERVICE_OPEN_W/2,70.9,
-                  SERVICE_OPEN_X1-SERVICE_OPEN_X0,SERVICE_OPEN_W,4.2))
+# F22: Proteus FAL-002-059 plug opening 143x53 R6.6 (DRW-002-745) in the 4 mm top wall, replaces the 188x53 window.
+body=cut(body,boxc((SERVICE_OPEN_X0+SERVICE_OPEN_X1)/2,0,73.0,SERVICE_PLUG_L,SERVICE_OPEN_W,4.2).edges('|Z').fillet(SERVICE_PLUG_R))
+# F22: sealed feed-throughs under the cover-rear valve / camera gland (Proteus: Ø8 holder->cover bore, 745 C-C).
+body=cut(body,cyl_z(CAM_GLAND_XY[0],CAM_GLAND_XY[1],70.9,PROTEUS_FEED_BORE_D/2,4.2))
+body=cut(body,cyl_z(VALVE_XY[0],VALVE_XY[1],70.9,2.0,4.2))
 # Four M3 pilot holes in solid rails, nominal 8 mm engagement. Threads unmodelled.
 for sx in SERVICE_SCREW_X:
     for sy in SERVICE_SCREW_Y: body=cut(body,cyl_z(sx,sy,67,1.25,8.1))
@@ -582,18 +607,26 @@ add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
 cover=boxc(SERVICE_CX,0,78.5,SERVICE_L,SERVICE_W,SERVICE_T)
 for x in SERVICE_SCREW_X:
     for y in SERVICE_SCREW_Y:cover=cut(cover,cyl_z(x,y,74.9,1.7,7.2))
-cover=cut(cover,cyl_z(VALVE_XY[0],VALVE_XY[1],74.9,5.05,7.2))   # F18: valve moved to cover rear strip, ESTIMATED
+cover=cut(cover,cyl_z(VALVE_XY[0],VALVE_XY[1],VALVE_SEAT_Z0,5.05,82.1-VALVE_SEAT_Z0))  # F22: valve seat (blind) ...
+cover=cut(cover,cyl_z(VALVE_XY[0],VALVE_XY[1],74.9,2.0,VALVE_SEAT_Z0-74.8))          # ... + Ø4 vent to the housing passage
 cover=cut(cover,cyl_z(CAM_GLAND_XY[0],CAM_GLAND_XY[1],74.9,6.05,7.2)) # F18: M12 camera-cable gland thread, ESTIMATED
-outer=boxc(SERVICE_GROOVE_CX,0,75+(SERVICE_GROOVE_DEPTH-.1)/2,
-           SERVICE_GROOVE_L+SERVICE_GROOVE_WIDTH,SERVICE_GROOVE_W+SERVICE_GROOVE_WIDTH,
-           SERVICE_GROOVE_DEPTH+.1).edges('|Z').fillet(SERVICE_GROOVE_RADIUS+SERVICE_GROOVE_WIDTH/2)
-inner=boxc(SERVICE_GROOVE_CX,0,75+(SERVICE_GROOVE_DEPTH-.1)/2,
-           SERVICE_GROOVE_L-SERVICE_GROOVE_WIDTH,SERVICE_GROOVE_W-SERVICE_GROOVE_WIDTH,
-           SERVICE_GROOVE_DEPTH+.3).edges('|Z').fillet(SERVICE_GROOVE_RADIUS-SERVICE_GROOVE_WIDTH/2)
-cover=cut(cover,cut(outer,inner))
+# F22: Proteus plug as a hollow spigot rim under the PX1 plate, radial groove for SEA-002-721 110x1.5 (DRW-002-745 C-C).
+_SPX=(SERVICE_OPEN_X0+SERVICE_OPEN_X1)/2; _SPL=SERVICE_PLUG_L-2*SERVICE_PLUG_CLR; _SPW=SERVICE_OPEN_W-2*SERVICE_PLUG_CLR
+_SPR=SERVICE_PLUG_R-SERVICE_PLUG_CLR
+def rrect(cx,z0,L,W,r,h): return box0(cx-L/2,-W/2,z0,L,W,h).edges('|Z').fillet(r)
+def rframe(cx,z0,L,W,r,t,h): return cut(rrect(cx,z0,L,W,r,h),rrect(cx,z0-.1,L-2*t,W-2*t,r-t,h+.2))
+spigot=rframe(_SPX,SERVICE_Z-SERVICE_SPIGOT_H,_SPL,_SPW,_SPR,SERVICE_SPIGOT_WALL,SERVICE_SPIGOT_H+.2)
+spigot=cut(spigot,rframe(_SPX,SERVICE_RGROOVE_Z-SERVICE_RGROOVE_W/2,_SPL+.2,_SPW+.2,_SPR+.1,
+                         SERVICE_RGROOVE_D+.1,SERVICE_RGROOVE_W))
+cover=wp(cover.val().fuse(spigot.val()).clean())
+# F22: face grooves round the two feed-throughs (cover underside; ring seated on the groove OD = internal pressure).
+def face_groove_od(o): return o[0]/2+o[1]           # groove OD radius = ring OD/2
+for (_px,_py),_o in ((VALVE_XY,PASSAGE_ORING),(CAM_GLAND_XY,GLAND_PASSAGE_ORING)):
+    _ro=face_groove_od(_o)
+    cover=cut(cover,cut(cyl_z(_px,_py,SERVICE_Z-.1,_ro,PASSAGE_GROOVE_D+.1),cyl_z(_px,_py,SERVICE_Z-.2,_ro-PASSAGE_GROOVE_W,PASSAGE_GROOVE_D+.3)))
 # F20: blind taps in the cover underside (no penetration of the 7 mm pressure wall).
 F20_CINCON_HOLES=[(CINCON_XC+sx*CINCON_HOLE_PITCH[0]/2,CINCON_YC+sy*CINCON_HOLE_PITCH[1]/2) for sx in (-1,1) for sy in (-1,1)]
-F20_SHUNT_XY=(109.0,17.5)                                   # resistor centre under cover, ESTIMATED
+F20_SHUNT_XY=(109.0,15.2)                                   # resistor centre under cover, ESTIMATED (F22: Y17.5->15.2 inside the spigot rim)
 F20_SHUNT_HOLES=[(F20_SHUNT_XY[0]+sx*(SHUNT_R_ENV[0]-SHUNT_R_TAB[0])/2,F20_SHUNT_XY[1]) for sx in (-1,1)]
 F20_BOARD_XY=(109.0,0.0)
 F20_STANDOFFS=[(97.0,0.0),(121.0,0.0)]
@@ -606,6 +639,15 @@ LIFT_M4_POINTS=[(x,sy*LIFT_M4_Y_PX1) for x in LIFT_M4_X for sy in (-1,1)]
 for _hx,_hy in LIFT_M4_POINTS:
     cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z+SERVICE_T-LIFT_M4_TAP_DEPTH,2.0,LIFT_M4_TAP_DEPTH+.1))
 add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7',cover,'metal')
+# F22 seals. Installed sections: area-equal bands, stretched cross-section d'=d/sqrt(1+stretch) (volume constant).
+_bh=math.pi*SERVICE_ORING_CS_INST**2/4/SERVICE_RGLAND_D
+# band from groove root +0.01 to opening wall -0.01 (no modelled contact; squeeze is checked numerically)
+add('SEA002721_ORING_110x1p5_RADIAL_ON_SERVICE_COVER_SPIGOT',
+    rframe(_SPX,SERVICE_RGROOVE_Z-_bh/2,SERVICE_PLUG_L-.02,SERVICE_OPEN_W-.02,SERVICE_PLUG_R-.01,SERVICE_RGLAND_D-.02,_bh),'seal')
+for (_px,_py),_o,_nm in ((VALVE_XY,PASSAGE_ORING,'SEA001861_ORING_10x1p5_VALVE_PASSAGE_ON_SERVICE_COVER'),
+                         (CAM_GLAND_XY,GLAND_PASSAGE_ORING,'HOLD_ORING_16x1p5_GLAND_PASSAGE_ON_SERVICE_COVER')):
+    _ro=face_groove_od(_o)-.01; _w=math.pi*_o[1]**2/4/PASSAGE_GROOVE_D
+    add(_nm,cut(cyl_z(_px,_py,SERVICE_Z+.01,_ro,PASSAGE_GROOVE_D-.02),cyl_z(_px,_py,SERVICE_Z,_ro-_w,PASSAGE_GROOVE_D)),'seal')
 VX,VY=VALVE_XY
 valve_body=cut(cyl_z(VX,VY,78,5,14),cyl_z(VX,VY,77.9,2.1,14.2))
 add('HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY',valve_body,'valve')
@@ -809,7 +851,7 @@ add('NICHICON_UCS2D221MHD1TN_BODY18x25',cyl_z(278,0,30,9,25),'electronics')
 add('ADAFRUIT_MPRLS_3965_ENVELOPE',boxc(277.5,-17.5,60,*MPRLS),'electronics')
 add('HOLD_POLOLU_5577_D42V55F12_ENVELOPE',boxc(211.5,-13.5,29,*POLOLU_5577),'electronics')
 add('HOLD_POLOLU_5571_D42V55F5_ENVELOPE',boxc(211.5,13.5,29,*POLOLU_5571),'electronics')
-add('HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE',boxc(264,0,68,*WAVESHARE_27479),'electronics')
+add('HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE',boxc(264,-15.0,68,*WAVESHARE_27479),'electronics')  # F22: Y0->-15, clears the gland feed-through below X272
 add('HOLD_DELTA_TR1D_P2_VIDEO_BALUN',boxc(52,0,50,*VIDEO_SCREEN),'electronics_hold')  # F16: moved forward of motors
 body=cut(body,cyl_x(287.9,0,45,8.6,8.2))
 add('HOLD_WEIPU_SP1712_7PIN_REAR_PANEL_6_USED',make_sp17_panel().translate((296,0,45)),'connector')
