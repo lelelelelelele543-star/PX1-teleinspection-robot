@@ -1,0 +1,42 @@
+{
+  "status": "PROVISIONAL_ENVELOPE_STUDY_NOT_INSTALLED",
+  "master_sha256": "e3f9f4b29f6487be13ba8680880e4e09c7e87ef7b10463261668851dc91db2ea",
+  "assumptions": {
+    "body_diameter_mm": 24.4,
+    "body_length_mm": 67.6,
+    "shaft_diameter_mm": 4,
+    "shaft_projection_mm": 17.5,
+    "pilot_diameter_mm": 6.4,
+    "pilot_length_mm": 2,
+    "dimensions_status": "ESTIMATED conservative envelope from different-ratio family PDF; exact 138:1 outline unresolved"
+  },
+  "results": [
+    {
+      "side": -1,
+      "bbox_candidates_tested": 6,
+      "solid_intersections": [
+        {
+          "component": "HOLD_Z16_SHAFT_-1",
+          "overlap_mm3": 50.2654824574367
+        }
+      ],
+      "errors": [],
+      "valid": true
+    },
+    {
+      "side": 1,
+      "bbox_candidates_tested": 6,
+      "solid_intersections": [
+        {
+          "component": "HOLD_Z16_SHAFT_1",
+          "overlap_mm3": 50.2654824574367
+        }
+      ],
+      "errors": [],
+      "valid": true
+    }
+  ],
+  "calculated_force_N": 57.205458333333326,
+  "speed_m_min": 5.881061447520093,
+  "qualification": "No seller identity, delivery, thermal endurance or full assembly release implied."
+}
