@@ -44,7 +44,7 @@
     {"id": "cover_screw_dz", "master_constant": "COVER_SCREW_DZ", "expected": [-24.0, 24.0], "tol_mm": 0.2, "tag": "DERIVED", "source": "F08 README: Z45 +-24"},
     {"id": "cover_screw_count", "master_constant": "len(COVER_SCREW_DX)*len(COVER_SCREW_DZ)", "expected": 12, "tol_mm": 0, "tag": "CONFIRMED", "source": "F08 README: DRW-002-374 pos.15 FIX-000-359 M3x8, 12 pcs per cover"},
     {"id": "iso7380_m3", "master_constant": "ISO7380_M3", "expected": [2.85, 1.65], "tol_mm": 0.0, "tag": "CONFIRMED", "source": "ISO 7380 M3: dk 5.7, k 1.65 (F08)"},
-    {"id": "m5_cosmetic_r", "master_constant": "M5_COSMETIC_THREAD_R", "expected": 2.5, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "F07: ISO 262 M5 major diameter"},
+    {"id": "m6_wheel_screw_cosmetic_r", "master_constant": "M6_COSMETIC_THREAD_R", "expected": 3.0, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "F13: ASS-002-103 FIX-002-105 M6x14 ISO 7380; ISO 262 M6 major diameter (replaces F07 M5)"},
 
     {"id": "body_length", "master_constant": "BODY_L_SOURCE_SCREEN", "expected": 278.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-375 1:1, 278.003; F11 278.1"},
     {"id": "body_width", "master_constant": "2*BODY_HALF_W_SCREEN", "expected": 68.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-375 68.009"},
