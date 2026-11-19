@@ -84,10 +84,10 @@ for side,s in (("L",-1),("R",1)):
             cp=(x,s*18,P["gear_z"])
             add("Idler_carrier_PROXY_"+side+"_"+str(j),
                 cyl(12,9,cp,(0,s,0)).cut(cyl(11,9,cp,(0,s,0))),(0.44,0.54,0.62))
-    # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
+    # Rear Z40 bevel pitch proxy is coaxial with rear Z50 at X=100 (was X=110: disconnected torque path).\n    # These are still pitch cylinders, NOT conjugate bevel teeth or a validated keyed hub.\n    assert P["gear_x"][-1] == 100., "Rear gear coordinate changed"\n    # Bevel input at rear X=100: proxy solids only, orientation requires contact validation.
     add("Bevel_Z16_PROXY_"+side,cyl(12,8,(101,s*14,10),(1,0,0)),(0.85,0.5,0.18))
-    add("Bevel_Z40_PROXY_"+side,cyl(30,8,(110,s*19,P["gear_z"]),(0,s,0)),(0.85,0.5,0.18))
-# Analytical envelope checks; not a substitute for FreeCAD Boolean collision tests.
+    add("Bevel_Z40_PROXY_"+side,cyl(30,8,(100,s*19,P["gear_z"]),(0,s,0)),(0.85,0.5,0.18))
+# Explicit rear coaxiality gate: this checks the modeled bevel Z40 axis, not tooth engagement.\nfor side_label in ("L","R"):\n    z40=next(o for o in parts if o.Name=="Bevel_Z40_PROXY_"+side_label)\n    rear=next(o for o in parts if o.Name=="Z50_pitch_PROXY_"+side_label+"_5")\n    assert abs(z40.Shape.BoundBox.XCenter-rear.Shape.BoundBox.XCenter)<1e-6, "Rear bevel/spur axes offset in X"\nprint("PASS rear Z40/Z50 pitch-solid coaxiality in X; NOT_RUN hub joint and bevel tooth contact")\n# Analytical envelope checks; not a substitute for FreeCAD Boolean collision tests.
 wheel_gap=(P["stations"][1]-P["stations"][0])-P["wheel_D"]
 gear_pitch=P["gear_m"]*50
 gear_gap=(P["gear_x"][1]-P["gear_x"][0])-gear_pitch
