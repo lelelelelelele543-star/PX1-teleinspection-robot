@@ -74,7 +74,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--registry', type=Path, default=ROOT/'current/component_registry.json')
     ap.add_argument('--out', type=Path, default=ROOT/'current/07_TESTS/traction_budget_F09.json')
+    ap.add_argument('--motor-torque', type=float, help='override continuous output torque per motor, N·m')
+    ap.add_argument('--motor-rpm', type=float, help='override loaded output speed, rpm')
+    ap.add_argument('--label', default='GA24Y-370-2485 138:1')
     a = ap.parse_args()
+    if a.motor_torque: INPUTS['motor_rated_torque_Nm'] = (a.motor_torque, 'ESTIMATED', f'candidate {a.label}')
+    if a.motor_rpm: INPUTS['motor_rated_rpm'] = (a.motor_rpm, 'ESTIMATED', f'candidate {a.label}'); INPUTS['motor_no_load_rpm'] = (a.motor_rpm*1.08, 'ESTIMATED', 'no-load ~ loaded x1.08')
     v = {k: x[0] for k, x in INPUTS.items()}
     c = master_constants(ROOT/'current/CAD/PX1_Current_Master.py')
     # Contact geometry DERIVED from master: crown contacts on lower wall, normal tilted.
