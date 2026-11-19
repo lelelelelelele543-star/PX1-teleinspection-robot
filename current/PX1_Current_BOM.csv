@@ -34,10 +34,10 @@ S11;O-ring лифта;2;metric15×2.5;15×2.5;DRW744;BUY;NOT_MODELLED;H03
 P01;Тяговый двигатель;2;ZHAOWEI ZWSMD026026 3-stage + D22 motor (24V winding to order) CANDIDATE;GP D26x44.9 + motor D22.2x53.0, faceX189.5;08_PROCUREMENT/MOTOR_F12_PROTEUS_CLASS_20261119.md;STUDY;PROTEUS_CLASS_ENVELOPE;H05 24V winding/ratio, shaft/flange drawing, thermal unqualified; GA24Y-370 kept as bench fallback
 P02;Муфта;2;NBKMLR-20C-6-6;Ø20×24 bores6/6;NBK manufacturer;BUY;BOUNDARY;H05
 P03;Колесо;6;PX1 engineered D90 tyre, QRW90 topology reference;D90 W24, outer shoulder r28.5 at y8, edge r20.5 at y12 (F04 >=3mm DN150 gap);pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;ENGINEERED_PROFILE_ESTIMATED;H01 nominal CAD only, rubber/contact/tolerances/traction unqualified
-L01;PRESSURE-крышка;1;PX1 service cover F16 20261119;205x68x7 (Al обязателен: теплоотвод Cincon F20),4xD3.4,M3 body pilots,groove1.9x1.2; F20: 8 глухих M3 снизу (Cincon 4×5,3, резистор 2×5,0, стойки 2×4,0), Cincon+шунт крепятся к крышке и снимаются с ней;pipe_service_20261118/ENGINEERING_BASIS.md;MILL;ENGINEERED_ESTIMATED;H03 seal/material/pressure/thread preload unqualified
+L01;PRESSURE-крышка;1;PX1 service cover F16 20261119;205x68x7 (Al обязателен: теплоотвод Cincon F20),4xD3.4,M3 body pilots,groove1.9x1.2; F20: 8 глухих M3 снизу (Cincon 4×5,3, резистор 2×5,0, стойки 2×4,0), Cincon+шунт крепятся к крышке и снимаются с ней; F21: 4 глухих M4 сверху под основание лифта X230/X251 Y±25, глубина 5,5, перемычка 1,5;pipe_service_20261118/ENGINEERING_BASIS.md;MILL;ENGINEERED_ESTIMATED;H03 seal/material/pressure/thread preload unqualified
 L02;Боковой рычаг (звено параллелограмма);2;FSS-002-068;BD 200,1 (DERIVED, чертёж 200,0), t4 h15, Y±25,2 (744: ±27,9 DERIVED; −2,7 ESTIMATED под ключ винтов крышки);DRW744 F18;MILL;MODELLED_F18;H06
 L03;Центральный рычаг + пластина;1;ASS-002-723 + FSS-002-073;AC 200,1 DERIVED; пластина шир. 54,4 DERIVED, щёки Y±6,6…9,6 ESTIMATED;DRW744 F18;MILL;MODELLED_F18;H06
-L04;Основание лифта;1;FAL-002-067;55×68,7 DERIVED; A на 22,9 над опорой DERIVED; на крышке L01, A X250 Z104,9 ESTIMATED; 4×M4 в крышку NOT_MODELLED;DRW744 F18;MILL;MODELLED_F18;H06 крепление к крышке/резьба
+L04;Основание лифта;1;FAL-002-067;55×68,7 DERIVED; A на 22,9 над опорой DERIVED; на крышке L01, A X250 Z104,9 ESTIMATED; F21: 4×Ø4,5 + зенковка Ø8×1, шаг X A+1,0/A−20,0 (DERIVED), Y±25,0 (744: внешняя пара ±27,9, сдвиг ESTIMATED от канавки крышки);DRW744 F18/F21;MILL;MODELLED_F21;H06 (F21: крепление 4×M4×12 смоделировано)
 L05;Корпус лифта (камерный узел);1;DRW-002-752 LIFT HOUSING (упрощён);≈48×52 DERIVED; блок 46×54×48 + проушина D + рычаг C, гнездо SP13 Ø23, ESTIMATED;DRW752 F18;MILL;MODELLED_F18_SIMPLIFIED;H06 H08 внутренности/уплотнения 752
 L06;Газовая пружина;1;ACE GS-12-80-V4A F1=150N (замена SPR-002-524);Ø12/4 ход 80, 112…192; в работе 119,3…138,8 (DERIVED);ACEGS12 catalog + F18 kinematics;BUY;BOUNDARY;H06 наконечники, балансировка
 L07;Рычаг ручного зажима M8;1;FIX-002-527;втулка Ø16×8, ручка Ø7×70 ESTIMATED;DRW744 F18;BUY;MODELLED_F18;H06
@@ -73,7 +73,7 @@ C17;Упорная шайба подшипника;1;BEA-001-815;HOLD;CAM026ASS0
 C18;Втулка ротации;1;MSC-001-899;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
 C19;Шестерня ротации;1;GEA-001-896;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
 C20;Кольца интерфейса камеры;TBD;source metric ring family;38×1.5 /6×1 /21×1.5 /28×1.5;DRW752;BUY;NOT_MODELLED;H03 H08 количество по конкретному исполнению
-H01;Локальный жгут;1;LAPP0028679 UNITRONIC FD P plus A;ровно6×0.25 OD5.4 Rmin≈27;LAPP catalog;BUY;ROUTE_APPROX;H07 финальная длинаHOLD купить3м для образцов
+H01;Локальный жгут;1;LAPP0028679 UNITRONIC FD P plus A;ровно6×0.25 OD5.4, Rmin 5×D=27 подвижно / 3×D=16,2 неподвижно (CONFIRMED LAPP); F21: трасса SP13→гнездо D-рычага→2 клипсы на рычаге→S-петля→направляющая на вводе, 332 мм в модели;LAPP catalog;BUY;ROUTE_F21;H07 выход из SP13 R3 (нужен угловой хвостовик), длина с запасом на разделку HOLD купить3м для образцов
 H02;КабельнаяSP13;1;WEIPUSP1310/S6I-N;6female cable4–6.5;WEIPU catalog;BUY;ENVELOPE;H07
 H03;ПанельнаяSP13;1;WEIPUSP1312/P6-C;6male M13×1family;WEIPU catalog;BUY;NOT_MODELLED;H07
 H04;Гермоввод кабеля камеры;1;LAPPSKINTOP53112000;M12×1.5 cable3.5–7 SW16, вертикально в крышке L01 X272 Y0 (F18 ESTIMATED);LAPP catalog;BUY;BOUNDARY;H03 H07
@@ -119,7 +119,7 @@ F09;M3×6 countersunk;6;standard family;M3×6;DRW375;BUY;NOT_MODELLED;H02
 F10;Belleville washer;3;source washer;20×10.2×1.1;DRW744;BUY;NOT_MODELLED;H06
 F11;PinM6×18;1;source pin;M6×18;DRW744;BUY;NOT_MODELLED;H06
 F12;M4×8 button;6;standard family;M4×8;DRW7442+DRW7454;BUY;NOT_MODELLED;H06
-F13;M4×12cap;4;standard family;M4×12;DRW744;BUY;NOT_MODELLED;H06
+F13;M4×12 ISO 4762 A2 (основание лифта → крышка L01);4;FIX-000-598;M4×12 dk7 k4 s3, свинчивание 5,0 в Al крышке (Proteus 4,95 DERIVED);DRW744 поз.14;BUY;MODELLED_F21;H06 момент затяжки/фиксатор резьбы
 F14;Circlip8×0.8;4;standard family;8×0.8;DRW744;BUY;NOT_MODELLED;H06
 F15;M10thin nut;2;ISO4035M10;M10;DRW744;BUY;NOT_MODELLED;H06
 F16;Circlip6×0.7;1;standard family;6×0.7;DRW744;BUY;NOT_MODELLED;H06
@@ -133,7 +133,8 @@ F22a;Диск-кулачок колеса;6;FSS-002-065 WHEEL DISK нерж.;ф�
 F22b;Винт M6×14 ISO 7380 A2;6;FIX-002-105;M6×14 dk10,5 k3,3 s4;ASS-002-103;BUY;MODELLED_F13;стандарт
 F22c;Шайба пружинная M6 A2 (Schnorr);6;FIX-002-104;Ø6,4/Ø10;ASS-002-103;BUY;MODELLED_F13;размер D DERIVED
 F22d;Кольцо 10×1,8;6;SEA-002-106;ID10 CS1,8;ASS-002-103;BUY;MODELLED_F13;материал не указан
-PR01;Клипса жгута на рычаге для примерки;1;PX1_Lift_Harness_Clip_PROTOTYPE.stl;OD9 ID6.4 L12, открытый профиль;currentmaster F18;PRINT;DESIGN;FIT_CHECK_ONLY
+PR01;Клипса жгута на рычаге (кабель скользит);2;PX1_Lift_Harness_Clip_PROTOTYPE.stl;OD9 ID5.7 L12, открытый профиль, X74 и X176 на пластине рычага;currentmaster F21;PRINT;DESIGN;FIT_CHECK_ONLY
+PR05;Направляющая изгиба кабеля на вводе M12;1;PX1_Camera_Cable_Bend_Guide_R17_PROTOTYPE.stl;дуга R17 (≥3×D) 75°, трубка Ø8,4/Ø5,7 + шайба Ø17,6 на торце Skintop;currentmaster F21;PRINT;DESIGN;FIT_CHECK_ONLY
 PR02;Макет держателя моторов;1;PX1_Motor_Holder_FitCheck_ONLY.stl;52.8×30×3;M08;PRINT;DESIGN;FIT_CHECK_ONLY
 PR03;МакетPRESSUREкрышки;1;PX1_PRESSURE_Cover_FitCheck_ONLY.stl;158×53×7;L01;PRINT;DESIGN;FIT_CHECK_ONLY
 PR04;Макет боковой крышки;1;PX1_Side_Cover_FitCheck_ONLY.stl;262×60×7;M02;PRINT;DESIGN;FIT_CHECK_ONLY

@@ -8,7 +8,11 @@ never imported or executed. Checks:
   * gas spring eye-to-eye over 0..theta_max within ACE bare limits;
   * swept 2-D clearance (XZ) of the translating camera/lift-housing group against the
     crawler housing + service cover (Y overlap assumed, conservative);
-  * informative: spring vs gravity moment about A (masses ESTIMATED).
+  * informative: spring vs gravity moment about A (masses ESTIMATED);
+  * F21 camera harness LAPP 0028679: cable length need between the housing clamp P (moves with the lift
+    housing) and the fixed point K on the gland bend guide over 0..theta_max, as the shortest planar path with
+    bend radius >= 5xOD (Dubins CSC/CCC) through the two sliding lever clips, vs the modeled folded route
+    HARNESS_ROUTE. PASS if slack (modeled - need at 0) >= max need increase + 10 mm.
 Exit 0 only if every PASS criterion holds.
 """
 from __future__ import annotations
@@ -28,6 +32,102 @@ def rot(v, t):
     """Rotate a vector (dx toward camera = -X, dz up) upward by t rad; returns PX1 (dX, dZ)."""
     x, z = -v[0], v[1]
     return (x*math.cos(t) + z*math.sin(t), -x*math.sin(t) + z*math.cos(t))
+
+
+TAU = 2*math.pi
+
+
+def dubins(p0, h0, p1, h1, R):
+    """Shortest planar (X, Z) path length with curvature <= 1/R between oriented points (CSC and CCC words)."""
+    def m2(a): return a % TAU
+    def ctr(p, h, s): return (p[0] - s*R*math.sin(h), p[1] + s*R*math.cos(h))
+    best = float('inf')
+    for s0 in (1, -1):
+        for s1 in (1, -1):
+            c0, c1 = ctr(p0, h0, s0), ctr(p1, h1, s1)
+            dx, dz = c1[0] - c0[0], c1[1] - c0[1]; d = math.hypot(dx, dz); th = math.atan2(dz, dx)
+            if s0 == s1:
+                ln, phi = d, th
+            else:
+                if d < 2*R:
+                    continue
+                ln = math.sqrt(d*d - 4*R*R); phi = th + s0*math.atan2(2*R, ln)
+            best = min(best, R*m2(s0*(phi - h0)) + ln + R*m2(s1*(h1 - phi)))
+        s = s0; c0, c1 = ctr(p0, h0, s), ctr(p1, h1, s)
+        dx, dz = c1[0] - c0[0], c1[1] - c0[1]; d = math.hypot(dx, dz)
+        if 1e-9 < d <= 4*R:
+            hg = math.sqrt(4*R*R - (d/2)**2)
+            for k in (1, -1):
+                mm = (c0[0] + dx/2 - k*hg*dz/d, c0[1] + dz/2 + k*hg*dx/d)
+                f1 = math.atan2(mm[1] - c0[1], mm[0] - c0[0]) + s*math.pi/2
+                f2 = math.atan2(c1[1] - mm[1], c1[0] - mm[0]) - s*math.pi/2
+                best = min(best, R*(m2(s*(f1 - h0)) + m2(-s*(f2 - f1)) + m2(s*(h1 - f2))))
+    return best
+
+
+def route_walk(start, route):
+    """3-D walk of HARNESS_ROUTE (same convention as the master): returns per-segment (end point, end tangent, length, R)."""
+    def add(a, b, k=1.0): return tuple(x + k*y for x, y in zip(a, b))
+    def cross(a, b): return (a[1]*b[2] - a[2]*b[1], a[2]*b[0] - a[0]*b[2], a[0]*b[1] - a[1]*b[0])
+    p, t, out = tuple(start), (1.0, 0.0, 0.0), []
+    for sg in route:
+        if sg[0] == 'S':
+            p = add(p, t, sg[1]); out.append((p, t, sg[1], None))
+        else:
+            R, a = sg[1], math.radians(sg[2]); n = cross(sg[3], t); c = add(p, n, R)
+            p = add(add(c, n, -R*math.cos(a)), t, R*math.sin(a))
+            t = add(tuple(x*math.cos(a) for x in t), n, math.sin(a)); out.append((p, t, R*a, R))
+    return out
+
+
+def harness_check(m, L, AX, AZ, tmax, step):
+    walk = route_walk(m['HARNESS_START'], m['HARNESS_ROUTE'])
+    iP, iK = m['HARNESS_SEG_P'], m['HARNESS_SEG_K']
+    P0, K, tK = walk[iP-1][0], walk[iK-1][0], walk[iK-1][1]
+    hK = math.atan2(tK[2], tK[0]); Hz = m['HARNESS_TOP_Z']; g1, g2 = m['HARNESS_GUIDE_X']
+    Rf = m['HARNESS_R_FLEX']; end = walk[-1][0]
+    L_model = sum(w[2] for w in walk); L_fixed = sum(w[2] for w in walk[:iP]) + sum(w[2] for w in walk[iK:])
+    def lever(th, x):  # lever-frame point at folded X on the cable level, rotated about A
+        d, h = AX - x, Hz - AZ
+        return (AX - d*math.cos(th) + h*math.sin(th), AZ + d*math.sin(th) + h*math.cos(th))
+    rows = []; theta = 0.0
+    while True:
+        th = math.radians(theta); dx, dz = L*(1 - math.cos(th)), L*math.sin(th)
+        P = (P0[0] + dx, P0[2] + dz); Q1, Q2 = lever(th, g1), lever(th, g2)
+        s1 = dubins(P, 0.0, Q1, -th, Rf); s2 = dubins(Q2, -th, (K[0], K[2]), hK, Rf)
+        rows.append({'theta_deg': round(theta, 3), 'span_P_to_clip1_mm': round(s1, 2), 'span_clip2_to_K_mm': round(s2, 2),
+                     'need_total_mm': round(L_fixed + s1 + (g2 - g1) + s2, 2)})
+        if theta >= tmax - 1e-9:
+            break
+        theta = min(theta + step, tmax)
+    n0 = rows[0]['need_total_mm']; worst = max(rows, key=lambda r: r['need_total_mm'])
+    dmax = worst['need_total_mm'] - n0; slack = L_model - n0
+    dyn = [w[3] for w in walk[iP:iK] if w[3] is not None]
+    fixed = [w[3] for w in walk[:iP] + walk[iK:] if w[3] is not None]
+    checks = {
+        'route_ends_at_gland_exit': math.dist(end, (m['CAM_GLAND_XY'][0], m['CAM_GLAND_XY'][1], m['GLAND_EXIT_Z'] - 6.0)) < 1e-6,
+        'dynamic_bends_ge_5xOD': min(dyn) >= m['HARNESS_R_FLEX'] - 1e-9,
+        'harness_slack_ge_need_plus_10': slack >= max(dmax, 0.0) + 10.0 - 1e-9,
+    }
+    sp13_ok = all(r >= m['HARNESS_R_FIXED_MIN'] - 1e-9 for r in fixed if r != m['HARNESS_R_SP13'])
+    return checks, {
+        'cable': 'LAPP UNITRONIC FD P plus A 0028679, OD %.1f (CONFIRMED), min bend 5xD flexing = %.1f / 3xD fixed = %.1f (CONFIRMED LAPP)'
+                 % (m['HARNESS_OD'], m['HARNESS_R_FLEX'], m['HARNESS_R_FIXED_MIN']),
+        'modeled_route_length_mm': round(L_model, 2), 'fixed_parts_length_mm': round(L_fixed, 2),
+        'need_mm': {'theta_0': n0, 'theta_max': rows[-1]['need_total_mm'], 'max': worst['need_total_mm'], 'max_at_deg': worst['theta_deg']},
+        'need_increase_max_mm': round(dmax, 2), 'need_change_at_theta_max_mm': round(rows[-1]['need_total_mm'] - n0, 2),
+        'slack_mm': round(slack, 2), 'margin_mm': round(slack - max(dmax, 0.0) - 10.0, 2),
+        'points_folded_mm': {'P_housing_clamp': [round(v, 3) for v in P0], 'clip_1_x': g1, 'clip_2_x': g2,
+                             'K_fixed_guide': [round(v, 3) for v in K], 'K_heading_deg': round(math.degrees(hK), 3)},
+        'bend_radii_mm': {'dynamic_min': min(dyn), 'fixed': fixed, 'fixed_ge_3xOD_except_SP13_exit': sp13_ok,
+                          'sp13_exit_R_HOLD': m['HARNESS_R_SP13']},
+        'method': 'need(theta) = fixed parts + Dubins(P(theta) heading +X -> clip 1 on lever, heading along lever) + clip pitch '
+                  '(cable slides through open clips) + Dubins(clip 2 -> K heading %.1f deg); R = 5xOD; obstacles ignored (lower bound).'
+                  % math.degrees(hK),
+        'samples': rows[::10] + ([rows[-1]] if (len(rows) - 1) % 10 else []),
+        'limits': 'Planar XZ need; the S-loop lies on the lever plate (XY) and is not tensioned. SP13 exit bend R%.1f < 3xOD is HOLD H07 '
+                  '(90-degree SP13 boot or connector move). Intermediate-angle 3-D cable shape not modelled.' % m['HARNESS_R_SP13'],
+    }
 
 
 def overlap(a, b):
@@ -93,6 +193,7 @@ def main():
     cam_cg_x = cam_rear - cam_l/2
     grav0 = 9.81*(mass['CAM026_kg_CONFIRMED']*(AX - cam_cg_x) + mass['lift_housing_kg_ESTIMATED']*(AX - (-13.0))
                   + mass['levers_kg_ESTIMATED']*L/2)/1000
+    hchecks, harness = harness_check(m, L, AX, AZ, tmax, args.step)
     checks = {
         'camera_axis_folded_70pm5': abs(cam0 - lo_cat) <= TOL_HEIGHT,
         'camera_axis_raised_257pm5': abs(cam_max - hi_cat) <= TOL_HEIGHT,
@@ -101,6 +202,7 @@ def main():
         'gas_spring_within_ACE_bare_limits': all(lo <= x <= hi for x in gas),
         'gas_spring_pushes_up_when_raising': gas[-1] > gas[0],
         'swept_group_clear_of_housing_and_cover': swept_ok,
+        **hchecks,
     }
     report = {
         'status': 'PASS' if all(checks.values()) else 'FAIL', 'checks': checks,
@@ -120,6 +222,7 @@ def main():
                        'note': 'Clamp FSS-002-089 + 3x DIN2093 holds the remainder by friction (Proteus concept).'},
         'swept_clearance_worst': worst,
         'masses': mass,
+        'camera_harness_F21': harness,
         'folded_height_top_of_lever_mm': AZ + 9.0,
         'samples': samples,
         'limits': 'Planar XZ screen of rectangles; Y-separated parts (front wheels, Y>=42.5 vs camera +-37) not tested here. '
@@ -131,6 +234,8 @@ def main():
     short = {k: report[k] for k in ('status', 'checks', 'camera_axis_mm', 'parallelogram_error_mm')}
     short['gas_spring'] = {k: report['gas_spring'][k] for k in ('min_mm', 'max_mm', 'bare_limits_mm', 'spring_moment_Nm_at_150N', 'gravity_moment_Nm_folded_ESTIMATED')}
     short['swept_min_clearance_mm'] = min(v['clearance_mm'] for v in worst.values())
+    short['camera_harness_F21'] = {k: harness[k] for k in ('modeled_route_length_mm', 'need_mm', 'need_increase_max_mm',
+                                                            'need_change_at_theta_max_mm', 'slack_mm', 'margin_mm', 'bend_radii_mm')}
     print(json.dumps(short, indent=2, ensure_ascii=False))
     return 0 if report['status'] == 'PASS' else 1
 

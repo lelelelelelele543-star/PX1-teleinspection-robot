@@ -3396,7 +3396,7 @@
       68.0,
       7.0
     ],
-    "volume_mm3": 94541.31543,
+    "volume_mm3": 94264.85528,
     "solids": 1
   },
   {
@@ -3496,7 +3496,87 @@
       68.7,
       32.9
     ],
-    "volume_mm3": 28668.60151,
+    "volume_mm3": 28022.21882,
+    "solids": 1
+  },
+  {
+    "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_1",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      247.5,
+      -28.5,
+      77.0,
+      254.5,
+      -21.5,
+      93.0
+    ],
+    "dimensions_mm": [
+      7.0,
+      7.0,
+      16.0
+    ],
+    "volume_mm3": 289.22397,
+    "solids": 1
+  },
+  {
+    "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_2",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      247.5,
+      21.5,
+      77.0,
+      254.5,
+      28.5,
+      93.0
+    ],
+    "dimensions_mm": [
+      7.0,
+      7.0,
+      16.0
+    ],
+    "volume_mm3": 289.22397,
+    "solids": 1
+  },
+  {
+    "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_3",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      226.5,
+      -28.5,
+      77.0,
+      233.5,
+      -21.5,
+      93.0
+    ],
+    "dimensions_mm": [
+      7.0,
+      7.0,
+      16.0
+    ],
+    "volume_mm3": 289.22397,
+    "solids": 1
+  },
+  {
+    "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_4",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      226.5,
+      21.5,
+      77.0,
+      233.5,
+      28.5,
+      93.0
+    ],
+    "dimensions_mm": [
+      7.0,
+      7.0,
+      16.0
+    ],
+    "volume_mm3": 289.22397,
     "solids": 1
   },
   {
@@ -3896,7 +3976,7 @@
       46.0,
       66.0
     ],
-    "volume_mm3": 113745.59971,
+    "volume_mm3": 114082.14601,
     "solids": 1
   },
   {
@@ -4005,18 +4085,18 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       8.0,
-      -1.845,
-      69.78,
-      272.22,
-      -1.405,
-      117.72
+      -23.22,
+      69.18,
+      271.62,
+      -0.78,
+      118.96074
     ],
     "dimensions_mm": [
-      264.22,
-      0.44,
-      47.94
+      263.62,
+      22.44,
+      49.78074
     ],
-    "volume_mm3": 49.71023,
+    "volume_mm3": 50.39323,
     "solids": 1
   },
   {
@@ -4025,18 +4105,18 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       8.0,
-      -1.195,
-      69.78,
-      272.22,
-      -0.755,
-      117.72
+      -22.22,
+      69.18,
+      271.62,
+      0.22,
+      118.96074
     ],
     "dimensions_mm": [
-      264.22,
-      0.44,
-      47.94
+      263.62,
+      22.44,
+      49.78074
     ],
-    "volume_mm3": 49.71023,
+    "volume_mm3": 50.39323,
     "solids": 1
   },
   {
@@ -4045,18 +4125,18 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       8.0,
-      -0.545,
-      69.78,
-      272.22,
-      -0.105,
-      117.72
+      -21.22,
+      69.18,
+      271.62,
+      1.22,
+      118.96074
     ],
     "dimensions_mm": [
-      264.22,
-      0.44,
-      47.94
+      263.62,
+      22.44,
+      49.78074
     ],
-    "volume_mm3": 49.71023,
+    "volume_mm3": 50.39323,
     "solids": 1
   },
   {
@@ -4065,18 +4145,18 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       8.0,
-      0.105,
-      69.78,
-      272.22,
-      0.545,
-      117.72
+      -23.22,
+      70.38,
+      272.82,
+      -0.78,
+      120.16074
     ],
     "dimensions_mm": [
-      264.22,
-      0.44,
-      47.94
+      264.82,
+      22.44,
+      49.78074
     ],
-    "volume_mm3": 49.71023,
+    "volume_mm3": 50.67984,
     "solids": 1
   },
   {
@@ -4085,18 +4165,18 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       8.0,
-      0.755,
-      69.78,
-      272.22,
-      1.195,
-      117.72
+      -22.22,
+      70.38,
+      272.82,
+      0.22,
+      120.16074
     ],
     "dimensions_mm": [
-      264.22,
-      0.44,
-      47.94
+      264.82,
+      22.44,
+      49.78074
     ],
-    "volume_mm3": 49.71023,
+    "volume_mm3": 50.67984,
     "solids": 1
   },
   {
@@ -4105,18 +4185,18 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       8.0,
-      1.405,
-      69.78,
-      272.22,
-      1.845,
-      117.72
+      -21.22,
+      70.38,
+      272.82,
+      1.22,
+      120.16074
     ],
     "dimensions_mm": [
-      264.22,
-      0.44,
-      47.94
+      264.82,
+      22.44,
+      49.78074
     ],
-    "volume_mm3": 49.71023,
+    "volume_mm3": 50.67984,
     "solids": 1
   },
   {
@@ -4125,38 +4205,78 @@
     "geometry_state": "HOLD",
     "bbox_mm": [
       8.0,
-      -2.7,
+      -24.7,
       67.3,
       274.7,
       2.7,
-      120.2
+      122.04074
     ],
     "dimensions_mm": [
       266.7,
-      5.4,
-      52.9
+      27.4,
+      54.74074
     ],
-    "volume_mm3": 7120.53295,
+    "volume_mm3": 7308.58512,
     "solids": 1
   },
   {
-    "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE",
+    "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_1",
     "category": "print",
     "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
-      144.0,
+      68.0,
       -4.5,
-      114.0,
-      156.0,
+      113.95,
+      80.0,
       4.5,
-      121.53113
+      120.83113
     ],
     "dimensions_mm": [
       12.0,
       9.0,
-      7.53113
+      6.88113
     ],
-    "volume_mm3": 265.25174,
+    "volume_mm3": 277.14021,
+    "solids": 2
+  },
+  {
+    "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_2",
+    "category": "print",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      170.0,
+      -4.5,
+      113.95,
+      182.0,
+      4.5,
+      120.83113
+    ],
+    "dimensions_mm": [
+      12.0,
+      9.0,
+      6.88113
+    ],
+    "volume_mm3": 277.14021,
+    "solids": 2
+  },
+  {
+    "id": "PX1_CAMERA_CABLE_BEND_GUIDE_R17_GLAND_ON_SERVICE_COVER",
+    "category": "print",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      258.31288,
+      -8.8,
+      102.0,
+      280.8,
+      8.8,
+      122.47763
+    ],
+    "dimensions_mm": [
+      22.48712,
+      17.6,
+      20.47763
+    ],
+    "volume_mm3": 965.81552,
     "solids": 1
   },
   {

@@ -48,6 +48,7 @@ def finish_build(g):
     # Non-pressure print outputs are also made from the active assembly geometry.
     print_map={
       'PX1_Lift_Harness_Clip_PROTOTYPE.stl':shape(g['hguard']),
+      'PX1_Camera_Cable_Bend_Guide_R17_PROTOTYPE.stl':shape(g['bguide']),
       'PX1_Motor_Holder_FitCheck_ONLY.stl':shape(g['motor_holder']),
       'PX1_PRESSURE_Cover_FitCheck_ONLY.stl':shape(g['cover']),
       'PX1_Side_Cover_FitCheck_ONLY.stl':shape(g['side_covers'][1][1]),

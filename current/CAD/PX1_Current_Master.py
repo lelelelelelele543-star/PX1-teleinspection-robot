@@ -193,6 +193,35 @@ CAM_REAR_X=-40.5                               # camera rear face = lift-housing
 CAM_DROP=LIFT_A_Z-CAM_Z                        # C/A level to camera axis, DERIVED from catalogue (752 interface ESTIMATED)
 CAM026_MEASURED_BASE_OD=62.5; CAM_R=CAM026_MEASURED_BASE_OD/2; CAM_LEN=132.0  # ASM000 boom variant (head 132), DERIVED reference only
 CAM_GLAND_XY=(272.0,0.0); VALVE_XY=(272.0,18.0) # camera cable M12 gland + pressure valve in cover rear strip, ESTIMATED
+# F21 (2026-11-20) lift base fixing: DRW-002-744 pos.14 FIX-000-598 "M4 X 12 SKT CAPHEAD A2" x4 (CONFIRMED part list) = ISO 4762 M4x12 A2.
+# Pattern from 744 vector geometry (top view + A-A, 1:1.5; scale re-checked on the M4 thread stub 4.00 and socket s3 2.95).
+LIFT_M4_DRW_PATTERN=((-1.0,27.9),(20.0,25.0))  # (dx toward camera from A, |Y|): outer pair at A (-1.0 = 1.0 behind A), inner pair
+                                               # 20.0 toward camera; DERIVED (+-0.3). Inner pair seen protruding 4.95 below base in A-A.
+LIFT_M4_Y_PX1=25.0                             # PX1: outer pair moved |Y|27.9 -> 25.0 (= inner) so the Ø4 taps stay 1.05 clear of the
+                                               # cover seal groove (inner edge |Y|28.05); Proteus base sits on the housing, no groove. ESTIMATED
+LIFT_M4_X=(LIFT_A_X-LIFT_M4_DRW_PATTERN[0][0],LIFT_A_X-LIFT_M4_DRW_PATTERN[1][0])  # X251.0 / X230.0 (A=X250 ESTIMATED)
+ISO4762_M4=(3.5,4.0,3.0)                       # head dk/2, k, socket s - ISO 4762 M4, CONFIRMED standard
+LIFT_M4_SCREW_L=12.0                           # FIX-000-598 M4x12, CONFIRMED (part list)
+LIFT_M4_PROTEUS_PROTRUSION=4.95                # thread below base in 744 A-A, DERIVED -> Proteus clamp length 7.05
+LIFT_M4_CLAMP=7.0                              # head bearing 7.0 above base seat (8 mm plate, 1.0 Ø8 counterbore), DERIVED from 7.05 / ESTIMATED cbore
+LIFT_M4_ENGAGE=LIFT_M4_SCREW_L-LIFT_M4_CLAMP   # 5.0 mm (1.25d) thread in the 7 mm Al cover, DERIVED
+LIFT_M4_TAP_DEPTH=5.5                          # blind tap from the cover top: engagement + 0.5 runout; 1.5 mm skin left (>=1.0), ESTIMATED
+LIFT_M4_HOLE_R=2.25; LIFT_M4_CBORE=(4.0,1.0)   # Ø4.5 clearance (ISO 273 medium) CONFIRMED standard; Ø8 x 1.0 counterbore ESTIMATED
+# F21 camera harness on the lift: LAPP 0028679 OD 5.4 (CONFIRMED catalogue); min bend 5xD flexing / 3xD fixed (CONFIRMED LAPP).
+HARNESS_OD=5.4
+HARNESS_R_FLEX=5*HARNESS_OD                    # 27.0, dynamic spans (CONFIRMED rule)
+HARNESS_R_FIXED_MIN=3*HARNESS_OD               # 16.2, fixed installation (CONFIRMED rule)
+HARNESS_R_FIXED=17.0                           # static bends: riser top in the C-arm and gland exit, ESTIMATED (>=16.2)
+HARNESS_R_SP13=3.0                             # SP13 exit X12 -> riser X15 in front of the body (X18): max R3 < 16.2, HOLD H07
+                                               # (needs a 90-degree SP13 cable boot / connector move; F18 had a sharp corner)
+HARNESS_GUIDE_X=(74.0,176.0)                   # 2 open clips on lever plate FSS-002-073 (cable slides through), ESTIMATED;
+                                               # clip 2 <= X180 keeps the R27 need path to K free of loops up to 69 deg (F21 check)
+HARNESS_LOOP_Y=-22.0                           # lateral S-loop on the lever plate (plate +-27.2), ESTIMATED
+HARNESS_LOOP_A=math.degrees(math.acos(1-abs(HARNESS_LOOP_Y)/(2*HARNESS_R_FLEX)))  # 53.7 deg per arc, DERIVED
+HARNESS_LOOP_CX=125.0                          # loop centre X between the clips (loop X81.5..168.5), ESTIMATED
+HARNESS_FIX_TURN=75.0                          # fixed bend-guide arc at the gland exit (heading -15 -> -90), ESTIMATED; 75 keeps the
+                                               # span-2 crest at Z119.3 (harness bbox inside DN150)
+GLAND_EXIT_Z=SERVICE_Z+.5+LAPP_CMAX            # 102.0 top of Skintop M12 (cable exits vertically), DERIVED
 
 # Integrated packaging datums: ESTIMATED engineering dimensions, mm.
 # Same six-wheel topology; no change to gear or motor axes.
@@ -200,7 +229,27 @@ MIDDLE_INNER_Y=26.8
 MIDDLE_BUSH_W=3.0
 IDLER_PIN_INNER_Y=27.0
 SUPPORT_BOSS_INNER_Y=26.5
-HARNESS_TOP_Z=117.5   # camera cable over the folded lever (static folded routing), ESTIMATED
+HARNESS_TOP_Z=113.9+HARNESS_OD/2+.2   # 116.8: F21 cable rests on lever plate FSS-002-073 (top Z113.9) +0.2, DERIVED
+# F21 route (folded, theta=0): start in SP13 backshell, heading +X. ('S',len) straight; ('A',R,deg,axis) arc about axis.
+# Span-2 S-bend to the fixed gland bend guide: solved so the route ends exactly at the gland exit (checked at build).
+_HK=math.radians(90-HARNESS_FIX_TURN)          # dynamic heading at fixed point K (15 deg below +X)
+_KX=CAM_GLAND_XY[0]-HARNESS_R_FIXED+HARNESS_R_FIXED*math.cos(math.radians(HARNESS_FIX_TURN))
+_KZ=GLAND_EXIT_Z+HARNESS_R_FIXED*math.sin(math.radians(HARNESS_FIX_TURN))
+HARNESS_SB=math.degrees(math.acos((HARNESS_TOP_Z+HARNESS_R_FLEX+HARNESS_R_FLEX*math.cos(_HK)-_KZ)/(2*HARNESS_R_FLEX)))  # S-bend up angle, DERIVED
+_SB=math.radians(HARNESS_SB)
+_XS=_KX-HARNESS_R_FLEX*math.sin(_SB)-HARNESS_R_FLEX*(math.sin(_SB)+math.sin(_HK))
+_LA=math.radians(HARNESS_LOOP_A); _LX0=HARNESS_LOOP_CX-2*HARNESS_R_FLEX*math.sin(_LA)
+HARNESS_ROUTE=(('S',4.0),('A',HARNESS_R_SP13,90.0,(0,-1,0)),('S',HARNESS_TOP_Z-HARNESS_R_FIXED-(70.0+HARNESS_R_SP13)),
+    ('A',HARNESS_R_FIXED,90.0,(0,1,0)),                                   # -> P (32, 116.8): clamped in lift-housing C-arm slot
+    ('S',_LX0-(12.0+HARNESS_R_SP13+HARNESS_R_FIXED)),                                  # through clip 1 (X74)
+    ('A',HARNESS_R_FLEX,HARNESS_LOOP_A,(0,0,-1)),('A',HARNESS_R_FLEX,HARNESS_LOOP_A,(0,0,1)),
+    ('A',HARNESS_R_FLEX,HARNESS_LOOP_A,(0,0,1)),('A',HARNESS_R_FLEX,HARNESS_LOOP_A,(0,0,-1)),   # S-loop on the lever plate
+    ('S',_XS-(HARNESS_LOOP_CX+2*HARNESS_R_FLEX*math.sin(_LA))),          # through clip 2 (X176)
+    ('A',HARNESS_R_FLEX,HARNESS_SB,(0,-1,0)),('A',HARNESS_R_FLEX,HARNESS_SB+90-HARNESS_FIX_TURN,(0,1,0)),  # -> K (fixed)
+    ('A',HARNESS_R_FIXED,HARNESS_FIX_TURN,(0,1,0)),                       # printed bend guide on the gland (fixed)
+    ('S',6.0))                                                            # into the Skintop bore
+HARNESS_START=(8.0,0.0,70.0)                   # inside SP13 backshell, = CAM_Z
+HARNESS_SEG_P=4; HARNESS_SEG_K=12              # route index after which the point is P (housing clamp) / K (gland guide)
 
 # ------------------------------- helpers
 
@@ -552,6 +601,10 @@ for _hx,_hy in F20_CINCON_HOLES+F20_SHUNT_HOLES:
     cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z-.1,1.5,COVER_TAP_DEPTH+.1))   # M3 cosmetic thread (major D3)
 for _hx,_hy in F20_STANDOFFS:
     cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z-.1,1.5,4.1))
+# F21: 4x blind M4 taps from the cover TOP for the lift base (Ø4 major, cosmetic), 1.5 mm skin to the cover underside.
+LIFT_M4_POINTS=[(x,sy*LIFT_M4_Y_PX1) for x in LIFT_M4_X for sy in (-1,1)]
+for _hx,_hy in LIFT_M4_POINTS:
+    cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z+SERVICE_T-LIFT_M4_TAP_DEPTH,2.0,LIFT_M4_TAP_DEPTH+.1))
 add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7',cover,'metal')
 VX,VY=VALVE_XY
 valve_body=cut(cyl_z(VX,VY,78,5,14),cyl_z(VX,VY,77.9,2.1,14.2))
@@ -581,7 +634,15 @@ for sy in (-1,1):
 lbase=cut(lbase,box0(BASE_X0-.1,-6.5,BASE_Z0-.1,LE[0]+6.5-BASE_X0+.1,13,8.2))                     # gas-spring slot
 lbase=cut(lbase,cyl_y(AX,-15,AZ,5.1,30)); lbase=cut(lbase,cyl_y(LB[0],-35,LB[1],4.05,70))
 lbase=cut(lbase,cyl_y(LE[0],-12.1,LE[1],3.05,24.2))
+_m4_bear=BASE_Z0+LIFT_M4_CLAMP                                                                     # head bearing Z89.0
+for _hx,_hy in LIFT_M4_POINTS:                                                                     # F21: 4x Ø4.5 + Ø8x1 cbore
+    lbase=cut(lbase,cyl_z(_hx,_hy,BASE_Z0-.1,LIFT_M4_HOLE_R,8.2))
+    lbase=cut(lbase,cyl_z(_hx,_hy,_m4_bear,LIFT_M4_CBORE[0],BASE_Z0+8-_m4_bear+.1))
 add('HOLD_LIFT_BASE_FAL002067_ON_SERVICE_COVER',lbase,'lift')
+for _i,(_hx,_hy) in enumerate(LIFT_M4_POINTS,1):                                                   # FIX-000-598 ISO 4762 M4x12 A2
+    _hr,_hk,_hs=ISO4762_M4
+    _head=cut(cyl_z(_hx,_hy,_m4_bear,_hr,_hk),cq.Workplane('XY').polygon(6,_hs/math.cos(math.pi/6)).extrude(2.0).translate((_hx,_hy,_m4_bear+_hk-2.0+.01)))
+    add(f'FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_{_i}',fuse_all([_head,cyl_z(_hx,_hy,_m4_bear-LIFT_M4_SCREW_L,2.0,LIFT_M4_SCREW_L)]),'shaft')
 # Clamp axle FSS-002-089 (M10, M8 end), washer FSS-002-077, 3x DIN2093 20x10.2x1.1, 2x ISO4035 M10, clamp lever FIX-002-527 M8.
 caxle=fuse_all([cyl_y(AX,-20.35,AZ,4.95,44.55),cyl_y(AX,-28.35,AZ,4.0,8.0)])
 add('HOLD_LIFT_CLAMP_AXLE_FSS002089_M10',caxle,'lift')
@@ -626,11 +687,38 @@ grod=fuse_all([between((E3+gu*100).toTuple(),(G3-gu*4).toTuple(),ACE_ROD_OD/2),r
 add('HOLD_ACE_GS12_80_ROD',grod,'purchased')
 add('HOLD_LIFT_GAS_SPRING_PIN_M6x18_FIX002749',cyl_y(LE[0],-9,LE[1],2.95,18),'lift')
 add('HOLD_LIFT_GAS_SPRING_UPPER_PIN',cyl_y(LG[0],-LIFT_CHEEK_Y[1],LG[1],2.95,2*LIFT_CHEEK_Y[1]),'lift')
-# Camera harness: SP13 (in lift housing) -> up behind the housing -> over the folded lever -> M12 gland in cover.
-harness_points=[(8,0,CAM_Z),(15,0,CAM_Z),(15,0,HARNESS_TOP_Z),(CAM_GLAND_XY[0]-8,0,HARNESS_TOP_Z),
-                (CAM_GLAND_XY[0],0,104),(CAM_GLAND_XY[0],0,96)]
-def poly_tube(points,radius):
-    return fuse_all([between(a,b,radius) for a,b in zip(points,points[1:]) if math.dist(a,b)>1e-5])
+# F21 camera harness: SP13 (in lift housing) -> fixed riser R17 in the housing C-arm -> clamp P -> guide 1 -> S-loop on the
+# lever plate -> guide 2 -> S-bend -> fixed point K on the printed bend guide -> R17 -> vertical into the M12 gland.
+def route_walk(start,heading,route):
+    """Pure-geometry walk of HARNESS_ROUTE: list of (kind, points, tangents); arcs give start/mid/end."""
+    V=cq.Vector; p=V(*start); t=V(*heading).normalized(); segs=[]
+    for sg in route:
+        if sg[0]=='S':
+            q=p+t*sg[1]; segs.append(('S',[p,q],[t,t])); p=q
+        else:
+            R,deg,k=sg[1],sg[2],V(*sg[3]); n=k.cross(t); c=p+n*R; pts=[]; tans=[]
+            for a in (0.0,math.radians(deg)/2,math.radians(deg)):
+                pts.append(c+n*(-R*math.cos(a))+t*(R*math.sin(a))); tans.append(t*math.cos(a)+n*math.sin(a))
+            segs.append(('A',pts,tans)); p=pts[-1]; t=tans[-1].normalized()
+    return segs
+def _route_frame(t):
+    y=cq.Vector(0,1,0); e1=(y-t*y.dot(t)).normalized(); return e1,t.cross(e1)
+def route_tube(segs,r,a=0.0,b=0.0):
+    """Sweep a circle along the route offset by (a,b) in the (Y-like, normal) frame: lines stay lines, arcs stay arcs."""
+    edges=[]
+    for kind,pts,tans in segs:
+        q=[]
+        for pp,tt in zip(pts,tans):
+            e1,e2=_route_frame(tt.normalized()); q.append(pp+e1*a+e2*b)
+        if (q[-1]-q[0]).Length<1e-6: continue
+        edges.append(cq.Edge.makeLine(q[0],q[1]) if kind=='S' else cq.Edge.makeThreePointArc(q[0],q[1],q[2]))
+    t0=segs[0][2][0].normalized(); e1,e2=_route_frame(t0)
+    prof=cq.Wire.makeCircle(r,segs[0][1][0]+e1*a+e2*b,t0)
+    return wp(cq.Solid.sweep(prof,[],cq.Wire.assembleEdges(edges),True,False,None,'right'))
+harness_segs=route_walk(HARNESS_START,(1,0,0),HARNESS_ROUTE)
+_hend=harness_segs[-1][1][-1]
+assert abs(_hend.x-CAM_GLAND_XY[0])<1e-6 and abs(_hend.y-CAM_GLAND_XY[1])<1e-6 and abs(_hend.z-(GLAND_EXIT_Z-6.0))<1e-6, _hend
+HARNESS_P=harness_segs[HARNESS_SEG_P-1][1][-1]; HARNESS_K=harness_segs[HARNESS_SEG_K-1][1][-1]
 # Lift housing DRW-002-752 (simplified interface): camera socket block, D lug, C arm.
 LHX1=14.0
 lh=fuse_all([box0(LHX1-LIFT_HOUSING_L-2,-LIFT_HOUSING_W/2,CAM_Z-24,LIFT_HOUSING_L+2,LIFT_HOUSING_W,48),
@@ -639,7 +727,7 @@ lh=fuse_all([box0(LHX1-LIFT_HOUSING_L-2,-LIFT_HOUSING_W/2,CAM_Z-24,LIFT_HOUSING_
 lh=cut(lh,cyl_x(LHX1-LIFT_HOUSING_L-2.1,0,CAM_Z,11.5,LIFT_HOUSING_L+2.2))
 lh=cut(lh,cyl_y(LD[0],-LIFT_HOUSING_W/2-.1,LD[1],4.05,LIFT_HOUSING_W+.2))
 lh=cut(lh,cyl_y(LC[0],-6.5,LC[1],4.05,13))
-lh=cut(lh,box0(11.7,-3.3,CAM_Z+6,6.6,6.6,HARNESS_TOP_Z-CAM_Z-7))   # harness slot behind the camera socket (box: robust STEP)
+lh=cut(lh,route_tube(harness_segs[:HARNESS_SEG_P+1],HARNESS_OD/2+.3))   # F21: fixed riser channel R17 through the C-arm (clamp P)
 add('HOLD_LIFT_HOUSING_DRW002752_SIMPLIFIED_INTERFACE',lh,'lift')
 add('HOLD_LIFT_TOP_LEVER_AXLE_FSS002076',cyl_y(LC[0],-LIFT_CHEEK_Y[1],LC[1],3.95,2*LIFT_CHEEK_Y[1]),'lift')
 # CAM026 catalogue envelope 120x74x74 (rear rotate housing + pan/tilt head + window).
@@ -649,15 +737,27 @@ head=boxc(cam_front+1+29.5,0,CAM_Z,59,CAM026_ENVELOPE[1],CAM026_ENVELOPE[2]).edg
 add('HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74',head,'camera')
 add('HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN',cyl_x(cam_front,0,CAM_Z,12,1),'camera')
 sp13=make_sp13_plug().translate((-36,0,CAM_Z));add('HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE',sp13,'connector')
-jacket=poly_tube(harness_points,2.7)
+jacket=route_tube(harness_segs,HARNESS_OD/2)
+_core_ab=[(a,b) for b in (-.6,.6) for a in (-1.0,0.0,1.0)]   # 6 cores, 2x3 grid in the jacket section, ESTIMATED
 for i,name in enumerate(['12V','GND','TX','RX','CVBS_SIGNAL','CVBS_RETURN']):
-    core=poly_tube([(x,y+(i-2.5)*.65,z) for x,y,z in harness_points],.22)
+    core=route_tube(harness_segs,.22,*_core_ab[i])
     jacket=cut(jacket,core);add(f'CAMERA_HARNESS_CORE_{i+1}_{name}_ROUTE_HOLD',core,'wire')
 add('HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE',jacket,'cable')
-hx=150.0
-hguard=cut(between((hx-6,0,HARNESS_TOP_Z),(hx+6,0,HARNESS_TOP_Z),4.5),between((hx-6.1,0,HARNESS_TOP_Z),(hx+6.1,0,HARNESS_TOP_Z),3.2))
-hguard=cut(hguard,box0(hx-6.2,-5,AZ,12.4,10,HARNESS_TOP_Z-3.5-AZ))
-hguard=cut(hguard,boxc(hx,0,HARNESS_TOP_Z+4,14,4,5));add('PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE',hguard,'print')
+# Open snap clips on the lever plate (cable slides through, 4.0 mouth < OD 5.4), bonded/screwed to the plate top Z113.9.
+def harness_clip(hx):
+    c=cut(between((hx-6,0,HARNESS_TOP_Z),(hx+6,0,HARNESS_TOP_Z),4.5),between((hx-6.1,0,HARNESS_TOP_Z),(hx+6.1,0,HARNESS_TOP_Z),HARNESS_OD/2+.15))
+    c=cut(c,box0(hx-6.2,-5,AZ,12.4,10,113.95-AZ))
+    return cut(c,boxc(hx,0,HARNESS_TOP_Z+4,14,4,5))
+hguard=harness_clip(HARNESS_GUIDE_X[0])
+add('PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_1',hguard,'print')
+add('PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_2',harness_clip(HARNESS_GUIDE_X[1]),'print')
+# Printed bend guide (fixed, R17 >= 3xOD) on the Skintop top face: tube K -> gland exit + seat disc on the gland.
+_gsegs=harness_segs[HARNESS_SEG_K:HARNESS_SEG_K+1]
+bguide=cut(route_tube(_gsegs,HARNESS_OD/2+1.5),route_tube(_gsegs,HARNESS_OD/2+.15))
+bguide=fuse_all([bguide,cut(cyl_z(CAM_GLAND_XY[0],CAM_GLAND_XY[1],GLAND_EXIT_Z,LAPP_OD/2,1.6),
+                             cyl_z(CAM_GLAND_XY[0],CAM_GLAND_XY[1],GLAND_EXIT_Z-.1,HARNESS_OD/2+.15,1.8))])
+bguide=cut(bguide,route_tube(_gsegs,HARNESS_OD/2+.15))
+add('PX1_CAMERA_CABLE_BEND_GUIDE_R17_GLAND_ON_SERVICE_COVER',bguide,'print')
 controller=cq.importers.importStep(str(CAD/'vendor'/'WeAct_F4_64Pin_V11_Manufacturer.step'))
 controller=wp(cq.Compound.makeCompound(controller.vals()))
 b=controller.val().BoundingBox();controller=controller.translate((-(b.xmin+b.xmax)/2,-(b.ymin+b.ymax)/2,-b.zmin))

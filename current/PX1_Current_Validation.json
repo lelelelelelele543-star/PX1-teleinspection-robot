@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "72a9845c33cb2e983f0470b856135a243c32b8339e4bf2fc00f8fcdf2b30fad5",
+  "source_sha256": "25f2202d318cd6df22e2bcc7d6f53fa698ce615a7895f37929f0c25fb105a1bb",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -31,11 +31,11 @@
     "camera_harness_cores": 6
   },
   "counts_match": true,
-  "component_count": 249,
+  "component_count": 255,
   "invalid_shapes": [],
   "collision_method": {
-    "all_pairs": 30876,
-    "boolean_pairs_after_AABB": 869,
+    "all_pairs": 32385,
+    "boolean_pairs_after_AABB": 984,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
@@ -1097,6 +1097,30 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_1",
+        "clearance_mm": 24.6766,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_2",
+        "clearance_mm": 24.6766,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_3",
+        "clearance_mm": 24.6766,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_4",
+        "clearance_mm": 24.6766,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10",
         "clearance_mm": 11.0024,
         "status": "SCREEN_ONLY",
@@ -1248,49 +1272,61 @@
       },
       {
         "id": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
-        "clearance_mm": 8.7843,
+        "clearance_mm": 6.1364,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
-        "clearance_mm": 8.7971,
+        "clearance_mm": 6.4649,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
-        "clearance_mm": 8.8035,
+        "clearance_mm": 6.7804,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
-        "clearance_mm": 8.8035,
+        "clearance_mm": 5.0046,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
-        "clearance_mm": 8.7971,
+        "clearance_mm": 5.3278,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
-        "clearance_mm": 8.7843,
+        "clearance_mm": 5.6381,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
         "id": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-        "clearance_mm": 6.3243,
+        "clearance_mm": 3.4167,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
       {
-        "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE",
-        "clearance_mm": 4.9646,
+        "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_1",
+        "clearance_mm": 5.6643,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_2",
+        "clearance_mm": 5.6643,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "PX1_CAMERA_CABLE_BEND_GUIDE_R17_GLAND_ON_SERVICE_COVER",
+        "clearance_mm": 4.0466,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1573,6 +1609,10 @@
         "HOLD_PRESSURE_VALVE_4MM_BALL",
         "HOLD_LAPP_SKINTOP_53112000_M12x1p5_CAMERA_CABLE_IN_COVER",
         "HOLD_LIFT_BASE_FAL002067_ON_SERVICE_COVER",
+        "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_1",
+        "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_2",
+        "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_3",
+        "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_4",
         "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10",
         "HOLD_LIFT_CLAMP_WASHER_FSS002077",
         "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1",
@@ -1601,7 +1641,9 @@
         "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
         "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
         "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
-        "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE",
+        "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_1",
+        "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_2",
+        "PX1_CAMERA_CABLE_BEND_GUIDE_R17_GLAND_ON_SERVICE_COVER",
         "WEACT_STM32F446RET6_V11_MANUFACTURER_STEP",
         "POLOLU_2992_G2_24v13_1_MANUFACTURER_STEP",
         "POLOLU_2992_G2_24v13_2_MANUFACTURER_STEP",
@@ -2075,7 +2117,18 @@
       "dimensions_mm": [
         12.0,
         9.0,
-        7.531128874149275
+        6.881128874149283
+      ],
+      "fits_chiron_400x400x450": true,
+      "solid_valid": true,
+      "use": "FIT CHECK ONLY; no pressure or traction structural release"
+    },
+    {
+      "file": "PX1_Camera_Cable_Bend_Guide_R17_PROTOTYPE.stl",
+      "dimensions_mm": [
+        22.487116422687706,
+        17.6000002,
+        20.477627717328264
       ],
       "fits_chiron_400x400x450": true,
       "solid_valid": true,
@@ -2175,6 +2228,10 @@
     "HOLD_PAIRED_PINION_BEARING_HOLDER": "CAD/Metal_HOLD/HOLD_PAIRED_PINION_BEARING_HOLDER.step",
     "HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7": "CAD/Metal_HOLD/HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7.step",
     "HOLD_LIFT_BASE_FAL002067_ON_SERVICE_COVER": "CAD/Metal_HOLD/HOLD_LIFT_BASE_FAL002067_ON_SERVICE_COVER.step",
+    "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_1": "CAD/Metal_HOLD/FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_1.step",
+    "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_2": "CAD/Metal_HOLD/FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_2.step",
+    "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_3": "CAD/Metal_HOLD/FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_3.step",
+    "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_4": "CAD/Metal_HOLD/FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_SERVICE_COVER_4.step",
     "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10": "CAD/Metal_HOLD/HOLD_LIFT_CLAMP_AXLE_FSS002089_M10.step",
     "HOLD_LIFT_CLAMP_WASHER_FSS002077": "CAD/Metal_HOLD/HOLD_LIFT_CLAMP_WASHER_FSS002077.step",
     "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1": "CAD/Metal_HOLD/HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1.step",
