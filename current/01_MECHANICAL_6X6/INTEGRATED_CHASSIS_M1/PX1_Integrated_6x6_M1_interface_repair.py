@@ -63,6 +63,8 @@ for side,s in (("L",-1),("R",1)):
     for mount_index,mx in enumerate((-23.,4.),1):
         ring=cyl(13,5,(mx,s*14,P["motor_z"]),(1,0,0)).cut(
             cyl(11.1,5,(mx,s*14,P["motor_z"]),(1,0,0)))
+        # Trim upper arc to Z=29: 1 mm nominal clearance to inner roof Z=30.
+        ring=ring.common(Part.makeBox(5,30,30,V(mx,s*14-15,-1)))
         add("Motor_cradle_RING_PROXY_"+side+"_"+str(mount_index),ring,(0.39,0.56,0.68))
         # Floor-to-ring standoff touches outer ring at z=5 mm; shell inner floor is z=-30.
         post=Part.makeBox(5,6,35,V(mx,s*14-3,-30))
@@ -243,6 +245,7 @@ print("PASS 8 lid fastener proxy positions and blind pilot depths; PHYSICAL_CHEC
 assert len([o for o in parts if o.Name.startswith("Motor_cradle_RING_PROXY_")])==4
 assert len([o for o in parts if o.Name.startswith("Motor_cradle_POST_PROXY_")])==4
 assert P["motor_z"]-13 == 5 and -30+35 == 5, "Cradle/floor interface mismatch"
+assert P["motor_z"]+13>30 and 29<=P["body_H"]/2-P["wall"]-1, "Motor cradle roof clearance"
 print("PASS motor cradle inventory and nominal floor contact; NOT_RUN clamp bolts, retention and 3D collision")
 D.recompute()
 D.saveAs(os.path.join(ROOT,"PX1_Integrated_6x6_M1.FCStd"))
