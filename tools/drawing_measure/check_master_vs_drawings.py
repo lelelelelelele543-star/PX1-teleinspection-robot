@@ -229,12 +229,20 @@ def main():
     ap.add_argument('--master', type=Path, default=ROOT / 'current/CAD/PX1_Current_Master.py')
     ap.add_argument('--reference', type=Path, default=HERE / 'drawing_reference.json')
     ap.add_argument('--out', type=Path, default=ROOT / '_cloud_build/drawing_check.json')
-    ap.add_argument('--registry', type=Path, default=ROOT / '_cloud_build/component_registry.json')
+    ap.add_argument('--registry', type=Path, default=None,
+                    help='component_registry.json; default: _cloud_build/ if it is not older than the master, else current/')
     ap.add_argument('--quiet', action='store_true', help='print only FAIL/SKIP rows and the summary')
     args = ap.parse_args()
 
     env = read_master(args.master)
     ref = json.loads(args.reference.read_text(encoding='utf-8'))
+    if args.registry is None:
+        build = ROOT / '_cloud_build/component_registry.json'
+        if build.exists() and build.stat().st_mtime >= args.master.stat().st_mtime:
+            args.registry = build
+        else:
+            args.registry = ROOT / 'current/component_registry.json'
+            print(f'note: _cloud_build registry missing or older than master -> using {args.registry.relative_to(ROOT)}')
     registry = json.loads(args.registry.read_text(encoding='utf-8')) if args.registry.exists() else None
     results = []
 
