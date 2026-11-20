@@ -1,21 +1,6 @@
 {
   "status": "CALCULATION_ONLY_NOT_MEASURED",
   "inputs": {
-    "motor_rated_torque_Nm": {
-      "value": 1.0,
-      "tag": "ESTIMATED",
-      "source": "candidate GA24Y-370-2485 138:1"
-    },
-    "motor_rated_rpm": {
-      "value": 87.0,
-      "tag": "ESTIMATED",
-      "source": "candidate GA24Y-370-2485 138:1"
-    },
-    "motor_no_load_rpm": {
-      "value": 93.96000000000001,
-      "tag": "ESTIMATED",
-      "source": "no-load ~ loaded x1.08"
-    },
     "motors": {
       "value": 2,
       "tag": "CONFIRMED",
@@ -34,7 +19,7 @@
     "drivetrain_efficiency": {
       "value": 0.75,
       "tag": "ESTIMATED",
-      "source": "bevel ~0.95, 4 spur meshes ~0.97^4, seals/X-rings/bearings"
+      "source": "bevel ~0.95, 4 spur meshes ~0.97^4, seals/X-rings/bearings (motor gearhead not included)"
     },
     "wheel_rolling_radius_m": {
       "value": 0.045,
@@ -58,7 +43,7 @@
     "rolling_resistance_coeff": {
       "value": 0.03,
       "tag": "ESTIMATED",
-      "source": "soft rubber tyre"
+      "source": "soft rubber tyre; applied to the wall NORMAL force (x normal_force_factor) since 2026-11-20"
     },
     "pipe_slope": {
       "value": 0.02,
@@ -66,9 +51,14 @@
       "source": "gravity sewer up-slope 2%"
     },
     "tether_linear_mass_kg_per_m": {
+      "value": 0.07,
+      "tag": "ESTIMATED",
+      "source": "Proteus cable Ø6.8 CONFIRMED; 6x0.5 mm² + PU ~0.06-0.08 kg/m (05_TETHER_REEL/TETHER_CABLE_SEARCH_20261119.md)"
+    },
+    "tether_linear_mass_conservative_kg_per_m": {
       "value": 0.12,
       "tag": "ESTIMATED",
-      "source": "6-core reinforced copper ~Ø9 (article HOLD H07)"
+      "source": "F09 conservative case (reinforced ~Ø9 cable)"
     },
     "tether_friction_coeff": {
       "value": 0.3,
@@ -83,16 +73,41 @@
       ],
       "tag": "CONFIRMED",
       "source": "AGENTS.md: first 40 m, later 100-150 m"
+    },
+    "motor_rated_torque_Nm": {
+      "value": 0.8336520000000002,
+      "tag": "DERIVED",
+      "source": "ZHAOWEI ZWSMD026026 i=62 + MP2238 24 V winding (candidate, not purchased): 16.6 mN·m CONFIRMED x 62 x eta 0.81 ESTIMATED (catalogue max 0.87 -> 0.895)"
+    },
+    "motor_rated_rpm": {
+      "value": 82.14448675710727,
+      "tag": "DERIVED",
+      "source": "24 V winding model at rated current 0.60 A"
+    },
+    "motor_no_load_rpm": {
+      "value": 97.92687657386632,
+      "tag": "DERIVED",
+      "source": "24 V winding model, friction torque only"
+    },
+    "motor_1Nm_point": {
+      "value": {
+        "T_out_Nm": 1.0,
+        "I_A": 0.6920107084384264,
+        "n_out_rpm": 78.99524824842712,
+        "above_continuous": true
+      },
+      "tag": "DERIVED",
+      "source": "F12 1.0 N·m target is ABOVE the continuous rating: short-time only"
     }
   },
   "derived": {
     "contact_normal_vertical_fraction": 0.6869902150362518,
     "normal_force_factor": 1.4556248082037544,
-    "wheel_torque_total_Nm": 3.75,
-    "motor_limited_force_N": 83.33333333333334,
-    "wheel_rpm_rated": 34.8,
-    "speed_rated_m_min": 9.839468191043231,
-    "speed_no_load_m_min": 10.62662564632669
+    "wheel_torque_total_Nm": 3.126195000000001,
+    "motor_limited_force_N": 69.47100000000002,
+    "wheel_rpm_rated": 32.85779470284291,
+    "speed_rated_m_min": 9.29032258064516,
+    "speed_no_load_m_min": 11.075268817204304
   },
   "cad_mass_estimate": {
     "total_kg": 8.04705330509473,
@@ -135,7 +150,7 @@
     "PX1_CAD_estimate": {
       "mass_kg": 8.05,
       "weight_N": 78.9,
-      "base_resistance_N": 3.9,
+      "base_resistance_N": 5.0,
       "adhesion_limit_N": {
         "slime/grease": 34.5,
         "wet concrete/PVC": 57.5,
@@ -144,62 +159,98 @@
       "by_tether_length": [
         {
           "tether_m": 40,
-          "tether_drag_N": 14.1,
-          "required_N": 18.1,
-          "available_N": {
-            "slime/grease": 34.5,
-            "wet concrete/PVC": 57.5,
-            "dry/clean": 80.4
-          },
+          "tether_drag_N": 8.2,
+          "required_N": 13.3,
           "margin_N": {
-            "slime/grease": 16.4,
-            "wet concrete/PVC": 39.4,
-            "dry/clean": 62.4
+            "slime/grease": 21.2,
+            "wet concrete/PVC": 44.2,
+            "dry/clean": 56.2
           },
           "ok": {
             "slime/grease": true,
             "wet concrete/PVC": true,
             "dry/clean": true
+          },
+          "tether_drag_N_conservative": 14.1,
+          "required_N_conservative": 19.2,
+          "margin_N_conservative": {
+            "slime/grease": 15.3,
+            "wet concrete/PVC": 38.3,
+            "dry/clean": 50.3
+          },
+          "ok_conservative": {
+            "slime/grease": true,
+            "wet concrete/PVC": true,
+            "dry/clean": true
+          },
+          "available_N": {
+            "slime/grease": 34.5,
+            "wet concrete/PVC": 57.5,
+            "dry/clean": 69.5
           }
         },
         {
           "tether_m": 100,
-          "tether_drag_N": 35.3,
-          "required_N": 39.3,
-          "available_N": {
-            "slime/grease": 34.5,
-            "wet concrete/PVC": 57.5,
-            "dry/clean": 80.4
-          },
+          "tether_drag_N": 20.6,
+          "required_N": 25.6,
           "margin_N": {
-            "slime/grease": -4.8,
-            "wet concrete/PVC": 18.2,
-            "dry/clean": 41.2
+            "slime/grease": 8.8,
+            "wet concrete/PVC": 31.8,
+            "dry/clean": 43.8
           },
           "ok": {
+            "slime/grease": true,
+            "wet concrete/PVC": true,
+            "dry/clean": true
+          },
+          "tether_drag_N_conservative": 35.3,
+          "required_N_conservative": 40.3,
+          "margin_N_conservative": {
+            "slime/grease": -5.9,
+            "wet concrete/PVC": 17.1,
+            "dry/clean": 29.1
+          },
+          "ok_conservative": {
             "slime/grease": false,
             "wet concrete/PVC": true,
             "dry/clean": true
+          },
+          "available_N": {
+            "slime/grease": 34.5,
+            "wet concrete/PVC": 57.5,
+            "dry/clean": 69.5
           }
         },
         {
           "tether_m": 150,
-          "tether_drag_N": 53.0,
-          "required_N": 56.9,
-          "available_N": {
-            "slime/grease": 34.5,
-            "wet concrete/PVC": 57.5,
-            "dry/clean": 80.4
-          },
+          "tether_drag_N": 30.9,
+          "required_N": 35.9,
           "margin_N": {
-            "slime/grease": -22.4,
-            "wet concrete/PVC": 0.5,
-            "dry/clean": 23.5
+            "slime/grease": -1.5,
+            "wet concrete/PVC": 21.5,
+            "dry/clean": 33.5
           },
           "ok": {
             "slime/grease": false,
             "wet concrete/PVC": true,
             "dry/clean": true
+          },
+          "tether_drag_N_conservative": 53.0,
+          "required_N_conservative": 58.0,
+          "margin_N_conservative": {
+            "slime/grease": -23.5,
+            "wet concrete/PVC": -0.5,
+            "dry/clean": 11.5
+          },
+          "ok_conservative": {
+            "slime/grease": false,
+            "wet concrete/PVC": false,
+            "dry/clean": true
+          },
+          "available_N": {
+            "slime/grease": 34.5,
+            "wet concrete/PVC": 57.5,
+            "dry/clean": 69.5
           }
         }
       ]
@@ -207,7 +258,7 @@
     "Proteus_CRP150_mass": {
       "mass_kg": 9.25,
       "weight_N": 90.7,
-      "base_resistance_N": 4.5,
+      "base_resistance_N": 5.8,
       "adhesion_limit_N": {
         "slime/grease": 39.6,
         "wet concrete/PVC": 66.0,
@@ -216,65 +267,102 @@
       "by_tether_length": [
         {
           "tether_m": 40,
-          "tether_drag_N": 14.1,
-          "required_N": 18.7,
-          "available_N": {
-            "slime/grease": 39.6,
-            "wet concrete/PVC": 66.0,
-            "dry/clean": 83.3
-          },
+          "tether_drag_N": 8.2,
+          "required_N": 14.0,
           "margin_N": {
-            "slime/grease": 21.0,
-            "wet concrete/PVC": 47.4,
-            "dry/clean": 64.7
+            "slime/grease": 25.6,
+            "wet concrete/PVC": 52.0,
+            "dry/clean": 55.5
           },
           "ok": {
             "slime/grease": true,
             "wet concrete/PVC": true,
             "dry/clean": true
+          },
+          "tether_drag_N_conservative": 14.1,
+          "required_N_conservative": 19.9,
+          "margin_N_conservative": {
+            "slime/grease": 19.7,
+            "wet concrete/PVC": 46.1,
+            "dry/clean": 49.6
+          },
+          "ok_conservative": {
+            "slime/grease": true,
+            "wet concrete/PVC": true,
+            "dry/clean": true
+          },
+          "available_N": {
+            "slime/grease": 39.6,
+            "wet concrete/PVC": 66.0,
+            "dry/clean": 69.5
           }
         },
         {
           "tether_m": 100,
-          "tether_drag_N": 35.3,
-          "required_N": 39.9,
-          "available_N": {
-            "slime/grease": 39.6,
-            "wet concrete/PVC": 66.0,
-            "dry/clean": 83.3
-          },
+          "tether_drag_N": 20.6,
+          "required_N": 26.4,
           "margin_N": {
-            "slime/grease": -0.2,
-            "wet concrete/PVC": 26.2,
-            "dry/clean": 43.5
+            "slime/grease": 13.2,
+            "wet concrete/PVC": 39.7,
+            "dry/clean": 43.1
           },
           "ok": {
+            "slime/grease": true,
+            "wet concrete/PVC": true,
+            "dry/clean": true
+          },
+          "tether_drag_N_conservative": 35.3,
+          "required_N_conservative": 41.1,
+          "margin_N_conservative": {
+            "slime/grease": -1.5,
+            "wet concrete/PVC": 25.0,
+            "dry/clean": 28.4
+          },
+          "ok_conservative": {
             "slime/grease": false,
             "wet concrete/PVC": true,
             "dry/clean": true
+          },
+          "available_N": {
+            "slime/grease": 39.6,
+            "wet concrete/PVC": 66.0,
+            "dry/clean": 69.5
           }
         },
         {
           "tether_m": 150,
-          "tether_drag_N": 53.0,
-          "required_N": 57.5,
-          "available_N": {
-            "slime/grease": 39.6,
-            "wet concrete/PVC": 66.0,
-            "dry/clean": 83.3
-          },
+          "tether_drag_N": 30.9,
+          "required_N": 36.7,
           "margin_N": {
-            "slime/grease": -17.9,
-            "wet concrete/PVC": 8.5,
-            "dry/clean": 25.8
+            "slime/grease": 2.9,
+            "wet concrete/PVC": 29.4,
+            "dry/clean": 32.8
           },
           "ok": {
+            "slime/grease": true,
+            "wet concrete/PVC": true,
+            "dry/clean": true
+          },
+          "tether_drag_N_conservative": 53.0,
+          "required_N_conservative": 58.8,
+          "margin_N_conservative": {
+            "slime/grease": -19.1,
+            "wet concrete/PVC": 7.3,
+            "dry/clean": 10.7
+          },
+          "ok_conservative": {
             "slime/grease": false,
             "wet concrete/PVC": true,
             "dry/clean": true
+          },
+          "available_N": {
+            "slime/grease": 39.6,
+            "wet concrete/PVC": 66.0,
+            "dry/clean": 69.5
           }
         }
       ]
     }
-  }
+  },
+  "motor_preset": "zw62"
 }

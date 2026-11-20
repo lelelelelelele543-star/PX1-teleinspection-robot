@@ -9,12 +9,12 @@
     "I_stall_cold_A": 3.333333333333333,
     "T_stall_mNm": 103.0,
     "I_rated_A": 0.6,
-    "T_motor_duty_mNm": 17.921146953405017,
-    "I_duty_A": 0.6366985264834726,
-    "n_out_at_24V_rpm": 80.88841108097104,
-    "V_needed_for_target_rpm": 25.428489140023792,
-    "P_el_duty_W": 15.280764635603342,
-    "P_mech_out_W": 8.47061460041766
+    "T_motor_duty_mNm": 19.91238550378335,
+    "I_duty_A": 0.6920107084384264,
+    "n_out_at_24V_rpm": 78.99524824842712,
+    "V_needed_for_target_rpm": 25.870986595663425,
+    "P_el_duty_W": 16.608257002522233,
+    "P_mech_out_W": 8.27236305219202
   },
   "seller_check": {
     "motor_rpm": 12006,
@@ -35,9 +35,9 @@
   "cincon_design_limit_W": 120.0,
   "cases_W_24V": {
     "A_duty_1Nm": {
-      "P_W": 46.20771663504111,
-      "I_bus_A": 1.9253215264600463,
-      "pct_of_150W": 30.805144423360737,
+      "P_W": 48.86270136887889,
+      "I_bus_A": 2.0359458903699537,
+      "pct_of_150W": 32.57513424591926,
       "over_rating": false,
       "over_ocp_min": false
     },
@@ -79,63 +79,219 @@
   },
   "thermal": {
     "R_body_amb_KpW": 1.2195121951219512,
-    "P_internal_duty_W": 24.21775543714296,
-    "cincon_loss_duty_W": 6.904601336270507,
-    "motor_gear_loss_W": 13.620300070371364,
-    "T_wall_C": 69.53384809407677,
-    "T_air_int_C": 79.53384809407677,
-    "cincon_pout_allowed_bare_W": 10.247945284198943,
-    "cincon_loss_150W": 18.53932584269664,
-    "Tc_bonded_at_150W_C": 75.09564584688576
+    "R_cincon_base_wall_KpW": 0.4,
+    "heat_capacity_J_per_K": 3604.74,
+    "coupled_mass_kg": {
+      "steel": 3.7279999999999998,
+      "aluminium": 1.78,
+      "motors": 0.474
+    },
+    "tau_s": 4396.024390243902,
+    "T_wall_start_C": 73.73898185879558,
+    "E_budget_above_A_J": 4545.64253432521,
+    "I2t_budget_per_motor_A2s": 284.10265839532565,
+    "cases": {
+      "A_duty_1Nm": {
+        "P_out_cincon_W": 48.86270136887889,
+        "I_motor_A": 0.6920107084384264,
+        "motor": {
+          "I_A": 0.6920107084384264,
+          "P_cu_W": 3.831030564747622,
+          "P_fric_W": 2.5644325461795243,
+          "P_gear_W": 1.940430839403066,
+          "P_out_W": 8.272363052192022,
+          "T_out_Nm": 1.0,
+          "n_out_rpm": 78.99524824842712
+        },
+        "losses_W": {
+          "cincon_W": 7.301323193050865,
+          "motor_cu_W": 7.662061129495244,
+          "motor_fric_W": 5.128865092359049,
+          "gearhead_W": 3.880861678806132,
+          "g2_W": 0.6,
+          "regulators_W": 1.5928540305010879,
+          "logic5_W": 1.5
+        },
+        "P_internal_W": 27.665965124212377,
+        "T_wall_ss_C": 73.73898185879558,
+        "T_air_ss_C": 83.73898185879558,
+        "Tc_cincon_ss_C": 76.65951113601594,
+        "T_wall_limit_C": 75.0,
+        "steady_state_ok": true,
+        "time_to_limit_from_A_s": null,
+        "time_to_limit_from_cold_s": null
+      },
+      "A0_rated_continuous": {
+        "P_out_cincon_W": 44.44618736383442,
+        "I_motor_A": 0.6,
+        "motor": {
+          "I_A": 0.6,
+          "P_cu_W": 2.88,
+          "P_fric_W": 2.666666666666665,
+          "P_gear_W": 1.6821333333333328,
+          "P_out_W": 7.171200000000001,
+          "T_out_Nm": 0.8336520000000002,
+          "n_out_rpm": 82.14448675710727
+        },
+        "losses_W": {
+          "cincon_W": 6.641384318733875,
+          "motor_cu_W": 5.76,
+          "motor_fric_W": 5.33333333333333,
+          "gearhead_W": 3.3642666666666656,
+          "g2_W": 0.6,
+          "regulators_W": 1.5928540305010879,
+          "logic5_W": 1.5
+        },
+        "P_internal_W": 24.791838349234958,
+        "T_wall_ss_C": 70.2339492063841,
+        "T_air_ss_C": 80.2339492063841,
+        "Tc_cincon_ss_C": 72.89050293387764,
+        "T_wall_limit_C": 75.0,
+        "steady_state_ok": true,
+        "time_to_limit_from_A_s": null,
+        "time_to_limit_from_cold_s": null
+      },
+      "B_Ilim_1p8A_both": {
+        "P_out_cincon_W": 112.17952069716776,
+        "I_motor_A": 1.8,
+        "motor": {
+          "I_A": 1.8,
+          "P_cu_W": 25.92,
+          "P_fric_W": 1.3333333333333326,
+          "P_gear_W": 3.029866666666666,
+          "P_out_W": 12.916800000000002,
+          "T_out_Nm": 3.003156,
+          "n_out_rpm": 41.07224337855364
+        },
+        "losses_W": {
+          "cincon_W": 13.864884580548834,
+          "motor_cu_W": 51.84,
+          "motor_fric_W": 2.666666666666665,
+          "gearhead_W": 6.059733333333332,
+          "g2_W": 0.6,
+          "regulators_W": 2.6061873638344215,
+          "logic5_W": 1.5
+        },
+        "P_internal_W": 79.13747194438325,
+        "T_wall_ss_C": 136.50911212729665,
+        "T_air_ss_C": 146.50911212729665,
+        "Tc_cincon_ss_C": 142.05506595951618,
+        "T_wall_limit_C": 75.0,
+        "steady_state_ok": false,
+        "time_to_limit_from_A_s": 89.21291523553506,
+        "time_to_limit_from_cold_s": 1980.1984251295926
+      },
+      "P120W": {
+        "P_out_cincon_W": 120.0,
+        "I_motor_A": 1.9629266521423385,
+        "motor": {
+          "I_A": 1.9629266521423385,
+          "P_cu_W": 30.824648333525833,
+          "P_fric_W": 1.1523037198418453,
+          "P_gear_W": 2.8753246436292037,
+          "P_out_W": 12.25796295441924,
+          "T_out_Nm": 3.2977143529411768,
+          "n_out_rpm": 35.495774120517744
+        },
+        "losses_W": {
+          "cincon_W": 14.831460674157313,
+          "motor_cu_W": 61.649296667051665,
+          "motor_fric_W": 2.3046074396836906,
+          "gearhead_W": 5.750649287258407,
+          "g2_W": 0.6,
+          "regulators_W": 2.6061873638344215,
+          "logic5_W": 1.5
+        },
+        "P_internal_W": 89.24220143198549,
+        "T_wall_ss_C": 148.83195296583597,
+        "T_air_ss_C": 158.83195296583597,
+        "Tc_cincon_ss_C": 154.7645372354989,
+        "T_wall_limit_C": 75.0,
+        "steady_state_ok": false,
+        "time_to_limit_from_A_s": 74.44823666555065,
+        "time_to_limit_from_cold_s": 1705.7162458768341
+      },
+      "P150W": {
+        "P_out_cincon_W": 150.0,
+        "I_motor_A": 2.5879266521423383,
+        "motor": {
+          "I_A": 2.5879266521423383,
+          "P_cu_W": 53.57891485494921,
+          "P_fric_W": 0.4578592753974016,
+          "P_gear_W": 1.533958449003206,
+          "P_out_W": 6.539507072066302,
+          "T_out_Nm": 4.427664352941177,
+          "n_out_rpm": 14.10398069418773
+        },
+        "losses_W": {
+          "cincon_W": 18.53932584269664,
+          "motor_cu_W": 107.15782970989842,
+          "motor_fric_W": 0.9157185507948032,
+          "gearhead_W": 3.067916898006412,
+          "g2_W": 1.0046046535302977,
+          "regulators_W": 2.6061873638344215,
+          "logic5_W": 1.5
+        },
+        "P_internal_W": 134.791583018761,
+        "T_wall_ss_C": 204.37997929117196,
+        "T_air_ss_C": 214.37997929117196,
+        "Tc_cincon_ss_C": 211.79570962825062,
+        "T_wall_limit_C": 75.0,
+        "steady_state_ok": false,
+        "time_to_limit_from_A_s": 42.638944252688766,
+        "time_to_limit_from_cold_s": 1052.5271259218623
+      }
+    },
+    "cincon_pout_allowed_bare_W": 7.461603795009785
   },
   "caps_regen": {
     "C_per_G2_for_0p1V_ripple_uF": 225.0,
     "C_bus_total_uF": 1330.0,
-    "v_m_s": 0.15247106280751788,
-    "E_robot_J": 0.10751934059565003,
-    "E_rotors_J": 0.220649633766929,
-    "E_total_J": 0.328168974362579,
-    "V_bus_if_dumped_no_load": 32.70301483797174,
-    "C_needed_for_27V_uF": 4289.790514543517,
-    "regen_W_with_ramp": 0.656337948725158,
+    "v_m_s": 0.14890253493945635,
+    "E_robot_J": 0.10254533771520659,
+    "E_rotors_J": 0.2104420570849538,
+    "E_total_J": 0.3129873948001604,
+    "V_bus_if_dumped_no_load": 32.35209014177592,
+    "C_needed_for_27V_uF": 4091.338494119744,
+    "regen_W_with_ramp": 0.6259747896003208,
     "aux_load_min_W": 3.3647058823529408,
     "D_start_cap": 0.6,
     "J_reflected_kgm2": 3.8982830385015604e-07,
-    "t_accel_at_Ilim_s": 0.014920938103651612,
+    "t_accel_at_Ilim_s": 0.015299157221088436,
     "cs_V_at_Ilim": 0.12200000000000001
   },
   "tether": {
     "A_duty|110V|20C": {
-      "P_in_W": 53.11231797131162,
+      "P_in_W": 56.16402456192976,
       "R_loop_ohm": 12.03,
-      "Vin": 103.84730099816284,
-      "I_A": 0.511446301067095,
-      "drop_V": 6.1526990018371635,
-      "margin_to_43V": 60.84730099816284
+      "Vin": 103.47006070266454,
+      "I_A": 0.5428045966197392,
+      "drop_V": 6.52993929733546,
+      "margin_to_43V": 60.47006070266454
     },
     "A_duty|110V|hot": {
-      "P_in_W": 53.11231797131162,
+      "P_in_W": 56.16402456192976,
       "R_loop_ohm": 14.435999999999998,
-      "Vin": 102.52126447987412,
-      "I_A": 0.5180614796429678,
-      "drop_V": 7.4787355201258805,
-      "margin_to_43V": 59.52126447987412
+      "Vin": 102.05545814699909,
+      "I_A": 0.5503284741618815,
+      "drop_V": 7.9445418530009135,
+      "margin_to_43V": 59.05545814699909
     },
     "A_duty|100V|20C": {
-      "P_in_W": 53.11231797131162,
+      "P_in_W": 56.16402456192976,
       "R_loop_ohm": 12.03,
-      "Vin": 93.13999089945571,
-      "I_A": 0.5702418204941224,
-      "drop_V": 6.860009100544289,
-      "margin_to_43V": 50.13999089945571
+      "Vin": 92.71237273343621,
+      "I_A": 0.6057878027068819,
+      "drop_V": 7.2876272665637885,
+      "margin_to_43V": 49.71237273343621
     },
     "A_duty|100V|hot": {
-      "P_in_W": 53.11231797131162,
+      "P_in_W": 56.16402456192976,
       "R_loop_ohm": 14.435999999999998,
-      "Vin": 91.63256631251724,
-      "I_A": 0.5796227270353809,
-      "drop_V": 8.367433687482759,
-      "margin_to_43V": 48.63256631251724
+      "Vin": 91.10007471311923,
+      "I_A": 0.6165090944084773,
+      "drop_V": 8.899925286880773,
+      "margin_to_43V": 48.10007471311923
     },
     "B_limit|110V|20C": {
       "P_in_W": 126.04440527771658,
@@ -255,9 +411,9 @@
       "source": "Rca natural convection, no heatsink"
     },
     "cincon_rcs_bonded_KpW": {
-      "value": 0.3,
+      "value": 0.4,
       "tag": "ESTIMATED",
-      "source": "baseplate -> Al body wall via 0.5 mm 3 W/mK pad"
+      "source": "baseplate -> pad -> Al cover L01 -> body wall (F20 README: 0.12+0.10+0.17; F19 had 0.3)"
     },
     "cincon_cout_max_uF": {
       "value": 6300.0,
@@ -352,17 +508,22 @@
     "gear_ratio": {
       "value": 62.0,
       "tag": "DERIVED",
-      "source": "F12 note: 24 V winding needs i=62 for ~85 rpm"
+      "source": "F12 note: 24 V winding needs i=62 for ~85 rpm (62 listed on ZHAOWEI 26 mm page)"
     },
     "gear_eff": {
-      "value": 0.9,
+      "value": 0.81,
+      "tag": "ESTIMATED",
+      "source": "3-stage planetary typ. 0.73-0.81 at load; upper end used"
+    },
+    "gear_eff_catalogue_max": {
+      "value": 0.87,
       "tag": "CONFIRMED",
-      "source": "ZWSMD026026 3-stage catalogue"
+      "source": "zwgearbox.com 26mm-high-performance-planetary-gearbox-2: max efficiency 87 %"
     },
     "T_out_duty_Nm": {
       "value": 1.0,
       "tag": "ESTIMATED",
-      "source": "F12 duty point per motor"
+      "source": "F12 duty target per motor (NOT a derated value: above continuous rating, see motor24)"
     },
     "n_out_target_rpm": {
       "value": 87.0,
@@ -488,6 +649,41 @@
       "value": 10.0,
       "tag": "ESTIMATED",
       "source": "internal air above wall, sealed 1 bar, no fan"
+    },
+    "T_air_int_max_C": {
+      "value": 85.0,
+      "tag": "ESTIMATED",
+      "source": "commercial boards (G2, WeAct, Pololu regs) rated to 85 C ambient"
+    },
+    "c_steel_JkgK": {
+      "value": 480.0,
+      "tag": "ESTIMATED",
+      "source": "steel / stainless 460-500"
+    },
+    "c_al_JkgK": {
+      "value": 900.0,
+      "tag": "ESTIMATED",
+      "source": "aluminium alloy"
+    },
+    "c_purchased_JkgK": {
+      "value": 450.0,
+      "tag": "ESTIMATED",
+      "source": "motors/gearheads: steel+copper"
+    },
+    "mass_breakdown_json": {
+      "value": "current/07_TESTS/traction_budget_F17_steel.json",
+      "tag": "DERIVED",
+      "source": "CAD mass by category (model 8.05 kg, densities ESTIMATED)"
+    },
+    "g2_loss_ref_A": {
+      "value": 2.0,
+      "tag": "ESTIMATED",
+      "source": "g2_loss_W valid up to this current; scaled with I^2 above"
+    },
+    "head_heat_inside_body": {
+      "value": false,
+      "tag": "ESTIMATED",
+      "source": "12 V head loads (camera, LED + P4115, N20, RP2040) dissipate in the separately sealed camera head; only the 5577 regulator loss is inside the crawler body"
     },
     "I_peak_lim_A": {
       "value": 1.8,

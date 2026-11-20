@@ -8,7 +8,7 @@ M06;ВалZ40;2;FSS-002-066 family;10/18 socket12 provisional;DRW375;TURN;ADAPTA
 M07;ВалZ16;2;FSS-002-083 family;6/12 длиныHOLD;DRW386;TURN;ADAPTATION;H04 H05
 M08;Парный держатель моторов;1;PX1-GP26-HOLDER;52.8x30x3 2x4 clearance2.7 PCD19 ESTIMATED;GP26 class, ZHAOWEI drawing pending;MILL;ADAPTATION;H05 exact motor variant and screw engagement unqualified
 M09;Держатель опорZ16;1;PX1-PINION-HOLDER;52.8×26×5;DRW386 topology;MILL;ADAPTATION;H04 H05
-M10;Разрезная переходная втулка;2;PX1-SPLIT-6-4;OD6 ID4 L8;NBK / GA24 shaft4 estimated interface;TURN;ADAPTATION;H05
+M10;Разрезная переходная втулка;2;PX1-SPLIT-6-4;OD6 ID4 L8;NBK 6 / вал ZWSMD026026 Ø4 ESTIMATED (чертёж ZHAOWEI не получен, до 2026-11-20 значилось GA24 shaft4);TURN;ADAPTATION;H05
 M11;Палец холостойZ50;4;PX1 idler pin;D10 L7 absY27..34;DRW374;TURN;ESTIMATED;H02 press fit/retention/strength unqualified
 G01;Z50 на осях;6;GEA-002-529;Z50 B4 m1 inferred;DRW374;GEAR;ANALYTIC_20DEG_HOLD;H04
 G02;Z50 холостая;4;GEA-002-528;Z50 B4 m1 inferred;DRW374;GEAR;ANALYTIC_20DEG_HOLD;H04
@@ -80,7 +80,7 @@ H03;ПанельнаяSP13;1;WEIPUSP1312/P6-C;6male M13×1family;WEIPU catalog;B
 H04;Гермоввод кабеля камеры;1;LAPPSKINTOP53112000;M12×1.5 cable3.5–7 SW16, вертикально в крышке L01 X272 Y0 (F18 ESTIMATED), F22: в корпус через проход Ø8 + O-ring 16×1,5;LAPP catalog;BUY;BOUNDARY;H03 H07
 H05;Панельный задний разъём;1;WEIPUSP1712 7contact суффиксHOLD;6used+1NC;WEIPU catalog;BUY;ENVELOPE;H07 H10
 H06;Кабельный задний разъём;1;WEIPUSP1710 7contact суффиксHOLD;6used+1NC;WEIPU catalog;BUY;NOT_MODELLED;H07 H10
-H07;Основнойtether;1;6-жильный Proteus/профессиональный аналог артикулHOLD;6copper+силовой элемент no coax длинаHOLD;USER cable stock;BUY;ENVELOPE;H07 H10
+H07;Основнойtether (строка BOM H07, не HOLD H07);1;6-жильный Proteus/профессиональный аналог артикулHOLD;6copper+силовой элемент no coax длинаHOLD;USER cable stock;BUY;ENVELOPE;H07 H10
 H08;Гильза разгрузки;1;PX1 TAIL SLEEVE;OD24 ID20 L32 target;PX1;TURN;ADAPTATION;H07
 H09;Конус силового элемента;1;PX1 TAIL CONE;20→12 L30 target;PX1;TURN;ADAPTATION;H07
 H10;Внутренний разъём обслуживания;1;6way crimp pair артикулHOLD;6circuits;PX1;BUY;NOT_MODELLED;H07
@@ -115,7 +115,6 @@ F04;Key4×4×12;6;MSC-002-705;4×4×12;DRW374;BUY;MODELLED;H02
 F05;Key4×4×7;2;FSS-002-735;4×4×7;DRW374;BUY;NOT_MODELLED;H04
 F06;M3×10 countersunk;8;ISO10642family;M3×10;DRW386;BUY;NOT_MODELLED;H05
 F07;M5×30+springwasher;1;standard family;M5×30;DRW386;BUY;NOT_MODELLED;H05
-F08;M8×16+springwasher;2;standard family;M8×16;DRW375;BUY;NOT_MODELLED;H06
 F09;M3×6 countersunk;6;standard family;M3×6;DRW375;BUY;NOT_MODELLED;H02
 F10;Belleville washer;3;source washer;20×10.2×1.1;DRW744;BUY;NOT_MODELLED;H06
 F11;PinM6×18;1;source pin;M6×18;DRW744;BUY;NOT_MODELLED;H06
@@ -147,7 +146,7 @@ L18;Тарельчатые пружины DIN 2093;3;FIX-002-726;20×10,2×1,1 C
 L19;Гайка M10 ISO 4035;2;FIX-002-725;s17 m5 CONFIRMED;DRW744 F18;BUY;MODELLED_F18;стандарт
 L20;Ось рычага верхняя (C);1;FSS-002-076;Ø8 ESTIMATED;DRW752 F18;TURN;MODELLED_F18;H06
 M20;Грузовая плита (нерж.);1;FSS-002-060;50.3×12×247.5, 2 цековки Ø15 (перемычка 4) + Ø8,4;DRW375 A-A 1:1, вид сбоку 1:1;MILL;MODELLED_F14;H02 длина ESTIMATED, крепление 2×M8 смоделировано (F14), винт №2 ESTIMATED
-F23;Винт M8×16 DIN 7984 A2 (низкая головка);2;FIX-002-764;M8×16 dk13 k5 s5;DRW375 поз.15;BUY;MODELLED_F14;стандарт, свинчивание 10,0 мм
+F23;Винт M8×16 DIN 7984 A2 (низкая головка);2;FIX-002-764;M8×16 dk13 k5 s5;DRW375 поз.15;BUY;MODELLED_F14;стандарт, свинчивание 10,0 мм, объединено с бывшей строкой F08 (2026-11-20)
 F24;Шайба пружинная M8 A2;2;FIX-002-741;DIN 127 B Ø8,1/Ø14,8×2,0;DRW375 поз.16;BUY;MODELLED_F14;стандарт
 M21;Балластные блоки;6;PX1-BALLAST-F17;≈93,8 см³ всего (F14: блок 5 разрезан на 5+6), BALLAST_BOXES;F17 free-space search;MILL;MODELLED_F17;материал СТАЛЬ (решение пользователя 2026-11-19), крепление HOLD
 P03b;Ступица колеса Al;6;QRW90 hub ESTIMATED;r22 inside D90 tyre;Mini-Cam ASS-004-496 view;TURN;MODELLED_F17;H01 карман под диск ASS-002-103 Ø20,4 ESTIMATED

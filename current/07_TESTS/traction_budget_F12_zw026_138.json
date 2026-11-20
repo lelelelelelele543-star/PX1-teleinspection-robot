@@ -4,12 +4,12 @@
     "motor_rated_torque_Nm": {
       "value": 1.0,
       "tag": "ESTIMATED",
-      "source": "candidate ZHAOWEI ZWSMD026026-138 + MP2238 (derated 1.0 N·m)"
+      "source": "candidate ZHAOWEI ZWSMD026026-138 + MP2238 (1.0 N·m ESTIMATED target)"
     },
     "motor_rated_rpm": {
       "value": 87.0,
       "tag": "ESTIMATED",
-      "source": "candidate ZHAOWEI ZWSMD026026-138 + MP2238 (derated 1.0 N·m)"
+      "source": "candidate ZHAOWEI ZWSMD026026-138 + MP2238 (1.0 N·m ESTIMATED target)"
     },
     "motor_no_load_rpm": {
       "value": 93.96000000000001,
@@ -268,5 +268,6 @@
         }
       ]
     }
-  }
+  },
+  "review_correction_2026_11_20": "HISTORY (F12, i=138). 1.0 N·m was an ESTIMATED target, NOT a derated value: with the 24 V winding, i=62 and gear efficiency 0.81 ESTIMATED the continuous rating is 0.83 N·m @ 82 rpm; 1.0 N·m needs 0.69 A > 0.60 A rated (short-time only, 79 rpm). Rolling resistance here was not multiplied by the normal factor 1.456. Current result: traction_budget_F17_steel.json (tools/traction/px1_traction_budget.py --motor zw62)."
 }

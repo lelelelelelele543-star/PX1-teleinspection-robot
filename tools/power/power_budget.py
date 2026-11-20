@@ -22,7 +22,7 @@ I = {  # name: (value, tag, source)
     'cincon_tc_max_C': (105.0, 'CONFIRMED', 'case -40..105 C, OTP 110 C at baseplate'),
     'cincon_tc_design_C': (95.0, 'ESTIMATED', '10 K margin below Tc max'),
     'cincon_rca_bare_KpW': (10.1, 'CONFIRMED', 'Rca natural convection, no heatsink'),
-    'cincon_rcs_bonded_KpW': (0.3, 'ESTIMATED', 'baseplate -> Al body wall via 0.5 mm 3 W/mK pad'),
+    'cincon_rcs_bonded_KpW': (0.4, 'ESTIMATED', 'baseplate -> pad -> Al cover L01 -> body wall (F20 README: 0.12+0.10+0.17; F19 had 0.3)'),
     'cincon_cout_max_uF': (6300.0, 'CONFIRMED', 'max output capacitance'),
     'derating_frac': (0.80, 'ESTIMATED', 'design continuous limit 80 % of rating'),
     # --- Pololu G2 24v13 #2992 ---
@@ -43,9 +43,12 @@ I = {  # name: (value, tag, source)
     'winding_scale': (2.0, 'DERIVED', '24 V winding = 2x turns, same copper volume'),
     'R_tol': (0.90, 'ESTIMATED', 'cold/tolerance: R -10 % -> stall +11 %'),
     'J_rotor_kgm2': (8e-7, 'ESTIMATED', 'Ø22 rotor class (maxon DCX22L 8.6 g·cm²)'),
-    'gear_ratio': (62.0, 'DERIVED', 'F12 note: 24 V winding needs i=62 for ~85 rpm'),
-    'gear_eff': (0.90, 'CONFIRMED', 'ZWSMD026026 3-stage catalogue'),
-    'T_out_duty_Nm': (1.0, 'ESTIMATED', 'F12 duty point per motor'),
+    'gear_ratio': (62.0, 'DERIVED', 'F12 note: 24 V winding needs i=62 for ~85 rpm (62 listed on ZHAOWEI 26 mm page)'),
+    # 2026-11-20 review: was 0.90 'CONFIRMED'. ZHAOWEI 26 mm planetary page gives only a catalogue MAXIMUM
+    # efficiency 87 %; 3-stage planetary at rated load is typically 0.73-0.81 -> use 0.81 ESTIMATED.
+    'gear_eff': (0.81, 'ESTIMATED', '3-stage planetary typ. 0.73-0.81 at load; upper end used'),
+    'gear_eff_catalogue_max': (0.87, 'CONFIRMED', 'zwgearbox.com 26mm-high-performance-planetary-gearbox-2: max efficiency 87 %'),
+    'T_out_duty_Nm': (1.0, 'ESTIMATED', 'F12 duty target per motor (NOT a derated value: above continuous rating, see motor24)'),
     'n_out_target_rpm': (87.0, 'ESTIMATED', 'F12 target'),
     'bevel_ratio': (2.5, 'CONFIRMED', 'Z16->Z40'),
     'wheel_r_m': (0.045, 'CONFIRMED', 'D90 wheel'),
@@ -75,6 +78,13 @@ I = {  # name: (value, tag, source)
     'body_area_m2': (0.082, 'DERIVED', '278x68x64 box surface'),
     'h_W_m2K': (10.0, 'ESTIMATED', 'natural convection + radiation, still air'),
     'dT_air_internal_K': (10.0, 'ESTIMATED', 'internal air above wall, sealed 1 bar, no fan'),
+    'T_air_int_max_C': (85.0, 'ESTIMATED', 'commercial boards (G2, WeAct, Pololu regs) rated to 85 C ambient'),
+    'c_steel_JkgK': (480.0, 'ESTIMATED', 'steel / stainless 460-500'),
+    'c_al_JkgK': (900.0, 'ESTIMATED', 'aluminium alloy'),
+    'c_purchased_JkgK': (450.0, 'ESTIMATED', 'motors/gearheads: steel+copper'),
+    'mass_breakdown_json': ('current/07_TESTS/traction_budget_F17_steel.json', 'DERIVED', 'CAD mass by category (model 8.05 kg, densities ESTIMATED)'),
+    'g2_loss_ref_A': (2.0, 'ESTIMATED', 'g2_loss_W valid up to this current; scaled with I^2 above'),
+    'head_heat_inside_body': (False, 'ESTIMATED', '12 V head loads (camera, LED + P4115, N20, RP2040) dissipate in the separately sealed camera head; only the 5577 regulator loss is inside the crawler body'),
     # --- firmware choices ---
     'I_peak_lim_A': (1.8, 'DERIVED', 'per motor: <= I_lim_max (1.96 A) with ~8 % margin'),
     'ramp_s': (0.5, 'ESTIMATED', 'proposed 0->100 % duty'),
@@ -156,23 +166,76 @@ def main():
                                   over_ocp_min=p / 24 > v['cincon_iout_max_A'] * v['cincon_ocp_min_frac'])
                           for k, p in cases.items()}
 
-    # ---- thermal ----
+    # ---- thermal (2026-11-20 review correction: one consistent heat balance per case) ----
+    # P_int = Cincon loss + motor copper I^2R (both) + motor friction + gearhead loss + G2 + 12 V/5 V regulator
+    # losses + 5 V logic.  Head 12 V loads heat the camera head, not the body (ESTIMATED, see inputs).
     R_ha = 1 / (v['body_area_m2'] * v['h_W_m2K'])
-    p_duty = cases['A_duty_1Nm']
-    cinc_loss = p_duty * (1 / v['cincon_eff_part'] - 1)
-    motor_loss = m * (P_motor_duty - P_mech)  # motor + gearbox heat inside body
-    reg_loss = head24_nom - head_nom + logic24 - v['logic5_W']
-    P_int = cinc_loss + motor_loss + reg_loss + g2 + v['logic5_W']
-    T_wall = v['Ta_C'] + P_int * R_ha
-    T_air = T_wall + v['dT_air_internal_K']
-    pd_bare = (v['cincon_tc_design_C'] - T_air) / v['cincon_rca_bare_KpW']
-    pout_bare = max(0.0, pd_bare / (1 / v['cincon_eff_part'] - 1))
-    pd_full = v['cincon_pout_max_W'] * (1 / v['cincon_eff_full'] - 1)
-    tc_bonded_full = T_wall + pd_full * v['cincon_rcs_bonded_KpW']
-    out['thermal'] = dict(R_body_amb_KpW=R_ha, P_internal_duty_W=P_int, cincon_loss_duty_W=cinc_loss,
-                          motor_gear_loss_W=motor_loss, T_wall_C=T_wall, T_air_int_C=T_air,
-                          cincon_pout_allowed_bare_W=pout_bare, cincon_loss_150W=pd_full,
-                          Tc_bonded_at_150W_C=tc_bonded_full)
+    eta_g = v['gear_eff']
+    reg_loss_nom = head24_nom - head_nom + logic24 - v['logic5_W']
+    reg_loss_pk = head24_pk - head_pk + logic24 - v['logic5_W']
+
+    def motor_state(I):
+        """24 V winding, 100 % duty, current I per motor -> losses per motor."""
+        wm = max(0.0, (24 - I * R24) / Ke)
+        T_shaft = max(0.0, Kt24 * I - Tf) / 1000  # N·m at motor shaft
+        return dict(I_A=I, P_cu_W=I * I * R24, P_fric_W=Tf / 1000 * wm, P_gear_W=T_shaft * wm * (1 - eta_g),
+                    P_out_W=T_shaft * wm * eta_g, T_out_Nm=T_shaft * v['gear_ratio'] * eta_g,
+                    n_out_rpm=wm * 60 / (2 * math.pi) / v['gear_ratio'])
+
+    def heat(p_out, I, reg_loss):
+        eff = v['cincon_eff_full'] if p_out > 75 else v['cincon_eff_part']
+        ms = motor_state(I)
+        g2l = m * v['g2_loss_W'] * max(1.0, (I / v['g2_loss_ref_A']) ** 2)
+        parts = dict(cincon_W=p_out * (1 / eff - 1), motor_cu_W=m * ms['P_cu_W'],
+                     motor_fric_W=m * ms['P_fric_W'], gearhead_W=m * ms['P_gear_W'], g2_W=g2l,
+                     regulators_W=reg_loss, logic5_W=v['logic5_W'])
+        P = sum(parts.values())
+        Tw = v['Ta_C'] + P * R_ha
+        Tc = Tw + parts['cincon_W'] * v['cincon_rcs_bonded_KpW']
+        Tw_lim = min(v['T_air_int_max_C'] - v['dT_air_internal_K'],
+                     v['cincon_tc_design_C'] - parts['cincon_W'] * v['cincon_rcs_bonded_KpW'])
+        return dict(P_out_cincon_W=p_out, I_motor_A=I, motor=ms, losses_W=parts, P_internal_W=P,
+                    T_wall_ss_C=Tw, T_air_ss_C=Tw + v['dT_air_internal_K'], Tc_cincon_ss_C=Tc,
+                    T_wall_limit_C=Tw_lim, steady_state_ok=Tw <= Tw_lim)
+
+    def I_for_pout(p_out, aux):
+        return max(0.0, (p_out - aux - m * v['g2_loss_W']) / (m * 24))
+
+    Irated = Irated24
+    th = {
+        'A_duty_1Nm': heat(cases['A_duty_1Nm'], Iduty, reg_loss_nom),
+        'A0_rated_continuous': heat(m * 24 * Irated + g2 + aux24_nom, Irated, reg_loss_nom),
+        'B_Ilim_1p8A_both': heat(cases['B_both_at_Ilim_full_speed'], Ipk, reg_loss_pk),
+        'P120W': heat(120.0, I_for_pout(120.0, aux24_pk), reg_loss_pk),
+        'P150W': heat(150.0, I_for_pout(150.0, aux24_pk), reg_loss_pk),
+    }
+    # lumped heat capacity of the body + thermally coupled internals (camera head, lift, tyres excluded)
+    mb = json.loads((ROOT / v['mass_breakdown_json']).read_text())['cad_mass_estimate']['by_category_kg']
+    steel = ['WEIGHT_PLATE', 'BALLAST', 'gear', 'shaft', '_FSS0020', 'AXLE_FLANGE', 'bearing', 'bevel',
+             'ISO4035', 'DIN2093', 'valve', 'LIFT_GAS_SPRING']
+    alu = ['PRESSURE_BODY', 'SIDE_COVER', 'metal', 'QRW90_HUB_AL', 'CINCON_CQB150W', 'BRAKE_SHUNT_10R']
+    m_st = sum(mb.get(k, 0) for k in steel); m_al = sum(mb.get(k, 0) for k in alu); m_pu = mb.get('purchased', 0)
+    C = m_st * v['c_steel_JkgK'] + m_al * v['c_al_JkgK'] + m_pu * v['c_purchased_JkgK']
+    tau = R_ha * C
+    T0 = th['A_duty_1Nm']['T_wall_ss_C']
+    def t_lim(t, start):
+        if t['steady_state_ok']:
+            return None
+        if start >= t['T_wall_limit_C']:
+            return 0.0
+        return tau * math.log((t['T_wall_ss_C'] - start) / (t['T_wall_ss_C'] - t['T_wall_limit_C']))
+    for k, t in th.items():
+        t['time_to_limit_from_A_s'] = t_lim(t, T0)          # after long running at the 1.0 N·m point
+        t['time_to_limit_from_cold_s'] = t_lim(t, v['Ta_C'])  # body soaked at ambient
+    # firmware I^2t budget (adiabatic, conservative): extra heat above the operating point until the wall limit
+    E_budget = C * (v['T_air_int_max_C'] - v['dT_air_internal_K'] - T0)
+    out['thermal'] = dict(R_body_amb_KpW=R_ha, R_cincon_base_wall_KpW=v['cincon_rcs_bonded_KpW'],
+                          heat_capacity_J_per_K=C, coupled_mass_kg=dict(steel=m_st, aluminium=m_al, motors=m_pu),
+                          tau_s=tau, T_wall_start_C=T0, E_budget_above_A_J=E_budget,
+                          I2t_budget_per_motor_A2s=E_budget / (m * R24),
+                          cases=th,
+                          cincon_pout_allowed_bare_W=max(0.0, (v['cincon_tc_design_C'] - th['A_duty_1Nm']['T_air_ss_C'])
+                                                         / v['cincon_rca_bare_KpW'] / (1 / v['cincon_eff_part'] - 1)))
 
     # ---- capacitance / regen ----
     D = 0.5
@@ -228,7 +291,15 @@ def show(o):
     print('Design limit %.0f W; max I_lim per motor %.2f A' % (o['cincon_design_limit_W'], o['I_lim_max_per_motor_A']))
     for k, c in o['cases_W_24V'].items():
         print('  %-36s %6.1f W  %5.2f A  %5.0f %%  over150=%s overOCPmin=%s' % (k, c['P_W'], c['I_bus_A'], c['pct_of_150W'], c['over_rating'], c['over_ocp_min']))
-    print('Thermal:', {k: round(x, 2) for k, x in o['thermal'].items()})
+    t = o['thermal']
+    print('Thermal: R_ha=%.2f K/W  C=%.0f J/K  tau=%.0f s  wall start %.1f C  I2t budget/motor %.0f A2s  bare Cincon %.1f W'
+          % (t['R_body_amb_KpW'], t['heat_capacity_J_per_K'], t['tau_s'], t['T_wall_start_C'], t['I2t_budget_per_motor_A2s'], t['cincon_pout_allowed_bare_W']))
+    for k, c in t['cases'].items():
+        tl = c['time_to_limit_from_A_s']
+        print('  %-22s Pout=%5.1f W I=%.2f A Pint=%5.1f W (Cincon %.1f, Cu %.1f, fric+gear %.1f) wall=%5.1f air=%5.1f Tc=%5.1f lim_wall=%.1f %s'
+              % (k, c['P_out_cincon_W'], c['I_motor_A'], c['P_internal_W'], c['losses_W']['cincon_W'], c['losses_W']['motor_cu_W'],
+                 c['losses_W']['motor_fric_W'] + c['losses_W']['gearhead_W'], c['T_wall_ss_C'], c['T_air_ss_C'], c['Tc_cincon_ss_C'],
+                 c['T_wall_limit_C'], 'steady OK' if tl is None else 'SHORT-TIME %.0f s (cold %.0f s)' % (tl, c['time_to_limit_from_cold_s'])))
     print('Caps/regen:', {k: round(x, 4) for k, x in o['caps_regen'].items()})
     print('Tether collapse power (hot) %.0f W' % o['tether_Pmax_collapse_W'])
     for k, t in o['tether'].items():
