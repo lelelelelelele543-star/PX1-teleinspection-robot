@@ -5,7 +5,7 @@ import ast, pathlib, math
 source=pathlib.Path(__file__).with_name("PX1_Integrated_6x6_M1_interface_repair.py").read_text(encoding="utf-8")
 tree=ast.parse(source)
 assign=next(n for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=="P" for t in n.targets))
-P=ast.literal_eval(assign.value.args[0]) if isinstance(assign.value,ast.Call) else ast.literal_eval(assign.value)
+P={kw.arg: ast.literal_eval(kw.value) for kw in assign.value.keywords} if isinstance(assign.value,ast.Call) and isinstance(assign.value.func,ast.Name) and assign.value.func.id=="dict" else ast.literal_eval(assign.value)
 checks=[]
 def check(name,ok,detail):
     checks.append((name,"PASS" if ok else "FAIL",detail))
