@@ -20,3 +20,4 @@ _ga24_build/
 
 # Full master STEP (~100 MB) exceeds GitHub limits; tracked as .step.gz
 current/CAD/PX1_Current_Master.step
+_gate/

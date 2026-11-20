@@ -1,0 +1,51 @@
+{
+  "note": "Требования для px1_gate.py. Пороговые значения — из документов проекта (поле source). Меняются только с указанием причины в progress.md.",
+  "axes": {"forward": "X", "lateral": "Y", "up": "Z", "units": "mm"},
+  "pipe": {
+    "inner_diameter_mm": 150.0,
+    "fail_below_mm": 3.0,
+    "warn_below_mm": 5.0,
+    "contact_regex": "WHEEL_-?1_",
+    "mesh_deflection_mm": 0.05,
+    "source": "mechanical/REV_FQ_DN150_FULL_CLEARANCE_POLICY.md: R75, предпочтительно >=5 мм, абсолютный минимум >=3 мм; контакт короны колеса исключён"
+  },
+  "census": [
+    {"label": "колёса", "regex": "WHEEL_-?1_", "count": 6, "source": "AGENTS.md: 6x6"},
+    {"label": "шестерни Z50", "regex": "(^|_)Z50_", "count": 10, "source": "AGENTS.md: 5xZ50 на сторону"},
+    {"label": "конические Z40", "regex": "Z40_BEVEL", "count": 2, "source": "AGENTS.md: Z16->Z40"},
+    {"label": "конические Z16", "regex": "Z16_BEVEL", "count": 2, "source": "AGENTS.md: Z16->Z40"},
+    {"label": "тяговые моторы", "regex": "TRACTION_MOTOR", "count": 2, "source": "AGENTS.md: два тяговых мотора"}
+  ],
+  "interference": {
+    "threshold_mm3": 0.0001,
+    "hold_rules": [
+      {"class": "TOOTH_CONTACT_HOLD", "a": "(^|_)Z50_|Z40_BEVEL|Z16_BEVEL", "b": "(^|_)Z50_|Z40_BEVEL|Z16_BEVEL",
+       "why": "зацепление зубьев без люфта в CAD"},
+      {"class": "WHEEL_PROFILE_HOLD", "a": "WHEEL_-?1_", "b": ".*", "why": "шина/ступица — инженерный профиль"},
+      {"class": "SEAL_CONTACT_HOLD", "a": "ORING|O_RING|SEAL", "b": ".*", "why": "кольцо в канавке в сжатом состоянии"},
+      {"class": "THREAD_ENGAGEMENT_HOLD", "a": "M6x14", "b": "WHEEL_SHAFT", "why": "винт в резьбе без винтовой геометрии"},
+      {"class": "VALVE_INTERNAL_ENVELOPE_HOLD", "a": "VALVE", "b": "VALVE", "why": "внутренние оболочки клапана"}
+    ],
+    "source": "current/CAD/release_tools.py (тот же порог 1e-4 мм³ и те же классы)"
+  },
+  "mass": {
+    "target_kg": 9.25,
+    "warn_outside_pct": 10,
+    "default_density_g_cm3": 2.7,
+    "densities_from": "tools/traction/px1_traction_budget.py (DENSITY, NAME_DENSITY) + категории из current/component_registry.json",
+    "source": "CRP150 9,25 кг CONFIRMED; решение пользователя 2026-11-19 — догрузить PX1 до ~9 кг"
+  },
+  "stability": {
+    "righting_fail_at_or_below_mm": 0.0,
+    "righting_warn_below_mm": 5.0,
+    "lateral_offset_warn_mm": 2.0,
+    "axle_share_fail_below": 0.0,
+    "axle_share_warn_below": 0.2,
+    "source": "ESTIMATED: ЦТ ниже оси трубы — краулер сам выравнивается; доля оси <20% — колесо этой оси плохо тянет"
+  },
+  "traction": {
+    "required_tether_m": 40,
+    "future_tether_m": [100, 150],
+    "source": "AGENTS.md: первая длина 40 м, потом 100–150 м; расчёт tools/traction/px1_traction_budget.py"
+  }
+}

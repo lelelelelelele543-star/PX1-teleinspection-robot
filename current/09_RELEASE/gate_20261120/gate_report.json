@@ -1,0 +1,3173 @@
+{
+ "tool": "tools/gate/px1_gate.py",
+ "step": "current/CAD/PX1_Current_Master.step.gz",
+ "spec": "tools/gate/px1_gate_spec.json",
+ "generated": "2026-11-20 19:14",
+ "parts": 285,
+ "seconds": 111.5,
+ "verdict": "WARN",
+ "section_status": {
+  "geometry": "PASS",
+  "census": "PASS",
+  "interference": "PASS",
+  "pipe_dn150": "WARN",
+  "mass_cog": "WARN",
+  "stability": "WARN",
+  "domain": "WARN"
+ },
+ "sections": {
+  "geometry": {
+   "status": "PASS",
+   "invalid": [],
+   "registry_match": "285/285 имён, макс. расхождение объёма 0.000 %"
+  },
+  "census": {
+   "status": "PASS",
+   "rows": [
+    {
+     "label": "колёса",
+     "regex": "WHEEL_-?1_",
+     "count": 6,
+     "source": "AGENTS.md: 6x6",
+     "found": 6,
+     "status": "PASS"
+    },
+    {
+     "label": "шестерни Z50",
+     "regex": "(^|_)Z50_",
+     "count": 10,
+     "source": "AGENTS.md: 5xZ50 на сторону",
+     "found": 10,
+     "status": "PASS"
+    },
+    {
+     "label": "конические Z40",
+     "regex": "Z40_BEVEL",
+     "count": 2,
+     "source": "AGENTS.md: Z16->Z40",
+     "found": 2,
+     "status": "PASS"
+    },
+    {
+     "label": "конические Z16",
+     "regex": "Z16_BEVEL",
+     "count": 2,
+     "source": "AGENTS.md: Z16->Z40",
+     "found": 2,
+     "status": "PASS"
+    },
+    {
+     "label": "тяговые моторы",
+     "regex": "TRACTION_MOTOR",
+     "count": 2,
+     "source": "AGENTS.md: два тяговых мотора",
+     "found": 2,
+     "status": "PASS"
+    }
+   ]
+  },
+  "interference": {
+   "status": "PASS",
+   "pairs_total": 40470,
+   "pairs_boolean_after_aabb": 1252,
+   "threshold_mm3": 0.0001,
+   "fails": [],
+   "holds": [],
+   "errors": [],
+   "hold_classes": {},
+   "seconds": 36.1
+  },
+  "pipe_dn150": {
+   "status": "WARN",
+   "min_gap_mm": 3.216,
+   "fail_below_mm": 3.0,
+   "warn_below_mm": 5.0,
+   "mesh_deflection_mm": 0.05,
+   "count": {
+    "FAIL": 0,
+    "WARN": 8,
+    "PASS": 271
+   },
+   "closest": [
+    {
+     "part": "HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      50.0,
+      -66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      150.0,
+      -66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      250.0,
+      -66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_1_50.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      50.0,
+      66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_1_150.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      150.0,
+      66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_1_250.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      250.0,
+      66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "PX1_CAMERA_CABLE_BEND_GUIDE_R17_GLAND_ON_FITTING_HOLDER",
+     "gap_mm": 4.053,
+     "status": "WARN",
+     "at": [
+      260.49,
+      0.0,
+      122.48
+     ]
+    },
+    {
+     "part": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
+     "gap_mm": 4.5,
+     "status": "WARN",
+     "at": [
+      253.18,
+      -0.0,
+      122.03
+     ]
+    },
+    {
+     "part": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
+     "gap_mm": 6.372,
+     "status": "PASS",
+     "at": [
+      253.13,
+      -1.0,
+      120.15
+     ]
+    },
+    {
+     "part": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
+     "gap_mm": 6.372,
+     "status": "PASS",
+     "at": [
+      253.13,
+      1.0,
+      120.15
+     ]
+    },
+    {
+     "part": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
+     "gap_mm": 6.379,
+     "status": "PASS",
+     "at": [
+      253.13,
+      -0.0,
+      120.15
+     ]
+    },
+    {
+     "part": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_50",
+     "gap_mm": 7.277,
+     "status": "PASS",
+     "at": [
+      49.8,
+      -66.45,
+      38.46
+     ]
+    }
+   ],
+   "all": [
+    {
+     "part": "HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      50.0,
+      -66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      150.0,
+      -66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      250.0,
+      -66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_1_50.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      50.0,
+      66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_1_150.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      150.0,
+      66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_QRW90_HUB_AL_1_250.0_ESTIMATED",
+     "gap_mm": 3.216,
+     "status": "WARN",
+     "at": [
+      250.0,
+      66.5,
+      24.5
+     ]
+    },
+    {
+     "part": "PX1_CAMERA_CABLE_BEND_GUIDE_R17_GLAND_ON_FITTING_HOLDER",
+     "gap_mm": 4.053,
+     "status": "WARN",
+     "at": [
+      260.49,
+      0.0,
+      122.48
+     ]
+    },
+    {
+     "part": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
+     "gap_mm": 4.5,
+     "status": "WARN",
+     "at": [
+      253.18,
+      -0.0,
+      122.03
+     ]
+    },
+    {
+     "part": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
+     "gap_mm": 6.372,
+     "status": "PASS",
+     "at": [
+      253.13,
+      -1.0,
+      120.15
+     ]
+    },
+    {
+     "part": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
+     "gap_mm": 6.372,
+     "status": "PASS",
+     "at": [
+      253.13,
+      1.0,
+      120.15
+     ]
+    },
+    {
+     "part": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
+     "gap_mm": 6.379,
+     "status": "PASS",
+     "at": [
+      253.13,
+      -0.0,
+      120.15
+     ]
+    },
+    {
+     "part": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_50",
+     "gap_mm": 7.277,
+     "status": "PASS",
+     "at": [
+      49.8,
+      -66.45,
+      38.46
+     ]
+    },
+    {
+     "part": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_150",
+     "gap_mm": 7.277,
+     "status": "PASS",
+     "at": [
+      149.8,
+      -66.45,
+      38.46
+     ]
+    },
+    {
+     "part": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_250",
+     "gap_mm": 7.277,
+     "status": "PASS",
+     "at": [
+      249.8,
+      -66.45,
+      38.46
+     ]
+    },
+    {
+     "part": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_50",
+     "gap_mm": 7.277,
+     "status": "PASS",
+     "at": [
+      49.8,
+      66.45,
+      38.46
+     ]
+    },
+    {
+     "part": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_150",
+     "gap_mm": 7.277,
+     "status": "PASS",
+     "at": [
+      149.8,
+      66.45,
+      38.46
+     ]
+    },
+    {
+     "part": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_250",
+     "gap_mm": 7.277,
+     "status": "PASS",
+     "at": [
+      249.8,
+      66.45,
+      38.46
+     ]
+    },
+    {
+     "part": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
+     "gap_mm": 7.562,
+     "status": "PASS",
+     "at": [
+      252.47,
+      -1.0,
+      118.96
+     ]
+    },
+    {
+     "part": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
+     "gap_mm": 7.562,
+     "status": "PASS",
+     "at": [
+      252.47,
+      1.0,
+      118.96
+     ]
+    },
+    {
+     "part": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
+     "gap_mm": 7.57,
+     "status": "PASS",
+     "at": [
+      252.47,
+      -0.0,
+      118.96
+     ]
+    },
+    {
+     "part": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_50",
+     "gap_mm": 8.475,
+     "status": "PASS",
+     "at": [
+      50.0,
+      -65.98,
+      43.0
+     ]
+    },
+    {
+     "part": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_150",
+     "gap_mm": 8.475,
+     "status": "PASS",
+     "at": [
+      150.0,
+      -65.98,
+      43.0
+     ]
+    },
+    {
+     "part": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_250",
+     "gap_mm": 8.475,
+     "status": "PASS",
+     "at": [
+      250.0,
+      -65.98,
+      43.0
+     ]
+    },
+    {
+     "part": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_50",
+     "gap_mm": 8.475,
+     "status": "PASS",
+     "at": [
+      50.0,
+      65.98,
+      43.0
+     ]
+    },
+    {
+     "part": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_150",
+     "gap_mm": 8.475,
+     "status": "PASS",
+     "at": [
+      150.0,
+      65.98,
+      43.0
+     ]
+    },
+    {
+     "part": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_250",
+     "gap_mm": 8.475,
+     "status": "PASS",
+     "at": [
+      250.0,
+      65.98,
+      43.0
+     ]
+    },
+    {
+     "part": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_50",
+     "gap_mm": 8.736,
+     "status": "PASS",
+     "at": [
+      49.82,
+      -65.11,
+      39.21
+     ]
+    },
+    {
+     "part": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_150",
+     "gap_mm": 8.736,
+     "status": "PASS",
+     "at": [
+      149.82,
+      -65.11,
+      39.21
+     ]
+    },
+    {
+     "part": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_250",
+     "gap_mm": 8.736,
+     "status": "PASS",
+     "at": [
+      249.82,
+      -65.11,
+      39.21
+     ]
+    },
+    {
+     "part": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_50",
+     "gap_mm": 8.736,
+     "status": "PASS",
+     "at": [
+      49.82,
+      65.11,
+      39.21
+     ]
+    },
+    {
+     "part": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_150",
+     "gap_mm": 8.736,
+     "status": "PASS",
+     "at": [
+      149.82,
+      65.11,
+      39.21
+     ]
+    },
+    {
+     "part": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_250",
+     "gap_mm": 8.736,
+     "status": "PASS",
+     "at": [
+      249.82,
+      65.11,
+      39.21
+     ]
+    },
+    {
+     "part": "HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74",
+     "gap_mm": 10.312,
+     "status": "PASS",
+     "at": [
+      -161.13,
+      30.58,
+      108.54
+     ]
+    },
+    {
+     "part": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_50",
+     "gap_mm": 10.939,
+     "status": "PASS",
+     "at": [
+      49.85,
+      -63.02,
+      40.0
+     ]
+    },
+    {
+     "part": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_150",
+     "gap_mm": 10.939,
+     "status": "PASS",
+     "at": [
+      149.85,
+      -63.02,
+      40.0
+     ]
+    },
+    {
+     "part": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_250",
+     "gap_mm": 10.939,
+     "status": "PASS",
+     "at": [
+      249.85,
+      -63.02,
+      40.0
+     ]
+    },
+    {
+     "part": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_50",
+     "gap_mm": 10.939,
+     "status": "PASS",
+     "at": [
+      49.85,
+      63.02,
+      40.0
+     ]
+    },
+    {
+     "part": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_150",
+     "gap_mm": 10.939,
+     "status": "PASS",
+     "at": [
+      149.85,
+      63.02,
+      40.0
+     ]
+    },
+    {
+     "part": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_250",
+     "gap_mm": 10.939,
+     "status": "PASS",
+     "at": [
+      249.85,
+      63.02,
+      40.0
+     ]
+    },
+    {
+     "part": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_1",
+     "gap_mm": 12.667,
+     "status": "PASS",
+     "at": [
+      84.0,
+      2.0,
+      113.83
+     ]
+    },
+    {
+     "part": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_2",
+     "gap_mm": 12.667,
+     "status": "PASS",
+     "at": [
+      184.0,
+      2.0,
+      113.83
+     ]
+    },
+    {
+     "part": "HOLD_WHEEL_SHAFT_-1_50.0_GRAPHIC_AXIAL_PACKAGE",
+     "gap_mm": 12.877,
+     "status": "PASS",
+     "at": [
+      50.0,
+      -60.4,
+      37.0
+     ]
+    },
+    {
+     "part": "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE",
+     "gap_mm": 12.877,
+     "status": "PASS",
+     "at": [
+      150.0,
+      -60.4,
+      37.0
+     ]
+    },
+    {
+     "part": "HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE",
+     "gap_mm": 12.877,
+     "status": "PASS",
+     "at": [
+      250.0,
+      -60.4,
+      37.0
+     ]
+    },
+    {
+     "part": "HOLD_WHEEL_SHAFT_1_50.0_GRAPHIC_AXIAL_PACKAGE",
+     "gap_mm": 12.88,
+     "status": "PASS",
+     "at": [
+      50.49,
+      60.4,
+      37.02
+     ]
+    },
+    {
+     "part": "HOLD_WHEEL_SHAFT_1_150.0_GRAPHIC_AXIAL_PACKAGE",
+     "gap_mm": 12.88,
+     "status": "PASS",
+     "at": [
+      150.49,
+      60.4,
+      37.02
+     ]
+    },
+    {
+     "part": "HOLD_WHEEL_SHAFT_1_250.0_GRAPHIC_AXIAL_PACKAGE",
+     "gap_mm": 12.88,
+     "status": "PASS",
+     "at": [
+      250.49,
+      60.4,
+      37.02
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_LIGHT_COVER_FAL002080_DRW752",
+     "gap_mm": 13.063,
+     "status": "PASS",
+     "at": [
+      -1.83,
+      -13.8,
+      111.91
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073",
+     "gap_mm": 13.31,
+     "status": "PASS",
+     "at": [
+      219.89,
+      -27.2,
+      106.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_CLAMP_LEVER_M8_FIX002527",
+     "gap_mm": 13.683,
+     "status": "PASS",
+     "at": [
+      230.89,
+      -28.35,
+      105.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_HOUSING_FAL002071_DRW752",
+     "gap_mm": 14.102,
+     "status": "PASS",
+     "at": [
+      -14.71,
+      23.02,
+      107.91
+     ]
+    },
+    {
+     "part": "KEY_4x4x12_-1_50.0",
+     "gap_mm": 14.55,
+     "status": "PASS",
+     "at": [
+      48.0,
+      -60.4,
+      54.0
+     ]
+    },
+    {
+     "part": "KEY_4x4x12_-1_150.0",
+     "gap_mm": 14.55,
+     "status": "PASS",
+     "at": [
+      148.0,
+      -60.4,
+      54.0
+     ]
+    },
+    {
+     "part": "KEY_4x4x12_-1_250.0",
+     "gap_mm": 14.55,
+     "status": "PASS",
+     "at": [
+      248.0,
+      -60.4,
+      54.0
+     ]
+    },
+    {
+     "part": "KEY_4x4x12_1_50.0",
+     "gap_mm": 14.55,
+     "status": "PASS",
+     "at": [
+      48.0,
+      60.4,
+      54.0
+     ]
+    },
+    {
+     "part": "KEY_4x4x12_1_150.0",
+     "gap_mm": 14.55,
+     "status": "PASS",
+     "at": [
+      148.0,
+      60.4,
+      54.0
+     ]
+    },
+    {
+     "part": "KEY_4x4x12_1_250.0",
+     "gap_mm": 14.55,
+     "status": "PASS",
+     "at": [
+      248.0,
+      60.4,
+      54.0
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_NUT_ISO4035_M10_2",
+     "gap_mm": 15.031,
+     "status": "PASS",
+     "at": [
+      235.8,
+      24.2,
+      106.4
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_3",
+     "gap_mm": 15.07,
+     "status": "PASS",
+     "at": [
+      230.89,
+      -20.35,
+      107.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_2",
+     "gap_mm": 15.578,
+     "status": "PASS",
+     "at": [
+      230.89,
+      -18.8,
+      107.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1",
+     "gap_mm": 16.05,
+     "status": "PASS",
+     "at": [
+      230.89,
+      -17.25,
+      107.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_CLAMP_WASHER_FSS002077",
+     "gap_mm": 16.485,
+     "status": "PASS",
+     "at": [
+      230.89,
+      -15.7,
+      107.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_NUT_ISO4035_M10_1",
+     "gap_mm": 16.868,
+     "status": "PASS",
+     "at": [
+      235.8,
+      19.2,
+      106.4
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_BASE_FAL002067_ON_HOUSING_TOP",
+     "gap_mm": 16.869,
+     "status": "PASS",
+     "at": [
+      220.89,
+      14.2,
+      107.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10",
+     "gap_mm": 17.2,
+     "status": "PASS",
+     "at": [
+      230.89,
+      -28.35,
+      101.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_-1",
+     "gap_mm": 18.587,
+     "status": "PASS",
+     "at": [
+      30.79,
+      -22.87,
+      103.1
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_1",
+     "gap_mm": 18.587,
+     "status": "PASS",
+     "at": [
+      30.79,
+      22.87,
+      103.1
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_TOP_LEVER_AXLE_FSS002076",
+     "gap_mm": 20.082,
+     "status": "PASS",
+     "at": [
+      30.79,
+      -23.0,
+      101.4
+     ]
+    },
+    {
+     "part": "HOLD_SIDE_COVER_-1_GRAPHIC262x60x7",
+     "gap_mm": 20.087,
+     "status": "PASS",
+     "at": [
+      20.0,
+      -41.0,
+      15.0
+     ]
+    },
+    {
+     "part": "HOLD_SIDE_COVER_1_GRAPHIC262x60x7",
+     "gap_mm": 20.087,
+     "status": "PASS",
+     "at": [
+      20.0,
+      41.0,
+      15.0
+     ]
+    },
+    {
+     "part": "HOLD_AXLE_FLANGE_-1_50.0_GRAPHIC_CONTOUR",
+     "gap_mm": 20.823,
+     "status": "PASS",
+     "at": [
+      50.0,
+      -48.8,
+      28.0
+     ]
+    },
+    {
+     "part": "HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR",
+     "gap_mm": 20.823,
+     "status": "PASS",
+     "at": [
+      150.0,
+      -48.8,
+      28.0
+     ]
+    },
+    {
+     "part": "HOLD_AXLE_FLANGE_-1_250.0_GRAPHIC_CONTOUR",
+     "gap_mm": 20.823,
+     "status": "PASS",
+     "at": [
+      250.0,
+      -48.8,
+      28.0
+     ]
+    },
+    {
+     "part": "HOLD_AXLE_FLANGE_1_50.0_GRAPHIC_CONTOUR",
+     "gap_mm": 20.823,
+     "status": "PASS",
+     "at": [
+      50.0,
+      48.8,
+      28.0
+     ]
+    },
+    {
+     "part": "HOLD_AXLE_FLANGE_1_150.0_GRAPHIC_CONTOUR",
+     "gap_mm": 20.823,
+     "status": "PASS",
+     "at": [
+      150.0,
+      48.8,
+      28.0
+     ]
+    },
+    {
+     "part": "HOLD_AXLE_FLANGE_1_250.0_GRAPHIC_CONTOUR",
+     "gap_mm": 20.823,
+     "status": "PASS",
+     "at": [
+      250.0,
+      48.8,
+      28.0
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_SIDE_AXLE_FSS002075_1",
+     "gap_mm": 21.383,
+     "status": "PASS",
+     "at": [
+      192.69,
+      35.85,
+      91.4
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_SIDE_AXLE_FSS002075_-1",
+     "gap_mm": 21.391,
+     "status": "PASS",
+     "at": [
+      193.06,
+      -35.85,
+      91.39
+     ]
+    },
+    {
+     "part": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
+     "gap_mm": 22.097,
+     "status": "PASS",
+     "at": [
+      24.0,
+      -34.0,
+      11.0
+     ]
+    },
+    {
+     "part": "HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5",
+     "gap_mm": 22.37,
+     "status": "PASS",
+     "at": [
+      -42.13,
+      0.0,
+      104.16
+     ]
+    },
+    {
+     "part": "HOLD_XRING_INSTALLED_-1_50.0_FREE18p72x2p62",
+     "gap_mm": 23.018,
+     "status": "PASS",
+     "at": [
+      50.7,
+      -48.8,
+      33.62
+     ]
+    },
+    {
+     "part": "HOLD_XRING_INSTALLED_-1_150.0_FREE18p72x2p62",
+     "gap_mm": 23.018,
+     "status": "PASS",
+     "at": [
+      150.7,
+      -48.8,
+      33.62
+     ]
+    },
+    {
+     "part": "HOLD_XRING_INSTALLED_-1_250.0_FREE18p72x2p62",
+     "gap_mm": 23.018,
+     "status": "PASS",
+     "at": [
+      250.7,
+      -48.8,
+      33.62
+     ]
+    },
+    {
+     "part": "HOLD_XRING_INSTALLED_1_50.0_FREE18p72x2p62",
+     "gap_mm": 23.018,
+     "status": "PASS",
+     "at": [
+      50.7,
+      48.8,
+      33.62
+     ]
+    },
+    {
+     "part": "HOLD_XRING_INSTALLED_1_150.0_FREE18p72x2p62",
+     "gap_mm": 23.018,
+     "status": "PASS",
+     "at": [
+      150.7,
+      48.8,
+      33.62
+     ]
+    },
+    {
+     "part": "HOLD_XRING_INSTALLED_1_250.0_FREE18p72x2p62",
+     "gap_mm": 23.018,
+     "status": "PASS",
+     "at": [
+      250.7,
+      48.8,
+      33.62
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_25_21",
+     "gap_mm": 23.17,
+     "status": "PASS",
+     "at": [
+      25.0,
+      -39.65,
+      18.15
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_75_21",
+     "gap_mm": 23.17,
+     "status": "PASS",
+     "at": [
+      75.0,
+      -39.65,
+      18.15
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_125_21",
+     "gap_mm": 23.17,
+     "status": "PASS",
+     "at": [
+      125.0,
+      -39.65,
+      18.15
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_175_21",
+     "gap_mm": 23.17,
+     "status": "PASS",
+     "at": [
+      175.0,
+      -39.65,
+      18.15
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_225_21",
+     "gap_mm": 23.17,
+     "status": "PASS",
+     "at": [
+      225.0,
+      -39.65,
+      18.15
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_275_21",
+     "gap_mm": 23.17,
+     "status": "PASS",
+     "at": [
+      275.0,
+      -39.65,
+      18.15
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_25_21",
+     "gap_mm": 23.173,
+     "status": "PASS",
+     "at": [
+      25.18,
+      39.65,
+      18.16
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_75_21",
+     "gap_mm": 23.173,
+     "status": "PASS",
+     "at": [
+      75.18,
+      39.65,
+      18.16
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_125_21",
+     "gap_mm": 23.173,
+     "status": "PASS",
+     "at": [
+      125.18,
+      39.65,
+      18.16
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_175_21",
+     "gap_mm": 23.173,
+     "status": "PASS",
+     "at": [
+      175.18,
+      39.65,
+      18.16
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_225_21",
+     "gap_mm": 23.173,
+     "status": "PASS",
+     "at": [
+      225.18,
+      39.65,
+      18.16
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_275_21",
+     "gap_mm": 23.173,
+     "status": "PASS",
+     "at": [
+      275.18,
+      39.65,
+      18.16
+     ]
+    },
+    {
+     "part": "HOLD_ACE_GS12_60_ROD_A3p5_EYE",
+     "gap_mm": 23.591,
+     "status": "PASS",
+     "at": [
+      105.89,
+      -2.0,
+      102.9
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_225",
+     "gap_mm": 23.705,
+     "status": "PASS",
+     "at": [
+      35.22,
+      -45.25,
+      27.37
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_315",
+     "gap_mm": 23.705,
+     "status": "PASS",
+     "at": [
+      64.78,
+      -45.25,
+      27.37
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_225",
+     "gap_mm": 23.705,
+     "status": "PASS",
+     "at": [
+      135.22,
+      -45.25,
+      27.37
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_315",
+     "gap_mm": 23.705,
+     "status": "PASS",
+     "at": [
+      164.78,
+      -45.25,
+      27.37
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_225",
+     "gap_mm": 23.705,
+     "status": "PASS",
+     "at": [
+      235.22,
+      -45.25,
+      27.37
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_315",
+     "gap_mm": 23.705,
+     "status": "PASS",
+     "at": [
+      264.78,
+      -45.25,
+      27.37
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_50_225",
+     "gap_mm": 23.707,
+     "status": "PASS",
+     "at": [
+      35.4,
+      45.25,
+      27.38
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_50_315",
+     "gap_mm": 23.707,
+     "status": "PASS",
+     "at": [
+      64.95,
+      45.25,
+      27.38
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_150_225",
+     "gap_mm": 23.707,
+     "status": "PASS",
+     "at": [
+      135.4,
+      45.25,
+      27.38
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_150_315",
+     "gap_mm": 23.707,
+     "status": "PASS",
+     "at": [
+      164.95,
+      45.25,
+      27.38
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_250_225",
+     "gap_mm": 23.707,
+     "status": "PASS",
+     "at": [
+      235.4,
+      45.25,
+      27.38
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_250_315",
+     "gap_mm": 23.707,
+     "status": "PASS",
+     "at": [
+      264.95,
+      45.25,
+      27.38
+     ]
+    },
+    {
+     "part": "HOLD_LAPP_SKINTOP_53112000_M12x1p5_CAMERA_CABLE_IN_FITTING_HOLDER",
+     "gap_mm": 23.77,
+     "status": "PASS",
+     "at": [
+      272.27,
+      -8.8,
+      102.0
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_SIDE_LINK_FSS002068_-1",
+     "gap_mm": 23.956,
+     "status": "PASS",
+     "at": [
+      192.69,
+      -29.9,
+      92.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_SIDE_LINK_FSS002068_1",
+     "gap_mm": 23.956,
+     "status": "PASS",
+     "at": [
+      192.69,
+      29.9,
+      92.9
+     ]
+    },
+    {
+     "part": "61903_SIDE_-1_50.0",
+     "gap_mm": 24.213,
+     "status": "PASS",
+     "at": [
+      49.57,
+      -46.0,
+      30.01
+     ]
+    },
+    {
+     "part": "61903_SIDE_-1_150.0",
+     "gap_mm": 24.213,
+     "status": "PASS",
+     "at": [
+      149.57,
+      -46.0,
+      30.01
+     ]
+    },
+    {
+     "part": "61903_SIDE_-1_250.0",
+     "gap_mm": 24.213,
+     "status": "PASS",
+     "at": [
+      249.57,
+      -46.0,
+      30.01
+     ]
+    },
+    {
+     "part": "61903_SIDE_1_50.0",
+     "gap_mm": 24.213,
+     "status": "PASS",
+     "at": [
+      49.57,
+      46.0,
+      30.01
+     ]
+    },
+    {
+     "part": "61903_SIDE_1_150.0",
+     "gap_mm": 24.213,
+     "status": "PASS",
+     "at": [
+      149.57,
+      46.0,
+      30.01
+     ]
+    },
+    {
+     "part": "61903_SIDE_1_250.0",
+     "gap_mm": 24.213,
+     "status": "PASS",
+     "at": [
+      249.57,
+      46.0,
+      30.01
+     ]
+    },
+    {
+     "part": "FBR002751_BRASS_SHIM_0p25_LIFT_B_-1",
+     "gap_mm": 24.614,
+     "status": "PASS",
+     "at": [
+      192.69,
+      -30.15,
+      91.9
+     ]
+    },
+    {
+     "part": "FBR002751_BRASS_SHIM_0p25_LIFT_B_1",
+     "gap_mm": 24.614,
+     "status": "PASS",
+     "at": [
+      192.69,
+      30.15,
+      91.9
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_-1",
+     "gap_mm": 24.668,
+     "status": "PASS",
+     "at": [
+      -7.41,
+      -30.85,
+      91.3
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_1",
+     "gap_mm": 24.668,
+     "status": "PASS",
+     "at": [
+      -7.41,
+      30.85,
+      91.3
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_GAS_SPRING_PIN_D4_ACE_A3p5_UPPER",
+     "gap_mm": 24.755,
+     "status": "PASS",
+     "at": [
+      105.89,
+      9.6,
+      100.85
+     ]
+    },
+    {
+     "part": "HOLD_SIDE_ORING_190x1p5_-1_LOBED_GLAND_INSTALLED",
+     "gap_mm": 25.196,
+     "status": "PASS",
+     "at": [
+      50.95,
+      -35.15,
+      16.25
+     ]
+    },
+    {
+     "part": "HOLD_SIDE_ORING_190x1p5_1_LOBED_GLAND_INSTALLED",
+     "gap_mm": 25.196,
+     "status": "PASS",
+     "at": [
+      249.05,
+      35.15,
+      16.25
+     ]
+    },
+    {
+     "part": "HOLD_ACE_GS12_60_V4A_150N_BODY_A3p5_EYE",
+     "gap_mm": 25.785,
+     "status": "PASS",
+     "at": [
+      133.81,
+      -0.37,
+      100.74
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_TOP_AXLE_FSS002079_1",
+     "gap_mm": 25.908,
+     "status": "PASS",
+     "at": [
+      -7.41,
+      31.3,
+      89.35
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_TOP_AXLE_FSS002079_-1",
+     "gap_mm": 25.914,
+     "status": "PASS",
+     "at": [
+      -7.17,
+      -31.3,
+      89.34
+     ]
+    },
+    {
+     "part": "HOLD_FLANGE_ORING_32x1p5_-1_50.0_FACE_GLAND_INSTALLED",
+     "gap_mm": 26.475,
+     "status": "PASS",
+     "at": [
+      50.93,
+      -42.15,
+      27.49
+     ]
+    },
+    {
+     "part": "HOLD_FLANGE_ORING_32x1p5_-1_150.0_FACE_GLAND_INSTALLED",
+     "gap_mm": 26.475,
+     "status": "PASS",
+     "at": [
+      150.93,
+      -42.15,
+      27.49
+     ]
+    },
+    {
+     "part": "HOLD_FLANGE_ORING_32x1p5_-1_250.0_FACE_GLAND_INSTALLED",
+     "gap_mm": 26.475,
+     "status": "PASS",
+     "at": [
+      250.93,
+      -42.15,
+      27.49
+     ]
+    },
+    {
+     "part": "HOLD_FLANGE_ORING_32x1p5_1_50.0_FACE_GLAND_INSTALLED",
+     "gap_mm": 26.475,
+     "status": "PASS",
+     "at": [
+      50.93,
+      42.15,
+      27.49
+     ]
+    },
+    {
+     "part": "HOLD_FLANGE_ORING_32x1p5_1_150.0_FACE_GLAND_INSTALLED",
+     "gap_mm": 26.475,
+     "status": "PASS",
+     "at": [
+      150.93,
+      42.15,
+      27.49
+     ]
+    },
+    {
+     "part": "HOLD_FLANGE_ORING_32x1p5_1_250.0_FACE_GLAND_INSTALLED",
+     "gap_mm": 26.475,
+     "status": "PASS",
+     "at": [
+      250.93,
+      42.15,
+      27.49
+     ]
+    },
+    {
+     "part": "HOLD_PRESSURE_VALVE_CAP",
+     "gap_mm": 26.654,
+     "status": "PASS",
+     "at": [
+      271.82,
+      24.0,
+      93.5
+     ]
+    },
+    {
+     "part": "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD",
+     "gap_mm": 27.301,
+     "status": "PASS",
+     "at": [
+      24.5,
+      -25.15,
+      11.0
+     ]
+    },
+    {
+     "part": "HOLD_Z50_-1_100_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.091,
+     "status": "PASS",
+     "at": [
+      99.61,
+      -33.8,
+      19.0
+     ]
+    },
+    {
+     "part": "HOLD_Z50_-1_200_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.091,
+     "status": "PASS",
+     "at": [
+      199.61,
+      -33.8,
+      19.0
+     ]
+    },
+    {
+     "part": "HOLD_Z50_1_100_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.091,
+     "status": "PASS",
+     "at": [
+      99.61,
+      33.8,
+      19.0
+     ]
+    },
+    {
+     "part": "HOLD_Z50_1_200_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.091,
+     "status": "PASS",
+     "at": [
+      199.61,
+      33.8,
+      19.0
+     ]
+    },
+    {
+     "part": "HOLD_Z50_-1_50_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.109,
+     "status": "PASS",
+     "at": [
+      48.75,
+      -33.8,
+      19.03
+     ]
+    },
+    {
+     "part": "HOLD_Z50_-1_150_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.109,
+     "status": "PASS",
+     "at": [
+      148.75,
+      -33.8,
+      19.03
+     ]
+    },
+    {
+     "part": "HOLD_Z50_-1_250_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.109,
+     "status": "PASS",
+     "at": [
+      248.75,
+      -33.8,
+      19.03
+     ]
+    },
+    {
+     "part": "HOLD_Z50_1_50_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.109,
+     "status": "PASS",
+     "at": [
+      48.75,
+      33.8,
+      19.03
+     ]
+    },
+    {
+     "part": "HOLD_Z50_1_150_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.109,
+     "status": "PASS",
+     "at": [
+      148.75,
+      33.8,
+      19.03
+     ]
+    },
+    {
+     "part": "HOLD_Z50_1_250_PROFILE_UNCONFIRMED",
+     "gap_mm": 28.109,
+     "status": "PASS",
+     "at": [
+      248.75,
+      33.8,
+      19.03
+     ]
+    },
+    {
+     "part": "FBR002750_BRASS_SHIM_0p4_LIFT_D_-1",
+     "gap_mm": 28.329,
+     "status": "PASS",
+     "at": [
+      -7.41,
+      -23.42,
+      91.9
+     ]
+    },
+    {
+     "part": "FBR002750_BRASS_SHIM_0p4_LIFT_D_1",
+     "gap_mm": 28.329,
+     "status": "PASS",
+     "at": [
+      -7.41,
+      23.42,
+      91.9
+     ]
+    },
+    {
+     "part": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_1",
+     "gap_mm": 28.374,
+     "status": "PASS",
+     "at": [
+      231.78,
+      -31.4,
+      86.0
+     ]
+    },
+    {
+     "part": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_2",
+     "gap_mm": 28.374,
+     "status": "PASS",
+     "at": [
+      231.78,
+      31.4,
+      86.0
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_50_45",
+     "gap_mm": 28.409,
+     "status": "PASS",
+     "at": [
+      64.78,
+      45.25,
+      62.63
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_50_135",
+     "gap_mm": 28.409,
+     "status": "PASS",
+     "at": [
+      35.22,
+      45.25,
+      62.63
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_150_45",
+     "gap_mm": 28.409,
+     "status": "PASS",
+     "at": [
+      164.78,
+      45.25,
+      62.63
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_150_135",
+     "gap_mm": 28.409,
+     "status": "PASS",
+     "at": [
+      135.22,
+      45.25,
+      62.63
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_250_45",
+     "gap_mm": 28.409,
+     "status": "PASS",
+     "at": [
+      264.78,
+      45.25,
+      62.63
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_1_250_135",
+     "gap_mm": 28.409,
+     "status": "PASS",
+     "at": [
+      235.22,
+      45.25,
+      62.63
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_45",
+     "gap_mm": 28.41,
+     "status": "PASS",
+     "at": [
+      64.95,
+      -45.25,
+      62.62
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_135",
+     "gap_mm": 28.41,
+     "status": "PASS",
+     "at": [
+      35.4,
+      -45.25,
+      62.62
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_45",
+     "gap_mm": 28.41,
+     "status": "PASS",
+     "at": [
+      164.95,
+      -45.25,
+      62.62
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_135",
+     "gap_mm": 28.41,
+     "status": "PASS",
+     "at": [
+      135.4,
+      -45.25,
+      62.62
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_45",
+     "gap_mm": 28.41,
+     "status": "PASS",
+     "at": [
+      264.95,
+      -45.25,
+      62.62
+     ]
+    },
+    {
+     "part": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_135",
+     "gap_mm": 28.41,
+     "status": "PASS",
+     "at": [
+      235.4,
+      -45.25,
+      62.62
+     ]
+    },
+    {
+     "part": "HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY",
+     "gap_mm": 28.452,
+     "status": "PASS",
+     "at": [
+      271.85,
+      23.0,
+      92.0
+     ]
+    },
+    {
+     "part": "FIX_ISO7380_M3x12_FITTING_HOLDER_1",
+     "gap_mm": 28.699,
+     "status": "PASS",
+     "at": [
+      283.91,
+      -33.35,
+      83.65
+     ]
+    },
+    {
+     "part": "FIX_ISO7380_M3x12_FITTING_HOLDER_2",
+     "gap_mm": 28.699,
+     "status": "PASS",
+     "at": [
+      283.91,
+      33.35,
+      83.65
+     ]
+    },
+    {
+     "part": "HOLD_LOCK_RING_FSS001889_DRW752",
+     "gap_mm": 29.3,
+     "status": "PASS",
+     "at": [
+      -41.63,
+      0.0,
+      97.23
+     ]
+    },
+    {
+     "part": "PX1_CAMERA_FITTING_HOLDER_FAL002086_ROLE_ON_HOUSING_TOP",
+     "gap_mm": 29.345,
+     "status": "PASS",
+     "at": [
+      258.0,
+      -34.0,
+      82.0
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_COVER_FAL002081_DRW752",
+     "gap_mm": 29.728,
+     "status": "PASS",
+     "at": [
+      12.28,
+      22.51,
+      90.81
+     ]
+    },
+    {
+     "part": "FIX002764_M8x16_DIN7984_PLATE_2",
+     "gap_mm": 29.762,
+     "status": "PASS",
+     "at": [
+      262.8,
+      -22.0,
+      12.0
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_25_69",
+     "gap_mm": 30.447,
+     "status": "PASS",
+     "at": [
+      25.0,
+      39.65,
+      71.85
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_75_69",
+     "gap_mm": 30.447,
+     "status": "PASS",
+     "at": [
+      75.0,
+      39.65,
+      71.85
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_125_69",
+     "gap_mm": 30.447,
+     "status": "PASS",
+     "at": [
+      125.0,
+      39.65,
+      71.85
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_175_69",
+     "gap_mm": 30.447,
+     "status": "PASS",
+     "at": [
+      175.0,
+      39.65,
+      71.85
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_225_69",
+     "gap_mm": 30.447,
+     "status": "PASS",
+     "at": [
+      225.0,
+      39.65,
+      71.85
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_1_275_69",
+     "gap_mm": 30.447,
+     "status": "PASS",
+     "at": [
+      275.0,
+      39.65,
+      71.85
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_25_69",
+     "gap_mm": 30.449,
+     "status": "PASS",
+     "at": [
+      25.18,
+      -39.65,
+      71.84
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_75_69",
+     "gap_mm": 30.449,
+     "status": "PASS",
+     "at": [
+      75.18,
+      -39.65,
+      71.84
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_125_69",
+     "gap_mm": 30.449,
+     "status": "PASS",
+     "at": [
+      125.18,
+      -39.65,
+      71.84
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_175_69",
+     "gap_mm": 30.449,
+     "status": "PASS",
+     "at": [
+      175.18,
+      -39.65,
+      71.84
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_225_69",
+     "gap_mm": 30.449,
+     "status": "PASS",
+     "at": [
+      225.18,
+      -39.65,
+      71.84
+     ]
+    },
+    {
+     "part": "FIX000359_M3x8_ISO7380_COVER_-1_275_69",
+     "gap_mm": 30.449,
+     "status": "PASS",
+     "at": [
+      275.18,
+      -39.65,
+      71.84
+     ]
+    },
+    {
+     "part": "HOLD_LAPP_0028679_CAMERA_CABLE_INTERNAL_PASSAGE_TO_BREAKOUT",
+     "gap_mm": 30.449,
+     "status": "PASS",
+     "at": [
+      272.08,
+      2.7,
+      96.0
+     ]
+    },
+    {
+     "part": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_1",
+     "gap_mm": 31.264,
+     "status": "PASS",
+     "at": [
+      14.0,
+      -21.01,
+      89.89
+     ]
+    },
+    {
+     "part": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_2",
+     "gap_mm": 31.264,
+     "status": "PASS",
+     "at": [
+      14.0,
+      21.01,
+      89.89
+     ]
+    },
+    {
+     "part": "HOLD_PRESSURE_VALVE_4MM_BALL",
+     "gap_mm": 32.336,
+     "status": "PASS",
+     "at": [
+      272.09,
+      19.0,
+      89.73
+     ]
+    },
+    {
+     "part": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_3",
+     "gap_mm": 32.711,
+     "status": "PASS",
+     "at": [
+      210.78,
+      -24.5,
+      86.0
+     ]
+    },
+    {
+     "part": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_4",
+     "gap_mm": 32.711,
+     "status": "PASS",
+     "at": [
+      210.78,
+      24.5,
+      86.0
+     ]
+    },
+    {
+     "part": "PX1_SP13_POTTED_BEND_TAIL_R17_LAPP_CAMERA_EXIT",
+     "gap_mm": 33.481,
+     "status": "PASS",
+     "at": [
+      13.76,
+      0.0,
+      93.05
+     ]
+    },
+    {
+     "part": "FIX002741_M8_SPRING_WASHER_2",
+     "gap_mm": 33.568,
+     "status": "PASS",
+     "at": [
+      262.77,
+      -22.9,
+      17.0
+     ]
+    },
+    {
+     "part": "FIX002764_M8x16_DIN7984_PLATE_1",
+     "gap_mm": 34.939,
+     "status": "PASS",
+     "at": [
+      45.8,
+      6.5,
+      12.0
+     ]
+    },
+    {
+     "part": "FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_1",
+     "gap_mm": 35.162,
+     "status": "PASS",
+     "at": [
+      83.88,
+      -22.8,
+      84.2
+     ]
+    },
+    {
+     "part": "FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_2",
+     "gap_mm": 35.162,
+     "status": "PASS",
+     "at": [
+      83.88,
+      22.8,
+      84.2
+     ]
+    },
+    {
+     "part": "HOLD_PRESSURE_ELECTRONICS_COVER_FLUSH_PLUG_PAD104x50x7",
+     "gap_mm": 35.587,
+     "status": "PASS",
+     "at": [
+      80.0,
+      -25.0,
+      82.0
+     ]
+    },
+    {
+     "part": "HOLD_LOCK_RING_SCREW_FSS001891",
+     "gap_mm": 37.228,
+     "status": "PASS",
+     "at": [
+      -30.63,
+      17.26,
+      85.13
+     ]
+    },
+    {
+     "part": "HOLD_POLOLU_5577_D42V55F12_ENVELOPE",
+     "gap_mm": 37.356,
+     "status": "PASS",
+     "at": [
+      198.8,
+      -26.2,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_POLOLU_5571_D42V55F5_ENVELOPE",
+     "gap_mm": 37.356,
+     "status": "PASS",
+     "at": [
+      198.8,
+      26.2,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_BALLAST_3_STEEL",
+     "gap_mm": 38.202,
+     "status": "PASS",
+     "at": [
+      117.0,
+      -25.5,
+      25.0
+     ]
+    },
+    {
+     "part": "HOLD_BALLAST_4_STEEL",
+     "gap_mm": 38.202,
+     "status": "PASS",
+     "at": [
+      266.0,
+      25.5,
+      25.0
+     ]
+    },
+    {
+     "part": "HOLD_BALLAST_5_STEEL",
+     "gap_mm": 38.202,
+     "status": "PASS",
+     "at": [
+      270.0,
+      -25.5,
+      25.0
+     ]
+    },
+    {
+     "part": "SHAFT_SEAL_Z40_-1_18x30x7",
+     "gap_mm": 38.885,
+     "status": "PASS",
+     "at": [
+      249.57,
+      -29.0,
+      30.01
+     ]
+    },
+    {
+     "part": "SHAFT_SEAL_Z40_1_18x30x7",
+     "gap_mm": 38.885,
+     "status": "PASS",
+     "at": [
+      249.57,
+      29.0,
+      30.01
+     ]
+    },
+    {
+     "part": "IDLE_BUSH_10_12_4_-1_100.0",
+     "gap_mm": 38.956,
+     "status": "PASS",
+     "at": [
+      100.37,
+      -33.8,
+      39.01
+     ]
+    },
+    {
+     "part": "IDLE_BUSH_10_12_4_-1_200.0",
+     "gap_mm": 38.956,
+     "status": "PASS",
+     "at": [
+      200.37,
+      -33.8,
+      39.01
+     ]
+    },
+    {
+     "part": "IDLE_BUSH_10_12_4_1_100.0",
+     "gap_mm": 38.956,
+     "status": "PASS",
+     "at": [
+      100.37,
+      33.8,
+      39.01
+     ]
+    },
+    {
+     "part": "IDLE_BUSH_10_12_4_1_200.0",
+     "gap_mm": 38.956,
+     "status": "PASS",
+     "at": [
+      200.37,
+      33.8,
+      39.01
+     ]
+    },
+    {
+     "part": "HOLD_IDLE_PIN_-1_100.0",
+     "gap_mm": 39.098,
+     "status": "PASS",
+     "at": [
+      100.0,
+      -34.0,
+      40.0
+     ]
+    },
+    {
+     "part": "HOLD_IDLE_PIN_-1_200.0",
+     "gap_mm": 39.098,
+     "status": "PASS",
+     "at": [
+      200.0,
+      -34.0,
+      40.0
+     ]
+    },
+    {
+     "part": "HOLD_IDLE_PIN_1_100.0",
+     "gap_mm": 39.101,
+     "status": "PASS",
+     "at": [
+      100.31,
+      34.0,
+      40.01
+     ]
+    },
+    {
+     "part": "HOLD_IDLE_PIN_1_200.0",
+     "gap_mm": 39.101,
+     "status": "PASS",
+     "at": [
+      200.31,
+      34.0,
+      40.01
+     ]
+    },
+    {
+     "part": "FIX002741_M8_SPRING_WASHER_1",
+     "gap_mm": 39.686,
+     "status": "PASS",
+     "at": [
+      45.77,
+      7.4,
+      17.0
+     ]
+    },
+    {
+     "part": "SEA001861_ORING_10x1p5_VALVE_PASSAGE_UNDER_FITTING_HOLDER",
+     "gap_mm": 40.283,
+     "status": "PASS",
+     "at": [
+      271.8,
+      24.49,
+      76.14
+     ]
+    },
+    {
+     "part": "SEA002721_ORING_110x1p5_RADIAL_ON_SERVICE_COVER_SPIGOT",
+     "gap_mm": 40.45,
+     "status": "PASS",
+     "at": [
+      94.6,
+      -26.49,
+      73.71
+     ]
+    },
+    {
+     "part": "HOLD_BALLAST_1_STEEL",
+     "gap_mm": 40.852,
+     "status": "PASS",
+     "at": [
+      25.0,
+      -21.5,
+      25.0
+     ]
+    },
+    {
+     "part": "HOLD_BALLAST_2_STEEL",
+     "gap_mm": 40.852,
+     "status": "PASS",
+     "at": [
+      25.0,
+      21.5,
+      25.0
+     ]
+    },
+    {
+     "part": "HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED",
+     "gap_mm": 40.934,
+     "status": "PASS",
+     "at": [
+      189.5,
+      -26.4,
+      30.0
+     ]
+    },
+    {
+     "part": "61801_SIDE_-1_50_SOURCE_ONE_PER_SIDE",
+     "gap_mm": 41.372,
+     "status": "PASS",
+     "at": [
+      49.68,
+      -29.0,
+      34.5
+     ]
+    },
+    {
+     "part": "61801_SIDE_1_50_SOURCE_ONE_PER_SIDE",
+     "gap_mm": 41.372,
+     "status": "PASS",
+     "at": [
+      49.68,
+      29.0,
+      34.5
+     ]
+    },
+    {
+     "part": "HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD",
+     "gap_mm": 41.396,
+     "status": "PASS",
+     "at": [
+      250.0,
+      -29.8,
+      36.0
+     ]
+    },
+    {
+     "part": "HOLD_Z40_OUTPUT_SHAFT_1_SOCKET_TORQUE_TRANSFER_HOLD",
+     "gap_mm": 41.404,
+     "status": "PASS",
+     "at": [
+      250.55,
+      29.8,
+      36.02
+     ]
+    },
+    {
+     "part": "HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN",
+     "gap_mm": 41.62,
+     "status": "PASS",
+     "at": [
+      -161.13,
+      0.0,
+      84.91
+     ]
+    },
+    {
+     "part": "HOLD_THERMAL_PAD_0p5_BRAKE_SHUNT_ON_SERVICE_COVER",
+     "gap_mm": 41.999,
+     "status": "PASS",
+     "at": [
+      94.0,
+      23.2,
+      75.0
+     ]
+    },
+    {
+     "part": "HOLD_PAIRED_PINION_BEARING_HOLDER",
+     "gap_mm": 42.161,
+     "status": "PASS",
+     "at": [
+      224.5,
+      -26.4,
+      32.0
+     ]
+    },
+    {
+     "part": "HOLD_LIFT_GAS_SPRING_PIN_D4x18_ACE_A3p5_LOWER",
+     "gap_mm": 42.221,
+     "status": "PASS",
+     "at": [
+      223.89,
+      9.0,
+      83.05
+     ]
+    },
+    {
+     "part": "MIDDLE_BUSH_12_14_3_-1",
+     "gap_mm": 42.278,
+     "status": "PASS",
+     "at": [
+      150.43,
+      -29.8,
+      38.01
+     ]
+    },
+    {
+     "part": "MIDDLE_BUSH_12_14_3_1",
+     "gap_mm": 42.278,
+     "status": "PASS",
+     "at": [
+      150.43,
+      29.8,
+      38.01
+     ]
+    },
+    {
+     "part": "HOLD_BRAKE_SHUNT_10R_10W_ALU_HOUSED_ON_SERVICE_COVER",
+     "gap_mm": 42.353,
+     "status": "PASS",
+     "at": [
+      94.0,
+      23.2,
+      74.5
+     ]
+    },
+    {
+     "part": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_1",
+     "gap_mm": 42.424,
+     "status": "PASS",
+     "at": [
+      96.95,
+      16.7,
+      79.5
+     ]
+    },
+    {
+     "part": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_2",
+     "gap_mm": 42.424,
+     "status": "PASS",
+     "at": [
+      120.95,
+      16.7,
+      79.5
+     ]
+    },
+    {
+     "part": "HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE",
+     "gap_mm": 42.62,
+     "status": "PASS",
+     "at": [
+      -16.0,
+      0.0,
+      83.91
+     ]
+    },
+    {
+     "part": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_1",
+     "gap_mm": 43.195,
+     "status": "PASS",
+     "at": [
+      131.35,
+      -14.57,
+      79.8
+     ]
+    },
+    {
+     "part": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_2",
+     "gap_mm": 43.195,
+     "status": "PASS",
+     "at": [
+      131.35,
+      14.57,
+      79.8
+     ]
+    },
+    {
+     "part": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_3",
+     "gap_mm": 43.195,
+     "status": "PASS",
+     "at": [
+      178.55,
+      -14.57,
+      79.8
+     ]
+    },
+    {
+     "part": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_4",
+     "gap_mm": 43.195,
+     "status": "PASS",
+     "at": [
+      178.55,
+      14.57,
+      79.8
+     ]
+    },
+    {
+     "part": "FIX001892_M5x6_DOG_POINT_SET_SCREW_LOCK_RING",
+     "gap_mm": 43.204,
+     "status": "PASS",
+     "at": [
+      -30.48,
+      -21.0,
+      75.41
+     ]
+    },
+    {
+     "part": "HOLD_THERMAL_PAD_0p5_3WmK_DCDC_ON_SERVICE_COVER",
+     "gap_mm": 45.178,
+     "status": "PASS",
+     "at": [
+      126.05,
+      -18.4,
+      75.0
+     ]
+    },
+    {
+     "part": "HOLD_CINCON_CQB150W110S24C_BASEPLATE_UP_ON_SERVICE_COVER",
+     "gap_mm": 45.569,
+     "status": "PASS",
+     "at": [
+      126.05,
+      -18.4,
+      74.5
+     ]
+    },
+    {
+     "part": "HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE",
+     "gap_mm": 45.574,
+     "status": "PASS",
+     "at": [
+      242.6,
+      -22.6,
+      70.38
+     ]
+    },
+    {
+     "part": "POLOLU_2992_G2_24v13_2_MANUFACTURER_STEP",
+     "gap_mm": 46.123,
+     "status": "PASS",
+     "at": [
+      82.49,
+      -10.16,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_CAMERA_SERVICE_CONNECTOR_6P_W2W_MATED",
+     "gap_mm": 46.362,
+     "status": "PASS",
+     "at": [
+      204.47,
+      -25.0,
+      65.5
+     ]
+    },
+    {
+     "part": "ADAFRUIT_MPRLS_3965_ENVELOPE",
+     "gap_mm": 46.407,
+     "status": "PASS",
+     "at": [
+      268.6,
+      -25.85,
+      63.75
+     ]
+    },
+    {
+     "part": "HOLD_BALLAST_6_STEEL",
+     "gap_mm": 46.588,
+     "status": "PASS",
+     "at": [
+      266.0,
+      -25.5,
+      39.0
+     ]
+    },
+    {
+     "part": "HOLD_BUS_CAP_470uF_50V_CINCON_OUT_ON_SERVICE_COVER",
+     "gap_mm": 46.646,
+     "status": "PASS",
+     "at": [
+      120.0,
+      -18.87,
+      72.7
+     ]
+    },
+    {
+     "part": "TRACTION_MOTOR_-1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
+     "gap_mm": 47.012,
+     "status": "PASS",
+     "at": [
+      189.5,
+      -25.47,
+      39.93
+     ]
+    },
+    {
+     "part": "TRACTION_MOTOR_1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
+     "gap_mm": 47.012,
+     "status": "PASS",
+     "at": [
+      189.5,
+      25.47,
+      39.93
+     ]
+    },
+    {
+     "part": "HOLD_WEIPU_SP1712_7PIN_REAR_PANEL_6_USED",
+     "gap_mm": 47.366,
+     "status": "PASS",
+     "at": [
+      300.0,
+      -16.0,
+      29.0
+     ]
+    },
+    {
+     "part": "HOLD_Z40_BEVEL_-1_STRAIGHT_M1_TEETH",
+     "gap_mm": 47.396,
+     "status": "PASS",
+     "at": [
+      251.22,
+      -6.44,
+      24.69
+     ]
+    },
+    {
+     "part": "HOLD_Z40_BEVEL_1_STRAIGHT_M1_TEETH",
+     "gap_mm": 47.396,
+     "status": "PASS",
+     "at": [
+      251.22,
+      6.44,
+      24.69
+     ]
+    },
+    {
+     "part": "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_1",
+     "gap_mm": 47.49,
+     "status": "PASS",
+     "at": [
+      96.95,
+      1.5,
+      79.0
+     ]
+    },
+    {
+     "part": "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_2",
+     "gap_mm": 47.49,
+     "status": "PASS",
+     "at": [
+      120.95,
+      1.5,
+      79.0
+     ]
+    },
+    {
+     "part": "HOLD_BUS_CAP_330uF_50V_G2_2",
+     "gap_mm": 47.511,
+     "status": "PASS",
+     "at": [
+      76.85,
+      5.0,
+      24.5
+     ]
+    },
+    {
+     "part": "HOLD_CAMERA_CORE_BUNDLE_6x0p25_TO_SERVICE_CONNECTOR",
+     "gap_mm": 48.496,
+     "status": "PASS",
+     "at": [
+      220.97,
+      -22.93,
+      64.83
+     ]
+    },
+    {
+     "part": "HOLD_ORING_16x1p5_GLAND_PASSAGE_UNDER_FITTING_HOLDER",
+     "gap_mm": 48.626,
+     "status": "PASS",
+     "at": [
+      271.71,
+      9.49,
+      76.14
+     ]
+    },
+    {
+     "part": "WEACT_STM32F446RET6_V11_MANUFACTURER_STEP",
+     "gap_mm": 49.311,
+     "status": "PASS",
+     "at": [
+      216.66,
+      15.4,
+      72.09
+     ]
+    },
+    {
+     "part": "61801_Z16_SUPPORT_-1",
+     "gap_mm": 49.504,
+     "status": "PASS",
+     "at": [
+      227.0,
+      -22.9,
+      40.32
+     ]
+    },
+    {
+     "part": "61801_Z16_SUPPORT_1",
+     "gap_mm": 49.504,
+     "status": "PASS",
+     "at": [
+      227.0,
+      22.9,
+      40.32
+     ]
+    },
+    {
+     "part": "HOLD_NBK_MLR20C_6_6_COUPLING_-1_EXTERNAL_DETAIL",
+     "gap_mm": 50.011,
+     "status": "PASS",
+     "at": [
+      223.5,
+      -22.71,
+      41.1
+     ]
+    },
+    {
+     "part": "HOLD_NBK_MLR20C_6_6_COUPLING_1_EXTERNAL_DETAIL",
+     "gap_mm": 50.011,
+     "status": "PASS",
+     "at": [
+      223.5,
+      22.71,
+      41.1
+     ]
+    },
+    {
+     "part": "HOLD_Z16_BEVEL_-1_STRAIGHT_M1_TEETH",
+     "gap_mm": 51.086,
+     "status": "PASS",
+     "at": [
+      230.39,
+      -21.62,
+      41.3
+     ]
+    },
+    {
+     "part": "HOLD_Z16_BEVEL_1_STRAIGHT_M1_TEETH",
+     "gap_mm": 51.086,
+     "status": "PASS",
+     "at": [
+      230.39,
+      21.62,
+      41.3
+     ]
+    },
+    {
+     "part": "NICHICON_UCS2D221MHD1TN_BODY18x25",
+     "gap_mm": 51.666,
+     "status": "PASS",
+     "at": [
+      277.72,
+      9.0,
+      30.0
+     ]
+    },
+    {
+     "part": "HOLD_BRAKE_SHUNT_CTRL_BOARD_CMP27V_MOSFET_ON_SERVICE_COVER",
+     "gap_mm": 52.893,
+     "status": "PASS",
+     "at": [
+      94.0,
+      -7.0,
+      72.5
+     ]
+    },
+    {
+     "part": "HOLD_Z16_SHAFT_-1",
+     "gap_mm": 54.009,
+     "status": "PASS",
+     "at": [
+      229.5,
+      -19.03,
+      42.66
+     ]
+    },
+    {
+     "part": "HOLD_Z16_SHAFT_1",
+     "gap_mm": 54.009,
+     "status": "PASS",
+     "at": [
+      229.5,
+      19.03,
+      42.66
+     ]
+    },
+    {
+     "part": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_3",
+     "gap_mm": 54.567,
+     "status": "PASS",
+     "at": [
+      14.0,
+      -20.32,
+      53.7
+     ]
+    },
+    {
+     "part": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_4",
+     "gap_mm": 54.567,
+     "status": "PASS",
+     "at": [
+      14.0,
+      20.32,
+      53.7
+     ]
+    },
+    {
+     "part": "POLOLU_2992_G2_24v13_1_MANUFACTURER_STEP",
+     "gap_mm": 55.518,
+     "status": "PASS",
+     "at": [
+      43.09,
+      9.49,
+      68.54
+     ]
+    },
+    {
+     "part": "HOLD_TVS_SMBJ26A_DO214AA_ON_SERVICE_COVER",
+     "gap_mm": 55.533,
+     "status": "PASS",
+     "at": [
+      116.2,
+      -1.95,
+      70.9
+     ]
+    },
+    {
+     "part": "HOLD_REAR_TETHER_STRAIN_SLEEVE",
+     "gap_mm": 56.478,
+     "status": "PASS",
+     "at": [
+      348.0,
+      0.74,
+      33.02
+     ]
+    },
+    {
+     "part": "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1",
+     "gap_mm": 57.003,
+     "status": "PASS",
+     "at": [
+      207.5,
+      16.2,
+      43.7
+     ]
+    },
+    {
+     "part": "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1",
+     "gap_mm": 57.007,
+     "status": "PASS",
+     "at": [
+      207.5,
+      -16.13,
+      43.56
+     ]
+    },
+    {
+     "part": "HOLD_BUS_CAP_330uF_50V_G2_1",
+     "gap_mm": 57.53,
+     "status": "PASS",
+     "at": [
+      80.5,
+      0.0,
+      69.0
+     ]
+    },
+    {
+     "part": "61800_Z40_-1",
+     "gap_mm": 58.057,
+     "status": "PASS",
+     "at": [
+      249.71,
+      -5.5,
+      35.5
+     ]
+    },
+    {
+     "part": "61800_Z40_1",
+     "gap_mm": 58.057,
+     "status": "PASS",
+     "at": [
+      249.71,
+      5.5,
+      35.5
+     ]
+    },
+    {
+     "part": "HOLD_REAR_TETHER_ARAMID_CONE",
+     "gap_mm": 58.471,
+     "status": "PASS",
+     "at": [
+      316.0,
+      -0.31,
+      35.0
+     ]
+    },
+    {
+     "part": "HOLD_DELTA_TR1D_P2_VIDEO_BALUN",
+     "gap_mm": 62.936,
+     "status": "PASS",
+     "at": [
+      30.5,
+      -8.0,
+      42.5
+     ]
+    },
+    {
+     "part": "HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_UNKNOWN",
+     "gap_mm": 63.975,
+     "status": "PASS",
+     "at": [
+      428.0,
+      -0.28,
+      40.51
+     ]
+    },
+    {
+     "part": "HOLD_CAMERA_CABLE_BREAKOUT_BOOT_POTTED",
+     "gap_mm": 64.13,
+     "status": "PASS",
+     "at": [
+      249.59,
+      0.0,
+      62.4
+     ]
+    }
+   ],
+   "pose": {
+    "status": "PASS",
+    "axis_lateral_mm": 0.0,
+    "axis_up_mm": 51.53,
+    "R_mm": 75.0
+   }
+  },
+  "mass_cog": {
+   "status": "WARN",
+   "mass_kg": 7.916,
+   "target_kg": 9.25,
+   "deviation_pct": -14.4,
+   "cog_mm": [
+    117.92,
+    0.05,
+    49.3
+   ],
+   "parts_without_density_rule": [],
+   "heaviest": [
+    {
+     "part": "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD",
+     "kg": 1.1543,
+     "rho": 7.9,
+     "rule": "FSS-002-060 Waight Plate (DRW375)"
+    },
+    {
+     "part": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
+     "kg": 0.5892,
+     "rho": 2.7,
+     "rule": "FAL-002-058 Crawler Housing"
+    },
+    {
+     "part": "HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74",
+     "kg": 0.5454,
+     "rho": 1.727,
+     "rule": "F18: CAM026 envelope density scaled to catalogue 0.864 kg (CONFIRMED mass)"
+    },
+    {
+     "part": "HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5",
+     "kg": 0.3179,
+     "rho": 1.727,
+     "rule": "F18: CAM026 envelope density scaled to catalogue 0.864 kg (CONFIRMED mass)"
+    },
+    {
+     "part": "HOLD_SIDE_COVER_-1_GRAPHIC262x60x7",
+     "kg": 0.2532,
+     "rho": 2.7,
+     "rule": "FAL-002-062 Side cover"
+    },
+    {
+     "part": "HOLD_SIDE_COVER_1_GRAPHIC262x60x7",
+     "kg": 0.2532,
+     "rho": 2.7,
+     "rule": "FAL-002-062 Side cover"
+    },
+    {
+     "part": "HOLD_BALLAST_1_STEEL",
+     "kg": 0.2092,
+     "rho": 7.85,
+     "rule": "F17 ballast blocks, steel by default (override --ballast-density)"
+    },
+    {
+     "part": "HOLD_BALLAST_2_STEEL",
+     "kg": 0.2092,
+     "rho": 7.85,
+     "rule": "F17 ballast blocks, steel by default (override --ballast-density)"
+    },
+    {
+     "part": "HOLD_LIFT_HOUSING_FAL002071_DRW752",
+     "kg": 0.1878,
+     "rho": 2.7,
+     "rule": "категория lift"
+    },
+    {
+     "part": "TRACTION_MOTOR_-1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
+     "kg": 0.1785,
+     "rho": 4.0,
+     "rule": "категория purchased"
+    }
+   ]
+  },
+  "stability": {
+   "status": "WARN",
+   "checks": [
+    {
+     "check": "righting_height_mm",
+     "value": 2.23,
+     "status": "WARN",
+     "meaning": "ЦТ ниже оси трубы на эту величину; при крене краулер возвращается сам"
+    },
+    {
+     "check": "lateral_cog_offset_mm",
+     "value": 0.05,
+     "status": "PASS",
+     "meaning": "смещение ЦТ вбок от плоскости симметрии — постоянный крен"
+    },
+    {
+     "check": "axle_load_shares",
+     "value": [
+      0.494,
+      0.333,
+      0.173
+     ],
+     "axle_x_mm": [
+      50.0,
+      150.0,
+      250.0
+     ],
+     "cog_x_mm": 117.92,
+     "status": "WARN",
+     "meaning": "доли веса на оси (жёсткая 3-осная схема, плоский контакт); 0 — ось висит"
+    }
+   ],
+   "limitations": "Сложенный лифт, номинальная поза, жёсткие шины. Поднятый лифт, натяжение кабеля и уклон не учтены."
+  },
+  "domain": {
+   "status": "WARN",
+   "rows": [
+    {
+     "check": "drawings",
+     "title": "Мастер против чертежей Mini-Cam",
+     "status": "PASS",
+     "detail": "PASS: 161 checks, PASS 161, FAIL 0, SKIP 0",
+     "exit": 0,
+     "seconds": 0.1
+    },
+    {
+     "check": "lift_kinematics",
+     "title": "Лифт камеры и кабель",
+     "status": "PASS",
+     "detail": "21/21 проверок (радиусы изгиба кабеля ≥5×D/3×D, запас длины, газовая пружина, зазор при подъёме 2.29 мм)",
+     "exit": 0,
+     "seconds": 0.3
+    },
+    {
+     "check": "tether_power_tests",
+     "title": "Тесты расчёта питания по кабелю",
+     "status": "PASS",
+     "detail": "PX1 A2 tether power tests: PASS",
+     "exit": 0,
+     "seconds": 0.0
+    },
+    {
+     "check": "power_budget",
+     "title": "Бюджет мощности 24 В",
+     "status": "INFO",
+     "detail": "wrote current/09_RELEASE/gate_20261120/power_budget.json",
+     "exit": 0,
+     "seconds": 2.6
+    },
+    {
+     "check": "traction",
+     "title": "Тяга: 40 м сейчас, 100–150 м потом",
+     "status": "WARN",
+     "detail": "40 м: запас +20.7 Н (slime/grease); 100 м: запас +8.4 Н (slime/grease); осторожный кабель: slime/grease не тянет; 150 м: запас -1.9 Н (slime/grease); осторожный кабель: slime/grease, wet concrete/PVC не тянет",
+     "mass_kg_used": 7.92,
+     "motor_limited_force_N": 69.47100000000002,
+     "speed_rated_m_min": 9.29032258064516
+    },
+    {
+     "check": "integrated_build",
+     "title": "Интегральная проверка сборки",
+     "status": "SKIP",
+     "detail": "нужна свежая сборка scripts/cloud/build_current.sh (~9 мин); STEP-проверки выше её дублируют"
+    }
+   ]
+  }
+ }
+}

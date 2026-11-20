@@ -1,4 +1,22 @@
-# Session handoff — 2026-11-20
+# Session handoff — 2026-11-20 (вечер, Claude с телефона)
+
+Ветка: **claude/px1** (догнана merge-ом до feature/px1-integrated-cad-20261117 @ F25). Правила — CLAUDE.md.
+Источник геометрии: current/CAD/PX1_Current_Master.py.
+
+## Новое в этой сессии
+- Договорённость с пользователем: ChatGPT/Codex строит цифровую сборку целиком (его линия M1 на FreeCAD —
+  feature/px1-m1-integrated-interface-repair-20261118), Claude — независимый проверяющий.
+- F26: tools/gate/px1_gate.py — одна команда, итог по всей сборке; selftest_px1_gate.py; CI px1-gate.yml.
+  Отчёт: current/09_RELEASE/gate_20261120/. Итог WARN: масса 7,92/9,25, ЦТ ниже оси трубы на 2,2 мм, оси 49/33/17 %.
+- Сборку ChatGPT (M1) гейтом ещё не проверяли: в ветке M1 нет общего STEP сборки с именами деталей.
+  Контракт для неё — tools/gate/README.md, запуск с --skip-domain.
+
+## Следующий шаг
+F27 (status next): добрать ~1,3 кг низко и ближе к корме, проверить гейтом (mass_cog и stability → PASS).
+Потом: устойчивость с поднятым лифтом (камера +187 мм вверх, −128 мм назад) — в гейте пока только сложенный лифт.
+
+---
+# (предыдущая) Session handoff — 2026-11-20
 
 Ветка: feature/px1-integrated-cad-20261117 (claude/px1-audit-traction-20261119 на GitHub не существует).
 Источник геометрии: current/CAD/PX1_Current_Master.py.
