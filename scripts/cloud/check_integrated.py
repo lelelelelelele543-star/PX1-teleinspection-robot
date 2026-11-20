@@ -160,6 +160,9 @@ def main():
         tools=val.get('service',{}).get('service_screw_tools',[])
         checks['four_service_tool_approaches']=len(tools)==4 and all(not i.get('collisions') for i in tools)
         report['pipe_service_scope']='Nominal engineered tyre in perfect straight ID150; active candidate motor exit after explicit preceding disassembly; no physical passage, sealing, traction or complete service-sequence qualification.'
+    mt=val.get('service',{}).get('motor_mount_tool_probes')
+    if mt is not None:
+        checks['ten_motor_mount_bit_access_probes']=len(mt)==10 and all(not i['collisions'] and not i['errors'] for i in mt)
     report['status'] = 'PASS_REQUESTED_CAD_SCREENS_WITH_RELEASE_HOLD' if all(checks.values()) else 'FAIL_CAD_SCREEN'
     (out / 'integrated_checks.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
     print(json.dumps({'status': report['status'], 'checks': checks, 'blocking_interferences': len(blocking),

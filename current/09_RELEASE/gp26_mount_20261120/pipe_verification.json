@@ -1,0 +1,3026 @@
+{
+  "status": "ACTIVE_NOMINAL_CAD_SCREEN_WITH_RELEASE_HOLD",
+  "manufacturing_release": false,
+  "dimensions_mm": {
+    "pipe_inner_radius": 75.0,
+    "wheel_axis_z": 45.0,
+    "wheel_center_abs_y": 54.5,
+    "crown_radius": 45.0,
+    "outer_width": 133.0,
+    "wheel_diameter": 90.0
+  },
+  "baseline_profile_radius_local_y_mm": [
+    [
+      26.0,
+      -12.0
+    ],
+    [
+      32.0,
+      -12.0
+    ],
+    [
+      42.0,
+      -8.0
+    ],
+    [
+      45.0,
+      0.0
+    ],
+    [
+      42.0,
+      8.0
+    ],
+    [
+      32.0,
+      12.0
+    ],
+    [
+      8.0,
+      12.0
+    ],
+    [
+      8.0,
+      -2.0
+    ],
+    [
+      26.0,
+      -2.0
+    ]
+  ],
+  "proposed_profile_radius_local_y_mm": [
+    [
+      26.0,
+      -12.0
+    ],
+    [
+      32.0,
+      -12.0
+    ],
+    [
+      42.0,
+      -8.0
+    ],
+    [
+      45.0,
+      0.0
+    ],
+    [
+      28.5,
+      8.0
+    ],
+    [
+      20.5,
+      12.0
+    ],
+    [
+      8.0,
+      12.0
+    ],
+    [
+      8.0,
+      -2.0
+    ],
+    [
+      26.0,
+      -2.0
+    ]
+  ],
+  "inherited_pose": {
+    "pipe_center_z_mm": 52.0480547,
+    "exact_profile_screen": {
+      "minimum_radial_clearance_mm": -4.447855036207187,
+      "worst_vertex": {
+        "radius_mm": 42.0,
+        "local_y_mm": 8.0,
+        "global_y_mm": 62.5,
+        "max_pipe_radial_mm": 79.44785503620719,
+        "radial_clearance_mm": -4.447855036207187
+      },
+      "vertices": [
+        {
+          "radius_mm": 26.0,
+          "local_y_mm": -12.0,
+          "global_y_mm": 42.5,
+          "max_pipe_radial_mm": 53.837012542062475,
+          "radial_clearance_mm": 21.162987457937525
+        },
+        {
+          "radius_mm": 32.0,
+          "local_y_mm": -12.0,
+          "global_y_mm": 42.5,
+          "max_pipe_radial_mm": 57.714821110822065,
+          "radial_clearance_mm": 17.285178889177935
+        },
+        {
+          "radius_mm": 42.0,
+          "local_y_mm": -8.0,
+          "global_y_mm": 46.5,
+          "max_pipe_radial_mm": 67.58669743266194,
+          "radial_clearance_mm": 7.413302567338064
+        },
+        {
+          "radius_mm": 45.0,
+          "local_y_mm": 0.0,
+          "global_y_mm": 54.5,
+          "max_pipe_radial_mm": 75.36079881512796,
+          "radial_clearance_mm": -0.3607988151279642
+        },
+        {
+          "radius_mm": 42.0,
+          "local_y_mm": 8.0,
+          "global_y_mm": 62.5,
+          "max_pipe_radial_mm": 79.44785503620719,
+          "radial_clearance_mm": -4.447855036207187
+        },
+        {
+          "radius_mm": 32.0,
+          "local_y_mm": 12.0,
+          "global_y_mm": 66.5,
+          "max_pipe_radial_mm": 77.1167982728419,
+          "radial_clearance_mm": -2.116798272841905
+        },
+        {
+          "radius_mm": 8.0,
+          "local_y_mm": 12.0,
+          "global_y_mm": 66.5,
+          "max_pipe_radial_mm": 68.18133139103543,
+          "radial_clearance_mm": 6.818668608964572
+        },
+        {
+          "radius_mm": 8.0,
+          "local_y_mm": -2.0,
+          "global_y_mm": 52.5,
+          "max_pipe_radial_mm": 54.6140453569793,
+          "radial_clearance_mm": 20.385954643020703
+        },
+        {
+          "radius_mm": 26.0,
+          "local_y_mm": -2.0,
+          "global_y_mm": 52.5,
+          "max_pipe_radial_mm": 62.0356665109209,
+          "radial_clearance_mm": 12.964333489079102
+        }
+      ],
+      "feasible_pipe_center_delta_interval_mm": null,
+      "maximum_permitted_absolute_center_delta_mm": -0.5421901205574997,
+      "all_rigid_revolved_geometry_inside": false,
+      "minimum_noncontact_vertex_clearance_mm": -4.447855036207187,
+      "noncontact_gap_requirement_mm": 3.0,
+      "noncontact_gap_ok": false
+    }
+  },
+  "baseline_best_centered_pose": {
+    "pipe_center_z_mm": 45.0,
+    "exact_profile_screen": {
+      "minimum_radial_clearance_mm": -0.30106240950388496,
+      "worst_vertex": {
+        "radius_mm": 42.0,
+        "local_y_mm": 8.0,
+        "global_y_mm": 62.5,
+        "max_pipe_radial_mm": 75.30106240950388,
+        "radial_clearance_mm": -0.30106240950388496
+      },
+      "vertices": [
+        {
+          "radius_mm": 26.0,
+          "local_y_mm": -12.0,
+          "global_y_mm": 42.5,
+          "max_pipe_radial_mm": 49.82218381404011,
+          "radial_clearance_mm": 25.17781618595989
+        },
+        {
+          "radius_mm": 32.0,
+          "local_y_mm": -12.0,
+          "global_y_mm": 42.5,
+          "max_pipe_radial_mm": 53.20009398487939,
+          "radial_clearance_mm": 21.799906015120612
+        },
+        {
+          "radius_mm": 42.0,
+          "local_y_mm": -8.0,
+          "global_y_mm": 46.5,
+          "max_pipe_radial_mm": 62.659795722616266,
+          "radial_clearance_mm": 12.340204277383734
+        },
+        {
+          "radius_mm": 45.0,
+          "local_y_mm": 0.0,
+          "global_y_mm": 54.5,
+          "max_pipe_radial_mm": 70.67708256570867,
+          "radial_clearance_mm": 4.322917434291327
+        },
+        {
+          "radius_mm": 42.0,
+          "local_y_mm": 8.0,
+          "global_y_mm": 62.5,
+          "max_pipe_radial_mm": 75.30106240950388,
+          "radial_clearance_mm": -0.30106240950388496
+        },
+        {
+          "radius_mm": 32.0,
+          "local_y_mm": 12.0,
+          "global_y_mm": 66.5,
+          "max_pipe_radial_mm": 73.79871272590057,
+          "radial_clearance_mm": 1.2012872740994283
+        },
+        {
+          "radius_mm": 8.0,
+          "local_y_mm": 12.0,
+          "global_y_mm": 66.5,
+          "max_pipe_radial_mm": 66.97947446792935,
+          "radial_clearance_mm": 8.02052553207065
+        },
+        {
+          "radius_mm": 8.0,
+          "local_y_mm": -2.0,
+          "global_y_mm": 52.5,
+          "max_pipe_radial_mm": 53.10602602341847,
+          "radial_clearance_mm": 21.893973976581528
+        },
+        {
+          "radius_mm": 26.0,
+          "local_y_mm": -2.0,
+          "global_y_mm": 52.5,
+          "max_pipe_radial_mm": 58.58540773947041,
+          "radial_clearance_mm": 16.414592260529588
+        }
+      ],
+      "feasible_pipe_center_delta_interval_mm": null,
+      "maximum_permitted_absolute_center_delta_mm": -0.5421901205574997,
+      "all_rigid_revolved_geometry_inside": false,
+      "minimum_noncontact_vertex_clearance_mm": -0.30106240950388496,
+      "noncontact_gap_requirement_mm": 3.0,
+      "noncontact_gap_ok": false
+    },
+    "conclusion": "No rigid centred level pose fits the inherited wheel meridian: outer shoulder already exceeds R75 with zero centre offset."
+  },
+  "derived_supported_pose": {
+    "pipe_center_z_mm": 51.52426612771889,
+    "wheel_below_pipe_axis_mm": 6.524266127718889,
+    "crown_contact_points_yz_mm": [
+      [
+        -54.5,
+        0.0
+      ],
+      [
+        54.5,
+        0.0
+      ]
+    ],
+    "normal_vertical_fraction": 0.6869902150362518,
+    "derivation": "pipe_z = wheel_z - crown_radius + sqrt(pipe_radius^2-wheel_center_y^2); paired lower-wall crown contacts support gravity with symmetric lateral reactions."
+  },
+  "proposed_exact_profile_screen": {
+    "minimum_radial_clearance_mm": 0.0,
+    "worst_vertex": {
+      "radius_mm": 45.0,
+      "local_y_mm": 0.0,
+      "global_y_mm": 54.5,
+      "max_pipe_radial_mm": 75.0,
+      "radial_clearance_mm": 0.0
+    },
+    "vertices": [
+      {
+        "radius_mm": 26.0,
+        "local_y_mm": -12.0,
+        "global_y_mm": 42.5,
+        "max_pipe_radial_mm": 53.517080330925026,
+        "radial_clearance_mm": 21.482919669074974
+      },
+      {
+        "radius_mm": 32.0,
+        "local_y_mm": -12.0,
+        "global_y_mm": 42.5,
+        "max_pipe_radial_mm": 57.36173882196485,
+        "radial_clearance_mm": 17.63826117803515
+      },
+      {
+        "radius_mm": 42.0,
+        "local_y_mm": -8.0,
+        "global_y_mm": 46.5,
+        "max_pipe_radial_mm": 67.2075472192944,
+        "radial_clearance_mm": 7.792452780705602
+      },
+      {
+        "radius_mm": 45.0,
+        "local_y_mm": 0.0,
+        "global_y_mm": 54.5,
+        "max_pipe_radial_mm": 75.0,
+        "radial_clearance_mm": 0.0
+      },
+      {
+        "radius_mm": 28.5,
+        "local_y_mm": 8.0,
+        "global_y_mm": 62.5,
+        "max_pipe_radial_mm": 71.64460354964132,
+        "radial_clearance_mm": 3.3553964503586826
+      },
+      {
+        "radius_mm": 20.5,
+        "local_y_mm": 12.0,
+        "global_y_mm": 66.5,
+        "max_pipe_radial_mm": 71.78134130637136,
+        "radial_clearance_mm": 3.2186586936286403
+      },
+      {
+        "radius_mm": 8.0,
+        "local_y_mm": 12.0,
+        "global_y_mm": 66.5,
+        "max_pipe_radial_mm": 68.06764507861868,
+        "radial_clearance_mm": 6.932354921381318
+      },
+      {
+        "radius_mm": 8.0,
+        "local_y_mm": -2.0,
+        "global_y_mm": 52.5,
+        "max_pipe_radial_mm": 54.47205069160516,
+        "radial_clearance_mm": 20.527949308394838
+      },
+      {
+        "radius_mm": 26.0,
+        "local_y_mm": -2.0,
+        "global_y_mm": 52.5,
+        "max_pipe_radial_mm": 61.75822121099896,
+        "radial_clearance_mm": 13.241778789001039
+      }
+    ],
+    "feasible_pipe_center_delta_interval_mm": [
+      -6.524266127718889,
+      6.524266127718889
+    ],
+    "maximum_permitted_absolute_center_delta_mm": 6.524266127718889,
+    "all_rigid_revolved_geometry_inside": true,
+    "minimum_noncontact_vertex_clearance_mm": 3.2186586936286403,
+    "noncontact_gap_requirement_mm": 3.0,
+    "noncontact_gap_ok": true
+  },
+  "nonwheel_integrated_mesh_screen": {
+    "source": "_gp26_mount_build/images/assembly_mesh.json.gz",
+    "sha256": "3c324979d178c1c9788570f1fe2e0fa3883f9fe5adf72a89ed9713500227670a",
+    "method": "All vertices of the archived assembly mesh; no surrogate boxes.",
+    "mesh_limit": "Master tessellation tolerance .25 mm; a discrete surface screen, not exact BRep containment.",
+    "proposed_wheels_not_substituted_in_mesh": false,
+    "minimum_nonwheel_clearance_mm": 3.2201841841764605,
+    "nonwheel_protrusions": [],
+    "component_results": [
+      {
+        "id": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
+        "category": "body",
+        "radial_clearance_mm": 22.10183230781822
+      },
+      {
+        "id": "HOLD_SIDE_COVER_-1_GRAPHIC262x60x7",
+        "category": "metal",
+        "radial_clearance_mm": 20.090783868566895
+      },
+      {
+        "id": "HOLD_SIDE_ORING_190x1p5_-1_LOBED_GLAND_INSTALLED",
+        "category": "seal",
+        "radial_clearance_mm": 25.192241549493104
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_25_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_25_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_75_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_75_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_125_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_125_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_175_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_175_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_225_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_225_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_275_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_275_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "HOLD_Z50_-1_50_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517937
+      },
+      {
+        "id": "HOLD_Z50_-1_100_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.094991152195043
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_-1_100.0",
+        "category": "bearing",
+        "radial_clearance_mm": 38.9542340622657
+      },
+      {
+        "id": "HOLD_IDLE_PIN_-1_100.0",
+        "category": "shaft",
+        "radial_clearance_mm": 39.10001796960771
+      },
+      {
+        "id": "HOLD_Z50_-1_150_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517937
+      },
+      {
+        "id": "HOLD_Z50_-1_200_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.094991152195043
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_-1_200.0",
+        "category": "bearing",
+        "radial_clearance_mm": 38.9542340622657
+      },
+      {
+        "id": "HOLD_IDLE_PIN_-1_200.0",
+        "category": "shaft",
+        "radial_clearance_mm": 39.10001796960771
+      },
+      {
+        "id": "HOLD_Z50_-1_250_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517937
+      },
+      {
+        "id": "61801_SIDE_-1_50_SOURCE_ONE_PER_SIDE",
+        "category": "bearing",
+        "radial_clearance_mm": 41.373299708525465
+      },
+      {
+        "id": "MIDDLE_BUSH_12_14_3_-1",
+        "category": "bearing",
+        "radial_clearance_mm": 42.274692143642646
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_-1_50.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.878230011140204
+      },
+      {
+        "id": "KEY_4x4x12_-1_50.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.549282401229014
+      },
+      {
+        "id": "61903_SIDE_-1_50.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_-1_50.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_45",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_135",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_225",
+        "category": "shaft",
+        "radial_clearance_mm": 23.7075040166576
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_315",
+        "category": "shaft",
+        "radial_clearance_mm": 23.707504016657595
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_-1_50.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_50.0_FACE_GLAND_INSTALLED",
+        "category": "seal",
+        "radial_clearance_mm": 26.465990103855184
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_-1_50.0_ENGINEERED_OUTER_SHOULDER",
+        "category": "wheel",
+        "radial_clearance_mm": 0.006110609557410385
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED",
+        "category": "metal",
+        "radial_clearance_mm": 3.2201841841764605
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_50",
+        "category": "metal",
+        "radial_clearance_mm": 7.2781883502854186
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_50",
+        "category": "shaft",
+        "radial_clearance_mm": 8.476651797506904
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_50",
+        "category": "metal",
+        "radial_clearance_mm": 10.94005810402281
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_50",
+        "category": "seal",
+        "radial_clearance_mm": 8.736290196699926
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.878230011140204
+      },
+      {
+        "id": "KEY_4x4x12_-1_150.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.549282401229014
+      },
+      {
+        "id": "61903_SIDE_-1_150.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_45",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_135",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_225",
+        "category": "shaft",
+        "radial_clearance_mm": 23.7075040166576
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_315",
+        "category": "shaft",
+        "radial_clearance_mm": 23.707504016657595
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_-1_150.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_150.0_FACE_GLAND_INSTALLED",
+        "category": "seal",
+        "radial_clearance_mm": 26.465990103855184
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_-1_150.0_ENGINEERED_OUTER_SHOULDER",
+        "category": "wheel",
+        "radial_clearance_mm": 0.006110609557410385
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED",
+        "category": "metal",
+        "radial_clearance_mm": 3.2201841841764605
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_150",
+        "category": "metal",
+        "radial_clearance_mm": 7.2781883502854186
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_150",
+        "category": "shaft",
+        "radial_clearance_mm": 8.476651797506904
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_150",
+        "category": "metal",
+        "radial_clearance_mm": 10.94005810402281
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_150",
+        "category": "seal",
+        "radial_clearance_mm": 8.736290196699926
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.878230011140204
+      },
+      {
+        "id": "KEY_4x4x12_-1_250.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.549282401229014
+      },
+      {
+        "id": "61903_SIDE_-1_250.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_-1_250.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_45",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_135",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_225",
+        "category": "shaft",
+        "radial_clearance_mm": 23.7075040166576
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_315",
+        "category": "shaft",
+        "radial_clearance_mm": 23.707504016657595
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_-1_250.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_250.0_FACE_GLAND_INSTALLED",
+        "category": "seal",
+        "radial_clearance_mm": 26.465990103855184
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_-1_250.0_ENGINEERED_OUTER_SHOULDER",
+        "category": "wheel",
+        "radial_clearance_mm": 0.006110609557410385
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED",
+        "category": "metal",
+        "radial_clearance_mm": 3.2201841841764605
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_250",
+        "category": "metal",
+        "radial_clearance_mm": 7.2781883502854186
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_250",
+        "category": "shaft",
+        "radial_clearance_mm": 8.476651797506904
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_250",
+        "category": "metal",
+        "radial_clearance_mm": 10.94005810402281
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_250",
+        "category": "seal",
+        "radial_clearance_mm": 8.736290196699926
+      },
+      {
+        "id": "HOLD_SIDE_COVER_1_GRAPHIC262x60x7",
+        "category": "metal",
+        "radial_clearance_mm": 20.090783868566895
+      },
+      {
+        "id": "HOLD_SIDE_ORING_190x1p5_1_LOBED_GLAND_INSTALLED",
+        "category": "seal",
+        "radial_clearance_mm": 25.192241549493104
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_25_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_25_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_75_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_75_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_125_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_125_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_175_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_175_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_225_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_225_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_275_21",
+        "category": "shaft",
+        "radial_clearance_mm": 23.17371188707603
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_275_69",
+        "category": "shaft",
+        "radial_clearance_mm": 30.443766345809756
+      },
+      {
+        "id": "HOLD_Z50_1_50_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517944
+      },
+      {
+        "id": "HOLD_Z50_1_100_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.09499115219505
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_1_100.0",
+        "category": "bearing",
+        "radial_clearance_mm": 38.9542340622657
+      },
+      {
+        "id": "HOLD_IDLE_PIN_1_100.0",
+        "category": "shaft",
+        "radial_clearance_mm": 39.10001796960771
+      },
+      {
+        "id": "HOLD_Z50_1_150_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517944
+      },
+      {
+        "id": "HOLD_Z50_1_200_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.09499115219505
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_1_200.0",
+        "category": "bearing",
+        "radial_clearance_mm": 38.9542340622657
+      },
+      {
+        "id": "HOLD_IDLE_PIN_1_200.0",
+        "category": "shaft",
+        "radial_clearance_mm": 39.10001796960771
+      },
+      {
+        "id": "HOLD_Z50_1_250_PROFILE_UNCONFIRMED",
+        "category": "gear",
+        "radial_clearance_mm": 28.113676554517944
+      },
+      {
+        "id": "61801_SIDE_1_50_SOURCE_ONE_PER_SIDE",
+        "category": "bearing",
+        "radial_clearance_mm": 41.373299708525465
+      },
+      {
+        "id": "MIDDLE_BUSH_12_14_3_1",
+        "category": "bearing",
+        "radial_clearance_mm": 42.274692143642646
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_1_50.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.87860120971677
+      },
+      {
+        "id": "KEY_4x4x12_1_50.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.549282401229014
+      },
+      {
+        "id": "61903_SIDE_1_50.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_1_50.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_45",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_135",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_225",
+        "category": "shaft",
+        "radial_clearance_mm": 23.7075040166576
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_315",
+        "category": "shaft",
+        "radial_clearance_mm": 23.707504016657595
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_1_50.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_50.0_FACE_GLAND_INSTALLED",
+        "category": "seal",
+        "radial_clearance_mm": 26.46599010385519
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_1_50.0_ENGINEERED_OUTER_SHOULDER",
+        "category": "wheel",
+        "radial_clearance_mm": 0.006110609557410385
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_1_50.0_ESTIMATED",
+        "category": "metal",
+        "radial_clearance_mm": 3.2201841841764605
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_50",
+        "category": "metal",
+        "radial_clearance_mm": 7.2781883502854186
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_50",
+        "category": "shaft",
+        "radial_clearance_mm": 8.476651797506904
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_50",
+        "category": "metal",
+        "radial_clearance_mm": 10.94005810402281
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_50",
+        "category": "seal",
+        "radial_clearance_mm": 8.736290196699926
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_1_150.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.87860120971677
+      },
+      {
+        "id": "KEY_4x4x12_1_150.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.549282401229014
+      },
+      {
+        "id": "61903_SIDE_1_150.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_1_150.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_45",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_135",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_225",
+        "category": "shaft",
+        "radial_clearance_mm": 23.7075040166576
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_315",
+        "category": "shaft",
+        "radial_clearance_mm": 23.707504016657595
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_1_150.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_150.0_FACE_GLAND_INSTALLED",
+        "category": "seal",
+        "radial_clearance_mm": 26.46599010385519
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_1_150.0_ENGINEERED_OUTER_SHOULDER",
+        "category": "wheel",
+        "radial_clearance_mm": 0.006110609557410385
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_1_150.0_ESTIMATED",
+        "category": "metal",
+        "radial_clearance_mm": 3.2201841841764605
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_150",
+        "category": "metal",
+        "radial_clearance_mm": 7.2781883502854186
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_150",
+        "category": "shaft",
+        "radial_clearance_mm": 8.476651797506904
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_150",
+        "category": "metal",
+        "radial_clearance_mm": 10.94005810402281
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_150",
+        "category": "seal",
+        "radial_clearance_mm": 8.736290196699926
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_1_250.0_GRAPHIC_AXIAL_PACKAGE",
+        "category": "shaft",
+        "radial_clearance_mm": 12.87860120971677
+      },
+      {
+        "id": "KEY_4x4x12_1_250.0",
+        "category": "shaft",
+        "radial_clearance_mm": 14.549282401229014
+      },
+      {
+        "id": "61903_SIDE_1_250.0",
+        "category": "bearing",
+        "radial_clearance_mm": 24.214506008808286
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_1_250.0_GRAPHIC_CONTOUR",
+        "category": "metal",
+        "radial_clearance_mm": 20.825918587873204
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_45",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_135",
+        "category": "shaft",
+        "radial_clearance_mm": 28.407433913821507
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_225",
+        "category": "shaft",
+        "radial_clearance_mm": 23.7075040166576
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_315",
+        "category": "shaft",
+        "radial_clearance_mm": 23.707504016657595
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_1_250.0_FREE18p72x2p62",
+        "category": "seal",
+        "radial_clearance_mm": 23.012315725575057
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_250.0_FACE_GLAND_INSTALLED",
+        "category": "seal",
+        "radial_clearance_mm": 26.46599010385519
+      },
+      {
+        "id": "HOLD_QRW90SR150_WHEEL_1_250.0_ENGINEERED_OUTER_SHOULDER",
+        "category": "wheel",
+        "radial_clearance_mm": 0.006110609557410385
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_1_250.0_ESTIMATED",
+        "category": "metal",
+        "radial_clearance_mm": 3.2201841841764605
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_250",
+        "category": "metal",
+        "radial_clearance_mm": 7.2781883502854186
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_250",
+        "category": "shaft",
+        "radial_clearance_mm": 8.476651797506904
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_250",
+        "category": "metal",
+        "radial_clearance_mm": 10.94005810402281
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_250",
+        "category": "seal",
+        "radial_clearance_mm": 8.736290196699926
+      },
+      {
+        "id": "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_-20.0",
+        "category": "shaft",
+        "radial_clearance_mm": 42.76023242432499
+      },
+      {
+        "id": "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_20.0",
+        "category": "shaft",
+        "radial_clearance_mm": 42.76023242432499
+      },
+      {
+        "id": "HOLD_Z40_BEVEL_-1_STRAIGHT_M1_TEETH",
+        "category": "bevel",
+        "radial_clearance_mm": 47.401749361193104
+      },
+      {
+        "id": "HOLD_Z16_BEVEL_-1_STRAIGHT_M1_TEETH",
+        "category": "bevel",
+        "radial_clearance_mm": 51.08869472311183
+      },
+      {
+        "id": "HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD",
+        "category": "shaft",
+        "radial_clearance_mm": 41.398767302311064
+      },
+      {
+        "id": "61800_Z40_-1",
+        "category": "bearing",
+        "radial_clearance_mm": 58.05990184292564
+      },
+      {
+        "id": "SHAFT_SEAL_Z40_-1_18x30x7",
+        "category": "seal",
+        "radial_clearance_mm": 38.88675589303324
+      },
+      {
+        "id": "HOLD_Z16_SHAFT_-1",
+        "category": "shaft",
+        "radial_clearance_mm": 54.006242166303466
+      },
+      {
+        "id": "61801_Z16_SUPPORT_-1",
+        "category": "bearing",
+        "radial_clearance_mm": 49.506290332989195
+      },
+      {
+        "id": "HOLD_NBK_MLR20C_6_6_COUPLING_-1_EXTERNAL_DETAIL",
+        "category": "purchased",
+        "radial_clearance_mm": 50.006285837642615
+      },
+      {
+        "id": "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1",
+        "category": "shaft",
+        "radial_clearance_mm": 57.006383861211056
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_45",
+        "category": "shaft",
+        "radial_clearance_mm": 65.96482444011284
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_135",
+        "category": "shaft",
+        "radial_clearance_mm": 52.53166994935875
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_225",
+        "category": "shaft",
+        "radial_clearance_mm": 48.582002145315435
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_315",
+        "category": "shaft",
+        "radial_clearance_mm": 57.87228398993772
+      },
+      {
+        "id": "TRACTION_MOTOR_-1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
+        "category": "purchased",
+        "radial_clearance_mm": 47.00631040096856
+      },
+      {
+        "id": "HOLD_Z40_BEVEL_1_STRAIGHT_M1_TEETH",
+        "category": "bevel",
+        "radial_clearance_mm": 47.40174936119309
+      },
+      {
+        "id": "HOLD_Z16_BEVEL_1_STRAIGHT_M1_TEETH",
+        "category": "bevel",
+        "radial_clearance_mm": 51.08869472311184
+      },
+      {
+        "id": "HOLD_Z40_OUTPUT_SHAFT_1_SOCKET_TORQUE_TRANSFER_HOLD",
+        "category": "shaft",
+        "radial_clearance_mm": 41.398767302311064
+      },
+      {
+        "id": "61800_Z40_1",
+        "category": "bearing",
+        "radial_clearance_mm": 58.05990184292564
+      },
+      {
+        "id": "SHAFT_SEAL_Z40_1_18x30x7",
+        "category": "seal",
+        "radial_clearance_mm": 38.88675589303324
+      },
+      {
+        "id": "HOLD_Z16_SHAFT_1",
+        "category": "shaft",
+        "radial_clearance_mm": 54.006242166303466
+      },
+      {
+        "id": "61801_Z16_SUPPORT_1",
+        "category": "bearing",
+        "radial_clearance_mm": 49.506290332989195
+      },
+      {
+        "id": "HOLD_NBK_MLR20C_6_6_COUPLING_1_EXTERNAL_DETAIL",
+        "category": "purchased",
+        "radial_clearance_mm": 50.006285837642615
+      },
+      {
+        "id": "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1",
+        "category": "shaft",
+        "radial_clearance_mm": 57.006205318729116
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_45",
+        "category": "shaft",
+        "radial_clearance_mm": 52.531669949358744
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_135",
+        "category": "shaft",
+        "radial_clearance_mm": 65.96482444011284
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_225",
+        "category": "shaft",
+        "radial_clearance_mm": 57.87228398993773
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_315",
+        "category": "shaft",
+        "radial_clearance_mm": 48.58200214531543
+      },
+      {
+        "id": "TRACTION_MOTOR_1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
+        "category": "purchased",
+        "radial_clearance_mm": 47.00631040096856
+      },
+      {
+        "id": "HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED",
+        "category": "metal",
+        "radial_clearance_mm": 42.1646993644646
+      },
+      {
+        "id": "HOLD_PAIRED_PINION_BEARING_HOLDER",
+        "category": "metal",
+        "radial_clearance_mm": 42.1646993644646
+      },
+      {
+        "id": "HOLD_PRESSURE_ELECTRONICS_COVER_FLUSH_PLUG_PAD104x50x7",
+        "category": "metal",
+        "radial_clearance_mm": 35.582106156542274
+      },
+      {
+        "id": "FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_1",
+        "category": "shaft",
+        "radial_clearance_mm": 35.156439261043474
+      },
+      {
+        "id": "FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_2",
+        "category": "shaft",
+        "radial_clearance_mm": 35.156439261043474
+      },
+      {
+        "id": "SEA002721_ORING_110x1p5_RADIAL_ON_SERVICE_COVER_SPIGOT",
+        "category": "seal",
+        "radial_clearance_mm": 40.44611837527475
+      },
+      {
+        "id": "PX1_CAMERA_FITTING_HOLDER_FAL002086_ROLE_ON_HOUSING_TOP",
+        "category": "metal",
+        "radial_clearance_mm": 29.34071447061286
+      },
+      {
+        "id": "FIX_ISO7380_M3x12_FITTING_HOLDER_1",
+        "category": "shaft",
+        "radial_clearance_mm": 28.693977702380373
+      },
+      {
+        "id": "FIX_ISO7380_M3x12_FITTING_HOLDER_2",
+        "category": "shaft",
+        "radial_clearance_mm": 28.693977702380373
+      },
+      {
+        "id": "SEA001861_ORING_10x1p5_VALVE_PASSAGE_UNDER_FITTING_HOLDER",
+        "category": "seal",
+        "radial_clearance_mm": 40.27779355708335
+      },
+      {
+        "id": "HOLD_ORING_16x1p5_GLAND_PASSAGE_UNDER_FITTING_HOLDER",
+        "category": "seal",
+        "radial_clearance_mm": 48.6189679279111
+      },
+      {
+        "id": "HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY",
+        "category": "valve",
+        "radial_clearance_mm": 28.44637963247458
+      },
+      {
+        "id": "HOLD_PRESSURE_VALVE_CAP",
+        "category": "valve",
+        "radial_clearance_mm": 26.648109587142372
+      },
+      {
+        "id": "HOLD_PRESSURE_VALVE_4MM_BALL",
+        "category": "valve",
+        "radial_clearance_mm": 32.325038725309064
+      },
+      {
+        "id": "HOLD_LAPP_SKINTOP_53112000_M12x1p5_CAMERA_CABLE_IN_FITTING_HOLDER",
+        "category": "purchased",
+        "radial_clearance_mm": 23.763205625195596
+      },
+      {
+        "id": "HOLD_LIFT_BASE_FAL002067_ON_HOUSING_TOP",
+        "category": "lift",
+        "radial_clearance_mm": 16.863407653713786
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_1",
+        "category": "shaft",
+        "radial_clearance_mm": 28.36854303590266
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_2",
+        "category": "shaft",
+        "radial_clearance_mm": 28.36854303590266
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_3",
+        "category": "shaft",
+        "radial_clearance_mm": 32.70588307971701
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_4",
+        "category": "shaft",
+        "radial_clearance_mm": 32.70588307971701
+      },
+      {
+        "id": "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10",
+        "category": "lift",
+        "radial_clearance_mm": 17.194835324420268
+      },
+      {
+        "id": "HOLD_LIFT_CLAMP_WASHER_FSS002077",
+        "category": "lift",
+        "radial_clearance_mm": 16.478949346083468
+      },
+      {
+        "id": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1",
+        "category": "lift",
+        "radial_clearance_mm": 16.044204104784875
+      },
+      {
+        "id": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_2",
+        "category": "lift",
+        "radial_clearance_mm": 15.57220036348086
+      },
+      {
+        "id": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_3",
+        "category": "lift",
+        "radial_clearance_mm": 15.063818359539582
+      },
+      {
+        "id": "HOLD_LIFT_NUT_ISO4035_M10_1",
+        "category": "lift",
+        "radial_clearance_mm": 16.862351543759345
+      },
+      {
+        "id": "HOLD_LIFT_NUT_ISO4035_M10_2",
+        "category": "lift",
+        "radial_clearance_mm": 15.025120525161363
+      },
+      {
+        "id": "HOLD_LIFT_CLAMP_LEVER_M8_FIX002527",
+        "category": "lift",
+        "radial_clearance_mm": 13.67754950958711
+      },
+      {
+        "id": "HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073",
+        "category": "lift",
+        "radial_clearance_mm": 13.304684927510891
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_LINK_FSS002068_-1",
+        "category": "lift",
+        "radial_clearance_mm": 23.951382452902493
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_AXLE_FSS002075_-1",
+        "category": "lift",
+        "radial_clearance_mm": 21.37820730474421
+      },
+      {
+        "id": "HOLD_LIFT_TOP_AXLE_FSS002079_-1",
+        "category": "lift",
+        "radial_clearance_mm": 25.90339988373293
+      },
+      {
+        "id": "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_-1",
+        "category": "lift",
+        "radial_clearance_mm": 24.662821840328277
+      },
+      {
+        "id": "FBR002750_BRASS_SHIM_0p4_LIFT_D_-1",
+        "category": "lift",
+        "radial_clearance_mm": 28.323493214195338
+      },
+      {
+        "id": "FBR002751_BRASS_SHIM_0p25_LIFT_B_-1",
+        "category": "lift",
+        "radial_clearance_mm": 24.609302587429205
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_LINK_FSS002068_1",
+        "category": "lift",
+        "radial_clearance_mm": 23.951382452902493
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_AXLE_FSS002075_1",
+        "category": "lift",
+        "radial_clearance_mm": 21.37820730474421
+      },
+      {
+        "id": "HOLD_LIFT_TOP_AXLE_FSS002079_1",
+        "category": "lift",
+        "radial_clearance_mm": 25.90339988373293
+      },
+      {
+        "id": "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_1",
+        "category": "lift",
+        "radial_clearance_mm": 24.662821840328277
+      },
+      {
+        "id": "FBR002750_BRASS_SHIM_0p4_LIFT_D_1",
+        "category": "lift",
+        "radial_clearance_mm": 28.323493214195338
+      },
+      {
+        "id": "FBR002751_BRASS_SHIM_0p25_LIFT_B_1",
+        "category": "lift",
+        "radial_clearance_mm": 24.609302587429205
+      },
+      {
+        "id": "HOLD_ACE_GS12_60_V4A_150N_BODY_A3p5_EYE",
+        "category": "purchased",
+        "radial_clearance_mm": 25.76867318986173
+      },
+      {
+        "id": "HOLD_ACE_GS12_60_ROD_A3p5_EYE",
+        "category": "purchased",
+        "radial_clearance_mm": 23.585351981021468
+      },
+      {
+        "id": "HOLD_LIFT_GAS_SPRING_PIN_D4x18_ACE_A3p5_LOWER",
+        "category": "lift",
+        "radial_clearance_mm": 42.2147610015438
+      },
+      {
+        "id": "HOLD_LIFT_GAS_SPRING_PIN_D4_ACE_A3p5_UPPER",
+        "category": "lift",
+        "radial_clearance_mm": 24.74875104000796
+      },
+      {
+        "id": "HOLD_LIFT_HOUSING_FAL002071_DRW752",
+        "category": "lift",
+        "radial_clearance_mm": 14.096212069234063
+      },
+      {
+        "id": "HOLD_LIFT_COVER_FAL002081_DRW752",
+        "category": "lift",
+        "radial_clearance_mm": 29.722312494080533
+      },
+      {
+        "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_1",
+        "category": "shaft",
+        "radial_clearance_mm": 31.25888567490295
+      },
+      {
+        "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_2",
+        "category": "shaft",
+        "radial_clearance_mm": 31.25888567490295
+      },
+      {
+        "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_3",
+        "category": "shaft",
+        "radial_clearance_mm": 54.56573947745583
+      },
+      {
+        "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_4",
+        "category": "shaft",
+        "radial_clearance_mm": 54.56573947745583
+      },
+      {
+        "id": "HOLD_LIFT_LIGHT_COVER_FAL002080_DRW752",
+        "category": "lift",
+        "radial_clearance_mm": 13.057471352115762
+      },
+      {
+        "id": "HOLD_LOCK_RING_FSS001889_DRW752",
+        "category": "lift",
+        "radial_clearance_mm": 29.29426612771887
+      },
+      {
+        "id": "HOLD_LOCK_RING_SCREW_FSS001891",
+        "category": "shaft",
+        "radial_clearance_mm": 37.22229826050728
+      },
+      {
+        "id": "FIX001892_M5x6_DOG_POINT_SET_SCREW_LOCK_RING",
+        "category": "shaft",
+        "radial_clearance_mm": 43.19546757744365
+      },
+      {
+        "id": "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_-1",
+        "category": "lift",
+        "radial_clearance_mm": 18.5810916051687
+      },
+      {
+        "id": "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_1",
+        "category": "lift",
+        "radial_clearance_mm": 18.581091605168695
+      },
+      {
+        "id": "HOLD_LIFT_TOP_LEVER_AXLE_FSS002076",
+        "category": "lift",
+        "radial_clearance_mm": 20.076518416085364
+      },
+      {
+        "id": "HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5",
+        "category": "camera",
+        "radial_clearance_mm": 22.364266127718878
+      },
+      {
+        "id": "HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74",
+        "category": "camera",
+        "radial_clearance_mm": 10.307482087205628
+      },
+      {
+        "id": "HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN",
+        "category": "camera",
+        "radial_clearance_mm": 41.61426612771888
+      },
+      {
+        "id": "HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE",
+        "category": "connector",
+        "radial_clearance_mm": 42.61426612771888
+      },
+      {
+        "id": "PX1_SP13_POTTED_BEND_TAIL_R17_LAPP_CAMERA_EXIT",
+        "category": "print",
+        "radial_clearance_mm": 33.474582996000166
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 7.558551191139415
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 7.5659654370423794
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 7.558551191139415
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 6.358790836190309
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 6.366075476701241
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
+        "category": "wire",
+        "radial_clearance_mm": 6.358790836190309
+      },
+      {
+        "id": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
+        "category": "cable",
+        "radial_clearance_mm": 4.486247872166828
+      },
+      {
+        "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_1",
+        "category": "print",
+        "radial_clearance_mm": 12.661046324930062
+      },
+      {
+        "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_2",
+        "category": "print",
+        "radial_clearance_mm": 12.661046324930062
+      },
+      {
+        "id": "PX1_CAMERA_CABLE_BEND_GUIDE_R17_GLAND_ON_FITTING_HOLDER",
+        "category": "print",
+        "radial_clearance_mm": 4.046638610390616
+      },
+      {
+        "id": "HOLD_LAPP_0028679_CAMERA_CABLE_INTERNAL_PASSAGE_TO_BREAKOUT",
+        "category": "cable",
+        "radial_clearance_mm": 30.442419031876668
+      },
+      {
+        "id": "HOLD_CAMERA_CABLE_BREAKOUT_BOOT_POTTED",
+        "category": "cable",
+        "radial_clearance_mm": 64.1242661277189
+      },
+      {
+        "id": "HOLD_CAMERA_CORE_BUNDLE_6x0p25_TO_SERVICE_CONNECTOR",
+        "category": "wire",
+        "radial_clearance_mm": 48.49262239378325
+      },
+      {
+        "id": "HOLD_CAMERA_SERVICE_CONNECTOR_6P_W2W_MATED",
+        "category": "connector",
+        "radial_clearance_mm": 46.35875112239647
+      },
+      {
+        "id": "WEACT_STM32F446RET6_V11_MANUFACTURER_STEP",
+        "category": "electronics",
+        "radial_clearance_mm": 49.306176263029535
+      },
+      {
+        "id": "POLOLU_2992_G2_24v13_1_MANUFACTURER_STEP",
+        "category": "electronics",
+        "radial_clearance_mm": 55.512307658239024
+      },
+      {
+        "id": "POLOLU_2992_G2_24v13_2_MANUFACTURER_STEP",
+        "category": "electronics",
+        "radial_clearance_mm": 46.128966770450106
+      },
+      {
+        "id": "HOLD_CINCON_CQB150W110S24C_BASEPLATE_UP_ON_SERVICE_COVER",
+        "category": "electronics",
+        "radial_clearance_mm": 45.56457326672697
+      },
+      {
+        "id": "HOLD_THERMAL_PAD_0p5_3WmK_DCDC_ON_SERVICE_COVER",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 45.17266218982715
+      },
+      {
+        "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_1",
+        "category": "shaft",
+        "radial_clearance_mm": 43.189009635454966
+      },
+      {
+        "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_2",
+        "category": "shaft",
+        "radial_clearance_mm": 43.189009635454966
+      },
+      {
+        "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_3",
+        "category": "shaft",
+        "radial_clearance_mm": 43.189009635454966
+      },
+      {
+        "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_4",
+        "category": "shaft",
+        "radial_clearance_mm": 43.189009635454966
+      },
+      {
+        "id": "HOLD_BRAKE_SHUNT_10R_10W_ALU_HOUSED_ON_SERVICE_COVER",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 42.34844035930465
+      },
+      {
+        "id": "HOLD_THERMAL_PAD_0p5_BRAKE_SHUNT_ON_SERVICE_COVER",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 41.99469617103689
+      },
+      {
+        "id": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_1",
+        "category": "shaft",
+        "radial_clearance_mm": 42.41899660074766
+      },
+      {
+        "id": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_2",
+        "category": "shaft",
+        "radial_clearance_mm": 42.41899660074766
+      },
+      {
+        "id": "HOLD_BRAKE_SHUNT_CTRL_BOARD_CMP27V_MOSFET_ON_SERVICE_COVER",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 52.88707591744681
+      },
+      {
+        "id": "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_1",
+        "category": "shaft",
+        "radial_clearance_mm": 47.48336753175825
+      },
+      {
+        "id": "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_2",
+        "category": "shaft",
+        "radial_clearance_mm": 47.48336753175825
+      },
+      {
+        "id": "HOLD_TVS_SMBJ26A_DO214AA_ON_SERVICE_COVER",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 55.526388031763034
+      },
+      {
+        "id": "HOLD_BUS_CAP_470uF_50V_CINCON_OUT_ON_SERVICE_COVER",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 46.641016054432725
+      },
+      {
+        "id": "HOLD_BUS_CAP_330uF_50V_G2_1",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 57.52426612771889
+      },
+      {
+        "id": "HOLD_BUS_CAP_330uF_50V_G2_2",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 47.51725855728516
+      },
+      {
+        "id": "NICHICON_UCS2D221MHD1TN_BODY18x25",
+        "category": "electronics",
+        "radial_clearance_mm": 51.67057624105189
+      },
+      {
+        "id": "ADAFRUIT_MPRLS_3965_ENVELOPE",
+        "category": "electronics",
+        "radial_clearance_mm": 46.40470198239155
+      },
+      {
+        "id": "HOLD_POLOLU_5577_D42V55F12_ENVELOPE",
+        "category": "electronics",
+        "radial_clearance_mm": 37.36024761317133
+      },
+      {
+        "id": "HOLD_POLOLU_5571_D42V55F5_ENVELOPE",
+        "category": "electronics",
+        "radial_clearance_mm": 37.36024761317133
+      },
+      {
+        "id": "HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE",
+        "category": "electronics",
+        "radial_clearance_mm": 45.570250297979655
+      },
+      {
+        "id": "HOLD_DELTA_TR1D_P2_VIDEO_BALUN",
+        "category": "electronics_hold",
+        "radial_clearance_mm": 62.94025791553176
+      },
+      {
+        "id": "HOLD_WEIPU_SP1712_7PIN_REAR_PANEL_6_USED",
+        "category": "connector",
+        "radial_clearance_mm": 47.37134522651701
+      },
+      {
+        "id": "HOLD_REAR_TETHER_STRAIN_SLEEVE",
+        "category": "metal",
+        "radial_clearance_mm": 56.47573387228111
+      },
+      {
+        "id": "HOLD_REAR_TETHER_ARAMID_CONE",
+        "category": "metal",
+        "radial_clearance_mm": 58.47651435090146
+      },
+      {
+        "id": "HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_UNKNOWN",
+        "category": "cable",
+        "radial_clearance_mm": 63.97573387228111
+      },
+      {
+        "id": "FIX002764_M8x16_DIN7984_PLATE_1",
+        "category": "shaft",
+        "radial_clearance_mm": 34.945026383092284
+      },
+      {
+        "id": "FIX002741_M8_SPRING_WASHER_1",
+        "category": "shaft",
+        "radial_clearance_mm": 39.691880467042125
+      },
+      {
+        "id": "FIX002764_M8x16_DIN7984_PLATE_2",
+        "category": "shaft",
+        "radial_clearance_mm": 29.766040623223773
+      },
+      {
+        "id": "FIX002741_M8_SPRING_WASHER_2",
+        "category": "shaft",
+        "radial_clearance_mm": 33.57213547136548
+      },
+      {
+        "id": "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD",
+        "category": "metal",
+        "radial_clearance_mm": 27.30577975068484
+      },
+      {
+        "id": "HOLD_BALLAST_1_STEEL",
+        "category": "metal",
+        "radial_clearance_mm": 40.85638136321729
+      },
+      {
+        "id": "HOLD_BALLAST_2_STEEL",
+        "category": "metal",
+        "radial_clearance_mm": 40.85638136321729
+      },
+      {
+        "id": "HOLD_BALLAST_3_STEEL",
+        "category": "metal",
+        "radial_clearance_mm": 38.20615956965003
+      },
+      {
+        "id": "HOLD_BALLAST_4_STEEL",
+        "category": "metal",
+        "radial_clearance_mm": 38.20615956965003
+      },
+      {
+        "id": "HOLD_BALLAST_5_STEEL",
+        "category": "metal",
+        "radial_clearance_mm": 38.20615956965003
+      },
+      {
+        "id": "HOLD_BALLAST_6_STEEL",
+        "category": "metal",
+        "radial_clearance_mm": 46.59036709075728
+      }
+    ]
+  },
+  "limits": [
+    "Nominal rigid, straight circular ID150 pipe, level crawler, static lift LOW only.",
+    "Wheel outer contour is an engineering estimate, not a recovered OEM QRW90 profile.",
+    "Tyre deformation, loading/contact stress, wear, traction and tolerances not qualified.",
+    "No curved-pipe, joint/obstacle, full-lift or endurance/pressure test claimed.",
+    "Rebuild full CAD with proposed profile and contact-derived pose, rerun all-pair collision and STEP checks before adopting."
+  ],
+  "active_master_checks": {
+    "profile_matches": true,
+    "wheel_y_matches": true,
+    "wheel_z_matches": true,
+    "crown_matches": true,
+    "noncontact_gap_requirement_matches": true,
+    "pipe_radius_matches": true,
+    "contact_pose_matches": true,
+    "source_hash_matches": true,
+    "nonwheel_boxes_inside": true
+  },
+  "nonwheel_bounding_box_containment": {
+    "method": "Every YZ corner of each kernel bounding box, expanded by0.00001mm for registry rounding. Cylinder cross-section is convex, so contained corners prove the entire box and solid are contained.",
+    "minimum_clearance_mm": 0.2827664343106022,
+    "results": [
+      {
+        "id": "HOLD_PRESSURE_BODY_CRP150_GRAPHIC278x68x64_CAVITY_UNRESOLVED",
+        "conservative_clearance_mm": 22.10181821956725
+      },
+      {
+        "id": "HOLD_SIDE_COVER_-1_GRAPHIC262x60x7",
+        "conservative_clearance_mm": 20.090769749941344
+      },
+      {
+        "id": "HOLD_SIDE_ORING_190x1p5_-1_LOBED_GLAND_INSTALLED",
+        "conservative_clearance_mm": 25.18945348187416
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_25_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_25_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_75_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_75_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_125_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_125_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_175_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_175_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_225_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_225_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_275_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_-1_275_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "HOLD_Z50_-1_50_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.11366504652043
+      },
+      {
+        "id": "HOLD_Z50_-1_100_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.094976477265398
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_-1_100.0",
+        "conservative_clearance_mm": 38.95422121075133
+      },
+      {
+        "id": "HOLD_IDLE_PIN_-1_100.0",
+        "conservative_clearance_mm": 39.10000528874674
+      },
+      {
+        "id": "HOLD_Z50_-1_150_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.11366504652043
+      },
+      {
+        "id": "HOLD_Z50_-1_200_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.094976477265398
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_-1_200.0",
+        "conservative_clearance_mm": 38.95422121075133
+      },
+      {
+        "id": "HOLD_IDLE_PIN_-1_200.0",
+        "conservative_clearance_mm": 39.10000528874674
+      },
+      {
+        "id": "HOLD_Z50_-1_250_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.11366504652043
+      },
+      {
+        "id": "61801_SIDE_-1_50_SOURCE_ONE_PER_SIDE",
+        "conservative_clearance_mm": 41.37223531554737
+      },
+      {
+        "id": "MIDDLE_BUSH_12_14_3_-1",
+        "conservative_clearance_mm": 42.274678904877234
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_-1_50.0_GRAPHIC_AXIAL_PACKAGE",
+        "conservative_clearance_mm": 12.636834932070975
+      },
+      {
+        "id": "KEY_4x4x12_-1_50.0",
+        "conservative_clearance_mm": 14.549272000072342
+      },
+      {
+        "id": "61903_SIDE_-1_50.0",
+        "conservative_clearance_mm": 24.213236145405077
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_-1_50.0_GRAPHIC_CONTOUR",
+        "conservative_clearance_mm": 16.903348105275747
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_45",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_135",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_225",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_50_315",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_-1_50.0_FREE18p72x2p62",
+        "conservative_clearance_mm": 23.012302890945307
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_50.0_FACE_GLAND_INSTALLED",
+        "conservative_clearance_mm": 26.465975757993796
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_-1_50.0_ESTIMATED",
+        "conservative_clearance_mm": 2.6405800285100867
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_50",
+        "conservative_clearance_mm": 7.16566271771363
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_50",
+        "conservative_clearance_mm": 7.981627923585975
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_50",
+        "conservative_clearance_mm": 10.939868673503241
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_50",
+        "conservative_clearance_mm": 8.584418995193161
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_-1_150.0_GRAPHIC_AXIAL_PACKAGE",
+        "conservative_clearance_mm": 12.636834932070975
+      },
+      {
+        "id": "KEY_4x4x12_-1_150.0",
+        "conservative_clearance_mm": 14.549272000072342
+      },
+      {
+        "id": "61903_SIDE_-1_150.0",
+        "conservative_clearance_mm": 24.213236145405077
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_-1_150.0_GRAPHIC_CONTOUR",
+        "conservative_clearance_mm": 16.903348105275747
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_45",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_135",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_225",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_150_315",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_-1_150.0_FREE18p72x2p62",
+        "conservative_clearance_mm": 23.012302890945307
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_150.0_FACE_GLAND_INSTALLED",
+        "conservative_clearance_mm": 26.465975757993796
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_-1_150.0_ESTIMATED",
+        "conservative_clearance_mm": 2.6405800285100867
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_150",
+        "conservative_clearance_mm": 7.16566271771363
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_150",
+        "conservative_clearance_mm": 7.981627923585975
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_150",
+        "conservative_clearance_mm": 10.939868673503241
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_150",
+        "conservative_clearance_mm": 8.584418995193161
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_-1_250.0_GRAPHIC_AXIAL_PACKAGE",
+        "conservative_clearance_mm": 12.636834932070975
+      },
+      {
+        "id": "KEY_4x4x12_-1_250.0",
+        "conservative_clearance_mm": 14.549272000072342
+      },
+      {
+        "id": "61903_SIDE_-1_250.0",
+        "conservative_clearance_mm": 24.213236145405077
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_-1_250.0_GRAPHIC_CONTOUR",
+        "conservative_clearance_mm": 16.903348105275747
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_45",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_135",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_225",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_-1_250_315",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_-1_250.0_FREE18p72x2p62",
+        "conservative_clearance_mm": 23.012302890945307
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_-1_250.0_FACE_GLAND_INSTALLED",
+        "conservative_clearance_mm": 26.465975757993796
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_-1_250.0_ESTIMATED",
+        "conservative_clearance_mm": 2.6405800285100867
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_250",
+        "conservative_clearance_mm": 7.16566271771363
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_250",
+        "conservative_clearance_mm": 7.981627923585975
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_250",
+        "conservative_clearance_mm": 10.939868673503241
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_-1_250",
+        "conservative_clearance_mm": 8.584418995193161
+      },
+      {
+        "id": "HOLD_SIDE_COVER_1_GRAPHIC262x60x7",
+        "conservative_clearance_mm": 20.090769749941344
+      },
+      {
+        "id": "HOLD_SIDE_ORING_190x1p5_1_LOBED_GLAND_INSTALLED",
+        "conservative_clearance_mm": 25.18945348187416
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_25_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_25_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_75_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_75_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_125_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_125_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_175_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_175_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_225_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_225_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_275_21",
+        "conservative_clearance_mm": 23.173697796878017
+      },
+      {
+        "id": "FIX000359_M3x8_ISO7380_COVER_1_275_69",
+        "conservative_clearance_mm": 30.4437528851265
+      },
+      {
+        "id": "HOLD_Z50_1_50_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.11366504652043
+      },
+      {
+        "id": "HOLD_Z50_1_100_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.094976477265398
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_1_100.0",
+        "conservative_clearance_mm": 38.95422121075133
+      },
+      {
+        "id": "HOLD_IDLE_PIN_1_100.0",
+        "conservative_clearance_mm": 39.10000528874674
+      },
+      {
+        "id": "HOLD_Z50_1_150_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.11366504652043
+      },
+      {
+        "id": "HOLD_Z50_1_200_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.094976477265398
+      },
+      {
+        "id": "IDLE_BUSH_10_12_4_1_200.0",
+        "conservative_clearance_mm": 38.95422121075133
+      },
+      {
+        "id": "HOLD_IDLE_PIN_1_200.0",
+        "conservative_clearance_mm": 39.10000528874674
+      },
+      {
+        "id": "HOLD_Z50_1_250_PROFILE_UNCONFIRMED",
+        "conservative_clearance_mm": 28.11366504652043
+      },
+      {
+        "id": "61801_SIDE_1_50_SOURCE_ONE_PER_SIDE",
+        "conservative_clearance_mm": 41.37223531554737
+      },
+      {
+        "id": "MIDDLE_BUSH_12_14_3_1",
+        "conservative_clearance_mm": 42.274678904877234
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_1_50.0_GRAPHIC_AXIAL_PACKAGE",
+        "conservative_clearance_mm": 12.636834932070975
+      },
+      {
+        "id": "KEY_4x4x12_1_50.0",
+        "conservative_clearance_mm": 14.549272000072342
+      },
+      {
+        "id": "61903_SIDE_1_50.0",
+        "conservative_clearance_mm": 24.213236145405077
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_1_50.0_GRAPHIC_CONTOUR",
+        "conservative_clearance_mm": 16.903348105275747
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_45",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_135",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_225",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_50_315",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_1_50.0_FREE18p72x2p62",
+        "conservative_clearance_mm": 23.012302890945307
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_50.0_FACE_GLAND_INSTALLED",
+        "conservative_clearance_mm": 26.465975757993796
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_1_50.0_ESTIMATED",
+        "conservative_clearance_mm": 2.6405800285100867
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_50",
+        "conservative_clearance_mm": 7.16566271771363
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_50",
+        "conservative_clearance_mm": 7.981627923585975
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_50",
+        "conservative_clearance_mm": 10.939868673503241
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_50",
+        "conservative_clearance_mm": 8.584418995193161
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_1_150.0_GRAPHIC_AXIAL_PACKAGE",
+        "conservative_clearance_mm": 12.636834932070975
+      },
+      {
+        "id": "KEY_4x4x12_1_150.0",
+        "conservative_clearance_mm": 14.549272000072342
+      },
+      {
+        "id": "61903_SIDE_1_150.0",
+        "conservative_clearance_mm": 24.213236145405077
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_1_150.0_GRAPHIC_CONTOUR",
+        "conservative_clearance_mm": 16.903348105275747
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_45",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_135",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_225",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_150_315",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_1_150.0_FREE18p72x2p62",
+        "conservative_clearance_mm": 23.012302890945307
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_150.0_FACE_GLAND_INSTALLED",
+        "conservative_clearance_mm": 26.465975757993796
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_1_150.0_ESTIMATED",
+        "conservative_clearance_mm": 2.6405800285100867
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_150",
+        "conservative_clearance_mm": 7.16566271771363
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_150",
+        "conservative_clearance_mm": 7.981627923585975
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_150",
+        "conservative_clearance_mm": 10.939868673503241
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_150",
+        "conservative_clearance_mm": 8.584418995193161
+      },
+      {
+        "id": "HOLD_WHEEL_SHAFT_1_250.0_GRAPHIC_AXIAL_PACKAGE",
+        "conservative_clearance_mm": 12.636834932070975
+      },
+      {
+        "id": "KEY_4x4x12_1_250.0",
+        "conservative_clearance_mm": 14.549272000072342
+      },
+      {
+        "id": "61903_SIDE_1_250.0",
+        "conservative_clearance_mm": 24.213236145405077
+      },
+      {
+        "id": "HOLD_AXLE_FLANGE_1_250.0_GRAPHIC_CONTOUR",
+        "conservative_clearance_mm": 16.903348105275747
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_45",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_135",
+        "conservative_clearance_mm": 28.407422230244386
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_225",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "FIX002738_M3x6_ISO7380_FLANGE_1_250_315",
+        "conservative_clearance_mm": 23.707491298989133
+      },
+      {
+        "id": "HOLD_XRING_INSTALLED_1_250.0_FREE18p72x2p62",
+        "conservative_clearance_mm": 23.012302890945307
+      },
+      {
+        "id": "HOLD_FLANGE_ORING_32x1p5_1_250.0_FACE_GLAND_INSTALLED",
+        "conservative_clearance_mm": 26.465975757993796
+      },
+      {
+        "id": "HOLD_QRW90_HUB_AL_1_250.0_ESTIMATED",
+        "conservative_clearance_mm": 2.6405800285100867
+      },
+      {
+        "id": "FSS002065_WHEEL_DISK_CAM_ASS002103_1_250",
+        "conservative_clearance_mm": 7.16566271771363
+      },
+      {
+        "id": "FIX002105_M6x14_ISO7380_WHEEL_BOLT_1_250",
+        "conservative_clearance_mm": 7.981627923585975
+      },
+      {
+        "id": "FIX002104_M6_SPRING_WASHER_SCHNORR_1_250",
+        "conservative_clearance_mm": 10.939868673503241
+      },
+      {
+        "id": "SEA002106_ORING_10x1p8_WHEEL_DISK_1_250",
+        "conservative_clearance_mm": 8.584418995193161
+      },
+      {
+        "id": "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_-20.0",
+        "conservative_clearance_mm": 41.91331387912982
+      },
+      {
+        "id": "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_20.0",
+        "conservative_clearance_mm": 41.91331387912982
+      },
+      {
+        "id": "HOLD_Z40_BEVEL_-1_STRAIGHT_M1_TEETH",
+        "conservative_clearance_mm": 46.8777103726795
+      },
+      {
+        "id": "HOLD_Z16_BEVEL_-1_STRAIGHT_M1_TEETH",
+        "conservative_clearance_mm": 47.77690423966299
+      },
+      {
+        "id": "HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD",
+        "conservative_clearance_mm": 41.39875381344075
+      },
+      {
+        "id": "61800_Z40_-1",
+        "conservative_clearance_mm": 58.05811299124323
+      },
+      {
+        "id": "SHAFT_SEAL_Z40_-1_18x30x7",
+        "conservative_clearance_mm": 38.88497483287061
+      },
+      {
+        "id": "HOLD_Z16_SHAFT_-1",
+        "conservative_clearance_mm": 51.82441192712795
+      },
+      {
+        "id": "61801_Z16_SUPPORT_-1",
+        "conservative_clearance_mm": 45.57507081277987
+      },
+      {
+        "id": "HOLD_NBK_MLR20C_6_6_COUPLING_-1_EXTERNAL_DETAIL",
+        "conservative_clearance_mm": 46.27192711744833
+      },
+      {
+        "id": "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1",
+        "conservative_clearance_mm": 55.948434033992484
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_45",
+        "conservative_clearance_mm": 65.6428879597166
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_135",
+        "conservative_clearance_mm": 52.400023353224086
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_225",
+        "conservative_clearance_mm": 47.70925262332702
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_315",
+        "conservative_clearance_mm": 57.06730656936936
+      },
+      {
+        "id": "TRACTION_MOTOR_-1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
+        "conservative_clearance_mm": 42.084230400740836
+      },
+      {
+        "id": "HOLD_Z40_BEVEL_1_STRAIGHT_M1_TEETH",
+        "conservative_clearance_mm": 46.8777103726795
+      },
+      {
+        "id": "HOLD_Z16_BEVEL_1_STRAIGHT_M1_TEETH",
+        "conservative_clearance_mm": 47.77690423966299
+      },
+      {
+        "id": "HOLD_Z40_OUTPUT_SHAFT_1_SOCKET_TORQUE_TRANSFER_HOLD",
+        "conservative_clearance_mm": 41.39875381344075
+      },
+      {
+        "id": "61800_Z40_1",
+        "conservative_clearance_mm": 58.05811299124323
+      },
+      {
+        "id": "SHAFT_SEAL_Z40_1_18x30x7",
+        "conservative_clearance_mm": 38.88497483287061
+      },
+      {
+        "id": "HOLD_Z16_SHAFT_1",
+        "conservative_clearance_mm": 51.82441192712795
+      },
+      {
+        "id": "61801_Z16_SUPPORT_1",
+        "conservative_clearance_mm": 45.57507081277987
+      },
+      {
+        "id": "HOLD_NBK_MLR20C_6_6_COUPLING_1_EXTERNAL_DETAIL",
+        "conservative_clearance_mm": 46.27192711744833
+      },
+      {
+        "id": "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1",
+        "conservative_clearance_mm": 55.95746644132048
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_45",
+        "conservative_clearance_mm": 52.400023353224086
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_135",
+        "conservative_clearance_mm": 65.6428879597166
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_225",
+        "conservative_clearance_mm": 57.06730656936936
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_315",
+        "conservative_clearance_mm": 47.70925262332702
+      },
+      {
+        "id": "TRACTION_MOTOR_1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
+        "conservative_clearance_mm": 42.084230400740836
+      },
+      {
+        "id": "HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED",
+        "conservative_clearance_mm": 42.16468537821643
+      },
+      {
+        "id": "HOLD_PAIRED_PINION_BEARING_HOLDER",
+        "conservative_clearance_mm": 42.16468537821643
+      },
+      {
+        "id": "HOLD_PRESSURE_ELECTRONICS_COVER_FLUSH_PLUG_PAD104x50x7",
+        "conservative_clearance_mm": 34.64688371923452
+      },
+      {
+        "id": "FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_1",
+        "conservative_clearance_mm": 35.15599551241094
+      },
+      {
+        "id": "FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_2",
+        "conservative_clearance_mm": 35.15599551241094
+      },
+      {
+        "id": "SEA002721_ORING_110x1p5_RADIAL_ON_SERVICE_COVER_SPIGOT",
+        "conservative_clearance_mm": 40.446103118178904
+      },
+      {
+        "id": "PX1_CAMERA_FITTING_HOLDER_FAL002086_ROLE_ON_HOUSING_TOP",
+        "conservative_clearance_mm": 29.340700349556606
+      },
+      {
+        "id": "FIX_ISO7380_M3x12_FITTING_HOLDER_1",
+        "conservative_clearance_mm": 28.69355783103707
+      },
+      {
+        "id": "FIX_ISO7380_M3x12_FITTING_HOLDER_2",
+        "conservative_clearance_mm": 28.69355783103707
+      },
+      {
+        "id": "SEA001861_ORING_10x1p5_VALVE_PASSAGE_UNDER_FITTING_HOLDER",
+        "conservative_clearance_mm": 40.276874619558725
+      },
+      {
+        "id": "HOLD_ORING_16x1p5_GLAND_PASSAGE_UNDER_FITTING_HOLDER",
+        "conservative_clearance_mm": 48.618280264815084
+      },
+      {
+        "id": "HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY",
+        "conservative_clearance_mm": 28.44587771190824
+      },
+      {
+        "id": "HOLD_PRESSURE_VALVE_CAP",
+        "conservative_clearance_mm": 26.647507265587173
+      },
+      {
+        "id": "HOLD_PRESSURE_VALVE_4MM_BALL",
+        "conservative_clearance_mm": 31.636613756240422
+      },
+      {
+        "id": "HOLD_LAPP_SKINTOP_53112000_M12x1p5_CAMERA_CABLE_IN_FITTING_HOLDER",
+        "conservative_clearance_mm": 23.685926316728427
+      },
+      {
+        "id": "HOLD_LIFT_BASE_FAL002067_ON_HOUSING_TOP",
+        "conservative_clearance_mm": 8.983731670495473
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_1",
+        "conservative_clearance_mm": 28.368063051732143
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_2",
+        "conservative_clearance_mm": 28.368063051732143
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_3",
+        "conservative_clearance_mm": 32.70546837300088
+      },
+      {
+        "id": "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_4",
+        "conservative_clearance_mm": 32.70546837300088
+      },
+      {
+        "id": "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10",
+        "conservative_clearance_mm": 16.365069702070066
+      },
+      {
+        "id": "HOLD_LIFT_CLAMP_WASHER_FSS002077",
+        "conservative_clearance_mm": 16.478937029876654
+      },
+      {
+        "id": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1",
+        "conservative_clearance_mm": 16.044191616490046
+      },
+      {
+        "id": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_2",
+        "conservative_clearance_mm": 15.572187713553326
+      },
+      {
+        "id": "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_3",
+        "conservative_clearance_mm": 15.063805558301063
+      },
+      {
+        "id": "HOLD_LIFT_NUT_ISO4035_M10_1",
+        "conservative_clearance_mm": 16.86233880231938
+      },
+      {
+        "id": "HOLD_LIFT_NUT_ISO4035_M10_2",
+        "conservative_clearance_mm": 15.025107340352008
+      },
+      {
+        "id": "HOLD_LIFT_CLAMP_LEVER_M8_FIX002527",
+        "conservative_clearance_mm": 13.677536019301883
+      },
+      {
+        "id": "HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073",
+        "conservative_clearance_mm": 13.304671543069162
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_LINK_FSS002068_-1",
+        "conservative_clearance_mm": 23.95136849057843
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_AXLE_FSS002075_-1",
+        "conservative_clearance_mm": 21.378193182550575
+      },
+      {
+        "id": "HOLD_LIFT_TOP_AXLE_FSS002079_-1",
+        "conservative_clearance_mm": 25.90338580419713
+      },
+      {
+        "id": "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_-1",
+        "conservative_clearance_mm": 24.66280780979725
+      },
+      {
+        "id": "FBR002750_BRASS_SHIM_0p4_LIFT_D_-1",
+        "conservative_clearance_mm": 28.323479546562744
+      },
+      {
+        "id": "FBR002751_BRASS_SHIM_0p25_LIFT_B_-1",
+        "conservative_clearance_mm": 24.609288591644727
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_LINK_FSS002068_1",
+        "conservative_clearance_mm": 23.95136849057843
+      },
+      {
+        "id": "HOLD_LIFT_SIDE_AXLE_FSS002075_1",
+        "conservative_clearance_mm": 21.378193182550575
+      },
+      {
+        "id": "HOLD_LIFT_TOP_AXLE_FSS002079_1",
+        "conservative_clearance_mm": 25.90338580419713
+      },
+      {
+        "id": "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_1",
+        "conservative_clearance_mm": 24.66280780979725
+      },
+      {
+        "id": "FBR002750_BRASS_SHIM_0p4_LIFT_D_1",
+        "conservative_clearance_mm": 28.323479546562744
+      },
+      {
+        "id": "FBR002751_BRASS_SHIM_0p25_LIFT_B_1",
+        "conservative_clearance_mm": 24.609288591644727
+      },
+      {
+        "id": "HOLD_ACE_GS12_60_V4A_150N_BODY_A3p5_EYE",
+        "conservative_clearance_mm": 25.404391778665385
+      },
+      {
+        "id": "HOLD_ACE_GS12_60_ROD_A3p5_EYE",
+        "conservative_clearance_mm": 23.563465236951167
+      },
+      {
+        "id": "HOLD_LIFT_GAS_SPRING_PIN_D4x18_ACE_A3p5_LOWER",
+        "conservative_clearance_mm": 42.21474864057361
+      },
+      {
+        "id": "HOLD_LIFT_GAS_SPRING_PIN_D4_ACE_A3p5_UPPER",
+        "conservative_clearance_mm": 24.748739313784604
+      },
+      {
+        "id": "HOLD_LIFT_HOUSING_FAL002071_DRW752",
+        "conservative_clearance_mm": 14.096199031336418
+      },
+      {
+        "id": "HOLD_LIFT_COVER_FAL002081_DRW752",
+        "conservative_clearance_mm": 29.722298845915624
+      },
+      {
+        "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_1",
+        "conservative_clearance_mm": 30.243311744173013
+      },
+      {
+        "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_2",
+        "conservative_clearance_mm": 30.243311744173013
+      },
+      {
+        "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_3",
+        "conservative_clearance_mm": 54.13022408196349
+      },
+      {
+        "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_4",
+        "conservative_clearance_mm": 54.13022408196349
+      },
+      {
+        "id": "HOLD_LIFT_LIGHT_COVER_FAL002080_DRW752",
+        "conservative_clearance_mm": 13.057459375572627
+      },
+      {
+        "id": "HOLD_LOCK_RING_FSS001889_DRW752",
+        "conservative_clearance_mm": 23.226667971641398
+      },
+      {
+        "id": "HOLD_LOCK_RING_SCREW_FSS001891",
+        "conservative_clearance_mm": 36.07421691602378
+      },
+      {
+        "id": "FIX001892_M5x6_DOG_POINT_SET_SCREW_LOCK_RING",
+        "conservative_clearance_mm": 43.19545346444451
+      },
+      {
+        "id": "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_-1",
+        "conservative_clearance_mm": 18.581078409994028
+      },
+      {
+        "id": "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_1",
+        "conservative_clearance_mm": 18.581078409994028
+      },
+      {
+        "id": "HOLD_LIFT_TOP_LEVER_AXLE_FSS002076",
+        "conservative_clearance_mm": 20.076505147491865
+      },
+      {
+        "id": "HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5",
+        "conservative_clearance_mm": 13.78656472645504
+      },
+      {
+        "id": "HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74",
+        "conservative_clearance_mm": 5.87767489790501
+      },
+      {
+        "id": "HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN",
+        "conservative_clearance_mm": 39.523132411307
+      },
+      {
+        "id": "HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE",
+        "conservative_clearance_mm": 40.797125469325046
+      },
+      {
+        "id": "PX1_SP13_POTTED_BEND_TAIL_R17_LAPP_CAMERA_EXIT",
+        "conservative_clearance_mm": 32.16764029646844
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
+        "conservative_clearance_mm": 3.6778560231359023
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
+        "conservative_clearance_mm": 3.9971254000478496
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
+        "conservative_clearance_mm": 4.303690467913881
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
+        "conservative_clearance_mm": 2.5421792851178395
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
+        "conservative_clearance_mm": 2.8564225814244395
+      },
+      {
+        "id": "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
+        "conservative_clearance_mm": 3.15811985512903
+      },
+      {
+        "id": "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
+        "conservative_clearance_mm": 0.2827664343106022
+      },
+      {
+        "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_1",
+        "conservative_clearance_mm": 12.530834632304817
+      },
+      {
+        "id": "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_2",
+        "conservative_clearance_mm": 12.530834632304817
+      },
+      {
+        "id": "PX1_CAMERA_CABLE_BEND_GUIDE_R17_GLAND_ON_FITTING_HOLDER",
+        "conservative_clearance_mm": 3.5029969868680126
+      },
+      {
+        "id": "HOLD_LAPP_0028679_CAMERA_CABLE_INTERNAL_PASSAGE_TO_BREAKOUT",
+        "conservative_clearance_mm": 30.442376106968503
+      },
+      {
+        "id": "HOLD_CAMERA_CABLE_BREAKOUT_BOOT_POTTED",
+        "conservative_clearance_mm": 63.60518219647369
+      },
+      {
+        "id": "HOLD_CAMERA_CORE_BUNDLE_6x0p25_TO_SERVICE_CONNECTOR",
+        "conservative_clearance_mm": 47.88064154620564
+      },
+      {
+        "id": "HOLD_CAMERA_SERVICE_CONNECTOR_6P_W2W_MATED",
+        "conservative_clearance_mm": 46.35873751414398
+      },
+      {
+        "id": "WEACT_STM32F446RET6_V11_MANUFACTURER_STEP",
+        "conservative_clearance_mm": 48.56325502947989
+      },
+      {
+        "id": "POLOLU_2992_G2_24v13_1_MANUFACTURER_STEP",
+        "conservative_clearance_mm": 55.1519056446045
+      },
+      {
+        "id": "POLOLU_2992_G2_24v13_2_MANUFACTURER_STEP",
+        "conservative_clearance_mm": 46.128953891012245
+      },
+      {
+        "id": "HOLD_CINCON_CQB150W110S24C_BASEPLATE_UP_ON_SERVICE_COVER",
+        "conservative_clearance_mm": 45.56455921028592
+      },
+      {
+        "id": "HOLD_THERMAL_PAD_0p5_3WmK_DCDC_ON_SERVICE_COVER",
+        "conservative_clearance_mm": 45.172648150446804
+      },
+      {
+        "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_1",
+        "conservative_clearance_mm": 42.59708912719503
+      },
+      {
+        "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_2",
+        "conservative_clearance_mm": 42.59708912719503
+      },
+      {
+        "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_3",
+        "conservative_clearance_mm": 42.59708912719503
+      },
+      {
+        "id": "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_4",
+        "conservative_clearance_mm": 42.59708912719503
+      },
+      {
+        "id": "HOLD_BRAKE_SHUNT_10R_10W_ALU_HOUSED_ON_SERVICE_COVER",
+        "conservative_clearance_mm": 42.34842621733581
+      },
+      {
+        "id": "HOLD_THERMAL_PAD_0p5_BRAKE_SHUNT_ON_SERVICE_COVER",
+        "conservative_clearance_mm": 41.994682029148024
+      },
+      {
+        "id": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_1",
+        "conservative_clearance_mm": 41.76078965728015
+      },
+      {
+        "id": "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_2",
+        "conservative_clearance_mm": 41.76078965728015
+      },
+      {
+        "id": "HOLD_BRAKE_SHUNT_CTRL_BOARD_CMP27V_MOSFET_ON_SERVICE_COVER",
+        "conservative_clearance_mm": 52.88706326614127
+      },
+      {
+        "id": "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_1",
+        "conservative_clearance_mm": 47.38697668969779
+      },
+      {
+        "id": "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_2",
+        "conservative_clearance_mm": 47.38697668969779
+      },
+      {
+        "id": "HOLD_TVS_SMBJ26A_DO214AA_ON_SERVICE_COVER",
+        "conservative_clearance_mm": 55.52637708066783
+      },
+      {
+        "id": "HOLD_BUS_CAP_470uF_50V_CINCON_OUT_ON_SERVICE_COVER",
+        "conservative_clearance_mm": 44.579456405046244
+      },
+      {
+        "id": "HOLD_BUS_CAP_330uF_50V_G2_1",
+        "conservative_clearance_mm": 56.82304415228802
+      },
+      {
+        "id": "HOLD_BUS_CAP_330uF_50V_G2_2",
+        "conservative_clearance_mm": 47.51706711016277
+      },
+      {
+        "id": "NICHICON_UCS2D221MHD1TN_BODY18x25",
+        "conservative_clearance_mm": 51.669876922262304
+      },
+      {
+        "id": "ADAFRUIT_MPRLS_3965_ENVELOPE",
+        "conservative_clearance_mm": 46.40468866700837
+      },
+      {
+        "id": "HOLD_POLOLU_5577_D42V55F12_ENVELOPE",
+        "conservative_clearance_mm": 37.3602334727313
+      },
+      {
+        "id": "HOLD_POLOLU_5571_D42V55F5_ENVELOPE",
+        "conservative_clearance_mm": 37.3602334727313
+      },
+      {
+        "id": "HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE",
+        "conservative_clearance_mm": 45.570236213342724
+      },
+      {
+        "id": "HOLD_DELTA_TR1D_P2_VIDEO_BALUN",
+        "conservative_clearance_mm": 62.94024379892292
+      },
+      {
+        "id": "HOLD_WEIPU_SP1712_7PIN_REAR_PANEL_6_USED",
+        "conservative_clearance_mm": 47.37133128292594
+      },
+      {
+        "id": "HOLD_REAR_TETHER_STRAIN_SLEEVE",
+        "conservative_clearance_mm": 52.92854680688025
+      },
+      {
+        "id": "HOLD_REAR_TETHER_ARAMID_CONE",
+        "conservative_clearance_mm": 55.685448450838926
+      },
+      {
+        "id": "HOLD_MAIN_TETHER_6CORE_REINFORCED_ARTICLE_UNKNOWN",
+        "conservative_clearance_mm": 63.09265965295807
+      },
+      {
+        "id": "FIX002764_M8x16_DIN7984_PLATE_1",
+        "conservative_clearance_mm": 34.94480641139941
+      },
+      {
+        "id": "FIX002741_M8_SPRING_WASHER_1",
+        "conservative_clearance_mm": 39.691562054615325
+      },
+      {
+        "id": "FIX002764_M8x16_DIN7984_PLATE_2",
+        "conservative_clearance_mm": 29.765402141499372
+      },
+      {
+        "id": "FIX002741_M8_SPRING_WASHER_2",
+        "conservative_clearance_mm": 33.57131307725189
+      },
+      {
+        "id": "FSS002060_WEIGHT_PLATE_STAINLESS_M8_FIXING_HOLD",
+        "conservative_clearance_mm": 27.305765980826287
+      },
+      {
+        "id": "HOLD_BALLAST_1_STEEL",
+        "conservative_clearance_mm": 40.85636729784632
+      },
+      {
+        "id": "HOLD_BALLAST_2_STEEL",
+        "conservative_clearance_mm": 40.85636729784632
+      },
+      {
+        "id": "HOLD_BALLAST_3_STEEL",
+        "conservative_clearance_mm": 38.20614543025455
+      },
+      {
+        "id": "HOLD_BALLAST_4_STEEL",
+        "conservative_clearance_mm": 38.20614543025455
+      },
+      {
+        "id": "HOLD_BALLAST_5_STEEL",
+        "conservative_clearance_mm": 38.20614543025455
+      },
+      {
+        "id": "HOLD_BALLAST_6_STEEL",
+        "conservative_clearance_mm": 46.590353706470594
+      }
+    ]
+  },
+  "active_source_sha256": "d37e52b10690b9d1f6f764e49497d5102bd7b63895253de651aa7fe57daf4e7a",
+  "active_all_component_mesh_protrusions": [],
+  "proposed_screen_passes": true
+}

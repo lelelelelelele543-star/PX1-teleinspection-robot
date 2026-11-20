@@ -6,7 +6,7 @@ M04;Передняя короткая ось;2;FSS-002-063;X50 absY23..60.9 step
 M05;Длинная ось;2;FSS-002-064;задняяX250 соединениеHOLD;DRW374;TURN;GRAPHIC_APPROX;H02 H04
 M06;ВалZ40;2;FSS-002-066 family;10/18 socket12 provisional;DRW375;TURN;ADAPTATION;H02 H04
 M07;ВалZ16;2;FSS-002-083 family;6/12 длиныHOLD;DRW386;TURN;ADAPTATION;H04 H05
-M08;Парный держатель моторов;1;PX1-GP26-HOLDER;52.8x30x3 2x4 clearance2.7 PCD19 ESTIMATED;GP26 class, ZHAOWEI drawing pending;MILL;ADAPTATION;H05 exact motor variant and screw engagement unqualified
+M08;Парный держатель моторов;1;PX1-GP26-HOLDER;52.8x28x3 + foot9.2x52.8x4 + body bossesR3.2 topZ32, 2x4 clearance2.7 PCD19 ESTIMATED;GP26 class, ZHAOWEI drawing pending;MILL;ADAPTATION;H05 exact motor variant and screw engagement unqualified
 M09;Держатель опорZ16;1;PX1-PINION-HOLDER;52.8×26×5;DRW386 topology;MILL;ADAPTATION;H04 H05
 M10;Разрезная переходная втулка;2;PX1-SPLIT-6-4;OD6 ID4 L8;NBK 6 / вал ZWSMD026026 Ø4 ESTIMATED (чертёж ZHAOWEI не получен, до 2026-11-20 значилось GA24 shaft4);TURN;ADAPTATION;H05
 M11;Палец холостойZ50;4;PX1 idler pin;D10 L7 absY27..34;DRW374;TURN;ESTIMATED;H02 press fit/retention/strength unqualified
@@ -161,3 +161,5 @@ F23;Винт M8×16 DIN 7984 A2 (низкая головка);2;FIX-002-764;M8×
 F24;Шайба пружинная M8 A2;2;FIX-002-741;DIN 127 B Ø8,1/Ø14,8×2,0;DRW375 поз.16;BUY;MODELLED_F14;стандарт
 M21;Балластные блоки;6;PX1-BALLAST-F17;≈93,8 см³ всего (F14: блок 5 разрезан на 5+6), BALLAST_BOXES;F17 free-space search;MILL;MODELLED_F17;материал СТАЛЬ (решение пользователя 2026-11-19), крепление HOLD
 P03b;Ступица колеса Al;6;QRW90 hub ESTIMATED;r22 inside D90 tyre;Mini-Cam ASS-004-496 view;TURN;MODELLED_F17;H01 карман под диск ASS-002-103 Ø20,4 ESTIMATED
+MOTOR-F01;Винт крепления мотора;8;M2.5x6 socket head ESTIMATED;3mm nominal engagement +2.5mm tap allowance;GP26 supplied drawing pending;BUY;HOLD;exact thread depth and grade unverified
+MOTOR-F02;Винт полки держателя;2;M3x6 low head ESTIMATED;head5.5x2 recessed0.5 engagement4.5;PX1 engineering design;BUY;HOLD;grade preload thread and boss strength unqualified

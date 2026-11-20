@@ -121,7 +121,7 @@ def finish_build(g):
     body_names=[n for n in shapes if 'PRESSURE_BODY' in n]
     motor_names=[n for n in shapes if n.startswith('TRACTION_MOTOR_')]
     rear_names=[n for n in shapes if n.startswith('HOLD_REAR_') or 'REAR_SERVICE_COVER' in n or 'REAR_PANEL' in n or 'MAIN_TETHER' in n]
-    motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','SPLIT_ADAPTER','LAPP_SKINTOP','ON_SERVICE_COVER')) or categories[n] in ('electronics','electronics_hold','valve')]
+    motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','MOTOR_FACE_M2p5','MOTOR_FOOT_M3','SPLIT_ADAPTER','LAPP_SKINTOP','ON_SERVICE_COVER')) or categories[n] in ('electronics','electronics_hold','valve')]
     motor_sweep=sweep_check(motor_names,(0,0,80),motor_removed,32)
     motor_sweep['removed_before_screen']=motor_removed
     motor_sweep['sequence_scope']='Lift/head/harness and electronics detached, cover WITH boss/gland/valve removed, couplings and motor holder removed, then motors lift vertically. Access and removal of preceding subassemblies not certified.'
@@ -163,6 +163,23 @@ def finish_build(g):
         tools.append({'screw_x_mm':x,'screw_y_mm':y,'tool_diameter_mm':6,'approach_mm':60,'collisions':hits,
             'removed_before':'lift group + camera harness (F25 sequence: lift base sits on the cover rear end)','release':'HOLD: screw/groove/mating dimensions unresolved'})
     # F18: gas spring E (base) to G (central lever, rotating about clamp axle A), 0..LIFT_THETA_MAX.
+    # Nominal driver-bit access; full handle and preceding disassembly remain HOLD.
+    mount_tools=[]
+    removed_for_tools=[n for n in motor_removed if 'PAIRED_MOTOR_HOLDER' not in n]
+    probes=[]
+    for yy in g['MOTOR_FOOT_Y']:
+        probes.append((f'foot_{yy}',cq.Solid.makeCylinder(1.5,80,cq.Vector(g['MOTOR_FOOT_X'],yy,35.5),cq.Vector(0,0,1))))
+    for side,angle in itertools.product((-1,1),(45,135,225,315)):
+        a=math.radians(angle); y=side*g['MOTOR_Y']+9.5*math.cos(a);z=45+9.5*math.sin(a)
+        probes.append((f'face_{side}_{angle}',cq.Solid.makeCylinder(1.5,29,cq.Vector(g['MOTOR_FACE']+5.5,y,z),cq.Vector(1,0,0))))
+    for label,probe in probes:
+        hits=[];errs=[]
+        for n,ss in shapes.items():
+            if n in removed_for_tools or not possible(box(probe),boxes[n]):continue
+            try:v=probe.intersect(ss).Volume()
+            except Exception as exc:errs.append({'id':n,'error':str(exc)});continue
+            if v>1e-4:hits.append({'id':n,'volume_mm3':v})
+        mount_tools.append({'id':label,'collisions':hits,'errors':errs})
     gas_sweep=[];AX,AZ=g['LIFT_A_X'],g['LIFT_A_Z'];gx,gz=g['LIFT_GAS_G'];E=g['body_pt']
     lo,hi=g['ACE_EXTENDED']-g['ACE_STROKE'],g['ACE_EXTENDED'];tmax=g['LIFT_THETA_MAX'];fit=2*g['ACE_EYE_L'];mg=g['ACE_MARGIN']
     for k in range(0,int(math.ceil(tmax))+1):
@@ -189,7 +206,7 @@ def finish_build(g):
         'collision_method':{'all_pairs':allpairs,'boolean_pairs_after_AABB':tested,'excluded_pairs':0,'errors':errors,'volume_threshold_mm3':1e-4},
         'interferences':pairs,'dn150':{'diameter_mm':150,'assumed_pipe_center_z_mm':pipeZ,'pose':'LOW, contact-derived symmetric lower-wall crown support; engineered outer tyre shoulder H01',
             'all_component_results':radial,'global_status':'HOLD: nominal CAD containment only; tyre profile is engineered estimate, physical tyre/contact/tolerances unqualified'},
-        'service':{'motor_vertical_extraction':motor_sweep,'camera_forward_removal':cam_sweep,'service_screw_tools':tools,
+        'service':{'motor_vertical_extraction':motor_sweep,'camera_forward_removal':cam_sweep,'service_screw_tools':tools,'motor_mount_tool_probes':mount_tools,'mount_tool_removed_parts':removed_for_tools,'mount_tool_scope':'D3 bit envelopes only:80mm above M3 heads,29mm rear of M2.5 heads; full handles and preceding removals unqualified',
             'wheel_removal':'HOLD H01: source quick-lock unknown; proxy cannot certify wheel removal',
             'harness_removal':'HOLD H07: SP13 cable end must be reterminated if larger than gland throat; replacement sequence in documentation'},
         'lift':lift,'folded_height':folded,

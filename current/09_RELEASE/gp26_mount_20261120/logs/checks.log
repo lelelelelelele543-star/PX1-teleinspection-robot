@@ -1,0 +1,28 @@
+{
+  "status": "PASS_REQUESTED_CAD_SCREENS_WITH_RELEASE_HOLD",
+  "checks": {
+    "counts_match_frozen_architecture": true,
+    "wheel_stations_preserved": true,
+    "gear_stations_preserved": true,
+    "component_ids_unique": true,
+    "source_matches_current_master": true,
+    "valid_shapes": true,
+    "boolean_errors_absent": true,
+    "no_excluded_pairs": true,
+    "all_pairs_enumerated": true,
+    "component_count_matches": true,
+    "no_rigid_or_wheel_or_unknown_clashes": true,
+    "manufacturing_release_remains_false": true,
+    "step_exists": true,
+    "spur_sampled_screen": true,
+    "step_roundtrip": true,
+    "pipe_contact_profile_and_solid_bounds": true,
+    "motor_continuous_exit": true,
+    "motor_discrete_exit": true,
+    "four_service_tool_approaches": true,
+    "ten_motor_mount_bit_access_probes": true
+  },
+  "blocking_interferences": 0,
+  "unqualified_contacts": 0,
+  "report": "/workspace/PX1/_gp26_mount_build/integrated_checks.json"
+}

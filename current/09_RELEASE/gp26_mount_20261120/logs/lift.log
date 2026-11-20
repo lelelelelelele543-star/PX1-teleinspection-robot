@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "checks": {
+    "camera_axis_folded_70pm5": true,
+    "camera_axis_raised_257pm5": true,
+    "parallelogram_model_exact": true,
+    "parallelogram_drawing_spread_le_0p5": true,
+    "gas_spring_bare_within_ACE_stroke_with_margin": true,
+    "gas_spring_pushes_up_when_raising": true,
+    "swept_group_clear_of_housing_and_cover": true,
+    "route_ends_at_gland_exit": true,
+    "dynamic_bends_ge_5xOD": true,
+    "harness_slack_ge_need_plus_10": true,
+    "fixed_bends_ge_3xOD_incl_sp13_exit": true,
+    "internal_cable_bends_ge_3xOD": true,
+    "internal_core_bundle_bends_ge_3xD": true,
+    "internal_route_continuous_from_gland": true,
+    "sp13_tail_and_riser_clear_of_housing_0_to_theta_max": true,
+    "camera_exit_option_b_chosen_option_a_rejected": true,
+    "drw752_cd_equals_744_ab_within_0p5": true,
+    "drw752_cd_direction_within_1deg_of_744_ab": true,
+    "d_on_752_pattern_within_0p6_c_exact": true,
+    "riser_clear_of_c_axle_ge_1": true,
+    "riser_clear_of_d_taps_ge_1": true
+  },
+  "camera_axis_mm": {
+    "folded": 72.91000000000001,
+    "raised": 259.7194433420901,
+    "theta_max_deg": 69.0,
+    "catalogue": [
+      70.0,
+      257.0
+    ],
+    "raised_camera_shift_rearward_mm": 128.39057329598538
+  },
+  "parallelogram_error_mm": {
+    "model": 0.0,
+    "drawing_spread": 0.19999999999999574
+  },
+  "gas_spring": {
+    "min_mm": 103.33499067750414,
+    "max_mm": 122.83891806211852,
+    "bare_limits_mm": [
+      92.0,
+      152.0
+    ],
+    "margin_to_compressed_mm": 11.334990677504138,
+    "margin_to_extended_mm": 29.161081937881477,
+    "spring_moment_Nm_at_150N": {
+      "folded": 2.6484269048472693,
+      "raised": 1.681387337319437
+    },
+    "gravity_moment_Nm_folded_ESTIMATED": 3.5860506992999994
+  },
+  "swept_min_clearance_mm": 2.288,
+  "camera_harness_F21": {
+    "modeled_route_length_mm": 329.58,
+    "need_mm": {
+      "theta_0": 314.25,
+      "theta_max": 309.2,
+      "max": 314.25,
+      "max_at_deg": 0.0
+    },
+    "need_increase_max_mm": 0.0,
+    "need_change_at_theta_max_mm": -5.05,
+    "slack_mm": 15.33,
+    "margin_mm": 5.33,
+    "bend_radii_mm": {
+      "dynamic_min": 27.0,
+      "fixed": [
+        17.0,
+        17.0,
+        17.0
+      ],
+      "external_fixed": [
+        17.0,
+        17.0,
+        17.0
+      ],
+      "internal_lapp": [
+        16.5
+      ],
+      "core_bundle": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "bundle_od": 3.3000000000000003,
+      "internal_starts_at_harness_end": true,
+      "internal_lapp_length_mm": 46.72,
+      "core_bundle_length_mm": 48.37,
+      "service_connector_face_mm": [
+        220.97,
+        -21.5,
+        64.0
+      ]
+    }
+  },
+  "lift_housing_F24": {
+    "cd_752_vs_ab_744": {
+      "cd_752_mm": 40.178,
+      "ab_744_mm": 40.193,
+      "diff_mm": -0.016,
+      "angle_752_deg": 18.82,
+      "angle_744_deg": 18.12,
+      "note": "parallelogram kept exact on 744 (AB = CD); 752 differs by the listed angle -> camera tilt <= that angle if 752 were used literally (within 744 1:1.5 reading +-0.3 mm)"
+    },
+    "d_model_vs_752_mm": 0.49,
+    "riser_to_pivots": {
+      "c_axle_xz_clearance_mm": 3.32,
+      "d_taps_y_gap_mm": 10.82,
+      "d_taps_xz_clearance_mm": 5.42,
+      "note": "D = blind taps 8 deep from each side (752 C-C), riser + potted tail in Y0 -> no crossing"
+    }
+  },
+  "camera_exit_F23": {
+    "chosen": "b: LAPP kept, straight SP13 (clamp nut removed) in a potted bend tail, fixed R17.0 S-riser",
+    "tail_clearance": {
+      "min_clearance_mm": 4.235,
+      "theta_deg": 0.0,
+      "part": "tail",
+      "obstacle": "housing",
+      "point_folded_xz": [
+        11.7,
+        78.61
+      ],
+      "tail_shell_r_mm": 4.2
+    },
+    "option_a_verdict": "REJECTED: elbow (27 along X behind the housing rear X14) overlaps the crawler housing front (X18, top Z75); binder PVC R>=60 S-loop does not fit between the lever clips, so the moving section would stay LAPP via a potted inline joint (extra leak path) and the elbow still needs a new exit position in DRW-002-752."
+  }
+}

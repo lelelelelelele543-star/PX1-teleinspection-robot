@@ -680,7 +680,19 @@ BEVEL_GEAR_SOLID=_child(_ba,lambda n:'gear' in n and 'pinion' not in n)
 BEVEL_PINION_SOLID=_child(_ba,lambda n:'pinion' in n)
 BEVEL_CONE_H=float(_bp.gear.cone_h)    # apex height above Z40 back face in library frame
 BEVEL_APEX_Y=MOTOR_Y
-motor_holder=boxc(MOTOR_FACE+1.5,0,45,3,52.8,30)
+# PX1 GP26 mount: ESTIMATED internal bosses, no penetration of 1mm floor over ballast.
+MOTOR_FOOT_X=195.5; MOTOR_FOOT_Y=(-20.0,20.0)
+MOTOR_BOSS_TOP=32.0; MOTOR_BOSS_R=3.2; MOTOR_TAP_BOTTOM=25.0
+motor_holder=fuse_all([boxc(MOTOR_FACE+1.5,0,46,3,52.8,28),box0(MOTOR_FACE,-26.4,32,9.2,52.8,4)])
+for yy in MOTOR_FOOT_Y:
+    body=wp(body.val().fuse(cyl_z(MOTOR_FOOT_X,yy,CAVITY_FLOOR_Z-.5,MOTOR_BOSS_R,MOTOR_BOSS_TOP-CAVITY_FLOOR_Z+.5).val()))
+    # Cosmetic thread at major diameter, 4.5mm screw engagement +2.5mm tap allowance.
+    body=cut(body,cyl_z(MOTOR_FOOT_X,yy,MOTOR_TAP_BOTTOM,1.5,MOTOR_BOSS_TOP-MOTOR_TAP_BOTTOM+.1))
+    motor_holder=cut(motor_holder,cyl_z(MOTOR_FOOT_X,yy,31.9,1.7,4.2))
+    motor_holder=cut(motor_holder,cyl_z(MOTOR_FOOT_X,yy,33.5,2.85,2.6))
+    bolt=fuse_all([cyl_z(MOTOR_FOOT_X,yy,27.5,1.5,6),cyl_z(MOTOR_FOOT_X,yy,33.5,2.75,2)])
+    socket=cq.Workplane('XY').polygon(6,2/math.cos(math.pi/6)).extrude(1.1).translate((MOTOR_FOOT_X,yy,34.5))
+    add(f'HOLD_MOTOR_FOOT_M3x6_LOWHEAD_{yy}',cut(bolt,socket),'shaft')
 pinion_holder=boxc(227,0,45,5,52.8,26)
 for side in (-1,1):
     y=side*MOTOR_Y
@@ -707,12 +719,22 @@ for side in (-1,1):
     adapter=cut(cyl_x(199.5,y,45,3,8),cyl_x(199.4,y,45,2,8.2))
     adapter=cut(adapter,boxc(203.5,y+2.75,45,8.2,1.5,.5))
     add(f'HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_{side}',adapter,'shaft')
-    add(f'TRACTION_MOTOR_{side}_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD',candidate_motor_pack(y),'purchased')
+    motor=candidate_motor_pack(y)
     motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y,45,3.3,3.2))
     # ESTIMATED 4-hole pattern; exact supplied variant and body attachment HOLD.
     for angle in (45,135,225,315):
         a=math.radians(angle)
-        motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y+9.5*math.cos(a),45+9.5*math.sin(a),1.35,3.2))
+        sy=y+9.5*math.cos(a); sz=45+9.5*math.sin(a)
+        motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,sy,sz,1.35,3.2))
+        # Provisional bought-part threads; major-diameter cosmetic bore, not helical.
+        motor=cut(motor,cyl_x(MOTOR_FACE-5.5,sy,sz,1.25,5.6))
+        if angle in (225,315):
+            # Open reliefs avoid a 0.032mm nominal gap below lower screw heads.
+            motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE+3,sy,sz,2.6,2.6))
+        screw=fuse_all([cyl_x(MOTOR_FACE-3,sy,sz,1.25,6),cyl_x(MOTOR_FACE+3,sy,sz,2.25,2.5)])
+        socket=cq.Workplane('YZ').polygon(6,2/math.cos(math.pi/6)).extrude(1.6).translate((MOTOR_FACE+4,sy,sz))
+        add(f'HOLD_MOTOR_FACE_M2p5x6_{side}_{angle}',cut(screw,socket),'shaft')
+    add(f'TRACTION_MOTOR_{side}_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD',motor,'purchased')
 add('HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED',motor_holder,'metal')
 add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
 # F25 cover L01 = Proteus-type flush plug (hollow spigot rim Z71..75 with the radial 110x1.5, DRW-002-745 C-C) + flush lid behind

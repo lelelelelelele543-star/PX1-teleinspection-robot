@@ -1,7 +1,7 @@
 {
   "revision": "Rev.A pipe/service CAD 2026-11-18",
   "master": "CAD/PX1_Current_Master.step",
-  "source_sha256": "1e3d26e78f8cd48f224805f46df6cbba4c94d010483071ca0aaf72d9d34aa080",
+  "source_sha256": "d37e52b10690b9d1f6f764e49497d5102bd7b63895253de651aa7fe57daf4e7a",
   "status": "HOLD_NOT_MANUFACTURING_RELEASE",
   "source_reference": "Proteus CRP150 DRW-002-374/375/386/744/745/752",
   "counts": {
@@ -31,11 +31,11 @@
     "camera_harness_cores": 6
   },
   "counts_match": true,
-  "component_count": 285,
+  "component_count": 295,
   "invalid_shapes": [],
   "collision_method": {
-    "all_pairs": 40470,
-    "boolean_pairs_after_AABB": 1122,
+    "all_pairs": 43365,
+    "boolean_pairs_after_AABB": 1152,
     "excluded_pairs": 0,
     "errors": [],
     "volume_threshold_mm3": 0.0001
@@ -929,6 +929,18 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_-20.0",
+        "clearance_mm": 42.7602,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_20.0",
+        "clearance_mm": 42.7602,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "HOLD_Z40_BEVEL_-1_STRAIGHT_M1_TEETH",
         "clearance_mm": 47.4017,
         "status": "SCREEN_ONLY",
@@ -979,6 +991,30 @@
       {
         "id": "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1",
         "clearance_mm": 57.0064,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_45",
+        "clearance_mm": 65.9648,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_135",
+        "clearance_mm": 52.5317,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_225",
+        "clearance_mm": 48.582,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_-1_315",
+        "clearance_mm": 57.8723,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1043,6 +1079,30 @@
         "tessellation_tolerance_mm": 0.12
       },
       {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_45",
+        "clearance_mm": 52.5317,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_135",
+        "clearance_mm": 65.9648,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_225",
+        "clearance_mm": 57.8723,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
+        "id": "HOLD_MOTOR_FACE_M2p5x6_1_315",
+        "clearance_mm": 48.582,
+        "status": "SCREEN_ONLY",
+        "tessellation_tolerance_mm": 0.12
+      },
+      {
         "id": "TRACTION_MOTOR_1_PROTEUS_CLASS_GP26_D22_ESTIMATED_HOLD",
         "clearance_mm": 47.0063,
         "status": "SCREEN_ONLY",
@@ -1050,7 +1110,7 @@
       },
       {
         "id": "HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED",
-        "clearance_mm": 40.9375,
+        "clearance_mm": 42.1647,
         "status": "SCREEN_ONLY",
         "tessellation_tolerance_mm": 0.12
       },
@@ -1778,10 +1838,20 @@
         "HOLD_FLANGE_ORING_32x1p5_1_50.0_FACE_GLAND_INSTALLED",
         "HOLD_FLANGE_ORING_32x1p5_1_150.0_FACE_GLAND_INSTALLED",
         "HOLD_FLANGE_ORING_32x1p5_1_250.0_FACE_GLAND_INSTALLED",
+        "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_-20.0",
+        "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_20.0",
         "HOLD_NBK_MLR20C_6_6_COUPLING_-1_EXTERNAL_DETAIL",
         "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1",
+        "HOLD_MOTOR_FACE_M2p5x6_-1_45",
+        "HOLD_MOTOR_FACE_M2p5x6_-1_135",
+        "HOLD_MOTOR_FACE_M2p5x6_-1_225",
+        "HOLD_MOTOR_FACE_M2p5x6_-1_315",
         "HOLD_NBK_MLR20C_6_6_COUPLING_1_EXTERNAL_DETAIL",
         "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1",
+        "HOLD_MOTOR_FACE_M2p5x6_1_45",
+        "HOLD_MOTOR_FACE_M2p5x6_1_135",
+        "HOLD_MOTOR_FACE_M2p5x6_1_225",
+        "HOLD_MOTOR_FACE_M2p5x6_1_315",
         "HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED",
         "HOLD_PRESSURE_ELECTRONICS_COVER_FLUSH_PLUG_PAD104x50x7",
         "FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_1",
@@ -1925,6 +1995,164 @@
         "release": "HOLD: screw/groove/mating dimensions unresolved"
       }
     ],
+    "motor_mount_tool_probes": [
+      {
+        "id": "foot_-20.0",
+        "collisions": [],
+        "errors": []
+      },
+      {
+        "id": "foot_20.0",
+        "collisions": [],
+        "errors": []
+      },
+      {
+        "id": "face_-1_45",
+        "collisions": [],
+        "errors": []
+      },
+      {
+        "id": "face_-1_135",
+        "collisions": [],
+        "errors": []
+      },
+      {
+        "id": "face_-1_225",
+        "collisions": [],
+        "errors": []
+      },
+      {
+        "id": "face_-1_315",
+        "collisions": [],
+        "errors": []
+      },
+      {
+        "id": "face_1_45",
+        "collisions": [],
+        "errors": []
+      },
+      {
+        "id": "face_1_135",
+        "collisions": [],
+        "errors": []
+      },
+      {
+        "id": "face_1_225",
+        "collisions": [],
+        "errors": []
+      },
+      {
+        "id": "face_1_315",
+        "collisions": [],
+        "errors": []
+      }
+    ],
+    "mount_tool_removed_parts": [
+      "HOLD_FLANGE_ORING_32x1p5_-1_50.0_FACE_GLAND_INSTALLED",
+      "HOLD_FLANGE_ORING_32x1p5_-1_150.0_FACE_GLAND_INSTALLED",
+      "HOLD_FLANGE_ORING_32x1p5_-1_250.0_FACE_GLAND_INSTALLED",
+      "HOLD_FLANGE_ORING_32x1p5_1_50.0_FACE_GLAND_INSTALLED",
+      "HOLD_FLANGE_ORING_32x1p5_1_150.0_FACE_GLAND_INSTALLED",
+      "HOLD_FLANGE_ORING_32x1p5_1_250.0_FACE_GLAND_INSTALLED",
+      "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_-20.0",
+      "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_20.0",
+      "HOLD_NBK_MLR20C_6_6_COUPLING_-1_EXTERNAL_DETAIL",
+      "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1",
+      "HOLD_MOTOR_FACE_M2p5x6_-1_45",
+      "HOLD_MOTOR_FACE_M2p5x6_-1_135",
+      "HOLD_MOTOR_FACE_M2p5x6_-1_225",
+      "HOLD_MOTOR_FACE_M2p5x6_-1_315",
+      "HOLD_NBK_MLR20C_6_6_COUPLING_1_EXTERNAL_DETAIL",
+      "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1",
+      "HOLD_MOTOR_FACE_M2p5x6_1_45",
+      "HOLD_MOTOR_FACE_M2p5x6_1_135",
+      "HOLD_MOTOR_FACE_M2p5x6_1_225",
+      "HOLD_MOTOR_FACE_M2p5x6_1_315",
+      "HOLD_PRESSURE_ELECTRONICS_COVER_FLUSH_PLUG_PAD104x50x7",
+      "FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_1",
+      "FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_2",
+      "SEA002721_ORING_110x1p5_RADIAL_ON_SERVICE_COVER_SPIGOT",
+      "HOLD_PRESSURE_VALVE_BODY_SOURCE_FAMILY",
+      "HOLD_PRESSURE_VALVE_CAP",
+      "HOLD_PRESSURE_VALVE_4MM_BALL",
+      "HOLD_LAPP_SKINTOP_53112000_M12x1p5_CAMERA_CABLE_IN_FITTING_HOLDER",
+      "HOLD_LIFT_BASE_FAL002067_ON_HOUSING_TOP",
+      "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_1",
+      "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_2",
+      "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_3",
+      "FIX000598_M4x12_ISO4762_A2_LIFT_BASE_ON_HOUSING_TOP_4",
+      "HOLD_LIFT_CLAMP_AXLE_FSS002089_M10",
+      "HOLD_LIFT_CLAMP_WASHER_FSS002077",
+      "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_1",
+      "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_2",
+      "HOLD_LIFT_DISC_SPRING_DIN2093_20x10p2x1p1_3",
+      "HOLD_LIFT_NUT_ISO4035_M10_1",
+      "HOLD_LIFT_NUT_ISO4035_M10_2",
+      "HOLD_LIFT_CLAMP_LEVER_M8_FIX002527",
+      "HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073",
+      "HOLD_LIFT_SIDE_LINK_FSS002068_-1",
+      "HOLD_LIFT_SIDE_AXLE_FSS002075_-1",
+      "HOLD_LIFT_TOP_AXLE_FSS002079_-1",
+      "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_-1",
+      "FBR002750_BRASS_SHIM_0p4_LIFT_D_-1",
+      "FBR002751_BRASS_SHIM_0p25_LIFT_B_-1",
+      "HOLD_LIFT_SIDE_LINK_FSS002068_1",
+      "HOLD_LIFT_SIDE_AXLE_FSS002075_1",
+      "HOLD_LIFT_TOP_AXLE_FSS002079_1",
+      "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_1",
+      "FBR002750_BRASS_SHIM_0p4_LIFT_D_1",
+      "FBR002751_BRASS_SHIM_0p25_LIFT_B_1",
+      "HOLD_ACE_GS12_60_V4A_150N_BODY_A3p5_EYE",
+      "HOLD_ACE_GS12_60_ROD_A3p5_EYE",
+      "HOLD_LIFT_GAS_SPRING_PIN_D4x18_ACE_A3p5_LOWER",
+      "HOLD_LIFT_GAS_SPRING_PIN_D4_ACE_A3p5_UPPER",
+      "HOLD_LIFT_HOUSING_FAL002071_DRW752",
+      "HOLD_LIFT_COVER_FAL002081_DRW752",
+      "FIX002517_M3x8_CSK_TORX_LIFT_COVER_1",
+      "FIX002517_M3x8_CSK_TORX_LIFT_COVER_2",
+      "FIX002517_M3x8_CSK_TORX_LIFT_COVER_3",
+      "FIX002517_M3x8_CSK_TORX_LIFT_COVER_4",
+      "HOLD_LIFT_LIGHT_COVER_FAL002080_DRW752",
+      "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_-1",
+      "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_1",
+      "HOLD_LIFT_TOP_LEVER_AXLE_FSS002076",
+      "CAMERA_HARNESS_CORE_1_12V_ROUTE_HOLD",
+      "CAMERA_HARNESS_CORE_2_GND_ROUTE_HOLD",
+      "CAMERA_HARNESS_CORE_3_TX_ROUTE_HOLD",
+      "CAMERA_HARNESS_CORE_4_RX_ROUTE_HOLD",
+      "CAMERA_HARNESS_CORE_5_CVBS_SIGNAL_ROUTE_HOLD",
+      "CAMERA_HARNESS_CORE_6_CVBS_RETURN_ROUTE_HOLD",
+      "HOLD_LAPP_0028679_CAMERA_HARNESS_6CORE_ROUTE",
+      "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_1",
+      "PX1_LIFT_HARNESS_CLIP_ON_LEVER_OPEN_PROFILE_2",
+      "WEACT_STM32F446RET6_V11_MANUFACTURER_STEP",
+      "POLOLU_2992_G2_24v13_1_MANUFACTURER_STEP",
+      "POLOLU_2992_G2_24v13_2_MANUFACTURER_STEP",
+      "HOLD_CINCON_CQB150W110S24C_BASEPLATE_UP_ON_SERVICE_COVER",
+      "HOLD_THERMAL_PAD_0p5_3WmK_DCDC_ON_SERVICE_COVER",
+      "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_1",
+      "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_2",
+      "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_3",
+      "FIX_DIN912_M3x18_DCDC_ON_SERVICE_COVER_4",
+      "HOLD_BRAKE_SHUNT_10R_10W_ALU_HOUSED_ON_SERVICE_COVER",
+      "HOLD_THERMAL_PAD_0p5_BRAKE_SHUNT_ON_SERVICE_COVER",
+      "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_1",
+      "FIX_DIN912_M3x8_BRAKE_SHUNT_ON_SERVICE_COVER_2",
+      "HOLD_BRAKE_SHUNT_CTRL_BOARD_CMP27V_MOSFET_ON_SERVICE_COVER",
+      "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_1",
+      "FIX_M3_HEX_STANDOFF_2p5_BOARD_ON_SERVICE_COVER_2",
+      "HOLD_TVS_SMBJ26A_DO214AA_ON_SERVICE_COVER",
+      "HOLD_BUS_CAP_470uF_50V_CINCON_OUT_ON_SERVICE_COVER",
+      "HOLD_BUS_CAP_330uF_50V_G2_1",
+      "HOLD_BUS_CAP_330uF_50V_G2_2",
+      "NICHICON_UCS2D221MHD1TN_BODY18x25",
+      "ADAFRUIT_MPRLS_3965_ENVELOPE",
+      "HOLD_POLOLU_5577_D42V55F12_ENVELOPE",
+      "HOLD_POLOLU_5571_D42V55F5_ENVELOPE",
+      "HOLD_WAVESHARE_27479_ISOLATED_RS485_C_ENVELOPE",
+      "HOLD_DELTA_TR1D_P2_VIDEO_BALUN"
+    ],
+    "mount_tool_scope": "D3 bit envelopes only:80mm above M3 heads,29mm rear of M2.5 heads; full handles and preceding removals unqualified",
     "wheel_removal": "HOLD H01: source quick-lock unknown; proxy cannot certify wheel removal",
     "harness_removal": "HOLD H07: SP13 cable end must be reterminated if larger than gland throat; replacement sequence in documentation"
   },
@@ -2421,9 +2649,9 @@
     {
       "file": "PX1_Motor_Holder_FitCheck_ONLY.stl",
       "dimensions_mm": [
-        30.0,
+        28.0,
         52.8,
-        3.0000000000000036
+        9.200000000000003
       ],
       "fits_chiron_400x400x450": true,
       "solid_valid": true,
@@ -2503,9 +2731,15 @@
     "FSS002065_WHEEL_DISK_CAM_ASS002103_-1_250": "CAD/Metal_HOLD/FSS002065_WHEEL_DISK_CAM_ASS002103_-1_250.step",
     "FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_250": "CAD/Metal_HOLD/FIX002105_M6x14_ISO7380_WHEEL_BOLT_-1_250.step",
     "FIX002104_M6_SPRING_WASHER_SCHNORR_-1_250": "CAD/Metal_HOLD/FIX002104_M6_SPRING_WASHER_SCHNORR_-1_250.step",
+    "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_-20.0": "CAD/Metal_HOLD/HOLD_MOTOR_FOOT_M3x6_LOWHEAD_-20.0.step",
+    "HOLD_MOTOR_FOOT_M3x6_LOWHEAD_20.0": "CAD/Metal_HOLD/HOLD_MOTOR_FOOT_M3x6_LOWHEAD_20.0.step",
     "HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD": "CAD/Metal_HOLD/HOLD_Z40_OUTPUT_SHAFT_-1_SOCKET_TORQUE_TRANSFER_HOLD.step",
     "HOLD_Z16_SHAFT_-1": "CAD/Metal_HOLD/HOLD_Z16_SHAFT_-1.step",
     "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1": "CAD/Metal_HOLD/HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_-1.step",
+    "HOLD_MOTOR_FACE_M2p5x6_-1_45": "CAD/Metal_HOLD/HOLD_MOTOR_FACE_M2p5x6_-1_45.step",
+    "HOLD_MOTOR_FACE_M2p5x6_-1_135": "CAD/Metal_HOLD/HOLD_MOTOR_FACE_M2p5x6_-1_135.step",
+    "HOLD_MOTOR_FACE_M2p5x6_-1_225": "CAD/Metal_HOLD/HOLD_MOTOR_FACE_M2p5x6_-1_225.step",
+    "HOLD_MOTOR_FACE_M2p5x6_-1_315": "CAD/Metal_HOLD/HOLD_MOTOR_FACE_M2p5x6_-1_315.step",
     "HOLD_Z16_SHAFT_1": "CAD/Metal_HOLD/HOLD_Z16_SHAFT_1.step",
     "HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1": "CAD/Metal_HOLD/HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_1.step",
     "HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED": "CAD/Metal_HOLD/HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED.step",

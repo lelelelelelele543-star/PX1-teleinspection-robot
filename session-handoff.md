@@ -1,5 +1,12 @@
 # Session handoff — 2026-11-20
 
+## Verified GP26 mount integration — 2026-11-20
+
+Branch `feature/px1-gp26-mount-integration-20261120`, based on remote `980c82a`. GP26 envelope and F25 assembly retained; added motor-face screws, holder foot and internal blind-tapped body bosses without penetrating the ballast-pocket roof. Exact purchased motor interface remains ESTIMATED.
+
+295 components, 0 invalid shapes, 0 interferences; integrated CAD/STEP checks 20/20, drawing checks 161/161, lift checks 21/21. Ten nominal driver-bit approaches pass after explicit removals. STEP was reimported and compared for solid count, validity, volume and bounds. Evidence: `current/09_RELEASE/gp26_mount_20261120/README.md`. Main unchanged. This is an engineering CAD study, not manufacturing release; motor purchase/interface, pinion-support attachment, strength, thermal, traction and pressure/endurance qualification remain open.
+
+
 Ветка: feature/px1-integrated-cad-20261117 (claude/px1-audit-traction-20261119 на GitHub не существует).
 Источник геометрии: current/CAD/PX1_Current_Master.py.
 
