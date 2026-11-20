@@ -1,0 +1,58 @@
+{
+  "model": "PX1 M1 CAD/kinematic frame integration",
+  "status": "FAIL",
+  "assumptions": {
+    "gear_surfaces": "pitch cylinders, not involute gears",
+    "seals": "dynamic seals not qualified for 0.4-0.7 bar",
+    "motor": "22x42 mm assumed; not catalog-verified"
+  },
+  "checks": [
+    {
+      "name": "wheel count",
+      "status": "PASS",
+      "detail": "[-110, 0, 110]"
+    },
+    {
+      "name": "five gears per side",
+      "status": "PASS",
+      "detail": "[-110, -55, 0, 55, 110]"
+    },
+    {
+      "name": "wheel station frame",
+      "status": "FAIL",
+      "detail": "graph minus CAD offsets=[140, 150, 160]"
+    },
+    {
+      "name": "gear station frame",
+      "status": "FAIL",
+      "detail": "gear offsets=[140, 145, 150, 155, 160]; wheel offsets=[140, 150, 160]"
+    },
+    {
+      "name": "wheel/gear shared stations",
+      "status": "PASS",
+      "detail": "[-110, 0, 110]"
+    },
+    {
+      "name": "Z50 pitch center distances",
+      "status": "PASS",
+      "detail": "pitch=55.0; centers=[55,55,55,55]"
+    },
+    {
+      "name": "motor count",
+      "status": "PASS",
+      "detail": "one motor per side"
+    },
+    {
+      "name": "wheel radial DN150",
+      "status": "PASS",
+      "detail": "corner radius=72.4 mm approximately"
+    }
+  ],
+  "not_run": [
+    "FreeCAD STEP reopen",
+    "Boolean collisions",
+    "bevel tooth contact",
+    "pressure testing"
+  ],
+  "provenance": "Calculated from existing source literals; Python integration script not executed in this environment"
+}

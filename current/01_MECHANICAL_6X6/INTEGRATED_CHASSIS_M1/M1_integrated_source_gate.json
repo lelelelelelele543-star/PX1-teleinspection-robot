@@ -1,0 +1,56 @@
+{
+  "classification": "SOURCE_STATIC_ONLY",
+  "checks": [
+    {
+      "name": "6 wheel stations / 10 gear stations",
+      "status": "PASS",
+      "detail": "source parameters"
+    },
+    {
+      "name": "Z50 module pitch",
+      "status": "PASS",
+      "detail": "pitch only, teeth absent"
+    },
+    {
+      "name": "DN150 conservative wheel corner",
+      "status": "PASS",
+      "detail": "3.439 mm nominal clearance"
+    },
+    {
+      "name": "six wheel shaft passages",
+      "status": "PASS",
+      "detail": "source loop inspection only"
+    },
+    {
+      "name": "four internal blind idler carriers",
+      "status": "PASS",
+      "detail": "attachment NOT_RUN"
+    },
+    {
+      "name": "six seal cartridge proxies",
+      "status": "PASS",
+      "detail": "pressure rating PHYSICAL_CHECK"
+    },
+    {
+      "name": "nominal gasket compression",
+      "status": "PASS",
+      "detail": "fasteners and gasket groove NOT_RUN"
+    },
+    {
+      "name": "STEP roundtrip code present",
+      "status": "PASS",
+      "detail": "execution NOT_RUN"
+    }
+  ],
+  "lid_force_N_at_0_7_bar": 714,
+  "blockers": [
+    "Z50 and bevel teeth are only pitch proxies",
+    "Blind idler carriers lack attachment geometry",
+    "Shaft seal pressure rating unverified",
+    "Lid fasteners and gasket groove absent",
+    "3D collision and STEP execution NOT_RUN"
+  ],
+  "freecad": "NOT_RUN",
+  "step": "NOT_RUN",
+  "pressure": "PHYSICAL_CHECK"
+}

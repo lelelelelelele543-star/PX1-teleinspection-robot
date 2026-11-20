@@ -1,0 +1,50 @@
+{
+  "status": "FAIL",
+  "checks": [
+    {
+      "side": "L",
+      "bevel_vs": "Z50",
+      "overlap_y_mm": 5,
+      "proxy_overlap_mm3": 11879.15,
+      "status": "FAIL"
+    },
+    {
+      "side": "L",
+      "bevel_vs": "bearing",
+      "overlap_y_mm": 1,
+      "proxy_overlap_mm3": 380.13,
+      "status": "FAIL"
+    },
+    {
+      "side": "L",
+      "bevel_vs": "axle",
+      "overlap_y_mm": 3,
+      "proxy_overlap_mm3": 235.62,
+      "status": "FAIL"
+    },
+    {
+      "side": "R",
+      "bevel_vs": "Z50",
+      "overlap_y_mm": 5,
+      "proxy_overlap_mm3": 11879.15,
+      "status": "FAIL"
+    },
+    {
+      "side": "R",
+      "bevel_vs": "bearing",
+      "overlap_y_mm": 1,
+      "proxy_overlap_mm3": 380.13,
+      "status": "FAIL"
+    },
+    {
+      "side": "R",
+      "bevel_vs": "axle",
+      "overlap_y_mm": 3,
+      "proxy_overlap_mm3": 235.62,
+      "status": "FAIL"
+    }
+  ],
+  "freecad": "NOT_RUN",
+  "step": "NOT_RUN",
+  "note": "Solid proxy overlap; bevel/Z50 requires a redesigned input stage. Axle and bearing need actual bores and fits."
+}

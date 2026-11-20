@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="700" viewBox="0 0 1100 700">
+<rect width="1100" height="700" fill="#101b2a"/><g font-family="Arial,sans-serif" fill="#e6edf6">
+<text x="45" y="55" font-size="29" font-weight="bold">PX1 M1 — integrated YZ clearance repair</text>
+<text x="45" y="85" font-size="16">18 Nov 2026 | nominal design assumptions | analytical section, NOT FreeCAD render</text></g>
+<g transform="translate(420 365) scale(3.1)" stroke-width=".55">
+<circle r="75" fill="none" stroke="#68b6e8" stroke-width="1.2"/>
+<rect x="-39" y="-35" width="78" height="70" fill="#738496" fill-opacity=".65" stroke="#d0d8e2"/>
+<rect x="-34" y="-30" width="68" height="60" fill="#101b2a" stroke="#d0d8e2" stroke-dasharray="2 1"/>
+<rect x="40" y="-39" width="18" height="78" fill="#d67b34" fill-opacity=".75" stroke="#f6b574"/>
+<rect x="-58" y="-39" width="18" height="78" fill="#d67b34" fill-opacity=".75" stroke="#f6b574"/>
+<rect x="27" y="-27.5" width="6" height="55" fill="#e5c15e" stroke="#ffe39a"/>
+<rect x="-33" y="-27.5" width="6" height="55" fill="#e5c15e" stroke="#ffe39a"/>
+<circle cx="14" cy="-10" r="11" fill="#4ba889" fill-opacity=".85" stroke="#93e3c7"/>
+<circle cx="-14" cy="-10" r="11" fill="#4ba889" fill-opacity=".85" stroke="#93e3c7"/>
+<path d="M -75 0 H 75 M 0 -75 V 75" stroke="#8a99aa" stroke-dasharray="2 3" opacity=".5"/>
+</g>
+<g font-family="Arial,sans-serif" font-size="19" fill="#edf2f8">
+<text x="735" y="170" font-weight="bold">Nominal section / design target</text>
+<text x="735" y="210">Pipe: Ø150 mm</text><text x="735" y="242">Body: 78 × 70 mm</text>
+<text x="735" y="274">Wheels: Ø78 × 18 mm</text><text x="735" y="306">Z50 pitch proxy: Ø55 × 6</text>
+<text x="735" y="338">Motor envelope: Ø22</text>
+<text x="735" y="395" fill="#91e0bb">PASS analytic wheel/body: 1.0 mm</text>
+<text x="735" y="425" fill="#91e0bb">PASS gear/inner wall: 1.0 mm</text>
+<text x="735" y="455" fill="#91e0bb">PASS gear/bottom: 2.5 mm</text>
+<text x="735" y="485" fill="#91e0bb">PASS motor/gear Y: 2.0 mm</text>
+<text x="735" y="515" fill="#91e0bb">PASS radial bound: 69.89 / 75 mm</text>
+<text x="45" y="655" font-size="17" fill="#f3c57b">NOT_RUN: FreeCAD, Boolean collisions, STEP reopen. Gear teeth, bearing seats, shaft seals unverified.</text>
+</g></svg>

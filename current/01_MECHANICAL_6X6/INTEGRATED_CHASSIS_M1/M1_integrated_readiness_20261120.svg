@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="600" viewBox="0 0 1100 600">
+<rect width="1100" height="600" fill="#f7f9fb"/>
+<text x="40" y="45" font-size="24" font-family="sans-serif" fill="#1c3045">PX1 M1 — integrated chassis envelope audit (20 Nov 2026)</text>
+<text x="40" y="73" font-size="15" font-family="sans-serif" fill="#a34717">2D projection of ASSUMED source coordinates; NOT a FreeCAD render / NOT manufacture-ready</text>
+<g transform="translate(370 270) scale(2.0)" stroke-width="0.7">
+<rect x="-153.5" y="-39" width="307" height="78" rx="3" fill="#c4d3df" stroke="#445d70"/>
+<rect x="-85" y="-30" width="170" height="60" fill="#eaf1f5" stroke="#2e687a" stroke-dasharray="3 2"/>
+<rect x="-88" y="-33" width="176" height="66" fill="none" stroke="#2b9d62" stroke-width="1.5"/>
+<g fill="#202d3a" stroke="#0f1720">
+<rect x="-139" y="-60" width="78" height="14" rx="3"/><rect x="-139" y="46" width="78" height="14" rx="3"/><rect x="-39" y="-60" width="78" height="14" rx="3"/><rect x="-39" y="46" width="78" height="14" rx="3"/><rect x="61" y="-60" width="78" height="14" rx="3"/><rect x="61" y="46" width="78" height="14" rx="3"/>
+</g>
+<g fill="#dc9d59" fill-opacity=".5" stroke="#a46b20"><circle cx="-100" cy="-30" r="25"/><circle cx="-100" cy="30" r="25"/><circle cx="-50" cy="-30" r="25"/><circle cx="-50" cy="30" r="25"/><circle cx="0" cy="-30" r="25"/><circle cx="0" cy="30" r="25"/><circle cx="50" cy="-30" r="25"/><circle cx="50" cy="30" r="25"/><circle cx="100" cy="-30" r="25"/><circle cx="100" cy="30" r="25"/></g>
+<g fill="#396fa2" stroke="#204e75"><rect x="-30" y="-25" width="42" height="22" rx="10"/><rect x="-30" y="3" width="42" height="22" rx="10"/></g>
+<g stroke="#4d6a84" stroke-width="3"><line x1="12" y1="-14" x2="105" y2="-14"/><line x1="12" y1="14" x2="105" y2="14"/></g>
+</g>
+<g font-family="sans-serif" font-size="17" fill="#27394b">
+<text x="760" y="165">Body: 307 × 78 mm (plan)</text>
+<text x="760" y="200">Wheels: 6 × Ø78 × 14</text>
+<text x="760" y="235">Z50 pitch proxies: 10 × Ø50</text>
+<text x="760" y="270">Motors: 2 × Ø22 × 42</text>
+<text x="760" y="305">Motor shaft: X=12…105</text>
+<text x="760" y="340">Lid gasket: 176 × 66 ring</text>
+<text x="760" y="405" fill="#a22b2b">FAIL: real spur/bevel teeth absent</text>
+<text x="760" y="440" fill="#a22b2b">FAIL: pressure-rated seals absent</text>
+<text x="760" y="475" fill="#a22b2b">FAIL: motor mounts unmodeled</text>
+<text x="760" y="520">FreeCAD/STEP: NOT_RUN</text>
+</g>
+<text x="40" y="570" font-family="sans-serif" font-size="14" fill="#596b78">Top view, mm source: PX1_Integrated_6x6_M1_interface_repair.py; transparent orange discs are pitch proxies, not gear teeth.</text>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="570" viewBox="0 0 1360 570">
+<rect width="1360" height="570" fill="#f8fafc"/>
+<style>text{font:15px sans-serif;fill:#172033}.h{font:bold 23px sans-serif}.note{font:13px sans-serif;fill:#526077}.gear{fill:#ffe4b5;stroke:#9a5c0a;stroke-width:2}.wheel{fill:#d1fae5;stroke:#176b4b;stroke-width:2}.motor{fill:#dbeafe;stroke:#2563eb;stroke-width:2}line{stroke:#334155;stroke-width:3}</style>
+<text x="30" y="38" class="h">PX1 M1 | Full 6-wheel conceptual torque path</text>
+<text x="30" y="62" class="note">Topology only, not spatial CAD: 5 Z50 per side, 3 wheels per side. All couplings assumed, tooth contact NOT_RUN.</text>
+<text x="25" y="102" class="h">L side</text>
+<line x1="167" y1="145" x2="203" y2="145"/>
+<line x1="297" y1="145" x2="333" y2="145"/>
+<line x1="427" y1="145" x2="483" y2="145"/>
+<line x1="577" y1="145" x2="633" y2="145"/>
+<line x1="727" y1="145" x2="783" y2="145"/>
+<line x1="877" y1="145" x2="933" y2="145"/>
+<line x1="1027" y1="145" x2="1083" y2="145"/>
+<rect class="motor" x="71" y="121" width="98" height="48" rx="8"/>
+<text x="120" y="150" text-anchor="middle">Motor</text>
+<rect class="gear" x="201" y="121" width="98" height="48" rx="8"/>
+<text x="250" y="150" text-anchor="middle">Z16</text>
+<rect class="gear" x="331" y="121" width="98" height="48" rx="8"/>
+<text x="380" y="150" text-anchor="middle">Z40</text>
+<rect class="gear" x="481" y="121" width="98" height="48" rx="8"/>
+<text x="530" y="150" text-anchor="middle">Z50@250</text>
+<rect class="gear" x="631" y="121" width="98" height="48" rx="8"/>
+<text x="680" y="150" text-anchor="middle">Z50@200</text>
+<rect class="gear" x="781" y="121" width="98" height="48" rx="8"/>
+<text x="830" y="150" text-anchor="middle">Z50@150</text>
+<rect class="gear" x="931" y="121" width="98" height="48" rx="8"/>
+<text x="980" y="150" text-anchor="middle">Z50@100</text>
+<rect class="gear" x="1081" y="121" width="98" height="48" rx="8"/>
+<text x="1130" y="150" text-anchor="middle">Z50@50</text>
+<line x1="530" y1="169" x2="530" y2="217"/>
+<rect class="wheel" x="480" y="217" width="100" height="34" rx="8"/>
+<text x="530" y="239" text-anchor="middle">Wheel 250</text>
+<line x1="830" y1="169" x2="830" y2="217"/>
+<rect class="wheel" x="780" y="217" width="100" height="34" rx="8"/>
+<text x="830" y="239" text-anchor="middle">Wheel 150</text>
+<line x1="1130" y1="169" x2="1130" y2="217"/>
+<rect class="wheel" x="1080" y="217" width="100" height="34" rx="8"/>
+<text x="1130" y="239" text-anchor="middle">Wheel 50</text>
+<text class="note" x="250" y="106">Z16/Z40 bevel assumed</text>
+<text class="note" x="595" y="106">Z40/Z50 rigid hub + 4 spur meshes assumed</text>
+<text x="25" y="332" class="h">R side</text>
+<line x1="167" y1="375" x2="203" y2="375"/>
+<line x1="297" y1="375" x2="333" y2="375"/>
+<line x1="427" y1="375" x2="483" y2="375"/>
+<line x1="577" y1="375" x2="633" y2="375"/>
+<line x1="727" y1="375" x2="783" y2="375"/>
+<line x1="877" y1="375" x2="933" y2="375"/>
+<line x1="1027" y1="375" x2="1083" y2="375"/>
+<rect class="motor" x="71" y="351" width="98" height="48" rx="8"/>
+<text x="120" y="380" text-anchor="middle">Motor</text>
+<rect class="gear" x="201" y="351" width="98" height="48" rx="8"/>
+<text x="250" y="380" text-anchor="middle">Z16</text>
+<rect class="gear" x="331" y="351" width="98" height="48" rx="8"/>
+<text x="380" y="380" text-anchor="middle">Z40</text>
+<rect class="gear" x="481" y="351" width="98" height="48" rx="8"/>
+<text x="530" y="380" text-anchor="middle">Z50@250</text>
+<rect class="gear" x="631" y="351" width="98" height="48" rx="8"/>
+<text x="680" y="380" text-anchor="middle">Z50@200</text>
+<rect class="gear" x="781" y="351" width="98" height="48" rx="8"/>
+<text x="830" y="380" text-anchor="middle">Z50@150</text>
+<rect class="gear" x="931" y="351" width="98" height="48" rx="8"/>
+<text x="980" y="380" text-anchor="middle">Z50@100</text>
+<rect class="gear" x="1081" y="351" width="98" height="48" rx="8"/>
+<text x="1130" y="380" text-anchor="middle">Z50@50</text>
+<line x1="530" y1="399" x2="530" y2="447"/>
+<rect class="wheel" x="480" y="447" width="100" height="34" rx="8"/>
+<text x="530" y="469" text-anchor="middle">Wheel 250</text>
+<line x1="830" y1="399" x2="830" y2="447"/>
+<rect class="wheel" x="780" y="447" width="100" height="34" rx="8"/>
+<text x="830" y="469" text-anchor="middle">Wheel 150</text>
+<line x1="1130" y1="399" x2="1130" y2="447"/>
+<rect class="wheel" x="1080" y="447" width="100" height="34" rx="8"/>
+<text x="1130" y="469" text-anchor="middle">Wheel 50</text>
+<text class="note" x="250" y="336">Z16/Z40 bevel assumed</text>
+<text class="note" x="595" y="336">Z40/Z50 rigid hub + 4 spur meshes assumed</text>
+<text x="30" y="550" class="note">DESIGN ASSUMPTIONS: X stations 50/100/150/200/250 mm; 16:40 = 2.5:1; NOT_RUN: actual gears, bearings, pressure seals, 3D interference.</text>
+</svg>

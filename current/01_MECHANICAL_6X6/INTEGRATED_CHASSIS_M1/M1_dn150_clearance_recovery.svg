@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+<rect width="1000" height="560" fill="#f8fafc"/>
+<text x="40" y="44" font-size="25" font-family="sans-serif" fill="#0f172a">PX1 M1 — DN150 radial envelope / six-wheel chassis</text>
+<text x="40" y="71" font-size="15" font-family="sans-serif" fill="#475569">Parametric 2D Y-Z section at wheel station; ASSUMED dimensions, not CAD render</text>
+<g transform="translate(275 288) scale(2.5)" stroke-width=".8">
+<circle r="75" fill="#e0f2fe" fill-opacity=".5" stroke="#0284c7" stroke-dasharray="4 2"/>
+<rect x="-39" y="-35" width="78" height="70" rx="1" fill="#94a3b8" stroke="#334155"/>
+<rect x="-34" y="-30" width="68" height="60" fill="#f8fafc" stroke="#64748b"/>
+<rect x="46" y="-39" width="14" height="78" fill="#334155" stroke="#0f172a"/>
+<rect x="-60" y="-39" width="14" height="78" fill="#334155" stroke="#0f172a"/>
+<rect x="34" y="-11" width="7" height="22" fill="#fbbf24" stroke="#92400e"/>
+<rect x="-41" y="-11" width="7" height="22" fill="#fbbf24" stroke="#92400e"/>
+<rect x="41" y="-11.5" width="4" height="23" fill="#14b8a6" stroke="#0f766e"/>
+<rect x="-45" y="-11.5" width="4" height="23" fill="#14b8a6" stroke="#0f766e"/>
+<path d="M-75 0H75 M0 -75V75" stroke="#94a3b8" stroke-dasharray="2 3" fill="none"/>
+</g>
+<g font-family="sans-serif" fill="#0f172a" font-size="18">
+<text x="530" y="135">Pipe design envelope: Ø150 mm</text>
+<text x="530" y="175">Body: 78 × 70 mm (ASSUMED)</text>
+<text x="530" y="215">Wheel: Ø78 × 14 mm (ASSUMED)</text>
+<text x="530" y="255">Wheel inner face: Y = ±46 mm</text>
+<text x="530" y="295">Bearing: Y = 34..41 mm (proxy)</text>
+<text x="530" y="335">Seal cartridge: Y = 41..45 mm (proxy)</text>
+<text x="530" y="375">Axial service gap: 1 mm</text>
+<text x="530" y="425" fill="#047857" font-weight="bold">Radial envelope clearance: 3.439 mm</text>
+<text x="530" y="455" font-size="15" fill="#64748b">sqrt(60² + 39²) = 71.561 mm</text>
+<text x="530" y="490" font-size="15" fill="#b45309">NOT_RUN: 3D collisions, seals, traction, STEP</text>
+</g>
+<text x="40" y="535" font-size="13" font-family="sans-serif" fill="#64748b">Cross-section is replicated at X=-100,0,+100 mm on both sides (6 wheels). Nominal geometry only.</text>
+</svg>

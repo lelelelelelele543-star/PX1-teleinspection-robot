@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="550" viewBox="0 0 920 550">
+<rect width="920" height="550" fill="#f8fafc"/>
+<text x="32" y="36" font-size="22" font-family="sans-serif" fill="#172033">PX1 M1 — corrected lid vs actual chassis shell</text>
+<text x="32" y="60" font-size="14" font-family="sans-serif" fill="#b91c1c">FAIL: corrected lid / fastener centers are not integrated into 78 mm shell</text>
+<text x="32" y="84" font-size="12" font-family="sans-serif">Parametric 2D comparison of repository dimensions; NOT a FreeCAD render or physical test</text>
+<g transform="translate(460 265) scale(2.5 -2.5)">
+<rect x="-153.5" y="-39" width="307" height="78" fill="#cbd5e1" stroke="#334155" stroke-width="1"/>
+<rect x="-100" y="-45" width="200" height="90" fill="#60a5fa" fill-opacity=".24" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="-88" y="-33" width="176" height="66" fill="#86efac" fill-opacity=".25" stroke="#15803d" stroke-width=".8"/>
+<rect x="-85" y="-30" width="170" height="60" fill="white" fill-opacity=".55" stroke="#b45309" stroke-width=".8"/>
+<circle cx="-94" cy="-39" r="2.8" fill="#ef4444" stroke="#991b1b" stroke-width=".5"/>
+<circle cx="-94" cy="39" r="2.8" fill="#ef4444" stroke="#991b1b" stroke-width=".5"/>
+<circle cx="94" cy="-39" r="2.8" fill="#ef4444" stroke="#991b1b" stroke-width=".5"/>
+<circle cx="94" cy="39" r="2.8" fill="#ef4444" stroke="#991b1b" stroke-width=".5"/>
+<circle cx="0" cy="-39" r="2.8" fill="#ef4444" stroke="#991b1b" stroke-width=".5"/>
+<circle cx="0" cy="39" r="2.8" fill="#ef4444" stroke="#991b1b" stroke-width=".5"/>
+<circle cx="-94" cy="0" r="2.8" fill="#ef4444" stroke="#991b1b" stroke-width=".5"/>
+<circle cx="94" cy="0" r="2.8" fill="#ef4444" stroke="#991b1b" stroke-width=".5"/>
+</g>
+<text x="35" y="492" font-size="14" font-family="sans-serif" fill="#334155">Grey: actual 307 × 78 mm shell | Blue: proposed 200 × 90 mm lid</text>
+<text x="35" y="514" font-size="14" font-family="sans-serif" fill="#334155">Green: gasket 176 × 66 | Red: 8 proposed M3 heads (Ø5.6)</text>
+<text x="35" y="536" font-size="12" font-family="sans-serif" fill="#b91c1c">y = ±39 mm fastener centers lie on shell boundary: no blind-hole wall land. ASSUMED geometry.</text>
+</svg>

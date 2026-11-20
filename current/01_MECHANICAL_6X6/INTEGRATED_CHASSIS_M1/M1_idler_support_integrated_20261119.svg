@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="480" viewBox="0 0 920 480"><rect width="920" height="480" fill="#f8fafc"/><text x="28" y="32" font-family="sans-serif" font-size="21">PX1 M1 — integrated 6x6 / idler supports</text><text x="28" y="55" font-family="sans-serif" font-size="13">PARAMETRIC 2D TOP VIEW • ASSUMED mm • NOT A FREECAD RENDER</text><rect x="76.25" y="122.5" width="767.5" height="195" rx="6" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+<circle cx="210" cy="295" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="210" cy="311.25" r="13.75" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/><circle cx="210" cy="311.25" r="6.25" fill="#f8fafc"/>
+<rect x="192.5" y="335" width="35" height="35" fill="#334155" opacity=".85" rx="4"/>
+<circle cx="335" cy="295" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="335" cy="311.25" r="13.75" fill="#16a34a" stroke="#0f172a" stroke-width="1.5"/><circle cx="335" cy="311.25" r="6.25" fill="#f8fafc"/>
+<circle cx="460" cy="295" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="460" cy="311.25" r="13.75" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/><circle cx="460" cy="311.25" r="6.25" fill="#f8fafc"/>
+<rect x="442.5" y="335" width="35" height="35" fill="#334155" opacity=".85" rx="4"/>
+<circle cx="585" cy="295" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="585" cy="311.25" r="13.75" fill="#16a34a" stroke="#0f172a" stroke-width="1.5"/><circle cx="585" cy="311.25" r="6.25" fill="#f8fafc"/>
+<circle cx="710" cy="295" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="710" cy="311.25" r="13.75" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/><circle cx="710" cy="311.25" r="6.25" fill="#f8fafc"/>
+<rect x="692.5" y="335" width="35" height="35" fill="#334155" opacity=".85" rx="4"/>
+<circle cx="210" cy="145" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="210" cy="128.75" r="13.75" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/><circle cx="210" cy="128.75" r="6.25" fill="#f8fafc"/>
+<rect x="192.5" y="70" width="35" height="35" fill="#334155" opacity=".85" rx="4"/>
+<circle cx="335" cy="145" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="335" cy="128.75" r="13.75" fill="#16a34a" stroke="#0f172a" stroke-width="1.5"/><circle cx="335" cy="128.75" r="6.25" fill="#f8fafc"/>
+<circle cx="460" cy="145" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="460" cy="128.75" r="13.75" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/><circle cx="460" cy="128.75" r="6.25" fill="#f8fafc"/>
+<rect x="442.5" y="70" width="35" height="35" fill="#334155" opacity=".85" rx="4"/>
+<circle cx="585" cy="145" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="585" cy="128.75" r="13.75" fill="#16a34a" stroke="#0f172a" stroke-width="1.5"/><circle cx="585" cy="128.75" r="6.25" fill="#f8fafc"/>
+<circle cx="710" cy="145" r="62.5" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="710" cy="128.75" r="13.75" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/><circle cx="710" cy="128.75" r="6.25" fill="#f8fafc"/>
+<rect x="692.5" y="70" width="35" height="35" fill="#334155" opacity=".85" rx="4"/>
+<text x="28" y="430" font-family="sans-serif" font-size="15" fill="#166534">4 GREEN = added idler bearing proxies Ø22 / shaft Ø10; 6 GREY = wheel bearings</text><text x="28" y="454" font-family="sans-serif" font-size="14">PASS source integration; NOT_RUN FreeCAD Boolean, fits, gear mesh, STEP reopen</text></svg>

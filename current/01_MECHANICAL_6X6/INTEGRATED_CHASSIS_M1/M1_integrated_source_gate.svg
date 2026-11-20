@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 620">
+<rect width="980" height="620" fill="#f8fafc"/>
+<text x="35" y="42" font-family="sans-serif" font-size="24" font-weight="bold">PX1 M1 — integrated 6x6 source audit</text>
+<text x="35" y="68" font-family="sans-serif" font-size="15">Design assumptions; orthographic plan; NOT FreeCAD render</text>
+<rect x="129.75" y="176.5" width="460.5" height="117" fill="#cbd5e1" stroke="#334155" stroke-width="3"/>
+<circle cx="210" cy="190" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<circle cx="285" cy="190" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<circle cx="285" cy="190" r="18" fill="none" stroke="#15803d" stroke-width="3" stroke-dasharray="5 3"/>
+<circle cx="360" cy="190" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<circle cx="435" cy="190" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<circle cx="435" cy="190" r="18" fill="none" stroke="#15803d" stroke-width="3" stroke-dasharray="5 3"/>
+<circle cx="510" cy="190" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<rect x="151.5" y="145" width="117" height="21" rx="6" fill="#334155"/>
+<rect x="301.5" y="145" width="117" height="21" rx="6" fill="#334155"/>
+<rect x="451.5" y="145" width="117" height="21" rx="6" fill="#334155"/>
+<rect x="412.5" y="197.5" width="63" height="33" rx="10" fill="#2563eb"/>
+<circle cx="210" cy="280" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<circle cx="285" cy="280" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<circle cx="285" cy="280" r="18" fill="none" stroke="#15803d" stroke-width="3" stroke-dasharray="5 3"/>
+<circle cx="360" cy="280" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<circle cx="435" cy="280" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<circle cx="435" cy="280" r="18" fill="none" stroke="#15803d" stroke-width="3" stroke-dasharray="5 3"/>
+<circle cx="510" cy="280" r="37.5" fill="#f59e0b" fill-opacity=".24" stroke="#b45309" stroke-width="2"/>
+<rect x="151.5" y="304" width="117" height="21" rx="6" fill="#334155"/>
+<rect x="301.5" y="304" width="117" height="21" rx="6" fill="#334155"/>
+<rect x="451.5" y="304" width="117" height="21" rx="6" fill="#334155"/>
+<rect x="412.5" y="239.5" width="63" height="33" rx="10" fill="#2563eb"/>
+<text x="40" y="432" font-family="sans-serif" font-size="16">Amber: Z50 pitch discs (no teeth) | Green: 4 blind idler carriers | Blue: 2 motors | Dark: 6 wheels</text>
+<text x="40" y="472" font-family="sans-serif" font-size="16">DN150 corner clearance: 3.44 mm | Lid force at 0.7 bar: 714 N</text>
+<text x="40" y="514" font-family="sans-serif" font-size="16" fill="#b91c1c">UNMODELED: gear teeth, seal lips, idler fasteners, lid bolts, verified motor coupling</text>
+<text x="40" y="550" font-family="sans-serif" font-size="15">Static source checks only. FreeCAD / STEP / collision: NOT_RUN; pressure: PHYSICAL_CHECK</text>
+</svg>

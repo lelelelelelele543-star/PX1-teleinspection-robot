@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650">
+<rect width="1100" height="650" fill="#f7f9fb"/>
+<text x="40" y="45" font-family="sans-serif" font-size="25" font-weight="bold">PX1 M1 — integrated 6x6 chassis interface (2D, ASSUMED)</text>
+<text x="40" y="74" font-family="sans-serif" font-size="15">Plan view: wheels, body, Z50 pitch circles, motors, seal/bearing stack. NOT a CAD render.</text>
+<rect x="156.25" y="192.5" width="767.5" height="195" rx="12" fill="#e0e7ee" stroke="#475569" stroke-width="3"/>
+<circle cx="290" cy="215" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<rect x="251" y="140" width="78" height="35" rx="8" fill="#283c53" opacity=".88"/>
+<circle cx="290" cy="187.5" r="9" fill="#26a69a" stroke="#0f766e"/>
+<circle cx="415" cy="215" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<circle cx="540" cy="215" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<rect x="501" y="140" width="78" height="35" rx="8" fill="#283c53" opacity=".88"/>
+<circle cx="540" cy="187.5" r="9" fill="#26a69a" stroke="#0f766e"/>
+<circle cx="665" cy="215" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<circle cx="790" cy="215" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<rect x="751" y="140" width="78" height="35" rx="8" fill="#283c53" opacity=".88"/>
+<circle cx="790" cy="187.5" r="9" fill="#26a69a" stroke="#0f766e"/>
+<rect x="627.5" y="227.5" width="105" height="55" rx="25" fill="#93a9bc" stroke="#34495e"/>
+<circle cx="290" cy="365" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<rect x="251" y="405" width="78" height="35" rx="8" fill="#283c53" opacity=".88"/>
+<circle cx="290" cy="392.5" r="9" fill="#26a69a" stroke="#0f766e"/>
+<circle cx="415" cy="365" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<circle cx="540" cy="365" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<rect x="501" y="405" width="78" height="35" rx="8" fill="#283c53" opacity=".88"/>
+<circle cx="540" cy="392.5" r="9" fill="#26a69a" stroke="#0f766e"/>
+<circle cx="665" cy="365" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<circle cx="790" cy="365" r="62.5" fill="none" stroke="#bd7b35" stroke-dasharray="5 4" stroke-width="2"/>
+<rect x="751" y="405" width="78" height="35" rx="8" fill="#283c53" opacity=".88"/>
+<circle cx="790" cy="392.5" r="9" fill="#26a69a" stroke="#0f766e"/>
+<rect x="627.5" y="297.5" width="105" height="55" rx="25" fill="#93a9bc" stroke="#34495e"/>
+<text x="45" y="545" font-family="sans-serif" font-size="17">Z50: m1, pitch diameter 50 (dashed) | 6 wheels diameter 78 x 14 | 2 motor envelopes diameter 22 x 42</text>
+<text x="45" y="574" font-family="sans-serif" font-size="17">Pipe diameter 150 conservative radial clearance: 3.439 mm | lid load at 0.7 bar: 714 N</text>
+<text x="45" y="608" font-family="sans-serif" font-size="15" fill="#b45309">Unverified: involute solids, bevel mesh, shaft pressure seals, lid fasteners, full Boolean collisions</text>
+</svg>
