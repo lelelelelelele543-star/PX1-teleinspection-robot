@@ -73,7 +73,8 @@ for side,s in (("L",-1),("R",1)):
     # Five Z50 stations per side. m=1.0 design assumption -> 50 mm pitch diameter and 50 mm centers.
     for j,x in enumerate(P["gear_x"]):
         gy=s*P["gear_y"]
-        # Actual involute flanks with polyline approximation, phase-alternated for nominal mesh.\n        # Root fillets, backlash, shaft keys and load capacity remain unverified.
+        # Actual involute flanks with polyline approximation, phase-alternated for nominal mesh.
+        # Root fillets, backlash, shaft keys and load capacity remain unverified.
         # Gear hub interface: real 10 mm through-bore in the generated involute solid.
         # A shaft fit/key is NOT qualified; bore alone does not transmit torque.
         gear_shape=involute_solid(Part,V,z=50,module=P["gear_m"],thickness=6,center=(x,gy,P["gear_z"]),phase_deg=(0 if j%2==0 else 3.6))
