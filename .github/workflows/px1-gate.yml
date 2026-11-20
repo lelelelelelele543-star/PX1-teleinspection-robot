@@ -1,0 +1,48 @@
+name: PX1 gate
+# Independent whole-assembly check on every push that changes the assembly STEP or the gate itself.
+on:
+  push:
+    paths:
+      - 'current/CAD/PX1_Current_Master.step.gz'
+      - 'current/CAD/PX1_Current_Master.py'
+      - 'current/component_registry.json'
+      - 'tools/gate/**'
+      - '.github/workflows/px1-gate.yml'
+  workflow_dispatch:
+    inputs:
+      step:
+        description: 'STEP to check (default: current master)'
+        required: false
+        default: 'current/CAD/PX1_Current_Master.step.gz'
+permissions:
+  contents: read
+concurrency:
+  group: px1-gate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependencies
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq libgl1 libegl1 fonts-dejavu-core
+          python -m pip install -q cadquery==2.8.0 matplotlib pillow
+      - name: Self-test (the gate must catch planted errors)
+        run: python tools/gate/selftest_px1_gate.py
+      - name: Gate
+        run: |
+          python tools/gate/px1_gate.py --step "${{ github.event.inputs.step || 'current/CAD/PX1_Current_Master.step.gz' }}" --out _gate
+      - name: Summary
+        if: always()
+        run: test -f _gate/gate_report.md && cat _gate/gate_report.md >> "$GITHUB_STEP_SUMMARY" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PX1_gate_report
+          path: _gate/
+          retention-days: 30
