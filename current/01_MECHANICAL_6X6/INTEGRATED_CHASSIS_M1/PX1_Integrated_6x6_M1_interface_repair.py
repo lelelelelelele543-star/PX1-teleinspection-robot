@@ -2,7 +2,9 @@
 Generated parts are simplified solids. Gear teeth, bevel teeth, O-ring grooves and dynamic seals are NOT validated.
 Axes: X along crawler, Y lateral, Z up. Units mm.
 """
-import FreeCAD as App, Part, math, os
+import FreeCAD as App, Part, math, os, sys
+sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
+from involute_m1 import solid as involute_solid
 from FreeCAD import Vector as V
 ROOT=os.path.dirname(os.path.abspath(__file__))
 D=App.newDocument("PX1_Integrated_6x6_M1")
@@ -59,8 +61,8 @@ for side,s in (("L",-1),("R",1)):
     # Five Z50 stations per side. m=1.0 design assumption -> 50 mm pitch diameter and 50 mm centers.
     for j,x in enumerate(P["gear_x"]):
         gy=s*P["gear_y"]
-        # Pitch solids are intentionally NOT teeth or manufactured gears.
-        add("Z50_pitch_PROXY_"+side+"_"+str(j+1),cyl(P["gear_m"]*50/2,6,(x,gy-3,P["gear_z"]),(0,1,0)),(0.75,0.42,0.19))
+        # Actual involute flanks with polyline approximation, phase-alternated for nominal mesh.\n        # Root fillets, backlash, shaft keys and load capacity remain unverified.
+        add("Z50_pitch_PROXY_"+side+"_"+str(j+1),involute_solid(Part,V,z=50,module=P["gear_m"],thickness=6,center=(x,gy,P["gear_z"]),phase_deg=(0 if j%2==0 else 3.6)),(0.75,0.42,0.19))
         if j%2==0:
             add("Wheel_axle_"+side+"_"+str(j//2+1),cyl(5,30,(x,s*29,P["gear_z"]),(0,s,0)),(0.77,0.78,0.79))
             # Bearing 10x22x7: geometry proxy, not manufacturer verification.
