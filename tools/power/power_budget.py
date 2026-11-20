@@ -22,7 +22,9 @@ I = {  # name: (value, tag, source)
     'cincon_tc_max_C': (105.0, 'CONFIRMED', 'case -40..105 C, OTP 110 C at baseplate'),
     'cincon_tc_design_C': (95.0, 'ESTIMATED', '10 K margin below Tc max'),
     'cincon_rca_bare_KpW': (10.1, 'CONFIRMED', 'Rca natural convection, no heatsink'),
-    'cincon_rcs_bonded_KpW': (0.4, 'ESTIMATED', 'baseplate -> pad -> Al cover L01 -> body wall (F20 README: 0.12+0.10+0.17; F19 had 0.3)'),
+    # 2026-11-20 F25: was 0.4 (F20, old 205x68 plate on ~4000 mm² seat). F25 flush-plug cover, dry seats, pad 3 W/mK:
+    # 0.95 K/W from cincon_chain_f25 (FD model) -> thermal_f25_cincon.configs.F25_dry_pad3 (asserted below).
+    'cincon_rcs_bonded_KpW': (0.95, 'ESTIMATED', 'F25: baseplate -> pad 0.5 -> cover L01 plug -> tongue/flank/lift base -> wall (FD model, dry seats)'),
     'cincon_cout_max_uF': (6300.0, 'CONFIRMED', 'max output capacitance'),
     'derating_frac': (0.80, 'ESTIMATED', 'design continuous limit 80 % of rating'),
     # --- Pololu G2 24v13 #2992 ---
@@ -100,6 +102,217 @@ def feed(src, p_in, r):
         return None
     vin = 0.5 * (src + math.sqrt(d))
     return vin, p_in / vin, src - vin
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# F25 (2026-11-20): Cincon baseplate -> housing chain with the F25 flush-plug cover L01.
+# The F20 value 0.4 K/W assumed the old 205x68 plate seated on ~4000 mm² of housing top. In F25 the cover is a
+# plug: 104x50x7 pad (X80..184) + hollow spigot rim (wall 2.5, Z71..75, radial 110x1.5 O-ring, radial clearance
+# 0.05) + 2.4 mm flush lid X184..231 under the lift base. Metal-to-metal seats left: front tongue X80..88 on the
+# housing top (2x M4x10), rim flanks across the 0.05 gap (no contact pressure), lid rear clamped by the lift base.
+# 2-D finite-difference conduction model of the cover (in-plane, thickness field), sinks to the housing.
+# ---------------------------------------------------------------------------------------------------------------
+MASTER = ROOT / 'current/CAD/PX1_Current_Master.py'
+F25_MASTER_KEYS = ('SERVICE_Z', 'SERVICE_T', 'SERVICE_PAD_X', 'SERVICE_PAD_HW', 'SERVICE_LID_T', 'SERVICE_PAD_GROOVE',
+                   'SERVICE_PLUG_L', 'SERVICE_OPEN_W', 'SERVICE_PLUG_R', 'SERVICE_OPEN_X0', 'SERVICE_PLUG_CLR',
+                   'SERVICE_SPIGOT_H', 'SERVICE_SPIGOT_WALL', 'SERVICE_RGROOVE_W', 'SERVICE_RGROOVE_D',
+                   'CINCON', 'CINCON_XC', 'CINCON_YC', 'THERMAL_PAD_T', 'CINCON_HOLE_PITCH', 'COVER_FIX_XY',
+                   'LIFT_BASE_L', 'LIFT_BASE_W', 'LIFT_BASE_BEHIND_A')
+TH = {  # F25 chain inputs: (value, tag, source)
+    'k_al_WmK': (167.0, 'ESTIMATED', 'cover / housing Al 6061-T6 / 6082-T6 150-170 W/mK (grade of L01 still HOLD)'),
+    'pad_k_WmK': ((3.0, 6.0), 'ESTIMATED', 'silicone gap pad 0.5 mm, 3 W/mK (F20) and 6 W/mK (premium) bracket'),
+    'pad_contact_add_frac': (0.5, 'ESTIMATED', 'two pad interfaces add ~50 % of bulk R at M3x4 clamping'),
+    'h_tongue_dry_Wm2K': (3000.0, 'ESTIMATED', 'Al-Al milled Ra 0.8-1.6, 2x M4 in 3.0 mm engaged Al taps (~2 kN each), uneven pressure over 8x50'),
+    'h_tongue_paste_Wm2K': (20000.0, 'ESTIMATED', 'silicone heat-sink paste ~0.8-1 W/mK, bond line <= 0.05 mm'),
+    'k_air_WmK': (0.027, 'CONFIRMED', 'air at ~60 C (handbook)'),
+    'k_paste_WmK': (0.8, 'ESTIMATED', 'generic silicone heat-sink grease (KPT-8 class 0.65-1.0)'),
+    'k_oring_WmK': (0.25, 'ESTIMATED', 'NBR / FKM 0.2-0.3 W/mK'),
+    'oring_contact_w_mm': (1.0, 'ESTIMATED', 'flattened contact band of CS1.44 at 23 % squeeze'),
+    'h_lid_base_dry_Wm2K': (1500.0, 'ESTIMATED', 'lid / lift base: 2x M4 into lid bosses, large area, low mean pressure'),
+    'h_lid_base_paste_Wm2K': (8000.0, 'ESTIMATED', 'same with paste (pressure-limited)'),
+    'h_base_housing_dry_Wm2K': (1500.0, 'ESTIMATED', 'lift base on housing top beside/behind the opening, 2x M4'),
+    'h_base_housing_paste_Wm2K': (8000.0, 'ESTIMATED', 'same with paste'),
+    'A_base_housing_mm2': (1360.0, 'DERIVED', 'base 55x68.7 over housing top: 2x(7.5x45) beside opening + 10.1x68 behind X231'),
+    'R_base_cond_KpW': (0.10, 'ESTIMATED', 'lateral conduction in the 8 mm Al base, ~15 mm path'),
+    'R_housing_spread_KpW': (0.15, 'ESTIMATED', 'spreading from the seats into the 4 mm housing top wall -> lumped wall node'),
+    'grid_mm': (0.5, 'ESTIMATED', 'FD cell size'),
+    'tc_max_C': (105.0, 'CONFIRMED', 'CQB150W datasheet (chipdip DOC011309067): operating case -40..+105 C; thermal shutdown 110 C typ.'),
+}
+
+
+def master_consts(keys=F25_MASTER_KEYS):
+    import ast
+    tree = ast.parse(MASTER.read_text())
+    got = {}
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+            n = node.targets[0].id
+            if n in keys:
+                try:
+                    got[n] = ast.literal_eval(node.value)
+                except Exception:
+                    pass
+    missing = [k for k in keys if k not in got]
+    if missing:
+        raise SystemExit('master constants missing/not literal: %s' % missing)
+    return got
+
+
+def _in_rrect(X, Y, x0, x1, hw, r):
+    import numpy as np
+    cx = np.clip(X, x0 + r, x1 - r); cy = np.clip(Y, -hw + r, hw - r)
+    return (X >= x0) & (X <= x1) & (np.abs(Y) <= hw) & ((X - cx) ** 2 + (Y - cy) ** 2 <= r * r)
+
+
+def cover_chain(g, t, pad_k, tongue_h, gap_fill_k, lid_h, base_h, tongue_x0=None, gap_mm=None, k_al=None):
+    """1 W from the Cincon baseplate. Returns R (K/W) baseplate -> housing seat node and the heat split."""
+    import numpy as np
+    from scipy.sparse import coo_matrix
+    from scipy.sparse.linalg import spsolve
+    d = t['grid_mm']; k = (k_al or t['k_al_WmK']) * 1e-3  # W/(mm K)
+    px0 = g['SERVICE_PAD_X'][0] if tongue_x0 is None else tongue_x0
+    px1 = g['SERVICE_PAD_X'][1]; phw = g['SERVICE_PAD_HW']
+    ox0 = g['SERVICE_OPEN_X0'] + g['SERVICE_PLUG_CLR']; ox1 = g['SERVICE_OPEN_X0'] + g['SERVICE_PLUG_L'] - g['SERVICE_PLUG_CLR']
+    ohw = g['SERVICE_OPEN_W'] / 2 - g['SERVICE_PLUG_CLR']; orr = g['SERVICE_PLUG_R'] - g['SERVICE_PLUG_CLR']
+    wall = g['SERVICE_SPIGOT_WALL']; H = g['SERVICE_SPIGOT_H']; gw, gd = g['SERVICE_RGROOVE_W'], g['SERVICE_RGROOVE_D']
+    xs = np.arange(px0 + d / 2, ox1, d); ys = np.arange(-ohw + d / 2, ohw, d)
+    X, Y = np.meshgrid(xs, ys, indexing='ij')
+    outer = _in_rrect(X, Y, ox0, ox1, ohw, orr)
+    inner = _in_rrect(X, Y, ox0 + wall, ox1 - wall, ohw - wall, orr - wall)
+    rim = outer & ~inner
+    pad = (X >= px0) & (X <= px1) & (np.abs(Y) <= phw)
+    gx0, ghw, gdep = g['SERVICE_PAD_GROOVE']
+    th = np.zeros_like(X)
+    th += np.where(pad, g['SERVICE_T'], 0.0)
+    th -= np.where(pad & (X >= gx0) & (np.abs(Y) <= ghw), gdep, 0.0)
+    th += np.where(rim, (wall * H - gd * gw) / wall, 0.0)                     # rim in-plane section incl. O-ring groove
+    th += np.where(inner & (X >= px1), g['SERVICE_LID_T'], 0.0)              # flush lid behind the pad
+    mat = th > 0
+    idx = -np.ones(X.shape, int); n = int(mat.sum()); idx[mat] = np.arange(n)
+    nh, nb, nc = n, n + 1, n + 2                                           # housing seat, lift base, Cincon baseplate
+    N = n + 3
+    rows, cols, vals = [], [], []
+
+    def link(a, b, G):
+        rows.extend([a, b, a, b]); cols.extend([a, b, b, a]); vals.extend([G, G, -G, -G])
+    for di, dj in ((1, 0), (0, 1)):
+        a = mat[:X.shape[0] - di, :X.shape[1] - dj]; b = mat[di:, dj:]
+        m2 = a & b
+        t1 = th[:X.shape[0] - di, :X.shape[1] - dj][m2]; t2 = th[di:, dj:][m2]
+        G = k * 2 * t1 * t2 / (t1 + t2)                                      # k * t_face * (d/d)
+        ia = idx[:X.shape[0] - di, :X.shape[1] - dj][m2]; ib = idx[di:, dj:][m2]
+        rows.extend(np.r_[ia, ib, ia, ib]); cols.extend(np.r_[ia, ib, ib, ia]); vals.extend(np.r_[G, G, -G, -G])
+    A = d * d * 1e-6  # m² per cell
+    split = {}
+    # front tongue on the housing top
+    tg = mat & (X < ox0) & pad
+    G_t = tongue_h * A
+    for i in idx[tg]:
+        link(i, nh, G_t)
+    split['tongue_area_mm2'] = float(tg.sum() * d * d)
+    # rim flanks: metal faces above/below the O-ring groove across the radial gap, + O-ring + groove air
+    gap = gap_mm or g['SERVICE_PLUG_CLR']
+    kgap = gap_fill_k if gap_fill_k else t['k_air_WmK']
+    g_lin = (kgap * (H - gw) / gap + t['k_oring_WmK'] * t['oring_contact_w_mm'] / (gd + gap)
+             + t['k_air_WmK'] * (gw - t['oring_contact_w_mm']) / (gd + gap)) * 1e-3  # W/(mm K) per mm of perimeter
+    per = 0.0; flank_nodes = []
+    for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        Xn, Yn = X + di * d, Y + dj * d
+        out_n = ~_in_rrect(Xn, Yn, ox0, ox1, ohw, orr)
+        f = rim & out_n
+        for i in idx[f]:
+            link(i, nh, g_lin * d); flank_nodes.append(i)
+        per += f.sum() * d
+    split['flank_perimeter_mm'] = float(per); split['flank_g_lin_W_mK'] = g_lin * 1e3
+    # lid rear under the lift base (base X0 = A - (L - behind A); A X230.89 DERIVED in master)
+    bx0 = 230.89 - (g['LIFT_BASE_L'] - g['LIFT_BASE_BEHIND_A'])
+    lb = mat & (X >= bx0) & (th > 0) & (X >= px1)
+    for i in idx[lb]:
+        link(i, nb, lid_h * A)
+    split['lid_base_area_mm2'] = float(lb.sum() * d * d)
+    G_bh = 1 / (t['R_base_cond_KpW'] + 1 / (base_h * t['A_base_housing_mm2'] * 1e-6))
+    link(nb, nh, G_bh)
+    # Cincon footprint through the pad
+    cl, cw = g['CINCON'][0], g['CINCON'][1]
+    fp = mat & (np.abs(X - g['CINCON_XC']) <= cl / 2) & (np.abs(Y - g['CINCON_YC']) <= cw / 2)
+    A_pad = cl * cw - 4 * math.pi * 1.7 ** 2                                 # 4x Ø3.4 holes (master pad cut)
+    r_pad = g['THERMAL_PAD_T'] * 1e-3 / pad_k * (1 + t['pad_contact_add_frac'])  # K m²/W
+    G_cell = A * (A_pad / (fp.sum() * d * d)) / r_pad
+    for i in idx[fp]:
+        link(i, nc, G_cell)
+    M = coo_matrix((vals, (rows, cols)), shape=(N, N)).tocsr()
+    keep = np.r_[0:nh, nb, nc]                                              # housing node grounded at 0
+    Mk = M[keep][:, keep]
+    q = np.zeros(len(keep)); q[-1] = 1.0
+    T = spsolve(Mk.tocsc(), q)
+    Tn = T[:n]; Tb = T[-2]; Tc = T[-1]
+    Q_t = float(sum(G_t * Tn[i] for i in idx[tg]))
+    Q_f = float(sum(g_lin * d * Tn[i] for i in flank_nodes))
+    Q_b = float(G_bh * Tb)
+    T_fp = float(Tn[idx[fp]].mean())
+    R_pad = A_pad and r_pad / (A_pad * 1e-6)
+    return dict(R_base_to_seat_KpW=float(Tc), R_pad_KpW=float(Tc - T_fp), R_cover_and_seats_KpW=float(T_fp),
+                R_pad_1D_KpW=R_pad, pad_area_mm2=A_pad, T_footprint_mean_K=T_fp, T_lift_base_K=float(Tb),
+                T_tongue_mean_K=float(Tn[idx[tg]].mean()), T_flank_mean_K=float(np.mean(Tn[flank_nodes])),
+                heat_split=dict(tongue=Q_t, flank_gap_oring=Q_f, lid_via_lift_base=Q_b, sum=Q_t + Q_f + Q_b),
+                cover_volume_mm3=float((th * mat).sum() * d * d), cells=n, **split)
+
+
+def cincon_chain_f25(th_cases, tau, T0, R_ha):
+    t = {k: x[0] for k, x in TH.items()}
+    g = master_consts()
+    kd, kp = t['h_tongue_dry_Wm2K'], t['h_tongue_paste_Wm2K']
+    cfgs = {
+        'F25_dry_pad3': dict(pad_k=3.0, tongue_h=kd, gap_fill_k=None, lid_h=t['h_lid_base_dry_Wm2K'], base_h=t['h_base_housing_dry_Wm2K']),
+        'F25_dry_pad6': dict(pad_k=6.0, tongue_h=kd, gap_fill_k=None, lid_h=t['h_lid_base_dry_Wm2K'], base_h=t['h_base_housing_dry_Wm2K']),
+        'F25_paste_tongue_pad3': dict(pad_k=3.0, tongue_h=kp, gap_fill_k=None, lid_h=t['h_lid_base_dry_Wm2K'], base_h=t['h_base_housing_dry_Wm2K']),
+        'F25_dry_pessimistic_pad3': dict(pad_k=3.0, tongue_h=1000.0, gap_fill_k=None, lid_h=500.0, base_h=500.0,
+                                         gap_mm=0.075, k_al=130.0),   # H8/f7 max gap, cast/7075-class k, poor seats
+        'F25_paste_tongue_lid_base_pad3': dict(pad_k=3.0, tongue_h=kp, gap_fill_k=None, lid_h=t['h_lid_base_paste_Wm2K'],
+                                               base_h=t['h_base_housing_paste_Wm2K']),   # recommended: flank (O-ring zone) dry
+        'F25_paste_all_pad3': dict(pad_k=3.0, tongue_h=kp, gap_fill_k=t['k_paste_WmK'], lid_h=t['h_lid_base_paste_Wm2K'], base_h=t['h_base_housing_paste_Wm2K']),
+        'F25_paste_all_pad6': dict(pad_k=6.0, tongue_h=kp, gap_fill_k=t['k_paste_WmK'], lid_h=t['h_lid_base_paste_Wm2K'], base_h=t['h_base_housing_paste_Wm2K']),
+        'F25_dry_no_lift_base_pad3': dict(pad_k=3.0, tongue_h=kd, gap_fill_k=None, lid_h=1e-3, base_h=t['h_base_housing_dry_Wm2K']),  # bench run with the lift removed
+        'PROPOSAL_tongue18_paste_tongue_lid_base_pad6': dict(pad_k=6.0, tongue_h=kp, gap_fill_k=None, lid_h=t['h_lid_base_paste_Wm2K'],
+                                                             base_h=t['h_base_housing_paste_Wm2K'], tongue_x0=70.0),  # pad front X80->70 (clearance HOLD)
+    }
+    res = {}
+    lim_air = 85.0 - 10.0
+    tc_des = 95.0
+    for name, c in cfgs.items():
+        ch = cover_chain(g, t, **c)
+        R = ch['R_base_to_seat_KpW'] + t['R_housing_spread_KpW']
+        ch['R_housing_spread_KpW'] = t['R_housing_spread_KpW']
+        ch['R_chain_base_to_wall_KpW'] = R
+        cases = {}
+        for k, c2 in th_cases.items():
+            Pc = c2['losses_W']['cincon_W']; Tw = c2['T_wall_ss_C']
+            Tw_lim = min(lim_air, tc_des - Pc * R)
+            ok = Tw <= Tw_lim
+
+            def tl(start):
+                if ok:
+                    return None
+                if start >= Tw_lim:
+                    return 0.0
+                return tau * math.log((Tw - start) / (Tw - Tw_lim))
+            cases[k] = dict(P_cincon_loss_W=Pc, T_wall_ss_C=Tw, dT_base_wall_K=Pc * R, Tc_ss_C=Tw + Pc * R,
+                            Tc_margin_design_K=tc_des - (Tw + Pc * R), Tc_margin_max_K=t['tc_max_C'] - (Tw + Pc * R),
+                            T_wall_limit_C=Tw_lim, limit_by='Cincon Tc 95' if Tw_lim < lim_air else 'air 85 / wall 75',
+                            steady_ok=ok, time_from_A_s=tl(T0), time_from_cold_s=tl(40.0),
+                            Tc_when_wall_at_75_C=lim_air + Pc * R)
+        ch['cases'] = cases
+        # Cincon output allowed by Tc 95 at the A0 wall (wall fixed - small error, the loss also heats the wall)
+        eff = 0.89
+        ch['cincon_loss_max_at_wall75_W'] = (tc_des - lim_air) / R               # Tc 95 with the wall at its own limit
+        ch['cincon_pout_max_at_wall75_W'] = ch['cincon_loss_max_at_wall75_W'] / (1 / eff - 1)
+        ch['R_chain_max_for_150W_at_wall75_KpW'] = (tc_des - lim_air) / (150.0 * (1 / eff - 1))
+        ch['note_cover_heat_capacity_J_K'] = ch['cover_volume_mm3'] * 1e-9 * 2700 * 900 + 0.068 * 700
+        ch['tau_cover_s'] = ch['R_cover_and_seats_KpW'] * ch['note_cover_heat_capacity_J_K']
+        res[name] = ch
+    return dict(model='2-D FD conduction in cover L01 (thickness field from master), sinks: tongue / rim flank gap+O-ring / lid->lift base',
+                master_constants=g, inputs={k: dict(value=x[0], tag=x[1], source=x[2]) for k, x in TH.items()},
+                F20_reference_R_KpW=0.4, configs=res)
 
 
 def main():
@@ -236,6 +449,9 @@ def main():
                           cases=th,
                           cincon_pout_allowed_bare_W=max(0.0, (v['cincon_tc_design_C'] - th['A_duty_1Nm']['T_air_ss_C'])
                                                          / v['cincon_rca_bare_KpW'] / (1 / v['cincon_eff_part'] - 1)))
+    out['thermal_f25_cincon'] = f25 = cincon_chain_f25(th, tau, T0, R_ha)
+    r_dry = f25['configs']['F25_dry_pad3']['R_chain_base_to_wall_KpW']
+    assert abs(r_dry - v['cincon_rcs_bonded_KpW']) < 0.02, 'update cincon_rcs_bonded_KpW to %.3f' % r_dry
 
     # ---- capacitance / regen ----
     D = 0.5
@@ -300,6 +516,14 @@ def show(o):
               % (k, c['P_out_cincon_W'], c['I_motor_A'], c['P_internal_W'], c['losses_W']['cincon_W'], c['losses_W']['motor_cu_W'],
                  c['losses_W']['motor_fric_W'] + c['losses_W']['gearhead_W'], c['T_wall_ss_C'], c['T_air_ss_C'], c['Tc_cincon_ss_C'],
                  c['T_wall_limit_C'], 'steady OK' if tl is None else 'SHORT-TIME %.0f s (cold %.0f s)' % (tl, c['time_to_limit_from_cold_s'])))
+    f = o['thermal_f25_cincon']
+    print('F25 Cincon chain (baseplate -> wall, K/W; Tc for A0 / A / wall at 75 C with 150 W):')
+    for k, c in f['configs'].items():
+        cs = c['cases']; hs = c['heat_split']
+        print('  %-44s pad %.3f cover+seats %.3f spread %.2f = %.3f | split tongue %.2f flank %.2f base %.2f | Tc %.1f / %.1f / %.1f | Pout max@wall75 %.0f W'
+              % (k, c['R_pad_KpW'], c['R_cover_and_seats_KpW'], c['R_housing_spread_KpW'], c['R_chain_base_to_wall_KpW'],
+                 hs['tongue'], hs['flank_gap_oring'], hs['lid_via_lift_base'], cs['A0_rated_continuous']['Tc_ss_C'],
+                 cs['A_duty_1Nm']['Tc_ss_C'], cs['P150W']['Tc_when_wall_at_75_C'], c['cincon_pout_max_at_wall75_W']))
     print('Caps/regen:', {k: round(x, 4) for k, x in o['caps_regen'].items()})
     print('Tether collapse power (hot) %.0f W' % o['tether_Pmax_collapse_W'])
     for k, t in o['tether'].items():
