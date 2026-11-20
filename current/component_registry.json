@@ -3565,10 +3565,10 @@
     "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
       247.5,
-      -28.5,
+      -31.4,
       77.0,
       254.5,
-      -21.5,
+      -24.4,
       93.0
     ],
     "dimensions_mm": [
@@ -3585,10 +3585,10 @@
     "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
     "bbox_mm": [
       247.5,
-      21.5,
+      24.4,
       77.0,
       254.5,
-      28.5,
+      31.4,
       93.0
     ],
     "dimensions_mm": [
@@ -4036,7 +4036,7 @@
       46.0,
       66.0
     ],
-    "volume_mm3": 114082.14601,
+    "volume_mm3": 113783.25716,
     "solids": 1
   },
   {
@@ -4127,16 +4127,36 @@
       -36.0,
       -11.0,
       59.0,
-      12.0,
+      -6.0,
       11.0,
       81.0
     ],
     "dimensions_mm": [
-      48.0,
+      30.0,
       22.0,
       22.0
     ],
-    "volume_mm3": 13426.91567,
+    "volume_mm3": 9142.03462,
+    "solids": 1
+  },
+  {
+    "id": "PX1_SP13_POTTED_BEND_TAIL_R17_LAPP_CAMERA_EXIT",
+    "category": "print",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      -12.0,
+      -10.5,
+      59.5,
+      21.65764,
+      10.5,
+      90.13968
+    ],
+    "dimensions_mm": [
+      33.65764,
+      21.0,
+      30.63968
+    ],
+    "volume_mm3": 2142.94455,
     "solids": 1
   },
   {
@@ -4144,7 +4164,7 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      8.0,
+      -6.0,
       -23.22,
       69.18,
       271.62,
@@ -4152,11 +4172,11 @@
       118.96074
     ],
     "dimensions_mm": [
-      263.62,
+      277.62,
       22.44,
       49.78074
     ],
-    "volume_mm3": 50.39323,
+    "volume_mm3": 50.77009,
     "solids": 1
   },
   {
@@ -4164,7 +4184,7 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      8.0,
+      -6.0,
       -22.22,
       69.18,
       271.62,
@@ -4172,11 +4192,11 @@
       118.96074
     ],
     "dimensions_mm": [
-      263.62,
+      277.62,
       22.44,
       49.78074
     ],
-    "volume_mm3": 50.39323,
+    "volume_mm3": 50.77009,
     "solids": 1
   },
   {
@@ -4184,7 +4204,7 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      8.0,
+      -6.0,
       -21.22,
       69.18,
       271.62,
@@ -4192,11 +4212,11 @@
       118.96074
     ],
     "dimensions_mm": [
-      263.62,
+      277.62,
       22.44,
       49.78074
     ],
-    "volume_mm3": 50.39323,
+    "volume_mm3": 50.77009,
     "solids": 1
   },
   {
@@ -4204,7 +4224,7 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      8.0,
+      -6.0,
       -23.22,
       70.38,
       272.82,
@@ -4212,11 +4232,11 @@
       120.16074
     ],
     "dimensions_mm": [
-      264.82,
+      278.82,
       22.44,
       49.78074
     ],
-    "volume_mm3": 50.67984,
+    "volume_mm3": 51.05671,
     "solids": 1
   },
   {
@@ -4224,7 +4244,7 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      8.0,
+      -6.0,
       -22.22,
       70.38,
       272.82,
@@ -4232,11 +4252,11 @@
       120.16074
     ],
     "dimensions_mm": [
-      264.82,
+      278.82,
       22.44,
       49.78074
     ],
-    "volume_mm3": 50.67984,
+    "volume_mm3": 51.05671,
     "solids": 1
   },
   {
@@ -4244,7 +4264,7 @@
     "category": "wire",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      8.0,
+      -6.0,
       -21.22,
       70.38,
       272.82,
@@ -4252,11 +4272,11 @@
       120.16074
     ],
     "dimensions_mm": [
-      264.82,
+      278.82,
       22.44,
       49.78074
     ],
-    "volume_mm3": 50.67984,
+    "volume_mm3": 51.05671,
     "solids": 1
   },
   {
@@ -4264,7 +4284,7 @@
     "category": "cable",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      8.0,
+      -6.0,
       -24.7,
       67.3,
       274.7,
@@ -4272,11 +4292,11 @@
       122.04074
     ],
     "dimensions_mm": [
-      266.7,
+      280.7,
       27.4,
       54.74074
     ],
-    "volume_mm3": 7308.58512,
+    "volume_mm3": 7363.08728,
     "solids": 1
   },
   {
@@ -4337,6 +4357,86 @@
       20.47763
     ],
     "volume_mm3": 965.81552,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_LAPP_0028679_CAMERA_CABLE_INTERNAL_PASSAGE_TO_BREAKOUT",
+    "category": "cable",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      253.5,
+      -2.7,
+      56.3,
+      274.7,
+      2.7,
+      96.0
+    ],
+    "dimensions_mm": [
+      21.2,
+      5.4,
+      39.7
+    ],
+    "volume_mm3": 1108.88242,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_CAMERA_CABLE_BREAKOUT_BOOT_POTTED",
+    "category": "cable",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      247.5,
+      -3.4,
+      55.6,
+      255.5,
+      3.4,
+      62.4
+    ],
+    "dimensions_mm": [
+      8.0,
+      6.8,
+      6.8
+    ],
+    "volume_mm3": 199.4177,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_CAMERA_CORE_BUNDLE_6x0p25_TO_SERVICE_CONNECTOR",
+    "category": "wire",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      222.0501,
+      -23.0,
+      57.5,
+      253.5,
+      1.5,
+      65.5
+    ],
+    "dimensions_mm": [
+      31.4499,
+      24.5,
+      8.0
+    ],
+    "volume_mm3": 328.84811,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_CAMERA_SERVICE_CONNECTOR_6P_W2W_MATED",
+    "category": "connector",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      205.5501,
+      -25.0,
+      60.0,
+      222.0501,
+      -18.0,
+      70.0
+    ],
+    "dimensions_mm": [
+      16.5,
+      7.0,
+      10.0
+    ],
+    "volume_mm3": 1155.0,
     "solids": 1
   },
   {

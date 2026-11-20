@@ -95,7 +95,7 @@
     "speed_no_load_m_min": 10.62662564632669
   },
   "cad_mass_estimate": {
-    "total_kg": 8.05213581839973,
+    "total_kg": 8.04705330509473,
     "by_category_kg": {
       "WEIGHT_PLATE": 1.154,
       "CAM026": 0.864,
@@ -113,11 +113,11 @@
       "AXLE_FLANGE": 0.227,
       "bearing": 0.216,
       "CENTRAL_LEVER_ASS002723": 0.122,
-      "connector": 0.105,
+      "connector": 0.092,
       "CINCON_CQB150W": 0.068,
       "bevel": 0.049,
       "electronics": 0.046,
-      "cable": 0.025,
+      "cable": 0.028,
       "electronics_hold": 0.024,
       "seal": 0.016,
       "ISO4035": 0.014,
@@ -125,21 +125,21 @@
       "DIN2093": 0.008,
       "BRAKE_SHUNT_10R": 0.008,
       "LIFT_GAS_SPRING": 0.008,
-      "THERMAL_PAD": 0.004,
-      "wire": 0.003,
-      "print": 0.002
+      "wire": 0.006,
+      "print": 0.004,
+      "THERMAL_PAD": 0.004
     },
     "tag": "ESTIMATED (densities assumed, many envelope solids)"
   },
   "cases": {
     "PX1_CAD_estimate": {
       "mass_kg": 8.05,
-      "weight_N": 79.0,
+      "weight_N": 78.9,
       "base_resistance_N": 3.9,
       "adhesion_limit_N": {
         "slime/grease": 34.5,
         "wet concrete/PVC": 57.5,
-        "dry/clean": 80.5
+        "dry/clean": 80.4
       },
       "by_tether_length": [
         {
@@ -149,7 +149,7 @@
           "available_N": {
             "slime/grease": 34.5,
             "wet concrete/PVC": 57.5,
-            "dry/clean": 80.5
+            "dry/clean": 80.4
           },
           "margin_N": {
             "slime/grease": 16.4,
@@ -169,7 +169,7 @@
           "available_N": {
             "slime/grease": 34.5,
             "wet concrete/PVC": 57.5,
-            "dry/clean": 80.5
+            "dry/clean": 80.4
           },
           "margin_N": {
             "slime/grease": -4.8,
@@ -189,12 +189,12 @@
           "available_N": {
             "slime/grease": 34.5,
             "wet concrete/PVC": 57.5,
-            "dry/clean": 80.5
+            "dry/clean": 80.4
           },
           "margin_N": {
             "slime/grease": -22.4,
-            "wet concrete/PVC": 0.6,
-            "dry/clean": 23.6
+            "wet concrete/PVC": 0.5,
+            "dry/clean": 23.5
           },
           "ok": {
             "slime/grease": false,

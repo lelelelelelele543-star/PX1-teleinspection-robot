@@ -13,6 +13,9 @@ never imported or executed. Checks:
     housing) and the fixed point K on the gland bend guide over 0..theta_max, as the shortest planar path with
     bend radius >= 5xOD (Dubins CSC/CCC) through the two sliding lever clips, vs the modeled folded route
     HARNESS_ROUTE. PASS if slack (modeled - need at 0) >= max need increase + 10 mm.
+  * F23 camera exit: bend radii of every modelled arc (external fixed incl. SP13 tail, internal LAPP >= 3xOD, moving >= 5xOD,
+    internal core bundle >= 3xD); SP13 potted tail + riser XZ clearance to housing/cover over 0..theta_max (>= 1 mm);
+    option (a) right-angle M12 + binder R60 evaluated and must be rejected for option (b) to be the chosen one.
 Exit 0 only if every PASS criterion holds.
 """
 from __future__ import annotations
@@ -65,11 +68,12 @@ def dubins(p0, h0, p1, h1, R):
     return best
 
 
-def route_walk(start, route):
-    """3-D walk of HARNESS_ROUTE (same convention as the master): returns per-segment (end point, end tangent, length, R)."""
+def route_walk(start, route, heading=(1.0, 0.0, 0.0)):
+    """3-D walk of a master route (HARNESS_ROUTE / INNER_ROUTE / BUNDLE_ROUTE, same convention as the master):
+    returns per-segment (end point, end tangent, length, R)."""
     def add(a, b, k=1.0): return tuple(x + k*y for x, y in zip(a, b))
     def cross(a, b): return (a[1]*b[2] - a[2]*b[1], a[2]*b[0] - a[0]*b[2], a[0]*b[1] - a[1]*b[0])
-    p, t, out = tuple(start), (1.0, 0.0, 0.0), []
+    p, t, out = tuple(start), tuple(float(v) for v in heading), []
     for sg in route:
         if sg[0] == 'S':
             p = add(p, t, sg[1]); out.append((p, t, sg[1], None))
@@ -104,12 +108,20 @@ def harness_check(m, L, AX, AZ, tmax, step):
     dmax = worst['need_total_mm'] - n0; slack = L_model - n0
     dyn = [w[3] for w in walk[iP:iK] if w[3] is not None]
     fixed = [w[3] for w in walk[:iP] + walk[iK:] if w[3] is not None]
+    bends = bend_radii(m, walk)
+    tail = tail_clearance(m, L, tmax, step, walk)
+    opt_a = option_a(m)
     checks = {
         'route_ends_at_gland_exit': math.dist(end, (m['CAM_GLAND_XY'][0], m['CAM_GLAND_XY'][1], m['GLAND_EXIT_Z'] - 6.0)) < 1e-6,
         'dynamic_bends_ge_5xOD': min(dyn) >= m['HARNESS_R_FLEX'] - 1e-9,
         'harness_slack_ge_need_plus_10': slack >= max(dmax, 0.0) + 10.0 - 1e-9,
+        'fixed_bends_ge_3xOD_incl_sp13_exit': bends['external_fixed_ok'],
+        'internal_cable_bends_ge_3xOD': bends['internal_ok'],
+        'internal_core_bundle_bends_ge_3xD': bends['bundle_ok'],
+        'internal_route_continuous_from_gland': bends['internal_starts_at_harness_end'],
+        'sp13_tail_and_riser_clear_of_housing_0_to_theta_max': tail['min_clearance_mm'] >= 1.0,
+        'camera_exit_option_b_chosen_option_a_rejected': (not opt_a['fits']) and tail['min_clearance_mm'] >= 1.0 and bends['external_fixed_ok'],
     }
-    sp13_ok = all(r >= m['HARNESS_R_FIXED_MIN'] - 1e-9 for r in fixed if r != m['HARNESS_R_SP13'])
     return checks, {
         'cable': 'LAPP UNITRONIC FD P plus A 0028679, OD %.1f (CONFIRMED), min bend 5xD flexing = %.1f / 3xD fixed = %.1f (CONFIRMED LAPP)'
                  % (m['HARNESS_OD'], m['HARNESS_R_FLEX'], m['HARNESS_R_FIXED_MIN']),
@@ -119,15 +131,120 @@ def harness_check(m, L, AX, AZ, tmax, step):
         'slack_mm': round(slack, 2), 'margin_mm': round(slack - max(dmax, 0.0) - 10.0, 2),
         'points_folded_mm': {'P_housing_clamp': [round(v, 3) for v in P0], 'clip_1_x': g1, 'clip_2_x': g2,
                              'K_fixed_guide': [round(v, 3) for v in K], 'K_heading_deg': round(math.degrees(hK), 3)},
-        'bend_radii_mm': {'dynamic_min': min(dyn), 'fixed': fixed, 'fixed_ge_3xOD_except_SP13_exit': sp13_ok,
-                          'sp13_exit_R_HOLD': m['HARNESS_R_SP13']},
+        'bend_radii_mm': {'dynamic_min': min(dyn), 'fixed': fixed, **{k: v for k, v in bends.items() if not k.endswith('_ok')}},
+        'camera_exit_F23': {'chosen': 'b: LAPP kept, straight SP13 (clamp nut removed) in a potted bend tail, fixed R%.1f S-riser'
+                                      % m['HARNESS_R_FIXED'], 'option_b_tail_clearance': tail, 'option_a_right_angle_m12': opt_a},
         'method': 'need(theta) = fixed parts + Dubins(P(theta) heading +X -> clip 1 on lever, heading along lever) + clip pitch '
-                  '(cable slides through open clips) + Dubins(clip 2 -> K heading %.1f deg); R = 5xOD; obstacles ignored (lower bound).'
-                  % math.degrees(hK),
+                  '(cable slides through open clips) + Dubins(clip 2 -> K heading %.1f deg); R = 5xOD; obstacles ignored (lower bound). '
+                  'Bend radii: every arc of HARNESS_ROUTE / INNER_ROUTE / BUNDLE_ROUTE vs 3xD (fixed) / 5xD (moving).' % math.degrees(hK),
         'samples': rows[::10] + ([rows[-1]] if (len(rows) - 1) % 10 else []),
-        'limits': 'Planar XZ need; the S-loop lies on the lever plate (XY) and is not tensioned. SP13 exit bend R%.1f < 3xOD is HOLD H07 '
-                  '(90-degree SP13 boot or connector move). Intermediate-angle 3-D cable shape not modelled.' % m['HARNESS_R_SP13'],
+        'limits': 'Planar XZ need; the S-loop lies on the lever plate (XY) and is not tensioned. Tail/riser clearance is a 2-D XZ '
+                  'screen against the housing side profile and the service cover (Y overlap assumed). Intermediate-angle 3-D cable '
+                  'shape not modelled.',
     }
+
+
+def bend_radii(m, walk):
+    """F23: radii of every modelled arc; external fixed (SP13 tail .. P, K .. gland) >= 3xOD, internal LAPP >= 3xOD,
+    core bundle >= 3x bundle D."""
+    iP, iK, od = m['HARNESS_SEG_P'], m['HARNESS_SEG_K'], m['HARNESS_OD']
+    ext_fixed = [w[3] for w in walk[:iP] + walk[iK:] if w[3] is not None]
+    inner = route_walk(m['INNER_START'], m['INNER_ROUTE'], (0.0, 0.0, -1.0))
+    bundle = route_walk(inner[-1][0], m['BUNDLE_ROUTE'], (-1.0, 0.0, 0.0))
+    r_in = [w[3] for w in inner if w[3] is not None]; r_b = [w[3] for w in bundle if w[3] is not None]
+    return {'external_fixed': ext_fixed, 'external_fixed_ok': min(ext_fixed) >= 3*od - 1e-9,
+            'internal_lapp': r_in, 'internal_ok': min(r_in) >= 3*od - 1e-9,
+            'core_bundle': r_b, 'bundle_od': m['BUNDLE_OD'], 'bundle_ok': min(r_b) >= 3*m['BUNDLE_OD'] - 1e-9,
+            'internal_starts_at_harness_end': math.dist(walk[-1][0], m['INNER_START']) < 1e-6,
+            'internal_lapp_length_mm': round(sum(w[2] for w in inner), 2),
+            'core_bundle_length_mm': round(sum(w[2] for w in bundle), 2),
+            'service_connector_face_mm': [round(v, 2) for v in bundle[-1][0]]}
+
+
+def _seg_dist(p, a, b):
+    ax, az = b[0] - a[0], b[1] - a[1]; L2 = ax*ax + az*az
+    t = 0.0 if L2 == 0 else max(0.0, min(1.0, ((p[0] - a[0])*ax + (p[1] - a[1])*az)/L2))
+    return math.hypot(p[0] - a[0] - t*ax, p[1] - a[1] - t*az)
+
+
+def _inside(p, poly):
+    c = False
+    for (x1, z1), (x2, z2) in zip(poly, poly[1:] + poly[:1]):
+        if (z1 > p[1]) != (z2 > p[1]) and p[0] < x1 + (p[1] - z1)*(x2 - x1)/(z2 - z1):
+            c = not c
+    return c
+
+
+def _poly_clear(p, poly):
+    d = min(_seg_dist(p, a, b) for a, b in zip(poly, poly[1:] + poly[:1]))
+    return -d if _inside(p, poly) else d
+
+
+def _sample_route(start, route, heading=(1.0, 0.0, 0.0), ds=0.5):
+    """Dense XZ points along a route (arcs and lines)."""
+    pts = [(start[0], start[2])]; p = tuple(start); t = heading
+    for sg in route:
+        n = max(2, int(math.ceil((sg[1] if sg[0] == 'S' else sg[1]*math.radians(sg[2])) / ds)))
+        for k in range(1, n + 1):
+            sub = (('S', sg[1]*k/n),) if sg[0] == 'S' else (('A', sg[1], sg[2]*k/n, sg[3]),)
+            q = route_walk(p, sub, t)[-1][0]; pts.append((q[0], q[2]))
+        w = route_walk(p, (sg,), t)[-1]; p, t = w[0], w[1]
+    return pts
+
+
+def tail_clearance(m, L, tmax, step, walk):
+    """F23 option (b): potted tail (r = OD/2 + wall) and the bare riser up to P translate with the lift housing; min XZ clearance
+    to the housing side profile and the service cover over theta 0..theta_max."""
+    r_t = m['HARNESS_OD']/2 + m['HARNESS_TAIL_WALL']; r_c = m['HARNESS_OD']/2
+    route = m['HARNESS_ROUTE']; iP = m['HARNESS_SEG_P']
+    tail_pts = _sample_route(m['HARNESS_START'], tuple(route[:2]) + (('S', m['HARNESS_TAIL_LINE']),))
+    riser_pts = _sample_route(m['HARNESS_START'], tuple(route[:iP]))
+    body = [tuple(v) for v in m['profile']]
+    cover = [(m['SERVICE_CX'] - m['SERVICE_L']/2, 75.0), (m['SERVICE_CX'] + m['SERVICE_L']/2, 75.0),
+             (m['SERVICE_CX'] + m['SERVICE_L']/2, 82.0), (m['SERVICE_CX'] - m['SERVICE_L']/2, 82.0)]
+    best = {'min_clearance_mm': float('inf')}; theta = 0.0
+    while True:
+        th = math.radians(theta); dx, dz = L*(1 - math.cos(th)), L*math.sin(th)
+        for name, pts, r in (('tail', tail_pts, r_t), ('riser_cable', riser_pts, r_c)):
+            for q in pts:
+                p = (q[0] + dx, q[1] + dz)
+                for oname, poly in (('housing', body), ('service_cover', cover)):
+                    c = _poly_clear(p, poly) - r
+                    if c < best['min_clearance_mm']:
+                        best = {'min_clearance_mm': round(c, 3), 'theta_deg': theta, 'part': name, 'obstacle': oname,
+                                'point_folded_xz': [round(q[0], 2), round(q[1], 2)]}
+        if theta >= tmax - 1e-9:
+            break
+        theta = min(theta + step, tmax)
+    best['tail_shell_r_mm'] = r_t
+    return best
+
+
+def option_a(m):
+    """F23 option (a): right-angle M12-A 8p moulded (binder 77-3434 family) in place of the SP13 exit, binder PVC cable."""
+    d, l = m['CAMEXIT_A_ELBOW']; od, rf = m['CAMEXIT_A_CABLE_OD'], m['CAMEXIT_A_R_FLEX']
+    x0 = 14.0                                          # receptacle on the lift-housing rear face (bore exit), elbow along +X
+    elbow = (x0, m['CAM_Z'] - d/2, x0 + l, m['CAM_Z'] + d/2)
+    body_front, body_top = 18.0, 75.0
+    clash_x = elbow[2] - body_front; clash_z = body_top - elbow[1]
+    loop_a = math.acos(1 - abs(m['HARNESS_LOOP_Y'])/(2*rf)); loop_len_x = 4*rf*math.sin(loop_a)
+    clip_free = m['HARNESS_GUIDE_X'][1] - m['HARNESS_GUIDE_X'][0] - 12.0
+    sb = (m['HARNESS_TOP_Z'] + rf + rf*math.cos(math.radians(90 - m['HARNESS_FIX_TURN']))
+          - (m['GLAND_EXIT_Z'] + m['HARNESS_R_FIXED']*math.sin(math.radians(m['HARNESS_FIX_TURN']))))/(2*rf)
+    crest = m['HARNESS_TOP_Z'] + 2*rf*(1 - sb) + od/2 if abs(sb) <= 1 else None
+    crest_gap = (m['PIPE_R'] - math.hypot(abs(m['HARNESS_LOOP_Y']) + od/2, crest - m['PIPE_CENTER_Z'])) if crest else None
+    fits = clash_x <= 0 or clash_z <= 0
+    fits = fits and loop_len_x <= clip_free
+    return {'fits': fits,
+            'elbow_envelope_xz_mm': [round(v, 2) for v in elbow], 'elbow_dims_ESTIMATED': [d, l],
+            'elbow_vs_housing_front_overlap_mm': {'x': round(clash_x, 2), 'z': round(clash_z, 2), 'clash': clash_x > 0 and clash_z > 0},
+            'binder_cable': {'od_mm': od, 'moving_bend_min_mm': rf,
+                             'lever_s_loop_x_span_needed_mm': round(loop_len_x, 1), 'lever_free_x_between_clips_mm': round(clip_free, 1),
+                             's_bend_crest_top_z_mm': round(crest, 2) if crest else None,
+                             'crest_gap_to_dn150_mm': round(crest_gap, 2) if crest_gap is not None else None},
+            'verdict': 'REJECTED: elbow (27 along X behind the housing rear X14) overlaps the crawler housing front (X18, top Z75); '
+                       'binder PVC R>=60 S-loop does not fit between the lever clips, so the moving section would stay LAPP via a potted '
+                       'inline joint (extra leak path) and the elbow still needs a new exit position in DRW-002-752.'}
 
 
 def overlap(a, b):
@@ -236,6 +353,9 @@ def main():
     short['swept_min_clearance_mm'] = min(v['clearance_mm'] for v in worst.values())
     short['camera_harness_F21'] = {k: harness[k] for k in ('modeled_route_length_mm', 'need_mm', 'need_increase_max_mm',
                                                             'need_change_at_theta_max_mm', 'slack_mm', 'margin_mm', 'bend_radii_mm')}
+    short['camera_exit_F23'] = {'chosen': harness['camera_exit_F23']['chosen'],
+                                'tail_clearance': harness['camera_exit_F23']['option_b_tail_clearance'],
+                                'option_a_verdict': harness['camera_exit_F23']['option_a_right_angle_m12']['verdict']}
     print(json.dumps(short, indent=2, ensure_ascii=False))
     return 0 if report['status'] == 'PASS' else 1
 

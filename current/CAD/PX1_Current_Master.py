@@ -219,8 +219,10 @@ CAM_GLAND_XY=(272.0,0.0); VALVE_XY=(272.0,18.0) # camera cable M12 gland + press
 # Pattern from 744 vector geometry (top view + A-A, 1:1.5; scale re-checked on the M4 thread stub 4.00 and socket s3 2.95).
 LIFT_M4_DRW_PATTERN=((-1.0,27.9),(20.0,25.0))  # (dx toward camera from A, |Y|): outer pair at A (-1.0 = 1.0 behind A), inner pair
                                                # 20.0 toward camera; DERIVED (+-0.3). Inner pair seen protruding 4.95 below base in A-A.
-LIFT_M4_Y_PX1=25.0                             # PX1: outer pair moved |Y|27.9 -> 25.0 (= inner) so the Ø4 taps stay 1.05 clear of the
-                                               # cover seal groove (inner edge |Y|28.05); Proteus base sits on the housing, no groove. ESTIMATED
+LIFT_M4_Y_PX1=(27.9,25.0)                      # F23: PX1 |Y| outer / inner pair = DRW-002-744 (DERIVED). F21 had moved the outer pair to 25.0
+                                               # because of the old cover face groove; F22 removed that groove (radial 110x1.5 on the spigot),
+                                               # outer tap Ø4 at |Y|27.9 X251 is solid cover: 4.1 to the cover edge, 23.4 to the 16x1.5 groove,
+                                               # 14.7 to the valve 10x1.5 groove, >60 to the Cincon M3 taps (checked in drawing_reference)
 LIFT_M4_X=(LIFT_A_X-LIFT_M4_DRW_PATTERN[0][0],LIFT_A_X-LIFT_M4_DRW_PATTERN[1][0])  # X251.0 / X230.0 (A=X250 ESTIMATED)
 ISO4762_M4=(3.5,4.0,3.0)                       # head dk/2, k, socket s - ISO 4762 M4, CONFIRMED standard
 LIFT_M4_SCREW_L=12.0                           # FIX-000-598 M4x12, CONFIRMED (part list)
@@ -234,8 +236,17 @@ HARNESS_OD=5.4
 HARNESS_R_FLEX=5*HARNESS_OD                    # 27.0, dynamic spans (CONFIRMED rule)
 HARNESS_R_FIXED_MIN=3*HARNESS_OD               # 16.2, fixed installation (CONFIRMED rule)
 HARNESS_R_FIXED=17.0                           # static bends: riser top in the C-arm and gland exit, ESTIMATED (>=16.2)
-HARNESS_R_SP13=3.0                             # SP13 exit X12 -> riser X15 in front of the body (X18): max R3 < 16.2, HOLD H07
-                                               # (needs a 90-degree SP13 cable boot / connector move; F18 had a sharp corner)
+# F23 (2026-11-20) camera cable exit at the SP13 (HOLD H07 closed): option (b) chosen - LAPP kept, straight SP13 without its
+# rear clamp nut inside a potted bend tail. Option (a) right-angle M12-A 8p moulded (binder 77-3434 family) evaluated in
+# tools/lift/check_lift_kinematics.py: elbow collides with the housing front, binder PVC Ø6.0 needs R60 moving -> rejected.
+SP13_PLUG_KEEP=30.0                            # SP13 plug kept X-36..-6: coupling nut + insert + solder cups, clamp nut removed, ESTIMATED
+HARNESS_TAIL_X0=-6.0                           # cable leaves the potted solder-cup end, = HARNESS_START X, ESTIMATED
+HARNESS_TAIL_XE=-1.0                           # start of the fixed R17 bend: tail shell 2.4 clear of the body corner X18/Z75, ESTIMATED
+HARNESS_TAIL_PHI=70.0                          # fixed S-riser: R17 up 70 deg -> straight -> R17 back to +X at P (X39.8), ESTIMATED;
+                                               # P must stay <= X41 or the R27 span P->clip 1 needs a loop at theta>=60 (F23 check)
+HARNESS_TAIL_WALL=1.5                          # potted tail shell around the cable (PA12 print + PU potting), ESTIMATED
+HARNESS_TAIL_LINE=8.0                          # tail covers the first 8 mm of the riser line, then the C-arm channel takes over, ESTIMATED
+HARNESS_TAIL_SLEEVE=(10.5,6.0,2.0)             # sleeve over the SP13 body (r9): outer r / overlap / end-cap length, ESTIMATED
 HARNESS_GUIDE_X=(74.0,176.0)                   # 2 open clips on lever plate FSS-002-073 (cable slides through), ESTIMATED;
                                                # clip 2 <= X180 keeps the R27 need path to K free of loops up to 69 deg (F21 check)
 HARNESS_LOOP_Y=-22.0                           # lateral S-loop on the lever plate (plate +-27.2), ESTIMATED
@@ -261,17 +272,39 @@ HARNESS_SB=math.degrees(math.acos((HARNESS_TOP_Z+HARNESS_R_FLEX+HARNESS_R_FLEX*m
 _SB=math.radians(HARNESS_SB)
 _XS=_KX-HARNESS_R_FLEX*math.sin(_SB)-HARNESS_R_FLEX*(math.sin(_SB)+math.sin(_HK))
 _LA=math.radians(HARNESS_LOOP_A); _LX0=HARNESS_LOOP_CX-2*HARNESS_R_FLEX*math.sin(_LA)
-HARNESS_ROUTE=(('S',4.0),('A',HARNESS_R_SP13,90.0,(0,-1,0)),('S',HARNESS_TOP_Z-HARNESS_R_FIXED-(70.0+HARNESS_R_SP13)),
-    ('A',HARNESS_R_FIXED,90.0,(0,1,0)),                                   # -> P (32, 116.8): clamped in lift-housing C-arm slot
-    ('S',_LX0-(12.0+HARNESS_R_SP13+HARNESS_R_FIXED)),                                  # through clip 1 (X74)
+_TPH=math.radians(HARNESS_TAIL_PHI)
+HARNESS_TAIL_LD=(HARNESS_TOP_Z-70.0-2*HARNESS_R_FIXED*(1-math.cos(_TPH)))/math.sin(_TPH)   # riser line length, DERIVED
+HARNESS_P_X=HARNESS_TAIL_XE+2*HARNESS_R_FIXED*math.sin(_TPH)+HARNESS_TAIL_LD*math.cos(_TPH)  # clamp P X (was 32.0), DERIVED
+HARNESS_ROUTE=(('S',HARNESS_TAIL_XE-HARNESS_TAIL_X0),('A',HARNESS_R_FIXED,HARNESS_TAIL_PHI,(0,-1,0)),('S',HARNESS_TAIL_LD),
+    ('A',HARNESS_R_FIXED,HARNESS_TAIL_PHI,(0,1,0)),                       # -> P: clamped in lift-housing C-arm slot (fixed)
+    ('S',_LX0-HARNESS_P_X),                                  # through clip 1 (X74)
     ('A',HARNESS_R_FLEX,HARNESS_LOOP_A,(0,0,-1)),('A',HARNESS_R_FLEX,HARNESS_LOOP_A,(0,0,1)),
     ('A',HARNESS_R_FLEX,HARNESS_LOOP_A,(0,0,1)),('A',HARNESS_R_FLEX,HARNESS_LOOP_A,(0,0,-1)),   # S-loop on the lever plate
     ('S',_XS-(HARNESS_LOOP_CX+2*HARNESS_R_FLEX*math.sin(_LA))),          # through clip 2 (X176)
     ('A',HARNESS_R_FLEX,HARNESS_SB,(0,-1,0)),('A',HARNESS_R_FLEX,HARNESS_SB+90-HARNESS_FIX_TURN,(0,1,0)),  # -> K (fixed)
     ('A',HARNESS_R_FIXED,HARNESS_FIX_TURN,(0,1,0)),                       # printed bend guide on the gland (fixed)
     ('S',6.0))                                                            # into the Skintop bore
-HARNESS_START=(8.0,0.0,70.0)                   # inside SP13 backshell, = CAM_Z
+HARNESS_START=(HARNESS_TAIL_X0,0.0,70.0)       # F23: at the potted SP13 solder-cup end, = CAM_Z
 HARNESS_SEG_P=4; HARNESS_SEG_K=12              # route index after which the point is P (housing clamp) / K (gland guide)
+# F23 option (a) data for the evaluation in tools/lift/check_lift_kinematics.py (not modelled as the chosen option):
+CAMEXIT_A_ELBOW=(14.5,27.0)                    # binder 77-3434 M12-A 8p right-angle moulded: nut Ø x length along the mating axis, ESTIMATED
+CAMEXIT_A_CABLE_OD=6.0; CAMEXIT_A_R_FLEX=60.0  # binder PVC cable Ø6.0 / moving bend >= 60 (CONFIRMED binder, procurement 20.11)
+# F23 internal camera cable (fixed, >= 3xD): Skintop bore -> Ø8 housing passage -> R16.5 to -X in the Y0 slot between the Z40
+# bevels, over the 61800 -> jacket end + potted breakout boot -> 6-core bundle -> 6-pole wire-to-wire service connector beside the
+# STM32 board (under the plug opening, outside the motor extraction envelope). PX1-side wires to RS485 / 12 V / balun: HOLD.
+INNER_R=16.5                                   # LAPP bend below the passage, >= 3xOD 16.2; limited by the 61800 top Z54.5, ESTIMATED
+INNER_START=(CAM_GLAND_XY[0],CAM_GLAND_XY[1],GLAND_EXIT_Z-6.0)   # = end of HARNESS_ROUTE inside the Skintop (Z96), DERIVED
+INNER_BEND_Z0=SERVICE_Z+.5                     # bend starts at the Skintop thread bottom Z75.5 (cable offset 0.63 at Z71 in the Ø8), ESTIMATED
+INNER_ROUTE=(('S',INNER_START[2]-INNER_BEND_Z0),('A',INNER_R,90.0,(0,1,0)),('S',2.0))   # jacket end X253.5 Z59, DERIVED
+INNER_BOOT=(3.4,8.0,6.0)                       # breakout boot (heat-shrink + potting) r / length / over the cores, ESTIMATED
+BUNDLE_OD=3.0                                  # 6 single cores 0.25 mm2 bundled, ESTIMATED; bends >= 3xD = 9.0
+BUNDLE_R=9.0                                   # = 3 x BUNDLE_OD, ESTIMATED
+BUNDLE_Z=64.0                                  # bundle level for the -Y crossing over the Z40 bevel (top <= Z61.4 at X<=238), ESTIMATED
+BUNDLE_RISE=math.degrees(math.acos(1-(BUNDLE_Z-(INNER_BEND_Z0-INNER_R))/(2*BUNDLE_R)))   # S-rise angle 43.8 deg, DERIVED
+BUNDLE_ROUTE=(('S',.5),('A',BUNDLE_R,BUNDLE_RISE,(0,1,0)),('A',BUNDLE_R,BUNDLE_RISE,(0,-1,0)),
+    ('A',BUNDLE_R,90.0,(0,0,1)),('S',3.5),('A',BUNDLE_R,90.0,(0,0,-1)),('S',.5))   # -> Y-21.5 heading -X into the connector
+SVC_CONN=(16.5,7.0,10.0)                       # 6-pole 2.0 mm wire-to-wire, mated envelope L x W x H (JST PH/PHD class), ESTIMATED
+SVC_CONN_ZC=65.0                               # connector centre Z (wall underside Z71, STM32 edge |Y|16.6), ESTIMATED
 
 # ------------------------------- helpers
 
@@ -420,10 +453,10 @@ def make_coupling():
     return p
 
 def make_sp13_plug():
-    body=cyl_x(0,0,0,SP13_PLUG_OD/2,SP13_PLUG_L)
+    # F23: rear clamp nut / straight backshell removed (SP13_PLUG_KEEP); cable exit potted in the bend tail.
+    body=cyl_x(0,0,0,SP13_PLUG_OD/2,SP13_PLUG_KEEP)
     collar=cyl_x(8,0,0,SP13_PLUG_OD/2+2,12)
-    backshell=cyl_x(SP13_PLUG_L-15,0,0,7.0,15)
-    return cut(fuse_all([body,collar,backshell]),cyl_x(SP13_PLUG_L-12,0,0,2.8,12.1))
+    return fuse_all([body,collar])
 
 def make_sp17_panel():
     body=cyl_x(0,0,0,SP17_PANEL_OD/2,SP17_PANEL_L)
@@ -635,7 +668,7 @@ for _hx,_hy in F20_CINCON_HOLES+F20_SHUNT_HOLES:
 for _hx,_hy in F20_STANDOFFS:
     cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z-.1,1.5,4.1))
 # F21: 4x blind M4 taps from the cover TOP for the lift base (Ø4 major, cosmetic), 1.5 mm skin to the cover underside.
-LIFT_M4_POINTS=[(x,sy*LIFT_M4_Y_PX1) for x in LIFT_M4_X for sy in (-1,1)]
+LIFT_M4_POINTS=[(x,sy*y) for x,y in zip(LIFT_M4_X,LIFT_M4_Y_PX1) for sy in (-1,1)]
 for _hx,_hy in LIFT_M4_POINTS:
     cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z+SERVICE_T-LIFT_M4_TAP_DEPTH,2.0,LIFT_M4_TAP_DEPTH+.1))
 add('HOLD_PRESSURE_ELECTRONICS_COVER_SERVICE205x68x7',cover,'metal')
@@ -744,7 +777,9 @@ def route_walk(start,heading,route):
             segs.append(('A',pts,tans)); p=pts[-1]; t=tans[-1].normalized()
     return segs
 def _route_frame(t):
-    y=cq.Vector(0,1,0); e1=(y-t*y.dot(t)).normalized(); return e1,t.cross(e1)
+    y=cq.Vector(0,1,0); e1=y-t*y.dot(t)
+    if e1.Length<1e-9: e1=cq.Vector(1,0,0)-t*t.x                 # F23: tangent along Y (internal bundle)
+    e1=e1.normalized(); return e1,t.cross(e1)
 def route_tube(segs,r,a=0.0,b=0.0):
     """Sweep a circle along the route offset by (a,b) in the (Y-like, normal) frame: lines stay lines, arcs stay arcs."""
     edges=[]
@@ -769,7 +804,12 @@ lh=fuse_all([box0(LHX1-LIFT_HOUSING_L-2,-LIFT_HOUSING_W/2,CAM_Z-24,LIFT_HOUSING_
 lh=cut(lh,cyl_x(LHX1-LIFT_HOUSING_L-2.1,0,CAM_Z,11.5,LIFT_HOUSING_L+2.2))
 lh=cut(lh,cyl_y(LD[0],-LIFT_HOUSING_W/2-.1,LD[1],4.05,LIFT_HOUSING_W+.2))
 lh=cut(lh,cyl_y(LC[0],-6.5,LC[1],4.05,13))
-lh=cut(lh,route_tube(harness_segs[:HARNESS_SEG_P+1],HARNESS_OD/2+.3))   # F21: fixed riser channel R17 through the C-arm (clamp P)
+lh=cut(lh,route_tube(harness_segs[:HARNESS_SEG_P+1],HARNESS_OD/2+.3))   # F21/F23: fixed S-riser channel R17 through the C-arm (clamp P)
+# F23 potted bend tail on the SP13 rear (option b): sleeve over the plug body + shell r(OD/2+1.5) along the fixed R17 bend.
+_tsegs=route_walk(HARNESS_START,(1,0,0),HARNESS_ROUTE[:2]+(('S',HARNESS_TAIL_LINE),))
+_sr,_sov,_scap=HARNESS_TAIL_SLEEVE; _sp13_end=-36.0+SP13_PLUG_KEEP
+tail_env=fuse_all([cyl_x(_sp13_end-_sov,0,CAM_Z,_sr,_sov+_scap),route_tube(_tsegs,HARNESS_OD/2+HARNESS_TAIL_WALL)])
+lh=cut(lh,fuse_all([cyl_x(_sp13_end-_sov-.2,0,CAM_Z,_sr+.2,_sov+_scap+.4),route_tube(_tsegs,HARNESS_OD/2+HARNESS_TAIL_WALL+.2)]))
 add('HOLD_LIFT_HOUSING_DRW002752_SIMPLIFIED_INTERFACE',lh,'lift')
 add('HOLD_LIFT_TOP_LEVER_AXLE_FSS002076',cyl_y(LC[0],-LIFT_CHEEK_Y[1],LC[1],3.95,2*LIFT_CHEEK_Y[1]),'lift')
 # CAM026 catalogue envelope 120x74x74 (rear rotate housing + pan/tilt head + window).
@@ -779,6 +819,8 @@ head=boxc(cam_front+1+29.5,0,CAM_Z,59,CAM026_ENVELOPE[1],CAM026_ENVELOPE[2]).edg
 add('HOLD_CAM026_PAN_TILT_HEAD_ENVELOPE_120x74x74',head,'camera')
 add('HOLD_CAM026_FRONT_WINDOW_DIAMETER_UNKNOWN',cyl_x(cam_front,0,CAM_Z,12,1),'camera')
 sp13=make_sp13_plug().translate((-36,0,CAM_Z));add('HOLD_WEIPU_SP1310_S6I_N_AND_PANEL_INTERFACE',sp13,'connector')
+tail=cut(cut(tail_env,sp13),route_tube(harness_segs[:3],HARNESS_OD/2+.15))
+add('PX1_SP13_POTTED_BEND_TAIL_R17_LAPP_CAMERA_EXIT',tail,'print')
 jacket=route_tube(harness_segs,HARNESS_OD/2)
 _core_ab=[(a,b) for b in (-.6,.6) for a in (-1.0,0.0,1.0)]   # 6 cores, 2x3 grid in the jacket section, ESTIMATED
 for i,name in enumerate(['12V','GND','TX','RX','CVBS_SIGNAL','CVBS_RETURN']):
@@ -800,6 +842,19 @@ bguide=fuse_all([bguide,cut(cyl_z(CAM_GLAND_XY[0],CAM_GLAND_XY[1],GLAND_EXIT_Z,L
                              cyl_z(CAM_GLAND_XY[0],CAM_GLAND_XY[1],GLAND_EXIT_Z-.1,HARNESS_OD/2+.15,1.8))])
 bguide=cut(bguide,route_tube(_gsegs,HARNESS_OD/2+.15))
 add('PX1_CAMERA_CABLE_BEND_GUIDE_R17_GLAND_ON_SERVICE_COVER',bguide,'print')
+# F23 internal camera cable (fixed). Service disconnect: SVC connector beside the STM32 board, under the plug opening.
+inner_segs=route_walk(INNER_START,(0,0,-1),INNER_ROUTE)
+_je=inner_segs[-1][1][-1]                                            # jacket end (X253.5, Y0, Z59)
+add('HOLD_LAPP_0028679_CAMERA_CABLE_INTERNAL_PASSAGE_TO_BREAKOUT',route_tube(inner_segs,HARNESS_OD/2),'cable')
+bundle_segs=route_walk(_je.toTuple(),(-1,0,0),BUNDLE_ROUTE)
+bundle=route_tube(bundle_segs,BUNDLE_OD/2)
+_bb_r,_bb_l,_bb_c=INNER_BOOT
+boot=cut(cut(cyl_x(_je.x-_bb_c,0,_je.z,_bb_r,_bb_l),route_tube(inner_segs,HARNESS_OD/2)),bundle)
+add('HOLD_CAMERA_CABLE_BREAKOUT_BOOT_POTTED',boot,'cable')
+add('HOLD_CAMERA_CORE_BUNDLE_6x0p25_TO_SERVICE_CONNECTOR',bundle,'wire')
+_ce=bundle_segs[-1][1][-1]
+SVC_CONN_X1=_ce.x
+add('HOLD_CAMERA_SERVICE_CONNECTOR_6P_W2W_MATED',box0(SVC_CONN_X1-SVC_CONN[0],_ce.y-SVC_CONN[1]/2,SVC_CONN_ZC-SVC_CONN[2]/2,*SVC_CONN),'connector')
 controller=cq.importers.importStep(str(CAD/'vendor'/'WeAct_F4_64Pin_V11_Manufacturer.step'))
 controller=wp(cq.Compound.makeCompound(controller.vals()))
 b=controller.val().BoundingBox();controller=controller.translate((-(b.xmin+b.xmax)/2,-(b.ymin+b.ymax)/2,-b.zmin))
