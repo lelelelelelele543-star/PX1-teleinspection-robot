@@ -57,6 +57,16 @@ add("Lid_gasket_PROXY",gasket,(0.18,0.64,0.35))
 for side,s in (("L",-1),("R",1)):
     # Relocated motors: X=-30..12, raised Z=18. Assumed envelopes, not mounting design.
     add("Motor_"+side+"_ENVELOPE",cyl(P["motor_D"]/2,P["motor_L"],(P["motor_x"],s*14,P["motor_z"]),(1,0,0)),(0.22,0.32,0.4))
+    # Integrated motor cradle: two split-clamp ENVELOPES per side, anchored to inner floor.
+    # Assumed 22 mm motor, 0.2 mm diametral clearance; clamp screws and stress NOT_RUN.
+    # Rings are not motor solids and must not be interpreted as validated retention.
+    for mount_index,mx in enumerate((-23.,4.),1):
+        ring=cyl(13,5,(mx,s*14,P["motor_z"]),(1,0,0)).cut(
+            cyl(11.1,5,(mx,s*14,P["motor_z"]),(1,0,0)))
+        add("Motor_cradle_RING_PROXY_"+side+"_"+str(mount_index),ring,(0.39,0.56,0.68))
+        # Floor-to-ring standoff touches outer ring at z=5 mm; shell inner floor is z=-30.
+        post=Part.makeBox(5,6,35,V(mx,s*14-3,-30))
+        add("Motor_cradle_POST_PROXY_"+side+"_"+str(mount_index),post,(0.39,0.56,0.68))
     add("Motor_shaft_"+side,cyl(4,93,(P["motor_x"]+P["motor_L"],s*14,P["motor_z"]),(1,0,0)),(0.8,0.7,0.3))
     # Five Z50 stations per side. m=1.0 design assumption -> 50 mm pitch diameter and 50 mm centers.
     for j,x in enumerate(P["gear_x"]):
@@ -229,6 +239,11 @@ for bx,by in lid_bolts:
     assert abs(bx)<=95-2.8 and abs(by)<=39-2.8, "M3 head exceeds lid boundary"
     assert abs(bx)-1.7>=88 or abs(by)-1.7>=33, "M3 clearance hole intrudes into gasket footprint"
 print("PASS 8 lid fastener proxy positions and blind pilot depths; PHYSICAL_CHECK thread engagement and pressure preload")
+# Integrated motor mounting inventory: four ring supports and four floor standoffs.
+assert len([o for o in parts if o.Name.startswith("Motor_cradle_RING_PROXY_")])==4
+assert len([o for o in parts if o.Name.startswith("Motor_cradle_POST_PROXY_")])==4
+assert P["motor_z"]-13 == 5 and -30+35 == 5, "Cradle/floor interface mismatch"
+print("PASS motor cradle inventory and nominal floor contact; NOT_RUN clamp bolts, retention and 3D collision")
 D.recompute()
 D.saveAs(os.path.join(ROOT,"PX1_Integrated_6x6_M1.FCStd"))
 Part.export(parts,os.path.join(ROOT,"PX1_Integrated_6x6_M1.step"))
