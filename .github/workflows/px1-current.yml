@@ -36,7 +36,7 @@ jobs:
         run: python -u current/CAD/document_release.py
       - name: Verify generated package
         run: |
-          test -s current/CAD/PX1_Current_Master.step
+          test -s current/CAD/PX1_Current_Master.step.gz
           test -s current/PX1_Current_Validation.json
           test -s current/PX1_Drawings_Current.pdf
           test -s current/PX1_Documentation_Current.pdf

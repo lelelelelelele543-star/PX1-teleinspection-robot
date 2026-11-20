@@ -1,0 +1,11 @@
+{
+  "report": "_cloud_build/pipe_verification.json",
+  "pipe_center_z_mm": 51.52426612771889,
+  "old_best_possible_clearance_mm": -0.30106240950388496,
+  "candidate_clearance_mm": 0.0,
+  "candidate_outer_shoulder_clearance_mm": 3.3553964503586826,
+  "candidate_outer_edge_clearance_mm": 3.2186586936286403,
+  "candidate_min_noncontact_clearance_mm": 3.2186586936286403,
+  "nonwheel_mesh_min_clearance_mm": 3.2201841841764605,
+  "proposed_screen_passes": true
+}

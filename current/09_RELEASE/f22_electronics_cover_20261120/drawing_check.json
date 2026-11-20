@@ -1,0 +1,1631 @@
+{
+  "tool": "tools/drawing_measure/check_master_vs_drawings.py",
+  "master": "current/CAD/PX1_Current_Master.py",
+  "master_sha256": "95082391866cd1362fd9d8f7d1dce03e0241fb24a9bde8ab5731a2bfe8e15e82",
+  "reference_sha256": "e7dc0a607d727fc1efa1725ff19c1ef235c41e0017d79cbf7cf2613a473d3c4e",
+  "status": "PASS",
+  "counts": {
+    "PASS": 118,
+    "FAIL": 0,
+    "SKIP": 0
+  },
+  "n_checks": 118,
+  "note": "Reference values come from Mini-Cam drawings on the user Google Drive and catalogues; the drawings are not stored in this public repo. Not a manufacturing release.",
+  "results": [
+    {
+      "id": "wheel_stations_x",
+      "tag": "CONFIRMED",
+      "master_constant": "WHEEL_X",
+      "source": "SOURCE_REGISTER.md (user requirement; DRW-002-374 station pitch ~99.96); project rule: X50/X150/X250 fixed",
+      "actual": [
+        50.0,
+        150.0,
+        250.0
+      ],
+      "expected": [
+        50.0,
+        150.0,
+        250.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "z50_centres_x",
+      "tag": "DERIVED",
+      "master_constant": "GEAR_X",
+      "source": "SOURCE_REGISTER.md: 5xZ50 per side DRW-002-374, pitch 50 = Z50 m1 centre distance",
+      "actual": [
+        50.0,
+        100.0,
+        150.0,
+        200.0,
+        250.0
+      ],
+      "expected": [
+        50.0,
+        100.0,
+        150.0,
+        200.0,
+        250.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "wheel_axis_z",
+      "tag": "DERIVED",
+      "master_constant": "WHEEL_Z",
+      "source": "= QRW90 radius (axis height on flat floor); F10 README Z45",
+      "actual": 45.0,
+      "expected": 45.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "wheel_crown_r",
+      "tag": "CONFIRMED",
+      "master_constant": "WHEEL_CROWN_R",
+      "source": "TRACTION_BUDGET_F09.md: wheel radius 45 CONFIRMED (QRW90, catalogue D90)",
+      "actual": 45.0,
+      "expected": 45.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "wheel_diameter",
+      "tag": "CONFIRMED",
+      "master_constant": "2*WHEEL_CROWN_R",
+      "source": "SOURCE_REGISTER.md: catalogue CRP150 D90 wheels",
+      "actual": 90.0,
+      "expected": 90.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "wheel_centre_y",
+      "tag": "DERIVED",
+      "master_constant": "WHEEL_CENTRE_Y",
+      "source": "pipe_service ENGINEERING_BASIS / F04: total width 133 = 2*(54.5+12)",
+      "actual": 54.5,
+      "expected": 54.5,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "pipe_r",
+      "tag": "CONFIRMED",
+      "master_constant": "PIPE_R",
+      "source": "DN150 nominal ID150 (project requirement, F04)",
+      "actual": 75.0,
+      "expected": 75.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "pipe_contact_pose_z",
+      "tag": "DERIVED",
+      "master_constant": "PIPE_CENTER_Z",
+      "source": "F04 README: pipe pose Z51.524266 = WHEEL_Z-CROWN+sqrt(PIPE_R^2-WHEEL_CENTRE_Y^2)",
+      "actual": 51.52426612771889,
+      "expected": 51.524266,
+      "tol_mm": 1e-05,
+      "deviation_mm": 1.2771889146279136e-07,
+      "status": "PASS"
+    },
+    {
+      "id": "wheel_min_noncontact_gap_req",
+      "tag": "CONFIRMED",
+      "master_constant": "WHEEL_MIN_NONCONTACT_GAP",
+      "source": "F04 requirement >=3 mm (feature_list.json F04)",
+      "actual": 3.0,
+      "expected": 3.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "z50_teeth",
+      "tag": "CONFIRMED",
+      "master_constant": "Z50_TEETH",
+      "source": "DRW-002-374 GEA-002-529/-528 Z50 (BOM G01/G02)",
+      "actual": 50,
+      "expected": 50,
+      "tol_mm": 0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "z50_module",
+      "tag": "DERIVED",
+      "master_constant": "Z50_MOD",
+      "source": "BOM G01: m1 inferred from 50 mm pitch",
+      "actual": 1.0,
+      "expected": 1.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "z50_pitch_d",
+      "tag": "DERIVED",
+      "master_constant": "Z50_PD",
+      "source": "z*m = 50*1",
+      "actual": 50.0,
+      "expected": 50.0,
+      "tol_mm": 1e-09,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "z50_face",
+      "tag": "CONFIRMED",
+      "master_constant": "Z50_FACE",
+      "source": "BOM G01/G02: Z50 B4 (DRW-002-374)",
+      "actual": 4.0,
+      "expected": 4.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "z16_teeth",
+      "tag": "CONFIRMED",
+      "master_constant": "Z16_TEETH",
+      "source": "F06 README: GEA-002-531 Z16",
+      "actual": 16,
+      "expected": 16,
+      "tol_mm": 0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "z40_teeth",
+      "tag": "CONFIRMED",
+      "master_constant": "Z40_TEETH",
+      "source": "F06 README: GEA-002-530 Z40",
+      "actual": 40,
+      "expected": 40,
+      "tol_mm": 0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "bevel_module",
+      "tag": "DERIVED",
+      "master_constant": "BEVEL_MOD",
+      "source": "F06 README: m1 (BOM inferred)",
+      "actual": 1.0,
+      "expected": 1.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "bevel_apex_y",
+      "tag": "DERIVED",
+      "master_constant": "BEVEL_APEX_Y",
+      "source": "F06 README: apex X250, Y+-13.5, Z45",
+      "actual": 13.5,
+      "expected": 13.5,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "motor_axis_y",
+      "tag": "DERIVED",
+      "master_constant": "MOTOR_Y",
+      "source": "F12/F16: layout Y+-13.5 not changed",
+      "actual": 13.5,
+      "expected": 13.5,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "motor_face_x",
+      "tag": "DERIVED",
+      "master_constant": "MOTOR_FACE",
+      "source": "F12/F16: motor flange X189.5 not changed",
+      "actual": 189.5,
+      "expected": 189.5,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "brg_61801",
+      "tag": "CONFIRMED",
+      "master_constant": "B61801",
+      "source": "BOM B01, ISO 61801",
+      "actual": [
+        12.0,
+        21.0,
+        5.0
+      ],
+      "expected": [
+        12.0,
+        21.0,
+        5.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "brg_61903",
+      "tag": "CONFIRMED",
+      "master_constant": "B61903",
+      "source": "BOM B02, ISO 61903 (DRW-002-374)",
+      "actual": [
+        17.0,
+        30.0,
+        7.0
+      ],
+      "expected": [
+        17.0,
+        30.0,
+        7.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "brg_61800",
+      "tag": "CONFIRMED",
+      "master_constant": "B61800",
+      "source": "BOM B03, ISO 61800 (DRW-002-375)",
+      "actual": [
+        10.0,
+        19.0,
+        5.0
+      ],
+      "expected": [
+        10.0,
+        19.0,
+        5.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "xring",
+      "tag": "CONFIRMED",
+      "master_constant": "XRING",
+      "source": "BOM S01 SEA-002-526 / Trelleborg QRAR04116",
+      "actual": [
+        18.72,
+        2.62
+      ],
+      "expected": [
+        18.72,
+        2.62
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "seal_z40",
+      "tag": "CONFIRMED",
+      "master_constant": "SEAL_18_30_7",
+      "source": "BOM S02 (DRW-002-375)",
+      "actual": [
+        18.0,
+        30.0,
+        7.0
+      ],
+      "expected": [
+        18.0,
+        30.0,
+        7.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "cover_bearing_bore_r",
+      "tag": "CONFIRMED",
+      "master_constant": "COVER_BEARING_BORE_R",
+      "source": "F05 README: 61903 OD30 seat",
+      "actual": 15.0,
+      "expected": 15.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "cover_bearing_bore_vs_61903",
+      "tag": "CONFIRMED",
+      "master_constant": "2*COVER_BEARING_BORE_R - B61903[1]",
+      "source": "F05: seat D = 61903 OD",
+      "actual": 0.0,
+      "expected": 0.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "flange_oring",
+      "tag": "CONFIRMED",
+      "master_constant": "FLANGE_ORING",
+      "source": "BOM S04 SEA-002-722 32x1.5 (DRW-002-374 pos.11)",
+      "actual": [
+        32.0,
+        1.5
+      ],
+      "expected": [
+        32.0,
+        1.5
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "side_oring",
+      "tag": "CONFIRMED",
+      "master_constant": "SIDE_ORING",
+      "source": "BOM S03 SEA-002-102 190x1.5 (DRW-002-374 pos.13)",
+      "actual": [
+        190.0,
+        1.5
+      ],
+      "expected": [
+        190.0,
+        1.5
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "side_seal_lobe_r",
+      "tag": "DERIVED",
+      "master_constant": "SIDE_SEAL_R",
+      "source": "F10 README: lobe radius ~27.5-28 from DRW-002-374 top view",
+      "actual": 28.0,
+      "expected": 28.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "side_seal_cusp",
+      "tag": "DERIVED",
+      "master_constant": "SIDE_SEAL_CUSP",
+      "source": "F10 README: cusp ~18.4-19 from axis",
+      "actual": 19.0,
+      "expected": 19.0,
+      "tol_mm": 0.6,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "side_seal_groove_w",
+      "tag": "ESTIMATED",
+      "master_constant": "SIDE_SEAL_W",
+      "source": "F10 README groove 2.0",
+      "actual": 2.0,
+      "expected": 2.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "side_seal_groove_d",
+      "tag": "ESTIMATED",
+      "master_constant": "SIDE_SEAL_D",
+      "source": "F10 README groove depth 1.15",
+      "actual": 1.15,
+      "expected": 1.15,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "flange_groove_ri",
+      "tag": "ESTIMATED",
+      "master_constant": "FLANGE_GROOVE_RI",
+      "source": "F05 README groove D32.0",
+      "actual": 16.0,
+      "expected": 16.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "flange_groove_ro",
+      "tag": "ESTIMATED",
+      "master_constant": "FLANGE_GROOVE_RO",
+      "source": "F05 README groove D36.2",
+      "actual": 18.1,
+      "expected": 18.1,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "flange_groove_depth",
+      "tag": "ESTIMATED",
+      "master_constant": "FLANGE_GROOVE_DEPTH",
+      "source": "F05 README depth 1.15",
+      "actual": 1.15,
+      "expected": 1.15,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "flange_screw_r",
+      "tag": "DERIVED",
+      "master_constant": "FLANGE_SCREW_R",
+      "source": "F08 README: M3x6 4x at r20.9, 45 deg (DRW-002-374 view)",
+      "actual": 20.9,
+      "expected": 20.9,
+      "tol_mm": 0.3,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "cover_screw_dx",
+      "tag": "DERIVED",
+      "master_constant": "COVER_SCREW_DX",
+      "source": "F08 README: X150 +-25/+-75/+-125 (+-0.2)",
+      "actual": [
+        -125.0,
+        -75.0,
+        -25.0,
+        25.0,
+        75.0,
+        125.0
+      ],
+      "expected": [
+        -125.0,
+        -75.0,
+        -25.0,
+        25.0,
+        75.0,
+        125.0
+      ],
+      "tol_mm": 0.2,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "cover_screw_dz",
+      "tag": "DERIVED",
+      "master_constant": "COVER_SCREW_DZ",
+      "source": "F08 README: Z45 +-24",
+      "actual": [
+        -24.0,
+        24.0
+      ],
+      "expected": [
+        -24.0,
+        24.0
+      ],
+      "tol_mm": 0.2,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "cover_screw_count",
+      "tag": "CONFIRMED",
+      "master_constant": "len(COVER_SCREW_DX)*len(COVER_SCREW_DZ)",
+      "source": "F08 README: DRW-002-374 pos.15 FIX-000-359 M3x8, 12 pcs per cover",
+      "actual": 12,
+      "expected": 12,
+      "tol_mm": 0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "iso7380_m3",
+      "tag": "CONFIRMED",
+      "master_constant": "ISO7380_M3",
+      "source": "ISO 7380 M3: dk 5.7, k 1.65 (F08)",
+      "actual": [
+        2.85,
+        1.65
+      ],
+      "expected": [
+        2.85,
+        1.65
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "m6_wheel_screw_cosmetic_r",
+      "tag": "CONFIRMED",
+      "master_constant": "M6_COSMETIC_THREAD_R",
+      "source": "F13: ASS-002-103 FIX-002-105 M6x14 ISO 7380; ISO 262 M6 major diameter (replaces F07 M5)",
+      "actual": 3.0,
+      "expected": 3.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "body_length",
+      "tag": "DERIVED",
+      "master_constant": "BODY_L_SOURCE_SCREEN",
+      "source": "SOURCE_REGISTER.md: DRW-002-375 1:1, 278.003; F11 278.1",
+      "actual": 278.0,
+      "expected": 278.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "body_width",
+      "tag": "DERIVED",
+      "master_constant": "2*BODY_HALF_W_SCREEN",
+      "source": "SOURCE_REGISTER.md: DRW-002-375 68.009",
+      "actual": 68.0,
+      "expected": 68.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "body_height",
+      "tag": "DERIVED",
+      "master_constant": "BODY_TOP-BODY_Z0",
+      "source": "SOURCE_REGISTER.md: DRW-002-375 64.008",
+      "actual": 64.0,
+      "expected": 64.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "side_cover_l",
+      "tag": "DERIVED",
+      "master_constant": "SIDE_COVER_L",
+      "source": "SOURCE_REGISTER.md: DRW-002-374 ~262x60x7 (no named constant in master yet: literal in boxc)",
+      "actual": 262.0,
+      "expected": 262.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "side_cover_h",
+      "tag": "DERIVED",
+      "master_constant": "SIDE_COVER_H",
+      "source": "SOURCE_REGISTER.md: DRW-002-374 ~262x60x7",
+      "actual": 60.0,
+      "expected": 60.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "side_cover_t",
+      "tag": "DERIVED",
+      "master_constant": "SIDE_COVER_T",
+      "source": "SOURCE_REGISTER.md: DRW-002-374 ~262x60x7",
+      "actual": 7.0,
+      "expected": 7.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_link_l",
+      "tag": "DERIVED",
+      "master_constant": "LINK_L",
+      "source": "SOURCE_REGISTER.md: DRW-002-744 200.025; F18 LIFT_RESEARCH AC 200.1 / BD 200.0",
+      "actual": 200.1,
+      "expected": 200.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.09999999999999432,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_base_link_ab",
+      "tag": "DERIVED",
+      "master_constant": "LIFT_AB",
+      "source": "F18: DRW-002-744 side view 1:1.5, B rel. clamp axle A (|AB| 40.2)",
+      "actual": [
+        38.2,
+        -12.5
+      ],
+      "expected": [
+        38.2,
+        -12.5
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_base_fal002067",
+      "tag": "DERIVED",
+      "master_constant": "(LIFT_BASE_L, LIFT_BASE_W)",
+      "source": "F18: DRW-002-744 top/side 1:1.5, FAL-002-067 54.8..55.5 x 68.7",
+      "actual": [
+        55.0,
+        68.7
+      ],
+      "expected": [
+        55.0,
+        68.7
+      ],
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_a_above_base",
+      "tag": "DERIVED",
+      "master_constant": "LIFT_A_ABOVE_BASE",
+      "source": "F18: DRW-002-744 side view, A above base seating face",
+      "actual": 22.9,
+      "expected": 22.9,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_gas_upper_eye",
+      "tag": "DERIVED",
+      "master_constant": "LIFT_GAS_G",
+      "source": "F18: DRW-002-744, gas spring eye on lever ~125 from A",
+      "actual": [
+        125.0,
+        1.0
+      ],
+      "expected": [
+        125.0,
+        1.0
+      ],
+      "tol_mm": 2.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_gas_lower_eye",
+      "tag": "ESTIMATED",
+      "master_constant": "LIFT_GAS_E",
+      "source": "F18: Proteus (7.0,-24.8) in housing pocket; PX1 +8 (base on 7 mm cover, no pocket)",
+      "actual": [
+        7.0,
+        -16.8
+      ],
+      "expected": [
+        7.0,
+        -16.8
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_side_link_y",
+      "tag": "DERIVED",
+      "master_constant": "LIFT_SIDE_Y",
+      "source": "F18: DRW-002-744 top view side links Y+-27.9 t4; PX1 25.2 (cover-screw tool access)",
+      "actual": 25.2,
+      "expected": 27.9,
+      "tol_mm": 3.0,
+      "deviation_mm": 2.6999999999999993,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_lever_plate_w",
+      "tag": "DERIVED",
+      "master_constant": "LIFT_LEVER_PLATE_W",
+      "source": "F18: DRW-002-744 top view FSS-002-073",
+      "actual": 54.4,
+      "expected": 54.4,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_a_x",
+      "tag": "ESTIMATED",
+      "master_constant": "LIFT_A_X",
+      "source": "F18: Proteus pocket (DRW-002-375 A-A at X250) gives A~262; PX1 250 frees cover strip for gland/valve",
+      "actual": 250.0,
+      "expected": 250.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_catalogue_range",
+      "tag": "CONFIRMED",
+      "master_constant": "LIFT_CAT_RANGE",
+      "source": "CRP150 catalogue: manual lift 70-257 mm",
+      "actual": [
+        70.0,
+        257.0
+      ],
+      "expected": [
+        70.0,
+        257.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "camera_axis_folded",
+      "tag": "CONFIRMED",
+      "master_constant": "CAM_Z",
+      "source": "CRP150 catalogue lower bound 70 (read as camera axis above floor)",
+      "actual": 70.0,
+      "expected": 70.0,
+      "tol_mm": 5.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "cam026_envelope",
+      "tag": "CONFIRMED",
+      "master_constant": "CAM026_ENVELOPE",
+      "source": "GAP catalogue sy1083 CAM026 120x74x74",
+      "actual": [
+        120.0,
+        74.0,
+        74.0
+      ],
+      "expected": [
+        120.0,
+        74.0,
+        74.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "cam026_mass",
+      "tag": "CONFIRMED",
+      "master_constant": "CAM026_MASS_KG",
+      "source": "GAP catalogue sy1083 CAM026 0.864 kg",
+      "actual": 0.864,
+      "expected": 0.864,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_housing_752",
+      "tag": "DERIVED",
+      "master_constant": "(LIFT_HOUSING_W, LIFT_HOUSING_L)",
+      "source": "F18: DRW-002-752 1:1 C-C width ~48, side view length ~52",
+      "actual": [
+        46.0,
+        52.0
+      ],
+      "expected": [
+        48.0,
+        52.0
+      ],
+      "tol_mm": 2.0,
+      "deviation_mm": 2.0,
+      "status": "PASS"
+    },
+    {
+      "id": "camera_head_l",
+      "tag": "DERIVED",
+      "master_constant": "CAM_LEN",
+      "source": "SOURCE_REGISTER.md: CAM026 ASM000 head 132",
+      "actual": 132.0,
+      "expected": 132.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "camera_base_od",
+      "tag": "DERIVED",
+      "master_constant": "CAM026_MEASURED_BASE_OD",
+      "source": "SOURCE_REGISTER.md: base ~62.5 (photo with caliper)",
+      "actual": 62.5,
+      "expected": 62.5,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "weight_plate_w",
+      "tag": "DERIVED",
+      "master_constant": "WEIGHT_PLATE_W",
+      "source": "F11 README: DRW-002-375 A-A 1:1",
+      "actual": 50.3,
+      "expected": 50.3,
+      "tol_mm": 0.2,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "weight_plate_h",
+      "tag": "DERIVED",
+      "master_constant": "WEIGHT_PLATE_H",
+      "source": "F11 README: DRW-002-375 A-A 1:1",
+      "actual": 12.0,
+      "expected": 12.0,
+      "tol_mm": 0.2,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "gearhead_od",
+      "tag": "DERIVED",
+      "master_constant": "GEARHEAD_OD",
+      "source": "F12/F16: DRW-002-386 1:1 gearhead D26.0",
+      "actual": 26.0,
+      "expected": 26.0,
+      "tol_mm": 0.3,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "motor_od",
+      "tag": "DERIVED",
+      "master_constant": "MOTOR_OD",
+      "source": "F12/F16: DRW-002-386 1:1 motor D22.2",
+      "actual": 22.2,
+      "expected": 22.2,
+      "tol_mm": 0.3,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "gearhead_len_catalogue",
+      "tag": "CONFIRMED",
+      "master_constant": "GEARHEAD_LEN",
+      "source": "MOTOR_F12: ZHAOWEI ZWSMD026026 3-stage 44.9 (catalogue)",
+      "actual": 44.9,
+      "expected": 44.9,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "gearhead_len_vs_proteus",
+      "tag": "DERIVED",
+      "master_constant": "GEARHEAD_LEN",
+      "source": "MOTOR_F12: Proteus MOT-001-760 gearhead 44.6 (DRW-002-386 1:1)",
+      "actual": 44.9,
+      "expected": 44.6,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.29999999999999716,
+      "status": "PASS"
+    },
+    {
+      "id": "motor_len",
+      "tag": "DERIVED",
+      "master_constant": "MOTOR_LEN",
+      "source": "F16: 97.9 total - 44.9 gearhead (ZHAOWEI catalogue)",
+      "actual": 53.0,
+      "expected": 53.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "motor_len_covers_proteus",
+      "tag": "DERIVED",
+      "master_constant": "MOTOR_LEN",
+      "source": "F16: envelope >= Proteus motor 51.7 (DRW-002-386)",
+      "actual": 53.0,
+      "expected": ">= 51.7",
+      "status": "PASS"
+    },
+    {
+      "id": "coupling_nbk",
+      "tag": "CONFIRMED",
+      "master_constant": "(COUPLING_OD, COUPLING_L, COUPLING_BORE)",
+      "source": "BOM P02 NBK MLR-20C-6-6 catalogue",
+      "actual": [
+        20.0,
+        24.0,
+        6.0
+      ],
+      "expected": [
+        20.0,
+        24.0,
+        6.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "gas_spring_ace",
+      "tag": "CONFIRMED",
+      "master_constant": "(ACE_BODY_OD, ACE_ROD_OD, ACE_STROKE, ACE_EXTENDED)",
+      "source": "BOM L06 ACE GS-12-80-V4A catalogue",
+      "actual": [
+        12.0,
+        4.0,
+        80.0,
+        192.0
+      ],
+      "expected": [
+        12.0,
+        4.0,
+        80.0,
+        192.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "service_cover",
+      "tag": "ESTIMATED",
+      "master_constant": "(SERVICE_L, SERVICE_W, SERVICE_T)",
+      "source": "BOM L01 / F16: PX1 service cover 205x68x7",
+      "actual": [
+        205.0,
+        68.0,
+        7.0
+      ],
+      "expected": [
+        205.0,
+        68.0,
+        7.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_m4_pattern_drw",
+      "tag": "DERIVED",
+      "master_constant": "LIFT_M4_DRW_PATTERN",
+      "source": "F21: DRW-002-744 vector geometry, top view + A-A 1:1.5 (scale re-checked: M4 thread stub 4.00, socket s3 2.95, M10 nut 17.0): FIX-000-598 x4, (dx toward camera from A, |Y|) outer pair / inner pair",
+      "actual": [
+        [
+          -1.0,
+          27.9
+        ],
+        [
+          20.0,
+          25.0
+        ]
+      ],
+      "expected": [
+        [
+          -1.0,
+          27.9
+        ],
+        [
+          20.0,
+          25.0
+        ]
+      ],
+      "tol_mm": 0.3,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "lift_m4_fix000598",
+      "tag": "CONFIRMED",
+      "master_constant": "(LIFT_M4_SCREW_L, ISO4762_M4)",
+      "source": "DRW-002-744 part list pos.14 FIX-000-598 'M4 X 12 SKT CAPHEAD A2' x4; ISO 4762 M4 dk 7 k 4 s 3",
+      "actual": [
+        12.0,
+        [
+          3.5,
+          4.0,
+          3.0
+        ]
+      ],
+      "expected": [
+        12.0,
+        3.5,
+        4.0,
+        3.0
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "harness_lapp_0028679",
+      "tag": "CONFIRMED",
+      "master_constant": "(HARNESS_OD, HARNESS_R_FLEX, HARNESS_R_FIXED_MIN)",
+      "source": "LAPP catalogue UNITRONIC FD P plus A 0028679: OD 5.4; min bend 5xD flexing, 3xD fixed",
+      "actual": [
+        5.4,
+        27.0,
+        16.200000000000003
+      ],
+      "expected": [
+        5.4,
+        27.0,
+        16.2
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 3.552713678800501e-15,
+      "status": "PASS"
+    },
+    {
+      "id": "service_open_x0",
+      "tag": "ESTIMATED",
+      "master_constant": "SERVICE_OPEN_X0",
+      "source": "F22: Proteus plug opening placed X88..231 (motors + cover electronics)",
+      "actual": 88.0,
+      "expected": 88.0,
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "drw745_cover_outline",
+      "tag": "DERIVED",
+      "master_constant": "(PROTEUS_COVER_L, PROTEUS_COVER_W, PROTEUS_COVER_T)",
+      "source": "DRW-002-745 FAL-002-059 inner/outer/side views 1:1 (scale on M4 thread / M12 hex)",
+      "actual": [
+        157.5,
+        53.0,
+        7.1
+      ],
+      "expected": [
+        157.5,
+        53.0,
+        7.1
+      ],
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "drw745_plug_opening",
+      "tag": "DERIVED",
+      "master_constant": "(SERVICE_PLUG_L, SERVICE_OPEN_W, SERVICE_PLUG_R)",
+      "source": "DRW-002-745 plug body between the screw ears, corner radius from the inner view",
+      "actual": [
+        143.0,
+        53.0,
+        6.6
+      ],
+      "expected": [
+        143.0,
+        53.0,
+        6.6
+      ],
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "drw745_oring_110x1p5",
+      "tag": "CONFIRMED",
+      "master_constant": "SERVICE_ORING",
+      "source": "DRW-002-745 part list pos.11 SEA-002-721 '110 x 1,5 ORING'",
+      "actual": [
+        110.0,
+        1.5
+      ],
+      "expected": [
+        110.0,
+        1.5
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "drw745_oring_10x1p5",
+      "tag": "CONFIRMED",
+      "master_constant": "PASSAGE_ORING",
+      "source": "DRW-002-745 part list pos.15 SEA-001-861 '10 X 1.5 ORING'",
+      "actual": [
+        10.0,
+        1.5
+      ],
+      "expected": [
+        10.0,
+        1.5
+      ],
+      "tol_mm": 0.0,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "drw745_m4_pattern",
+      "tag": "DERIVED",
+      "master_constant": "PROTEUS_COVER_M4",
+      "source": "DRW-002-745 pos.9 FIX-002-518 M4x8 button x4 in the end ears",
+      "actual": [
+        149.5,
+        38.0,
+        40.0
+      ],
+      "expected": [
+        149.5,
+        38.0,
+        40.0
+      ],
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "drw745_holder",
+      "tag": "DERIVED",
+      "master_constant": "PROTEUS_HOLDER",
+      "source": "DRW-002-745 FAL-002-086 outer view + C-C",
+      "actual": [
+        38.8,
+        20.3,
+        16.3
+      ],
+      "expected": [
+        38.8,
+        20.3,
+        16.3
+      ],
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "drw745_valve_pos",
+      "tag": "DERIVED",
+      "master_constant": "PROTEUS_VALVE_FROM_FRONT",
+      "source": "DRW-002-745 outer view / D-D",
+      "actual": [
+        30.8,
+        17.4
+      ],
+      "expected": [
+        30.8,
+        17.4
+      ],
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "drw745_gland_axis",
+      "tag": "DERIVED",
+      "master_constant": "PROTEUS_GLAND_AXIS",
+      "source": "DRW-002-745 outer view / C-C",
+      "actual": [
+        15.4,
+        9.6
+      ],
+      "expected": [
+        15.4,
+        9.6
+      ],
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "drw745_feed_bore",
+      "tag": "DERIVED",
+      "master_constant": "PROTEUS_FEED_BORE_D",
+      "source": "DRW-002-745 C-C vertical bore holder->cover",
+      "actual": 8.0,
+      "expected": 8.0,
+      "tol_mm": 0.5,
+      "deviation_mm": 0.0,
+      "status": "PASS"
+    },
+    {
+      "id": "side_seal_track_stretch",
+      "tag": "DERIVED",
+      "kind": "side_seal_track",
+      "source": "F10 README: centreline 609.6 vs O-ring 190x1.5 centreline 601.6 -> +1.3 %; same arc/fillet construction as lobed_seal_face()",
+      "status": "PASS",
+      "actual": 1.334,
+      "expected": "0.0..3.0 %",
+      "detail": {
+        "fillet_r_mm": 11.222222222222221,
+        "tangent_angle_deg": 50.40224729095014,
+        "lobe_arcs_mm": 485.5469888022425,
+        "fillet_arcs_mm": 124.09284849334371,
+        "track_centreline_mm": 609.6398372955862,
+        "oring_centreline_mm": 601.6149931624453,
+        "stretch_pct": 1.3338836671868082
+      }
+    },
+    {
+      "id": "flange_groove_gland",
+      "tag": "DERIVED",
+      "kind": "gland",
+      "source": "F05 README: squeeze 23 %, fill 73 %",
+      "status": "PASS",
+      "actual": "sq 23.3 % / fill 73.2 %",
+      "expected": "sq 15.0-30.0 %, fill <=85.0 %",
+      "detail": {
+        "squeeze_pct": 23.33333333333334,
+        "fill_pct": 73.17374193143924,
+        "cs_mm": 1.5,
+        "groove_w_mm": 2.1000000000000014,
+        "groove_d_mm": 1.15
+      }
+    },
+    {
+      "id": "flange_oring_stretch",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F05 README: groove inner D = O-ring ID32, zero stretch",
+      "status": "PASS",
+      "actual": 0.0,
+      "expected": "0.0..5.0 %",
+      "detail": {
+        "expr": "(2*FLANGE_GROOVE_RI/FLANGE_ORING[0]-1)*100"
+      }
+    },
+    {
+      "id": "side_seal_gland",
+      "tag": "DERIVED",
+      "kind": "gland",
+      "source": "F10 README: squeeze 23 %, fill 77 %",
+      "status": "PASS",
+      "actual": "sq 23.3 % / fill 76.8 %",
+      "expected": "sq 15.0-30.0 %, fill <=85.0 %",
+      "detail": {
+        "squeeze_pct": 23.33333333333334,
+        "fill_pct": 76.83242902801125,
+        "cs_mm": 1.5,
+        "groove_w_mm": 2.0,
+        "groove_d_mm": 1.15
+      }
+    },
+    {
+      "id": "tyre_noncontact_gap",
+      "tag": "DERIVED",
+      "kind": "tyre_gap",
+      "source": "F04 README / scripts/cloud/check_pipe_pose.py profile_screen vertex bound; requirement WHEEL_MIN_NONCONTACT_GAP",
+      "status": "PASS",
+      "actual": 3.219,
+      "expected": ">= 3.0",
+      "detail": {
+        "worst_vertex_r_y": [
+          20.5,
+          12
+        ],
+        "crown_contact_gap_mm": 0.0,
+        "pipe_center_z_mm": 51.52426612771889,
+        "min_noncontact_gap_mm": 3.2186586936286403
+      }
+    },
+    {
+      "id": "wheel_outer_width",
+      "tag": "CONFIRMED",
+      "kind": "wheel_width",
+      "source": "SOURCE_REGISTER.md: catalogue CRP150 307x133x110 (width over wheels 133)",
+      "status": "PASS",
+      "actual": 133.0,
+      "expected": "133.0 ±0.0",
+      "detail": {
+        "deviation_mm": 0.0
+      }
+    },
+    {
+      "id": "motor_rear_clear_of_service_window",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F16 README: motor rear X91.6 >= service window X90 (vertical motor extraction)",
+      "status": "PASS",
+      "actual": 3.6,
+      "expected": "0.0.. mm",
+      "detail": {
+        "expr": "MOTOR_FACE-GEARHEAD_LEN-MOTOR_LEN-SERVICE_OPEN_X0"
+      }
+    },
+    {
+      "id": "z50_pitch_matches_gear_spacing",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "Z50 m1 meshing: centre distance = z*m = 50",
+      "status": "PASS",
+      "actual": 0.0,
+      "expected": "0.0..0.0 mm",
+      "detail": {
+        "expr": "GEAR_X[1]-GEAR_X[0]-Z50_TEETH*Z50_MOD"
+      }
+    },
+    {
+      "id": "bevel_ratio",
+      "tag": "CONFIRMED",
+      "kind": "expr_range",
+      "source": "F06 / F09: Z16->Z40 i=2.5",
+      "status": "PASS",
+      "actual": 2.5,
+      "expected": "2.5..2.5 -",
+      "detail": {
+        "expr": "Z40_TEETH/Z16_TEETH"
+      }
+    },
+    {
+      "id": "lift_camera_axis_raised",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F18: catalogue 257 +-5 at theta_max (tools/lift/check_lift_kinematics.py)",
+      "status": "PASS",
+      "actual": 256.8094,
+      "expected": "252.0..262.0 mm",
+      "detail": {
+        "expr": "CAM_Z+LINK_L*math.sin(math.radians(LIFT_THETA_MAX))"
+      }
+    },
+    {
+      "id": "lift_cam_drop_consistent",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F18: folded camera axis = CAM_Z",
+      "status": "PASS",
+      "actual": 0.0,
+      "expected": "0.0..0.0 mm",
+      "detail": {
+        "expr": "LIFT_A_Z-CAM_DROP-CAM_Z"
+      }
+    },
+    {
+      "id": "lift_gas_folded_in_ace",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F18: GS-12-80 folded eye-to-eye >= compressed 112 + 3",
+      "status": "PASS",
+      "actual": 7.335,
+      "expected": "3.0.. mm",
+      "detail": {
+        "expr": "math.hypot(LIFT_GAS_G[0]-LIFT_GAS_E[0],LIFT_GAS_G[1]-LIFT_GAS_E[1])-(ACE_EXTENDED-ACE_STROKE)"
+      }
+    },
+    {
+      "id": "lift_m4_engagement_vs_proteus",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F21: DRW-002-744 vector geometry, top view + A-A 1:1.5 (scale re-checked: M4 thread stub 4.00, socket s3 2.95, M10 nut 17.0): thread below base 4.95 -> PX1 engagement 5.0 in cover",
+      "status": "PASS",
+      "actual": 0.05,
+      "expected": "-0.3..0.3 mm",
+      "detail": {
+        "expr": "LIFT_M4_ENGAGE-LIFT_M4_PROTEUS_PROTRUSION"
+      }
+    },
+    {
+      "id": "lift_m4_engagement_ge_1d",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F21: M4 in Al cover, engagement >= 1.0 d (Proteus 1.24 d)",
+      "status": "PASS",
+      "actual": 1.25,
+      "expected": "1.0.. d",
+      "detail": {
+        "expr": "LIFT_M4_ENGAGE/4.0"
+      }
+    },
+    {
+      "id": "lift_m4_tap_skin_ge_1",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F21: blind tap from cover top, >= 1.0 mm skin to underside (pressure wall)",
+      "status": "PASS",
+      "actual": 1.5,
+      "expected": "1.0.. mm",
+      "detail": {
+        "expr": "SERVICE_T-LIFT_M4_TAP_DEPTH"
+      }
+    },
+    {
+      "id": "lift_m4_tap_covers_engagement",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F21: screw tip clear of tap bottom (runout)",
+      "status": "PASS",
+      "actual": 0.5,
+      "expected": "0.3.. mm",
+      "detail": {
+        "expr": "LIFT_M4_TAP_DEPTH-LIFT_M4_ENGAGE"
+      }
+    },
+    {
+      "id": "lift_m4_cbore_in_base",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F21: Ø8 counterbore inside FAL-002-067 68.7",
+      "status": "PASS",
+      "actual": 5.35,
+      "expected": "1.0.. mm",
+      "detail": {
+        "expr": "LIFT_BASE_W/2-(LIFT_M4_Y_PX1+LIFT_M4_CBORE[0])"
+      }
+    },
+    {
+      "id": "lift_m4_clear_cincon_taps",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F21: M4 taps vs F20 Cincon M3 taps (X)",
+      "status": "PASS",
+      "actual": 47.9,
+      "expected": "5.0.. mm",
+      "detail": {
+        "expr": "min(LIFT_M4_X)-2.0-(CINCON_XC+CINCON_HOLE_PITCH[0]/2+1.5)"
+      }
+    },
+    {
+      "id": "lift_m4_clear_gland_valve",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F21: M4 taps vs M12 gland / valve bores (X)",
+      "status": "PASS",
+      "actual": 12.95,
+      "expected": "3.0.. mm",
+      "detail": {
+        "expr": "min(CAM_GLAND_XY[0]-6.05,VALVE_XY[0]-5.05)-(max(LIFT_M4_X)+2.0)"
+      }
+    },
+    {
+      "id": "lift_m4_clear_cover_screws",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F21: M4 taps vs rear cover screws X284",
+      "status": "PASS",
+      "actual": 29.3,
+      "expected": "3.0.. mm",
+      "detail": {
+        "expr": "SERVICE_SCREW_X[1]-1.7-(max(LIFT_M4_X)+2.0)"
+      }
+    },
+    {
+      "id": "harness_crest_in_dn150",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F21: harness bbox corner (loop |Y| x crest Z) inside DN150 (check_pipe_pose box proof)",
+      "status": "PASS",
+      "actual": 0.2828,
+      "expected": "0.0.. mm",
+      "detail": {
+        "expr": "PIPE_R-math.hypot(abs(HARNESS_LOOP_Y)+HARNESS_OD/2,HARNESS_TOP_Z+2*HARNESS_R_FLEX*(1-math.cos(math.radians(HARNESS_SB)))+HARNESS_OD/2-PIPE_CENTER_Z)"
+      }
+    },
+    {
+      "id": "service_oring_radial_gland",
+      "tag": "ESTIMATED",
+      "kind": "gland",
+      "source": "F22: radial groove for SEA-002-721 110x1.5, nominal section",
+      "status": "PASS",
+      "actual": "sq 23.3 % / fill 76.8 %",
+      "expected": "sq 20.0-25.0 %, fill <=85.0 %",
+      "detail": {
+        "squeeze_pct": 23.333333333333325,
+        "fill_pct": 76.83242902801123,
+        "cs_mm": 1.5,
+        "groove_w_mm": 2.0,
+        "groove_d_mm": 1.1500000000000001
+      }
+    },
+    {
+      "id": "service_oring_squeeze_stretched",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F22: squeeze with the section thinned by the ring stretch (volume constant)",
+      "status": "PASS",
+      "actual": 20.302,
+      "expected": "18.0..25.0 %",
+      "detail": {
+        "expr": "(SERVICE_ORING_CS_INST-SERVICE_RGLAND_D)/SERVICE_ORING_CS_INST*100"
+      }
+    },
+    {
+      "id": "service_oring_stretch",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F22: ID stretch of 110x1.5 on the groove root (Proteus geometry; >5 % guideline -> HOLD H03)",
+      "status": "PASS",
+      "actual": 8.0643,
+      "expected": "0.0..8.5 %",
+      "detail": {
+        "expr": "SERVICE_ORING_STRETCH*100"
+      }
+    },
+    {
+      "id": "passage_oring_face_gland",
+      "tag": "ESTIMATED",
+      "kind": "gland",
+      "source": "F22: face grooves round the valve / gland feed-throughs",
+      "status": "PASS",
+      "actual": "sq 23.3 % / fill 76.8 %",
+      "expected": "sq 20.0-25.0 %, fill <=85.0 %",
+      "detail": {
+        "squeeze_pct": 23.33333333333334,
+        "fill_pct": 76.83242902801125,
+        "cs_mm": 1.5,
+        "groove_w_mm": 2.0,
+        "groove_d_mm": 1.15
+      }
+    },
+    {
+      "id": "motor_front_inside_plug_opening",
+      "tag": "DERIVED",
+      "kind": "expr_range",
+      "source": "F22: motor shaft end X207.1 inside the 143 opening (vertical extraction)",
+      "status": "PASS",
+      "actual": 24.0,
+      "expected": "0.0.. mm",
+      "detail": {
+        "expr": "SERVICE_OPEN_X1-(MOTOR_FACE+MOTOR_SHAFT_L)"
+      }
+    },
+    {
+      "id": "spigot_wall_behind_groove",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F22: Al left behind the radial groove",
+      "status": "PASS",
+      "actual": 1.4,
+      "expected": "1.0.. mm",
+      "detail": {
+        "expr": "SERVICE_SPIGOT_WALL-SERVICE_RGROOVE_D"
+      }
+    },
+    {
+      "id": "spigot_groove_lands",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F22: lands above/below the radial groove in the 4 mm wall",
+      "status": "PASS",
+      "actual": 1.0,
+      "expected": "1.0.. mm",
+      "detail": {
+        "expr": "min(SERVICE_RGROOVE_Z-SERVICE_RGROOVE_W/2-(SERVICE_Z-SERVICE_SPIGOT_H),SERVICE_Z-(SERVICE_RGROOVE_Z+SERVICE_RGROOVE_W/2))"
+      }
+    },
+    {
+      "id": "valve_vs_gland_passage_grooves",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F22: land between the two face grooves",
+      "status": "PASS",
+      "actual": 2.0,
+      "expected": "1.0.. mm",
+      "detail": {
+        "expr": "math.hypot(VALVE_XY[0]-CAM_GLAND_XY[0],VALVE_XY[1]-CAM_GLAND_XY[1])-(PASSAGE_ORING[0]/2+PASSAGE_ORING[1])-(GLAND_PASSAGE_ORING[0]/2+GLAND_PASSAGE_ORING[1])"
+      }
+    },
+    {
+      "id": "gland_groove_land_to_m12_bore",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F22: land between M12 bore and its face groove",
+      "status": "PASS",
+      "actual": 1.45,
+      "expected": "1.0.. mm",
+      "detail": {
+        "expr": "GLAND_PASSAGE_ORING[0]/2+GLAND_PASSAGE_ORING[1]-PASSAGE_GROOVE_W-6.05"
+      }
+    },
+    {
+      "id": "shunt_inside_spigot_rim",
+      "tag": "ESTIMATED",
+      "kind": "expr_range",
+      "source": "F22: brake shunt Y edge inside the spigot rim",
+      "status": "PASS",
+      "actual": 0.75,
+      "expected": "0.2.. mm",
+      "detail": {
+        "expr": "(SERVICE_OPEN_W/2-SERVICE_PLUG_CLR-SERVICE_SPIGOT_WALL)-(F20_SHUNT_XY[1]+SHUNT_R_ENV[1]/2)"
+      }
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # PX1 motor selection — 2026-11-19
 
+> **2026-11-20 (correction):** this file is history. The current CAD no longer uses the JGA25 fit study: since F16 the master carries the ZHAOWEI ZWSMD026026 i=62 + MP2238 (24 V winding) candidate — see MOTOR_F12_PROTEUS_CLASS_20261119.md and HOLD H05.
+
 Status: no purchase-qualified Ozon/Wildberries motor established. User now requires Ozon or Wildberries; FAULHABER excluded. No motors purchased. Current verified CAD/STEP remains the JGA25 fit study, not a traction-qualified design.
 
 ## Technical reserve outside requested marketplaces

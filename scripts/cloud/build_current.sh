@@ -13,6 +13,7 @@ mkdir -p "$OUT/CAD/vendor" "$OUT/logs"
 cp "$REPO/current/CAD/PX1_Current_Master.py" "$OUT/CAD/PX1_Current_Master.py"
 cp "$REPO/current/CAD/release_tools.py" "$OUT/CAD/release_tools.py"
 cp "$REPO/current/HOLD_REGISTER.json" "$OUT/HOLD_REGISTER.json"
+rm -rf "$OUT/CAD/vendor_py"; cp -r "$REPO/current/CAD/vendor_py" "$OUT/CAD/vendor_py"
 for vendor in Pololu_25D_75_99_Manufacturer.step Pololu_G2_24v13_Manufacturer.step WeAct_F4_64Pin_V11_Manufacturer.step; do
   test -s "$REPO/current/CAD/vendor/$vendor" || { echo "Missing vendor model: $vendor" >&2; exit 3; }
   cp "$REPO/current/CAD/vendor/$vendor" "$OUT/CAD/vendor/$vendor"

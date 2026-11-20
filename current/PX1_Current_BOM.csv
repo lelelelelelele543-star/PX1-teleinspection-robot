@@ -1,19 +1,19 @@
 ﻿item;name_ru;qty;article;dimensions;source;route;cad_state;release
-M01;Корпус;1;CRP150 корпус DRW375;≈278×68×64;DRW375;MILL;GRAPHIC_APPROX;H02 H03
+M01;Корпус;1;CRP150 корпус DRW375;≈278×68×64, F22: окно сверху = проём пробки FAL-002-059 143×53 R6,6 X88…231, проходы Ø8 (ввод X272 Y0) и Ø4 (клапан X272 Y18) в верхней стенке; F25: глухие M4 сверху + внутренние бобышки r3,5/r4 (без выхода в полость): 2× крышка X84 Y±19 (резьба 5,5), 2× основание лифта X231,89 Y±27,9 по 744 (резьба 7,5 = 5,0 + 2,5 захода метчика, перемычка 1,5); 2 пилотных M3 X284 Y±30,5 под держатель ввода;DRW375 DRW745 DRW744;MILL;GRAPHIC_APPROX;H02 H03
 M02;Боковая крышка;2;FAL-002-062;≈262×60×7;DRW374;MILL;GRAPHIC_APPROX;H02 H03
 M03;Фланец оси;6;FSS-002-061;OD≈50;DRW374;TURN;GRAPHIC_APPROX;H02 H03
 M04;Передняя короткая ось;2;FSS-002-063;X50 absY23..60.9 stepped12/17/18 HOLD;DRW374;TURN;GRAPHIC_APPROX;H02
 M05;Длинная ось;2;FSS-002-064;задняяX250 соединениеHOLD;DRW374;TURN;GRAPHIC_APPROX;H02 H04
 M06;ВалZ40;2;FSS-002-066 family;10/18 socket12 provisional;DRW375;TURN;ADAPTATION;H02 H04
 M07;ВалZ16;2;FSS-002-083 family;6/12 длиныHOLD;DRW386;TURN;ADAPTATION;H04 H05
-M08;Парный держатель моторов;1;PX1-GA24-HOLDER;52.8x30x3 2x4 clearance2.7 PCD19 ESTIMATED;GA24 family estimate exact variant unconfirmed;MILL;ADAPTATION;H05 exact motor variant and screw engagement unqualified
+M08;Парный держатель моторов;1;PX1-GP26-HOLDER;52.8x30x3 2x4 clearance2.7 PCD19 ESTIMATED;GP26 class, ZHAOWEI drawing pending;MILL;ADAPTATION;H05 exact motor variant and screw engagement unqualified
 M09;Держатель опорZ16;1;PX1-PINION-HOLDER;52.8×26×5;DRW386 topology;MILL;ADAPTATION;H04 H05
-M10;Разрезная переходная втулка;2;PX1-SPLIT-6-4;OD6 ID4 L8;NBK / GA24 shaft4 estimated interface;TURN;ADAPTATION;H05
+M10;Разрезная переходная втулка;2;PX1-SPLIT-6-4;OD6 ID4 L8;NBK 6 / вал ZWSMD026026 Ø4 ESTIMATED (чертёж ZHAOWEI не получен, до 2026-11-20 значилось GA24 shaft4);TURN;ADAPTATION;H05
 M11;Палец холостойZ50;4;PX1 idler pin;D10 L7 absY27..34;DRW374;TURN;ESTIMATED;H02 press fit/retention/strength unqualified
 G01;Z50 на осях;6;GEA-002-529;Z50 B4 m1 inferred;DRW374;GEAR;ANALYTIC_20DEG_HOLD;H04
 G02;Z50 холостая;4;GEA-002-528;Z50 B4 m1 inferred;DRW374;GEAR;ANALYTIC_20DEG_HOLD;H04
-G03;Z40;2;GEA-002-530;Z40 m1 inferred;DRW375;GEAR;CONICAL_ENVELOPE;H04
-G04;Z16;2;GEA-002-531;Z16 m1 inferred;DRW386;GEAR;CONICAL_ENVELOPE;H04
+G03;Z40;2;GEA-002-530;Z40 m1 inferred, straight bevel 20° face6;DRW375;GEAR;STRAIGHT_TEETH_CQ_GEARS;H04 коррекция/материал
+G04;Z16;2;GEA-002-531;Z16 m1 inferred, straight bevel 20° face6;DRW386;GEAR;STRAIGHT_TEETH_CQ_GEARS;H04 коррекция/материал
 B01;Подшипник61801;4;BEA-002-701 /61801-2RS;12×21×5;DRW374+386;BUY;BOUNDARY;ПосадкиH02
 B02;Подшипник61903;6;BEA-002-704 /61903-2RS;17×30×7;DRW374;BUY;BOUNDARY;ПосадкиH02
 B03;Подшипник61800;2;61800-2RS;10×19×5;DRW375;BUY;BOUNDARY;ПосадкиH02
@@ -22,40 +22,43 @@ B05;Втулка средней оси;2;PX1 middle bush 12-14-3;ID12 OD14 W3, a
 B06;Стальная втулка лифта;4;source8-10-4.5;8-10-4.5;DRW375;BUY;NOT_MODELLED;H06
 S01;X-ring колесной оси;6;SEA-002-526 /QRAR04116 N7004 reference;18.72×2.62;DRW374/TrelleborgTable8;BUY;INSTALLED_ENVELOPE;H03
 S02;СальникZ40;2;18-30-7 профиль/материалHOLD;18×30×7;DRW375;BUY;BOUNDARY;H03
-S03;O-ring боковой крышки;2;SEA-002-102;190×1.5;DRW374;BUY;NOT_MODELLED;H03
+S03;O-ring боковой крышки;2;SEA-002-102;190×1.5;DRW374;BUY;LOBED_GLAND_R28_W2_D1.15;H03 материал/давление
 S04;O-ring фланца;6;SEA-002-722;32×1.5;DRW374;BUY;FACE_GLAND_INSTALLED_D32x36.2x1.15;H03 материал/давление
 S05;O-ring корпуса;2;metric16×1;16×1;DRW375;BUY;NOT_MODELLED;H03
 S06;O-ring корпуса;2;metric38×1.5;38×1.5;DRW375;BUY;NOT_MODELLED;H03
-S07;O-ring крышкиPRESSURE;1;"closed moulded face seal candidate; NOT legacy110x1.5";section1.5, rounded-rectangle centreline166x58 R3;pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;GROOVE_ONLY_SEAL_NOT_MODELLED;H03 exact closed seal/material and pressure qualification required
+S07;O-ring крышки PRESSURE (радиальное);1;SEA-002-721;110×1.5 (ID растянут 8,0 % на дне канавки 373,4 мм, DERIVED);DRW745 поз.11 (F22);BUY;RADIAL_GLAND_W2_D1.10_SQ23.3/20.3%_F22;H03 материал/давление, растяжение 8 % > рекомендации 5 %
 S08;O-ring клапана;1;metric6×1.5;6×1.5;DRW745;BUY;NOT_MODELLED;H03
 S09;O-ring клапана;2;metric3×1;3×1;DRW745;BUY;NOT_MODELLED;H03
-S10;O-ring колпачка;1;metric10×1.5;10×1.5;DRW745;BUY;NOT_MODELLED;H03
+S10;O-ring прохода клапана (держатель→корпус);1;SEA-001-861;10×1.5 (как у Proteus: держатель FAL-002-086 вокруг канала);DRW745 поз.15 (F22/F25);BUY;FACE_GLAND_OD13_W2_D1.15_F22;H03
 S11;O-ring лифта;2;metric15×2.5;15×2.5;DRW744;BUY;NOT_MODELLED;H03
-P01;Тяговый двигатель;2;GA24Y-370-2485 24V 138:1 CANDIDATE;OD24.4 body67.6 shaft4x17.5 faceX189.5 ESTIMATED;08_PROCUREMENT/GA24Y_370_SELECTION_20261119.md;STUDY;FAMILY_ENVELOPE_ESTIMATED;H05 seller identity and 138:1 dimensions thermal and traction unqualified
+S12;O-ring прохода ввода M12 (держатель→корпус);1;metric16×1.5;16×1.5 (вокруг резьбы M12, у Proteus 10×1.5 вокруг Ø8);currentmaster F22/F25 ESTIMATED;BUY;FACE_GLAND_OD19_W2_D1.15_F22;H03
+P01;Тяговый двигатель;2;ZHAOWEI ZWSMD026026 3-stage + D22 motor (24V winding to order) CANDIDATE;GP D26x44.9 + motor D22.2x53.0, faceX189.5;08_PROCUREMENT/MOTOR_F12_PROTEUS_CLASS_20261119.md;STUDY;PROTEUS_CLASS_ENVELOPE;H05 24V winding/ratio, shaft/flange drawing, thermal unqualified; GA24Y-370 kept as bench fallback
 P02;Муфта;2;NBKMLR-20C-6-6;Ø20×24 bores6/6;NBK manufacturer;BUY;BOUNDARY;H05
 P03;Колесо;6;PX1 engineered D90 tyre, QRW90 topology reference;D90 W24, outer shoulder r28.5 at y8, edge r20.5 at y12 (F04 >=3mm DN150 gap);pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;ENGINEERED_PROFILE_ESTIMATED;H01 nominal CAD only, rubber/contact/tolerances/traction unqualified
-L01;PRESSURE-крышка;1;PX1 service cover GA24 20261119;177x68x7,4xD3.4,M3 body pilots,groove1.9x1.2;pipe_service_20261118/ENGINEERING_BASIS.md;MILL;ENGINEERED_ESTIMATED;H03 seal/material/pressure/thread preload unqualified
-L02;Боковой рычаг;2;FSS-002-068;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06
-L03;Центральное звено;1;ASS-002-723;≈200межцентровое;DRW744;MILL;GRAPHIC_APPROX;H06
-L04;Основание лифта;1;FAL-002-067 family;присоединенияHOLD;DRW744;MILL;GRAPHIC_APPROX;H06
-L05;Кронштейн камеры;1;PX1/source interface;plate122x50x5, camera setback52, clevis eye(47,16,102);integrated CAD estimate from existing DRW752 topology;MILL;ESTIMATED;H06 H08 stiffness/balance/camera mount unqualified
-L06;Газовая пружина;1;ACEGS-12-80-V4A F1=150N candidate;Ø12/4 stroke80 bare192;ACEGS12 catalog;BUY;BOUNDARY;H06 наконечники
-L07;Рычаг ручного зажима;1;FIX-002-527 family;M8 корпусHOLD;DRW744;BUY;GRAPHIC_APPROX;H06
-L08;Ось зажима;1;FSS-002-089;HOLD;DRW744;TURN;NOT_MODELLED;H06
-L09;Шайба зажима;1;FSS-002-077;HOLD;DRW744;TURN;NOT_MODELLED;H06
-L10;Боковая ось лифта;2;FSS-002-075;HOLD;DRW744;TURN;PARTIAL;H06
-L11;Верхняя ось лифта;2;FSS-002-079;HOLD;DRW744;TURN;PARTIAL;H06
-L12;Пластина лифта;1;FSS-002-073;HOLD;DRW744;MILL;NOT_MODELLED;H06
-L13;Пластина крепления лифта;2;FSS-002-084;HOLD;DRW375;MILL;NOT_MODELLED;H06
-L14;Ось крепления лифта;2;FSS-002-373;HOLD;DRW375;TURN;NOT_MODELLED;H06
+L01;PRESSURE-крышка (F25: пробка заподлицо + приподнятая площадка);1;PX1 electronics cover F25 (принцип FAL-002-059);F25: полая пробка-буртик 142,9×52,9 R6,55 h4,0, стенка 2,5, радиальная канавка 2,0×1,10 под 110×1,5 (F22, без изменений); сзади X184…231 крышка-заподлицо 2,4 (верх Z75 = верх корпуса, на ней стоит основание лифта) с 2 бобышками и глухими M4 X210,89 Y±21 (резьба 7,5, перемычка 1,5); площадка 104×50×7 X80…184 |Y|≤25 (теплоотвод Cincon F20, площадь контакта 57,9×36,8 полностью сохранена), паз под газовую пружину 15×19×5 X165…184 (дно 2,0); спереди 2× ISO 7380 M4×10 в корпус X84 Y±19 (шаг Proteus |Y|19); задний край прижат основанием лифта; F20: 8 глухих M3 снизу без изменений; клапан и ввод M12 перенесены в держатель L01b;F25 README;MILL;ENGINEERED_ESTIMATED;H03 seal/material/pressure/thread preload unqualified
+L01b;Держатель ввода камеры и клапана (роль FAL-002-086);1;PX1 fitting holder F25;32×68×7 X258…290 на верху корпуса за основанием лифта; M12×1,5 под LAPP Skintop X272 Y0 (выход кабеля Z102 как в F21/F23), гнездо клапана X272 Y18 + вент Ø4; снизу торцевые канавки под 10×1,5 (SEA-001-861, как 745 поз.15) и 16×1,5; 2× ISO 7380 M3×12 X284 Y±30,5;F25 README;MILL;ENGINEERED_ESTIMATED;H03
+L02;Боковой рычаг (звено параллелограмма);2;FSS-002-068;BD 200,1 (DERIVED, чертёж 200,0), t4 h15, F25: |Y| 27,9 по 744 (DERIVED) с латунными шайбами FBR-002-750/751; зазор до корпуса 752 после шайбы 0,4 — 2,48;DRW744 F18 F25;MILL;MODELLED_F25;H06
+L03;Центральный рычаг + пластина;1;ASS-002-723 + FSS-002-073;AC 200,1 DERIVED; пластина шир. 54,4 DERIVED, щёки Y±6,6…9,6 ESTIMATED;DRW744 F18;MILL;MODELLED_F18;H06
+L04;Основание лифта;1;FAL-002-067;55×68,7 DERIVED; A на 22,9 над опорой DERIVED; F25: стоит на верху корпуса Z75 (как Proteus) над задним краем крышки, A X230,89 Z97,9 DERIVED; 4×Ø4,5 + зенковка Ø8×1, шаг X A+1,0/A−20,0 (DERIVED), Y±27,9 внешняя (744) / ±21,0 внутренняя (ESTIMATED, 744: 25,0 — попадает в канавку 110×1,5); бобышка E Proteus в кармане не делается (под ней STM32), E +8 ESTIMATED;DRW744 F18/F21/F25;MILL;MODELLED_F25;H06
+L05;Корпус лифта (камерный узел);1;FAL-002-071 DRW-002-752 LIFT HOUSING;F24: тело 46,04/41,97 × 28,7, низ −23 / верх +35 от оси, шейка Ø35,1, хвостовик Ø34 DERIVED (752 1:1); F25: ярмо PX1 убрано — вилка C (|Y|12,22…23,02, конец 79,37) и глухие резьбы D по 752 напрямую; ось камеры сложено 72,9 (752 буквально); полость под SP13 и хвостовик F23, кабельный хребет Y±6,4 PX1;DRW752 F24 F25;MILL;MODELLED_F25;H06 H08
+L06;Газовая пружина;1;ACE GS-12-60-V4A F1=150N (замена SPR-002-524), F25: было GS-12-80;Ø12/4, ход 60, голая длина 92…152 (CONFIRMED каталог); + 2 проушины A3,5-V4A по 8,0 (ESTIMATED) → в работе глаз-глаз 119,3…138,8, голая 103,3…122,8, запас 11,3 до сжатия / 29,2 до выдвижения (DERIVED). GS-12-80 (112…192) с проушинами заклинило бы;ACE GS-12 catalog + F25 kinematics;BUY;BOUNDARY;H06 размеры A3,5 подтвердить по CAD ACE, балансировка
+L06a;Проушина газовой пружины;2;ACE A3,5-V4A;M3,5×0,6, Ø8, отверстие 4,1, от торца до центра 8,0 ESTIMATED;ACE accessories (размеры не опубликованы текстом);BUY;MODELLED_F25;H06
+L07;Рычаг ручного зажима M8;1;FIX-002-527;втулка Ø16×8, ручка Ø7×70 ESTIMATED;DRW744 F18;BUY;MODELLED_F18;H06
+L08;Ось зажима M10;1;FSS-002-089;Ø10 (M10/M8) ESTIMATED длины;DRW744 F18;TURN;MODELLED_F18;H06
+L09;Шайба зажима;1;FSS-002-077;Ø20/10,2×1,5 ESTIMATED;DRW744 F18;TURN;MODELLED_F18;H06
+L10;Боковая ось лифта (B);2;FSS-002-075;Ø8 ESTIMATED;DRW744 F18;TURN;MODELLED_F18;H06
+L11;Верхняя ось лифта (D);2;FSS-002-079;F24: палец M6 (8 в корпус 752, глухое) + F25: шейка Ø8×6,98 (шайба 0,4 + рычаг 4 на |Y|27,9) + DIN 471 8×0,8 ESTIMATED;DRW744 DRW752 F25;TURN;MODELLED_F25;H06
+L12;Пластина лифта;1;FSS-002-073;54,4 DERIVED, в составе L03;DRW744 F18;MILL;MODELLED_F18;H06
+L13;Пластина крепления лифта;2;FSS-002-084;ось X100 Z88,7 DERIVED (375 1:1); назначение GAP, в PX1 не применяется;DRW375;MILL;NOT_MODELLED;H06 GAP
+L14;Ось крепления лифта;2;FSS-002-373;Ø12, головка Ø15; GAP вместе с L13;DRW375;TURN;NOT_MODELLED;H06 GAP
 V01;Корпус/шток клапана;1;FSS-001-843 family;седлоHOLD;DRW745;TURN;GRAPHIC_APPROX;H03
 V02;Колпачок клапана;1;FSS-001-844 family;HOLD;DRW745;TURN;GRAPHIC_APPROX;H03
 V03;Шарик клапана;1;precision ballØ4;Ø4;DRW745;BUY;SPHERE;H03 седло
 V04;Пружина клапана;1;SPR-001-847;k/preload/LfreeHOLD;DRW745;BUY;NOT_MODELLED;H03
-V05;Бобышка прохода жгута;1;PX1/source adaptation;HOLD;DRW745;MILL;GRAPHIC_APPROX;H03 H07
-C01;Корпус ротации камеры;1;CAM026 family;OD≈62.5 headL132;ASM000/Drive photo;TURN;PHOTO_APPROX;H08
-C02;Боковая рама камеры;1;CAM026 family;HOLD;ASM001;MILL;GRAPHIC_APPROX;H08
-C03;Поворотный оптический корпус;1;CAM026 family;HOLD;ASM001;TURN/MILL;GRAPHIC_APPROX;H08
+V05;Бобышка прохода жгута;0;—;снята в F18 (ввод H04 прямо в крышке);DRW745;—;REMOVED_F18;—
+C01;Корпус ротации камеры;1;CAM026 family;OD62,5 L60 (графика) в огибающей 120×74×74 CONFIRMED;GAP sy1083 / ASM000;TURN;ENVELOPE_F18;H08
+C02;Головка PAN/TILT (огибающая);1;CAM026 family;59×74×74 R12 (графика);GAP sy1083 120×74×74;MILL;ENVELOPE_F18;H08
+C03;Окно камеры;1;CAM026 family;Ø24×1 (диаметр неизвестен);ASM001;TURN/MILL;GRAPHIC_APPROX;H08
 C04;Окно камеры;1;Минеральное стекло/сапфир артикулHOLD;размерHOLD;ASM001;BUY;ENVELOPE;H08
 C05;КамераCVBS;1;RunCamPHOENIX2-SL family;19×19class 5–36V;existingWB16 /runcam.com;BUY;NOT_MODELLED;H08
 C06;Контроллер головы;1;WaveshareRP2040-Zero;18×23.5class;existingWB16 /waveshare.com;BUY;NOT_MODELLED;H08
@@ -73,19 +76,19 @@ C17;Упорная шайба подшипника;1;BEA-001-815;HOLD;CAM026ASS0
 C18;Втулка ротации;1;MSC-001-899;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
 C19;Шестерня ротации;1;GEA-001-896;HOLD;CAM026ASS001919;SOURCE_PART;NOT_MODELLED;H08
 C20;Кольца интерфейса камеры;TBD;source metric ring family;38×1.5 /6×1 /21×1.5 /28×1.5;DRW752;BUY;NOT_MODELLED;H03 H08 количество по конкретному исполнению
-H01;Локальный жгут;1;LAPP0028679 UNITRONIC FD P plus A;ровно6×0.25 OD5.4 Rmin≈27;LAPP catalog;BUY;ROUTE_APPROX;H07 финальная длинаHOLD купить3м для образцов
-H02;КабельнаяSP13;1;WEIPUSP1310/S6I-N;6female cable4–6.5;WEIPU catalog;BUY;ENVELOPE;H07
+H01;Локальный жгут;1;LAPP0028679 UNITRONIC FD P plus A;ровно6×0.25 OD5.4, Rmin 5×D=27 подвижно / 3×D=16,2 неподвижно (CONFIRMED LAPP); F21: трасса SP13→гнездо D-рычага→2 клипсы на рычаге→S-петля→направляющая на вводе (F25: клипсы X90/X190, ввод в держателе L01b), ≈330 мм в модели; внутренний пучок 6×0,25 Ø3,3 (F25), R10 ≥ 3×D; F23: выход SP13 R17 в литом хвостовике (H07 закрыт), внутри корпуса 48 мм LAPP (R16,5) до разделки;LAPP catalog;BUY;ROUTE_F21;длина с запасом на разделку HOLD купить3м для образцов
+H02;КабельнаяSP13;1;WEIPUSP1310/S6I-N;6female cable4–6.5; F23: задняя гайка-зажим снята, тело 30 мм в литом хвостовике (вариант b; угловой M12-A binder 77-3434 отклонён — колено упирается в перед корпуса, кабель R60 не помещается на рычаге);WEIPU catalog;BUY;ENVELOPE;образец SP13: длина тела без гайки ESTIMATED
 H03;ПанельнаяSP13;1;WEIPUSP1312/P6-C;6male M13×1family;WEIPU catalog;BUY;NOT_MODELLED;H07
-H04;Гермоввод;1;LAPPSKINTOP53112000;M12×1.5 cable3.5–7 SW16;LAPP catalog;BUY;BOUNDARY;H03 H07
+H04;Гермоввод кабеля камеры;1;LAPPSKINTOP53112000;M12×1.5 cable3.5–7 SW16, вертикально в держателе L01b X272 Y0 (F25; было в задней полосе L01), в корпус через проход Ø8 + O-ring 16×1,5;LAPP catalog;BUY;BOUNDARY;H03 H07
 H05;Панельный задний разъём;1;WEIPUSP1712 7contact суффиксHOLD;6used+1NC;WEIPU catalog;BUY;ENVELOPE;H07 H10
 H06;Кабельный задний разъём;1;WEIPUSP1710 7contact суффиксHOLD;6used+1NC;WEIPU catalog;BUY;NOT_MODELLED;H07 H10
-H07;Основнойtether;1;6-жильный Proteus/профессиональный аналог артикулHOLD;6copper+силовой элемент no coax длинаHOLD;USER cable stock;BUY;ENVELOPE;H07 H10
+H07;Основнойtether (строка BOM H07, не HOLD H07);1;6-жильный Proteus/профессиональный аналог артикулHOLD;6copper+силовой элемент no coax длинаHOLD;USER cable stock;BUY;ENVELOPE;H07 H10
 H08;Гильза разгрузки;1;PX1 TAIL SLEEVE;OD24 ID20 L32 target;PX1;TURN;ADAPTATION;H07
 H09;Конус силового элемента;1;PX1 TAIL CONE;20→12 L30 target;PX1;TURN;ADAPTATION;H07
 H10;Внутренний разъём обслуживания;1;6way crimp pair артикулHOLD;6circuits;PX1;BUY;NOT_MODELLED;H07
 E01;Главный контроллер;1;WeActSTM32F446RET6CoreBoardV1.1;33.22×41.63×11.99;WeAct officialGithub;BUY;MANUFACTURER_STEP;H09
 E02;Драйвер тягового мотора;2;Pololu2992G2 24v13;33.02×20.32×9.575 STEPmd31a;https://www.pololu.com/product/2992/resources;BUY;MANUFACTURER_STEP;H09 H10 текущаяревизияmd31c
-E03;ВходнойDC/DC;1;CinconCQB150W110S24;43–160Vin24V6.3A 57.9×36.8×12.7;Cincon manufacturer;BUY;BODY_NO_PINS;H09 H10
+E03;ВходнойDC/DC;1;CinconCQB150W-110S24 опция -C (сквозные втулки Ø3,2);43–160Vin24V6.3A 57.9×36.8×12.7, 68 г; F20: основанием вверх под крышкой L01 через прокладку 0,5, 4×M3×18 DIN 912 в глухие резьбы крышки;Cincon manufacturer;BUY;BODY_PINS_F20;H09 H10 HOLD-P3 код опции -C подтвердить
 E04;DC/DC12V;1;Pololu5577D42V55F12;25.4×25.4×9 60Vmax;https://www.pololu.com/product/5577;BUY;BOUNDARY;H09 H10
 E05;DC/DC5V;1;Pololu5571D42V55F5;25.4×25.4×9 60Vmax;https://www.pololu.com/product/5571;BUY;BOUNDARY;H09 H10
 E06;ИзолированныйRS485;2;WaveshareTTL TO RS485(C)SKU27479;42.8×15.2×4.75;Waveshare manufacturer;BUY;1_CRAWLER_BOUNDARY_1_CCU;H09 H10
@@ -95,38 +98,66 @@ E09;Входной электролит;1;NichiconUCS2D221MHD1TN;220uF200V Ø18�
 E10;ВходнойHVпредохранитель;1;DCrated артикул/номиналHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
 E11;Защита ветвей моторов;2;DCfuse/eFuse артикул/номиналHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
 E12;Защита камеры;1;DCfuse/eFuse артикул/номиналHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
-E13;Конденсатор у драйвера;2;lowESR63V ёмкость/артикулHOLD;HOLD;Pololu installation guidance;BUY;NOT_MODELLED;H10
-E14;Защита рекуперации24V;1;ready brake shunt артикулHOLD;HOLD;PX1;BUY;NOT_MODELLED;H10
+E13;Конденсатор у драйвера;2;330 мкФ/50 В low-ESR (класс Nichicon UHE1H331MPD);Ø10×16 ESTIMATED, пульсации ≥1 А;POWER_BUDGET_F19;BUY;ENVELOPE_F20;H10 крепление (клипса/компаунд) HOLD
+E14;Тормозной шунт 24V: плата;1;компаратор 27,0/26,0 В + MOSFET, артикул HOLD;плата 30×14 + детали ≤4,5 мм, на 2 стойках M3×2,5 под крышкой;POWER_BUDGET_F19;BUY/PCB;ENVELOPE_F20;H10 HOLD-P5
 E15;Измерение тока;2;INA226 ready module шунт/артикулHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H09 H10
 E16;ИсточникCCU;1;isolated100–120VDC модельHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H10
 E17;Датчик влаги;1;электроды+ready module артикулHOLD;HOLD;existingCurrent;BUY;NOT_MODELLED;H09 H10
 E18;Крепёж плат/изоляция/теплоотвод;TBD;стойки/термопрокладкиHOLD;HOLD;PX1;BUY;NOT_MODELLED;H09
 E19;Подтяжки SLP/FLT;4;Резистор4.7kΩ выводной артикулHOLD;4.7kΩ номинал проектный;ELECTRICAL_Current;BUY;NOT_MODELLED;H09
-F01;M3×8 button;24;FIX-000-359;M3×8;DRW374 12per side;BUY;NOT_MODELLED;H02
-F02;M3×6 button;24;FIX-002-738;M3×6;DRW374 12per side;BUY;NOT_MODELLED;H02
+E20;Конденсатор у выхода Cincon;1;470 мкФ/50 В low-ESR (класс Nichicon UHE1H471MPD);Ø10×20 ESTIMATED, под крышкой у выходного ряда выводов;POWER_BUDGET_F19;BUY;ENVELOPE_F20;H10
+E21;TVS шины 24V;1;SMBJ26A (Vrwm 26 В);DO-214AA ≤5,6×3,9×2,6 CONFIRMED JEDEC;POWER_BUDGET_F19;BUY;ENVELOPE_F20;H10 HOLD-P5
+E22;Тормозной резистор;1;10 Ом 10 Вт в Al корпусе (класс Arcol HS10 / Vishay RH010);огибающая 30×16×9 ESTIMATED; на крышке через прокладку 0,5, 2×M3×8 DIN 912;POWER_BUDGET_F19;BUY;ENVELOPE_F20;H10 HOLD-P5 F19 предлагал 25 Вт — проверить импульс 73 Вт при 27 В
+E23;Термопрокладка;2;силикон 0,5 мм ~3 Вт/м·К (артикул HOLD);57,9×36,8 (Cincon) + 30×16 (резистор);F20;BUY;MODELLED_F20;HOLD-P3
+E24;Крепёж F20;1 компл.;DIN 912 M3×18 ×4, DIN 912 M3×8 ×2, стойка M3 6-гр. 2,5 мм ×2;стандарт;F20;BUY;MODELLED_F20;резьба в крышке глухая 5,3 (Cincon) / 5,0 (резистор) / 4,0 (стойки)
+F01;M3×8 button ISO7380;24;FIX-000-359;M3×8;DRW374 12per side;BUY;MODELLED_F08;H02 момент/резьба
+F02;M3×6 button ISO7380;24;FIX-002-738;M3×6;DRW374 12per side;BUY;MODELLED_F08;H02 момент/резьба
 F03;Circlip12×1;8;FIX-002-549family;12×1;DRW3746+DRW3752;BUY;NOT_MODELLED;H02
 F04;Key4×4×12;6;MSC-002-705;4×4×12;DRW374;BUY;MODELLED;H02
 F05;Key4×4×7;2;FSS-002-735;4×4×7;DRW374;BUY;NOT_MODELLED;H04
 F06;M3×10 countersunk;8;ISO10642family;M3×10;DRW386;BUY;NOT_MODELLED;H05
 F07;M5×30+springwasher;1;standard family;M5×30;DRW386;BUY;NOT_MODELLED;H05
-F08;M8×16+springwasher;2;standard family;M8×16;DRW375;BUY;NOT_MODELLED;H06
 F09;M3×6 countersunk;6;standard family;M3×6;DRW375;BUY;NOT_MODELLED;H02
 F10;Belleville washer;3;source washer;20×10.2×1.1;DRW744;BUY;NOT_MODELLED;H06
-F11;PinM6×18;1;source pin;M6×18;DRW744;BUY;NOT_MODELLED;H06
+F11;Палец газовой пружины Ø4×18 (вместо PinM6×18 FIX-002-749);2;PX1 pin D4;F25: под отверстие 4,1 проушины ACE A3,5 (штифт M6 Proteus в M3,5-проушину не входит), ESTIMATED;DRW744 + ACE;BUY/TURN;MODELLED_F25;H06
 F12;M4×8 button;6;standard family;M4×8;DRW7442+DRW7454;BUY;NOT_MODELLED;H06
-F13;M4×12cap;4;standard family;M4×12;DRW744;BUY;NOT_MODELLED;H06
+F13;M4×12 ISO 4762 A2 (основание лифта);4;FIX-000-598;M4×12 dk7 k4 s3, свинчивание 5,0 (Proteus 4,95 DERIVED): 2 в бобышки корпуса, 2 в бобышки крышки-заподлицо; глухие отверстия: резьба на 7,5 обычным метчиком (заход 2,5 ≥ 3P), перемычка 1,5 — фрезерование резьбы не требуется;DRW744 поз.14;BUY;MODELLED_F25;H06 момент затяжки/фиксатор резьбы
 F14;Circlip8×0.8;4;standard family;8×0.8;DRW744;BUY;NOT_MODELLED;H06
 F15;M10thin nut;2;ISO4035M10;M10;DRW744;BUY;NOT_MODELLED;H06
 F16;Circlip6×0.7;1;standard family;6×0.7;DRW744;BUY;NOT_MODELLED;H06
-F17;Shim;2;source shim;8×12×0.4;DRW744;BUY;NOT_MODELLED;H06
-F18;Shim;2;source shim;8×12×0.25;DRW744;BUY;NOT_MODELLED;H06
+F17;Латунная шайба 0,4 (D);2;FBR-002-750;Ø8,1×13×0,4 ESTIMATED (толщина по спецификации 744);DRW744;BUY;MODELLED_F25;H06
+F18;Латунная шайба 0,25 (B);2;FBR-002-751;Ø8,1×13×0,25 ESTIMATED (толщина по спецификации 744);DRW744;BUY;MODELLED_F25;H06
 F19;M3×16 button;2;standard family;M3×16;DRW745;BUY;NOT_MODELLED;H03
 F20;M3×8 countersunk;2;standard family;M3×8;DRW745;BUY;NOT_MODELLED;H03
-F21;Gas spring washer;2;source washer;HOLD;DRW744;BUY;NOT_MODELLED;H06
-F22;Wheelquick-lock;6;OEMQRWmechanism;HOLD;MiniCamcatalog;BUY;PROXY_BOLT_ONLY;H01 комплектколесаP03
-PR01;Защита жгута для примерки;1;PX1_Lift_Harness_Guard_PROTOTYPE.stl;OD9 ID6.4 L12;currentmaster;PRINT;DESIGN;FIT_CHECK_ONLY
+F21;Gas spring washer;2;FSS-002-078;HOLD;DRW744;BUY;NOT_MODELLED;H06
+F22;Замок колеса ASS-002-103 (сборка);6;Mini-Cam ASS-002-103 Crawler Wheel Bolt - ASSY;см. F22a-d;ASS-002-103;BUY/TURN;MODELLED_F13;H01 карман ступицы и угол поворота ESTIMATED
+F22a;Диск-кулачок колеса;6;FSS-002-065 WHEEL DISK нерж.;фланец 6,0 R8,27 e0,51 лыска 7,11, хвостовик Ø10,4×2,6;ASS-002-103 A-A 2:1;TURN+MILL;DERIVED;H01
+F22b;Винт M6×14 ISO 7380 A2;6;FIX-002-105;M6×14 dk10,5 k3,3 s4;ASS-002-103;BUY;MODELLED_F13;стандарт
+F22c;Шайба пружинная M6 A2 (Schnorr);6;FIX-002-104;Ø6,4/Ø10;ASS-002-103;BUY;MODELLED_F13;размер D DERIVED
+F22d;Кольцо 10×1,8;6;SEA-002-106;ID10 CS1,8;ASS-002-103;BUY;MODELLED_F13;материал не указан
+F25;M4×10 ISO 7380 A2 (крышка L01, спереди);2;standard;свинчивание 3,0, глухая резьба 5,5 в бобышке корпуса;F25;BUY;MODELLED_F25;H03
+F26;M3×12 ISO 7380 A2 (держатель L01b);2;standard;в пилотные отверстия рельс корпуса X284 Y±30,5;F25;BUY;MODELLED_F25;H03
+PR01;Клипса жгута на рычаге (кабель скользит);2;PX1_Lift_Harness_Clip_PROTOTYPE.stl;OD9 ID5.7 L12, открытый профиль, F25: X90 и X190 на пластине рычага (S-петля X96,5…183,5);currentmaster F21/F25;PRINT;DESIGN;FIT_CHECK_ONLY
+PR05;Направляющая изгиба кабеля на вводе M12;1;PX1_Camera_Cable_Bend_Guide_R17_PROTOTYPE.stl;дуга R17 (≥3×D) 75°, трубка Ø8,4/Ø5,7 + шайба Ø17,6 на торце Skintop;currentmaster F21;PRINT;DESIGN;FIT_CHECK_ONLY
+PR06;Литой хвостовик SP13 (выход кабеля камеры);1;PX1_SP13_POTTED_BEND_TAIL_R17_LAPP_CAMERA_EXIT;гильза R10,5 на теле SP13 + оболочка r4,2 вдоль изгиба R17 (≥3×D 16,2) 70°, печать PA12 + заливка ПУ, ESTIMATED;currentmaster F23;PRINT+POTTING;MODELLED_F23;FIT_CHECK_ONLY, заливка/адгезия к SP13 и LAPP не проверены
+PR07;Сервисный разъём кабеля камеры внутри корпуса;1;6-pin wire-to-wire 2,0 мм (класс JST PH/PHD);габарит в сборе 16,5×7×10 ESTIMATED, X205,6…222,1 Y−21,5 Z65 у платы STM32 под проёмом, вне зоны извлечения моторов; разделка LAPP: термоусадка+заливка r3,4×8, пучок 6×0,25 Ø3,0 R9;currentmaster F23;BUY;MODELLED_F23_ENVELOPE;артикул HOLD, провода на RS485/12 В/балун HOLD
 PR02;Макет держателя моторов;1;PX1_Motor_Holder_FitCheck_ONLY.stl;52.8×30×3;M08;PRINT;DESIGN;FIT_CHECK_ONLY
-PR03;МакетPRESSUREкрышки;1;PX1_PRESSURE_Cover_FitCheck_ONLY.stl;158×53×7;L01;PRINT;DESIGN;FIT_CHECK_ONLY
+PR03;Макет PRESSURE-крышки;1;PX1_PRESSURE_Cover_FitCheck_ONLY.stl;F25: 151×52,9×16 (пробка, площадка, бобышки M4);L01;PRINT;DESIGN;FIT_CHECK_ONLY
 PR04;Макет боковой крышки;1;PX1_Side_Cover_FitCheck_ONLY.stl;262×60×7;M02;PRINT;DESIGN;FIT_CHECK_ONLY
 M04C;Средняя короткая ось;2;PX1 middle axle;X150 absY26.8..60.9 stepped12/17/18 HOLD;integrated CAD estimate;TURN;ESTIMATED;H02 strength/retention unqualified
-L17;Палец проушины газовой пружины;1;PX1 gas clevis pin;D4 L11;integrated CAD estimate;TURN;ESTIMATED;H06 retention/load unqualified
+L17;Пальцы газовой пружины;2;FIX-002-749 M6×18 + верхний палец;Ø6;DRW744 F18;TURN;MODELLED_F18;H06 фиксация
+L18;Тарельчатые пружины DIN 2093;3;FIX-002-726;20×10,2×1,1 CONFIRMED;DRW744 F18;BUY;MODELLED_F18;стандарт
+L19;Гайка M10 ISO 4035;2;FIX-002-725;s17 m5 CONFIRMED;DRW744 F18;BUY;MODELLED_F18;стандарт
+L20;Ось рычага верхняя (C);1;FSS-002-076;F24: Ø7,05 DERIVED (752 A-A), длина 46,0 через вилку, щёки и хребет, 2×DIN 471 7×0,8 в выточках Ø11×1 ESTIMATED;DRW752 F24;TURN;MODELLED_F24;H06
+L21;Стопорное кольцо камеры;1;FSS-001-889;F24: конус Ø48,64→35,81 × 22,99, отверстие Ø34,16 DERIVED; пленённое, M5 с цапфой в канавке хвостовика ESTIMATED;DRW752 F24;TURN;MODELLED_F24;H06 резьба к камере GAP
+L22;Винт стопорного кольца;1;FSS-001-891;радиально на осевом 11, M5 класс ESTIMATED;DRW752 F24;TURN;MODELLED_F24;H06
+L23;Установочный винт с цапфой M5×6;1;FIX-001-892;M5×6 dog point, цапфа Ø3,5 в канавку 3,7 ESTIMATED;DRW752 F24;BUY;MODELLED_F24;стандарт
+L24;Задняя крышка корпуса лифта;1;FAL-002-081;45,02×40,9×1,72 DERIVED; проход литого хвостовика кабеля на месте ввода M12 752; кольцо 38×1,5 (C20) не смоделировано;DRW752 F24;MILL;MODELLED_F24;H06 H08
+L25;Винты крышки M3×8 CSK Torx;4;FIX-002-517;шаг (|Y|19,69 +14,51) / (|Y|17,53 −19,47) DERIVED;DRW752 F24;BUY;MODELLED_F24;стандарт
+L26;Окно подсветки;1;FAL-002-080;18,2×27,6, верх +39 DERIVED; кольцо 21×1,5; применение в PX1 HOLD;DRW752 F24;MILL;MODELLED_F24;H06 свет PX1
+L27;Стопорные кольца DIN 471;2+2;7×0,8 (ось C) / 8×0,8 (пальцы D, список 744);ESTIMATED;DRW744 DRW752 F24;BUY;MODELLED_F24;стандарт
+M20;Грузовая плита (нерж.);1;FSS-002-060;50.3×12×247.5, 2 цековки Ø15 (перемычка 4) + Ø8,4;DRW375 A-A 1:1, вид сбоку 1:1;MILL;MODELLED_F14;H02 длина ESTIMATED, крепление 2×M8 смоделировано (F14), винт №2 ESTIMATED
+F23;Винт M8×16 DIN 7984 A2 (низкая головка);2;FIX-002-764;M8×16 dk13 k5 s5;DRW375 поз.15;BUY;MODELLED_F14;стандарт, свинчивание 10,0 мм, объединено с бывшей строкой F08 (2026-11-20)
+F24;Шайба пружинная M8 A2;2;FIX-002-741;DIN 127 B Ø8,1/Ø14,8×2,0;DRW375 поз.16;BUY;MODELLED_F14;стандарт
+M21;Балластные блоки;6;PX1-BALLAST-F17;≈93,8 см³ всего (F14: блок 5 разрезан на 5+6), BALLAST_BOXES;F17 free-space search;MILL;MODELLED_F17;материал СТАЛЬ (решение пользователя 2026-11-19), крепление HOLD
+P03b;Ступица колеса Al;6;QRW90 hub ESTIMATED;r22 inside D90 tyre;Mini-Cam ASS-004-496 view;TURN;MODELLED_F17;H01 карман под диск ASS-002-103 Ø20,4 ESTIMATED
