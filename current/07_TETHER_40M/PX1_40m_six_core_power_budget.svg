@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520">
+<rect width="960" height="520" fill="#f8fafc"/>
+<text x="32" y="42" font-family="Arial,sans-serif" font-size="25" font-weight="bold" fill="#172033">PX1 | 40 m six-core copper tether</text>
+<text x="32" y="66" font-family="Arial,sans-serif" font-size="14" fill="#475569">PRELIMINARY ELECTRICAL SCHEMATIC — DESIGN ASSUMPTIONS, NOT CABLE TEST</text>
+<rect x="38" y="111" width="160" height="225" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<rect x="760" y="111" width="160" height="225" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="58" y="143" font-family="Arial" font-size="18" font-weight="bold">Console / reel</text>
+<text x="783" y="143" font-family="Arial" font-size="18" font-weight="bold">PX1 robot</text>
+<text x="56" y="170" font-family="Arial" font-size="13">24 V assumed</text>
+<text x="780" y="170" font-family="Arial" font-size="13">DC/DC + drives</text>
+<text x="56" y="195" font-family="Arial" font-size="13">RS485 transceiver</text>
+<text x="780" y="195" font-family="Arial" font-size="13">RS485 MCU</text>
+<text x="56" y="219" font-family="Arial" font-size="13">CVBS input</text>
+<text x="780" y="219" font-family="Arial" font-size="13">CVBS camera</text>
+<text x="230" y="108" font-family="Arial" font-size="15" font-weight="bold">Six independent conductors, 40 m</text>
+<g stroke-width="4" fill="none"><path d="M198 145 H760" stroke="#dc2626"/><path d="M198 178 H760" stroke="#334155"/><path d="M198 211 H760" stroke="#2563eb"/><path d="M198 244 H760" stroke="#60a5fa"/><path d="M198 277 H760" stroke="#d97706"/><path d="M198 310 H760" stroke="#ca8a04"/></g>
+<g font-family="Arial" font-size="13" fill="#0f172a"><text x="407" y="138">1: +24 V</text><text x="407" y="171">2: power return</text><text x="407" y="204">3: RS485 A</text><text x="407" y="237">4: RS485 B</text><text x="407" y="270">5: CVBS signal</text><text x="407" y="303">6: CVBS return</text></g>
+<text x="38" y="369" font-family="Arial" font-size="17" font-weight="bold">DC voltage-drop example, 24 V source, copper at assumed 20 °C</text>
+<text x="38" y="397" font-family="Arial" font-size="15">0.50 mm²: Rloop = 2.80 Ω; at 2 A: ΔV = 5.60 V; load = 18.40 V  → FAIL 20 V target</text>
+<text x="38" y="425" font-family="Arial" font-size="15">0.75 mm²: Rloop = 1.87 Ω; at 2 A: ΔV = 3.73 V; load = 20.27 V  → PASS voltage only</text>
+<text x="38" y="453" font-family="Arial" font-size="15">1.00 mm²: Rloop = 1.40 Ω; at 2 A: ΔV = 2.80 V; load = 21.20 V  → PASS voltage only</text>
+<text x="38" y="489" font-family="Arial" font-size="14" fill="#b91c1c">NOT_RUN: RS485 bit-error/EMC, CVBS image quality/reflections; PHYSICAL_CHECK: cable heating</text>
+</svg>
