@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="440" viewBox="0 0 1080 440">
+<rect width="1080" height="440" fill="#f8fafc"/>
+<text x="35" y="40" font-family="sans-serif" font-size="23">PX1 CURRENT MASTER | DRW-002-374 side cover interface</text>
+<text x="35" y="65" font-family="sans-serif" font-size="14">2D coordinate audit, NOT CAD render. Units: mm. Design status: unqualified.</text>
+<rect x="85" y="135" width="786" height="180" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<circle cx="103" cy="297" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="103" cy="153" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="253" cy="297" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="253" cy="153" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="403" cy="297" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="403" cy="153" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="553" cy="297" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="553" cy="153" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="703" cy="297" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="703" cy="153" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="853" cy="297" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<circle cx="853" cy="153" r="9.75" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<line x1="178" y1="117" x2="178" y2="333" stroke="#64748b" stroke-dasharray="5,4"/>
+<text x="158" y="353" font-size="13" font-family="sans-serif">X50</text>
+<line x1="478" y1="117" x2="478" y2="333" stroke="#64748b" stroke-dasharray="5,4"/>
+<text x="458" y="353" font-size="13" font-family="sans-serif">X150</text>
+<line x1="778" y1="117" x2="778" y2="333" stroke="#64748b" stroke-dasharray="5,4"/>
+<text x="758" y="353" font-size="13" font-family="sans-serif">X250</text>
+<text x="85" y="385" font-family="sans-serif" font-size="15">Cover 262 x 60 x 7; 12 M3 positions per side, 24 total</text>
+<text x="85" y="410" font-family="sans-serif" font-size="15">Min nominal head-to-outer-edge clearance: 2.75 mm; seal path not shown</text>
+</svg>
