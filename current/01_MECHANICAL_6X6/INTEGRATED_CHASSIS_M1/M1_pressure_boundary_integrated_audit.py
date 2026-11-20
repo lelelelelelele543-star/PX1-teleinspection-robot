@@ -35,6 +35,6 @@ def audit(p):
 if __name__=="__main__":
     r=audit(P)
     target=Path(__file__).with_suffix(".json")
-    target.write_text(json.dumps(r,indent=2,ensure_ascii=False)+"\\n",encoding="utf-8")
+    target.write_text(json.dumps(r,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(json.dumps(r,indent=2,ensure_ascii=False))
     if "FAIL" in r["checks"].values(): raise SystemExit(2)
