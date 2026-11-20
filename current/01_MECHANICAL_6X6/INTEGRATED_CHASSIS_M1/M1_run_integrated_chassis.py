@@ -1,36 +1,65 @@
-"""PX1 M1: single-command FreeCAD integration runner, source-only until executed.
-FreeCADCmd M1_run_integrated_chassis.py
-Reuses existing chassis and keyed-interface generators; no invented STEP outputs.
+"""PX1 M1 integrated FreeCAD runner: validates fresh CAD and STEP roundtrip.
+Run: FreeCADCmd M1_run_integrated_chassis.py
+No manufacturing qualification; geometry and hardware assumptions remain unverified.
 """
 from pathlib import Path
-import runpy, json, sys, traceback
+import runpy, json, sys, traceback, time
 ROOT=Path(__file__).resolve().parent
 STAGES=[
- ("base","PX1_Integrated_6x6_M1_interface_repair.py",["PX1_Integrated_6x6_M1.FCStd","PX1_Integrated_6x6_M1.step"]),
- ("keyed","M1_integrated_keyed_interfaces.py",["PX1_Integrated_6x6_M1_keyed.FCStd","PX1_Integrated_6x6_M1_keyed.step"]),
+ ("base","PX1_Integrated_6x6_M1_interface_repair.py",
+  ["PX1_Integrated_6x6_M1.FCStd","PX1_Integrated_6x6_M1.step"]),
+ ("keyed","M1_integrated_keyed_interfaces.py",
+  ["PX1_Integrated_6x6_M1_keyed.FCStd","PX1_Integrated_6x6_M1_keyed.step"]),
 ]
-report={"status":"NOT_RUN","stages":[],"design_assumptions":["10 mm shafts and bores","3x3 mm rectangular keys, NOT standard-qualified","m1 Z50 gear teeth","motor and seal packaging unqualified"],"physical_checks":["dynamic shaft sealing at 0.4-0.7 bar","key torque and retention","bearing fits","bevel contact"]}
+report={"status":"NOT_RUN","stages":[],"design_assumptions":[
+ "10 mm shaft/bores","3x3 mm rectangular keys (not standard-qualified)",
+ "module 1 Z50 involute design","motor, bearing and pressure-seal packaging unqualified"],
+ "physical_checks":["0.4-0.7 bar dynamic shaft seals","key torque and retention",
+ "bearing fits and loads","bevel tooth contact and lubrication"],
+ "not_run":["full motion collision sweep","load-bearing tooth stress",
+ "pressure qualification"]}
+def verify_step(path):
+ import Part
+ shape=Part.read(str(path))
+ if shape.isNull() or not shape.Solids:
+  raise ValueError("STEP reimport produced null shape or zero solids")
+ solids=shape.Solids
+ invalid=[i for i,s in enumerate(solids) if not s.isValid() or s.Volume<=0]
+ if invalid: raise ValueError("Invalid/nonpositive STEP solids: "+str(invalid[:12]))
+ return {"solids":len(solids),"volume_mm3":round(sum(s.Volume for s in solids),3)}
 for name,script,outputs in STAGES:
-    stage={"name":name,"script":script,"status":"NOT_RUN","outputs":[]}
-    report["stages"].append(stage)
-    try:
-        if not (ROOT/script).is_file(): raise FileNotFoundError(script)
-        runpy.run_path(str(ROOT/script),run_name="__main__")
-        for fn in outputs:
-            f=ROOT/fn
-            if not f.is_file() or f.stat().st_size<1024:
-                raise RuntimeError("missing or empty output "+fn)
-            stage["outputs"].append({"name":fn,"bytes":f.stat().st_size})
-        stage["status"]="PASS"
-    except Exception as exc:
-        stage["status"]="FAIL"
-        stage["error"]=str(exc)
-        report["status"]="FAIL"
-        traceback.print_exc()
-        break
+ stage={"name":name,"script":script,"status":"NOT_RUN","outputs":[]}
+ report["stages"].append(stage)
+ try:
+  if not (ROOT/script).is_file(): raise FileNotFoundError(script)
+  # Never mistake stale artifacts from an earlier successful run for new results.
+  for fn in outputs:
+   p=ROOT/fn
+   if p.exists(): p.unlink()
+  started=time.time()
+  runpy.run_path(str(ROOT/script),run_name="__main__")
+  for fn in outputs:
+   p=ROOT/fn
+   if not p.is_file() or p.stat().st_size<1024:
+    raise RuntimeError("Missing/empty output: "+fn)
+   if p.stat().st_mtime < started-2:
+    raise RuntimeError("Output predates this run: "+fn)
+   item={"name":fn,"bytes":p.stat().st_size}
+   if fn.lower().endswith(".step"): item["roundtrip"]=verify_step(p)
+   stage["outputs"].append(item)
+  stage["status"]="PASS"
+ except Exception as exc:
+  stage["status"]="FAIL"
+  stage["error"]=str(exc)
+  report["status"]="FAIL"
+  traceback.print_exc()
+  break
 else:
-    report["status"]="PASS"
-report["not_run"]=["3D collision sweep","gear motion under load","pressure qualification","STEP keyed assembly roundtrip"]
-(ROOT/"M1_run_integrated_chassis_result.json").write_text(json.dumps(report,indent=2),encoding="utf-8")
-print(json.dumps(report,indent=2))
-if report["status"]!="PASS":sys.exit(2)
+ report["status"]="PASS"
+report["limitations"]=[
+ "STEP validity does not prove mating fits, zero collisions or correct gear kinematics",
+ "A keyed STEP is not qualified for fabrication without mechanical and pressure checks"]
+(ROOT/"M1_run_integrated_chassis_result.json").write_text(
+ json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
+print(json.dumps(report,ensure_ascii=False,indent=2))
+if report["status"]!="PASS": sys.exit(2)
