@@ -5,7 +5,8 @@ The master is parsed with ``ast`` (tools/drawing_measure/check_master_vs_drawing
 never imported or executed. Checks:
   * camera axis height folded / raised vs CRP150 catalogue 70..257 mm (+-5), CONFIRMED range;
   * parallelogram closure (model exact; drawing AC/BD/AB/CD spread reported);
-  * gas spring eye-to-eye over 0..theta_max within ACE bare limits;
+  * gas spring over 0..theta_max: bare length (eye-to-eye minus the two ACE A3,5 eyes) within the ACE catalogue
+    compressed..extended range with ACE_MARGIN at both ends (F25);
   * swept 2-D clearance (XZ) of the translating camera/lift-housing group against the
     crawler housing + service cover (Y overlap assumed, conservative);
   * informative: spring vs gravity moment about A (masses ESTIMATED);
@@ -249,13 +250,13 @@ def option_a(m):
 
 def drw752_check(m, A, B, C, D):
     """F24: DRW-002-752 lift housing. (1) CD of 752 (C, D in the housing, 1:1) vs AB of 744 (parallelogram consistency);
-    (2) model D vs 752 D carried by the PX1 yoke (752 pattern + LH_PIVOT_SHIFT); (3) camera axis below C;
+    (2) model D vs 752 D (F25: 752 pivots used directly, no PX1 yoke); (3) camera axis below C;
     (4) the fixed cable riser / clamp P vs the C axle FSS-002-076 (Ø7.05, through) and the D blind taps (|Y| >= W/2 - 8):
     3-D clearance >= 1 mm (riser runs in Y0; XZ distance used for the through C axle, Y gap for the D taps)."""
     c752, d752 = m['LH752_C'], m['LH752_D']; ab = m['LIFT_AB']
     cd = (c752[0] - d752[0], c752[1] - d752[1]); cd_len = math.hypot(*cd); ab_len = math.hypot(*ab)
     ang_752 = math.degrees(math.atan2(cd[1], cd[0])); ang_744 = math.degrees(math.atan2(-ab[1], ab[0]))
-    x0, cz = m['LH_X0'], m['CAM_Z']; sh = m['LH_PIVOT_SHIFT']
+    x0, cz = m['LH_X0'], m['CAM_Z']; sh = (0.0, 0.0)          # F25: no PX1 yoke, 752 pivots used directly
     d_752_px1 = (x0 + d752[0] + sh[0], cz + d752[1] + sh[1]); c_752_px1 = (x0 + c752[0] + sh[0], cz + c752[1] + sh[1])
     d_dev = math.dist(d_752_px1, D); c_dev = math.dist(c_752_px1, C)
     route = m['HARNESS_ROUTE']; iP = m['HARNESS_SEG_P']; r_cab = m['HARNESS_OD']/2; r_tail = r_cab + m['HARNESS_TAIL_WALL']
@@ -269,7 +270,7 @@ def drw752_check(m, A, B, C, D):
     checks = {
         'drw752_cd_equals_744_ab_within_0p5': abs(cd_len - ab_len) <= 0.5,
         'drw752_cd_direction_within_1deg_of_744_ab': abs(ang_752 - ang_744) <= 1.0,
-        'px1_yoke_d_on_752_pattern_within_0p6': d_dev <= 0.6 and c_dev <= 1e-6,
+        'd_on_752_pattern_within_0p6_c_exact': d_dev <= 0.6 and c_dev <= 1e-6,
         'riser_clear_of_c_axle_ge_1': c_xz >= 1.0,
         'riser_clear_of_d_taps_ge_1': d_y_gap >= 1.0 or d_xz >= 1.0,
     }
@@ -278,7 +279,7 @@ def drw752_check(m, A, B, C, D):
                              'angle_752_deg': round(ang_752, 2), 'angle_744_deg': round(ang_744, 2),
                              'note': 'parallelogram kept exact on 744 (AB = CD); 752 differs by the listed angle -> camera tilt '
                                      '<= that angle if 752 were used literally (within 744 1:1.5 reading +-0.3 mm)'},
-        'd_model_vs_752_shifted_mm': round(d_dev, 3), 'pivot_shift_px1_mm': [round(v, 3) for v in sh],
+        'd_model_vs_752_mm': round(d_dev, 3), 'c_model_vs_752_mm': round(c_dev, 6), 'pivot_shift_px1_mm': [0.0, 0.0],
         'camera_axis_below_c': {'drw752_mm': c752[1], 'px1_mm': round(m['LIFT_A_Z'] - cz, 3),
                                 'px1_folded_if_752_literal_mm': round(folded_752, 2),
                                 'proteus_folded_752_literal_mm': round(proteus_A_z - c752[1], 2),
@@ -304,6 +305,7 @@ def main():
     tmax = m['LIFT_THETA_MAX']; lo_cat, hi_cat = m['LIFT_CAT_RANGE']
     ab, E, G = m['LIFT_AB'], m['LIFT_GAS_E'], m['LIFT_GAS_G']
     lo, hi = m['ACE_EXTENDED'] - m['ACE_STROKE'], m['ACE_EXTENDED']
+    fit, gmar = 2*m['ACE_EYE_L'], m['ACE_MARGIN']
     # Points (PX1 X, Z) in folded state.
     A = (AX, AZ); B = (AX - ab[0], AZ + ab[1]); C = (AX - L, AZ); D = (B[0] - L, B[1])
     para = {'AC': math.dist(A, C), 'BD': math.dist(B, D), 'AB': math.dist(A, B), 'CD': math.dist(C, D)}
@@ -330,16 +332,15 @@ def main():
     # Translating group rectangles (X0, Z0, X1, Z1) at theta=0, from master geometry constants.
     cam_rear = m['CAM_REAR_X']; cam_l, cam_w, cam_h = m['CAM026_ENVELOPE']; cz0 = m['CAM_Z']
     x0 = m['LH_X0']; bx = m['LH752_BODY_X']; zb, zt, zl = (cz0 + v for v in m['LH752_Z']); la, ll, _ = m['LH752_LIGHT']
-    lug_x0 = x0 + la + ll/2 + .1
     group = {'camera_CAM026': (cam_rear - cam_l, cz0 - cam_h/2, cam_rear, cz0 + cam_h/2),            # F24: DRW-002-752 parts
              'lock_ring_FSS001889': (x0, cz0 - m['LH752_LOCK'][0]/2, x0 + m['LH752_LOCK'][2], cz0 + m['LH752_LOCK'][0]/2),
              'housing_body_and_lift_cover': (x0 + bx[0], zb, x0 + bx[2], zt),
              'light_cover_FAL002080': (x0 + la - ll/2, zt, x0 + la + ll/2, zl),
-             'px1_yoke_D': (x0 + bx[1] - .5, m['LH_YOKE_Z0'], m['LH_YOKE_X1'], D[1] + 7.6),
-             'px1_yoke_C_lugs': (lug_x0, m['LH_YOKE_Z0'], C[0] + 7.0, C[1] + 7.0),
-             'px1_cable_spine': (lug_x0, 91.0, C[0] + 7.1, 112.0)}
+             'fork_lugs_C_752': (x0 + bx[1] - .5, m['LH_LUG_Z0'], x0 + m['LH752_FORK'][2], C[1] + 7.0),
+             'px1_cable_spine': (x0 + bx[1] - .5, m['LH_LUG_Z0'], C[0] + 7.1, AZ + 7.1)}
     obstacles = {'crawler_housing': (18.0, 11.0, 296.0, 75.0),
-                 'service_cover': (m['SERVICE_CX'] - m['SERVICE_L']/2, 75.0, m['SERVICE_CX'] + m['SERVICE_L']/2, 82.0)}
+                 'service_cover_pad': (m['SERVICE_CX'] - m['SERVICE_L']/2, 75.0, m['SERVICE_CX'] + m['SERVICE_L']/2, 75.0 + m['SERVICE_T']),
+                 'fitting_holder': (m['HOLDER_X'][0], 75.0, m['HOLDER_X'][1], 75.0 + m['HOLDER_T'])}
     worst = {}
     for s in samples:
         t = math.radians(s['theta_deg']); dx = L*(1 - math.cos(t)); dz = L*math.sin(t)
@@ -364,7 +365,7 @@ def main():
         'camera_axis_raised_257pm5': abs(cam_max - hi_cat) <= TOL_HEIGHT,
         'parallelogram_model_exact': model_err <= 1e-6,
         'parallelogram_drawing_spread_le_0p5': drawing_err <= 0.5,
-        'gas_spring_within_ACE_bare_limits': all(lo <= x <= hi for x in gas),
+        'gas_spring_bare_within_ACE_stroke_with_margin': all(lo + gmar <= x - fit <= hi - gmar for x in gas),
         'gas_spring_pushes_up_when_raising': gas[-1] > gas[0],
         'swept_group_clear_of_housing_and_cover': swept_ok,
         **hchecks,
@@ -373,15 +374,19 @@ def main():
     report = {
         'status': 'PASS' if all(checks.values()) else 'FAIL', 'checks': checks,
         'basis': 'CRP150 catalogue manual lift 70..257 mm read as camera-axis height above the floor/pipe invert (CONFIRMED range, '
-                 'interpretation ESTIMATED); theta_max = asin(187/200.1) DERIVED; lever 200.1 / base 40.2 DERIVED (DRW-002-744).',
+                 'interpretation ESTIMATED); theta_max 69 deg (stop ESTIMATED); lever 200.1 / base 40.2 DERIVED (DRW-002-744).',
         'points_folded_mm': {'A': A, 'B': B, 'C': C, 'D': D, 'E': (AX - E[0], AZ + E[1]), 'G': (AX - G[0], AZ + G[1])},
         'parallelogram_model_mm': para, 'parallelogram_drawing_mm': DRAWING,
         'parallelogram_error_mm': {'model': model_err, 'drawing_spread': drawing_err},
         'camera_axis_mm': {'folded': cam0, 'raised': cam_max, 'theta_max_deg': tmax, 'catalogue': [lo_cat, hi_cat],
                            'raised_camera_shift_rearward_mm': L*(1 - math.cos(math.radians(tmax)))},
-        'gas_spring': {'model': 'ACE GS-12-80-V4A', 'bare_limits_mm': [lo, hi], 'min_mm': min(gas), 'max_mm': max(gas),
-                       'used_travel_mm': max(gas) - min(gas), 'margin_to_compressed_mm': min(gas) - lo,
-                       'margin_to_extended_mm': hi - max(gas),
+        'gas_spring': {'model': 'ACE GS-12-60-V4A + 2x A3,5-V4A eye', 'bare_limits_mm': [lo, hi], 'eye_fittings_mm': fit,
+                       'required_margin_mm': gmar, 'eye_to_eye_min_mm': min(gas), 'eye_to_eye_max_mm': max(gas),
+                       'min_mm': min(gas) - fit, 'max_mm': max(gas) - fit,
+                       'used_travel_mm': max(gas) - min(gas), 'margin_to_compressed_mm': min(gas) - fit - lo,
+                       'margin_to_extended_mm': hi - (max(gas) - fit),
+                       'f18_f24_note': 'GS-12-80 (112..192) compared eye-to-eye 119.3/138.8 with the bare length: with the eyes the '
+                                       'bare length is 103.3..122.8 < 112 -> GS-12-80 would be blocked; GS-12-60 selected (F25)',
                        'lever_arm_about_A_mm': {'folded': arm(0), 'raised': arm(math.radians(tmax))},
                        'spring_moment_Nm_at_150N': {'folded': .150*arm(0), 'raised': .150*arm(math.radians(tmax))},
                        'gravity_moment_Nm_folded_ESTIMATED': grav0,
@@ -391,6 +396,7 @@ def main():
         'camera_harness_F21': harness,
         'lift_housing_DRW002752_F24': h752['report'],
         'folded_height_top_of_lever_mm': AZ + 9.0,
+        'folded_height_top_of_light_window_mm': cz0 + m['LH752_Z'][2], 'folded_camera_top_mm': cz0 + cam_h/2,
         'samples': samples,
         'limits': 'Planar XZ screen of rectangles; Y-separated parts (front wheels, Y>=42.5 vs camera +-37) not tested here. '
                   'Static 3-D collisions of the folded state are in the CAD build. Stops, end-fitting lengths and real balancing are HOLD.',
@@ -399,11 +405,12 @@ def main():
     if args.out:
         args.out.write_text(text + '\n', encoding='utf-8')
     short = {k: report[k] for k in ('status', 'checks', 'camera_axis_mm', 'parallelogram_error_mm')}
-    short['gas_spring'] = {k: report['gas_spring'][k] for k in ('min_mm', 'max_mm', 'bare_limits_mm', 'spring_moment_Nm_at_150N', 'gravity_moment_Nm_folded_ESTIMATED')}
+    short['gas_spring'] = {k: report['gas_spring'][k] for k in ('min_mm', 'max_mm', 'bare_limits_mm', 'margin_to_compressed_mm',
+                                                               'margin_to_extended_mm', 'spring_moment_Nm_at_150N', 'gravity_moment_Nm_folded_ESTIMATED')}
     short['swept_min_clearance_mm'] = min(v['clearance_mm'] for v in worst.values())
     short['camera_harness_F21'] = {k: harness[k] for k in ('modeled_route_length_mm', 'need_mm', 'need_increase_max_mm',
                                                             'need_change_at_theta_max_mm', 'slack_mm', 'margin_mm', 'bend_radii_mm')}
-    short['lift_housing_F24'] = {k: h752['report'][k] for k in ('cd_752_vs_ab_744', 'd_model_vs_752_shifted_mm', 'riser_to_pivots')}
+    short['lift_housing_F24'] = {k: h752['report'][k] for k in ('cd_752_vs_ab_744', 'd_model_vs_752_mm', 'riser_to_pivots')}
     short['camera_exit_F23'] = {'chosen': harness['camera_exit_F23']['chosen'],
                                 'tail_clearance': harness['camera_exit_F23']['option_b_tail_clearance'],
                                 'option_a_verdict': harness['camera_exit_F23']['option_a_right_angle_m12']['verdict']}

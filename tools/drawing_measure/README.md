@@ -8,8 +8,10 @@
 ```
 python3 tools/drawing_measure/check_master_vs_drawings.py            # отчёт в _cloud_build/drawing_check.json
 python3 tools/drawing_measure/check_master_vs_drawings.py --quiet    # только FAIL/SKIP
-python3 tools/drawing_measure/check_master_vs_drawings.py --master <файл> --out <json>
+python3 tools/drawing_measure/check_master_vs_drawings.py --master <файл> --out <json> --registry <component_registry.json>
 ```
+Проверки вида `registry` (F25) читают собранную модель `_cloud_build/component_registry.json` (габариты реальных тел),
+поэтому запускать после `build_current.sh`; нет реестра — эти проверки FAIL.
 Код выхода 0 — нет ни одного FAIL. CadQuery не нужен: мастер не импортируется и не исполняется,
 верхнеуровневые присваивания разбираются через `ast` и вычисляются ограниченным вычислителем
 (литералы, арифметика, уже вычисленные имена, `math.*`).
@@ -19,7 +21,11 @@ python3 tools/drawing_measure/check_master_vs_drawings.py --master <файл> --
   (или `min` вместо `expected` для односторонней проверки).
 - `derived_checks`: расчётные проверки — длина дорожки бокового кольца 190×1,5 (та же конструкция дуг,
   что в `lobed_seal_face`, растяжение 0…+3 %), сжатие/заполнение канавок, зазор шины в DN150
-  (вершинная оценка из `scripts/cloud/check_pipe_pose.py`), ширина по колёсам 133, зад мотора ≥ сервисного окна.
+  (вершинная оценка из `scripts/cloud/check_pipe_pose.py`), зад мотора ≥ сервисного окна.
+- `kind: registry` (F25): метрика по рамкам тел собранной модели — `width_y` (2·max|Y|), `max_z`, `min_z`, `center_z`, `dx`;
+  фильтры `include` / `exclude` (подстроки имени), `categories`; `minus` — выражение над константами. Так проверяются
+  габарит по ширине 133, высота в сложенном положении, ось камеры, посадка 61903 — независимо от констант мастера.
+  Тавтологии (константа против самой себя) в таблицу не добавлять.
 
 Метки: **CONFIRMED** — выноска чертежа, спецификация, каталог, требование проекта; **DERIVED** — снято
 с масштабного вида или вычислено; **ESTIMATED** — инженерное решение. Нет константы: CONFIRMED → FAIL,

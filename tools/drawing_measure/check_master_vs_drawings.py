@@ -6,6 +6,9 @@ Top-level assignments are parsed with ``ast`` and evaluated with a restricted
 evaluator (literals, arithmetic, names already evaluated, math.*, len/min/max/abs).
 Anything that cannot be evaluated is simply absent.
 
+Derived checks of kind ``registry`` read the built component registry (default _cloud_build/component_registry.json,
+option --registry): real solid bounding boxes, independent of the master constants (F25).
+
 Reference table: drawing_reference.json (same folder). Tags:
   CONFIRMED  - drawing callout / spec / catalogue / project requirement
   DERIVED    - measured from a scaled view or computed
@@ -146,8 +149,47 @@ def tyre_gap(env):
     return g, {'worst_vertex_r_y': [r, y], 'crown_contact_gap_mm': contact, 'pipe_center_z_mm': pz}
 
 
-def run_derived(d, env):
+class NoRegistry(Exception):
+    """Registry file not available (build not run)."""
+
+
+def registry_value(d, env, registry):
+    """F25: metric over the solids of the built model (bbox_mm = xmin, ymin, zmin, xmax, ymax, zmax)."""
+    if registry is None:
+        raise NoRegistry('component_registry.json')
+    inc, exc, cats = d.get('include', []), d.get('exclude', []), d.get('categories', [])
+    items = [r for r in registry
+             if (not inc or any(k in r['id'] for k in inc)) and not any(k in r['id'] for k in exc)
+             and (not cats or r['category'] in cats)]
+    if not items:
+        raise ValueError(f"no registry item matches {d['id']}")
+    b = [r['bbox_mm'] for r in items]
+    metric = d['metric']
+    if metric == 'width_y':
+        v = 2 * max(max(abs(x[1]), abs(x[4])) for x in b)
+    elif metric == 'max_z':
+        v = max(x[5] for x in b)
+    elif metric == 'min_z':
+        v = min(x[2] for x in b)
+    elif metric == 'center_z':
+        v = (min(x[2] for x in b) + max(x[5] for x in b)) / 2
+    elif metric == 'dx':
+        v = max(x[3] for x in b) - min(x[0] for x in b)
+    else:
+        raise ValueError(f'unknown registry metric {metric}')
+    top = max(items, key=lambda r: r['bbox_mm'][5])['id']
+    if 'minus' in d:
+        v -= ev(d['minus'], env)
+    return v, {'n_items': len(items), 'highest_item': top}
+
+
+def run_derived(d, env, registry=None):
     kind = d['kind']
+    if kind == 'registry':
+        v, info = registry_value(d, env, registry)
+        lo, hi = d['range']
+        ok = (lo is None or v >= lo - 1e-9) and (hi is None or v <= hi + 1e-9)
+        return ok, round(v, 4), f"{'' if lo is None else lo}..{'' if hi is None else hi} {d.get('units', 'mm')}", info
     if kind == 'side_seal_track':
         length, info = side_seal_track_length(env)
         idd, cs = env['SIDE_ORING']
@@ -187,11 +229,13 @@ def main():
     ap.add_argument('--master', type=Path, default=ROOT / 'current/CAD/PX1_Current_Master.py')
     ap.add_argument('--reference', type=Path, default=HERE / 'drawing_reference.json')
     ap.add_argument('--out', type=Path, default=ROOT / '_cloud_build/drawing_check.json')
+    ap.add_argument('--registry', type=Path, default=ROOT / '_cloud_build/component_registry.json')
     ap.add_argument('--quiet', action='store_true', help='print only FAIL/SKIP rows and the summary')
     args = ap.parse_args()
 
     env = read_master(args.master)
     ref = json.loads(args.reference.read_text(encoding='utf-8'))
+    registry = json.loads(args.registry.read_text(encoding='utf-8')) if args.registry.exists() else None
     results = []
 
     for c in ref['checks']:
@@ -218,8 +262,10 @@ def main():
     for d in ref.get('derived_checks', []):
         row = {'id': d['id'], 'tag': d['tag'], 'kind': d['kind'], 'source': d['source']}
         try:
-            ok, actual, expected, detail = run_derived(d, env)
+            ok, actual, expected, detail = run_derived(d, env, registry)
             row.update(status='PASS' if ok else 'FAIL', actual=actual, expected=expected, detail=detail)
+        except NoRegistry:
+            row.update(status='FAIL', actual=None, note='component registry missing: run the build first')
         except (Missing, KeyError) as m:
             row.update(status='FAIL' if d['tag'] == 'CONFIRMED' else 'SKIP', actual=None,
                        note=f'constant {m} not found in master')
@@ -230,6 +276,8 @@ def main():
               'master': str(args.master.relative_to(ROOT)) if args.master.resolve().is_relative_to(ROOT) else str(args.master),
               'master_sha256': hashlib.sha256(args.master.read_bytes()).hexdigest(),
               'reference_sha256': hashlib.sha256(args.reference.read_bytes()).hexdigest(),
+              'registry': str(args.registry) if registry is not None else None,
+              'registry_sha256': hashlib.sha256(args.registry.read_bytes()).hexdigest() if registry is not None else None,
               'status': 'PASS' if counts['FAIL'] == 0 else 'FAIL',
               'counts': counts, 'n_checks': len(results),
               'note': 'Reference values come from Mini-Cam drawings on the user Google Drive and catalogues; '

@@ -148,24 +148,41 @@ def finish_build(g):
     cam_names=[n for n in shapes if categories[n]=='camera' or 'CAM026_REFERENCE' in n]
     cam_sweep=sweep_check(cam_names,(-80,0,0),[n for n in shapes if 'SP13' in n or 'CAMERA_HARNESS' in n],8)
     tools=[]
-    for x,y in itertools.product(g['SERVICE_SCREW_X'],g['SERVICE_SCREW_Y']):
-        probe=cq.Solid.makeCylinder(3,60,cq.Vector(x,y,82.1),cq.Vector(0,0,1));hits=[]
+    # F25: the lift base stands on the cover rear end (Proteus), so the lift group (base, levers, housing, camera, harness) is removed
+    # before the cover / holder screws are reached; the screws being driven are the tool target.
+    pre_removed=[n for n in shapes if any(k in n for k in ('LIFT_','HARNESS','ACE_GS','CAM026','LOCK_RING','FIX001892','SP13',
+                 'SP1310','CAMERA_CABLE_BEND','POTTED_BEND_TAIL','FIX_ISO7380_M4x10_ELECTRONICS_COVER','FIX_ISO7380_M3x12_FITTING_HOLDER'))]
+    for x,y in g['SERVICE_TOOL_POINTS']:
+        probe=cq.Solid.makeCylinder(3,60,cq.Vector(x,y,g['SERVICE_Z']+g['SERVICE_T']+.1),cq.Vector(0,0,1));hits=[]
         for n,s in shapes.items():
+            if n in pre_removed:continue
             if possible(box(probe),boxes[n]):
                 try:v=probe.intersect(s).Volume()
                 except Exception as exc:errors.append({'tool':x,'part':n,'error':str(exc)});continue
                 if v>.01:hits.append({'id':n,'volume_mm3':v})
-        tools.append({'screw_x_mm':x,'screw_y_mm':y,'tool_diameter_mm':6,'approach_mm':60,'collisions':hits,'release':'HOLD: screw/groove/mating dimensions unresolved'})
+        tools.append({'screw_x_mm':x,'screw_y_mm':y,'tool_diameter_mm':6,'approach_mm':60,'collisions':hits,
+            'removed_before':'lift group + camera harness (F25 sequence: lift base sits on the cover rear end)','release':'HOLD: screw/groove/mating dimensions unresolved'})
     # F18: gas spring E (base) to G (central lever, rotating about clamp axle A), 0..LIFT_THETA_MAX.
     gas_sweep=[];AX,AZ=g['LIFT_A_X'],g['LIFT_A_Z'];gx,gz=g['LIFT_GAS_G'];E=g['body_pt']
-    lo,hi=g['ACE_EXTENDED']-g['ACE_STROKE'],g['ACE_EXTENDED'];tmax=g['LIFT_THETA_MAX']
+    lo,hi=g['ACE_EXTENDED']-g['ACE_STROKE'],g['ACE_EXTENDED'];tmax=g['LIFT_THETA_MAX'];fit=2*g['ACE_EYE_L'];mg=g['ACE_MARGIN']
     for k in range(0,int(math.ceil(tmax))+1):
         deg=min(float(k),tmax);t=math.radians(deg)
         m=(AX-gx*math.cos(t)+gz*math.sin(t),0.0,AZ+gx*math.sin(t)+gz*math.cos(t))
-        L=math.dist(E,m);gas_sweep.append({'angle_deg':deg,'distance_mm':L,'within_bare_%g_to_%g'%(lo,hi):lo<=L<=hi})
+        L=math.dist(E,m);gas_sweep.append({'angle_deg':deg,'eye_to_eye_mm':L,'bare_mm':L-fit,
+            'within_bare_%g_to_%g_margin_%g'%(lo,hi,mg):lo+mg<=L-fit<=hi-mg})
     lift={'A_mm':[AX,AZ],'lever_mm':g['LINK_L'],'theta_max_deg':tmax,
           'camera_axis_z_mm':{'folded':g['CAM_Z'],'raised':g['CAM_Z']+g['LINK_L']*math.sin(math.radians(tmax))},
           'catalogue_range_mm':list(g['LIFT_CAT_RANGE']),'check':'tools/lift/check_lift_kinematics.py'}
+    # F25 folded height (wheels on the floor Z0): copied structure vs the PX1 external camera-cable route.
+    cable_keys=('HARNESS','CAMERA_CABLE_BEND_GUIDE','CAMERA_HARNESS_CORE')
+    top_all=max(b[5] for b in boxes.values()); top_struct=max(b[5] for n,b in boxes.items() if not any(k in n for k in cable_keys))
+    top_cam=max(b[5] for n,b in boxes.items() if categories[n]=='camera')
+    folded={'catalogue_H_mm':g['CRP150_CATALOGUE_LWH'][2],'limit_structure_mm':g['FOLDED_H_LIMIT'],
+            'max_z_structure_mm':top_struct,'max_z_structure_id':max(((b[5],n) for n,b in boxes.items() if not any(k in n for k in cable_keys)))[1],
+            'max_z_camera_mm':top_cam,'max_z_all_incl_px1_camera_cable_mm':top_all,
+            'max_z_all_id':max(((b[5],n) for n,b in boxes.items()))[1],
+            'overall_width_mm':2*max(max(abs(b[1]),abs(b[4])) for b in boxes.values()),
+            'interpretation':'DERIVED: catalogue H = wheels-on-floor to the top of the folded lift with the camera fitted; Proteus reconstruction 109.9 (camera) .. 111.9 (752 light window); limit 110 + 2 (744 reading tolerance). The PX1 camera cable on the lever (F21/F23) is reported separately - OPEN.'}
     val={'revision':'Rev.A pipe/service CAD 2026-11-18','master':'CAD/PX1_Current_Master.step','source_sha256':hashlib.sha256(Path(g['__file__']).read_bytes()).hexdigest(),
         'status':'HOLD_NOT_MANUFACTURING_RELEASE','source_reference':'Proteus CRP150 DRW-002-374/375/386/744/745/752',
         'counts':counts,'expected_counts':expected,'counts_match':counts==expected,'component_count':len(components),'invalid_shapes':invalid,
@@ -175,7 +192,8 @@ def finish_build(g):
         'service':{'motor_vertical_extraction':motor_sweep,'camera_forward_removal':cam_sweep,'service_screw_tools':tools,
             'wheel_removal':'HOLD H01: source quick-lock unknown; proxy cannot certify wheel removal',
             'harness_removal':'HOLD H07: SP13 cable end must be reterminated if larger than gland throat; replacement sequence in documentation'},
-        'lift':lift,'gas_spring':{'assembled_distance_mm':g['gas_length'],'bare_limits_mm':[lo,hi],'sampled_angle_checks':gas_sweep,'release':'HOLD H06: end fittings, actual limit angles and physical 150 N balancing'},
+        'lift':lift,'folded_height':folded,
+        'gas_spring':{'model':'ACE GS-12-60-V4A + 2x A3,5-V4A','eye_to_eye_folded_mm':g['gas_length'],'eye_fitting_mm_each':g['ACE_EYE_L'],'bare_limits_mm':[lo,hi],'margin_mm':mg,'sampled_angle_checks':gas_sweep,'release':'HOLD H06: A3,5 dimensions ESTIMATED (confirm on the ACE CAD file), actual limit angles and physical 150 N balancing'},
         'pressure':{'status':'HOLD H03 H07','cad_is_leak_test':False,'side_cover_window_error_fixed':True,'common_pressure_communication':'requires physical/section verification'},
         'print_outputs':print_validation,'metal_release':False,'part_exports':export_map,
         'unmodelled_required_items':['complete camera PAN/TILT/lighting/control internals','side-cover static seal installed contour','closed service-cover seal and screws: groove/pilot holes modelled, seal/threads/fasteners unqualified','lift pivot bushings and seals','pressure valve spring and seat detail','SP13 panel half and contact inserts','SP17 cable half and seals','internal six-way service connector','board standoffs and all power terminal insulation','INA226 ready-made modules and branch capacitors/TVS/fuses','motor socket torque transfer and rear connector/lead envelopes','RF-available brushed motor selection, driver current/thermal qualification','circlips, internal gear keys and complete fastening hardware'],
