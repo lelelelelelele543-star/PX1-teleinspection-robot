@@ -91,7 +91,14 @@ for side,s in (("L",-1),("R",1)):
             sp=(x,s*41,P["gear_z"])
             add("Shaft_seal_CARTRIDGE_PROXY_"+side+"_"+str(j//2+1),
                 cyl(11.5,4,sp,(0,s,0)).cut(cyl(5,4,sp,(0,s,0))),(0.18,0.56,0.48))
-            add("Wheel_"+side+"_"+str(j//2+1),cyl(P['wheel_D']/2,P["wheel_W"],(x,s*46,P["gear_z"]),(0,s,0)),(0.11,0.14,0.18))
+            # Removable wheel hub: actual 10 mm axial bore, not a solid wheel/shaft overlap.
+            # A radial M3 pinch screw and key/flat are NOT yet modeled or torque-qualified.
+            wheel_blank=cyl(P['wheel_D']/2,P["wheel_W"],(x,s*46,P["gear_z"]),(0,s,0))
+            wheel_bore=cyl(5,P["wheel_W"],(x,s*46,P["gear_z"]),(0,s,0))
+            wheel_shape=wheel_blank.cut(wheel_bore)
+            if wheel_shape.isNull() or not wheel_shape.isValid():
+                raise RuntimeError("FAIL wheel hub bore "+side+str(j))
+            add("Wheel_"+side+"_"+str(j//2+1),wheel_shape,(0.11,0.14,0.18))
         else:
             # Idler support shares the 10x22x7 nominal envelope with wheel bearings.
             # Idlers use blind internal carriers, not wall penetrations.
@@ -211,6 +218,17 @@ for side_label in ("L","R"):
     for axle in axles:
         assert abs(axle.Shape.BoundBox.YLength-34)<1e-6, "Actual axle length mismatch"
 print("PASS six axle tips recessed",wheel_outer_face-axle_tip,"mm; ASSUMED wheel fastening still NOT_RUN")
+# Six real axial hub bores; the axle/hub contact is geometrically defined but not torque-rated.
+for side_label in ("L","R"):
+    for wheel in [o for o in parts if o.Name.startswith("Wheel_"+side_label+"_")]:
+        bb=wheel.Shape.BoundBox
+        x=bb.XCenter
+        sign=-1 if side_label=="L" else 1
+        probe=cyl(4.9,P["wheel_W"],(x,sign*46,P["gear_z"]),(0,sign,0))
+        if wheel.Shape.common(probe).Volume>1e-5:
+            raise RuntimeError("FAIL wheel through-bore blocked: "+wheel.Name)
+print("PASS six modeled wheel 10 mm axial bores; NOT_RUN wheel-to-axle torque joints")
+
 # Actual generated gear solids must have a through-bore (not an axle intersecting solid metal).
 for side_label in ("L","R"):
     gears=[o for o in parts if o.Name.startswith("Z50_pitch_PROXY_"+side_label+"_")]
