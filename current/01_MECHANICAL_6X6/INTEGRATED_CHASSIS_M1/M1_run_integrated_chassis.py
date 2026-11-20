@@ -10,7 +10,9 @@ STAGES=[
   ["PX1_Integrated_6x6_M1.FCStd","PX1_Integrated_6x6_M1.step"]),
  ("keyed","M1_integrated_keyed_interfaces.py",
   ["PX1_Integrated_6x6_M1_keyed.FCStd","PX1_Integrated_6x6_M1_keyed.step"]),
- ("bridged","M1_torque_interface_bridge.py",\n  ["PX1_Integrated_6x6_M1_bridged.FCStd","PX1_Integrated_6x6_M1_bridged.step"]),\n]
+ ("bridged","M1_torque_interface_bridge.py",
+  ["PX1_Integrated_6x6_M1_bridged.FCStd","PX1_Integrated_6x6_M1_bridged.step"]),
+]
 report={"status":"NOT_RUN","stages":[],"design_assumptions":[
  "10 mm shaft/bores","3x3 mm rectangular keys (not standard-qualified)",
  "module 1 Z50 involute design","motor, bearing and pressure-seal packaging unqualified"],
@@ -58,7 +60,8 @@ else:
  report["status"]="PASS"
 report["limitations"]=[
  "STEP validity does not prove mating fits, zero collisions or correct gear kinematics",
- "A bridged STEP is not qualified for fabrication without mechanical and pressure checks",\n "Bridge hubs are geometric proxies; motor-to-wheel torque path is not functionally proven"]
+ "A bridged STEP is not qualified for fabrication without mechanical and pressure checks",
+ "Bridge hubs are geometric proxies; motor-to-wheel torque path is not functionally proven"]
 (ROOT/"M1_run_integrated_chassis_result.json").write_text(
  json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
 print(json.dumps(report,ensure_ascii=False,indent=2))
