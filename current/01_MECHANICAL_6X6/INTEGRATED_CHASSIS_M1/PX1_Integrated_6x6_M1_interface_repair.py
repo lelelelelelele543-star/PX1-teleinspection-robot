@@ -62,9 +62,14 @@ for side,s in (("L",-1),("R",1)):
     for j,x in enumerate(P["gear_x"]):
         gy=s*P["gear_y"]
         # Actual involute flanks with polyline approximation, phase-alternated for nominal mesh.\n        # Root fillets, backlash, shaft keys and load capacity remain unverified.
-        add("Z50_pitch_PROXY_"+side+"_"+str(j+1),involute_solid(Part,V,z=50,module=P["gear_m"],thickness=6,center=(x,gy,P["gear_z"]),phase_deg=(0 if j%2==0 else 3.6)),(0.75,0.42,0.19))
+        # Gear hub interface: real 10 mm through-bore in the generated involute solid.
+        # A shaft fit/key is NOT qualified; bore alone does not transmit torque.
+        gear_shape=involute_solid(Part,V,z=50,module=P["gear_m"],thickness=6,center=(x,gy,P["gear_z"]),phase_deg=(0 if j%2==0 else 3.6))
+        gear_shape=gear_shape.cut(cyl(5,6,(x,gy-3,P["gear_z"]),(0,1,0)))
+        if gear_shape.isNull() or not gear_shape.isValid(): raise RuntimeError("FAIL Z50 through-bore "+side+str(j))
+        add("Z50_pitch_PROXY_"+side+"_"+str(j+1),gear_shape,(0.75,0.42,0.19))
         if j%2==0:
-            add("Wheel_axle_"+side+"_"+str(j//2+1),cyl(5,30,(x,s*29,P["gear_z"]),(0,s,0)),(0.77,0.78,0.79))
+            add("Wheel_axle_"+side+"_"+str(j//2+1),cyl(5,34,(x,s*25,P["gear_z"]),(0,s,0)),(0.77,0.78,0.79))
             # Bearing 10x22x7: geometry proxy, not manufacturer verification.
             bp=(x,s*34,P["gear_z"])
             add("Bearing_PROXY_"+side+"_"+str(j//2+1),
@@ -185,15 +190,26 @@ for side_label in ("L","R"):
 print("PASS actual FreeCAD wheel solid widths and diameters")
 # Wheel axle tip must remain recessed relative to the wheel outside face on BOTH sides.
 # Previously 29+36=65 exceeded the wheel outer face 46+14=60 by 5 mm.
-axle_tip=29+30
+axle_tip=25+34
 wheel_outer_face=46+P["wheel_W"]
 assert axle_tip<=wheel_outer_face-1, "Wheel axle protrudes beyond wheel face"
 for side_label in ("L","R"):
     axles=[o for o in parts if o.Name.startswith("Wheel_axle_"+side_label+"_")]
     assert len(axles)==3
     for axle in axles:
-        assert abs(axle.Shape.BoundBox.YLength-30)<1e-6, "Actual axle length mismatch"
+        assert abs(axle.Shape.BoundBox.YLength-34)<1e-6, "Actual axle length mismatch"
 print("PASS six axle tips recessed",wheel_outer_face-axle_tip,"mm; ASSUMED wheel fastening still NOT_RUN")
+# Actual generated gear solids must have a through-bore (not an axle intersecting solid metal).
+for side_label in ("L","R"):
+    gears=[o for o in parts if o.Name.startswith("Z50_pitch_PROXY_"+side_label+"_")]
+    assert len(gears)==5
+    for gear in gears:
+        xc=gear.Shape.BoundBox.XCenter
+        gy=(-1 if side_label=="L" else 1)*P["gear_y"]
+        probe=cyl(4.9,6,(xc,gy-3,P["gear_z"]),(0,1,0))
+        if gear.Shape.common(probe).Volume>1e-5:
+            raise RuntimeError("FAIL Z50 gear bore blocked: "+gear.Name)
+print("PASS 10 actual involute Z50 solids have 10 mm axial bores; NOT_RUN keyways/torque fits")
 
 # Verify integrated support inventory, nominal idler bore coverage and shaft support.
 assert len([o for o in parts if o.Name.startswith("Idler_bearing_PROXY_")])==4
