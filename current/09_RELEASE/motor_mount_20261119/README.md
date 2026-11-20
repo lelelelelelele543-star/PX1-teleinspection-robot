@@ -1,3 +1,5 @@
+> Preserved on feature/px1-motor-mount-study-20261120. During push, origin advanced to4a34b8c with GP26/D22 motors and major integrated changes. This study is based on fe8a5f9, NOT validated against the newer master. Do not merge its generated CAD wholesale over the new assembly.
+
 # Integrated motor mounting — 2026-11-19
 
 Engineering prototype, NOT manufacturing release. Continues fe8a5f9 on feature/px1-integrated-cad-20261117; main unchanged.

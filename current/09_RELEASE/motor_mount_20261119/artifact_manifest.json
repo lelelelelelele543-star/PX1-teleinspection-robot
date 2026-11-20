@@ -31,8 +31,8 @@
       "sha256": "e3c6f1edfb9a1a5111d5bf7e388ca827ca47bfe463e8dfc12b75080d19bc93a7"
     },
     "current/09_RELEASE/motor_mount_20261119/README.md": {
-      "bytes": 2728,
-      "sha256": "acb07c78effaef0539204a3e0ed32ca52b451f904e46ca93f078d412f64a2be1"
+      "bytes": 3010,
+      "sha256": "0b5e1a0beed8750352ab13e3621970eb978ac6d7f14e2eebadafa787a0747206"
     },
     "current/09_RELEASE/motor_mount_20261119/integrated_checks.json": {
       "bytes": 10907,
@@ -303,5 +303,7 @@
       "sha256": "2421d599928b13da1db589c7521d38f38581620af765eadaa65eb5a5d42ccf22"
     }
   },
-  "saved_date_utc": "2026-11-20"
+  "saved_date_utc": "2026-11-20",
+  "branch": "feature/px1-motor-mount-study-20261120",
+  "remote_at_save": "4a34b8c"
 }
