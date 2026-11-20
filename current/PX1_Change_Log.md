@@ -84,3 +84,9 @@
 ## 2026-11-19 — GA24 motor integration (engineering HOLD)
 
 Replaced weak JGA25 fit candidate with conservative GA24Y-370-2485/138 family envelopes. Shifted motor faces to X189.5 to remove shaft clash; provisional holder 4-hole PCD19. Service opening extended forward10mm to X118, cover177x68x7 and matching groove166x58, front screwsX113. Six wheels, gear stations, rear input, two motors and pressure/manual-lift architecture unchanged. Larger opening requires strength/seal qualification; exact motor dimensions, mounting to body, fasteners, wiring and complete preceding disassembly remain unqualified. See 09_RELEASE/ga24_integration_20261119. No physical test or manufacturing release.
+
+
+## 2026-11-19 — Motor mount fixed to internal floor
+Integral L-foot reaches floorZ23. Two M3x10 atX194.5,Y±20 use blind holes toZ17, retaining6mm floor; nominal4mm foot and3mm vertical plate. Eight provisional M2.5x6 attach motors to plate,3mm thread engagement. No new through-wall penetrations. Mount and motor thread geometry remain engineering estimates; material, preload, motor screw-depth limits and strength are not released. Explicit thread-contact HOLD classes do not exempt any other rigid collisions. Ten D3 bit access volumes added; motor extraction still assumes named preceding removals. Six-wheel/rear-input topology unchanged.
+
+Correction during full check: floor-screw heads intersected the first holder by5.837mm3 each. Motor face moved fromX189.5 to188.5, foot length increased8.5->9.5mm while floor screw centres remainX194.5. Head-to-upright nominal gap0.25mm, foot-hole edge ligament1.8mm. Original failed report retained in new release.

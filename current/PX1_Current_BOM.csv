@@ -6,7 +6,7 @@ M04;Передняя короткая ось;2;FSS-002-063;X50 absY23..60.9 step
 M05;Длинная ось;2;FSS-002-064;задняяX250 соединениеHOLD;DRW374;TURN;GRAPHIC_APPROX;H02 H04
 M06;ВалZ40;2;FSS-002-066 family;10/18 socket12 provisional;DRW375;TURN;ADAPTATION;H02 H04
 M07;ВалZ16;2;FSS-002-083 family;6/12 длиныHOLD;DRW386;TURN;ADAPTATION;H04 H05
-M08;Парный держатель моторов;1;PX1-GA24-HOLDER;52.8x30x3 2x4 clearance2.7 PCD19 ESTIMATED;GA24 family estimate exact variant unconfirmed;MILL;ADAPTATION;H05 exact motor variant and screw engagement unqualified
+M08;Парный держатель моторов;1;PX1-GA24-HOLDER;52.8x37x3 + foot9.5x52.8x4 2x4 clearance2.7 PCD19 ESTIMATED;GA24 family estimate exact variant unconfirmed;MILL;ADAPTATION;H05 exact motor variant and screw engagement unqualified
 M09;Держатель опорZ16;1;PX1-PINION-HOLDER;52.8×26×5;DRW386 topology;MILL;ADAPTATION;H04 H05
 M10;Разрезная переходная втулка;2;PX1-SPLIT-6-4;OD6 ID4 L8;NBK / GA24 shaft4 estimated interface;TURN;ADAPTATION;H05
 M11;Палец холостойZ50;4;PX1 idler pin;D10 L7 absY27..34;DRW374;TURN;ESTIMATED;H02 press fit/retention/strength unqualified
@@ -31,7 +31,7 @@ S08;O-ring клапана;1;metric6×1.5;6×1.5;DRW745;BUY;NOT_MODELLED;H03
 S09;O-ring клапана;2;metric3×1;3×1;DRW745;BUY;NOT_MODELLED;H03
 S10;O-ring колпачка;1;metric10×1.5;10×1.5;DRW745;BUY;NOT_MODELLED;H03
 S11;O-ring лифта;2;metric15×2.5;15×2.5;DRW744;BUY;NOT_MODELLED;H03
-P01;Тяговый двигатель;2;GA24Y-370-2485 24V 138:1 CANDIDATE;OD24.4 body67.6 shaft4x17.5 faceX189.5 ESTIMATED;08_PROCUREMENT/GA24Y_370_SELECTION_20261119.md;STUDY;FAMILY_ENVELOPE_ESTIMATED;H05 seller identity and 138:1 dimensions thermal and traction unqualified
+P01;Тяговый двигатель;2;GA24Y-370-2485 24V 138:1 CANDIDATE;OD24.4 body67.6 shaft4x17.5 faceX188.5 ESTIMATED;08_PROCUREMENT/GA24Y_370_SELECTION_20261119.md;STUDY;FAMILY_ENVELOPE_ESTIMATED;H05 seller identity and 138:1 dimensions thermal and traction unqualified
 P02;Муфта;2;NBKMLR-20C-6-6;Ø20×24 bores6/6;NBK manufacturer;BUY;BOUNDARY;H05
 P03;Колесо;6;PX1 engineered D90 tyre, QRW90 topology reference;D90 W24, outer shoulder r34.5 at y8, edge r27.5 at y12;pipe_service_20261118/ENGINEERING_BASIS.md;STUDY;ENGINEERED_PROFILE_ESTIMATED;H01 nominal CAD only, rubber/contact/tolerances/traction unqualified
 L01;PRESSURE-крышка;1;PX1 service cover GA24 20261119;177x68x7,4xD3.4,M3 body pilots,groove1.9x1.2;pipe_service_20261118/ENGINEERING_BASIS.md;MILL;ENGINEERED_ESTIMATED;H03 seal/material/pressure/thread preload unqualified
@@ -130,3 +130,5 @@ PR03;МакетPRESSUREкрышки;1;PX1_PRESSURE_Cover_FitCheck_ONLY.stl;158×
 PR04;Макет боковой крышки;1;PX1_Side_Cover_FitCheck_ONLY.stl;262×60×7;M02;PRINT;DESIGN;FIT_CHECK_ONLY
 M04C;Средняя короткая ось;2;PX1 middle axle;X150 absY26.8..60.9 stepped12/17/18 HOLD;integrated CAD estimate;TURN;ESTIMATED;H02 strength/retention unqualified
 L17;Палец проушины газовой пружины;1;PX1 gas clevis pin;D4 L11;integrated CAD estimate;TURN;ESTIMATED;H06 retention/load unqualified
+MOTOR-F01;Винт крепления мотора;8;M2.5x6 socket head ESTIMATED;3mm nominal motor thread engagement;GA24 family dimensions unconfirmed;BUY;HOLD;verify actual motor tapped depth before assembly
+MOTOR-F02;Винт полки держателя;2;M3x10 socket head ESTIMATED;6mm blind body engagement with 6mm residual floor;CAD engineering estimate;BUY;HOLD;thread preload material strength and sealing unqualified

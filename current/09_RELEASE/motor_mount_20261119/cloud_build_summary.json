@@ -1,0 +1,40 @@
+{
+  "source": "current/CAD/PX1_Current_Master.py",
+  "build_status": "PASS_EXPORT_AND_COUNTS",
+  "manufacturing_release": false,
+  "actual_components": 157,
+  "counts": {
+    "wheel": 6,
+    "Z50": 10,
+    "Z40": 2,
+    "Z16": 2,
+    "traction_motor": 2,
+    "61801_side": 2,
+    "61801_pinion": 2,
+    "61903": 6,
+    "61800": 2,
+    "idler_bush": 4,
+    "camera_harness_cores": 6
+  },
+  "expected_counts": {
+    "wheel": 6,
+    "Z50": 10,
+    "Z40": 2,
+    "Z16": 2,
+    "traction_motor": 2,
+    "61801_side": 2,
+    "61801_pinion": 2,
+    "61903": 6,
+    "61800": 2,
+    "idler_bush": 4,
+    "camera_harness_cores": 6
+  },
+  "missing_counts": [],
+  "invalid_shapes": [],
+  "boolean_errors": [],
+  "rigid_interference_count": 0,
+  "geometry_validation_status": "HOLD_NOT_MANUFACTURING_RELEASE",
+  "pressure_test": "NOT_RUN",
+  "freecad_fcstd_conversion": "NOT_RUN",
+  "step_bytes": 98021576
+}

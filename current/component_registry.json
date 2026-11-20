@@ -16,7 +16,7 @@
       68.0,
       64.0
     ],
-    "volume_mm3": 348400.99376,
+    "volume_mm3": 348342.0885,
     "solids": 1
   },
   {
@@ -1580,6 +1580,46 @@
     "solids": 1
   },
   {
+    "id": "HOLD_MOTOR_FOOT_M3x10_-20.0",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      191.75,
+      -22.75,
+      17.0,
+      197.25,
+      -17.25,
+      30.0
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      13.0
+    ],
+    "volume_mm3": 133.84173,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_MOTOR_FOOT_M3x10_20.0",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      191.75,
+      17.25,
+      17.0,
+      197.25,
+      22.75,
+      30.0
+    ],
+    "dimensions_mm": [
+      5.5,
+      5.5,
+      13.0
+    ],
+    "volume_mm3": 133.84173,
+    "solids": 1
+  },
+  {
     "id": "HOLD_Z40_BEVEL_-1_CONICAL_ENVELOPE",
     "category": "bevel",
     "geometry_state": "HOLD",
@@ -1760,14 +1800,94 @@
     "solids": 1
   },
   {
+    "id": "HOLD_MOTOR_FACE_M2p5x6_-1_45",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      185.5,
+      -9.03249,
+      49.46751,
+      194.0,
+      -4.53249,
+      53.96751
+    ],
+    "dimensions_mm": [
+      8.5,
+      4.5,
+      4.5
+    ],
+    "volume_mm3": 64.01706,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_MOTOR_FACE_M2p5x6_-1_135",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      185.5,
+      -22.46751,
+      49.46751,
+      194.0,
+      -17.96751,
+      53.96751
+    ],
+    "dimensions_mm": [
+      8.5,
+      4.5,
+      4.5
+    ],
+    "volume_mm3": 64.01706,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_MOTOR_FACE_M2p5x6_-1_225",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      185.5,
+      -22.46751,
+      36.03249,
+      194.0,
+      -17.96751,
+      40.53249
+    ],
+    "dimensions_mm": [
+      8.5,
+      4.5,
+      4.5
+    ],
+    "volume_mm3": 64.01706,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_MOTOR_FACE_M2p5x6_-1_315",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      185.5,
+      -9.03249,
+      36.03249,
+      194.0,
+      -4.53249,
+      40.53249
+    ],
+    "dimensions_mm": [
+      8.5,
+      4.5,
+      4.5
+    ],
+    "volume_mm3": 64.01706,
+    "solids": 1
+  },
+  {
     "id": "TRACTION_MOTOR_-1_GA24Y_370_2485_138_ESTIMATED_HOLD",
     "category": "purchased",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      121.9,
+      120.9,
       -25.7,
       32.8,
-      207.0,
+      206.0,
       -1.3,
       57.2
     ],
@@ -1776,7 +1896,7 @@
       24.4,
       24.4
     ],
-    "volume_mm3": 31868.51694,
+    "volume_mm3": 31828.90931,
     "solids": 1
   },
   {
@@ -1960,14 +2080,94 @@
     "solids": 1
   },
   {
+    "id": "HOLD_MOTOR_FACE_M2p5x6_1_45",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      185.5,
+      17.96751,
+      49.46751,
+      194.0,
+      22.46751,
+      53.96751
+    ],
+    "dimensions_mm": [
+      8.5,
+      4.5,
+      4.5
+    ],
+    "volume_mm3": 64.01706,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_MOTOR_FACE_M2p5x6_1_135",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      185.5,
+      4.53249,
+      49.46751,
+      194.0,
+      9.03249,
+      53.96751
+    ],
+    "dimensions_mm": [
+      8.5,
+      4.5,
+      4.5
+    ],
+    "volume_mm3": 64.01706,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_MOTOR_FACE_M2p5x6_1_225",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      185.5,
+      4.53249,
+      36.03249,
+      194.0,
+      9.03249,
+      40.53249
+    ],
+    "dimensions_mm": [
+      8.5,
+      4.5,
+      4.5
+    ],
+    "volume_mm3": 64.01706,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_MOTOR_FACE_M2p5x6_1_315",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      185.5,
+      17.96751,
+      36.03249,
+      194.0,
+      22.46751,
+      40.53249
+    ],
+    "dimensions_mm": [
+      8.5,
+      4.5,
+      4.5
+    ],
+    "volume_mm3": 64.01706,
+    "solids": 1
+  },
+  {
     "id": "TRACTION_MOTOR_1_GA24Y_370_2485_138_ESTIMATED_HOLD",
     "category": "purchased",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      121.9,
+      120.9,
       1.3,
       32.8,
-      207.0,
+      206.0,
       25.7,
       57.2
     ],
@@ -1976,7 +2176,7 @@
       24.4,
       24.4
     ],
-    "volume_mm3": 31868.51694,
+    "volume_mm3": 31828.90931,
     "solids": 1
   },
   {
@@ -1984,19 +2184,19 @@
     "category": "metal",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      189.5,
+      188.5,
       -26.4,
-      30.0,
-      192.5,
+      23.0,
+      198.0,
       26.4,
       60.0
     ],
     "dimensions_mm": [
-      3.0,
+      9.5,
       52.8,
-      30.0
+      37.0
     ],
-    "volume_mm3": 4409.31507,
+    "volume_mm3": 6818.28145,
     "solids": 1
   },
   {

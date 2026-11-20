@@ -93,6 +93,8 @@ def finish_build(g):
             if ca in ('gear','bevel') and cb in ('gear','bevel'):typ='TOOTH_CONTACT_HOLD'
             if ('WHEEL_RETENTION_M6' in a and 'WHEEL_SHAFT' in b) or ('WHEEL_RETENTION_M6' in b and 'WHEEL_SHAFT' in a):typ='THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY'
             if ('WHEEL_RETENTION_M5' in a and 'WHEEL_SHAFT' in b) or ('WHEEL_RETENTION_M5' in b and 'WHEEL_SHAFT' in a):typ='THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY'
+            if (a.startswith('HOLD_MOTOR_FOOT_M3x10_') and 'PRESSURE_BODY' in b) or (b.startswith('HOLD_MOTOR_FOOT_M3x10_') and 'PRESSURE_BODY' in a):typ='THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY'
+            if (a.startswith('HOLD_MOTOR_FACE_M2p5x6_') and b.startswith('TRACTION_MOTOR_')) or (b.startswith('HOLD_MOTOR_FACE_M2p5x6_') and a.startswith('TRACTION_MOTOR_')):typ='THREAD_ENGAGEMENT_HOLD_NO_HELICAL_GEOMETRY'
             if 'valve' == ca == cb:typ='VALVE_INTERNAL_ENVELOPE_HOLD'
             pairs.append({'a':a,'b':b,'volume_mm3':round(v,6),'classification':typ})
     # Radial containment tests ALL solids, including wheels, levers, covers and connectors.
@@ -121,7 +123,7 @@ def finish_build(g):
     body_names=[n for n in shapes if 'PRESSURE_BODY' in n]
     motor_names=[n for n in shapes if n.startswith('TRACTION_MOTOR_')]
     rear_names=[n for n in shapes if n.startswith('HOLD_REAR_') or 'REAR_SERVICE_COVER' in n or 'REAR_PANEL' in n or 'MAIN_TETHER' in n]
-    motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','SPLIT_ADAPTER','LAPP_SKINTOP')) or categories[n] in ('electronics','electronics_hold','valve')]
+    motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','MOTOR_FACE_M2p5','MOTOR_FOOT_M3','SPLIT_ADAPTER','LAPP_SKINTOP')) or categories[n] in ('electronics','electronics_hold','valve')]
     motor_sweep=sweep_check(motor_names,(0,0,80),motor_removed,32)
     motor_sweep['removed_before_screen']=motor_removed
     motor_sweep['sequence_scope']='Lift/head/harness and electronics detached, cover WITH boss/gland/valve removed, couplings and motor holder removed, then motors lift vertically. Access and removal of preceding subassemblies not certified.'
@@ -156,18 +158,35 @@ def finish_build(g):
                 except Exception as exc:errors.append({'tool':x,'part':n,'error':str(exc)});continue
                 if v>.01:hits.append({'id':n,'volume_mm3':v})
         tools.append({'screw_x_mm':x,'screw_y_mm':y,'tool_diameter_mm':6,'approach_mm':60,'collisions':hits,'release':'HOLD: screw/groove/mating dimensions unresolved'})
+    # Nominal driver-bit access; full handle and preceding disassembly remain HOLD.
+    mount_tools=[]
+    removed_for_tools=[n for n in motor_removed if 'PAIRED_MOTOR_HOLDER' not in n]
+    probes=[]
+    for yy in g['MOTOR_FOOT_Y']:
+        probes.append((f'foot_{yy}',cq.Solid.makeCylinder(1.5,80,cq.Vector(g['MOTOR_FOOT_X'],yy,30),cq.Vector(0,0,1))))
+    for side,angle in itertools.product((-1,1),(45,135,225,315)):
+        a=math.radians(angle); y=side*g['MOTOR_Y']+9.5*math.cos(a);z=45+9.5*math.sin(a)
+        probes.append((f'face_{side}_{angle}',cq.Solid.makeCylinder(1.5,29,cq.Vector(g['MOTOR_FACE']+5.5,y,z),cq.Vector(1,0,0))))
+    for label,probe in probes:
+        hits=[];errs=[]
+        for n,ss in shapes.items():
+            if n in removed_for_tools or not possible(box(probe),boxes[n]):continue
+            try:v=probe.intersect(ss).Volume()
+            except Exception as exc:errs.append({'id':n,'error':str(exc)});continue
+            if v>1e-4:hits.append({'id':n,'volume_mm3':v})
+        mount_tools.append({'id':label,'collisions':hits,'errors':errs})
     gas_sweep=[]
     for deg in range(0,71,2):
         t=math.radians(deg);dx=g['moving'][0]-g['PIVOT_X']; dz=g['moving'][2]-g['PIVOT_Z_LOW']
         m=(g['PIVOT_X']+dx*math.cos(t)+dz*math.sin(t),g['moving'][1],g['PIVOT_Z_LOW']-dx*math.sin(t)+dz*math.cos(t))
         L=math.dist(g['body_pt'],m);gas_sweep.append({'angle_deg':deg,'distance_mm':L,'within_bare_112_to_192':112<=L<=192})
-    val={'revision':'Rev.A pipe/service CAD 2026-11-18','master':'CAD/PX1_Current_Master.step','source_sha256':hashlib.sha256(Path(g['__file__']).read_bytes()).hexdigest(),
+    val={'revision':'Rev.A motor mounting CAD 2026-11-19','master':'CAD/PX1_Current_Master.step','source_sha256':hashlib.sha256(Path(g['__file__']).read_bytes()).hexdigest(),
         'status':'HOLD_NOT_MANUFACTURING_RELEASE','source_reference':'Proteus CRP150 DRW-002-374/375/386/744/745/752',
         'counts':counts,'expected_counts':expected,'counts_match':counts==expected,'component_count':len(components),'invalid_shapes':invalid,
         'collision_method':{'all_pairs':allpairs,'boolean_pairs_after_AABB':tested,'excluded_pairs':0,'errors':errors,'volume_threshold_mm3':1e-4},
         'interferences':pairs,'dn150':{'diameter_mm':150,'assumed_pipe_center_z_mm':pipeZ,'pose':'LOW, contact-derived symmetric lower-wall crown support; engineered outer tyre shoulder H01',
             'all_component_results':radial,'global_status':'HOLD: nominal CAD containment only; tyre profile is engineered estimate, physical tyre/contact/tolerances unqualified'},
-        'service':{'motor_vertical_extraction':motor_sweep,'camera_forward_removal':cam_sweep,'service_screw_tools':tools,
+        'service':{'motor_vertical_extraction':motor_sweep,'camera_forward_removal':cam_sweep,'service_screw_tools':tools,'motor_mount_tool_probes':mount_tools,'mount_tool_removed_parts':removed_for_tools,'mount_tool_scope':'D3 bit envelopes: 80mm vertical for floor screws,29mm rearward for motor face screws; preceding removals and full handle unqualified',
             'wheel_removal':'HOLD H01: source quick-lock unknown; proxy cannot certify wheel removal',
             'harness_removal':'HOLD H07: SP13 cable end must be reterminated if larger than gland throat; replacement sequence in documentation'},
         'gas_spring':{'assembled_distance_mm':g['gas_length'],'bare_limits_mm':[112,192],'sampled_angle_checks':gas_sweep,'release':'HOLD H06: end fittings, actual limit angles and physical 150 N balancing'},

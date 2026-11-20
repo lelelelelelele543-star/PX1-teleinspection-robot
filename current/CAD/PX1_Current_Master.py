@@ -47,7 +47,7 @@ WHEEL_PROFILE=[(26,-12),(32,-12),(42,-8),(45,0),(34.5,8),(27.5,12),(8,12),(8,-2)
 # Conservative ESTIMATED family envelope (different-ratio drawing); see procurement report.
 MOTOR_OD=24.4; MOTOR_LEN=30.8; GEARHEAD_OD=24.4; GEARHEAD_LEN=36.8
 MOTOR_SHAFT_D=4.0; MOTOR_SHAFT_L=17.5
-MOTOR_FACE=189.5; MOTOR_Y=13.5
+MOTOR_FACE=188.5; MOTOR_Y=13.5
 MOTOR_PILOT_D=6.4; MOTOR_PILOT_L=2.0
 COUPLING_OD=20.0; COUPLING_L=24.0; COUPLING_BORE=6.0 # NBK MLR-20C-6-6
 
@@ -255,7 +255,15 @@ def candidate_motor_pack(y):
         cyl_x(MOTOR_FACE-GEARHEAD_LEN,y,45,GEARHEAD_OD/2,GEARHEAD_LEN),
         cyl_x(MOTOR_FACE,y,45,MOTOR_PILOT_D/2,MOTOR_PILOT_L),
         cyl_x(MOTOR_FACE,y,45,MOTOR_SHAFT_D/2,MOTOR_SHAFT_L)])
-motor_holder=boxc(MOTOR_FACE+1.5,0,45,3,52.8,30)
+# Integral L-foot seats on internal floor Z23. Blind M3 holes leave 6mm floor.
+MOTOR_FOOT_X=194.5; MOTOR_FOOT_Y=(-20.0,20.0)
+motor_holder=fuse_all([boxc(MOTOR_FACE+1.5,0,41.5,3,52.8,37),box0(MOTOR_FACE,-26.4,23,9.5,52.8,4)])
+for yy in MOTOR_FOOT_Y:
+    motor_holder=cut(motor_holder,cyl_z(MOTOR_FOOT_X,yy,22.9,1.7,4.2))
+    body=cut(body,cyl_z(MOTOR_FOOT_X,yy,17,1.25,6.1))
+    bolt=fuse_all([cyl_z(MOTOR_FOOT_X,yy,17,1.5,10),cyl_z(MOTOR_FOOT_X,yy,27,2.75,3)])
+    socket=cq.Workplane('XY').polygon(6,2.5/math.cos(math.pi/6)).extrude(1.6).translate((MOTOR_FOOT_X,yy,28.5))
+    add(f'HOLD_MOTOR_FOOT_M3x10_{yy}',cut(bolt,socket),'shaft')
 pinion_holder=boxc(227,0,45,5,52.8,26)
 for side in (-1,1):
     y=side*MOTOR_Y
@@ -277,12 +285,18 @@ for side in (-1,1):
     adapter=cut(cyl_x(199.5,y,45,3,8),cyl_x(199.4,y,45,2,8.2))
     adapter=cut(adapter,boxc(203.5,y+2.75,45,8.2,1.5,.5))
     add(f'HOLD_MOTOR_SPLIT_ADAPTER_6_TO_4_{side}',adapter,'shaft')
-    add(f'TRACTION_MOTOR_{side}_GA24Y_370_2485_138_ESTIMATED_HOLD',candidate_motor_pack(y),'purchased')
+    motor=candidate_motor_pack(y)
     motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y,45,3.3,3.2))
     # ESTIMATED 4-hole pattern; exact supplied variant and body attachment HOLD.
     for angle in (45,135,225,315):
         a=math.radians(angle)
-        motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y+9.5*math.cos(a),45+9.5*math.sin(a),1.35,3.2))
+        sy=y+9.5*math.cos(a); sz=45+9.5*math.sin(a)
+        motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,sy,sz,1.35,3.2))
+        motor=cut(motor,cyl_x(MOTOR_FACE-3,sy,sz,1.025,3.1))
+        screw=fuse_all([cyl_x(MOTOR_FACE-3,sy,sz,1.25,6),cyl_x(MOTOR_FACE+3,sy,sz,2.25,2.5)])
+        socket=cq.Workplane('YZ').polygon(6,2/math.cos(math.pi/6)).extrude(1.6).translate((MOTOR_FACE+4,sy,sz))
+        add(f'HOLD_MOTOR_FACE_M2p5x6_{side}_{angle}',cut(screw,socket),'shaft')
+    add(f'TRACTION_MOTOR_{side}_GA24Y_370_2485_138_ESTIMATED_HOLD',motor,'purchased')
 add('HOLD_PAIRED_MOTOR_HOLDER_GA24_ESTIMATED',motor_holder,'metal')
 add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
 cover=boxc(SERVICE_CX,0,78.5,SERVICE_L,SERVICE_W,SERVICE_T)
