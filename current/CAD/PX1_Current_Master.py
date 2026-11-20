@@ -207,11 +207,43 @@ LIFT_GAS_G=(125.0,1.0)                         # upper eye on lever rel. A, DERI
 LIFT_SIDE_Y=25.2; LIFT_SIDE_T=4.0; LIFT_SIDE_H=15.0  # side links: 744 top view Y+-27.9 t4 h15 DERIVED; Y-2.7 ESTIMATED for cover-screw tool access
 LIFT_LEVER_PLATE_W=54.4                        # FSS-002-073 lever sheet plate width, DERIVED
 LIFT_CHEEK_Y=(6.6,9.6)                         # central-lever cheeks (fork 24 wide at C, DERIVED) around gas spring, ESTIMATED
-LIFT_HOUSING_W=46.0; LIFT_HOUSING_L=52.0       # DRW-002-752 lift housing ~48 wide / 52 long, DERIVED 1:1; simplified block ESTIMATED
 CAM026_ENVELOPE=(120.0,74.0,74.0)              # GAP catalogue sy1083 L x W x H, CONFIRMED (0.864 kg)
 CAM026_MASS_KG=0.864                           # CONFIRMED catalogue
 CAM_Z=70.0                                     # camera axis folded = catalogue lower bound, CONFIRMED (interpretation: axis above floor)
-CAM_REAR_X=-40.5                               # camera rear face = lift-housing front -0.5, ESTIMATED
+# F24 (2026-11-20) lift housing per DRW-002-752 "LIFT HOUSING" (all views 1:1; vector geometry of the PDF; scale checked on
+# FIX-000-637 M4 button head dk 7.43 (ISO 7380 7.6) + hex 2.73, FIX-002-517 M3 CSK Torx T10 2.86 (2.74) / head 5.65..6.03).
+# Frame: axial = behind the lock-ring front face (+X in PX1), up = above the camera axis, Y about the housing centre.
+LH752_LOCK=(48.64,35.81,22.99)                 # FSS-001-889 lock ring: front OD / rear OD / length, DERIVED
+LH752_LOCK_BORE=34.16                          # lock-ring front bore (camera seat), DERIVED (A-A)
+LH752_SPIGOT=(3.65,34.0)                       # FAL-002-071 front spigot under the ring: front face axial / OD, DERIVED (A-A 3.65, 35.1-0.9 ESTIMATED)
+LH752_NECK_OD=35.1                             # visible neck lock ring -> body, DERIVED (A-A 35.1, side view 35.2)
+LH752_BODY_X=(26.92,53.91,55.63)               # body front / body rear face / lift cover FAL-002-081 outer face, axial, DERIVED
+LH752_W=(46.04,41.97)                          # body width upper / lower part, DERIVED (C-C, rear view 46.04 / 41.8..41.97)
+LH752_Z=(-23.0,35.0,39.0)                      # body bottom / body top / light cover FAL-002-080 top, DERIVED (A-A, side, C-C)
+LH752_C=(72.42,24.99)                          # pivot C = axle FSS-002-076 "Axle Lever top" in the rear fork, DERIVED (A-A)
+LH752_D=(34.39,12.03)                          # pivot D = side-link taps both sides, DERIVED (side view hole + C-C taps)
+LH752_C_AXLE_D=7.05                            # FSS-002-076 Ø (A-A 7.05, rear view 6.98), DERIVED
+LH752_FORK=(12.22,23.02,79.37)                 # C fork lugs |Y| inner / outer, lug end axial, DERIVED (gap 24.45)
+LH752_D_TAP=(5.21,8.0)                         # D blind taps: drawn D1 5.21 / depth 8.0 (C-C), DERIVED; thread M6 class ESTIMATED
+LH752_COVER=(45.02,40.9,1.72)                  # lift cover FAL-002-081 W x H x t (Z axis-23..+17.9), DERIVED
+LH752_COVER_SCREWS=((19.69,14.51),(17.53,-19.47))  # 4x FIX-002-517 M3x8 CSK: (|Y|, up) upper / lower pair, DERIVED
+LH752_GLAND=(-5.25,7.85)                       # CAB-002-461 M12x1.5 cable fitting on the rear face (Y, up), DERIVED +-1 (not used in PX1)
+LH752_LIGHT=(44.9,18.2,27.6)                   # light cover FAL-002-080 on top: centre axial / length / width, DERIVED
+LIFT_HOUSING_W=LH752_W[0]; LIFT_HOUSING_L=LH752_BODY_X[2]-LH752_BODY_X[0]   # 46.04 x 28.71 body + lift cover, DERIVED
+LH_REAR_X=14.0                                 # lift-cover outer face in PX1 (as F18 block): 4.0 to the crawler front X18, ESTIMATED
+LH_X0=LH_REAR_X-LH752_BODY_X[2]                # -41.63 lock-ring front face, DERIVED
+CAM_REAR_X=LH_X0-0.5                           # camera rear face = lock-ring front -0.5, ESTIMATED (was -40.5)
+# PX1 deviation (F24): 752 puts C 72.42 behind the lock ring and 24.99 above the axis. With A on the PX1 cover (A X250 Z104.9,
+# +7 vs Proteus) that would give a folded axis Z79.9 (catalogue 70+-5 fails) and a 752 body reaching X33.4 into the crawler
+# front X18 (top Z75). PX1 keeps the 752 body / camera interface / CD pattern and carries C and D on an integral PX1 yoke
+# shifted by LH_PIVOT_SHIFT (rearward, up). Proteus check: A Z97.9 - 24.99 = 72.9 = catalogue 70 within tolerance.
+LH_PIVOT_SHIFT=(LIFT_A_X-LINK_L-LH_X0-LH752_C[0],LIFT_A_Z-CAM_Z-LH752_C[1])   # (19.11, 9.91), DERIVED from the choice
+LH_YOKE_Z0=CAM_Z+18.0                          # yoke / lug bottom = 752 lug bottom (axis+18), above lift-cover top +17.9, DERIVED
+LH_YOKE_X1=21.0                                # D yoke rear end (as F18 D lug), ESTIMATED
+LH_SPINE_Y=6.4                                 # central cable spine between the lever cheeks (F21 C-arm), ESTIMATED
+LIFT_C_RING=(3.25,5.2,0.8,1.0)                 # DIN 471 7x0.8 on FSS-002-076 in Ø11.0x1.0 lug recesses: groove r / ring r / t / recess, ESTIMATED
+LIFT_D_PIN=(2.95,3.95,5.3)                     # FSS-002-079 stepped pin: M6 thread r / Ø8 journal r / journal length, ESTIMATED
+LIFT_D_RING=(3.75,5.9,0.8)                     # DIN 471 8x0.8 (744 list 8x0.8 x4): groove r / ring r / t, ESTIMATED
 CAM_DROP=LIFT_A_Z-CAM_Z                        # C/A level to camera axis, DERIVED from catalogue (752 interface ESTIMATED)
 CAM026_MEASURED_BASE_OD=62.5; CAM_R=CAM026_MEASURED_BASE_OD/2; CAM_LEN=132.0  # ASM000 boom variant (head 132), DERIVED reference only
 CAM_GLAND_XY=(272.0,0.0); VALVE_XY=(272.0,18.0) # camera cable M12 gland + pressure valve in cover rear strip, ESTIMATED
@@ -738,7 +770,7 @@ for sy in (-1,1):
     lever.append(plate_between((AX,AZ+.25),(LC[0],AZ+.25),yc,tc,11.5))
     lever.append(cyl_y(LC[0],yc-tc/2,LC[1],7,tc))
 lever=fuse_all(lever)
-lever=cut(lever,cyl_y(AX,-10.1,AZ,5.1,20.2)); lever=cut(lever,cyl_y(LC[0],-10,LC[1],4.05,20))
+lever=cut(lever,cyl_y(AX,-10.1,AZ,5.1,20.2)); lever=cut(lever,cyl_y(LC[0],-10,LC[1],LH752_C_AXLE_D/2+.05,20))   # F24: Ø7 axle FSS-002-076
 lever=cut(lever,cyl_y(LG[0],-10,LG[1],3.05,20))
 add('HOLD_LIFT_CENTRAL_LEVER_ASS002723_FSS002073',lever,'lift')
 # Side links FSS-002-068 (BD = LINK_L) with axles FSS-002-075 (base) and FSS-002-079 (lift housing).
@@ -750,8 +782,14 @@ for sy in (-1,1):
     add(f'HOLD_LIFT_SIDE_LINK_FSS002068_{sy}',link,'lift')
     add(f'HOLD_LIFT_SIDE_AXLE_FSS002075_{sy}',fuse_all([cyl_y(LB[0],sy*SW_IN,LB[1],3.95,(LIFT_BASE_W/2-SW_IN),dir=sy),
         cyl_y(LB[0],sy*LIFT_BASE_W/2,LB[1],6,1.5,dir=sy)]),'lift')
-    add(f'HOLD_LIFT_TOP_AXLE_FSS002079_{sy}',fuse_all([cyl_y(LD[0],sy*16,LD[1],3.95,SW_OUT-16,dir=sy),
-        cyl_y(LD[0],sy*SW_OUT,LD[1],6,1.5,dir=sy)]),'lift')
+    # F24: D per DRW-002-752 C-C = blind taps 8 deep in both housing sides (no through axle): stepped pin FSS-002-079 (M6 thread
+    # in the yoke, Ø8 journal through the link) + DIN 471 8x0.8 outside the link (744 list: rings 8x0.8 x4).
+    _tr,_jr,_jl=LIFT_D_PIN; _gr,_rr,_rt=LIFT_D_RING; _hw=LIFT_HOUSING_W/2
+    _pin=fuse_all([cyl_y(LD[0],sy*(_hw-LH752_D_TAP[1]+.1),LD[1],_tr,LH752_D_TAP[1]-.1,dir=sy),
+                   cyl_y(LD[0],sy*_hw,LD[1],_jr,_jl,dir=sy),cyl_y(LD[0],sy*(_hw+_jl),LD[1],_gr,_rt+.1,dir=sy),
+                   cyl_y(LD[0],sy*(_hw+_jl+_rt+.1),LD[1],_jr,.4,dir=sy)])
+    add(f'HOLD_LIFT_TOP_AXLE_FSS002079_{sy}',_pin,'lift')
+    add(f'HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_{sy}',ring_y(LD[0],sy*(_hw+_jl+.05+_rt/2),LD[1],_rr,_gr+.02,_rt),'lift')
 # Gas spring SPR-002-524 150 N -> ACE GS-12-80-V4A (eye-to-eye 112..192), pins M6x18 FIX-002-749.
 E3=cq.Vector(LE[0],0,LE[1]); G3=cq.Vector(LG[0],0,LG[1]); gu=(G3-E3).normalized()
 gas_length=(G3-E3).Length; body_pt=E3.toTuple(); moving=G3.toTuple()
@@ -796,22 +834,71 @@ harness_segs=route_walk(HARNESS_START,(1,0,0),HARNESS_ROUTE)
 _hend=harness_segs[-1][1][-1]
 assert abs(_hend.x-CAM_GLAND_XY[0])<1e-6 and abs(_hend.y-CAM_GLAND_XY[1])<1e-6 and abs(_hend.z-(GLAND_EXIT_Z-6.0))<1e-6, _hend
 HARNESS_P=harness_segs[HARNESS_SEG_P-1][1][-1]; HARNESS_K=harness_segs[HARNESS_SEG_K-1][1][-1]
-# Lift housing DRW-002-752 (simplified interface): camera socket block, D lug, C arm.
-LHX1=14.0
-lh=fuse_all([box0(LHX1-LIFT_HOUSING_L-2,-LIFT_HOUSING_W/2,CAM_Z-24,LIFT_HOUSING_L+2,LIFT_HOUSING_W,48),
-             box0(2,-LIFT_HOUSING_W/2+.5,LD[1]-7.4,19,LIFT_HOUSING_W-1,15),
-             box0(0,-6.4,91,LC[0]+7.1,12.8,21)])
-lh=cut(lh,cyl_x(LHX1-LIFT_HOUSING_L-2.1,0,CAM_Z,11.5,LIFT_HOUSING_L+2.2))
-lh=cut(lh,cyl_y(LD[0],-LIFT_HOUSING_W/2-.1,LD[1],4.05,LIFT_HOUSING_W+.2))
-lh=cut(lh,cyl_y(LC[0],-6.5,LC[1],4.05,13))
-lh=cut(lh,route_tube(harness_segs[:HARNESS_SEG_P+1],HARNESS_OD/2+.3))   # F21/F23: fixed S-riser channel R17 through the C-arm (clamp P)
+# F24 lift housing per DRW-002-752 (camera end of the parallelogram). X(a)=LH_X0+a (axial), Z=CAM_Z+up.
+def lhx(a): return LH_X0+a
+_bf,_br,_bc=(lhx(v) for v in LH752_BODY_X); _wu,_wl=LH752_W; _zb,_zt,_zl=(CAM_Z+v for v in LH752_Z)
+_lug_x0=lhx(LH752_LIGHT[0]+LH752_LIGHT[1]/2)+.1                 # lugs/spine start behind the light cover (X12.47), ESTIMATED
+_cav=(lhx(31.88),12.0,CAM_Z-17.5,CAM_Z+16.5)    # PCB cavity (Mini-Cam electronics; PX1: SP13 rear + cable riser), DERIVED/ESTIMATED
+lh=fuse_all([box0(_bf,-_wu/2,CAM_Z,_br-_bf,_wu,_zt-CAM_Z),                                        # upper body 46.04
+             box0(_bf,-_wl/2,_zb,_br-_bf,_wl,CAM_Z-_zb+.5).edges('|X and <Z').fillet(5.0),          # lower body 41.97
+             cyl_x(lhx(LH752_LOCK[2]),0,CAM_Z,LH752_NECK_OD/2,LH752_BODY_X[0]-LH752_LOCK[2]+.2),     # neck Ø35.1
+             cyl_x(lhx(LH752_SPIGOT[0]),0,CAM_Z,LH752_SPIGOT[1]/2,LH752_LOCK[2]-LH752_SPIGOT[0]+.1),  # spigot under the lock ring
+             # PX1 yoke (integral, ESTIMATED): D boss behind the body, 752-type C fork lugs moved by LH_PIVOT_SHIFT, cable spine.
+             box0(_br-.5,-_wu/2,LH_YOKE_Z0,LH_YOKE_X1-_br+.5,_wu,LD[1]+7.6-LH_YOKE_Z0)]
+            +[box0(_lug_x0,sy*LH752_FORK[0] if sy>0 else -LH752_FORK[1],LH_YOKE_Z0,LC[0]-_lug_x0,LH752_FORK[1]-LH752_FORK[0],
+                   LC[1]+7-LH_YOKE_Z0) for sy in (-1,1)]
+            +[cyl_y(LC[0],sy*LH752_FORK[0],LC[1],7.0,LH752_FORK[1]-LH752_FORK[0],dir=sy) for sy in (-1,1)]
+            +[box0(_lug_x0,-LH_SPINE_Y,91,LC[0]+7.1-_lug_x0,2*LH_SPINE_Y,21)])
+lh=cut(lh,box0(_cav[0],-_cav[1],_cav[2],_br-_cav[0]+.01,2*_cav[1],_cav[3]-_cav[2]))
+lh=cut(lh,cyl_x(lhx(LH752_SPIGOT[0])-.1,0,CAM_Z,11.5,_cav[0]-lhx(LH752_SPIGOT[0])+.2))           # SP13 bore (r11 collar)
+_lr_a=11.0                                                                                         # lock-ring screws axial, DERIVED (side view)
+lh=cut(lh,cut(cyl_x(lhx(_lr_a)-1.85,0,CAM_Z,LH752_SPIGOT[1]/2+.2,3.7),cyl_x(lhx(_lr_a)-1.9,0,CAM_Z,15.3,3.8)))  # dog-point groove
+lh=cut(lh,cyl_y(LC[0],-LH752_FORK[1]-.1,LC[1],LH752_C_AXLE_D/2+.025,2*LH752_FORK[1]+.2))         # C bore Ø7.05 (fork + spine)
+for sy in (-1,1):
+    lh=cut(lh,cyl_y(LC[0],sy*(LH752_FORK[1]-LIFT_C_RING[3]),LC[1],5.5,LIFT_C_RING[3]+.1,dir=sy))   # ring recess Ø11 x 1.0
+    lh=cut(lh,cyl_y(LD[0],sy*(_wu/2-LH752_D_TAP[1]),LD[1],LIFT_D_PIN[0]+.05,LH752_D_TAP[1]+.1,dir=sy))  # D blind tap 8 deep
+for (ly,lu) in LH752_COVER_SCREWS:
+    for sy in (-1,1): lh=cut(lh,cyl_x(_br-6.3,sy*ly,CAM_Z+lu,1.5,6.4))                          # M3 taps for FAL-002-081
+_chan=route_tube(harness_segs[:HARNESS_SEG_P+1],HARNESS_OD/2+.3)                               # fixed riser channel -> clamp P
+lh=cut(lh,_chan)
 # F23 potted bend tail on the SP13 rear (option b): sleeve over the plug body + shell r(OD/2+1.5) along the fixed R17 bend.
 _tsegs=route_walk(HARNESS_START,(1,0,0),HARNESS_ROUTE[:2]+(('S',HARNESS_TAIL_LINE),))
 _sr,_sov,_scap=HARNESS_TAIL_SLEEVE; _sp13_end=-36.0+SP13_PLUG_KEEP
 tail_env=fuse_all([cyl_x(_sp13_end-_sov,0,CAM_Z,_sr,_sov+_scap),route_tube(_tsegs,HARNESS_OD/2+HARNESS_TAIL_WALL)])
-lh=cut(lh,fuse_all([cyl_x(_sp13_end-_sov-.2,0,CAM_Z,_sr+.2,_sov+_scap+.4),route_tube(_tsegs,HARNESS_OD/2+HARNESS_TAIL_WALL+.2)]))
-add('HOLD_LIFT_HOUSING_DRW002752_SIMPLIFIED_INTERFACE',lh,'lift')
-add('HOLD_LIFT_TOP_LEVER_AXLE_FSS002076',cyl_y(LC[0],-LIFT_CHEEK_Y[1],LC[1],3.95,2*LIFT_CHEEK_Y[1]),'lift')
+_tail_cut=fuse_all([cyl_x(_sp13_end-_sov-.2,0,CAM_Z,_sr+.2,_sov+_scap+.4),route_tube(_tsegs,HARNESS_OD/2+HARNESS_TAIL_WALL+.2)])
+lh=cut(lh,_tail_cut)
+add('HOLD_LIFT_HOUSING_FAL002071_DRW752_WITH_PX1_YOKE',lh,'lift')
+# Lift cover FAL-002-081 (rear plate, 4x M3x8 CSK FIX-002-517); cable passes through it in the potted tail (752 gland position).
+_cw,_ch,_ct=LH752_COVER
+lcov=box0(_br,-_cw/2,_zb,_ct,_cw,_ch)
+for (ly,lu) in LH752_COVER_SCREWS:
+    for sy in (-1,1): lcov=cut(lcov,cyl_x(_br-.1,sy*ly,CAM_Z+lu,2.85,_ct+.2))
+lcov=cut(cut(lcov,_chan),_tail_cut)
+add('HOLD_LIFT_COVER_FAL002081_DRW752',lcov,'lift')
+for _i,(ly,lu,sy) in enumerate([(a,b,c) for a,b in LH752_COVER_SCREWS for c in (-1,1)],1):
+    add(f'FIX002517_M3x8_CSK_TORX_LIFT_COVER_{_i}',fuse_all([cyl_x(_br,sy*ly,CAM_Z+lu,2.8,_ct),cyl_x(_br-6.28,sy*ly,CAM_Z+lu,1.45,6.3)]),'shaft')
+# Light cover FAL-002-080 on top (Mini-Cam LED window, O-ring 21x1.5); PX1 use of the window HOLD.
+_la,_ll,_lw=LH752_LIGHT
+add('HOLD_LIFT_LIGHT_COVER_FAL002080_DRW752',box0(lhx(_la-_ll/2),-_lw/2,_zt,_ll,_lw,_zl-_zt).edges('|Z').fillet(4.0),'lift')
+# Lock ring FSS-001-889 (cone 48.64 -> 35.81 x 22.99, bore 34.16) + lock-ring screw FSS-001-891 and M5x6 dog point FIX-001-892
+# radial at axial 11 into a groove of the spigot (ring captive, turns to pull the camera onto the connector), ESTIMATED.
+lring=wp(cq.Solid.makeCone(LH752_LOCK[0]/2,LH752_LOCK[1]/2,LH752_LOCK[2],cq.Vector(LH_X0,0,CAM_Z),cq.Vector(1,0,0)))
+lring=cut(lring,cyl_x(LH_X0-.1,0,CAM_Z,LH752_LOCK_BORE/2,LH752_LOCK[2]+.2))
+_lr_dirs=((1,28.5),(-1,0.0))                                                                     # (+Y 28.5 deg up: FSS-001-891, -Y: FIX-001-892)
+for sy,ang in _lr_dirs:
+    v=cq.Vector(0,sy*math.cos(math.radians(ang)),math.sin(math.radians(ang)))
+    lring=cut(lring,wp(cq.Solid.makeCylinder(2.55,9.0,cq.Vector(lhx(_lr_a),0,CAM_Z)+v*16.9,v)))
+add('HOLD_LOCK_RING_FSS001889_DRW752',lring,'lift')
+for (sy,ang),nm in zip(_lr_dirs,('HOLD_LOCK_RING_SCREW_FSS001891','FIX001892_M5x6_DOG_POINT_SET_SCREW_LOCK_RING')):
+    v=cq.Vector(0,sy*math.cos(math.radians(ang)),math.sin(math.radians(ang))); o=cq.Vector(lhx(_lr_a),0,CAM_Z)
+    add(nm,fuse_all([wp(cq.Solid.makeCylinder(1.75,1.7,o+v*15.4,v)),wp(cq.Solid.makeCylinder(2.5,3.9,o+v*17.1,v))]),'shaft')
+# Axle FSS-002-076 Ø7 through fork lugs, lever cheeks and spine; DIN 471 7x0.8 in the lug recesses (inside |Y| 23.02).
+_g0=LH752_FORK[1]-LIFT_C_RING[3]
+caxle76=cyl_y(LC[0],-(LH752_FORK[1]-.02),LC[1],LH752_C_AXLE_D/2-.025,2*(LH752_FORK[1]-.02))
+for sy in (-1,1):
+    caxle76=cut(caxle76,cut(cyl_y(LC[0],sy*_g0,LC[1],4.0,.9,dir=sy),cyl_y(LC[0],sy*(_g0-.1),LC[1],LIFT_C_RING[0],1.1,dir=sy)))
+    add(f'HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_{sy}',ring_y(LC[0],sy*(_g0+.05+LIFT_C_RING[2]/2),LC[1],LIFT_C_RING[1],LIFT_C_RING[0]+.02,LIFT_C_RING[2]),'lift')
+add('HOLD_LIFT_TOP_LEVER_AXLE_FSS002076',caxle76,'lift')
 # CAM026 catalogue envelope 120x74x74 (rear rotate housing + pan/tilt head + window).
 cam_rear=CAM_REAR_X; cam_front=cam_rear-CAM026_ENVELOPE[0]
 add('HOLD_CAM026_ROTATE_HOUSING_GRAPHIC_OD62p5',cyl_x(cam_rear-60,0,CAM_Z,CAM_R,60),'camera')

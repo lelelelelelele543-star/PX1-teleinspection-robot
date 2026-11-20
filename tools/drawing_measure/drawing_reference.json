@@ -9,12 +9,11 @@
     {"id": "wheel_diameter", "master_constant": "2*WHEEL_CROWN_R", "expected": 90.0, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "SOURCE_REGISTER.md: catalogue CRP150 D90 wheels"},
     {"id": "wheel_centre_y", "master_constant": "WHEEL_CENTRE_Y", "expected": 54.5, "tol_mm": 0.0, "tag": "DERIVED", "source": "pipe_service ENGINEERING_BASIS / F04: total width 133 = 2*(54.5+12)"},
     {"id": "pipe_r", "master_constant": "PIPE_R", "expected": 75.0, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "DN150 nominal ID150 (project requirement, F04)"},
-    {"id": "pipe_contact_pose_z", "master_constant": "PIPE_CENTER_Z", "expected": 51.524266, "tol_mm": 1e-5, "tag": "DERIVED", "source": "F04 README: pipe pose Z51.524266 = WHEEL_Z-CROWN+sqrt(PIPE_R^2-WHEEL_CENTRE_Y^2)"},
+    {"id": "pipe_contact_pose_z", "master_constant": "PIPE_CENTER_Z", "expected": 51.524266, "tol_mm": 1e-05, "tag": "DERIVED", "source": "F04 README: pipe pose Z51.524266 = WHEEL_Z-CROWN+sqrt(PIPE_R^2-WHEEL_CENTRE_Y^2)"},
     {"id": "wheel_min_noncontact_gap_req", "master_constant": "WHEEL_MIN_NONCONTACT_GAP", "expected": 3.0, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "F04 requirement >=3 mm (feature_list.json F04)"},
-
     {"id": "z50_teeth", "master_constant": "Z50_TEETH", "expected": 50, "tol_mm": 0, "tag": "CONFIRMED", "source": "DRW-002-374 GEA-002-529/-528 Z50 (BOM G01/G02)"},
     {"id": "z50_module", "master_constant": "Z50_MOD", "expected": 1.0, "tol_mm": 0.0, "tag": "DERIVED", "source": "BOM G01: m1 inferred from 50 mm pitch"},
-    {"id": "z50_pitch_d", "master_constant": "Z50_PD", "expected": 50.0, "tol_mm": 1e-9, "tag": "DERIVED", "source": "z*m = 50*1"},
+    {"id": "z50_pitch_d", "master_constant": "Z50_PD", "expected": 50.0, "tol_mm": 1e-09, "tag": "DERIVED", "source": "z*m = 50*1"},
     {"id": "z50_face", "master_constant": "Z50_FACE", "expected": 4.0, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "BOM G01/G02: Z50 B4 (DRW-002-374)"},
     {"id": "z16_teeth", "master_constant": "Z16_TEETH", "expected": 16, "tol_mm": 0, "tag": "CONFIRMED", "source": "F06 README: GEA-002-531 Z16"},
     {"id": "z40_teeth", "master_constant": "Z40_TEETH", "expected": 40, "tol_mm": 0, "tag": "CONFIRMED", "source": "F06 README: GEA-002-530 Z40"},
@@ -22,7 +21,6 @@
     {"id": "bevel_apex_y", "master_constant": "BEVEL_APEX_Y", "expected": 13.5, "tol_mm": 0.0, "tag": "DERIVED", "source": "F06 README: apex X250, Y+-13.5, Z45"},
     {"id": "motor_axis_y", "master_constant": "MOTOR_Y", "expected": 13.5, "tol_mm": 0.0, "tag": "DERIVED", "source": "F12/F16: layout Y+-13.5 not changed"},
     {"id": "motor_face_x", "master_constant": "MOTOR_FACE", "expected": 189.5, "tol_mm": 0.0, "tag": "DERIVED", "source": "F12/F16: motor flange X189.5 not changed"},
-
     {"id": "brg_61801", "master_constant": "B61801", "expected": [12.0, 21.0, 5.0], "tol_mm": 0.0, "tag": "CONFIRMED", "source": "BOM B01, ISO 61801"},
     {"id": "brg_61903", "master_constant": "B61903", "expected": [17.0, 30.0, 7.0], "tol_mm": 0.0, "tag": "CONFIRMED", "source": "BOM B02, ISO 61903 (DRW-002-374)"},
     {"id": "brg_61800", "master_constant": "B61800", "expected": [10.0, 19.0, 5.0], "tol_mm": 0.0, "tag": "CONFIRMED", "source": "BOM B03, ISO 61800 (DRW-002-375)"},
@@ -45,7 +43,6 @@
     {"id": "cover_screw_count", "master_constant": "len(COVER_SCREW_DX)*len(COVER_SCREW_DZ)", "expected": 12, "tol_mm": 0, "tag": "CONFIRMED", "source": "F08 README: DRW-002-374 pos.15 FIX-000-359 M3x8, 12 pcs per cover"},
     {"id": "iso7380_m3", "master_constant": "ISO7380_M3", "expected": [2.85, 1.65], "tol_mm": 0.0, "tag": "CONFIRMED", "source": "ISO 7380 M3: dk 5.7, k 1.65 (F08)"},
     {"id": "m6_wheel_screw_cosmetic_r", "master_constant": "M6_COSMETIC_THREAD_R", "expected": 3.0, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "F13: ASS-002-103 FIX-002-105 M6x14 ISO 7380; ISO 262 M6 major diameter (replaces F07 M5)"},
-
     {"id": "body_length", "master_constant": "BODY_L_SOURCE_SCREEN", "expected": 278.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-375 1:1, 278.003; F11 278.1"},
     {"id": "body_width", "master_constant": "2*BODY_HALF_W_SCREEN", "expected": 68.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-375 68.009"},
     {"id": "body_height", "master_constant": "BODY_TOP-BODY_Z0", "expected": 64.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: DRW-002-375 64.008"},
@@ -65,13 +62,11 @@
     {"id": "camera_axis_folded", "master_constant": "CAM_Z", "expected": 70.0, "tol_mm": 5.0, "tag": "CONFIRMED", "source": "CRP150 catalogue lower bound 70 (read as camera axis above floor)"},
     {"id": "cam026_envelope", "master_constant": "CAM026_ENVELOPE", "expected": [120.0, 74.0, 74.0], "tol_mm": 0.0, "tag": "CONFIRMED", "source": "GAP catalogue sy1083 CAM026 120x74x74"},
     {"id": "cam026_mass", "master_constant": "CAM026_MASS_KG", "expected": 0.864, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "GAP catalogue sy1083 CAM026 0.864 kg"},
-    {"id": "lift_housing_752", "master_constant": "(LIFT_HOUSING_W, LIFT_HOUSING_L)", "expected": [48.0, 52.0], "tol_mm": 2.0, "tag": "DERIVED", "source": "F18: DRW-002-752 1:1 C-C width ~48, side view length ~52"},
+    {"id": "lift_housing_752", "master_constant": "(LIFT_HOUSING_W, LIFT_HOUSING_L)", "expected": [46.04, 28.71], "tol_mm": 0.3, "tag": "DERIVED", "source": "F24: DRW-002-752 1:1 vector C-C / rear view width 46.04, side view body front 26.92 -> lift-cover face 55.63 (F18 block 46x52 replaced)"},
     {"id": "camera_head_l", "master_constant": "CAM_LEN", "expected": 132.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: CAM026 ASM000 head 132"},
     {"id": "camera_base_od", "master_constant": "CAM026_MEASURED_BASE_OD", "expected": 62.5, "tol_mm": 0.5, "tag": "DERIVED", "source": "SOURCE_REGISTER.md: base ~62.5 (photo with caliper)"},
-
     {"id": "weight_plate_w", "master_constant": "WEIGHT_PLATE_W", "expected": 50.3, "tol_mm": 0.2, "tag": "DERIVED", "source": "F11 README: DRW-002-375 A-A 1:1"},
     {"id": "weight_plate_h", "master_constant": "WEIGHT_PLATE_H", "expected": 12.0, "tol_mm": 0.2, "tag": "DERIVED", "source": "F11 README: DRW-002-375 A-A 1:1"},
-
     {"id": "gearhead_od", "master_constant": "GEARHEAD_OD", "expected": 26.0, "tol_mm": 0.3, "tag": "DERIVED", "source": "F12/F16: DRW-002-386 1:1 gearhead D26.0"},
     {"id": "motor_od", "master_constant": "MOTOR_OD", "expected": 22.2, "tol_mm": 0.3, "tag": "DERIVED", "source": "F12/F16: DRW-002-386 1:1 motor D22.2"},
     {"id": "gearhead_len_catalogue", "master_constant": "GEARHEAD_LEN", "expected": 44.9, "tol_mm": 0.0, "tag": "CONFIRMED", "source": "MOTOR_F12: ZHAOWEI ZWSMD026026 3-stage 44.9 (catalogue)"},
@@ -94,7 +89,21 @@
     {"id": "drw745_valve_pos", "master_constant": "PROTEUS_VALVE_FROM_FRONT", "expected": [30.8, 17.4], "tol_mm": 0.5, "tag": "DERIVED", "source": "DRW-002-745 outer view / D-D"},
     {"id": "drw745_gland_axis", "master_constant": "PROTEUS_GLAND_AXIS", "expected": [15.4, 9.6], "tol_mm": 0.5, "tag": "DERIVED", "source": "DRW-002-745 outer view / C-C"},
     {"id": "drw745_feed_bore", "master_constant": "PROTEUS_FEED_BORE_D", "expected": 8.0, "tol_mm": 0.5, "tag": "DERIVED", "source": "DRW-002-745 C-C vertical bore holder->cover"},
-    {"id": "lift_m4_px1_y_equals_drw744", "master_constant": "LIFT_M4_Y_PX1", "expected": [27.9, 25.0], "tol_mm": 0.3, "tag": "DERIVED", "source": "F23: PX1 |Y| outer / inner pair = DRW-002-744 pattern (F22 removed the cover face groove that forced 25.0)"}
+    {"id": "lift_m4_px1_y_equals_drw744", "master_constant": "LIFT_M4_Y_PX1", "expected": [27.9, 25.0], "tol_mm": 0.3, "tag": "DERIVED", "source": "F23: PX1 |Y| outer / inner pair = DRW-002-744 pattern (F22 removed the cover face groove that forced 25.0)"},
+    {"id": "drw752_lock_ring", "master_constant": "LH752_LOCK", "expected": [48.64, 35.81, 22.99], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): FSS-001-889 front OD / rear OD / length (side view)"},
+    {"id": "drw752_lock_ring_bore", "master_constant": "LH752_LOCK_BORE", "expected": 34.16, "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): A-A camera seat bore"},
+    {"id": "drw752_neck", "master_constant": "LH752_NECK_OD", "expected": 35.1, "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): A-A / side view neck"},
+    {"id": "drw752_body_axial", "master_constant": "LH752_BODY_X", "expected": [26.92, 53.91, 55.63], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): side view body front / rear / lift cover FAL-002-081"},
+    {"id": "drw752_body_width", "master_constant": "LH752_W", "expected": [46.04, 41.97], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): C-C upper / lower width"},
+    {"id": "drw752_body_height", "master_constant": "LH752_Z", "expected": [-23.0, 35.0, 39.0], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): bottom / top / light-cover top vs camera axis"},
+    {"id": "drw752_pivot_c", "master_constant": "LH752_C", "expected": [72.42, 24.99], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): A-A axle FSS-002-076 centre (axial, up)"},
+    {"id": "drw752_pivot_d", "master_constant": "LH752_D", "expected": [34.39, 12.03], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): side view hole + C-C taps (axial, up)"},
+    {"id": "drw752_c_axle_d", "master_constant": "LH752_C_AXLE_D", "expected": 7.05, "tol_mm": 0.1, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): A-A Ø7.05, rear view 6.98"},
+    {"id": "drw752_fork", "master_constant": "LH752_FORK", "expected": [12.22, 23.02, 79.37], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): rear view lugs (gap 24.45), A-A lug end"},
+    {"id": "drw752_d_tap", "master_constant": "LH752_D_TAP", "expected": [5.21, 8.0], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): C-C blind taps both sides (drawn D1 / depth)"},
+    {"id": "drw752_lift_cover", "master_constant": "LH752_COVER", "expected": [45.02, 40.9, 1.72], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): rear view / side view FAL-002-081"},
+    {"id": "drw752_cover_screws", "master_constant": "LH752_COVER_SCREWS", "expected": [[19.69, 14.51], [17.53, -19.47]], "tol_mm": 0.3, "tag": "DERIVED", "source": "DRW-002-752 (1:1, PDF vector geometry; scale checked on ISO 7380 M4 head 7.43/7.6 and Torx T10 2.86): rear view 4x FIX-002-517 M3x8 CSK"},
+    {"id": "px1_pivot_shift_vs_752", "master_constant": "LH_PIVOT_SHIFT", "expected": [19.11, 9.91], "tol_mm": 0.1, "tag": "ESTIMATED", "source": "F24 choice: C/D yoke shifted vs 752 so folded axis = catalogue 70 and the 752 body ends X14 before the crawler front X18"}
   ],
   "derived_checks": [
     {"id": "side_seal_track_stretch", "kind": "side_seal_track", "min_pct": 0.0, "max_pct": 3.0, "tag": "DERIVED", "source": "F10 README: centreline 609.6 vs O-ring 190x1.5 centreline 601.6 -> +1.3 %; same arc/fillet construction as lobed_seal_face()"},
@@ -136,6 +145,14 @@
     {"id": "camera_clamp_p_x_le_41", "kind": "expr_range", "expr": "HARNESS_P_X", "range": [null, 41.0], "units": "mm", "tag": "DERIVED", "source": "F23: P beyond ~X41 makes the R27 span P->clip 1 loop at theta>=60 (tools/lift/check_lift_kinematics.py)"},
     {"id": "internal_cable_bend_ge_3xOD", "kind": "expr_range", "expr": "INNER_R-3*HARNESS_OD", "range": [0.0, null], "units": "mm", "tag": "CONFIRMED", "source": "F23: internal LAPP bend below the Ø8 passage vs 3xD 16.2"},
     {"id": "internal_cable_over_61800", "kind": "expr_range", "expr": "INNER_BEND_Z0-INNER_R-HARNESS_OD/2-(WHEEL_Z+B61800[1]/2)", "range": [1.0, null], "units": "mm", "tag": "DERIVED", "source": "F23: internal LAPP bottom over the Z40 61800 bearings (Z54.5)"},
-    {"id": "internal_bundle_bend_ge_3xD", "kind": "expr_range", "expr": "BUNDLE_R-3*BUNDLE_OD", "range": [0.0, null], "units": "mm", "tag": "ESTIMATED", "source": "F23: 6-core bundle bends vs 3xD"}
+    {"id": "internal_bundle_bend_ge_3xD", "kind": "expr_range", "expr": "BUNDLE_R-3*BUNDLE_OD", "range": [0.0, null], "units": "mm", "tag": "ESTIMATED", "source": "F23: 6-core bundle bends vs 3xD"},
+    {"id": "drw752_cd_vs_744_ab", "kind": "expr_range", "expr": "math.hypot(LH752_C[0]-LH752_D[0],LH752_C[1]-LH752_D[1])-math.hypot(LIFT_AB[0],LIFT_AB[1])", "range": [-0.5, 0.5], "units": "mm", "tag": "DERIVED", "source": "F24: CD from 752 (40.18) = AB from 744 (40.19) - parallelogram consistent"},
+    {"id": "drw752_cd_angle_vs_744", "kind": "expr_range", "expr": "math.degrees(math.atan2(LH752_C[1]-LH752_D[1],LH752_C[0]-LH752_D[0]))-math.degrees(math.atan2(-LIFT_AB[1],LIFT_AB[0]))", "range": [-1.0, 1.0], "units": "deg", "tag": "DERIVED", "source": "F24: CD direction 752 18.82 vs AB 744 18.12 deg"},
+    {"id": "px1_d_on_752_pattern", "kind": "expr_range", "expr": "math.hypot(LH_X0+LH752_D[0]+LH_PIVOT_SHIFT[0]-(LIFT_A_X-LIFT_AB[0]-LINK_L),CAM_Z+LH752_D[1]+LH_PIVOT_SHIFT[1]-(LIFT_A_Z+LIFT_AB[1]))", "range": [0.0, 0.6], "units": "mm", "tag": "DERIVED", "source": "F24: model D (exact 744 parallelogram) vs 752 D on the shifted yoke"},
+    {"id": "proteus_folded_axis_752_literal", "kind": "expr_range", "expr": "SERVICE_Z+LIFT_A_ABOVE_BASE-LH752_C[1]", "range": [65.0, 75.0], "units": "mm", "tag": "DERIVED", "source": "F24: Proteus A (base on housing top Z75) - 752 C offset = 72.9 vs catalogue 70+-5 (744/752/catalogue consistent)"},
+    {"id": "housing_rear_before_crawler_front", "kind": "expr_range", "expr": "18.0-LH_REAR_X", "range": [3.0, null], "units": "mm", "tag": "ESTIMATED", "source": "F24: lift-cover face X14 vs crawler front X18"},
+    {"id": "riser_vs_d_taps_y_gap", "kind": "expr_range", "expr": "LIFT_HOUSING_W/2-LH752_D_TAP[1]-HARNESS_OD/2-HARNESS_TAIL_WALL", "range": [1.0, null], "units": "mm", "tag": "DERIVED", "source": "F24: D taps blind 8 deep (752 C-C) vs riser/tail in Y0 (F23 open item closed)"},
+    {"id": "side_link_to_housing_gap", "kind": "expr_range", "expr": "LIFT_SIDE_Y-LIFT_SIDE_T/2-LIFT_HOUSING_W/2", "range": [0.1, null], "units": "mm", "tag": "ESTIMATED", "source": "F24: side link inner face vs 752 body 46.04 (744 links |Y|27.9 -> 2.9 with brass washers; PX1 25.2 -> 0.18)"},
+    {"id": "fork_gap_vs_lever_cheeks", "kind": "expr_range", "expr": "LH752_FORK[0]-LIFT_CHEEK_Y[1]", "range": [1.0, null], "units": "mm", "tag": "DERIVED", "source": "F24: 752 fork gap 24.45 vs central-lever cheeks 19.2 (2.6 per side for washers)"}
   ]
 }

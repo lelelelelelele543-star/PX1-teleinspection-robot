@@ -247,6 +247,48 @@ def option_a(m):
                        'inline joint (extra leak path) and the elbow still needs a new exit position in DRW-002-752.'}
 
 
+def drw752_check(m, A, B, C, D):
+    """F24: DRW-002-752 lift housing. (1) CD of 752 (C, D in the housing, 1:1) vs AB of 744 (parallelogram consistency);
+    (2) model D vs 752 D carried by the PX1 yoke (752 pattern + LH_PIVOT_SHIFT); (3) camera axis below C;
+    (4) the fixed cable riser / clamp P vs the C axle FSS-002-076 (Ø7.05, through) and the D blind taps (|Y| >= W/2 - 8):
+    3-D clearance >= 1 mm (riser runs in Y0; XZ distance used for the through C axle, Y gap for the D taps)."""
+    c752, d752 = m['LH752_C'], m['LH752_D']; ab = m['LIFT_AB']
+    cd = (c752[0] - d752[0], c752[1] - d752[1]); cd_len = math.hypot(*cd); ab_len = math.hypot(*ab)
+    ang_752 = math.degrees(math.atan2(cd[1], cd[0])); ang_744 = math.degrees(math.atan2(-ab[1], ab[0]))
+    x0, cz = m['LH_X0'], m['CAM_Z']; sh = m['LH_PIVOT_SHIFT']
+    d_752_px1 = (x0 + d752[0] + sh[0], cz + d752[1] + sh[1]); c_752_px1 = (x0 + c752[0] + sh[0], cz + c752[1] + sh[1])
+    d_dev = math.dist(d_752_px1, D); c_dev = math.dist(c_752_px1, C)
+    route = m['HARNESS_ROUTE']; iP = m['HARNESS_SEG_P']; r_cab = m['HARNESS_OD']/2; r_tail = r_cab + m['HARNESS_TAIL_WALL']
+    pts = _sample_route(m['HARNESS_START'], tuple(route[:iP + 1]))
+    r_c = m['LH752_C_AXLE_D']/2
+    c_xz = min(math.dist(q, C) for q in pts) - r_c - r_cab
+    tap_y0 = m['LIFT_HOUSING_W']/2 - m['LH752_D_TAP'][1]
+    d_y_gap = tap_y0 - r_tail
+    d_xz = min(math.dist(q, D) for q in pts) - m['LIFT_D_PIN'][0] - r_tail
+    folded_752 = m['LIFT_A_Z'] - c752[1]; proteus_A_z = m['SERVICE_Z'] + m['LIFT_A_ABOVE_BASE']
+    checks = {
+        'drw752_cd_equals_744_ab_within_0p5': abs(cd_len - ab_len) <= 0.5,
+        'drw752_cd_direction_within_1deg_of_744_ab': abs(ang_752 - ang_744) <= 1.0,
+        'px1_yoke_d_on_752_pattern_within_0p6': d_dev <= 0.6 and c_dev <= 1e-6,
+        'riser_clear_of_c_axle_ge_1': c_xz >= 1.0,
+        'riser_clear_of_d_taps_ge_1': d_y_gap >= 1.0 or d_xz >= 1.0,
+    }
+    return {'checks': checks, 'report': {
+        'cd_752_vs_ab_744': {'cd_752_mm': round(cd_len, 3), 'ab_744_mm': round(ab_len, 3), 'diff_mm': round(cd_len - ab_len, 3),
+                             'angle_752_deg': round(ang_752, 2), 'angle_744_deg': round(ang_744, 2),
+                             'note': 'parallelogram kept exact on 744 (AB = CD); 752 differs by the listed angle -> camera tilt '
+                                     '<= that angle if 752 were used literally (within 744 1:1.5 reading +-0.3 mm)'},
+        'd_model_vs_752_shifted_mm': round(d_dev, 3), 'pivot_shift_px1_mm': [round(v, 3) for v in sh],
+        'camera_axis_below_c': {'drw752_mm': c752[1], 'px1_mm': round(m['LIFT_A_Z'] - cz, 3),
+                                'px1_folded_if_752_literal_mm': round(folded_752, 2),
+                                'proteus_folded_752_literal_mm': round(proteus_A_z - c752[1], 2),
+                                'catalogue_mm': m['LIFT_CAT_RANGE'][0]},
+        'riser_to_pivots': {'c_axle_xz_clearance_mm': round(c_xz, 2), 'd_taps_y_gap_mm': round(d_y_gap, 2),
+                            'd_taps_xz_clearance_mm': round(d_xz, 2),
+                            'note': 'D = blind taps 8 deep from each side (752 C-C), riser + potted tail in Y0 -> no crossing'},
+    }}
+
+
 def overlap(a, b):
     return min(a[2], b[2]) - max(a[0], b[0]), min(a[3], b[3]) - max(a[1], b[1])
 
@@ -286,11 +328,16 @@ def main():
         ux, uz = gg[0] - e[0], gg[1] - e[1]; n = math.hypot(ux, uz)
         return abs(e[0]*uz - e[1]*ux) / n
     # Translating group rectangles (X0, Z0, X1, Z1) at theta=0, from master geometry constants.
-    lhx1 = 14.0; cam_rear = m['CAM_REAR_X']; cam_l, cam_w, cam_h = m['CAM026_ENVELOPE']; cz0 = m['CAM_Z']
-    group = {'camera_CAM026': (cam_rear - cam_l, cz0 - cam_h/2, cam_rear, cz0 + cam_h/2),
-             'lift_housing_block': (lhx1 - m['LIFT_HOUSING_L'] - 2, cz0 - 24, lhx1, cz0 + 24),
-             'lift_housing_D_lug': (2.0, D[1] - 7.4, 21.0, D[1] + 7.6),
-             'lift_housing_C_arm': (0.0, 94.0, C[0] + 7.1, 112.0)}
+    cam_rear = m['CAM_REAR_X']; cam_l, cam_w, cam_h = m['CAM026_ENVELOPE']; cz0 = m['CAM_Z']
+    x0 = m['LH_X0']; bx = m['LH752_BODY_X']; zb, zt, zl = (cz0 + v for v in m['LH752_Z']); la, ll, _ = m['LH752_LIGHT']
+    lug_x0 = x0 + la + ll/2 + .1
+    group = {'camera_CAM026': (cam_rear - cam_l, cz0 - cam_h/2, cam_rear, cz0 + cam_h/2),            # F24: DRW-002-752 parts
+             'lock_ring_FSS001889': (x0, cz0 - m['LH752_LOCK'][0]/2, x0 + m['LH752_LOCK'][2], cz0 + m['LH752_LOCK'][0]/2),
+             'housing_body_and_lift_cover': (x0 + bx[0], zb, x0 + bx[2], zt),
+             'light_cover_FAL002080': (x0 + la - ll/2, zt, x0 + la + ll/2, zl),
+             'px1_yoke_D': (x0 + bx[1] - .5, m['LH_YOKE_Z0'], m['LH_YOKE_X1'], D[1] + 7.6),
+             'px1_yoke_C_lugs': (lug_x0, m['LH_YOKE_Z0'], C[0] + 7.0, C[1] + 7.0),
+             'px1_cable_spine': (lug_x0, 91.0, C[0] + 7.1, 112.0)}
     obstacles = {'crawler_housing': (18.0, 11.0, 296.0, 75.0),
                  'service_cover': (m['SERVICE_CX'] - m['SERVICE_L']/2, 75.0, m['SERVICE_CX'] + m['SERVICE_L']/2, 82.0)}
     worst = {}
@@ -308,9 +355,10 @@ def main():
     swept_ok = not any(v['clash'] for v in worst.values())
     mass = {'CAM026_kg_CONFIRMED': m['CAM026_MASS_KG'], 'lift_housing_kg_ESTIMATED': 0.25, 'levers_kg_ESTIMATED': 0.20}
     cam_cg_x = cam_rear - cam_l/2
-    grav0 = 9.81*(mass['CAM026_kg_CONFIRMED']*(AX - cam_cg_x) + mass['lift_housing_kg_ESTIMATED']*(AX - (-13.0))
+    grav0 = 9.81*(mass['CAM026_kg_CONFIRMED']*(AX - cam_cg_x) + mass['lift_housing_kg_ESTIMATED']*(AX - (x0 + (bx[0] + bx[2])/2))
                   + mass['levers_kg_ESTIMATED']*L/2)/1000
     hchecks, harness = harness_check(m, L, AX, AZ, tmax, args.step)
+    h752 = drw752_check(m, A, B, C, D)
     checks = {
         'camera_axis_folded_70pm5': abs(cam0 - lo_cat) <= TOL_HEIGHT,
         'camera_axis_raised_257pm5': abs(cam_max - hi_cat) <= TOL_HEIGHT,
@@ -320,6 +368,7 @@ def main():
         'gas_spring_pushes_up_when_raising': gas[-1] > gas[0],
         'swept_group_clear_of_housing_and_cover': swept_ok,
         **hchecks,
+        **h752['checks'],
     }
     report = {
         'status': 'PASS' if all(checks.values()) else 'FAIL', 'checks': checks,
@@ -340,6 +389,7 @@ def main():
         'swept_clearance_worst': worst,
         'masses': mass,
         'camera_harness_F21': harness,
+        'lift_housing_DRW002752_F24': h752['report'],
         'folded_height_top_of_lever_mm': AZ + 9.0,
         'samples': samples,
         'limits': 'Planar XZ screen of rectangles; Y-separated parts (front wheels, Y>=42.5 vs camera +-37) not tested here. '
@@ -353,6 +403,7 @@ def main():
     short['swept_min_clearance_mm'] = min(v['clearance_mm'] for v in worst.values())
     short['camera_harness_F21'] = {k: harness[k] for k in ('modeled_route_length_mm', 'need_mm', 'need_increase_max_mm',
                                                             'need_change_at_theta_max_mm', 'slack_mm', 'margin_mm', 'bend_radii_mm')}
+    short['lift_housing_F24'] = {k: h752['report'][k] for k in ('cd_752_vs_ab_744', 'd_model_vs_752_shifted_mm', 'riser_to_pivots')}
     short['camera_exit_F23'] = {'chosen': harness['camera_exit_F23']['chosen'],
                                 'tail_clearance': harness['camera_exit_F23']['option_b_tail_clearance'],
                                 'option_a_verdict': harness['camera_exit_F23']['option_a_right_angle_m12']['verdict']}

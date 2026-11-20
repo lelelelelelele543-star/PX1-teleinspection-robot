@@ -3816,7 +3816,7 @@
       54.4,
       18.0
     ],
-    "volume_mm3": 45281.48607,
+    "volume_mm3": 45349.7568,
     "solids": 1
   },
   {
@@ -3864,19 +3864,39 @@
     "category": "lift",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      5.7,
-      -28.7,
-      86.4,
-      17.7,
-      -16.0,
-      98.4
+      7.75,
+      -29.62,
+      88.45,
+      15.65,
+      -15.12,
+      96.35
     ],
     "dimensions_mm": [
-      12.0,
-      12.7,
-      12.0
+      7.9,
+      14.5,
+      7.9
     ],
-    "volume_mm3": 718.63304,
+    "volume_mm3": 535.13968,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_-1",
+    "category": "lift",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      5.8,
+      -29.17,
+      86.5,
+      17.6,
+      -28.37,
+      98.3
+    ],
+    "dimensions_mm": [
+      11.8,
+      0.8,
+      11.8
+    ],
+    "volume_mm3": 51.76616,
     "solids": 1
   },
   {
@@ -3924,19 +3944,39 @@
     "category": "lift",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      5.7,
-      16.0,
-      86.4,
-      17.7,
-      28.7,
-      98.4
+      7.75,
+      15.12,
+      88.45,
+      15.65,
+      29.62,
+      96.35
     ],
     "dimensions_mm": [
-      12.0,
-      12.7,
-      12.0
+      7.9,
+      14.5,
+      7.9
     ],
-    "volume_mm3": 718.63304,
+    "volume_mm3": 535.13968,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_LIFT_D_PIN_RING_DIN471_8x0p8_1",
+    "category": "lift",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      5.8,
+      28.37,
+      86.5,
+      17.6,
+      29.17,
+      98.3
+    ],
+    "dimensions_mm": [
+      11.8,
+      0.8,
+      11.8
+    ],
+    "volume_mm3": 51.76616,
     "solids": 1
   },
   {
@@ -4020,23 +4060,243 @@
     "solids": 1
   },
   {
-    "id": "HOLD_LIFT_HOUSING_DRW002752_SIMPLIFIED_INTERFACE",
+    "id": "HOLD_LIFT_HOUSING_FAL002071_DRW752_WITH_PX1_YOKE",
     "category": "lift",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      -40.0,
-      -23.0,
-      46.0,
+      -37.98,
+      -23.02,
+      47.0,
       57.0,
-      23.0,
+      23.02,
       112.0
     ],
     "dimensions_mm": [
-      97.0,
-      46.0,
-      66.0
+      94.98,
+      46.04,
+      65.0
     ],
-    "volume_mm3": 113783.25716,
+    "volume_mm3": 91973.65325,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_LIFT_COVER_FAL002081_DRW752",
+    "category": "lift",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      12.28,
+      -22.51,
+      47.0,
+      14.0,
+      22.51,
+      87.9
+    ],
+    "dimensions_mm": [
+      1.72,
+      45.02,
+      40.9
+    ],
+    "volume_mm3": 2786.68734,
+    "solids": 1
+  },
+  {
+    "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_1",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      6.0,
+      -22.49,
+      81.71,
+      14.0,
+      -16.89,
+      87.31
+    ],
+    "dimensions_mm": [
+      8.0,
+      5.6,
+      5.6
+    ],
+    "volume_mm3": 83.8444,
+    "solids": 1
+  },
+  {
+    "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_2",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      6.0,
+      16.89,
+      81.71,
+      14.0,
+      22.49,
+      87.31
+    ],
+    "dimensions_mm": [
+      8.0,
+      5.6,
+      5.6
+    ],
+    "volume_mm3": 83.8444,
+    "solids": 1
+  },
+  {
+    "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_3",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      6.0,
+      -20.33,
+      47.73,
+      14.0,
+      -14.73,
+      53.33
+    ],
+    "dimensions_mm": [
+      8.0,
+      5.6,
+      5.6
+    ],
+    "volume_mm3": 83.8444,
+    "solids": 1
+  },
+  {
+    "id": "FIX002517_M3x8_CSK_TORX_LIFT_COVER_4",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      6.0,
+      14.73,
+      47.73,
+      14.0,
+      20.33,
+      53.33
+    ],
+    "dimensions_mm": [
+      8.0,
+      5.6,
+      5.6
+    ],
+    "volume_mm3": 83.8444,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_LIFT_LIGHT_COVER_FAL002080_DRW752",
+    "category": "lift",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      -5.83,
+      -13.8,
+      105.0,
+      12.37,
+      13.8,
+      109.0
+    ],
+    "dimensions_mm": [
+      18.2,
+      27.6,
+      4.0
+    ],
+    "volume_mm3": 1954.34193,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_LOCK_RING_FSS001889_DRW752",
+    "category": "lift",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      -41.63,
+      -24.32,
+      45.68,
+      -18.64,
+      24.32,
+      94.32
+    ],
+    "dimensions_mm": [
+      22.99,
+      48.64,
+      48.64
+    ],
+    "volume_mm3": 11200.39792,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_LOCK_RING_SCREW_FSS001891",
+    "category": "shaft",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      -33.13,
+      12.69876,
+      75.81031,
+      -28.13,
+      19.64806,
+      82.21738
+    ],
+    "dimensions_mm": [
+      5.0,
+      6.9493,
+      6.40706
+    ],
+    "volume_mm3": 92.93224,
+    "solids": 1
+  },
+  {
+    "id": "FIX001892_M5x6_DOG_POINT_SET_SCREW_LOCK_RING",
+    "category": "shaft",
+    "geometry_state": "BOUNDARY_ENVELOPE_OR_DESIGN",
+    "bbox_mm": [
+      -33.13,
+      -21.0,
+      67.5,
+      -28.13,
+      -15.4,
+      72.5
+    ],
+    "dimensions_mm": [
+      5.0,
+      5.6,
+      5.0
+    ],
+    "volume_mm3": 92.93224,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_-1",
+    "category": "lift",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      44.7,
+      -22.87,
+      99.7,
+      55.1,
+      -22.07,
+      110.1
+    ],
+    "dimensions_mm": [
+      10.4,
+      0.8,
+      10.4
+    ],
+    "volume_mm3": 41.08474,
+    "solids": 1
+  },
+  {
+    "id": "HOLD_LIFT_C_AXLE_RING_DIN471_7x0p8_1",
+    "category": "lift",
+    "geometry_state": "HOLD",
+    "bbox_mm": [
+      44.7,
+      22.07,
+      99.7,
+      55.1,
+      22.87,
+      110.1
+    ],
+    "dimensions_mm": [
+      10.4,
+      0.8,
+      10.4
+    ],
+    "volume_mm3": 41.08474,
     "solids": 1
   },
   {
@@ -4044,19 +4304,19 @@
     "category": "lift",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      45.95,
-      -9.6,
-      100.95,
-      53.85,
-      9.6,
-      108.85
+      46.4,
+      -23.0,
+      101.4,
+      53.4,
+      23.0,
+      108.4
     ],
     "dimensions_mm": [
-      7.9,
-      19.2,
-      7.9
+      7.0,
+      46.0,
+      7.0
     ],
-    "volume_mm3": 941.12063,
+    "volume_mm3": 1760.74487,
     "solids": 1
   },
   {
@@ -4064,10 +4324,10 @@
     "category": "camera",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      -100.5,
+      -102.13,
       -31.25,
       38.75,
-      -40.5,
+      -42.13,
       31.25,
       101.25
     ],
@@ -4084,10 +4344,10 @@
     "category": "camera",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      -159.5,
+      -161.13,
       -37.0,
       33.0,
-      -100.5,
+      -102.13,
       37.0,
       107.0
     ],
@@ -4104,10 +4364,10 @@
     "category": "camera",
     "geometry_state": "HOLD",
     "bbox_mm": [
-      -160.5,
+      -162.13,
       -12.0,
       58.0,
-      -159.5,
+      -161.13,
       12.0,
       82.0
     ],

@@ -1,0 +1,1240 @@
+{
+  "status": "PASS",
+  "checks": {
+    "camera_axis_folded_70pm5": true,
+    "camera_axis_raised_257pm5": true,
+    "parallelogram_model_exact": true,
+    "parallelogram_drawing_spread_le_0p5": true,
+    "gas_spring_within_ACE_bare_limits": true,
+    "gas_spring_pushes_up_when_raising": true,
+    "swept_group_clear_of_housing_and_cover": true,
+    "route_ends_at_gland_exit": true,
+    "dynamic_bends_ge_5xOD": true,
+    "harness_slack_ge_need_plus_10": true,
+    "fixed_bends_ge_3xOD_incl_sp13_exit": true,
+    "internal_cable_bends_ge_3xOD": true,
+    "internal_core_bundle_bends_ge_3xD": true,
+    "internal_route_continuous_from_gland": true,
+    "sp13_tail_and_riser_clear_of_housing_0_to_theta_max": true,
+    "camera_exit_option_b_chosen_option_a_rejected": true,
+    "drw752_cd_equals_744_ab_within_0p5": true,
+    "drw752_cd_direction_within_1deg_of_744_ab": true,
+    "px1_yoke_d_on_752_pattern_within_0p6": true,
+    "riser_clear_of_c_axle_ge_1": true,
+    "riser_clear_of_d_taps_ge_1": true
+  },
+  "basis": "CRP150 catalogue manual lift 70..257 mm read as camera-axis height above the floor/pipe invert (CONFIRMED range, interpretation ESTIMATED); theta_max = asin(187/200.1) DERIVED; lever 200.1 / base 40.2 DERIVED (DRW-002-744).",
+  "points_folded_mm": {
+    "A": [
+      250.0,
+      104.9
+    ],
+    "B": [
+      211.8,
+      92.4
+    ],
+    "C": [
+      49.900000000000006,
+      104.9
+    ],
+    "D": [
+      11.700000000000017,
+      92.4
+    ],
+    "E": [
+      243.0,
+      88.10000000000001
+    ],
+    "G": [
+      125.0,
+      105.9
+    ]
+  },
+  "parallelogram_model_mm": {
+    "AC": 200.1,
+    "BD": 200.1,
+    "AB": 40.193158621835124,
+    "CD": 40.193158621835124
+  },
+  "parallelogram_drawing_mm": {
+    "AC": 200.1,
+    "BD": 200.0,
+    "AB": 40.2,
+    "CD": 40.4
+  },
+  "parallelogram_error_mm": {
+    "model": 0.0,
+    "drawing_spread": 0.19999999999999574
+  },
+  "camera_axis_mm": {
+    "folded": 70.0,
+    "raised": 256.80944334209005,
+    "theta_max_deg": 69.0,
+    "catalogue": [
+      70.0,
+      257.0
+    ],
+    "raised_camera_shift_rearward_mm": 128.39057329598538
+  },
+  "gas_spring": {
+    "model": "ACE GS-12-80-V4A",
+    "bare_limits_mm": [
+      112.0,
+      192.0
+    ],
+    "min_mm": 119.33499067750414,
+    "max_mm": 138.83891806211852,
+    "used_travel_mm": 19.503927384614386,
+    "margin_to_compressed_mm": 7.334990677504138,
+    "margin_to_extended_mm": 53.16108193788148,
+    "lever_arm_about_A_mm": {
+      "folded": 17.656179365648462,
+      "raised": 11.209248915462913
+    },
+    "spring_moment_Nm_at_150N": {
+      "folded": 2.6484269048472693,
+      "raised": 1.681387337319437
+    },
+    "gravity_moment_Nm_folded_ESTIMATED": 3.7948912767,
+    "note": "Clamp FSS-002-089 + 3x DIN2093 holds the remainder by friction (Proteus concept)."
+  },
+  "swept_clearance_worst": {
+    "camera_CAM026|crawler_housing": {
+      "clearance_mm": 42.113,
+      "theta_deg": 24.5,
+      "clash": false
+    },
+    "camera_CAM026|service_cover": {
+      "clearance_mm": 78.432,
+      "theta_deg": 39.5,
+      "clash": false
+    },
+    "lock_ring_FSS001889|crawler_housing": {
+      "clearance_mm": 28.4,
+      "theta_deg": 16.5,
+      "clash": false
+    },
+    "lock_ring_FSS001889|service_cover": {
+      "clearance_mm": 70.234,
+      "theta_deg": 32.0,
+      "clash": false
+    },
+    "housing_body_and_lift_cover|crawler_housing": {
+      "clearance_mm": 1.802,
+      "theta_deg": 8.5,
+      "clash": false
+    },
+    "housing_body_and_lift_cover|service_cover": {
+      "clearance_mm": 49.566,
+      "theta_deg": 25.0,
+      "clash": false
+    },
+    "light_cover_FAL002080|crawler_housing": {
+      "clearance_mm": 30.0,
+      "theta_deg": 0.0,
+      "clash": false
+    },
+    "light_cover_FAL002080|service_cover": {
+      "clearance_mm": 65.257,
+      "theta_deg": 12.0,
+      "clash": false
+    },
+    "px1_yoke_D|crawler_housing": {
+      "clearance_mm": 13.0,
+      "theta_deg": 0.0,
+      "clash": false
+    },
+    "px1_yoke_D|service_cover": {
+      "clearance_mm": 55.056,
+      "theta_deg": 14.0,
+      "clash": false
+    },
+    "px1_yoke_C_lugs|crawler_housing": {
+      "clearance_mm": 13.0,
+      "theta_deg": 0.0,
+      "clash": false
+    },
+    "px1_yoke_C_lugs|service_cover": {
+      "clearance_mm": 24.339,
+      "theta_deg": 5.0,
+      "clash": false
+    },
+    "px1_cable_spine|crawler_housing": {
+      "clearance_mm": 16.0,
+      "theta_deg": 0.0,
+      "clash": false
+    },
+    "px1_cable_spine|service_cover": {
+      "clearance_mm": 24.513,
+      "theta_deg": 4.0,
+      "clash": false
+    }
+  },
+  "masses": {
+    "CAM026_kg_CONFIRMED": 0.864,
+    "lift_housing_kg_ESTIMATED": 0.25,
+    "levers_kg_ESTIMATED": 0.2
+  },
+  "camera_harness_F21": {
+    "cable": "LAPP UNITRONIC FD P plus A 0028679, OD 5.4 (CONFIRMED), min bend 5xD flexing = 27.0 / 3xD fixed = 16.2 (CONFIRMED LAPP)",
+    "modeled_route_length_mm": 334.84,
+    "fixed_parts_length_mm": 100.79,
+    "need_mm": {
+      "theta_0": 320.47,
+      "theta_max": 318.4,
+      "max": 320.47,
+      "max_at_deg": 0.0
+    },
+    "need_increase_max_mm": 0.0,
+    "need_change_at_theta_max_mm": -2.07,
+    "slack_mm": 14.37,
+    "margin_mm": 4.37,
+    "points_folded_mm": {
+      "P_housing_clamp": [
+        39.841,
+        0.0,
+        116.8
+      ],
+      "clip_1_x": 74.0,
+      "clip_2_x": 176.0,
+      "K_fixed_guide": [
+        259.4,
+        0.0,
+        118.421
+      ],
+      "K_heading_deg": -15.0
+    },
+    "bend_radii_mm": {
+      "dynamic_min": 27.0,
+      "fixed": [
+        17.0,
+        17.0,
+        17.0
+      ],
+      "external_fixed": [
+        17.0,
+        17.0,
+        17.0
+      ],
+      "internal_lapp": [
+        16.5
+      ],
+      "core_bundle": [
+        9.0,
+        9.0,
+        9.0,
+        9.0
+      ],
+      "bundle_od": 3.0,
+      "internal_starts_at_harness_end": true,
+      "internal_lapp_length_mm": 48.42,
+      "core_bundle_length_mm": 46.52,
+      "service_connector_face_mm": [
+        222.05,
+        -21.5,
+        64.0
+      ]
+    },
+    "camera_exit_F23": {
+      "chosen": "b: LAPP kept, straight SP13 (clamp nut removed) in a potted bend tail, fixed R17.0 S-riser",
+      "option_b_tail_clearance": {
+        "min_clearance_mm": 2.402,
+        "theta_deg": 0.0,
+        "part": "tail",
+        "obstacle": "housing",
+        "point_folded_xz": [
+          12.64,
+          76.85
+        ],
+        "tail_shell_r_mm": 4.2
+      },
+      "option_a_right_angle_m12": {
+        "fits": false,
+        "elbow_envelope_xz_mm": [
+          14.0,
+          62.75,
+          41.0,
+          77.25
+        ],
+        "elbow_dims_ESTIMATED": [
+          14.5,
+          27.0
+        ],
+        "elbow_vs_housing_front_overlap_mm": {
+          "x": 23.0,
+          "z": 12.25,
+          "clash": true
+        },
+        "binder_cable": {
+          "od_mm": 6.0,
+          "moving_bend_min_mm": 60.0,
+          "lever_s_loop_x_span_needed_mm": 138.5,
+          "lever_free_x_between_clips_mm": 90.0,
+          "s_bend_crest_top_z_mm": 123.47,
+          "crest_gap_to_dn150_mm": -1.16
+        },
+        "verdict": "REJECTED: elbow (27 along X behind the housing rear X14) overlaps the crawler housing front (X18, top Z75); binder PVC R>=60 S-loop does not fit between the lever clips, so the moving section would stay LAPP via a potted inline joint (extra leak path) and the elbow still needs a new exit position in DRW-002-752."
+      }
+    },
+    "method": "need(theta) = fixed parts + Dubins(P(theta) heading +X -> clip 1 on lever, heading along lever) + clip pitch (cable slides through open clips) + Dubins(clip 2 -> K heading -15.0 deg); R = 5xOD; obstacles ignored (lower bound). Bend radii: every arc of HARNESS_ROUTE / INNER_ROUTE / BUNDLE_ROUTE vs 3xD (fixed) / 5xD (moving).",
+    "samples": [
+      {
+        "theta_deg": 0.0,
+        "span_P_to_clip1_mm": 34.16,
+        "span_clip2_to_K_mm": 83.52,
+        "need_total_mm": 320.47
+      },
+      {
+        "theta_deg": 5.0,
+        "span_P_to_clip1_mm": 35.17,
+        "span_clip2_to_K_mm": 82.26,
+        "need_total_mm": 320.22
+      },
+      {
+        "theta_deg": 10.0,
+        "span_P_to_clip1_mm": 36.13,
+        "span_clip2_to_K_mm": 80.98,
+        "need_total_mm": 319.9
+      },
+      {
+        "theta_deg": 15.0,
+        "span_P_to_clip1_mm": 37.05,
+        "span_clip2_to_K_mm": 79.66,
+        "need_total_mm": 319.5
+      },
+      {
+        "theta_deg": 20.0,
+        "span_P_to_clip1_mm": 37.93,
+        "span_clip2_to_K_mm": 78.31,
+        "need_total_mm": 319.03
+      },
+      {
+        "theta_deg": 25.0,
+        "span_P_to_clip1_mm": 38.77,
+        "span_clip2_to_K_mm": 76.94,
+        "need_total_mm": 318.49
+      },
+      {
+        "theta_deg": 30.0,
+        "span_P_to_clip1_mm": 39.58,
+        "span_clip2_to_K_mm": 75.55,
+        "need_total_mm": 317.92
+      },
+      {
+        "theta_deg": 35.0,
+        "span_P_to_clip1_mm": 40.37,
+        "span_clip2_to_K_mm": 74.2,
+        "need_total_mm": 317.36
+      },
+      {
+        "theta_deg": 40.0,
+        "span_P_to_clip1_mm": 41.14,
+        "span_clip2_to_K_mm": 72.91,
+        "need_total_mm": 316.84
+      },
+      {
+        "theta_deg": 45.0,
+        "span_P_to_clip1_mm": 41.92,
+        "span_clip2_to_K_mm": 71.73,
+        "need_total_mm": 316.43
+      },
+      {
+        "theta_deg": 50.0,
+        "span_P_to_clip1_mm": 42.7,
+        "span_clip2_to_K_mm": 70.7,
+        "need_total_mm": 316.19
+      },
+      {
+        "theta_deg": 55.0,
+        "span_P_to_clip1_mm": 43.51,
+        "span_clip2_to_K_mm": 69.89,
+        "need_total_mm": 316.19
+      },
+      {
+        "theta_deg": 60.0,
+        "span_P_to_clip1_mm": 44.37,
+        "span_clip2_to_K_mm": 69.37,
+        "need_total_mm": 316.52
+      },
+      {
+        "theta_deg": 65.0,
+        "span_P_to_clip1_mm": 45.3,
+        "span_clip2_to_K_mm": 69.23,
+        "need_total_mm": 317.32
+      },
+      {
+        "theta_deg": 69.0,
+        "span_P_to_clip1_mm": 46.13,
+        "span_clip2_to_K_mm": 69.48,
+        "need_total_mm": 318.4
+      }
+    ],
+    "limits": "Planar XZ need; the S-loop lies on the lever plate (XY) and is not tensioned. Tail/riser clearance is a 2-D XZ screen against the housing side profile and the service cover (Y overlap assumed). Intermediate-angle 3-D cable shape not modelled."
+  },
+  "lift_housing_DRW002752_F24": {
+    "cd_752_vs_ab_744": {
+      "cd_752_mm": 40.178,
+      "ab_744_mm": 40.193,
+      "diff_mm": -0.016,
+      "angle_752_deg": 18.82,
+      "angle_744_deg": 18.12,
+      "note": "parallelogram kept exact on 744 (AB = CD); 752 differs by the listed angle -> camera tilt <= that angle if 752 were used literally (within 744 1:1.5 reading +-0.3 mm)"
+    },
+    "d_model_vs_752_shifted_mm": 0.49,
+    "pivot_shift_px1_mm": [
+      19.11,
+      9.91
+    ],
+    "camera_axis_below_c": {
+      "drw752_mm": 24.99,
+      "px1_mm": 34.9,
+      "px1_folded_if_752_literal_mm": 79.91,
+      "proteus_folded_752_literal_mm": 72.91,
+      "catalogue_mm": 70.0
+    },
+    "riser_to_pivots": {
+      "c_axle_xz_clearance_mm": 5.68,
+      "d_taps_y_gap_mm": 10.82,
+      "d_taps_xz_clearance_mm": -0.24,
+      "note": "D = blind taps 8 deep from each side (752 C-C), riser + potted tail in Y0 -> no crossing"
+    }
+  },
+  "folded_height_top_of_lever_mm": 113.9,
+  "samples": [
+    {
+      "theta_deg": 0.0,
+      "camera_axis_z_mm": 70.0,
+      "group_shift_x_mm": 0.0,
+      "gas_eye_to_eye_mm": 119.335
+    },
+    {
+      "theta_deg": 0.5,
+      "camera_axis_z_mm": 71.746,
+      "group_shift_x_mm": 0.008,
+      "gas_eye_to_eye_mm": 119.489
+    },
+    {
+      "theta_deg": 1.0,
+      "camera_axis_z_mm": 73.492,
+      "group_shift_x_mm": 0.03,
+      "gas_eye_to_eye_mm": 119.644
+    },
+    {
+      "theta_deg": 1.5,
+      "camera_axis_z_mm": 75.238,
+      "group_shift_x_mm": 0.069,
+      "gas_eye_to_eye_mm": 119.799
+    },
+    {
+      "theta_deg": 2.0,
+      "camera_axis_z_mm": 76.983,
+      "group_shift_x_mm": 0.122,
+      "gas_eye_to_eye_mm": 119.954
+    },
+    {
+      "theta_deg": 2.5,
+      "camera_axis_z_mm": 78.728,
+      "group_shift_x_mm": 0.19,
+      "gas_eye_to_eye_mm": 120.109
+    },
+    {
+      "theta_deg": 3.0,
+      "camera_axis_z_mm": 80.472,
+      "group_shift_x_mm": 0.274,
+      "gas_eye_to_eye_mm": 120.265
+    },
+    {
+      "theta_deg": 3.5,
+      "camera_axis_z_mm": 82.216,
+      "group_shift_x_mm": 0.373,
+      "gas_eye_to_eye_mm": 120.421
+    },
+    {
+      "theta_deg": 4.0,
+      "camera_axis_z_mm": 83.958,
+      "group_shift_x_mm": 0.487,
+      "gas_eye_to_eye_mm": 120.578
+    },
+    {
+      "theta_deg": 4.5,
+      "camera_axis_z_mm": 85.7,
+      "group_shift_x_mm": 0.617,
+      "gas_eye_to_eye_mm": 120.734
+    },
+    {
+      "theta_deg": 5.0,
+      "camera_axis_z_mm": 87.44,
+      "group_shift_x_mm": 0.761,
+      "gas_eye_to_eye_mm": 120.891
+    },
+    {
+      "theta_deg": 5.5,
+      "camera_axis_z_mm": 89.179,
+      "group_shift_x_mm": 0.921,
+      "gas_eye_to_eye_mm": 121.048
+    },
+    {
+      "theta_deg": 6.0,
+      "camera_axis_z_mm": 90.916,
+      "group_shift_x_mm": 1.096,
+      "gas_eye_to_eye_mm": 121.205
+    },
+    {
+      "theta_deg": 6.5,
+      "camera_axis_z_mm": 92.652,
+      "group_shift_x_mm": 1.286,
+      "gas_eye_to_eye_mm": 121.363
+    },
+    {
+      "theta_deg": 7.0,
+      "camera_axis_z_mm": 94.386,
+      "group_shift_x_mm": 1.492,
+      "gas_eye_to_eye_mm": 121.52
+    },
+    {
+      "theta_deg": 7.5,
+      "camera_axis_z_mm": 96.118,
+      "group_shift_x_mm": 1.712,
+      "gas_eye_to_eye_mm": 121.678
+    },
+    {
+      "theta_deg": 8.0,
+      "camera_axis_z_mm": 97.849,
+      "group_shift_x_mm": 1.947,
+      "gas_eye_to_eye_mm": 121.836
+    },
+    {
+      "theta_deg": 8.5,
+      "camera_axis_z_mm": 99.577,
+      "group_shift_x_mm": 2.198,
+      "gas_eye_to_eye_mm": 121.994
+    },
+    {
+      "theta_deg": 9.0,
+      "camera_axis_z_mm": 101.303,
+      "group_shift_x_mm": 2.464,
+      "gas_eye_to_eye_mm": 122.152
+    },
+    {
+      "theta_deg": 9.5,
+      "camera_axis_z_mm": 103.026,
+      "group_shift_x_mm": 2.744,
+      "gas_eye_to_eye_mm": 122.311
+    },
+    {
+      "theta_deg": 10.0,
+      "camera_axis_z_mm": 104.747,
+      "group_shift_x_mm": 3.04,
+      "gas_eye_to_eye_mm": 122.469
+    },
+    {
+      "theta_deg": 10.5,
+      "camera_axis_z_mm": 106.465,
+      "group_shift_x_mm": 3.351,
+      "gas_eye_to_eye_mm": 122.628
+    },
+    {
+      "theta_deg": 11.0,
+      "camera_axis_z_mm": 108.181,
+      "group_shift_x_mm": 3.676,
+      "gas_eye_to_eye_mm": 122.786
+    },
+    {
+      "theta_deg": 11.5,
+      "camera_axis_z_mm": 109.894,
+      "group_shift_x_mm": 4.017,
+      "gas_eye_to_eye_mm": 122.945
+    },
+    {
+      "theta_deg": 12.0,
+      "camera_axis_z_mm": 111.603,
+      "group_shift_x_mm": 4.373,
+      "gas_eye_to_eye_mm": 123.104
+    },
+    {
+      "theta_deg": 12.5,
+      "camera_axis_z_mm": 113.31,
+      "group_shift_x_mm": 4.743,
+      "gas_eye_to_eye_mm": 123.262
+    },
+    {
+      "theta_deg": 13.0,
+      "camera_axis_z_mm": 115.013,
+      "group_shift_x_mm": 5.129,
+      "gas_eye_to_eye_mm": 123.421
+    },
+    {
+      "theta_deg": 13.5,
+      "camera_axis_z_mm": 116.712,
+      "group_shift_x_mm": 5.529,
+      "gas_eye_to_eye_mm": 123.58
+    },
+    {
+      "theta_deg": 14.0,
+      "camera_axis_z_mm": 118.409,
+      "group_shift_x_mm": 5.944,
+      "gas_eye_to_eye_mm": 123.739
+    },
+    {
+      "theta_deg": 14.5,
+      "camera_axis_z_mm": 120.101,
+      "group_shift_x_mm": 6.374,
+      "gas_eye_to_eye_mm": 123.898
+    },
+    {
+      "theta_deg": 15.0,
+      "camera_axis_z_mm": 121.79,
+      "group_shift_x_mm": 6.818,
+      "gas_eye_to_eye_mm": 124.056
+    },
+    {
+      "theta_deg": 15.5,
+      "camera_axis_z_mm": 123.474,
+      "group_shift_x_mm": 7.278,
+      "gas_eye_to_eye_mm": 124.215
+    },
+    {
+      "theta_deg": 16.0,
+      "camera_axis_z_mm": 125.155,
+      "group_shift_x_mm": 7.752,
+      "gas_eye_to_eye_mm": 124.374
+    },
+    {
+      "theta_deg": 16.5,
+      "camera_axis_z_mm": 126.831,
+      "group_shift_x_mm": 8.24,
+      "gas_eye_to_eye_mm": 124.533
+    },
+    {
+      "theta_deg": 17.0,
+      "camera_axis_z_mm": 128.504,
+      "group_shift_x_mm": 8.743,
+      "gas_eye_to_eye_mm": 124.691
+    },
+    {
+      "theta_deg": 17.5,
+      "camera_axis_z_mm": 130.171,
+      "group_shift_x_mm": 9.261,
+      "gas_eye_to_eye_mm": 124.85
+    },
+    {
+      "theta_deg": 18.0,
+      "camera_axis_z_mm": 131.834,
+      "group_shift_x_mm": 9.794,
+      "gas_eye_to_eye_mm": 125.008
+    },
+    {
+      "theta_deg": 18.5,
+      "camera_axis_z_mm": 133.493,
+      "group_shift_x_mm": 10.34,
+      "gas_eye_to_eye_mm": 125.167
+    },
+    {
+      "theta_deg": 19.0,
+      "camera_axis_z_mm": 135.146,
+      "group_shift_x_mm": 10.902,
+      "gas_eye_to_eye_mm": 125.325
+    },
+    {
+      "theta_deg": 19.5,
+      "camera_axis_z_mm": 136.795,
+      "group_shift_x_mm": 11.477,
+      "gas_eye_to_eye_mm": 125.483
+    },
+    {
+      "theta_deg": 20.0,
+      "camera_axis_z_mm": 138.438,
+      "group_shift_x_mm": 12.068,
+      "gas_eye_to_eye_mm": 125.641
+    },
+    {
+      "theta_deg": 20.5,
+      "camera_axis_z_mm": 140.076,
+      "group_shift_x_mm": 12.672,
+      "gas_eye_to_eye_mm": 125.799
+    },
+    {
+      "theta_deg": 21.0,
+      "camera_axis_z_mm": 141.709,
+      "group_shift_x_mm": 13.291,
+      "gas_eye_to_eye_mm": 125.956
+    },
+    {
+      "theta_deg": 21.5,
+      "camera_axis_z_mm": 143.337,
+      "group_shift_x_mm": 13.923,
+      "gas_eye_to_eye_mm": 126.114
+    },
+    {
+      "theta_deg": 22.0,
+      "camera_axis_z_mm": 144.959,
+      "group_shift_x_mm": 14.571,
+      "gas_eye_to_eye_mm": 126.271
+    },
+    {
+      "theta_deg": 22.5,
+      "camera_axis_z_mm": 146.575,
+      "group_shift_x_mm": 15.232,
+      "gas_eye_to_eye_mm": 126.428
+    },
+    {
+      "theta_deg": 23.0,
+      "camera_axis_z_mm": 148.185,
+      "group_shift_x_mm": 15.907,
+      "gas_eye_to_eye_mm": 126.585
+    },
+    {
+      "theta_deg": 23.5,
+      "camera_axis_z_mm": 149.79,
+      "group_shift_x_mm": 16.596,
+      "gas_eye_to_eye_mm": 126.742
+    },
+    {
+      "theta_deg": 24.0,
+      "camera_axis_z_mm": 151.388,
+      "group_shift_x_mm": 17.3,
+      "gas_eye_to_eye_mm": 126.898
+    },
+    {
+      "theta_deg": 24.5,
+      "camera_axis_z_mm": 152.98,
+      "group_shift_x_mm": 18.017,
+      "gas_eye_to_eye_mm": 127.055
+    },
+    {
+      "theta_deg": 25.0,
+      "camera_axis_z_mm": 154.566,
+      "group_shift_x_mm": 18.748,
+      "gas_eye_to_eye_mm": 127.211
+    },
+    {
+      "theta_deg": 25.5,
+      "camera_axis_z_mm": 156.145,
+      "group_shift_x_mm": 19.493,
+      "gas_eye_to_eye_mm": 127.366
+    },
+    {
+      "theta_deg": 26.0,
+      "camera_axis_z_mm": 157.718,
+      "group_shift_x_mm": 20.251,
+      "gas_eye_to_eye_mm": 127.522
+    },
+    {
+      "theta_deg": 26.5,
+      "camera_axis_z_mm": 159.284,
+      "group_shift_x_mm": 21.024,
+      "gas_eye_to_eye_mm": 127.677
+    },
+    {
+      "theta_deg": 27.0,
+      "camera_axis_z_mm": 160.843,
+      "group_shift_x_mm": 21.81,
+      "gas_eye_to_eye_mm": 127.832
+    },
+    {
+      "theta_deg": 27.5,
+      "camera_axis_z_mm": 162.396,
+      "group_shift_x_mm": 22.609,
+      "gas_eye_to_eye_mm": 127.987
+    },
+    {
+      "theta_deg": 28.0,
+      "camera_axis_z_mm": 163.941,
+      "group_shift_x_mm": 23.422,
+      "gas_eye_to_eye_mm": 128.141
+    },
+    {
+      "theta_deg": 28.5,
+      "camera_axis_z_mm": 165.479,
+      "group_shift_x_mm": 24.249,
+      "gas_eye_to_eye_mm": 128.295
+    },
+    {
+      "theta_deg": 29.0,
+      "camera_axis_z_mm": 167.01,
+      "group_shift_x_mm": 25.089,
+      "gas_eye_to_eye_mm": 128.449
+    },
+    {
+      "theta_deg": 29.5,
+      "camera_axis_z_mm": 168.534,
+      "group_shift_x_mm": 25.942,
+      "gas_eye_to_eye_mm": 128.602
+    },
+    {
+      "theta_deg": 30.0,
+      "camera_axis_z_mm": 170.05,
+      "group_shift_x_mm": 26.808,
+      "gas_eye_to_eye_mm": 128.755
+    },
+    {
+      "theta_deg": 30.5,
+      "camera_axis_z_mm": 171.558,
+      "group_shift_x_mm": 27.688,
+      "gas_eye_to_eye_mm": 128.907
+    },
+    {
+      "theta_deg": 31.0,
+      "camera_axis_z_mm": 173.059,
+      "group_shift_x_mm": 28.581,
+      "gas_eye_to_eye_mm": 129.06
+    },
+    {
+      "theta_deg": 31.5,
+      "camera_axis_z_mm": 174.552,
+      "group_shift_x_mm": 29.487,
+      "gas_eye_to_eye_mm": 129.211
+    },
+    {
+      "theta_deg": 32.0,
+      "camera_axis_z_mm": 176.037,
+      "group_shift_x_mm": 30.406,
+      "gas_eye_to_eye_mm": 129.363
+    },
+    {
+      "theta_deg": 32.5,
+      "camera_axis_z_mm": 177.514,
+      "group_shift_x_mm": 31.337,
+      "gas_eye_to_eye_mm": 129.514
+    },
+    {
+      "theta_deg": 33.0,
+      "camera_axis_z_mm": 178.982,
+      "group_shift_x_mm": 32.282,
+      "gas_eye_to_eye_mm": 129.664
+    },
+    {
+      "theta_deg": 33.5,
+      "camera_axis_z_mm": 180.443,
+      "group_shift_x_mm": 33.239,
+      "gas_eye_to_eye_mm": 129.815
+    },
+    {
+      "theta_deg": 34.0,
+      "camera_axis_z_mm": 181.894,
+      "group_shift_x_mm": 34.21,
+      "gas_eye_to_eye_mm": 129.964
+    },
+    {
+      "theta_deg": 34.5,
+      "camera_axis_z_mm": 183.338,
+      "group_shift_x_mm": 35.192,
+      "gas_eye_to_eye_mm": 130.114
+    },
+    {
+      "theta_deg": 35.0,
+      "camera_axis_z_mm": 184.773,
+      "group_shift_x_mm": 36.188,
+      "gas_eye_to_eye_mm": 130.262
+    },
+    {
+      "theta_deg": 35.5,
+      "camera_axis_z_mm": 186.199,
+      "group_shift_x_mm": 37.195,
+      "gas_eye_to_eye_mm": 130.411
+    },
+    {
+      "theta_deg": 36.0,
+      "camera_axis_z_mm": 187.616,
+      "group_shift_x_mm": 38.216,
+      "gas_eye_to_eye_mm": 130.559
+    },
+    {
+      "theta_deg": 36.5,
+      "camera_axis_z_mm": 189.024,
+      "group_shift_x_mm": 39.248,
+      "gas_eye_to_eye_mm": 130.706
+    },
+    {
+      "theta_deg": 37.0,
+      "camera_axis_z_mm": 190.423,
+      "group_shift_x_mm": 40.293,
+      "gas_eye_to_eye_mm": 130.853
+    },
+    {
+      "theta_deg": 37.5,
+      "camera_axis_z_mm": 191.813,
+      "group_shift_x_mm": 41.35,
+      "gas_eye_to_eye_mm": 130.999
+    },
+    {
+      "theta_deg": 38.0,
+      "camera_axis_z_mm": 193.194,
+      "group_shift_x_mm": 42.419,
+      "gas_eye_to_eye_mm": 131.145
+    },
+    {
+      "theta_deg": 38.5,
+      "camera_axis_z_mm": 194.565,
+      "group_shift_x_mm": 43.5,
+      "gas_eye_to_eye_mm": 131.291
+    },
+    {
+      "theta_deg": 39.0,
+      "camera_axis_z_mm": 195.927,
+      "group_shift_x_mm": 44.593,
+      "gas_eye_to_eye_mm": 131.436
+    },
+    {
+      "theta_deg": 39.5,
+      "camera_axis_z_mm": 197.279,
+      "group_shift_x_mm": 45.698,
+      "gas_eye_to_eye_mm": 131.58
+    },
+    {
+      "theta_deg": 40.0,
+      "camera_axis_z_mm": 198.622,
+      "group_shift_x_mm": 46.815,
+      "gas_eye_to_eye_mm": 131.724
+    },
+    {
+      "theta_deg": 40.5,
+      "camera_axis_z_mm": 199.955,
+      "group_shift_x_mm": 47.943,
+      "gas_eye_to_eye_mm": 131.867
+    },
+    {
+      "theta_deg": 41.0,
+      "camera_axis_z_mm": 201.277,
+      "group_shift_x_mm": 49.083,
+      "gas_eye_to_eye_mm": 132.009
+    },
+    {
+      "theta_deg": 41.5,
+      "camera_axis_z_mm": 202.59,
+      "group_shift_x_mm": 50.234,
+      "gas_eye_to_eye_mm": 132.151
+    },
+    {
+      "theta_deg": 42.0,
+      "camera_axis_z_mm": 203.893,
+      "group_shift_x_mm": 51.397,
+      "gas_eye_to_eye_mm": 132.293
+    },
+    {
+      "theta_deg": 42.5,
+      "camera_axis_z_mm": 205.186,
+      "group_shift_x_mm": 52.571,
+      "gas_eye_to_eye_mm": 132.434
+    },
+    {
+      "theta_deg": 43.0,
+      "camera_axis_z_mm": 206.468,
+      "group_shift_x_mm": 53.756,
+      "gas_eye_to_eye_mm": 132.574
+    },
+    {
+      "theta_deg": 43.5,
+      "camera_axis_z_mm": 207.74,
+      "group_shift_x_mm": 54.953,
+      "gas_eye_to_eye_mm": 132.714
+    },
+    {
+      "theta_deg": 44.0,
+      "camera_axis_z_mm": 209.001,
+      "group_shift_x_mm": 56.16,
+      "gas_eye_to_eye_mm": 132.853
+    },
+    {
+      "theta_deg": 44.5,
+      "camera_axis_z_mm": 210.252,
+      "group_shift_x_mm": 57.379,
+      "gas_eye_to_eye_mm": 132.991
+    },
+    {
+      "theta_deg": 45.0,
+      "camera_axis_z_mm": 211.492,
+      "group_shift_x_mm": 58.608,
+      "gas_eye_to_eye_mm": 133.129
+    },
+    {
+      "theta_deg": 45.5,
+      "camera_axis_z_mm": 212.721,
+      "group_shift_x_mm": 59.848,
+      "gas_eye_to_eye_mm": 133.266
+    },
+    {
+      "theta_deg": 46.0,
+      "camera_axis_z_mm": 213.94,
+      "group_shift_x_mm": 61.099,
+      "gas_eye_to_eye_mm": 133.402
+    },
+    {
+      "theta_deg": 46.5,
+      "camera_axis_z_mm": 215.147,
+      "group_shift_x_mm": 62.36,
+      "gas_eye_to_eye_mm": 133.538
+    },
+    {
+      "theta_deg": 47.0,
+      "camera_axis_z_mm": 216.344,
+      "group_shift_x_mm": 63.632,
+      "gas_eye_to_eye_mm": 133.673
+    },
+    {
+      "theta_deg": 47.5,
+      "camera_axis_z_mm": 217.529,
+      "group_shift_x_mm": 64.914,
+      "gas_eye_to_eye_mm": 133.808
+    },
+    {
+      "theta_deg": 48.0,
+      "camera_axis_z_mm": 218.703,
+      "group_shift_x_mm": 66.207,
+      "gas_eye_to_eye_mm": 133.942
+    },
+    {
+      "theta_deg": 48.5,
+      "camera_axis_z_mm": 219.866,
+      "group_shift_x_mm": 67.51,
+      "gas_eye_to_eye_mm": 134.075
+    },
+    {
+      "theta_deg": 49.0,
+      "camera_axis_z_mm": 221.017,
+      "group_shift_x_mm": 68.823,
+      "gas_eye_to_eye_mm": 134.207
+    },
+    {
+      "theta_deg": 49.5,
+      "camera_axis_z_mm": 222.157,
+      "group_shift_x_mm": 70.145,
+      "gas_eye_to_eye_mm": 134.339
+    },
+    {
+      "theta_deg": 50.0,
+      "camera_axis_z_mm": 223.285,
+      "group_shift_x_mm": 71.478,
+      "gas_eye_to_eye_mm": 134.47
+    },
+    {
+      "theta_deg": 50.5,
+      "camera_axis_z_mm": 224.402,
+      "group_shift_x_mm": 72.821,
+      "gas_eye_to_eye_mm": 134.6
+    },
+    {
+      "theta_deg": 51.0,
+      "camera_axis_z_mm": 225.507,
+      "group_shift_x_mm": 74.173,
+      "gas_eye_to_eye_mm": 134.729
+    },
+    {
+      "theta_deg": 51.5,
+      "camera_axis_z_mm": 226.6,
+      "group_shift_x_mm": 75.535,
+      "gas_eye_to_eye_mm": 134.858
+    },
+    {
+      "theta_deg": 52.0,
+      "camera_axis_z_mm": 227.681,
+      "group_shift_x_mm": 76.906,
+      "gas_eye_to_eye_mm": 134.986
+    },
+    {
+      "theta_deg": 52.5,
+      "camera_axis_z_mm": 228.75,
+      "group_shift_x_mm": 78.287,
+      "gas_eye_to_eye_mm": 135.113
+    },
+    {
+      "theta_deg": 53.0,
+      "camera_axis_z_mm": 229.807,
+      "group_shift_x_mm": 79.677,
+      "gas_eye_to_eye_mm": 135.24
+    },
+    {
+      "theta_deg": 53.5,
+      "camera_axis_z_mm": 230.852,
+      "group_shift_x_mm": 81.076,
+      "gas_eye_to_eye_mm": 135.365
+    },
+    {
+      "theta_deg": 54.0,
+      "camera_axis_z_mm": 231.884,
+      "group_shift_x_mm": 82.484,
+      "gas_eye_to_eye_mm": 135.49
+    },
+    {
+      "theta_deg": 54.5,
+      "camera_axis_z_mm": 232.905,
+      "group_shift_x_mm": 83.901,
+      "gas_eye_to_eye_mm": 135.614
+    },
+    {
+      "theta_deg": 55.0,
+      "camera_axis_z_mm": 233.912,
+      "group_shift_x_mm": 85.327,
+      "gas_eye_to_eye_mm": 135.737
+    },
+    {
+      "theta_deg": 55.5,
+      "camera_axis_z_mm": 234.908,
+      "group_shift_x_mm": 86.762,
+      "gas_eye_to_eye_mm": 135.86
+    },
+    {
+      "theta_deg": 56.0,
+      "camera_axis_z_mm": 235.89,
+      "group_shift_x_mm": 88.206,
+      "gas_eye_to_eye_mm": 135.982
+    },
+    {
+      "theta_deg": 56.5,
+      "camera_axis_z_mm": 236.861,
+      "group_shift_x_mm": 89.657,
+      "gas_eye_to_eye_mm": 136.102
+    },
+    {
+      "theta_deg": 57.0,
+      "camera_axis_z_mm": 237.818,
+      "group_shift_x_mm": 91.118,
+      "gas_eye_to_eye_mm": 136.223
+    },
+    {
+      "theta_deg": 57.5,
+      "camera_axis_z_mm": 238.763,
+      "group_shift_x_mm": 92.586,
+      "gas_eye_to_eye_mm": 136.342
+    },
+    {
+      "theta_deg": 58.0,
+      "camera_axis_z_mm": 239.694,
+      "group_shift_x_mm": 94.063,
+      "gas_eye_to_eye_mm": 136.46
+    },
+    {
+      "theta_deg": 58.5,
+      "camera_axis_z_mm": 240.613,
+      "group_shift_x_mm": 95.548,
+      "gas_eye_to_eye_mm": 136.578
+    },
+    {
+      "theta_deg": 59.0,
+      "camera_axis_z_mm": 241.519,
+      "group_shift_x_mm": 97.041,
+      "gas_eye_to_eye_mm": 136.694
+    },
+    {
+      "theta_deg": 59.5,
+      "camera_axis_z_mm": 242.412,
+      "group_shift_x_mm": 98.542,
+      "gas_eye_to_eye_mm": 136.81
+    },
+    {
+      "theta_deg": 60.0,
+      "camera_axis_z_mm": 243.292,
+      "group_shift_x_mm": 100.05,
+      "gas_eye_to_eye_mm": 136.925
+    },
+    {
+      "theta_deg": 60.5,
+      "camera_axis_z_mm": 244.158,
+      "group_shift_x_mm": 101.566,
+      "gas_eye_to_eye_mm": 137.039
+    },
+    {
+      "theta_deg": 61.0,
+      "camera_axis_z_mm": 245.011,
+      "group_shift_x_mm": 103.09,
+      "gas_eye_to_eye_mm": 137.152
+    },
+    {
+      "theta_deg": 61.5,
+      "camera_axis_z_mm": 245.851,
+      "group_shift_x_mm": 104.621,
+      "gas_eye_to_eye_mm": 137.265
+    },
+    {
+      "theta_deg": 62.0,
+      "camera_axis_z_mm": 246.678,
+      "group_shift_x_mm": 106.159,
+      "gas_eye_to_eye_mm": 137.376
+    },
+    {
+      "theta_deg": 62.5,
+      "camera_axis_z_mm": 247.491,
+      "group_shift_x_mm": 107.704,
+      "gas_eye_to_eye_mm": 137.487
+    },
+    {
+      "theta_deg": 63.0,
+      "camera_axis_z_mm": 248.29,
+      "group_shift_x_mm": 109.257,
+      "gas_eye_to_eye_mm": 137.596
+    },
+    {
+      "theta_deg": 63.5,
+      "camera_axis_z_mm": 249.076,
+      "group_shift_x_mm": 110.816,
+      "gas_eye_to_eye_mm": 137.705
+    },
+    {
+      "theta_deg": 64.0,
+      "camera_axis_z_mm": 249.849,
+      "group_shift_x_mm": 112.382,
+      "gas_eye_to_eye_mm": 137.813
+    },
+    {
+      "theta_deg": 64.5,
+      "camera_axis_z_mm": 250.607,
+      "group_shift_x_mm": 113.955,
+      "gas_eye_to_eye_mm": 137.92
+    },
+    {
+      "theta_deg": 65.0,
+      "camera_axis_z_mm": 251.352,
+      "group_shift_x_mm": 115.534,
+      "gas_eye_to_eye_mm": 138.026
+    },
+    {
+      "theta_deg": 65.5,
+      "camera_axis_z_mm": 252.083,
+      "group_shift_x_mm": 117.12,
+      "gas_eye_to_eye_mm": 138.131
+    },
+    {
+      "theta_deg": 66.0,
+      "camera_axis_z_mm": 252.8,
+      "group_shift_x_mm": 118.712,
+      "gas_eye_to_eye_mm": 138.235
+    },
+    {
+      "theta_deg": 66.5,
+      "camera_axis_z_mm": 253.504,
+      "group_shift_x_mm": 120.31,
+      "gas_eye_to_eye_mm": 138.338
+    },
+    {
+      "theta_deg": 67.0,
+      "camera_axis_z_mm": 254.193,
+      "group_shift_x_mm": 121.915,
+      "gas_eye_to_eye_mm": 138.44
+    },
+    {
+      "theta_deg": 67.5,
+      "camera_axis_z_mm": 254.868,
+      "group_shift_x_mm": 123.525,
+      "gas_eye_to_eye_mm": 138.541
+    },
+    {
+      "theta_deg": 68.0,
+      "camera_axis_z_mm": 255.529,
+      "group_shift_x_mm": 125.141,
+      "gas_eye_to_eye_mm": 138.641
+    },
+    {
+      "theta_deg": 68.5,
+      "camera_axis_z_mm": 256.177,
+      "group_shift_x_mm": 126.763,
+      "gas_eye_to_eye_mm": 138.741
+    },
+    {
+      "theta_deg": 69.0,
+      "camera_axis_z_mm": 256.809,
+      "group_shift_x_mm": 128.391,
+      "gas_eye_to_eye_mm": 138.839
+    }
+  ],
+  "limits": "Planar XZ screen of rectangles; Y-separated parts (front wheels, Y>=42.5 vs camera +-37) not tested here. Static 3-D collisions of the folded state are in the CAD build. Stops, end-fitting lengths and real balancing are HOLD."
+}

@@ -96,6 +96,8 @@ NAME_DENSITY = [  # (substring, g/cm3, reason) — first match wins, overrides c
     ('DIN2093', 7.85, 'F18: disc springs FIX-002-726 spring steel'),
     ('ISO4035', 7.9, 'F18: M10 nuts FIX-002-725 A2'),
     ('LIFT_GAS_SPRING', 7.9, 'F18: gas spring pins (FIX-002-749 M6x18) A2'),
+    ('FSS001889', 7.9, 'F24: lock ring FSS-001-889 (DRW-002-752) stainless'),
+    ('DIN471', 7.85, 'F24: retaining rings DIN 471 spring steel'),
     ('SIDE_COVER', 2.7, 'FAL-002-062 Side cover'),
     ('CINCON_CQB150W', 2.546, 'F20: CQB150W envelope density scaled to datasheet 68 g (CONFIRMED mass)'),
     ('THERMAL_PAD', 3.0, 'F20: silicone gap pad ~3 g/cm3 ESTIMATED'),
