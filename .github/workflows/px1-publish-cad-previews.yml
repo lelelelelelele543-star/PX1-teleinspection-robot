@@ -1,5 +1,10 @@
 name: PX1 publish verified CAD previews
 on:
+  push:
+    branches:
+      - feature/px1-master-cover-interface-audit-20261121
+    paths:
+      - .github/workflows/px1-publish-cad-previews.yml
   workflow_dispatch:
     inputs:
       source_run_id:
@@ -20,7 +25,7 @@ jobs:
       - name: Fetch actual generated CAD views
         env:
           GH_TOKEN: ${{ github.token }}
-          RUN_ID: ${{ inputs.source_run_id }}
+          RUN_ID: ${{ inputs.source_run_id || '44860085699' }}
         run: |
           set -euo pipefail
           mkdir -p /tmp/px1-artifact
@@ -46,6 +51,6 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add current/CAD/previews
           if ! git diff --cached --quiet; then
-            git commit -m "PX1: publish real CAD render outputs from run ${{ inputs.source_run_id }}"
+            git commit -m "PX1: publish real CAD render outputs from run ${{ inputs.source_run_id || '44860085699' }}"
             git push origin "HEAD:${{ github.ref_name }}"
           fi
