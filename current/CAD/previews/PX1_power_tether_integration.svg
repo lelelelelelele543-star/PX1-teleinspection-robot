@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 650">
+<rect width="1180" height="650" fill="#f8fafc"/>
+<text x="32" y="46" font-family="sans-serif" font-size="26" font-weight="bold">PX1 / 40 m six-core tether / 24 V feasibility</text>
+<text x="32" y="73" font-family="sans-serif" font-size="16">Parametric electrical 2D schematic. ALL currents and cable sizes are design assumptions.</text>
+<rect x="35" y="113" width="190" height="285" rx="12" fill="#e2e8f0" stroke="#334155"/>
+<text x="55" y="150" font-family="sans-serif" font-size="19">Console / 24 V</text>
+<rect x="945" y="113" width="200" height="285" rx="12" fill="#e2e8f0" stroke="#334155"/>
+<text x="962" y="150" font-family="sans-serif" font-size="19">Robot / loads</text>
+<line x1="225" y1="181" x2="945" y2="181" stroke="#dc2626" stroke-width="4"/>
+<rect x="410" y="158" width="330" height="26" fill="#f8fafc"/>
+<text x="418" y="176" font-family="sans-serif" font-size="17">1. 24V supply</text>
+<line x1="225" y1="220" x2="945" y2="220" stroke="#2563eb" stroke-width="4"/>
+<rect x="410" y="197" width="330" height="26" fill="#f8fafc"/>
+<text x="418" y="215" font-family="sans-serif" font-size="17">2. DC return</text>
+<line x1="225" y1="259" x2="945" y2="259" stroke="#059669" stroke-width="4"/>
+<rect x="410" y="236" width="330" height="26" fill="#f8fafc"/>
+<text x="418" y="254" font-family="sans-serif" font-size="17">3. RS485 A</text>
+<line x1="225" y1="298" x2="945" y2="298" stroke="#047857" stroke-width="4"/>
+<rect x="410" y="275" width="330" height="26" fill="#f8fafc"/>
+<text x="418" y="293" font-family="sans-serif" font-size="17">4. RS485 B</text>
+<line x1="225" y1="337" x2="945" y2="337" stroke="#7c3aed" stroke-width="4"/>
+<rect x="410" y="314" width="330" height="26" fill="#f8fafc"/>
+<text x="418" y="332" font-family="sans-serif" font-size="17">5. CVBS differential +</text>
+<line x1="225" y1="376" x2="945" y2="376" stroke="#9333ea" stroke-width="4"/>
+<rect x="410" y="353" width="330" height="26" fill="#f8fafc"/>
+<text x="418" y="371" font-family="sans-serif" font-size="17">6. CVBS differential -</text>
+<text x="390" y="430" font-family="sans-serif" font-size="17">40 m / six independent copper conductors / no coax</text>
+<text x="32" y="470" font-family="sans-serif" font-size="19" font-weight="bold">DC screening (24 V supply, provisional 20 V minimum at robot)</text>
+<rect x="35" y="490" width="273" height="92" rx="8" fill="#fff" stroke="#cbd5e1"/>
+<text x="47" y="516" font-family="sans-serif" font-size="16">20 C / 2 A / PASS</text>
+<text x="47" y="542" font-family="sans-serif" font-size="16" fill="#166534">Robot: 22.133 V</text>
+<text x="47" y="565" font-family="sans-serif" font-size="14">Cable heat: 3.73 W</text>
+<rect x="322" y="490" width="273" height="92" rx="8" fill="#fff" stroke="#cbd5e1"/>
+<text x="334" y="516" font-family="sans-serif" font-size="16">20 C / 4 A / PASS</text>
+<text x="334" y="542" font-family="sans-serif" font-size="16" fill="#166534">Robot: 20.267 V</text>
+<text x="334" y="565" font-family="sans-serif" font-size="14">Cable heat: 14.93 W</text>
+<rect x="609" y="490" width="273" height="92" rx="8" fill="#fff" stroke="#cbd5e1"/>
+<text x="621" y="516" font-family="sans-serif" font-size="16">60 C / 4 A / FAIL</text>
+<text x="621" y="542" font-family="sans-serif" font-size="16" fill="#b91c1c">Robot: 19.680 V</text>
+<text x="621" y="565" font-family="sans-serif" font-size="14">Cable heat: 17.28 W</text>
+<rect x="896" y="490" width="273" height="92" rx="8" fill="#fff" stroke="#cbd5e1"/>
+<text x="908" y="516" font-family="sans-serif" font-size="16">20 C / 8 A / FAIL</text>
+<text x="908" y="542" font-family="sans-serif" font-size="16" fill="#b91c1c">Robot: 16.533 V</text>
+<text x="908" y="565" font-family="sans-serif" font-size="14">Cable heat: 59.73 W</text>
+<text x="32" y="621" font-family="sans-serif" font-size="15" fill="#9a3412">NOT_RUN: motor startup, RS485 EMI, CVBS video. PHYSICAL_CHECK: cable, thermal and pressure feedthrough.</text>
+</svg>
