@@ -1,0 +1,51 @@
+name: PX1 publish verified CAD previews
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: 'Successful px1-cloud-cad.yml run ID'
+        required: true
+        default: '44860085699'
+permissions:
+  actions: read
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          persist-credentials: true
+      - name: Fetch actual generated CAD views
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ inputs.source_run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/px1-artifact
+          gh run download "$RUN_ID" -n px1-cloud-cad-build -D /tmp/px1-artifact
+          test -f /tmp/px1-artifact/images/render_manifest.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('/tmp/px1-artifact')
+          manifest=json.loads((root/'images/render_manifest.json').read_text())
+          png=list((root/'images').glob('*.png'))
+          assert len(png)>=1, 'No actual CAD PNG files'
+          assert all(p.stat().st_size>1000 for p in png), 'Empty PNG'
+          print('CAD render files:',*[p.name for p in png])
+          PY
+      - name: Publish actual CAD previews beside master
+        run: |
+          set -euo pipefail
+          mkdir -p current/CAD/previews
+          cp /tmp/px1-artifact/images/*.png current/CAD/previews/
+          cp /tmp/px1-artifact/images/render_manifest.json current/CAD/previews/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add current/CAD/previews
+          if ! git diff --cached --quiet; then
+            git commit -m "PX1: publish real CAD render outputs from run ${{ inputs.source_run_id }}"
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
