@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="330" viewBox="0 0 1100 330">
+<rect width="1100" height="330" fill="#f6f8fa"/>
+<text x="25" y="35" font-size="22" font-family="sans-serif">PX1 motor safety — calculated system diagram (ASSUMED)</text>
+<rect x="20" y="90" width="185" height="72" rx="8" fill="#dbe9f3" stroke="#3a5872"/>
+<text x="112" y="131" text-anchor="middle" font-size="13" font-family="sans-serif">24 V supply</text>
+<path d="M205 125 h30" stroke="#285a82" stroke-width="3"/>
+<rect x="235" y="90" width="185" height="72" rx="8" fill="#dbe9f3" stroke="#3a5872"/>
+<text x="327" y="131" text-anchor="middle" font-size="13" font-family="sans-serif">40 m copper tether</text>
+<path d="M420 125 h30" stroke="#285a82" stroke-width="3"/>
+<rect x="450" y="90" width="185" height="72" rx="8" fill="#dbe9f3" stroke="#3a5872"/>
+<text x="542" y="131" text-anchor="middle" font-size="13" font-family="sans-serif">Bus voltage sensor</text>
+<path d="M635 125 h30" stroke="#285a82" stroke-width="3"/>
+<rect x="665" y="90" width="185" height="72" rx="8" fill="#dbe9f3" stroke="#3a5872"/>
+<text x="757" y="131" text-anchor="middle" font-size="13" font-family="sans-serif">STM32 supervisor</text>
+<path d="M850 125 h30" stroke="#285a82" stroke-width="3"/>
+<rect x="880" y="90" width="185" height="72" rx="8" fill="#dbe9f3" stroke="#3a5872"/>
+<text x="972" y="131" text-anchor="middle" font-size="13" font-family="sans-serif">2 motor drivers</text>
+<rect x="450" y="205" width="390" height="65" rx="8" fill="#fff0dc" stroke="#a36b25"/>
+<text x="645" y="232" text-anchor="middle" font-size="14" font-family="sans-serif">Independent hardware overcurrent trip REQUIRED</text>
+<text x="645" y="251" text-anchor="middle" font-size="12" font-family="sans-serif">NOT implemented / NOT tested</text>
+<path d="M645 205 V162" stroke="#a36b25" stroke-dasharray="5 4"/>
+<text x="25" y="310" font-size="12" font-family="sans-serif">Power path only. RS485 and balanced CVBS use remaining four conductors. No CAD / STEP claim.</text>
+</svg>
