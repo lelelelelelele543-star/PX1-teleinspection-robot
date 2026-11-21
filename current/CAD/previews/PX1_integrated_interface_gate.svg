@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 480">
+<rect width="920" height="480" fill="white"/>
+<g font-family="Arial,sans-serif" fill="#182536">
+<text x="40" y="35" font-size="23">PX1 — integrated chassis interface screen</text>
+<text x="40" y="58" font-size="13">2D datum drawing from PX1_Current_Master.py constants (not a CAD render or collision test)</text>
+<text x="40" y="91" font-size="16">Top view — wheel axes and intermediate Z50 gear stations</text>
+<rect x="128" y="135" width="584" height="136" rx="8" fill="#eef2f6" stroke="#33475b" stroke-width="2"/>
+<line x1="195" y1="115" x2="195" y2="290" stroke="#8194a6" stroke-dasharray="5 5"/>
+<text x="179" y="110" font-size="13">X50</text>
+<line x1="300" y1="115" x2="300" y2="290" stroke="#8194a6" stroke-dasharray="5 5"/>
+<text x="284" y="110" font-size="13">X100</text>
+<line x1="405" y1="115" x2="405" y2="290" stroke="#8194a6" stroke-dasharray="5 5"/>
+<text x="389" y="110" font-size="13">X150</text>
+<line x1="510" y1="115" x2="510" y2="290" stroke="#8194a6" stroke-dasharray="5 5"/>
+<text x="494" y="110" font-size="13">X200</text>
+<line x1="615" y1="115" x2="615" y2="290" stroke="#8194a6" stroke-dasharray="5 5"/>
+<text x="599" y="110" font-size="13">X250</text>
+<circle cx="195" cy="135" r="27" fill="#ccd8e4" stroke="#2b465f" stroke-width="2"/><circle cx="195" cy="135" r="5" fill="#2b465f"/>
+<circle cx="195" cy="271" r="27" fill="#ccd8e4" stroke="#2b465f" stroke-width="2"/><circle cx="195" cy="271" r="5" fill="#2b465f"/>
+<circle cx="405" cy="135" r="27" fill="#ccd8e4" stroke="#2b465f" stroke-width="2"/><circle cx="405" cy="135" r="5" fill="#2b465f"/>
+<circle cx="405" cy="271" r="27" fill="#ccd8e4" stroke="#2b465f" stroke-width="2"/><circle cx="405" cy="271" r="5" fill="#2b465f"/>
+<circle cx="615" cy="135" r="27" fill="#ccd8e4" stroke="#2b465f" stroke-width="2"/><circle cx="615" cy="135" r="5" fill="#2b465f"/>
+<circle cx="615" cy="271" r="27" fill="#ccd8e4" stroke="#2b465f" stroke-width="2"/><circle cx="615" cy="271" r="5" fill="#2b465f"/>
+<text x="40" y="320" font-size="14">6 wheels · 10 Z50 gear positions · 2 motors (not drawn as solids)</text>
+<text x="40" y="354" font-size="16">Interface checks from master constants</text>
+<text x="45" y="382" font-size="13" fill="#14713e">PASS — wheel stations are a subset of gear stations</text>
+<text x="45" y="403" font-size="13" fill="#14713e">PASS — 3 wheel axes and 5 gear axes per side</text>
+<text x="45" y="424" font-size="13" fill="#14713e">PASS — bottom crown point on ID150 circle (datum equation)</text>
+<text x="45" y="445" font-size="13" fill="#b42318">FAIL — service O-ring stretch ~8% exceeds 5% screening threshold</text>
+<text x="540" y="382" font-size="13">O-ring 110 × 1.5; radial gland 1.15 mm</text>
+<text x="540" y="403" font-size="13">NOT_RUN — solid collisions / STEP / pressure</text>
+<text x="540" y="424" font-size="13">PHYSICAL_CHECK — seal compression and leakage</text>
+</g></svg>
