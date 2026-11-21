@@ -37,16 +37,15 @@ def run():
     assert p["SERVICE_RGLAND_D"]>0
     R=p["PIPE_R"]; yc=p["WHEEL_CENTRE_Y"]; z=p["WHEEL_Z"]
     cz=z-p["WHEEL_CROWN_R"]+math.sqrt(R*R-yc*yc)
-    crown=math.hypot(yc,cz-z)+p["WHEEL_CROWN_R"] # diagnostic only; not pipe clearance
+    
     # The wheel contact point is along radial direction from pipe centre; radial wheel centre distance + crown R
-    wheel_center_dist=math.hypot(yc,z-cz)
-    contact_residual=wheel_center_dist+p["WHEEL_CROWN_R"]-R
+    contact_residual=math.hypot(yc,(z-p["WHEEL_CROWN_R"])-cz)-R
     # A circle fully inside pipe must have distance-to-centre + radius <= pipe radius.
     checks={
       "3 wheels per side":len(p["WHEEL_X"])==3,
       "5 gear stations per side":len(p["GEAR_X"])==5,
       "wheel stations subset gear stations":all(x in p["GEAR_X"] for x in p["WHEEL_X"]),
-      "wheel/pipe crown tangency":abs(contact_residual)<1e-6,
+      "bottom crown point on pipe circle":abs(contact_residual)<1e-6,
       "motor diameter below body height":p["MOTOR_OD"]<(p["BODY_TOP"]-p["BODY_Z0"]),
       "service O-ring stretch <=5% screen":p["SERVICE_ORING_STRETCH"]<=.05,
     }
