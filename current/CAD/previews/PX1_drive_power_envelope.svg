@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 650">
+<rect width="1100" height="650" fill="white"/>
+<text x="38" y="45" font-family="sans-serif" font-size="26">PX1 integrated drive power / 40 m tether</text>
+<text x="38" y="72" font-family="sans-serif" font-size="16">Parametric 2D calculation: 24 V, 1.5 mm2 copper, 60 C. All currents ASSUMED.</text>
+<rect x="65" y="204.7" width="126" height="315.3" fill="#0f766e"/>
+<text x="65" y="194.7" font-family="sans-serif" font-size="19">23.14 V</text>
+<text x="65" y="550" font-family="sans-serif" font-size="13">idle</text>
+<text x="65" y="574" font-family="sans-serif" font-size="14">0.8 A total</text>
+<rect x="273" y="256.6" width="126" height="263.4" fill="#0f766e"/>
+<text x="273" y="246.6" font-family="sans-serif" font-size="19">20.98 V</text>
+<text x="273" y="550" font-family="sans-serif" font-size="13">one motor running</text>
+<text x="273" y="574" font-family="sans-serif" font-size="14">2.8 A total</text>
+<rect x="481" y="308.4" width="126" height="211.6" fill="#b91c1c"/>
+<text x="481" y="298.4" font-family="sans-serif" font-size="19">18.82 V</text>
+<text x="481" y="550" font-family="sans-serif" font-size="13">both running</text>
+<text x="481" y="574" font-family="sans-serif" font-size="14">4.8 A total</text>
+<rect x="689" y="360.3" width="126" height="159.7" fill="#b91c1c"/>
+<text x="689" y="350.3" font-family="sans-serif" font-size="19">16.66 V</text>
+<text x="689" y="550" font-family="sans-serif" font-size="13">one start one run</text>
+<text x="689" y="574" font-family="sans-serif" font-size="14">6.8 A total</text>
+<rect x="897" y="412.1" width="126" height="107.9" fill="#b91c1c"/>
+<text x="897" y="402.1" font-family="sans-serif" font-size="19">14.50 V</text>
+<text x="897" y="550" font-family="sans-serif" font-size="13">both start</text>
+<text x="897" y="574" font-family="sans-serif" font-size="14">8.8 A total</text>
+<line x1="35" y1="280" x2="1050" y2="280" stroke="#b91c1c" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="840" y="267" font-family="sans-serif" font-size="16">20 V provisional minimum</text>
+<text x="38" y="615" font-family="sans-serif" font-size="15">Both motors steady FAIL. Sequential start does not solve steady-state voltage loss. PHYSICAL_CHECK required.</text>
+</svg>
