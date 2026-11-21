@@ -23,15 +23,16 @@ def allocate(left_request_a,right_request_a,temp_c,aux_a=AUX_A):
     limit=max_total_current(temp_c)
     motor_budget=max(0.0,limit-aux_a)
     requested=left_request_a+right_request_a
-    factor=min(1.0,motor_budget/requested) if requested else 1.0
+    factor=0.0 if aux_a>limit else (min(1.0,motor_budget/requested) if requested else 1.0)
     left=left_request_a*factor
     right=right_request_a*factor
     total=aux_a+left+right
     v=SUPPLY_V-total*loop_ohm(temp_c)
+    fault = aux_a>limit or v<MIN_BUS_V-1e-8
     return dict(temp_C=temp_c,requested_left_A=left_request_a,requested_right_A=right_request_a,
                 allowed_left_A=round(left,4),allowed_right_A=round(right,4),
                 motor_scale=round(factor,4),total_A=round(total,4),bus_V=round(v,4),
-                status="PASS_DESIGN_SCREEN" if v>=MIN_BUS_V-1e-8 else "FAIL",
+                status="FAIL_AUX_LOAD" if fault else "PASS_DESIGN_SCREEN",
                 protection="AUX_OVER_BUDGET" if aux_a>limit else "LIMITED" if factor<1 else "UNLIMITED")
 def main():
     cases=[allocate(l,r,t) for t in (20,60) for l,r in
@@ -42,6 +43,10 @@ def main():
     assert allocate(2,0,60)["motor_scale"]==1
     assert allocate(4,4,60)["allowed_left_A"]<2
     assert allocate(0,0,60,aux_a=5)["protection"]=="AUX_OVER_BUDGET"
+    assert allocate(4,4,60,aux_a=5)["allowed_left_A"]==0
+    assert allocate(4,4,60,aux_a=5)["status"]=="FAIL_AUX_LOAD"
+    assert allocate(4,4,60,aux_a=5)["bus_V"]<MIN_BUS_V
+    assert allocate(2,2,60)["status"]=="PASS_DESIGN_SCREEN"
     report={
       "release":False,"model":"DESIGN_ASSUMPTIONS_ONLY",
       "power_wiring":"2 copper cores power, 2 RS485, 2 balanced CVBS; no coax, no twisted pairs",
@@ -54,6 +59,7 @@ def main():
         "Measure bus voltage and BOTH motor currents at robot; current requests alone cannot enforce current limits.",
         "Hardware overcurrent protection independent of STM32 and BTS7960 PWM.",
         "Software allocate() is a steady-state design bound, not a transient control algorithm.",
+        "AUX_OVER_BUDGET is a FAULT: force motor request to zero; auxiliary load must be shed by independent hardware or supply redesign.",
         "Add filtered undervoltage fault, hysteresis, motor shutdown and operator telemetry.",
         "Verify voltage at robot, source tolerance, connector resistance, temperature, RS485 and CVBS signal quality."],
       "checks":{"arithmetic":"PASS","assumed_bus_limit":"PASS_DESIGN_SCREEN",
