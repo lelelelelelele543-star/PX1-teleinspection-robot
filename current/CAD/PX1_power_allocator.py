@@ -62,7 +62,7 @@ def main():
         "cable_thermal":"PHYSICAL_CHECK","pressure_feedthrough":"PHYSICAL_CHECK"},
       "cases":cases}
     p=Path(__file__).resolve().parent
-    (p/"PX1_power_allocator.json").write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\\n")
+    (p/"PX1_power_allocator.json").write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n")
     print(json.dumps({"checks":report["checks"],"both_running_60C":allocate(2,2,60)},ensure_ascii=False))
 if __name__=="__main__":
     main()
