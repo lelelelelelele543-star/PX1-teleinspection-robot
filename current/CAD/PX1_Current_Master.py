@@ -224,6 +224,11 @@ SERVICE_RGROOVE_ROOT_P=(2*((SERVICE_PLUG_L-2*SERVICE_PLUG_CLR-2*SERVICE_RGROOVE_
                         -(8-2*math.pi)*(SERVICE_PLUG_R-SERVICE_PLUG_CLR-SERVICE_RGROOVE_D))   # 373.4 groove-root perimeter, DERIVED
 SERVICE_ORING_STRETCH=SERVICE_RGROOVE_ROOT_P/(math.pi*SERVICE_ORING[0])-1                     # candidate ~3.37 % ID stretch, ANALYTIC (verify)
 SERVICE_ORING_CS_INST=SERVICE_ORING[1]/math.sqrt(1+SERVICE_ORING_STRETCH)                     # candidate stretched section, ANALYTIC
+# Guard against silent reintroduction of the OEM-labelled 110 mm ring into the 115 mm design candidate.
+# Engineering screening only; pressure qualification and supplier confirmation remain outstanding.
+assert 0 <= SERVICE_ORING_STRETCH <= 0.05, 'service ring stretch exceeds preliminary 5% limit'
+assert 0.15 <= (SERVICE_ORING_CS_INST-SERVICE_RGLAND_D)/SERVICE_ORING_CS_INST <= 0.35, 'radial seal squeeze outside 15-35% screen'
+
 
 # F18 camera lift per DRW-002-744 (Crawler Lift Parts) + DRW-002-752 (Lift Housing), folded state theta=0.
 # Origin A = clamp axle FSS-002-089 (M10, 3x DIN2093) = pivot of central lever ASS-002-723.
@@ -762,7 +767,7 @@ for _i,sy in enumerate((-1,1),1):                    # F25: 2x ISO 7380 M4x10 in
 # F22 seals. Installed sections: area-equal bands, stretched cross-section d'=d/sqrt(1+stretch) (volume constant).
 _bh=math.pi*SERVICE_ORING_CS_INST**2/4/SERVICE_RGLAND_D
 # band from groove root +0.01 to opening wall -0.01 (no modelled contact; squeeze is checked numerically)
-add('SEA002721_ORING_110x1p5_RADIAL_ON_SERVICE_COVER_SPIGOT',
+add(f'PX1_ASSUMED_SERVICE_ORING_ID{SERVICE_ORING[0]:g}_CS{SERVICE_ORING[1]:g}_RADIAL_NOT_OEM',
     rframe(_SPX,SERVICE_RGROOVE_Z-_bh/2,SERVICE_PLUG_L-.02,SERVICE_OPEN_W-.02,SERVICE_PLUG_R-.01,SERVICE_RGLAND_D-.02,_bh),'seal')
 # F25: camera-cable fitting holder (Proteus FAL-002-086 role) on the housing top behind the lift base: M12 gland, valve, sealed
 # feed-throughs Ø8 / Ø4 with SEA-001-861 10x1.5 (valve, as 745 pos.15) and 16x1.5 (gland) face rings on its underside.
