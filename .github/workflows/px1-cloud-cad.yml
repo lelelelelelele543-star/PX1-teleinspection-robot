@@ -25,6 +25,8 @@ jobs:
         run: python -m pip install 'cadquery==2.7.0' pillow
       - name: Check two current-master seal interfaces in local CadQuery 3D
         run: python current/CAD/PX1_dual_seal_3d_gate.py
+      - name: Validate 0.4-0.7 bar seal pressure load path and fastener engagement
+        run: python current/CAD/PX1_pressure_retention_integration.py
       - name: Build real STEP, registry and CAD-derived outline
         env:
           PX1_CLOUD_OUT: ${{ runner.temp }}/px1_cloud
@@ -56,3 +58,5 @@ jobs:
             ${{ runner.temp }}/px1_cloud/logs/*.log
             current/CAD/previews/PX1_dual_seal_3d_gate.svg
             current/CAD/previews/PX1_dual_seal_3d_gate.json
+            current/CAD/previews/PX1_pressure_retention_integration.svg
+            current/CAD/previews/PX1_pressure_retention_integration.json
