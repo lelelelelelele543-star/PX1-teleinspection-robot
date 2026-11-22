@@ -131,9 +131,17 @@ def finish_build(g):
     motor_names=[n for n in shapes if n.startswith('TRACTION_MOTOR_')]
     rear_names=[n for n in shapes if n.startswith('HOLD_REAR_') or 'REAR_SERVICE_COVER' in n or 'REAR_PANEL' in n or 'MAIN_TETHER' in n]
     motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','SPLIT_ADAPTER','LAPP_SKINTOP','ON_SERVICE_COVER')) or categories[n] in ('electronics','electronics_hold','valve')]
+    # The radial service O-ring is installed in the removable service-plug spigot,
+    # not retained in the pressure-body opening. It leaves with the plug during
+    # the explicitly assumed pre-motor service disassembly. Without this step,
+    # the collision screen incorrectly treats the removed seal as a fixed obstacle.
+    # This does NOT qualify seal reuse, disassembly clearance or pressure integrity.
+    service_plug_seals=[n for n in shapes if n.startswith('PX1_ASSUMED_SERVICE_ORING_ID') and n.endswith('_RADIAL_NOT_OEM')]
+    assert len(service_plug_seals)==1, 'Expected one service-plug radial seal attached to removable cover'
+    motor_removed.extend(service_plug_seals)
     motor_sweep=sweep_check(motor_names,(0,0,80),motor_removed,32)
     motor_sweep['removed_before_screen']=motor_removed
-    motor_sweep['sequence_scope']='Lift/head/harness and electronics detached, cover WITH boss/gland/valve removed, couplings and motor holder removed, then motors lift vertically. Access and removal of preceding subassemblies not certified.'
+    motor_sweep['sequence_scope']='Lift/head/harness and electronics detached, cover WITH its radial O-ring and boss/gland/valve removed, couplings and motor holder removed, then motors lift vertically. Access and removal of preceding subassemblies not certified.'
     # Exact continuous translation envelope for this four-cylinder motor candidate.
     continuous=[]; continuous_errors=[]
     segments=[(g['MOTOR_FACE']-g['GEARHEAD_LEN']-g['MOTOR_LEN'],g['MOTOR_LEN'],g['MOTOR_OD']/2),
