@@ -53,15 +53,17 @@ def main():
     if proc.returncode:
         return finish("FAIL_MASTER_BUILD_SEE_LOG",checks,started)
     step=HERE/"PX1_Current_Master.step"
+    stl=HERE/"PX1_Current_Master_assembly_SCREEN_ONLY.stl"
     validation=ROOT/"PX1_Current_Validation.json"
     checks["master_step"]="PASS" if step.is_file() and step.stat().st_size>1000 else "FAIL"
+    checks["assembly_stl"]="PASS" if stl.is_file() and stl.stat().st_size>1000 else "FAIL"
     checks["validation"]="PASS" if validation.is_file() else "FAIL"
     registry=ROOT/"component_registry.json"
     checks["component_registry"]="PASS" if registry.is_file() else "FAIL"
-    for name,p in (("master_step",step),("validation",validation),("component_registry",registry)):
+    for name,p in (("master_step",step),("assembly_stl",stl),("validation",validation),("component_registry",registry)):
         if checks[name]=="PASS" and p.stat().st_mtime_ns<build_start_ns:
             checks[name]="FAIL_STALE"
-    if any(str(checks[k]).startswith("FAIL") for k in ("master_step","validation","component_registry")):
+    if any(str(checks[k]).startswith("FAIL") for k in ("master_step","assembly_stl","validation","component_registry")):
         return finish("FAIL_MISSING_EXPORT",checks,started)
     with log.open("a",encoding="utf-8") as f:
         proc=subprocess.run([sys.executable,str(POST)],cwd=str(HERE),env=env,
