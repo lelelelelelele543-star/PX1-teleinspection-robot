@@ -41,6 +41,14 @@ def main():
     except Exception as exc:
         checks["cadquery_import"]="FAIL: "+repr(exc)
         return finish("BLOCKED_CADQUERY_UNAVAILABLE",checks,started)
+    # Remove stale artifacts before running the actual master.
+    generated=[HERE/"PX1_Current_Master.step", ROOT/"PX1_Current_Validation.json",
+               ROOT/"component_registry.json", HERE/"previews"/"PX1_master_actual_export_plan.svg",
+               ROOT/"PX1_Integration_Evidence.json"]
+    for artifact in generated:
+        if artifact.exists():
+            artifact.unlink()
+    checks["stale_outputs_removed"]="PASS"
     env=dict(os.environ,PX1_OUT=str(ROOT),PYTHONUNBUFFERED="1")
     log=ROOT/"PX1_integrated_build.log"
     with log.open("w",encoding="utf-8") as f:
@@ -53,6 +61,8 @@ def main():
     validation=ROOT/"PX1_Current_Validation.json"
     checks["master_step"]="PASS" if step.is_file() and step.stat().st_size>1000 else "FAIL"
     checks["validation"]="PASS" if validation.is_file() else "FAIL"
+    registry=ROOT/"component_registry.json"
+    checks["component_registry"]="PASS" if registry.is_file() else "FAIL"
     if "FAIL" in checks.values():
         return finish("FAIL_MISSING_EXPORT",checks,started)
     with log.open("a",encoding="utf-8") as f:
@@ -61,8 +71,17 @@ def main():
     checks["postbuild_exit"]=proc.returncode
     preview=HERE/"previews"/"PX1_master_actual_export_plan.svg"
     checks["cad_derived_svg"]="PASS" if preview.is_file() and preview.stat().st_size>1000 else "FAIL"
-    if proc.returncode or checks["cad_derived_svg"]!="PASS":
+    evidence=ROOT/"PX1_Integration_Evidence.json"
+    checks["integration_evidence"]="PASS" if evidence.is_file() else "FAIL"
+    if checks["integration_evidence"]=="PASS":
+        data=json.loads(evidence.read_text(encoding="utf-8"))
+        checks["rigid_interferences"]=len(data.get("rigid_interferences",[]))
+        checks["collision_errors"]=len(data.get("collision_errors",[]))
+        checks["collision_release"]="PASS" if not checks["rigid_interferences"] and not checks["collision_errors"] else "FAIL_UNRESOLVED"
+    if proc.returncode or checks["cad_derived_svg"]!="PASS" or checks["integration_evidence"]!="PASS":
         return finish("FAIL_POSTBUILD_SEE_LOG",checks,started)
+    if checks["collision_release"]!="PASS":
+        return finish("CAD_EXPORT_COMPLETED_COLLISION_QUALIFICATION_FAILED",checks,started)
     return finish("CAD_EXPORT_COMPLETED_WITH_OPEN_QUALIFICATIONS",checks,started)
 
 if __name__=="__main__":
