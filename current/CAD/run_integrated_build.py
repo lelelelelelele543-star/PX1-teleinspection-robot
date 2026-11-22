@@ -41,14 +41,9 @@ def main():
     except Exception as exc:
         checks["cadquery_import"]="FAIL: "+repr(exc)
         return finish("BLOCKED_CADQUERY_UNAVAILABLE",checks,started)
-    # Remove stale artifacts before running the actual master.
-    generated=[HERE/"PX1_Current_Master.step", ROOT/"PX1_Current_Validation.json",
-               ROOT/"component_registry.json", HERE/"previews"/"PX1_master_actual_export_plan.svg",
-               ROOT/"PX1_Integration_Evidence.json"]
-    for artifact in generated:
-        if artifact.exists():
-            artifact.unlink()
-    checks["stale_outputs_removed"]="PASS"
+    # Preserve existing artifacts; only accept files freshly written in this run.
+    build_start_ns=time.time_ns()
+    checks["artifact_freshness_guard"]="ENABLED"
     env=dict(os.environ,PX1_OUT=str(ROOT),PYTHONUNBUFFERED="1")
     log=ROOT/"PX1_integrated_build.log"
     with log.open("w",encoding="utf-8") as f:
@@ -63,6 +58,9 @@ def main():
     checks["validation"]="PASS" if validation.is_file() else "FAIL"
     registry=ROOT/"component_registry.json"
     checks["component_registry"]="PASS" if registry.is_file() else "FAIL"
+    for name,p in (("master_step",step),("validation",validation),("component_registry",registry)):
+        if checks[name]=="PASS" and p.stat().st_mtime_ns<build_start_ns:
+            checks[name]="FAIL_STALE"
     if "FAIL" in checks.values():
         return finish("FAIL_MISSING_EXPORT",checks,started)
     with log.open("a",encoding="utf-8") as f:
@@ -70,9 +68,9 @@ def main():
                             stdout=f,stderr=subprocess.STDOUT)
     checks["postbuild_exit"]=proc.returncode
     preview=HERE/"previews"/"PX1_master_actual_export_plan.svg"
-    checks["cad_derived_svg"]="PASS" if preview.is_file() and preview.stat().st_size>1000 else "FAIL"
+    checks["cad_derived_svg"]="PASS" if preview.is_file() and preview.stat().st_size>1000 and preview.stat().st_mtime_ns>=build_start_ns else "FAIL"
     evidence=ROOT/"PX1_Integration_Evidence.json"
-    checks["integration_evidence"]="PASS" if evidence.is_file() else "FAIL"
+    checks["integration_evidence"]="PASS" if evidence.is_file() and evidence.stat().st_mtime_ns>=build_start_ns else "FAIL"
     if checks["integration_evidence"]=="PASS":
         data=json.loads(evidence.read_text(encoding="utf-8"))
         checks["rigid_interferences"]=len(data.get("rigid_interferences",[]))
