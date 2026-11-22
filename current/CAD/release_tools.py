@@ -168,7 +168,7 @@ def finish_build(g):
     # F25: the lift base stands on the cover rear end (Proteus), so the lift group (base, levers, housing, camera, harness) is removed
     # before the cover / holder screws are reached; the screws being driven are the tool target.
     pre_removed=[n for n in shapes if any(k in n for k in ('LIFT_','HARNESS','ACE_GS','CAM026','LOCK_RING','FIX001892','SP13',
-                 'SP1310','CAMERA_CABLE_BEND','POTTED_BEND_TAIL','FIX_ISO7380_M4x10_ELECTRONICS_COVER','FIX_ISO7380_M3x12_FITTING_HOLDER'))]
+                 'SP1310','CAMERA_CABLE_BEND','POTTED_BEND_TAIL','ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER','FIX_ISO7380_M3x12_FITTING_HOLDER'))]
     for x,y in g['SERVICE_TOOL_POINTS']:
         probe=cq.Solid.makeCylinder(3,60,cq.Vector(x,y,g['SERVICE_Z']+g['SERVICE_T']+.1),cq.Vector(0,0,1));hits=[]
         for n,s in shapes.items():
