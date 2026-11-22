@@ -23,6 +23,8 @@ jobs:
           python-version: '3.11'
       - name: Install CadQuery
         run: python -m pip install 'cadquery==2.7.0' pillow
+      - name: Check two current-master seal interfaces in local CadQuery 3D
+        run: python current/CAD/PX1_dual_seal_3d_gate.py
       - name: Build real STEP, registry and CAD-derived outline
         env:
           PX1_CLOUD_OUT: ${{ runner.temp }}/px1_cloud
@@ -52,3 +54,5 @@ jobs:
             ${{ runner.temp }}/px1_cloud/images/render_manifest.json
             ${{ runner.temp }}/px1_cloud/px1_side_envelope.svg
             ${{ runner.temp }}/px1_cloud/logs/*.log
+            current/CAD/previews/PX1_dual_seal_3d_gate.svg
+            current/CAD/previews/PX1_dual_seal_3d_gate.json
