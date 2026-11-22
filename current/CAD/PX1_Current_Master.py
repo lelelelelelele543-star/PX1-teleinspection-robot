@@ -3,6 +3,7 @@ from cadquery import exporters
 import math, json, csv, os, hashlib, textwrap
 from pathlib import Path
 
+SOURCE_CAD=Path(__file__).resolve().parent  # Immutable vendor input assets, independent of PX1_OUT
 ROOT=Path(os.environ.get('PX1_OUT', str(Path(__file__).resolve().parents[1])))
 CAD=ROOT/'CAD'; METAL=CAD/'Metal_HOLD'; PRINT=CAD/'Print_STL'; IMG=ROOT/'images'
 for d in (ROOT,CAD,METAL,PRINT,IMG): d.mkdir(parents=True, exist_ok=True)
@@ -1025,12 +1026,12 @@ add('HOLD_CAMERA_CORE_BUNDLE_6x0p25_TO_SERVICE_CONNECTOR',bundle,'wire')
 _ce=bundle_segs[-1][1][-1]
 SVC_CONN_X1=_ce.x
 add('HOLD_CAMERA_SERVICE_CONNECTOR_6P_W2W_MATED',box0(SVC_CONN_X1-SVC_CONN[0],_ce.y-SVC_CONN[1]/2,SVC_CONN_ZC-SVC_CONN[2]/2,*SVC_CONN),'connector')
-controller=cq.importers.importStep(str(CAD/'vendor'/'WeAct_F4_64Pin_V11_Manufacturer.step'))
+controller=cq.importers.importStep(str(SOURCE_CAD/'vendor'/'WeAct_F4_64Pin_V11_Manufacturer.step'))
 controller=wp(cq.Compound.makeCompound(controller.vals()))
 b=controller.val().BoundingBox();controller=controller.translate((-(b.xmin+b.xmax)/2,-(b.ymin+b.ymax)/2,-b.zmin))
 controller=controller.rotate((0,0,0),(0,0,1),90).translate((208,0,60.1))
 add('WEACT_STM32F446RET6_V11_MANUFACTURER_STEP',controller,'electronics')
-g2=cq.importers.importStep(str(CAD/'vendor'/'Pololu_G2_24v13_Manufacturer.step')).translate((-16.51,-10.16,0))
+g2=cq.importers.importStep(str(SOURCE_CAD/'vendor'/'Pololu_G2_24v13_Manufacturer.step')).translate((-16.51,-10.16,0))
 for i,(x,z) in enumerate(((47,59),(99,24.5)),1):add(f'POLOLU_2992_G2_24v13_{i}_MANUFACTURER_STEP',g2.translate((x,0,z)),'electronics')  # F16: #2 lowered under motors; F14: #1 raised Z26->59 above the balun (clears M8 plate-screw boss)
 # ---------------- F20 Cincon on the cover underside + 24 V bus protection ----------------
 _pad_z0=SERVICE_Z-THERMAL_PAD_T; _mod_z0=_pad_z0-CINCON[2]          # pad Z74.5..75, module Z61.8..74.5
