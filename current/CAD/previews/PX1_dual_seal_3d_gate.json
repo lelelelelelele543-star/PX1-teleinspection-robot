@@ -1,0 +1,26 @@
+{
+  "source": "current/CAD/PX1_Current_Master.py",
+  "status": "PASS_LOCAL_3D_CAD_SCREEN_NOT_MANUFACTURING_RELEASE",
+  "note": "Local CadQuery 3D interface solids match master constants; lobed contour is master-generated. Full assembly and pressure qualification not rerun.",
+  "side": {
+    "centerline_mm": 609.64,
+    "installed_stretch_pct": 2.134,
+    "ring_cover_overlap_mm3": 0,
+    "min_M3_shank_distance_mm": 2.532
+  },
+  "service": {
+    "root_perimeter_mm": 373.443,
+    "installed_stretch_pct": 3.366,
+    "radial_squeeze_pct": 22.054,
+    "gland_fill_pct": 74.331,
+    "ring_plug_overlap_mm3": 0
+  },
+  "checks": {
+    "side_local_boolean": "PASS",
+    "service_local_boolean": "PASS",
+    "static_values_from_local_run": "PASS",
+    "full_master_collisions": "NOT_RUN",
+    "pressure": "PHYSICAL_CHECK",
+    "ring_stock": "PHYSICAL_CHECK"
+  }
+}
