@@ -61,7 +61,7 @@ def main():
     for name,p in (("master_step",step),("validation",validation),("component_registry",registry)):
         if checks[name]=="PASS" and p.stat().st_mtime_ns<build_start_ns:
             checks[name]="FAIL_STALE"
-    if "FAIL" in checks.values():
+    if any(str(checks[k]).startswith("FAIL") for k in ("master_step","validation","component_registry")):
         return finish("FAIL_MISSING_EXPORT",checks,started)
     with log.open("a",encoding="utf-8") as f:
         proc=subprocess.run([sys.executable,str(POST)],cwd=str(HERE),env=env,
