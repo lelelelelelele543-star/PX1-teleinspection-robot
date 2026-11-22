@@ -172,18 +172,18 @@ VIDEO_SCREEN=(43.0,16.0,15.0)  # Delta TR-1D*P2 packaging screen
 # under the lift). Only a central pad stays raised 7 mm over the Cincon (F20 heat sink); it is narrower than the side links.
 SERVICE_Z=75.0                                 # housing top = plug / lid top, DERIVED (BODY_TOP)
 SERVICE_T=7.0                                  # raised pad thickness over the plug (Cincon / shunt heat sink, F20), ESTIMATED
-SERVICE_PAD_X=(80.0,184.0)                     # pad X: front tongue over the housing top .. 0.07 behind the Cincon end X183.93, ESTIMATED
+SERVICE_PAD_X=(74.0,184.0)                     # pad X: front tongue over the housing top .. 0.07 behind the Cincon end X183.93, ESTIMATED
 SERVICE_PAD_HW=25.0                            # pad half width: inside the side links (|Y| 25.9), ESTIMATED
-SERVICE_L=SERVICE_PAD_X[1]-SERVICE_PAD_X[0]; SERVICE_W=2*SERVICE_PAD_HW; SERVICE_CX=(SERVICE_PAD_X[0]+SERVICE_PAD_X[1])/2  # 104 x 50, DERIVED
+SERVICE_L=SERVICE_PAD_X[1]-SERVICE_PAD_X[0]; SERVICE_W=2*SERVICE_PAD_HW; SERVICE_CX=(SERVICE_PAD_X[0]+SERVICE_PAD_X[1])/2  # 110 x 50, PX1 ESTIMATED
 SERVICE_LID_T=2.4                              # flush lid behind the pad (Z72.6..75, over the STM32 top Z72.1), ESTIMATED
 SERVICE_PAD_GROOVE=(165.0,7.5,5.0)             # gas-spring groove in the pad top: X start, half width, depth (floor Z77), ESTIMATED
 TAP_LEAD=2.5                                   # blind-tap allowance beyond the thread: >= 3P plug-tap chamfer (M4: 2.1), ESTIMATED
 TAP_SKIN=1.5                                   # material left below a blind tap, ESTIMATED
 ISO7380_M4=(3.8,2.2)                           # ISO 7380 M4 head dk/2, k, CONFIRMED standard
-COVER_FIX_XY=(84.0,19.0)                       # 2x M4 cover screws at the front (Proteus FIX-002-518 front pair |Y|19, DERIVED); X ESTIMATED
-COVER_FIX_L=10.0                               # ISO 7380 M4x10 (Proteus M4x8 in a 2.5 ear; PX1 pad 7.0), ESTIMATED
-COVER_FIX_ENGAGE=COVER_FIX_L-SERVICE_T         # 3.0 mm in the housing-top boss, DERIVED
-COVER_FIX_TAP_DEPTH=COVER_FIX_ENGAGE+TAP_LEAD  # 5.5, DERIVED
+COVER_FIX_XY=(80.0,19.0)                       # 2x M4 cover screws at the front (Proteus FIX-002-518 front pair |Y|19, DERIVED); X ESTIMATED
+COVER_FIX_L=12.0                               # PX1 ISO 7380 M4x12 (Proteus M4x8 in a 2.5 ear; PX1 pad 7.0), ESTIMATED
+COVER_FIX_ENGAGE=COVER_FIX_L-SERVICE_T         # 5.0 mm in the housing-top boss, DERIVED
+COVER_FIX_TAP_DEPTH=COVER_FIX_ENGAGE+TAP_LEAD  # 7.5, DERIVED
 COVER_FIX_BOSS_R=3.5                           # internal boss under the housing top wall, ESTIMATED
 # F25: camera-cable fitting holder (Proteus FAL-002-086 role: M12 gland + valve + sealed feed-through) moved off the cover onto the
 # housing top behind the lift base; PX1 plate form 32 x 68 x 7 keeps the F22 passages (Ø8 / Ø4) and the F21/F23 gland exit Z102.
@@ -726,6 +726,7 @@ for side in (-1,1):
         motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y+9.5*math.cos(a),45+9.5*math.sin(a),1.35,3.2))
 add('HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED',motor_holder,'metal')
 add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
+# F26 pressure-retention revision: move front M4 X84->80, extend 7mm raised pad front X80->74 (head edge >=2mm, boss to opening >=4mm), M4x10->M4x12 (5mm engagement); all PX1 ESTIMATED, recheck 3D and pressure.
 # F25 cover L01 = Proteus-type flush plug (hollow spigot rim Z71..75 with the radial 110x1.5, DRW-002-745 C-C) + flush lid behind
 # the pad (top Z75 = housing top, the lift base stands on it) + raised central pad 104 x 50 x 7 over the Cincon / shunt (F20).
 _SPX=(SERVICE_OPEN_X0+SERVICE_OPEN_X1)/2; _SPL=SERVICE_PLUG_L-2*SERVICE_PLUG_CLR; _SPW=SERVICE_OPEN_W-2*SERVICE_PLUG_CLR
@@ -759,10 +760,10 @@ for _hx,_hy in F20_CINCON_HOLES+F20_SHUNT_HOLES:
     cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z-.1,1.5,COVER_TAP_DEPTH+.1))   # M3 cosmetic thread (major D3)
 for _hx,_hy in F20_STANDOFFS:
     cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z-.1,1.5,4.1))
-add('HOLD_PRESSURE_ELECTRONICS_COVER_FLUSH_PLUG_PAD104x50x7',cover,'metal')
-for _i,sy in enumerate((-1,1),1):                    # F25: 2x ISO 7380 M4x10 into housing-top bosses (3.0 engaged)
+add('HOLD_PRESSURE_ELECTRONICS_COVER_FLUSH_PLUG_PAD110x50x7',cover,'metal')
+for _i,sy in enumerate((-1,1),1):                    # PX1: 2x ISO 7380 M4x12 into housing-top bosses (5.0 engaged)
     _hr,_hk=ISO7380_M4; _zt=SERVICE_Z+SERVICE_T
-    add(f'FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_{_i}',
+    add(f'FIX_ISO7380_M4x12_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_{_i}',
         fuse_all([cyl_z(COVER_FIX_XY[0],sy*COVER_FIX_XY[1],_zt,_hr,_hk),cyl_z(COVER_FIX_XY[0],sy*COVER_FIX_XY[1],_zt-COVER_FIX_L,2.0,COVER_FIX_L)]),'shaft')
 # F22 seals. Installed sections: area-equal bands, stretched cross-section d'=d/sqrt(1+stretch) (volume constant).
 _bh=math.pi*SERVICE_ORING_CS_INST**2/4/SERVICE_RGLAND_D
