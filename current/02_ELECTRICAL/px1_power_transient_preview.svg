@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460">
+<rect width="900" height="460" fill="#142033"/><g font-family="Arial,sans-serif" fill="#eef4fc">
+<text x="36" y="45" font-size="26" font-weight="bold">PX1 — 40 m tether / 24 V transient screen</text>
+<text x="36" y="75" font-size="16">1.5 mm² copper, 60°C; 48 W idle → 96 W for 250 ms</text>
+<rect x="38" y="110" width="820" height="230" rx="12" fill="#202e43"/>
+<text x="60" y="146" font-size="18">Ideal bulk capacitor</text><text x="460" y="146" font-size="18">Minimum robot voltage</text>
+<g font-size="19"><text x="60" y="188">0 mF</text><text x="460" y="188">18.349 V</text>
+<text x="60" y="231">47 mF</text><text x="460" y="231">18.450 V</text>
+<text x="60" y="274">100 mF</text><text x="460" y="274">18.969 V</text>
+<text x="60" y="317">220 mF</text><text x="460" y="317">19.864 V</text></g>
+<line x1="585" y1="158" x2="585" y2="320" stroke="#ffb25c" stroke-dasharray="5 5"/>
+<text x="610" y="156" font-size="15" fill="#ffb25c">20 V minimum target</text>
+<text x="36" y="383" font-size="18" fill="#ff9e9e">FAIL_SCREEN: all four scenarios fall below the 20 V design threshold.</text>
+<text x="36" y="413" font-size="14" fill="#b7c7d9">Computed from Python nonlinear capacitor-load model; NOT a CAD render.</text>
+<text x="36" y="438" font-size="14" fill="#b7c7d9">Assumptions: ideal capacitor, no ESR/ESL, no motor inrush, no DC/DC dynamic validation.</text>
+</g></svg>
