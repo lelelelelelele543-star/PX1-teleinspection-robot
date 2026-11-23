@@ -215,7 +215,7 @@ def finish_build(g):
         'assembly_stl':{'path':'CAD/PX1_Current_Master_assembly_SCREEN_ONLY.stl','bytes':assembly_stl.stat().st_size,'purpose':'VISUALIZATION_ONLY_NOT_WATERTIGHT_NOT_MANUFACTURING_RELEASE'},
         'print_outputs':print_validation,'metal_release':False,'part_exports':export_map,
         'unmodelled_required_items':['complete camera PAN/TILT/lighting/control internals','side-cover static seal installed contour','closed service-cover seal and screws: groove/pilot holes modelled, seal/threads/fasteners unqualified','lift pivot bushings and seals','pressure valve spring and seat detail','SP13 panel half and contact inserts','SP17 cable half and seals','internal six-way service connector','board standoffs and all power terminal insulation','INA226 ready-made modules and branch capacitors/TVS/fuses','motor socket torque transfer and rear connector/lead envelopes','RF-available brushed motor selection, driver current/thermal qualification','circlips, internal gear keys and complete fastening hardware'],
-        'holds':json.loads((root/'HOLD_REGISTER.json').read_text())}
+        'holds':json.loads((Path(__file__).resolve().parents[1]/'HOLD_REGISTER.json').read_text(encoding='utf-8'))}
     (root/'PX1_Current_Validation.json').write_text(json.dumps(val,ensure_ascii=False,indent=2))
     (root/'component_registry.json').write_text(json.dumps(registry,ensure_ascii=False,indent=2))
     # Persist the exact assembly mesh for deterministic drawing generation, without another master model.
