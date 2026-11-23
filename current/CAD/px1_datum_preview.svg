@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 510" width="1000" height="510">
+<rect width="1000" height="510" fill="#f8fafc"/>
+<text x="45" y="40" font-size="23" font-family="sans-serif">PX1 — master datum side projection (mm)</text>
+<text x="45" y="65" font-size="15" fill="#a04c20">2D only / not a CAD render / estimated geometry not certified</text>
+<rect x="100" y="142.5" width="695" height="160" fill="#c9d7e5" fill-opacity=".6" stroke="#30465f"/>
+<circle cx="225" cy="217.5" r="65" fill="none" stroke="#ad612d" stroke-dasharray="5 5"/>
+<circle cx="350" cy="217.5" r="65" fill="none" stroke="#ad612d" stroke-dasharray="5 5"/>
+<circle cx="475" cy="217.5" r="65" fill="none" stroke="#ad612d" stroke-dasharray="5 5"/>
+<circle cx="600" cy="217.5" r="65" fill="none" stroke="#ad612d" stroke-dasharray="5 5"/>
+<circle cx="725" cy="217.5" r="65" fill="none" stroke="#ad612d" stroke-dasharray="5 5"/>
+<circle cx="225" cy="217.5" r="112.5" fill="#6588a8" fill-opacity=".23" stroke="#254461" stroke-width="3"/><circle cx="225" cy="217.5" r="15" fill="white" stroke="#254461"/><text x="211" y="222.5" font-size="13">50</text>
+<circle cx="475" cy="217.5" r="112.5" fill="#6588a8" fill-opacity=".23" stroke="#254461" stroke-width="3"/><circle cx="475" cy="217.5" r="15" fill="white" stroke="#254461"/><text x="461" y="222.5" font-size="13">150</text>
+<circle cx="725" cy="217.5" r="112.5" fill="#6588a8" fill-opacity=".23" stroke="#254461" stroke-width="3"/><circle cx="725" cy="217.5" r="15" fill="white" stroke="#254461"/><text x="711" y="222.5" font-size="13">250</text>
+<text x="95" y="407" font-size="16">6 wheels, 2 sides × (3 wheels + 5 Z50 gear stations)</text>
+<text x="95" y="433" font-size="15" fill="#9b4b1e">Motors, bearings, covers, seals and input gears: NOT SHOWN / NOT VALIDATED</text>
+<text x="95" y="459" font-size="15">Only datums extracted from the existing CAD master. No new chassis geometry.</text>
+</svg>
