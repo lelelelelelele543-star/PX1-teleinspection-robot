@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500">
+<rect width="980" height="500" fill="#f8fafc"/><text x="38" y="45" font-family="Arial" font-size="24" font-weight="bold">PX1 — motor / centre axle clearance (X=150 mm)</text>
+<text x="38" y="74" font-family="Arial" font-size="15">Parametric 2D section from PX1_Current_Master.py — NOT a 3D collision test</text>
+<line x1="80" y1="255" x2="900" y2="255" stroke="#64748b" stroke-dasharray="8 5" stroke-width="2"/>
+<text x="88" y="244" font-family="Arial" font-size="15">Y=0</text>
+<rect x="80" y="116" width="820" height="85" rx="12" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+<rect x="80" y="309" width="820" height="85" rx="12" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="110" y="165" font-family="Arial" font-size="19">Left motor Ø22.2, axis |Y|=13.5</text>
+<text x="110" y="358" font-family="Arial" font-size="19">Right motor Ø22.2, axis |Y|=13.5</text>
+<line x1="500" y1="95" x2="500" y2="415" stroke="#f59e0b" stroke-width="4"/>
+<text x="513" y="104" font-family="Arial" font-size="17">X=150 centre axle station</text>
+<rect x="475" y="87" width="50" height="20" fill="#f97316" stroke="#9a3412"/>
+<rect x="475" y="403" width="50" height="20" fill="#f97316" stroke="#9a3412"/>
+<line x1="530" y1="107" x2="530" y2="116" stroke="#059669" stroke-width="4"/>
+<line x1="530" y1="394" x2="530" y2="403" stroke="#059669" stroke-width="4"/>
+<text x="552" y="125" font-family="Arial" font-size="17" fill="#047857">Nominal gap 2.20 mm</text>
+<text x="552" y="390" font-family="Arial" font-size="17" fill="#047857">Nominal gap 2.20 mm</text>
+<text x="38" y="465" font-family="Arial" font-size="16">Assumptions: cylindrical motor envelope, centre shaft begins at |Y|=26.8; motor outer edge at |Y|=24.6.</text>
+</svg>
