@@ -37,6 +37,15 @@ def finish_build(g):
         registry.append({'id':n,'category':c,'geometry_state':('MANUFACTURER_STEP' if 'MANUFACTURER_STEP' in n else 'HOLD' if 'HOLD' in n else 'BOUNDARY_ENVELOPE_OR_DESIGN'),
             'bbox_mm':[round(v,5) for v in b],'dimensions_mm':[round(b[i+3]-b[i],5) for i in range(3)],'volume_mm3':round(s.Volume(),5),'solids':len(s.Solids())})
     step=cad/'PX1_Current_Master.step';assembly.export(str(step),'STEP')
+    # Whole-assembly STL is a visualization/fit-check mesh of the SAME solids as STEP.
+    # No boolean fusion: deliberate contacts and unresolved clashes remain visible.
+    # Never interpret this STL as a printable watertight manufactured assembly.
+    assembly_stl=cad/'PX1_Current_Master_assembly_SCREEN_ONLY.stl'
+    exporters.export(cq.Compound.makeCompound(list(shapes.values())),
+                     str(assembly_stl),tolerance=.18,angularTolerance=.18)
+    if not assembly_stl.is_file() or assembly_stl.stat().st_size<1000:
+        raise RuntimeError('Assembly STL export failed')
+
     # Every exported custom part is the exact assembly solid, not a separately redrawn surrogate.
     export_map={};used=set()
     for n,p,c in components:
@@ -122,9 +131,17 @@ def finish_build(g):
     motor_names=[n for n in shapes if n.startswith('TRACTION_MOTOR_')]
     rear_names=[n for n in shapes if n.startswith('HOLD_REAR_') or 'REAR_SERVICE_COVER' in n or 'REAR_PANEL' in n or 'MAIN_TETHER' in n]
     motor_removed=[n for n in shapes if any(k in n for k in ('PRESSURE_ELECTRONICS_COVER','LIFT_','HARNESS','ACE_','NBK_','PAIRED_MOTOR_HOLDER','SPLIT_ADAPTER','LAPP_SKINTOP','ON_SERVICE_COVER')) or categories[n] in ('electronics','electronics_hold','valve')]
+    # The radial service O-ring is installed in the removable service-plug spigot,
+    # not retained in the pressure-body opening. It leaves with the plug during
+    # the explicitly assumed pre-motor service disassembly. Without this step,
+    # the collision screen incorrectly treats the removed seal as a fixed obstacle.
+    # This does NOT qualify seal reuse, disassembly clearance or pressure integrity.
+    service_plug_seals=[n for n in shapes if n.startswith('PX1_ASSUMED_SERVICE_ORING_ID') and n.endswith('_RADIAL_NOT_OEM')]
+    assert len(service_plug_seals)==1, 'Expected one service-plug radial seal attached to removable cover'
+    motor_removed.extend(service_plug_seals)
     motor_sweep=sweep_check(motor_names,(0,0,80),motor_removed,32)
     motor_sweep['removed_before_screen']=motor_removed
-    motor_sweep['sequence_scope']='Lift/head/harness and electronics detached, cover WITH boss/gland/valve removed, couplings and motor holder removed, then motors lift vertically. Access and removal of preceding subassemblies not certified.'
+    motor_sweep['sequence_scope']='Lift/head/harness and electronics detached, cover WITH its radial O-ring and boss/gland/valve removed, couplings and motor holder removed, then motors lift vertically. Access and removal of preceding subassemblies not certified.'
     # Exact continuous translation envelope for this four-cylinder motor candidate.
     continuous=[]; continuous_errors=[]
     segments=[(g['MOTOR_FACE']-g['GEARHEAD_LEN']-g['MOTOR_LEN'],g['MOTOR_LEN'],g['MOTOR_OD']/2),
@@ -151,7 +168,7 @@ def finish_build(g):
     # F25: the lift base stands on the cover rear end (Proteus), so the lift group (base, levers, housing, camera, harness) is removed
     # before the cover / holder screws are reached; the screws being driven are the tool target.
     pre_removed=[n for n in shapes if any(k in n for k in ('LIFT_','HARNESS','ACE_GS','CAM026','LOCK_RING','FIX001892','SP13',
-                 'SP1310','CAMERA_CABLE_BEND','POTTED_BEND_TAIL','FIX_ISO7380_M4x10_ELECTRONICS_COVER','FIX_ISO7380_M3x12_FITTING_HOLDER'))]
+                 'SP1310','CAMERA_CABLE_BEND','POTTED_BEND_TAIL','ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER','FIX_ISO7380_M3x12_FITTING_HOLDER'))]
     for x,y in g['SERVICE_TOOL_POINTS']:
         probe=cq.Solid.makeCylinder(3,60,cq.Vector(x,y,g['SERVICE_Z']+g['SERVICE_T']+.1),cq.Vector(0,0,1));hits=[]
         for n,s in shapes.items():
@@ -195,9 +212,10 @@ def finish_build(g):
         'lift':lift,'folded_height':folded,
         'gas_spring':{'model':'ACE GS-12-60-V4A + 2x A3,5-V4A','eye_to_eye_folded_mm':g['gas_length'],'eye_fitting_mm_each':g['ACE_EYE_L'],'bare_limits_mm':[lo,hi],'margin_mm':mg,'sampled_angle_checks':gas_sweep,'release':'HOLD H06: A3,5 dimensions ESTIMATED (confirm on the ACE CAD file), actual limit angles and physical 150 N balancing'},
         'pressure':{'status':'HOLD H03 H07','cad_is_leak_test':False,'side_cover_window_error_fixed':True,'common_pressure_communication':'requires physical/section verification'},
+        'assembly_stl':{'path':'CAD/PX1_Current_Master_assembly_SCREEN_ONLY.stl','bytes':assembly_stl.stat().st_size,'purpose':'VISUALIZATION_ONLY_NOT_WATERTIGHT_NOT_MANUFACTURING_RELEASE'},
         'print_outputs':print_validation,'metal_release':False,'part_exports':export_map,
         'unmodelled_required_items':['complete camera PAN/TILT/lighting/control internals','side-cover static seal installed contour','closed service-cover seal and screws: groove/pilot holes modelled, seal/threads/fasteners unqualified','lift pivot bushings and seals','pressure valve spring and seat detail','SP13 panel half and contact inserts','SP17 cable half and seals','internal six-way service connector','board standoffs and all power terminal insulation','INA226 ready-made modules and branch capacitors/TVS/fuses','motor socket torque transfer and rear connector/lead envelopes','RF-available brushed motor selection, driver current/thermal qualification','circlips, internal gear keys and complete fastening hardware'],
-        'holds':json.loads((root/'HOLD_REGISTER.json').read_text())}
+        'holds':json.loads((Path(__file__).resolve().parents[1]/'HOLD_REGISTER.json').read_text(encoding='utf-8'))}
     (root/'PX1_Current_Validation.json').write_text(json.dumps(val,ensure_ascii=False,indent=2))
     (root/'component_registry.json').write_text(json.dumps(registry,ensure_ascii=False,indent=2))
     # Persist the exact assembly mesh for deterministic drawing generation, without another master model.

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="440" viewBox="0 0 1000 440">
+<rect width="1000" height="440" fill="#f8fafc"/>
+<text x="40" y="42" font-family="sans-serif" font-size="24" fill="#172b45">PX1 / six wheel-shaft pressure boundaries</text>
+<text x="40" y="68" font-family="sans-serif" font-size="14" fill="#9a3412">PARAMETRIC 2D INTERFACE SCREEN — NOT CAD RENDER OR MANUFACTURING DRAWING</text>
+<rect x="80" y="120" width="570" height="190" rx="14" fill="#d8e7f1" stroke="#275879" stroke-width="3"/>
+<text x="96" y="147" font-family="sans-serif" font-size="15">Pressurized dry chassis / 0.4–0.7 bar target</text>
+<g><rect x="140" y="186" width="60" height="58" fill="#cbd5e1" stroke="#475569"/><circle cx="170" cy="215" r="19" fill="#f8fafc" stroke="#b45309" stroke-width="7"/><circle cx="170" cy="215" r="12" fill="#9ca3af" stroke="#334155" stroke-width="2"/><text x="149" y="282" font-size="14" font-family="sans-serif">X50</text></g><g><rect x="335" y="186" width="60" height="58" fill="#cbd5e1" stroke="#475569"/><circle cx="365" cy="215" r="19" fill="#f8fafc" stroke="#b45309" stroke-width="7"/><circle cx="365" cy="215" r="12" fill="#9ca3af" stroke="#334155" stroke-width="2"/><text x="344" y="282" font-size="14" font-family="sans-serif">X150</text></g><g><rect x="530" y="186" width="60" height="58" fill="#cbd5e1" stroke="#475569"/><circle cx="560" cy="215" r="19" fill="#f8fafc" stroke="#b45309" stroke-width="7"/><circle cx="560" cy="215" r="12" fill="#9ca3af" stroke="#334155" stroke-width="2"/><text x="539" y="282" font-size="14" font-family="sans-serif">X250</text></g>
+<path d="M650 215 H775" stroke="#64748b" stroke-width="24"/><rect x="775" y="184" width="22" height="62" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>
+<text x="705" y="170" font-size="14" font-family="sans-serif">shaft Ø18 assumed</text>
+<text x="812" y="204" font-size="14" font-family="sans-serif">Rotary seal</text>
+<text x="812" y="225" font-size="13" font-family="sans-serif">Ø30 bore assumed</text>
+<text x="812" y="246" font-size="13" font-family="sans-serif" fill="#b45309">rating NOT verified</text>
+<text x="80" y="355" font-size="16" font-family="sans-serif">3 stations × 2 sides = 6 pressure penetrations</text>
+<text x="80" y="380" font-size="15" font-family="sans-serif">At 0.7 bar: F = pπd²/4 = 17.81 N per Ø18 shaft (pressure force screen)</text>
+<text x="80" y="405" font-size="14" font-family="sans-serif" fill="#9a3412">PHYSICAL_CHECK: seal rating, orientation, shaft finish, wear, lubrication, pressure test</text>
+</svg>

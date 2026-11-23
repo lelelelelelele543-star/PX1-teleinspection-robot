@@ -160,10 +160,24 @@ def main():
         tools=val.get('service',{}).get('service_screw_tools',[])
         checks['four_service_tool_approaches']=len(tools)==4 and all(not i.get('collisions') for i in tools)
         report['pipe_service_scope']='Nominal engineered tyre in perfect straight ID150; active candidate motor exit after explicit preceding disassembly; no physical passage, sealing, traction or complete service-sequence qualification.'
+        # Keep the actual obstacle names and intersection volumes with the failed run.
+        # A boolean alone cannot distinguish stale validation from a genuine service obstruction.
+        report['motor_exit_diagnostics'] = {
+            'discrete_status': service.get('status', 'MISSING'),
+            'discrete_collisions': service.get('collisions', []),
+            'discrete_errors': service.get('errors', []),
+            'continuous_status': continuous.get('status', 'MISSING'),
+            'continuous_collisions': continuous.get('collisions', []),
+            'continuous_errors': continuous.get('errors', []),
+            'removed_before_screen': service.get('removed_before_screen', []),
+        }
     report['status'] = 'PASS_REQUESTED_CAD_SCREENS_WITH_RELEASE_HOLD' if all(checks.values()) else 'FAIL_CAD_SCREEN'
     (out / 'integrated_checks.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
     print(json.dumps({'status': report['status'], 'checks': checks, 'blocking_interferences': len(blocking),
                       'unqualified_contacts': len(holds), 'report': str(out / 'integrated_checks.json')}, indent=2))
+    if args.require_pipe_service and (not checks['motor_continuous_exit'] or not checks['motor_discrete_exit']):
+        diag = report['motor_exit_diagnostics']
+        print('MOTOR_EXIT_DIAGNOSTICS ' + json.dumps(diag, ensure_ascii=False, default=str))
     return 0 if all(checks.values()) else 1
 
 

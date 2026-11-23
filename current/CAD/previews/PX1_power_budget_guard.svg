@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 470"><rect width="1050" height="470" fill="#f8fafc"/>
+<text x="32" y="43" font-size="25" font-family="sans-serif">PX1 / integrated load budget / 40 m six-core tether</text>
+<text x="32" y="71" font-size="15" font-family="sans-serif">PARAMETRIC ELECTRICAL 2D / load currents are assumptions, not measured ratings</text>
+<rect x="35" y="110" width="200" height="180" rx="9" fill="#dbeafe" stroke="#1e40af"/>
+<text x="55" y="148" font-size="20" font-family="sans-serif">24 V console</text>
+<text x="55" y="180" font-size="16" font-family="sans-serif">6 copper cores</text>
+<text x="55" y="208" font-size="16" font-family="sans-serif">2 power + 2 RS485</text>
+<text x="55" y="234" font-size="16" font-family="sans-serif">+ 2 balanced video</text>
+<rect x="800" y="110" width="215" height="180" rx="9" fill="#e2e8f0" stroke="#334155"/>
+<text x="815" y="148" font-size="20" font-family="sans-serif">PX1 robot</text>
+<text x="815" y="182" font-size="16" font-family="sans-serif">L motor: 2.0 A*</text>
+<text x="815" y="209" font-size="16" font-family="sans-serif">R motor: 2.0 A*</text>
+<text x="815" y="236" font-size="16" font-family="sans-serif">Other: 0.8 A*</text>
+<line x1="235" y1="162" x2="800" y2="162" stroke="#dc2626" stroke-width="5"/>
+<line x1="235" y1="235" x2="800" y2="235" stroke="#2563eb" stroke-width="5"/>
+<text x="360" y="145" font-size="18" font-family="sans-serif">40 m supply + return</text>
+<text x="360" y="260" font-size="16" font-family="sans-serif">RS485 and video cores omitted visually</text>
+<rect x="35" y="318" width="490" height="104" rx="8" fill="#fff" stroke="#b91c1c"/><text x="49" y="346" font-size="18" font-family="sans-serif">20 C / 4.8 A scenario / FAIL</text><text x="49" y="376" font-size="17" font-family="sans-serif">Robot: 19.520 V (provisional min 20 V)</text><text x="49" y="402" font-size="16" font-family="sans-serif">Max budget: 4.286 A; heat: 21.50 W</text>
+<rect x="545" y="318" width="490" height="104" rx="8" fill="#fff" stroke="#b91c1c"/><text x="559" y="346" font-size="18" font-family="sans-serif">60 C / 4.8 A scenario / FAIL</text><text x="559" y="376" font-size="17" font-family="sans-serif">Robot: 18.816 V (provisional min 20 V)</text><text x="559" y="402" font-size="16" font-family="sans-serif">Max budget: 3.704 A; heat: 24.88 W</text>
+<text x="35" y="450" font-size="14" font-family="sans-serif">* Assumed only. NOT_RUN: startup/stall, RS485/CVBS. PHYSICAL_CHECK: cable and pressure feedthrough.</text></svg>

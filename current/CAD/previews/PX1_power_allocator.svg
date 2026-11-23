@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="620" viewBox="0 0 1160 620">
+<rect width="1160" height="620" fill="#fff"/>
+<text x="35" y="45" font-size="28" font-family="Arial" fill="#172333">PX1 — 40 m tether / dual-motor power allocation</text>
+<text x="35" y="74" font-size="17" font-family="Arial" fill="#526174">Engineering 2D wiring and control model — DESIGN ASSUMPTIONS, NOT A CAD RENDER</text>
+<g stroke="#24384a" stroke-width="2" fill="#eef3f8">
+<rect x="35" y="150" width="195" height="160" rx="10"/><rect x="350" y="150" width="250" height="160" rx="10"/><rect x="735" y="150" width="390" height="160" rx="10"/>
+</g>
+<g font-family="Arial" fill="#172333" font-size="19">
+<text x="52" y="187">Console supply</text><text x="52" y="218">24 V assumed</text><text x="52" y="250">Fuse + current limit</text>
+<text x="365" y="185">40 m / 6 copper cores</text><text x="365" y="216">2 power, 2 RS-485</text><text x="365" y="247">2 balanced CVBS</text><text x="365" y="277">No coax / twisted pair</text>
+<text x="752" y="185">Robot power distribution</text><text x="752" y="216">Measured bus V + motor I</text><text x="752" y="247">2 independent motor drivers</text><text x="752" y="278">Camera / light / STM32</text>
+</g>
+<g stroke="#276b9b" stroke-width="5" fill="none"><path d="M230 205 H350"/><path d="M600 205 H735"/></g>
+<g font-family="Arial" fill="#172333" font-size="18">
+<text x="35" y="366">60°C conductor model: R loop = 1.080 Ω; total allowable I = 3.704 A for 20 V minimum.</text>
+<text x="35" y="397">Assumed auxiliary draw = 0.8 A. Available to both motors = 2.904 A.</text>
+<text x="35" y="428">Requested: 2 + 2 A. Equal scaling factor = 0.726. Allocated = 1.452 A per motor.</text>
+</g>
+<rect x="35" y="457" width="1090" height="95" rx="10" fill="#f2f4f7" stroke="#aeb8c2"/>
+<g font-family="Arial" fill="#172333" font-size="17"><text x="52" y="488">PASS: steady-state arithmetic / assumed voltage envelope only.</text><text x="52" y="516">NOT_RUN: actual motor currents, hardware limiter, transient undervoltage, RS-485 / CVBS quality.</text><text x="52" y="541">PHYSICAL_CHECK: cable temperature, connectors, pressurized cable entry. NOT RELEASED FOR BUILD.</text></g>
+<text x="35" y="592" font-size="15" font-family="Arial" fill="#657487">Source: current/CAD/PX1_power_allocator.py | 24 V-class architecture retained | 21 Nov 2026</text>
+</svg>

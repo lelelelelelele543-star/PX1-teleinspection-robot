@@ -1,0 +1,50 @@
+name: PX1 integrated CAD build and export verification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'current/CAD/PX1_Current_Master.py'
+      - 'current/CAD/release_tools.py'
+      - 'current/CAD/PX1_master_export_smoke.py'
+      - '.github/workflows/px1-integrated-cad.yml'
+jobs:
+  cad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CadQuery
+        run: python -m pip install 'cadquery==2.7.0' trimesh
+      - name: Verify manufacturer STEP inputs are readable by installed CAD kernel
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import cadquery as cq
+          for name in ('WeAct_F4_64Pin_V11_Manufacturer.step', 'Pololu_G2_24v13_Manufacturer.step'):
+              p = Path('current/CAD/vendor') / name
+              assert p.is_file() and p.stat().st_size > 1000, f'Missing/truncated STEP: {p}'
+              model = cq.importers.importStep(str(p))
+              assert model.solids().size() > 0, f'No solid in STEP: {p}'
+              print(f'PASS vendor STEP: {name}, solids={model.solids().size()}')
+          PY
+      - name: Generate full current master (no fallback geometry)
+        env:
+          PX1_OUT: ${{ runner.temp }}/px1-output
+        run: |
+          cd current/CAD
+          python PX1_Current_Master.py
+      - name: Verify exported assembly and prototypes
+        env:
+          PX1_OUT: ${{ runner.temp }}/px1-output
+        run: python current/CAD/PX1_master_export_smoke.py
+      - name: Preserve CAD outputs even on validation failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: px1-integrated-cad-diagnostics
+          path: ${{ runner.temp }}/px1-output
+          retention-days: 7
+          if-no-files-found: warn

@@ -3,6 +3,7 @@ from cadquery import exporters
 import math, json, csv, os, hashlib, textwrap
 from pathlib import Path
 
+SOURCE_CAD=Path(__file__).resolve().parent  # Immutable vendor input assets, independent of PX1_OUT
 ROOT=Path(os.environ.get('PX1_OUT', str(Path(__file__).resolve().parents[1])))
 CAD=ROOT/'CAD'; METAL=CAD/'Metal_HOLD'; PRINT=CAD/'Print_STL'; IMG=ROOT/'images'
 for d in (ROOT,CAD,METAL,PRINT,IMG): d.mkdir(parents=True, exist_ok=True)
@@ -172,18 +173,18 @@ VIDEO_SCREEN=(43.0,16.0,15.0)  # Delta TR-1D*P2 packaging screen
 # under the lift). Only a central pad stays raised 7 mm over the Cincon (F20 heat sink); it is narrower than the side links.
 SERVICE_Z=75.0                                 # housing top = plug / lid top, DERIVED (BODY_TOP)
 SERVICE_T=7.0                                  # raised pad thickness over the plug (Cincon / shunt heat sink, F20), ESTIMATED
-SERVICE_PAD_X=(80.0,184.0)                     # pad X: front tongue over the housing top .. 0.07 behind the Cincon end X183.93, ESTIMATED
+SERVICE_PAD_X=(74.0,184.0)                     # pad X: front tongue over the housing top .. 0.07 behind the Cincon end X183.93, ESTIMATED
 SERVICE_PAD_HW=25.0                            # pad half width: inside the side links (|Y| 25.9), ESTIMATED
-SERVICE_L=SERVICE_PAD_X[1]-SERVICE_PAD_X[0]; SERVICE_W=2*SERVICE_PAD_HW; SERVICE_CX=(SERVICE_PAD_X[0]+SERVICE_PAD_X[1])/2  # 104 x 50, DERIVED
+SERVICE_L=SERVICE_PAD_X[1]-SERVICE_PAD_X[0]; SERVICE_W=2*SERVICE_PAD_HW; SERVICE_CX=(SERVICE_PAD_X[0]+SERVICE_PAD_X[1])/2  # 110 x 50, PX1 ESTIMATED
 SERVICE_LID_T=2.4                              # flush lid behind the pad (Z72.6..75, over the STM32 top Z72.1), ESTIMATED
 SERVICE_PAD_GROOVE=(165.0,7.5,5.0)             # gas-spring groove in the pad top: X start, half width, depth (floor Z77), ESTIMATED
 TAP_LEAD=2.5                                   # blind-tap allowance beyond the thread: >= 3P plug-tap chamfer (M4: 2.1), ESTIMATED
 TAP_SKIN=1.5                                   # material left below a blind tap, ESTIMATED
 ISO7380_M4=(3.8,2.2)                           # ISO 7380 M4 head dk/2, k, CONFIRMED standard
-COVER_FIX_XY=(84.0,19.0)                       # 2x M4 cover screws at the front (Proteus FIX-002-518 front pair |Y|19, DERIVED); X ESTIMATED
-COVER_FIX_L=10.0                               # ISO 7380 M4x10 (Proteus M4x8 in a 2.5 ear; PX1 pad 7.0), ESTIMATED
-COVER_FIX_ENGAGE=COVER_FIX_L-SERVICE_T         # 3.0 mm in the housing-top boss, DERIVED
-COVER_FIX_TAP_DEPTH=COVER_FIX_ENGAGE+TAP_LEAD  # 5.5, DERIVED
+COVER_FIX_XY=(80.0,19.0)                       # 2x M4 cover screws at the front (Proteus FIX-002-518 front pair |Y|19, DERIVED); X ESTIMATED
+COVER_FIX_L=12.0                               # PX1 ISO 7380 M4x12 (Proteus M4x8 in a 2.5 ear; PX1 pad 7.0), ESTIMATED
+COVER_FIX_ENGAGE=COVER_FIX_L-SERVICE_T         # 5.0 mm in the housing-top boss, DERIVED
+COVER_FIX_TAP_DEPTH=COVER_FIX_ENGAGE+TAP_LEAD  # 7.5, DERIVED
 COVER_FIX_BOSS_R=3.5                           # internal boss under the housing top wall, ESTIMATED
 # F25: camera-cable fitting holder (Proteus FAL-002-086 role: M12 gland + valve + sealed feed-through) moved off the cover onto the
 # housing top behind the lift base; PX1 plate form 32 x 68 x 7 keeps the F22 passages (Ø8 / Ø4) and the F21/F23 gland exit Z102.
@@ -202,7 +203,13 @@ PROTEUS_GLAND_AXIS=(15.4,9.6)                 # M12 CAB-002-461 axis (parallel t
 PROTEUS_FEED_BORE_D=8.0                       # vertical cable bore holder->cover, sealed by SEA-001-861 10x1.5, DERIVED
 # Sealing principle per 745 C-C: the cover is a PLUG in the housing-top opening with the 110x1.5 O-ring (SEA-002-721,
 # CONFIRMED part list) in a groove round its periphery = RADIAL seal against the opening wall (not a face seal).
-SERVICE_ORING=(110.0,1.5)                     # SEA-002-721, CONFIRMED part list
+SERVICE_ORING_OEM_REFERENCE=(110.0,1.5)       # SEA-002-721, CONFIRMED part list; historical OEM reference ONLY
+# PX1 DESIGN ASSUMPTION (2026-11-22): candidate 115x1.5 on the SAME existing
+# service-plug groove; original 110x1.5 yields ~8% perimeter stretch.
+# 115x1.5 reduces calculated stretch to ~3.37%; NOT supplier-verified,
+# NOT pressure-qualified. Side-cover lobed 190x1.5 seal is unchanged.
+# Recheck groove squeeze, fill, extrusion clearance and 0.7 bar in CAD/bench.
+SERVICE_ORING=(115.0,1.5)                     # PX1 ASSUMED candidate, NOT SEA-002-721 OEM
 PASSAGE_ORING=(10.0,1.5)                      # SEA-001-861 (745 pos.15), CONFIRMED part list
 GLAND_PASSAGE_ORING=(16.0,1.5)                # PX1: around the M12 bore (Proteus has 10x1.5 round an 8 mm bore), ESTIMATED
 SERVICE_PLUG_L=143.0; SERVICE_OPEN_W=53.0; SERVICE_PLUG_R=6.6   # plug body = housing opening, DERIVED from 745 (+-0.5)
@@ -216,8 +223,13 @@ PASSAGE_GROOVE_D=1.15; PASSAGE_GROOVE_W=2.0   # face grooves (cover underside) r
 VALVE_SEAT_Z0=77.0                            # valve body counterbore from the cover top, Ø4 vent below, ESTIMATED
 SERVICE_RGROOVE_ROOT_P=(2*((SERVICE_PLUG_L-2*SERVICE_PLUG_CLR-2*SERVICE_RGROOVE_D)+(SERVICE_OPEN_W-2*SERVICE_PLUG_CLR-2*SERVICE_RGROOVE_D))
                         -(8-2*math.pi)*(SERVICE_PLUG_R-SERVICE_PLUG_CLR-SERVICE_RGROOVE_D))   # 373.4 groove-root perimeter, DERIVED
-SERVICE_ORING_STRETCH=SERVICE_RGROOVE_ROOT_P/(math.pi*SERVICE_ORING[0])-1                     # 8.0 % ID stretch, DERIVED
-SERVICE_ORING_CS_INST=SERVICE_ORING[1]/math.sqrt(1+SERVICE_ORING_STRETCH)                     # 1.44 stretched section, DERIVED
+SERVICE_ORING_STRETCH=SERVICE_RGROOVE_ROOT_P/(math.pi*SERVICE_ORING[0])-1                     # candidate ~3.37 % ID stretch, ANALYTIC (verify)
+SERVICE_ORING_CS_INST=SERVICE_ORING[1]/math.sqrt(1+SERVICE_ORING_STRETCH)                     # candidate stretched section, ANALYTIC
+# Guard against silent reintroduction of the OEM-labelled 110 mm ring into the 115 mm design candidate.
+# Engineering screening only; pressure qualification and supplier confirmation remain outstanding.
+assert 0 <= SERVICE_ORING_STRETCH <= 0.05, 'service ring stretch exceeds preliminary 5% limit'
+assert 0.15 <= (SERVICE_ORING_CS_INST-SERVICE_RGLAND_D)/SERVICE_ORING_CS_INST <= 0.35, 'radial seal squeeze outside 15-35% screen'
+
 
 # F18 camera lift per DRW-002-744 (Crawler Lift Parts) + DRW-002-752 (Lift Housing), folded state theta=0.
 # Origin A = clamp axle FSS-002-089 (M10, 3x DIN2093) = pivot of central lever ASS-002-723.
@@ -715,6 +727,7 @@ for side in (-1,1):
         motor_holder=cut(motor_holder,cyl_x(MOTOR_FACE-.1,y+9.5*math.cos(a),45+9.5*math.sin(a),1.35,3.2))
 add('HOLD_PAIRED_MOTOR_HOLDER_GP26_ESTIMATED',motor_holder,'metal')
 add('HOLD_PAIRED_PINION_BEARING_HOLDER',pinion_holder,'metal')
+# F26 pressure-retention revision: move front M4 X84->80, extend 7mm raised pad front X80->74 (head edge >=2mm, boss to opening >=4mm), M4x10->M4x12 (5mm engagement); all PX1 ESTIMATED, recheck 3D and pressure.
 # F25 cover L01 = Proteus-type flush plug (hollow spigot rim Z71..75 with the radial 110x1.5, DRW-002-745 C-C) + flush lid behind
 # the pad (top Z75 = housing top, the lift base stands on it) + raised central pad 104 x 50 x 7 over the Cincon / shunt (F20).
 _SPX=(SERVICE_OPEN_X0+SERVICE_OPEN_X1)/2; _SPL=SERVICE_PLUG_L-2*SERVICE_PLUG_CLR; _SPW=SERVICE_OPEN_W-2*SERVICE_PLUG_CLR
@@ -748,15 +761,15 @@ for _hx,_hy in F20_CINCON_HOLES+F20_SHUNT_HOLES:
     cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z-.1,1.5,COVER_TAP_DEPTH+.1))   # M3 cosmetic thread (major D3)
 for _hx,_hy in F20_STANDOFFS:
     cover=cut(cover,cyl_z(_hx,_hy,SERVICE_Z-.1,1.5,4.1))
-add('HOLD_PRESSURE_ELECTRONICS_COVER_FLUSH_PLUG_PAD104x50x7',cover,'metal')
-for _i,sy in enumerate((-1,1),1):                    # F25: 2x ISO 7380 M4x10 into housing-top bosses (3.0 engaged)
+add('HOLD_PRESSURE_ELECTRONICS_COVER_FLUSH_PLUG_PAD110x50x7',cover,'metal')
+for _i,sy in enumerate((-1,1),1):                    # PX1: 2x ISO 7380 M4x12 into housing-top bosses (5.0 engaged)
     _hr,_hk=ISO7380_M4; _zt=SERVICE_Z+SERVICE_T
-    add(f'FIX_ISO7380_M4x10_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_{_i}',
+    add(f'FIX_ISO7380_M4x12_ELECTRONICS_COVER_FRONT_ON_SERVICE_COVER_{_i}',
         fuse_all([cyl_z(COVER_FIX_XY[0],sy*COVER_FIX_XY[1],_zt,_hr,_hk),cyl_z(COVER_FIX_XY[0],sy*COVER_FIX_XY[1],_zt-COVER_FIX_L,2.0,COVER_FIX_L)]),'shaft')
 # F22 seals. Installed sections: area-equal bands, stretched cross-section d'=d/sqrt(1+stretch) (volume constant).
 _bh=math.pi*SERVICE_ORING_CS_INST**2/4/SERVICE_RGLAND_D
 # band from groove root +0.01 to opening wall -0.01 (no modelled contact; squeeze is checked numerically)
-add('SEA002721_ORING_110x1p5_RADIAL_ON_SERVICE_COVER_SPIGOT',
+add(f'PX1_ASSUMED_SERVICE_ORING_ID{SERVICE_ORING[0]:g}_CS{SERVICE_ORING[1]:g}_RADIAL_NOT_OEM',
     rframe(_SPX,SERVICE_RGROOVE_Z-_bh/2,SERVICE_PLUG_L-.02,SERVICE_OPEN_W-.02,SERVICE_PLUG_R-.01,SERVICE_RGLAND_D-.02,_bh),'seal')
 # F25: camera-cable fitting holder (Proteus FAL-002-086 role) on the housing top behind the lift base: M12 gland, valve, sealed
 # feed-throughs Ø8 / Ø4 with SEA-001-861 10x1.5 (valve, as 745 pos.15) and 16x1.5 (gland) face rings on its underside.
@@ -1013,12 +1026,12 @@ add('HOLD_CAMERA_CORE_BUNDLE_6x0p25_TO_SERVICE_CONNECTOR',bundle,'wire')
 _ce=bundle_segs[-1][1][-1]
 SVC_CONN_X1=_ce.x
 add('HOLD_CAMERA_SERVICE_CONNECTOR_6P_W2W_MATED',box0(SVC_CONN_X1-SVC_CONN[0],_ce.y-SVC_CONN[1]/2,SVC_CONN_ZC-SVC_CONN[2]/2,*SVC_CONN),'connector')
-controller=cq.importers.importStep(str(CAD/'vendor'/'WeAct_F4_64Pin_V11_Manufacturer.step'))
+controller=cq.importers.importStep(str(SOURCE_CAD/'vendor'/'WeAct_F4_64Pin_V11_Manufacturer.step'))
 controller=wp(cq.Compound.makeCompound(controller.vals()))
 b=controller.val().BoundingBox();controller=controller.translate((-(b.xmin+b.xmax)/2,-(b.ymin+b.ymax)/2,-b.zmin))
 controller=controller.rotate((0,0,0),(0,0,1),90).translate((208,0,60.1))
 add('WEACT_STM32F446RET6_V11_MANUFACTURER_STEP',controller,'electronics')
-g2=cq.importers.importStep(str(CAD/'vendor'/'Pololu_G2_24v13_Manufacturer.step')).translate((-16.51,-10.16,0))
+g2=cq.importers.importStep(str(SOURCE_CAD/'vendor'/'Pololu_G2_24v13_Manufacturer.step')).translate((-16.51,-10.16,0))
 for i,(x,z) in enumerate(((47,59),(99,24.5)),1):add(f'POLOLU_2992_G2_24v13_{i}_MANUFACTURER_STEP',g2.translate((x,0,z)),'electronics')  # F16: #2 lowered under motors; F14: #1 raised Z26->59 above the balun (clears M8 plate-screw boss)
 # ---------------- F20 Cincon on the cover underside + 24 V bus protection ----------------
 _pad_z0=SERVICE_Z-THERMAL_PAD_T; _mod_z0=_pad_z0-CINCON[2]          # pad Z74.5..75, module Z61.8..74.5

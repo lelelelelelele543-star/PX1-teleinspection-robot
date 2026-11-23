@@ -1,0 +1,26 @@
+{
+  "source": "current/CAD/previews/render_manifest.json",
+  "source_sha256": "1e3d26e78f8cd48f224805f46df6cbba4c94d010483071ca0aaf72d9d34aa080",
+  "mesh_sha256": "0038b3cd37fcb0050c8eb48fe74579ec3a172824f89b896752c5bf6de5560201",
+  "full_view_components": 285,
+  "full_view_hold_prefixed": 137,
+  "full_view_hold_or_estimated": 151,
+  "drivetrain_view_components": 171,
+  "counts": {
+    "six_wheels": 6,
+    "two_traction_motors": 2,
+    "ten_z50_gears": 10,
+    "two_side_covers": 2,
+    "two_cover_orings": 2
+  },
+  "checks": {
+    "six_wheels": "PASS",
+    "two_traction_motors": "PASS",
+    "ten_z50_gears": "PASS",
+    "two_side_covers": "PASS",
+    "two_cover_orings": "PASS"
+  },
+  "geometry_collision_check": "NOT_RUN",
+  "manufacturing_release": "PHYSICAL_CHECK",
+  "note": "Render-manifest checks only. HOLD markers indicate unresolved parts; not a manufacturing release."
+}
