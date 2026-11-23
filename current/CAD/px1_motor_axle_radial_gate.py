@@ -23,14 +23,14 @@ assert WANTED <= v.keys(), f"Missing master constants: {WANTED - v.keys()}"
 # the cylindrical motor body; gearhead begins farther rearward in X.
 motor_start = v["MOTOR_FACE"] - v["GEARHEAD_LEN"] - v["MOTOR_LEN"]
 motor_end = v["MOTOR_FACE"] - v["GEARHEAD_LEN"]
-assert motor_start < 150 < motor_end, "Re-evaluate: centre station not inside motor body X span"
+assert motor_end < 150 < v["MOTOR_FACE"], "Re-evaluate: centre station not inside gearhead X span"
 assert v["WHEEL_X"][1] == 150
-motor_body_outer_y = v["MOTOR_Y"] + v["MOTOR_OD"] / 2
+motor_body_outer_y = v["MOTOR_Y"] + v["GEARHEAD_OD"] / 2
 clearance = v["MIDDLE_INNER_Y"] - motor_body_outer_y
-print(f"Motor body X=[{motor_start:.2f},{motor_end:.2f}] mm; centre axle X=150 mm")
-print(f"Motor body outer |Y|={motor_body_outer_y:.2f}; centre shaft inner |Y|={v['MIDDLE_INNER_Y']:.2f}")
-print(f"Both sides: nominal body-to-shaft radial gap={clearance:.2f} mm")
-assert clearance > 0, "FAIL: motor envelope reaches centre axle inner end"
-print("PASS: simplified cylindrical envelopes do not overlap at centre station.")
+print(f"Motor body X=[{motor_start:.2f},{motor_end:.2f}] mm; gearhead X=[{motor_end:.2f},{v["MOTOR_FACE"]:.2f}]; centre axle X=150 mm")
+print(f"Gearhead outer |Y|={motor_body_outer_y:.2f}; centre shaft inner |Y|={v['MIDDLE_INNER_Y']:.2f}")
+print(f"Both sides: nominal gearhead-to-shaft radial gap={clearance:.2f} mm")
+assert clearance > 0, "FAIL: gearhead envelope reaches centre axle inner end"
+print("PASS: simplified gearhead and axle cylindrical envelopes do not overlap at centre station.")
 print("NOT_RUN: exact BRep collisions, mounts, leads, dynamic clearance, tolerances.")
 print("PHYSICAL_CHECK: purchased motor dimensions, bearings, shaft seals.")
