@@ -27,7 +27,7 @@ assert motor_end < 150 < v["MOTOR_FACE"], "Re-evaluate: centre station not insid
 assert v["WHEEL_X"][1] == 150
 motor_body_outer_y = v["MOTOR_Y"] + v["GEARHEAD_OD"] / 2
 clearance = v["MIDDLE_INNER_Y"] - motor_body_outer_y
-print(f"Motor body X=[{motor_start:.2f},{motor_end:.2f}] mm; gearhead X=[{motor_end:.2f},{v["MOTOR_FACE"]:.2f}]; centre axle X=150 mm")
+print(f"Motor body X=[{motor_start:.2f},{motor_end:.2f}] mm; gearhead X=[{motor_end:.2f},{v['MOTOR_FACE']:.2f}]; centre axle X=150 mm")
 print(f"Gearhead outer |Y|={motor_body_outer_y:.2f}; centre shaft inner |Y|={v['MIDDLE_INNER_Y']:.2f}")
 print(f"Both sides: nominal gearhead-to-shaft radial gap={clearance:.2f} mm")
 assert clearance > 0, "FAIL: gearhead envelope reaches centre axle inner end"
