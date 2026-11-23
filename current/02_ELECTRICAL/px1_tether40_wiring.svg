@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="600" viewBox="0 0 1100 600">
+<rect width="1100" height="600" fill="#f8fafc"/>
+<text x="40" y="45" font-family="Arial" font-size="26" font-weight="bold" fill="#172554">PX1 — 40 m six-core tether / engineering wiring screen</text>
+<text x="40" y="73" font-family="Arial" font-size="15" fill="#b45309">ASSUMED 0.5 mm² Cu / core; not an OEM drawing, not qualified for CVBS or RS485</text>
+<rect x="45" y="120" width="200" height="350" rx="12" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>
+<rect x="855" y="120" width="200" height="350" rx="12" fill="#dcfce7" stroke="#166534" stroke-width="2"/>
+<g font-family="Arial" font-size="21" fill="#172554" font-weight="bold"><text x="82" y="155">CONSOLE</text><text x="900" y="155">CRAWLER</text></g>
+<g font-family="Arial" font-size="15" fill="#334155"><text x="68" y="185">24 V supply + fuse</text><text x="68" y="221">power return</text><text x="68" y="270">RS485 transceiver</text><text x="68" y="365">CVBS receiver</text><text x="875" y="185">DC/DC + motors</text><text x="875" y="221">power return</text><text x="875" y="270">STM32 / RS485</text><text x="875" y="365">camera CVBS</text></g>
+<g stroke-width="4" fill="none"><path d="M245 185H855" stroke="#dc2626"/><path d="M245 220H855" stroke="#1f2937"/><path d="M245 270H855" stroke="#2563eb"/><path d="M245 305H855" stroke="#60a5fa"/><path d="M245 365H855" stroke="#7c3aed"/><path d="M245 400H855" stroke="#a78bfa"/></g>
+<g font-family="Arial" font-size="15" fill="#0f172a"><text x="460" y="176">1 · +24 V</text><text x="460" y="211">2 · power GND</text><text x="460" y="261">3 · RS485 A</text><text x="460" y="296">4 · RS485 B</text><text x="460" y="356">5 · CVBS signal</text><text x="460" y="391">6 · CVBS return</text></g>
+<rect x="285" y="435" width="530" height="85" rx="8" fill="#fff7ed" stroke="#f59e0b"/>
+<g font-family="Arial" font-size="16" fill="#7c2d12"><text x="306" y="461">Power pair loop R = 2.80 Ω at 20°C (assumed cable)</text><text x="306" y="485">2 A load → 5.60 V drop, 18.40 V at crawler</text><text x="306" y="508">3 A load → 8.40 V drop, 15.60 V at crawler</text></g>
+<text x="45" y="557" font-family="Arial" font-size="15" fill="#991b1b">FAIL as unqualified 24 V direct feed at high load. Video/RS485 need measured 40 m signal integrity.</text>
+<text x="45" y="580" font-family="Arial" font-size="13" fill="#475569">Source: PX1 tether40 integration model; 40 m / six copper cores per AGENTS.md. Schematic only.</text>
+</svg>
