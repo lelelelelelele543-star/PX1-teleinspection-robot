@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="610" viewBox="0 0 1000 610">
+<rect width="1000" height="610" fill="#fff"/>
+<g font-family="Arial,sans-serif" fill="#15263a">
+<text x="45" y="55" font-size="27" font-weight="bold">PX1 | Motor pair + centre shaft clearance</text>
+<text x="45" y="83" font-size="15">Parameter-derived 2D Y-section at X=150 mm; design assumptions, NOT BRep CAD or factory measurements</text>
+</g>
+<line x1="500" y1="120" x2="500" y2="430" stroke="#888" stroke-dasharray="7 6" stroke-width="2"/>
+<text x="510" y="135" font-family="Arial" font-size="14">Y=0</text>
+<!-- scale 10 px/mm, centre x500, gearheads y centres +/-13.5 -->
+<rect x="235" y="175" width="260" height="105" rx="7" fill="#9fc3de" stroke="#205f8a" stroke-width="2"/>
+<rect x="505" y="175" width="260" height="105" rx="7" fill="#9fc3de" stroke="#205f8a" stroke-width="2"/>
+<rect x="190" y="310" width="42" height="75" fill="#e9a66b" stroke="#a65d1d" stroke-width="2"/>
+<rect x="768" y="310" width="42" height="75" fill="#e9a66b" stroke="#a65d1d" stroke-width="2"/>
+<g font-family="Arial" font-size="17" fill="#15263a">
+<text x="300" y="220">Left gearhead</text><text x="570" y="220">Right gearhead</text>
+<text x="300" y="246">Ø26 (assumed)</text><text x="570" y="246">Ø26 (assumed)</text>
+<text x="74" y="348">Middle axle</text><text x="824" y="348">Middle axle</text>
+</g>
+<line x1="495" y1="290" x2="505" y2="290" stroke="#247a46" stroke-width="3"/>
+<text x="405" y="410" font-family="Arial" font-size="18" fill="#247a46">Pair gap 1.00 mm</text>
+<line x1="765" y1="297" x2="768" y2="297" stroke="#c64b36" stroke-width="5"/>
+<text x="555" y="456" font-family="Arial" font-size="18" fill="#b63e2e">Shaft gap 0.30 mm</text>
+<line x1="765" y1="395" x2="765" y2="440" stroke="#c64b36" stroke-width="2"/>
+<g font-family="Arial" font-size="17" fill="#15263a">
+<text x="45" y="495">Target: ≥1.00 mm nominal at both interfaces (ASSUMED; not a tolerance-stack calculation)</text>
+<text x="45" y="525">Motor Y-only adjustment: impossible (pair needs Y ≥13.5; shaft needs Y ≤12.8 mm)</text>
+<text x="45" y="555">Candidate: retract middle shaft inner end from |Y|26.8 to ≥27.5 mm; bearing support must be checked</text>
+<text x="45" y="585" fill="#ad3d31">FAIL target clearance | PASS positive nominal gaps | NOT_RUN exact CAD collisions | PHYSICAL_CHECK seals</text>
+</g></svg>

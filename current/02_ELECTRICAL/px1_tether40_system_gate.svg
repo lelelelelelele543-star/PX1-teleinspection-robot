@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="650" viewBox="0 0 1050 650">
+<rect width="1050" height="650" fill="white"/>
+<text x="32" y="43" font-family="sans-serif" font-size="24" font-weight="bold">PX1 | 40 m / 6-core electrical integration</text>
+<text x="32" y="68" font-family="sans-serif" font-size="14">DESIGN ASSUMPTIONS: 24 V; copper 60 C; 2 A / 4 A; minimum load 20 V</text>
+<rect x="40" y="105" width="190" height="335" rx="12" fill="#edf3fa" stroke="#345"/>
+<rect x="810" y="105" width="200" height="335" rx="12" fill="#edf3fa" stroke="#345"/>
+<text x="57" y="133" font-family="sans-serif" font-size="18">Console / reel</text>
+<text x="830" y="133" font-family="sans-serif" font-size="18">Robot / PX1</text>
+<line x1="230" y1="170" x2="810" y2="170" stroke="#bb3030" stroke-width="4"/>
+<text x="405" y="162" font-family="sans-serif" font-size="15" fill="#bb3030">1. PWR+</text>
+<line x1="230" y1="214" x2="810" y2="214" stroke="#333333" stroke-width="4"/>
+<text x="405" y="206" font-family="sans-serif" font-size="15" fill="#333333">2. PWR-</text>
+<line x1="230" y1="258" x2="810" y2="258" stroke="#297ab9" stroke-width="4"/>
+<text x="405" y="250" font-family="sans-serif" font-size="15" fill="#297ab9">3. 485 A</text>
+<line x1="230" y1="302" x2="810" y2="302" stroke="#e18a2e" stroke-width="4"/>
+<text x="405" y="294" font-family="sans-serif" font-size="15" fill="#e18a2e">4. 485 B</text>
+<line x1="230" y1="346" x2="810" y2="346" stroke="#278b55" stroke-width="4"/>
+<text x="405" y="338" font-family="sans-serif" font-size="15" fill="#278b55">5. CVBS</text>
+<line x1="230" y1="390" x2="810" y2="390" stroke="#9256a9" stroke-width="4"/>
+<text x="405" y="382" font-family="sans-serif" font-size="15" fill="#9256a9">6. VIDEO RETURN</text>
+<text x="390" y="440" font-family="sans-serif" font-size="16">40 m copper, no coax, no twisted pairs</text>
+<text x="40" y="485" font-family="sans-serif" font-size="19" font-weight="bold">Voltage at robot / 60 C</text>
+<text x="48" y="519" font-family="monospace" font-size="16">0.50 mm2 | 2A: 17.52 V (FAIL) | 4A: 11.04 V (FAIL)</text>
+<text x="48" y="549" font-family="monospace" font-size="16">0.75 mm2 | 2A: 19.68 V (FAIL) | 4A: 15.36 V (FAIL)</text>
+<text x="48" y="579" font-family="monospace" font-size="16">1.00 mm2 | 2A: 20.76 V (PASS) | 4A: 17.52 V (FAIL)</text>
+<text x="48" y="609" font-family="monospace" font-size="16">1.50 mm2 | 2A: 21.84 V (PASS) | 4A: 19.68 V (FAIL)</text>
+<text x="580" y="520" font-family="sans-serif" font-size="14">CVBS / RS485 / PWM EMC: PHYSICAL_CHECK</text>
+<text x="580" y="544" font-family="sans-serif" font-size="14">Connector losses / motor specs: NOT_RUN</text>
+<text x="580" y="568" font-family="sans-serif" font-size="14">DC screen is NOT cable qualification</text>
+</svg>

@@ -327,7 +327,10 @@ GLAND_EXIT_Z=SERVICE_Z+.5+LAPP_CMAX            # 102.0 top of Skintop M12 (cable
 
 # Integrated packaging datums: ESTIMATED engineering dimensions, mm.
 # Same six-wheel topology; no change to gear or motor axes.
-MIDDLE_INNER_Y=26.8
+# F26 design assumption: move middle shaft inner end AND its 3 mm sleeve together outward.
+# Gearhead OD26 at |Y|13.5 reaches |Y|26.5; nominal 1.0 mm radial clearance at X150.
+# NOT a tolerance/physical clearance release; BRep and sleeve retention remain to validate.
+MIDDLE_INNER_Y=27.5
 MIDDLE_BUSH_W=3.0
 IDLER_PIN_INNER_Y=27.0
 SUPPORT_BOSS_INNER_Y=26.5
