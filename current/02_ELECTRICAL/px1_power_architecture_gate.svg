@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="620" viewBox="0 0 1040 620">
+<rect width="1040" height="620" fill="white"/>
+<text x="35" y="45" font-size="25" font-family="sans-serif" font-weight="bold">PX1 / 40 m tether: power architecture gate</text>
+<text x="35" y="74" font-size="15" font-family="sans-serif">ASSUMED: 24 V source, 60 C copper, 20 V minimum, 48 / 96 W constant input load</text>
+<text x="35" y="110" font-size="18" font-family="sans-serif">Area</text>
+<text x="215" y="110" font-size="18" font-family="sans-serif">Loop R</text>
+<text x="390" y="110" font-size="18" font-family="sans-serif">48 W load</text>
+<text x="610" y="110" font-size="18" font-family="sans-serif">96 W load</text>
+<text x="820" y="110" font-size="18" font-family="sans-serif">Max A @ 20 V</text>
+<rect x="30" y="124" width="980" height="65" fill="#e9f0f8"/>
+<text x="35" y="160" font-family="monospace" font-size="20">0.50 mm2</text><text x="215" y="160" font-family="monospace" font-size="20">3.24 ohm</text>
+<text x="390" y="160" font-family="monospace" font-size="20" fill="#ae3434">NO DC POINT</text>
+<text x="610" y="160" font-family="monospace" font-size="20" fill="#ae3434">NO DC POINT</text>
+<text x="820" y="160" font-family="monospace" font-size="20">1.23 A</text>
+<rect x="30" y="207" width="980" height="65" fill="#f3f5f8"/>
+<text x="35" y="243" font-family="monospace" font-size="20">0.75 mm2</text><text x="215" y="243" font-family="monospace" font-size="20">2.16 ohm</text>
+<text x="390" y="243" font-family="monospace" font-size="20" fill="#ae3434">18.35 V FAIL</text>
+<text x="610" y="243" font-family="monospace" font-size="20" fill="#ae3434">NO DC POINT</text>
+<text x="820" y="243" font-family="monospace" font-size="20">1.85 A</text>
+<rect x="30" y="290" width="980" height="65" fill="#e9f0f8"/>
+<text x="35" y="326" font-family="monospace" font-size="20">1.00 mm2</text><text x="215" y="326" font-family="monospace" font-size="20">1.62 ohm</text>
+<text x="390" y="326" font-family="monospace" font-size="20" fill="#167044">20.14 V PASS</text>
+<text x="610" y="326" font-family="monospace" font-size="20" fill="#ae3434">NO DC POINT</text>
+<text x="820" y="326" font-family="monospace" font-size="20">2.47 A</text>
+<rect x="30" y="373" width="980" height="65" fill="#f3f5f8"/>
+<text x="35" y="409" font-family="monospace" font-size="20">1.50 mm2</text><text x="215" y="409" font-family="monospace" font-size="20">1.08 ohm</text>
+<text x="390" y="409" font-family="monospace" font-size="20" fill="#167044">21.60 V PASS</text>
+<text x="610" y="409" font-family="monospace" font-size="20" fill="#ae3434">18.35 V FAIL</text>
+<text x="820" y="409" font-family="monospace" font-size="20">3.70 A</text>
+<text x="35" y="498" font-size="17" font-family="sans-serif">Constant-power loads draw MORE current as cable voltage drops.</text>
+<text x="35" y="528" font-size="17" font-family="sans-serif">No direct 36/48 V connection to unverified 24 V electronics.</text>
+<text x="35" y="558" font-size="17" font-family="sans-serif">NOT_RUN: motor/DC-DC datasheets | PHYSICAL_CHECK: startup, thermal, CVBS, RS485.</text>
+<text x="35" y="588" font-size="15" font-family="sans-serif">Calculation only; NOT a qualified cable or power-system design.</text>
+</svg>
