@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 550">
+<rect width="1100" height="550" fill="#f8fafc"/>
+<text x="30" y="45" font-family="sans-serif" font-size="26">PX1 / 40 m / power integration</text>
+<text x="30" y="75" font-family="sans-serif" font-size="15">PARAMETRIC 2D — all dimensions and currents are DESIGN ASSUMPTIONS</text>
+<rect x="30" y="110" width="230" height="90" rx="8" fill="#dbeafe" stroke="#334155"/>
+<text x="45" y="155" font-family="sans-serif" font-size="19">24 V console</text>
+<rect x="360" y="110" width="300" height="90" rx="8" fill="#fef3c7" stroke="#334155"/>
+<text x="375" y="155" font-family="sans-serif" font-size="19">40 m power pair</text>
+<rect x="760" y="110" width="300" height="90" rx="8" fill="#dcfce7" stroke="#334155"/>
+<text x="775" y="155" font-family="sans-serif" font-size="19">Robot: motors + aux</text>
+<path d="M260 155 H360 M660 155 H760" stroke="#334155" stroke-width="3"/>
+<text x="30" y="245" font-family="sans-serif" font-size="20">60 C copper / 21 V assumed minimum / 0.70 A auxiliary current</text>
+<rect x="30" y="265" width="1030" height="42" fill="#e2e8f0"/>
+<text x="48" y="295" font-family="monospace" font-size="18">1.0 mm2  motor budget 1.15 A   at 3 A motors: 18.01 V / 22.2 W   FAIL</text>
+<rect x="30" y="323" width="1030" height="42" fill="#dbeafe"/>
+<text x="48" y="353" font-family="monospace" font-size="18">1.5 mm2  motor budget 2.08 A   at 3 A motors: 20.00 V / 14.8 W   FAIL</text>
+<rect x="30" y="381" width="1030" height="42" fill="#e2e8f0"/>
+<text x="48" y="411" font-family="monospace" font-size="18">2.5 mm2  motor budget 3.93 A   at 3 A motors: 21.60 V / 8.9 W   PASS</text>
+<text x="30" y="510" font-family="sans-serif" font-size="14">NOT_RUN: inrush, motor driver compatibility, CVBS, RS485. PHYSICAL_CHECK: thermal, seals, cable.</text>
+</svg>

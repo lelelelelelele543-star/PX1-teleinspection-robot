@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 650">
+<rect width="1100" height="650" fill="#f8fafc"/>
+<text x="30" y="45" font-family="sans-serif" font-size="26" font-weight="bold">PX1 / 40m / 24V: traction + auxiliary current envelope</text>
+<text x="30" y="76" font-family="sans-serif" font-size="15">DESIGN ASSUMPTIONS: 21V minimum, 0.70A auxiliaries, copper properties, 20/60C</text>
+<text x="30" y="107" font-family="sans-serif" font-size="15">Two power cores; four remaining cores: RS485 A/B, CVBS signal/return. Not a start-current simulation.</text>
+<text x="30" y="155" font-family="sans-serif" font-size="19" font-weight="bold">60C current limits at 21V robot input</text>
+<rect x="30" y="167" width="1030" height="35" fill="#e2e8f0"/>
+<text x="48" y="195" font-family="monospace" font-size="17">1.0 mm2     total 1.85 A     traction budget 1.15 A     (20C total 2.14 A)</text>
+<rect x="30" y="213" width="1030" height="35" fill="#dbeafe"/>
+<text x="48" y="241" font-family="monospace" font-size="17">1.5 mm2     total 2.78 A     traction budget 2.08 A     (20C total 3.21 A)</text>
+<rect x="30" y="259" width="1030" height="35" fill="#e2e8f0"/>
+<text x="48" y="287" font-family="monospace" font-size="17">2.5 mm2     total 4.63 A     traction budget 3.93 A     (20C total 5.36 A)</text>
+<text x="30" y="360" font-family="sans-serif" font-size="19" font-weight="bold">Robot input voltage at 60C for combined motor currents</text>
+<text x="40" y="395" font-family="monospace" font-size="16">Motor sum     Total w/aux      1.0mm2      1.5mm2      2.5mm2</text>
+<rect x="30" y="407" width="1030" height="29" fill="#f1f5f9"/>
+<text x="45" y="430" font-family="monospace" font-size="16"> 0.00 A           0.70 A          22.87 V      23.24 V      23.55 V</text>
+<rect x="30" y="441" width="1030" height="29" fill="#e2e8f0"/>
+<text x="45" y="464" font-family="monospace" font-size="16"> 1.30 A           2.00 A          20.76 V      21.84 V      22.70 V</text>
+<rect x="30" y="475" width="1030" height="29" fill="#f1f5f9"/>
+<text x="45" y="498" font-family="monospace" font-size="16"> 2.00 A           2.70 A          19.63 V      21.08 V      22.25 V</text>
+<rect x="30" y="509" width="1030" height="29" fill="#e2e8f0"/>
+<text x="45" y="532" font-family="monospace" font-size="16"> 3.00 A           3.70 A          18.01 V      20.00 V      21.60 V</text>
+<rect x="30" y="543" width="1030" height="29" fill="#f1f5f9"/>
+<text x="45" y="566" font-family="monospace" font-size="16"> 4.00 A           4.70 A          16.39 V      18.92 V      20.95 V</text>
+<rect x="30" y="577" width="1030" height="29" fill="#e2e8f0"/>
+<text x="45" y="600" font-family="monospace" font-size="16"> 6.00 A           6.70 A          13.15 V      16.76 V      19.66 V</text>
+<text x="30" y="639" font-family="sans-serif" font-size="13">PASS arithmetic; NOT_RUN inrush, UVLO, RS485/CVBS; PHYSICAL_CHECK cable and motor current</text>
+</svg>
