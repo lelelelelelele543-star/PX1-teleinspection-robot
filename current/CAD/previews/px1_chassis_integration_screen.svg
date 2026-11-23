@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+<rect width="1100" height="520" fill="#f8fafc"/><text x="50" y="45" font-size="25" font-family="sans-serif" fill="#15233b">PX1 — chassis integration datum screen</text>
+<text x="50" y="73" font-size="15" font-family="sans-serif" fill="#a13c24">2D X projection ONLY · not CAD solids · not collision clearance · DESIGN ASSUMPTIONS</text>
+<rect x="131.4" y="145" width="639.4" height="115" rx="13" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+<text x="143.4" y="168" font-family="sans-serif" font-size="15">Body nominal 278 mm (reconstructed)</text>
+<circle cx="205" cy="255" r="48" fill="#334155" stroke="#94a3b8" stroke-width="5"/><circle cx="205" cy="255" r="12" fill="#e2e8f0"/><text x="188" y="320" font-family="sans-serif" font-size="14">X50</text><circle cx="435" cy="255" r="48" fill="#334155" stroke="#94a3b8" stroke-width="5"/><circle cx="435" cy="255" r="12" fill="#e2e8f0"/><text x="418" y="320" font-family="sans-serif" font-size="14">X150</text><circle cx="665" cy="255" r="48" fill="#334155" stroke="#94a3b8" stroke-width="5"/><circle cx="665" cy="255" r="12" fill="#e2e8f0"/><text x="648" y="320" font-family="sans-serif" font-size="14">X250</text>
+<circle cx="205" cy="192" r="24" fill="none" stroke="#c58b29" stroke-width="3" stroke-dasharray="4 4"/><circle cx="320" cy="192" r="24" fill="none" stroke="#c58b29" stroke-width="3" stroke-dasharray="4 4"/><circle cx="435" cy="192" r="24" fill="none" stroke="#c58b29" stroke-width="3" stroke-dasharray="4 4"/><circle cx="550" cy="192" r="24" fill="none" stroke="#c58b29" stroke-width="3" stroke-dasharray="4 4"/><circle cx="665" cy="192" r="24" fill="none" stroke="#c58b29" stroke-width="3" stroke-dasharray="4 4"/>
+<rect x="415.90999999999997" y="104" width="123.73999999999998" height="26" fill="#e68a43" fill-opacity=".8" stroke="#a3491e"/>
+<text x="415.90999999999997" y="97" font-family="sans-serif" font-size="13">Motor X envelope 141.7–195.5 (each side)</text>
+<line x1="435" x2="435" y1="90" y2="341" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="90" y="373" font-family="sans-serif" font-size="16" fill="#9a3412">X150 crosses motor X projection; 3D Y/Z intersection NOT TESTED.</text>
+<text x="90" y="410" font-family="sans-serif" font-size="16">6 wheels · 10 Z50 gear stations · 2 traction motors (target architecture)</text>
+<text x="90" y="438" font-family="sans-serif" font-size="16">0.7 bar × 12,145.804 mm² = 850.21 N per side cover (PR84 analytical screen)</text>
+<text x="90" y="470" font-family="sans-serif" font-size="15" fill="#9a3412">Pressure-rated shaft seals / bearing loads / full 3D collisions: NOT_RUN / PHYSICAL_CHECK</text>
+</svg>
