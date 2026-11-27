@@ -202,7 +202,7 @@ PROTEUS_GLAND_AXIS=(15.4,9.6)                 # M12 CAB-002-461 axis (parallel t
 PROTEUS_FEED_BORE_D=8.0                       # vertical cable bore holder->cover, sealed by SEA-001-861 10x1.5, DERIVED
 # Sealing principle per 745 C-C: the cover is a PLUG in the housing-top opening with the 110x1.5 O-ring (SEA-002-721,
 # CONFIRMED part list) in a groove round its periphery = RADIAL seal against the opening wall (not a face seal).
-SERVICE_ORING=(110.0,1.5)                     # SEA-002-721, CONFIRMED part list
+SERVICE_ORING=(115.0,1.5)                     # PX1 DESIGN ASSUMPTION; OEM SEA-002-721 is 110x1.5; supplier/physical check pending
 PASSAGE_ORING=(10.0,1.5)                      # SEA-001-861 (745 pos.15), CONFIRMED part list
 GLAND_PASSAGE_ORING=(16.0,1.5)                # PX1: around the M12 bore (Proteus has 10x1.5 round an 8 mm bore), ESTIMATED
 SERVICE_PLUG_L=143.0; SERVICE_OPEN_W=53.0; SERVICE_PLUG_R=6.6   # plug body = housing opening, DERIVED from 745 (+-0.5)
@@ -216,8 +216,8 @@ PASSAGE_GROOVE_D=1.15; PASSAGE_GROOVE_W=2.0   # face grooves (cover underside) r
 VALVE_SEAT_Z0=77.0                            # valve body counterbore from the cover top, Ø4 vent below, ESTIMATED
 SERVICE_RGROOVE_ROOT_P=(2*((SERVICE_PLUG_L-2*SERVICE_PLUG_CLR-2*SERVICE_RGROOVE_D)+(SERVICE_OPEN_W-2*SERVICE_PLUG_CLR-2*SERVICE_RGROOVE_D))
                         -(8-2*math.pi)*(SERVICE_PLUG_R-SERVICE_PLUG_CLR-SERVICE_RGROOVE_D))   # 373.4 groove-root perimeter, DERIVED
-SERVICE_ORING_STRETCH=SERVICE_RGROOVE_ROOT_P/(math.pi*SERVICE_ORING[0])-1                     # 8.0 % ID stretch, DERIVED
-SERVICE_ORING_CS_INST=SERVICE_ORING[1]/math.sqrt(1+SERVICE_ORING_STRETCH)                     # 1.44 stretched section, DERIVED
+SERVICE_ORING_STRETCH=SERVICE_RGROOVE_ROOT_P/(math.pi*SERVICE_ORING[0])-1                     # nominal ID stretch, DERIVED
+SERVICE_ORING_CS_INST=SERVICE_ORING[1]/math.sqrt(1+SERVICE_ORING_STRETCH)                     # stretched section, DERIVED
 
 # F18 camera lift per DRW-002-744 (Crawler Lift Parts) + DRW-002-752 (Lift Housing), folded state theta=0.
 # Origin A = clamp axle FSS-002-089 (M10, 3x DIN2093) = pivot of central lever ASS-002-723.
