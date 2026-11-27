@@ -44,7 +44,7 @@ result={'source':'current/CAD/PX1_Current_Master.py (AST literal constants)',
  'service_plug':{'oring_id_mm':v['SERVICE_ORING'][0],'oring_cs_mm':v['SERVICE_ORING'][1],
                  'groove_root_perimeter_mm':perim,'installed_stretch_pct':100*stretch,
                  'installed_cs_mm':cs,'radial_squeeze_pct':100*squeeze,
-                 'status':'FAIL_SCREEN: 8% stretch exceeds conservative 5% design screening limit' if stretch>.05 else 'PASS_SCREEN'},
+                 'status':'FAIL_SCREEN: stretch exceeds conservative 5% design screening limit' if stretch>.05 else 'PASS_SCREEN'},
  'side_cover':{'oring_cs_mm':v['SIDE_ORING'][1],'groove_depth_mm':v['SIDE_SEAL_D'],
                'nominal_face_squeeze_pct':100*side_squeeze,'status':'SCREEN_ONLY'},
  'wheel_flange':{'oring_cs_mm':v['FLANGE_ORING'][1],'groove_depth_mm':v['FLANGE_GROOVE_DEPTH'],
@@ -54,7 +54,7 @@ result={'source':'current/CAD/PX1_Current_Master.py (AST literal constants)',
                    'pressure_rating':'NOT_VERIFIED; bearing or generic oil seal is not proof of 0.7 bar rating'},
  'screens':screen,'release':'NOT_MANUFACTURING_RELEASE',
  'assumptions':['0.7 bar gauge upper design point','5% service O-ring stretch is a conservative screening threshold, not a vendor specification','15..30% static squeeze is a preliminary screen; gland fill, extrusion, tolerance and material not qualified','18mm shaft pressure area approximated as full shaft bore','no physical pressure or leak test performed'],
- 'next_design_action':'Reconcile service plug perimeter with a correctly sized radial O-ring, then update ONLY the master and rerun its collision/pressure checks.'}
+ 'next_design_action':'Validate candidate 115x1.5 supplier dimensions, tolerances and full CAD collision/pressure checks.'}
 OUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print('FAIL_SCREEN service plug O-ring stretch %.2f%% > 5%%'% (stretch*100) if stretch>.05 else 'PASS_SCREEN service stretch')
 print('PASS_SCREEN squeeze service %.2f%% side %.2f%% flange %.2f%%'%(squeeze*100,side_squeeze*100,flange_squeeze*100))
