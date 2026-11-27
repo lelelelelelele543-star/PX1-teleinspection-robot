@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="700" viewBox="0 0 1180 700">
+<rect width="1180" height="700" fill="#111b29"/>
+<g font-family="Arial, sans-serif" fill="#e8eff6">
+<text x="44" y="52" font-size="28" font-weight="bold">PX1 · PRESSURE BOUNDARY · INTEGRATED AUDIT</text>
+<text x="44" y="80" font-size="15" fill="#a9bfd0">SOURCE: PX1_Current_Master.py constants · 2D engineering schematic, NOT actual CAD section · 0.7 bar(g) target</text>
+<text x="48" y="125" font-size="21">A · TOP SERVICE PLUG / RADIAL O-RING</text>
+<rect x="56" y="153" width="580" height="270" rx="12" fill="#223b4b" stroke="#638da5" stroke-width="2"/>
+<rect x="92" y="189" width="508" height="198" rx="22" fill="#172b39" stroke="#a9c6d5" stroke-width="3"/>
+<rect x="99" y="196" width="494" height="184" rx="19" fill="none" stroke="#f1b45c" stroke-width="7"/>
+<text x="112" y="231" font-size="16">143 × 53 mm nominal opening</text>
+<text x="112" y="261" font-size="16">Radial gland depth 1.10 mm + 0.05 clearance</text>
+<text x="112" y="292" font-size="17" fill="#ff9d9d">O-ring 110 × 1.5 mm: stretch 8.06% → FAIL SCREEN</text>
+<text x="112" y="321" font-size="16">Installed CS 1.443 mm · radial squeeze 20.30%</text>
+<text x="112" y="352" font-size="16">Groove-root perimeter 373.44 mm</text>
+<text x="48" y="471" font-size="21">B · SIX WHEEL-SHAFT DYNAMIC SEALS</text>
+<rect x="56" y="490" width="580" height="140" rx="12" fill="#223b4b" stroke="#638da5" stroke-width="2"/>
+<rect x="92" y="534" width="430" height="48" fill="#7c9aa9"/>
+<rect x="292" y="522" width="54" height="72" fill="#e6ae5b"/>
+<rect x="92" y="552" width="470" height="12" fill="#dce6ec"/>
+<text x="112" y="516" font-size="15">Pressurized dry interior</text>
+<text x="370" y="516" font-size="15">External side</text>
+<text x="112" y="612" font-size="16">18 × 30 × 7 seal envelope · 17.81 N / shaft</text>
+<text x="688" y="125" font-size="21">C · STATIC COVER / FLANGE GLANDS</text>
+<rect x="684" y="153" width="452" height="270" rx="12" fill="#223b4b" stroke="#638da5" stroke-width="2"/>
+<path d="M723 232 H1085" stroke="#90aebf" stroke-width="26"/>
+<path d="M760 218 H1055" stroke="#f1b45c" stroke-width="9"/>
+<text x="714" y="187" font-size="17">Side cover: 190 × 1.5 O-ring</text>
+<text x="714" y="285" font-size="16">Groove depth 1.15 mm</text>
+<text x="714" y="314" font-size="16">Nominal squeeze 23.33% · SCREEN ONLY</text>
+<text x="714" y="353" font-size="17">Wheel flange: 32 × 1.5 O-ring</text>
+<text x="714" y="382" font-size="16">Nominal squeeze 23.33% · SCREEN ONLY</text>
+<text x="688" y="471" font-size="21">RELEASE DECISION</text>
+<rect x="684" y="490" width="452" height="140" rx="12" fill="#382a32" stroke="#ed9c8b" stroke-width="2"/>
+<text x="711" y="528" font-size="20" fill="#ffb3a9">NOT MANUFACTURING RELEASE</text>
+<text x="711" y="560" font-size="16">Dynamic seal 0.7 bar rating: NOT VERIFIED</text>
+<text x="711" y="589" font-size="16">Pressure / leak test: NOT RUN</text>
+<text x="48" y="669" font-size="14" fill="#a9bfd0">Engineering screen only. Assumed limits: stretch ≤5%; static squeeze 15–30%. No gland fill, extrusion, tolerances or vendor seal qualification.</text>
+</g></svg>

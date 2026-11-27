@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="670" viewBox="0 0 1050 670">
+<rect width="1050" height="670" fill="#101b29"/>
+<g font-family="Arial" fill="#d9e7f2">
+<text x="45" y="43" font-size="24">PX1 · CURRENT MASTER · SOURCE-BOUND 2D</text>
+<text x="45" y="69" font-size="14">Top and side drivetrain datums extracted from PX1_Current_Master.py — NOT a 3D CAD render</text>
+<text x="45" y="106" font-size="18">TOP · X/Y</text>
+<rect x="146" y="142" width="556" height="136" rx="8" fill="#2c4655" stroke="#9fc4d8"/>
+<circle cx="210" cy="132" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<circle cx="310" cy="132" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<circle cx="410" cy="132" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<circle cx="510" cy="132" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<circle cx="610" cy="132" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<rect x="186" y="77" width="48" height="48" rx="7" fill="#677786" stroke="#c3d4e0"/>
+<rect x="386" y="77" width="48" height="48" rx="7" fill="#677786" stroke="#c3d4e0"/>
+<rect x="586" y="77" width="48" height="48" rx="7" fill="#677786" stroke="#c3d4e0"/>
+<rect x="383" y="160.8" width="106" height="44.4" rx="12" fill="#247e7e" stroke="#76d6ce"/>
+<circle cx="210" cy="288" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<circle cx="310" cy="288" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<circle cx="410" cy="288" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<circle cx="510" cy="288" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<circle cx="610" cy="288" r="50" stroke="#e5b35c" fill="#e5b35c" fill-opacity=".14"/>
+<rect x="186" y="295" width="48" height="48" rx="7" fill="#677786" stroke="#c3d4e0"/>
+<rect x="386" y="295" width="48" height="48" rx="7" fill="#677786" stroke="#c3d4e0"/>
+<rect x="586" y="295" width="48" height="48" rx="7" fill="#677786" stroke="#c3d4e0"/>
+<rect x="383" y="214.8" width="106" height="44.4" rx="12" fill="#247e7e" stroke="#76d6ce"/>
+<text x="735" y="160" font-size="15">Gold: 10 × Z50 stations</text>
+<text x="735" y="186" font-size="15">Grey: 6 wheel stations</text>
+<text x="735" y="212" font-size="15">Teal: 2 motor envelopes</text>
+<text x="45" y="368" font-size="18">SIDE · X/Z</text>
+<rect x="146" y="390" width="556" height="128" rx="8" fill="#2c4655" stroke="#9fc4d8"/>
+<circle cx="210" cy="450" r="90" fill="#4f5d6b" stroke="#c2d1db" stroke-width="2"/>
+<circle cx="210" cy="450" r="44" fill="#8799a5" stroke="#d8e4ec"/>
+<text x="210" y="638" text-anchor="middle" font-size="14">X50</text>
+<circle cx="410" cy="450" r="90" fill="#4f5d6b" stroke="#c2d1db" stroke-width="2"/>
+<circle cx="410" cy="450" r="44" fill="#8799a5" stroke="#d8e4ec"/>
+<text x="410" y="638" text-anchor="middle" font-size="14">X150</text>
+<circle cx="610" cy="450" r="90" fill="#4f5d6b" stroke="#c2d1db" stroke-width="2"/>
+<circle cx="610" cy="450" r="44" fill="#8799a5" stroke="#d8e4ec"/>
+<text x="610" y="638" text-anchor="middle" font-size="14">X250</text>
+<text x="45" y="662" font-size="12">Engineering datum view only; covers, tooth involutes, shafts, bearings, seals and lift are not depicted.</text>
+</g></svg>
